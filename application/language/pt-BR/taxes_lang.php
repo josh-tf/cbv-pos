@@ -1,0 +1,32 @@
+<?php 
+
+$lang["taxes_add_exception"] = "Adicione exceção";
+$lang["taxes_confirm_delete"] = "Tem certeza de que deseja excluir este código de imposto? Essa ação não pode ser desfeita.";
+$lang["taxes_confirm_restore"] = "Tem certeza de que deseja restaurar o (s) código (s) de imposto selecionado (s)?";
+$lang["taxes_default_tax_category"] = "Categoria de imposto padrão";
+$lang["taxes_error_adding_updating"] = "Código fiscal adicionar ou atualizar falhou.";
+$lang["taxes_new"] = "Novo Código Tributário";
+$lang["taxes_no_taxes_to_display"] = "Nenhum código de impostos disponível para exibição.";
+$lang["taxes_round_half_down"] = "Metade para baixo";
+$lang["taxes_round_half_even"] = "Metade";
+$lang["taxes_round_half_odd"] = "Meio";
+$lang["taxes_round_half_up"] = "Metade para cima";
+$lang["taxes_rounding_code"] = "Código de Arredondamento";
+$lang["taxes_sales_tax"] = "Imposto sobre vendas";
+$lang["taxes_sales_tax_by_invoice"] = "Imposto sobre vendas por fatura";
+$lang["taxes_successful_deleted"] = "Você excluiu com sucesso";
+$lang["taxes_tax_category"] = "Categoria de imposto";
+$lang["taxes_tax_code"] = "Código do imposto";
+$lang["taxes_tax_code_cannot_be_deleted"] = "A exclusão do código de imposto falhou.";
+$lang["taxes_tax_code_name"] = "Nome do Código Tributário";
+$lang["taxes_tax_code_required"] = "Código Fiscal é um campo obrigatório.";
+$lang["taxes_tax_code_successful_deleted"] = "Você excluiu o código do imposto";
+$lang["taxes_tax_code_successful_updated"] = "Você atualizou com sucesso";
+$lang["taxes_tax_code_successful_updating"] = "Você atualizou com sucesso o código tributário";
+$lang["taxes_tax_code_successfully_added"] = "Você adicionou com sucesso";
+$lang["taxes_tax_code_type"] = "Tipo de Código Fiscal";
+$lang["taxes_tax_rate"] = "Taxa de imposto";
+$lang["taxes_tax_rate_numeric"] = "Taxa de imposto deve ser um número.";
+$lang["taxes_tax_rate_required"] = "Taxa de imposto é um campo obrigatório.";
+$lang["taxes_update"] = "Atualizar o imposto sobre a categoria de vendas";
+$lang["taxes_vat_tax"] = "Imposto IVA";
