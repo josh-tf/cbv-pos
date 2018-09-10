@@ -1,0 +1,28 @@
+{
+  "name": "chartist-plugin-barlabels",
+  "version": "0.0.5",
+  "main": [
+    "./dist/chartist-plugin-barlabels.min.js"
+  ],
+  "dependencies": {
+    "chartist": "~0.9.0"
+  },
+  "ignore": [
+    ".*",
+    "Gruntfile.js",
+    "package.json",
+    "node_modules",
+    "src",
+    "test"
+  ],
+  "homepage": "https://github.com/mtgibbs/chartist-plugin-barlabels",
+  "_release": "0.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.5",
+    "commit": "5164e9501b81a446ebd104f23340bdebb3ac6119"
+  },
+  "_source": "https://github.com/mtgibbs/chartist-plugin-barlabels.git",
+  "_target": "~0.0.5",
+  "_originalSource": "https://github.com/mtgibbs/chartist-plugin-barlabels.git"
+}
