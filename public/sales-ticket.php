@@ -1,14 +1,21 @@
+<?php
+// grab our ID from the url
+$cbvid = htmlspecialchars($_GET["id"]);
+
+// exit if the id is empty
+if (empty($cbvid)) {
+    die("Invalid ID Provided");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <title>A4 landscape</title>
+  <title>CBV Sales Ticket - <? echo $cbvid; ?></title>
 
-  <!-- Normalize or reset CSS with your favorite library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
 
-  <!-- Load paper.css for happy printing -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
   
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
@@ -16,42 +23,16 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
 
-  <!-- Set page size here: A5, A4 or A3 -->
-  <!-- Set also "landscape" if you need -->
   <style>@page { size: A4 landscape }</style>
   
 </head>
 
 <?php
+// using docker env vars
 $servername = getenv('MYSQL_HOST_NAME');
 $username = getenv('MYSQL_USERNAME');
 $password = getenv('MYSQL_PASSWORD');
 $dbname = getenv('MYSQL_DB_NAME');
-/*
-
-Custom Field 1
-Build Date
-Custom Field 2
-Brand / Model
-Custom Field 3
-CPU Type
-Custom Field 4
-CPU Speed
-Custom Field 5
-RAM
-Custom Field 6
-Storage
-Custom Field 7
-Screen Size
-Custom Field 8
-Optical Drive
-Custom Field 9
-Extras
-Custom Field 10
-Box Only Price
-
-*/
-
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -60,24 +41,19 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT * FROM cbvpos_items WHERE name = 8910";
+// select our item record
+$sql = "SELECT * FROM cbvpos_items WHERE name = $cbvid;";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // output data of each row
+    // output data
     while($row = $result->fetch_assoc()) {
 		
-
 ?>
 
-<!-- Set "A5", "A4" or "A3" for class name -->
-<!-- Set also "landscape" if you need -->
 <body class="A4 landscape">
 
-  <!-- Each sheet element should have the class "sheet" -->
-  <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
   <section class="sheet padding-10mm">
-
       <div class="row">
       <div class="one-half column">
 	  <center><img src="images/logo-cbv.png" width="420px" /></center>
@@ -96,7 +72,7 @@ if ($result->num_rows > 0) {
       <td><b class="pricing">$<?php echo $row["unit_price"]; ?></b></td>
     </tr>
     <tr>
-      <td><b class="pricing">Non Concession</b></td>
+      <td><b class="pricing">Non Concession</b></td> <!-- the php below adds 25% and rounds up/down to nearest $5 -->
       <td><b class="pricing">$<?php echo number_format((float)round(($row["unit_price"] * 1.25)/5) * 5, 2, '.', ''); ?></b></td>
     </tr>
     <tr>
@@ -144,8 +120,8 @@ if ($result->num_rows > 0) {
 	  
 	  </div>
       <div class="one-half column" class="mt5">
-        <h4>Basic Page</h4>
-        <p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some content! If you need some help hit up the <a href="http://www.getskeleton.com">Skeleton documentation</a>.</p>
+        <h4>Content WIP</h4>
+        <p>This rear page will be on the back of the folded sales ticket and contain details on the distro, linux and warranty.</a>.</p>
       </div>
     </div>
 	
