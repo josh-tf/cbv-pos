@@ -34,8 +34,7 @@ $ docker run --network="cbvposdev-network" --name cbvposdev-pma -d -p 8080:80 jo
  &nbsp;
 Next, import the 'cbvpos' database file:
 
- 1. Login to PHPMyAdmin via http://localhost:8080
-**Username**: admin **Password**: pointofsale 
+ 1. Login to PHPMyAdmin via http://localhost:8080 (login details below)
  3. Click on 'cbvpos' on the lefthand side
  4. Click on 'Import' at the top of the page
  5. Click 'Choose File' and navigate to *(gitdir)/database/cbvpos_import.sql*
@@ -46,8 +45,8 @@ Next, import the 'cbvpos' database file:
 - http://localhost - cbvpos installation
 - http://localhost:8080 - PHPMyAdmin (Database management)
 
-**Username**: admin
-**Password**: pointofsale 
+- **Username**: admin
+- **Password**: pointofsale 
 
 ### Contributing
 
