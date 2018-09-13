@@ -1,3 +1,4 @@
+
 ![N|Solid](https://cbv.josh.tf/wp-content/uploads/2018/03/banner.png)
 
 # Computerbank Point of Sale (WIP)
@@ -44,6 +45,9 @@ Next, import the 'cbvpos' database file:
 
 - http://localhost - cbvpos installation
 - http://localhost:8080 - PHPMyAdmin (Database management)
+
+**Username**: admin
+**Password**: pointofsale 
 
 ### Contributing
 
