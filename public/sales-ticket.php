@@ -68,8 +68,8 @@ if ($result->num_rows > 0) {
   </thead>
   <tbody>
     <tr>
-      <td><b class="pricing">Concession</b></td>
-      <td><b class="pricing">$<?php echo $row["unit_price"]; ?></b></td>
+      <td><b class="pricing">Concession</b></td> <!-- round up or down to nearest $5 -->
+      <td><b class="pricing">$<?php echo number_format((float)round(($row["unit_price"])/5) * 5, 2, '.', ''); ?> ?></b></td>
     </tr>
     <tr>
       <td><b class="pricing">Non Concession</b></td> <!-- the php below adds 25% and rounds up/down to nearest $5 -->
