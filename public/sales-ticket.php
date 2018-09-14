@@ -123,8 +123,7 @@ if ($result->num_rows > 0) {
       <div class="one-half column" class="mt5">
 	   <img src="images/linux.jpg" width="240px" />
 	  <h5>What is Linux?</h5>
-        <p>Our computers <b>do not</b> come with Microsoft Windows. We run Linux instead!</p>
-		<p>Linux is similar to other systems you may have used before, such as Windows or OS X. Linux has a graphical interface and software you find on other systems such as word processing, web browsing and other useful tools.</p>
+        <p>Our computers <b>do not</b> come with Microsoft Windows. We run Linux instead. Linux is similar to other systems you may have used before, such as Windows or OS X.</p>
 		<p>Our operating system includes a built in firewall and does not require any aditional antivirus software.
 		</p>
 		
