@@ -55,9 +55,21 @@ $(document).ready(function()
         }
     });
 });
+
+function openTicket() {
+	
+var cbvid = document.getElementById('cbvid').value; // get the textbox value
+	
+if (cbvid == "CBV ID:") {
+	throw ''; // exit if you just click the generate button without entering anything
+};
+	window.open('./sales-ticket.php?id=' + cbvid) // open the sales ticket
+}
 </script>
 
 <div id="title_bar" class="btn-toolbar print_hide">
+
+
     <button class='btn btn-info btn-sm pull-right modal-dlg' data-btn-submit='<?php echo $this->lang->line('common_submit') ?>' data-href='<?php echo site_url($controller_name."/excel_import"); ?>'
             title='<?php echo $this->lang->line('items_import_items_excel'); ?>'>
         <span class="glyphicon glyphicon-import">&nbsp</span><?php echo $this->lang->line('common_import_excel'); ?>
@@ -67,6 +79,20 @@ $(document).ready(function()
             title='<?php echo $this->lang->line($controller_name . '_new'); ?>'>
         <span class="glyphicon glyphicon-tag">&nbsp</span><?php echo $this->lang->line($controller_name. '_new'); ?>
     </button>
+	
+    <button class='btn btn-info btn-sm pull-right' onclick="window.open('./stock-list-print.php')">
+        <span class="glyphicon glyphicon-print">&nbsp</span>Print Stocklist
+    </button>
+	
+    <button class='btn btn-info btn-sm pull-right' onclick="window.open('./stock-list.php')">
+        <span class="glyphicon glyphicon-file">&nbsp</span>View Stocklist
+    </button>
+	
+    <button class='btn btn-info btn-sm pull-right' onclick="openTicket()">
+        <span class="glyphicon glyphicon-file">&nbsp</span>Generate Ticket
+    </button>
+	
+	<input type="text" id="cbvid" onfocus="this.value=''" value="CBV ID:" class="form-control input-sm" id="" style="width: 85px;float: right;margin-right: 5px;">
 </div>
 
 <div id="toolbar">
