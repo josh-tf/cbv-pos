@@ -392,7 +392,7 @@ function get_item_data_row($item)
 		'stock' => anchor($controller_name."/count_details/$item->item_id", '<span class="glyphicon glyphicon-list-alt"></span>',
 			array('class' => 'modal-dlg', 'title' => $CI->lang->line($controller_name.'_details_count'))
 		),
-		'ticket' => anchor("/sales-ticket.php?id=$item->name", '<span class="glyphicon glyphicon-file"></span>',
+		'ticket' => anchor("/sales-ticket.php?id=$item->name", '<span class="glyphicon glyphicon-print"></span>',
 			array('class' => '', 'title' => $CI->lang->line($controller_name.'_details_count'))
 		),
 		'edit' => anchor($controller_name."/view/$item->item_id", '<span class="glyphicon glyphicon-edit"></span>',
