@@ -9,7 +9,6 @@ if (empty($cbvid)) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <title>CBV Sales Ticket - <? echo $cbvid; ?></title>
