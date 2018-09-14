@@ -37,18 +37,14 @@ $dbname = getenv('MYSQL_DB_NAME');
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+// Using prepared statements to prevent possible SQL injection
+$stmt = $conn->prepare('SELECT * FROM cbvpos_items WHERE name = ?');
+$stmt->bind_param('s', $cbvid); // 's' specifies the variable type => 'string'
 
-// select our item record
-$sql = "SELECT * FROM cbvpos_items WHERE name = $cbvid;";
-$result = $conn->query($sql);
+$stmt->execute();
 
-if ($result->num_rows > 0) {
-    // output data
-    while($row = $result->fetch_assoc()) {
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc()) {
 		
 ?>
 
@@ -148,8 +144,4 @@ if ($result->num_rows > 0) {
 
 <?php
     }
-} else {
-    echo "0 results";
-}
-$conn->close();
 ?>
