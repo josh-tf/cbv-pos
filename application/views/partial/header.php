@@ -118,8 +118,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-			
-					<a class="navbar-brand hidden-sm" href="<?php echo site_url(); ?>">OSPOS</a>
+					<a href="<?php echo site_url(); ?>"><img src="./images/cbv-logo.png" style="width: 155px;margin: 9px 0 1px 0;"></a>
 				</div>
 
 				<div class="navbar-collapse collapse">
