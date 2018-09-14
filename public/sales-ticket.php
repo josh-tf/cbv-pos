@@ -36,6 +36,7 @@ $dbname = getenv('MYSQL_DB_NAME');
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -120,8 +121,21 @@ if ($result->num_rows > 0) {
 	  
 	  </div>
       <div class="one-half column" class="mt5">
-        <h4>Content WIP</h4>
-        <p>This rear page will be on the back of the folded sales ticket and contain details on the distro, linux and warranty.</a>.</p>
+	   <img src="images/linux.jpg" width="240px" />
+	  <h5>What is Linux?</h5>
+        <p>Our computers <b>do not</b> come with Microsoft Windows. We run Linux instead!</p>
+		<p>Linux is similar to other systems you may have used before, such as Windows or OS X. Linux has a graphical interface and software you find on other systems such as word processing, web browsing and other useful tools.</p>
+		<p>Our operating system includes a built in firewall and does not require any aditional antivirus software.
+		</p>
+		
+	  <h5>What Software is included?</h5>
+        <p>Every Computerbank computer comes bundled with a range of useful software including Chrome and Firefox, the OpenOffice office suite, a range of games and other useful tools. Ask us for a full list for more information.</p>
+		
+	  <h5>Warranty Information</h5>
+		Our restored computers come with a <b>three months</b> back to base warranty. For desktops, we extend the warranty to <b>six months</b> if the original operating system, Linux, is still installed on the computer. If you have a problem you can organise an appointment to bring it back in.
+		<br />
+		
+		
       </div>
     </div>
 	
