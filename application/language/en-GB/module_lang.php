@@ -2,7 +2,7 @@
 
 $lang["module_both"] = "Both";
 $lang["module_config"] = "Configuration";
-$lang["module_config_desc"] = "Change OSPOS's Configuration";
+$lang["module_config_desc"] = "Change CBVPOS's Configuration";
 $lang["module_customers"] = "Customers";
 $lang["module_customers_desc"] = "Add, Update, Delete, and Search Customers";
 $lang["module_employees"] = "Employees";
@@ -22,7 +22,7 @@ $lang["module_items_desc"] = "Add, Update, Delete, and Search Items";
 $lang["module_messages"] = "Messages";
 $lang["module_messages_desc"] = "Send Messages to Customers, Suppliers and Employees";
 $lang["module_migrate"] = "Migrate";
-$lang["module_migrate_desc"] = "Update the OSPOS Database";
+$lang["module_migrate_desc"] = "Update the CBVPOS Database";
 $lang["module_office"] = "Office";
 $lang["module_office_desc"] = "List office menu modules";
 $lang["module_receivings"] = "Receivings";
