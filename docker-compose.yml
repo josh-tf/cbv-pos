@@ -37,6 +37,7 @@ services:
             - MYSQL_USER=admin
             - MYSQL_PASSWORD=pointofsale
             - MYSQL_HOST_NAME=cbvposdev-db
+            - PMA_HOST=cbvposdev-db
         ports:
                 - "8080:80"
 volumes:
