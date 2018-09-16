@@ -3,7 +3,7 @@
 # download and run php, mysql and phpmyadmin containers
 # downloads node, php modules on build.
 
-version: '3.7'
+version: '2'
 services:
 
     cbvposdev-php:
