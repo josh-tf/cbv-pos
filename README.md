@@ -32,16 +32,18 @@ Next we will create the docker containers for all three applications (Apache, Ma
 
 ```sh
 $ cd ./cbvpos
+$ docker-compose build
 $ docker-compose up -d
 ```
 
 ### Automatic Build process
  The build process will take a few minutes and involves the following **automatic** steps:
  1. Download *Apache, MariaDB* and *PMA* images from *joshtf/cbvposdev* DockerHub repo
- 2. Create a local network called '*cbvposdev_default*'
- 3. Create Apache container named '*cbvposdev-php*' and map the git folder to */app*
- 4. Create MariaDB container named '*cbvposdev-db*' and import database from *./database/cbvpos_import.sql*
- 5. Create PHPMyAdmin container named '*cbvposdev-pma*' and map to the db container
+ 2. Downloads latest php and node modules using grunt, compose and bower images
+ 3. Create a local network called '*cbvposdev_default*'
+ 4. Create Apache container named '*cbvposdev-php*' and map the git folder to */app*
+ 5. Create MariaDB container named '*cbvposdev-db*' and import database from *./database/cbvpos_import.sql*
+ 6. Create PHPMyAdmin container named '*cbvposdev-pma*' and map to the db container
 
  After a few minutes have passed, you can access the installation.
   

@@ -1,0 +1,48 @@
+{
+  "name": "cbvpos",
+  "version": "1.0.0",
+  "description": "CBVPOS is a fork of the Open Source Point of Sale system.",
+  "main": "index.php",
+  "license": "MIT",
+  "authors": [
+    "h00pl4 <justin - at - justinbush.com.au>",
+    "rjobeirne <rjob.obeirne - at - gmail.com>",
+    "josh-tf <git - at - josh.tf>"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "hhttps://github.com/josh-tf/cbvpos"
+  },
+  "keywords": [
+    "point-of-sale",
+    "POS"
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-apigen": "^0.1.3",
+    "grunt-bower": "^0.21.0",
+    "grunt-bower-concat": "^1.0.0",
+    "grunt-bower-licensechecker": "^0.1.2",
+    "grunt-bowercopy": "^1.2.4",
+    "grunt-cache-breaker": "^2.0.1",
+    "grunt-composer": "^0.4.5",
+    "grunt-contrib-clean": "~1.0.0",
+    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-uglify": "~0.8.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-license-bower": "~1.0.1",
+    "grunt-mocha-webdriver": "^1.2.2",
+    "grunt-script-link-tags": "git://github.com/jekkos/grunt-script-link-tags.git#master",
+    "grunt-wiredep": "^2.0.0",
+    "grunt-contrib-compress": "^1.4.1",
+    "load-grunt-tasks": "^3.4.0",
+    "mocha": "^2.2.1",
+    "phantomjs": "~1.9.2",
+    "wd": "^0.3.3"
+  }
+}

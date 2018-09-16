@@ -12,3 +12,16 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 #vscode ide
 .vscode
+
+#node modules and php components
+node_modules
+tmp
+application/config/email.php
+application/sessions/*
+application/logs/*
+application/uploads/*
+public/license/.licenses
+public/license/bower.LICENSES
+public/dist
+public/bower_components
+vendor/
