@@ -393,7 +393,7 @@ function get_item_data_row($item)
 			array('class' => 'modal-dlg', 'title' => $CI->lang->line($controller_name.'_details_count'))
 		),
 		'ticket' => anchor("/sales-ticket.php?id=$item->name", '<span class="glyphicon glyphicon-print"></span>',
-			array('class' => '', 'title' => $CI->lang->line($controller_name.'_details_count'))
+			array('class' => '', 'title' => 'Print Sales Ticket')
 		),
 		'edit' => anchor($controller_name."/view/$item->item_id", '<span class="glyphicon glyphicon-edit"></span>',
 			array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name.'_update'))
