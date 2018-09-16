@@ -32,7 +32,6 @@ Next we will create the docker containers for all three applications (Apache, Ma
 
 ```sh
 $ cd ./cbvpos
-$ docker-compose build
 $ docker-compose up -d
 ```
 
