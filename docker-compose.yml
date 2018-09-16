@@ -40,6 +40,24 @@ services:
             - PMA_HOST=cbvposdev-db
         ports:
                 - "8080:80"
+    cbvposdev-build-composer:
+        container_name: cbvposdev-build-composer
+        image: composer/composer
+        command: "install"
+        volumes:
+                - ./:/app
+    cbvposdev-build-php:
+        container_name: cbvposdev-build-php
+        image: lucor/php7-cli
+        command: "php bin/install.php translations develop"
+        volumes:
+                - ./:/app
+    cbvposdev-build-nodejs:
+        container_name: cbvposdev-build-nodejs
+        image: digitallyseamless/nodejs-bower-grunt
+        command: bash -c "cd /app && npm install && bower install"
+        volumes:
+                - ./:/app
 volumes:
     uploads:
         driver: local

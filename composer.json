@@ -1,0 +1,33 @@
+{
+	"name": "josh-tf/cbvpos",
+	"description" : "CBVPOS is a fork of the Open Source Point of Sale system.",
+	"license": "MIT",
+	"authors": [
+		{
+		    "name": "h00pl4"
+		},
+		{
+		    "name": "rjobeirne"
+		},
+		{
+		    "name": "josh-tf"
+		}
+	],
+	"type": "project",
+	"keywords": [
+		"point-of-sale",
+		"POS"
+	],
+	"homepage": "https://github.com/josh-tf/cbvpos",
+	"require": {
+		"php": "^5.5 || ^7.0",
+		"codeigniter/framework": "^3.1",
+		"dompdf/dompdf": "^0.7",
+		"tamtamchik/namecase": "^1.0",
+		"paragonie/random_compat": "^2.0"
+	},
+	"require-dev": {
+		"mikey179/vfsStream": "1.1.*",
+		"vlucas/phpdotenv": "^2.4"
+	}
+}
