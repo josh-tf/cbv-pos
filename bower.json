@@ -1,18 +1,17 @@
 {
-  "name": "cbvpos",
-  "description": "CBVPOS is a fork of the Open Source Point of Sale system.",
-  "version": "1.0.0",
+  "name": "opensourcepos",
+  "description": "Open Source Point of Sale is a web based POS system written in the PHP language. It uses MySQL as backend and has a simple user interface",
+  "version": "3.3.0",
   "license": "MIT",
   "authors": [
-    "h00pl4 <justin - at - justinbush.com.au>",
-    "rjobeirne <rjob.obeirne - at - gmail.com>",
-    "josh-tf <git - at - josh.tf>"
+    "jekkos <jeroen.peelaerts - at - gmail.com>",
+    "FrancescoUK <francesco.lodolo.uk - at - gmail.com>"
   ],
   "keywords": [
     "point-of-sale",
     "POS"
   ],
-  "homepage": "https://github.com/josh-tf/cbvpos",
+  "homepage": "https://github.com/opensourcepos/opensourcepos",
   "private": true,
   "moduleType": [
     "globals"
