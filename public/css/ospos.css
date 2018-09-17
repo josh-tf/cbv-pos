@@ -185,3 +185,17 @@ label.required
 {
 	visibility: hidden;
 }
+
+/* Added CBV logo, this will hide it on a small screen */
+
+.main-logo {
+	display:none;
+ }
+ 
+ @media only screen and (min-width: 1200px) {
+	 .main-logo {
+		 display: block;
+		 width:155px;
+		 margin: 9px 0 1px 0;
+	 }
+ }

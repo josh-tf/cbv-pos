@@ -72,7 +72,7 @@
 		<![endif]-->
 		<!-- start mincss template tags -->
 		<link rel="stylesheet" type="text/css" href="dist/jquery-ui/jquery-ui.min.css"/>
-		<link rel="stylesheet" type="text/css" href="dist/opensourcepos.min.css?rel=be462a5d77"/>
+		<link rel="stylesheet" type="text/css" href="dist/opensourcepos.min.css?rel=9bffa1df89"/>
 		<!-- end mincss template tags -->
 		<!-- start minjs template tags -->
 		<script type="text/javascript" src="dist/opensourcepos.min.js?rel=1e4c8a17c4"></script>
@@ -118,7 +118,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="<?php echo site_url(); ?>"><img src="./images/cbv-logo.png" style="width: 155px;margin: 9px 0 1px 0;"></a>
+					<a href="<?php echo site_url(); ?>"><img src="./images/cbv-logo.png" class="main-logo"></a>
 				</div>
 
 				<div class="navbar-collapse collapse">

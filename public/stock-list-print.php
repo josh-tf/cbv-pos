@@ -41,7 +41,7 @@ $sql.= " 	quantity > 0 AND";
 
 </head>
 
-	<body class="A4 landscape">
+	<body onload="window.print()" class="A4 landscape">
 
 	  <section class="sheet padding-10mm">
 		<div class="row">

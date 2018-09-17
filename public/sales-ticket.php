@@ -6,7 +6,33 @@ $cbvid = htmlspecialchars($_GET["id"]);
 if (empty($cbvid)) {
     die("Invalid ID Provided");
 }
+
+// using docker env vars
+$servername = getenv('MYSQL_HOST_NAME');
+$username = getenv('MYSQL_USERNAME');
+$password = getenv('MYSQL_PASSWORD');
+$dbname = getenv('MYSQL_DB_NAME');
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Using prepared statements to prevent possible SQL injection
+$stmt = $conn->prepare('SELECT * FROM cbvpos_items WHERE name = ?');
+$stmt->bind_param('s', $cbvid); // 's' specifies the variable type => 'string'
+
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+// if no results, exit
+if ($result->num_rows == 0) {
+  die("Invalid ID Provided");
+}
+
+while ($row = $result->fetch_assoc()) {
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,27 +51,6 @@ if (empty($cbvid)) {
   <style>@page { size: A4 landscape }</style>
   
 </head>
-
-<?php
-// using docker env vars
-$servername = getenv('MYSQL_HOST_NAME');
-$username = getenv('MYSQL_USERNAME');
-$password = getenv('MYSQL_PASSWORD');
-$dbname = getenv('MYSQL_DB_NAME');
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Using prepared statements to prevent possible SQL injection
-$stmt = $conn->prepare('SELECT * FROM cbvpos_items WHERE name = ?');
-$stmt->bind_param('s', $cbvid); // 's' specifies the variable type => 'string'
-
-$stmt->execute();
-
-$result = $stmt->get_result();
-while ($row = $result->fetch_assoc()) {
-
-?>
 
 <body class="A4 landscape">
 
