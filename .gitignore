@@ -16,3 +16,9 @@ public/bower_components
 .settings/*
 vendor/
 .env
+
+# ide
+.vscode
+
+# local files but kept out of source
+package-lock.json
