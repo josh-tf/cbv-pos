@@ -1,14 +1,3 @@
-*/config/development
-*/logs/log-*.php
-!*/logs/index.html
-*/cache/*
-!*/cache/index.html
-!*/cache/.htaccess
-
-#vscode ide
-.vscode
-
-#node modules and php components
 node_modules
 tmp
 application/config/email.php
@@ -18,8 +7,12 @@ application/uploads/*
 public/license/.licenses
 public/license/bower.LICENSES
 public/dist
+dist/
 public/bower_components
+*.bash
+.swp
+.buildpath
+.project
+.settings/*
 vendor/
-
-#package-lock from builds
-package-lock.json
+.env
