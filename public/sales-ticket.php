@@ -19,8 +19,8 @@ if (empty($cbvid)) {
   
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/extra/normalize.css">
+  <link rel="stylesheet" href="css/extra/skeleton.css">
 
   <style>@page { size: A4 landscape }</style>
   
@@ -44,7 +44,7 @@ $stmt->execute();
 
 $result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
-		
+
 ?>
 
 <body class="A4 landscape">
@@ -54,7 +54,7 @@ while ($row = $result->fetch_assoc()) {
       <div class="one-half column">
 	  <center><img src="images/logo-cbv.png" width="420px" /></center>
         <p class="summary">This computer includes a range of free software, a keyboard, mouse and monitor. All computers sold in store come with a 3 month back to base warranty.</p>
-      
+
 <table class="u-full-width">
   <thead>
     <tr>
@@ -77,7 +77,7 @@ while ($row = $result->fetch_assoc()) {
     </tr>
   </tbody>
 </table>
-	  
+
 <p class="discount-info">The discount above aplies if you wish to purchase the desktop only - you will need to supply your own monitor, keyboard and mouse.</p>
 
 <table class="u-full-width">
@@ -112,8 +112,7 @@ while ($row = $result->fetch_assoc()) {
     </tr>
   </tbody>
 </table>
-	  
-	  
+
 	  </div>
       <div class="one-half column" class="mt5">
 	   <img src="images/linux.jpg" width="240px" />
@@ -121,25 +120,22 @@ while ($row = $result->fetch_assoc()) {
         <p>Our computers <b>do not</b> come with Microsoft Windows. We run Linux instead. Linux is similar to other systems you may have used before, such as Windows or OS X.</p>
 		<p>Our operating system includes a built in firewall and does not require any aditional antivirus software.
 		</p>
-		
+
 	  <h5>What Software is included?</h5>
         <p>Every Computerbank computer comes bundled with a range of useful software including Chrome and Firefox, the OpenOffice office suite, a range of games and other useful tools. Ask us for a full list for more information.</p>
-		
+
 	  <h5>Warranty Information</h5>
 		Our restored computers come with a <b>three months</b> back to base warranty. For desktops, we extend the warranty to <b>six months</b> if the original operating system, Linux, is still installed on the computer. If you have a problem you can organise an appointment to bring it back in.
 		<br />
-		
-		
+
       </div>
     </div>
-	
-	
+
   </section>
 
 </body>
 
 </html>
-
 
 <?php
     }

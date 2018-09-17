@@ -1,11 +1,4 @@
 <?php
-// grab our ID from the url
-$cbvid = htmlspecialchars($_GET["id"]);
-
-// exit if the id is empty
-//if (empty($cbvid)) {
-//    die("Invalid ID Provided");
-//}
 
 // using docker env vars
 $servername = getenv('MYSQL_HOST_NAME');
@@ -16,34 +9,23 @@ $dbname = getenv('MYSQL_DB_NAME');
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql = "SELECT 													";
-$sql.= "     `name`, 											";
-$sql.= "     `unit_price`,										";
-$sql.= "     `custom3`,											";
-$sql.= "     `custom4`,											";
-$sql.= "     `custom5`,											";
-$sql.= "     `custom6`,											";
-$sql.= "     `custom7`,											";
-$sql.= "     `custom8`,											";
-$sql.= "     `custom9`,											";
-$sql.= "     `quantity`											";
-$sql.= " FROM													";
-$sql.= "     cbvpos_item_quantities t1							";
-$sql.= "         INNER JOIN										";
-$sql.= "     cbvpos_items t2 ON t1.item_id = t2.item_id			";
-$sql.= " WHERE													";
-$sql.= " 	quantity > 0 AND									";
-$sql.= " 														";
+$sql = "SELECT";
+$sql.= "     `name`,`unit_price`, `custom3`,`custom4`,`custom5`,`custom6`,`custom7`,`custom8`,`custom9`,`quantity`";
+$sql.= " FROM";
+$sql.= "     cbvpos_item_quantities t1";
+$sql.= "         INNER JOIN";
+$sql.= "     cbvpos_items t2 ON t1.item_id = t2.item_id";
+$sql.= " WHERE";
+$sql.= " 	quantity > 0 AND";
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
 <head>
 
   <meta charset="utf-8">
-  <title>Computerbank Stocklist</title>
+  <title>Computerbank Stocklist - <?php echo date('D d M y'); ?></title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -51,13 +33,10 @@ $sql.= " 														";
 
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/extra/normalize.css">
+  <link rel="stylesheet" href="css/extra/skeleton.css">
 
-  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  
-  <script src="./js/stupidtable.js"></script>
 
   <style type="text/css">
     table {
@@ -91,32 +70,30 @@ body {
 </head>
 <body>
 
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <div class="row">
       <div class="" style="margin: 5% 0">
-		
+
 <h5>Desktops</h5>
 <p>The listed concession price is only available to concession card holders. Please have a valid concession card ready when you make your purchase. You may purchase a desktop computer without a concession card, but you will be charged our market price, as shown below.</p>
 
-<table class="sorter-dt u-full-width">
+<table class="u-full-width">
   <thead>
     <tr>
-      <th data-sort="string">ID</th>
-      <th data-sort="string">Conc. Price</th>
-      <th data-sort="string">Market Price</th>
-      <th data-sort="string">Processor</th>
-      <th data-sort="string">Memory</th>
-      <th data-sort="string">Storage</th>
-      <th data-sort="string">Extras</th>
+      <th>ID</th>
+      <th>Conc. Price</th>
+      <th>Market Price</th>
+      <th>Processor</th>
+      <th>Memory</th>
+      <th>Storage</th>
+      <th>Extras</th>
     </tr>
   </thead>
   <tbody>
 
 <?php
 $cat = "Desktop";
-$stmt = $conn->prepare($sql.' category = ?;');
+$stmt = $conn->prepare($sql.' category = ? ORDER BY unit_price;');
 $stmt->bind_param('s',$cat); // 's' specifies the variable type => 'string'
 
 $stmt->execute();
@@ -150,7 +127,7 @@ while ($row = $result->fetch_assoc()) {
 
 </p>
 
-<table class="sorter-lt u-full-width">
+<table class="u-full-width">
   <thead>
     <tr>
       <th>ID</th>
@@ -166,7 +143,7 @@ while ($row = $result->fetch_assoc()) {
 
 <?php
 $cat = "Laptop";
-$stmt = $conn->prepare($sql.' category = ?;');
+$stmt = $conn->prepare($sql.' category = ? ORDER BY unit_price;');
 $stmt->bind_param('s',$cat); // 's' specifies the variable type => 'string'
 
 $stmt->execute();
@@ -198,13 +175,7 @@ while ($row = $result->fetch_assoc()) {
       </div>
     </div>
   </div>
-  
+
 </body>
 
-  <script>
-    $(function(){
-        $(".sorter-dt").stupidtable();
-		$(".sorter-lt").stupidtable();
-    });
-  </script>
 </html>
