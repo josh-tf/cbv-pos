@@ -4,65 +4,86 @@
 ![N|Solid](https://cbv.josh.tf/wp-content/uploads/2018/03/banner.png)
 
 # Computerbank Point of Sale
-This repository contains the files and docker instructions for a local deploment of the Computerbank POS based on [opensourcepos](https://www.opensourcepos.org/). The installation contains a docker-compose file for one command deployment on any OS.
+The Computerbank Point of Sale system is a fork of the [opensourcepos](https://www.opensourcepos.org/) software.
 
-### Requirements
+## Getting Started
 
-  - [Docker](https://www.docker.com/get-started)
-  - [Docker Compose](https://docs.docker.com/compose/install/)
-  - [Git](https://git-scm.com/downloads)
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+This project requires the following tools to be installed and configured on your system. If you are missing these requirements you can follow the links below for instructions.
+
+| Project Requirements |
+| ------ |
+| [Docker](https://www.docker.com/get-started) |
+| [Docker Compose](https://docs.docker.com/compose/install/) |
+| [Git](https://git-scm.com/downloads) |
+
 
 ### Supported OS
 
-  - ![enter image description here](https://i.imgur.com/gq76Rxa.png) - Linux (All Distributions supported by Docker) 
-  - ![enter image description here](https://i.imgur.com/NWpdcBy.png) - MacOS (All Versions supported by Docker)
-  - ![enter image description here](https://i.imgur.com/P5Aciyp.png) - Windows 10 Pro (Hyper-V required)
+Our development environment runs within [Docker](https://www.docker.com/get-started) based containers, any operating system that supports Docker will also support our deployment.
 
+| OS | Comments|
+|---|-----------------------------------------------|
+| ![Linux](https://i.imgur.com/gq76Rxa.png) | Linux (All Distributions supported by Docker) |
+| ![MacOS](https://i.imgur.com/NWpdcBy.png) | MacOS (All Versions supported by Docker)      |
+| ![Windows](https://i.imgur.com/P5Aciyp.png) | Windows 10 Pro (Hyper-V required)             |
 
-### Installation
+### Installing
 
 CBVPOS requires [Docker](https://www.docker.com/) with [Compose](https://docs.docker.com/compose/install/) along with [Git](https://git-scm.com/downloads) configured and installed.
 
-In a terminal of your choice, clone the GitHub repository :
+In a terminal of your choice, clone the GitHub repository
 ```sh
 $ git clone https://github.com/josh-tf/cbvpos.git
 ```
  &nbsp;
-Next we will create the docker containers for all three applications (Apache, MariaDB, PHPMyAdmin) via the docker compose file.
+Next we will run the automated build process
 
 ```sh
 $ cd ./cbvpos
 $ docker-compose up -d
 ```
 
+
 ### Automatic Build process
- The build process will take a few minutes and involves the following **automatic** steps:
- 1. Download *Apache, MariaDB* and *PMA* images from *joshtf/cbvposdev* DockerHub repo
- 2. Downloads latest php and node modules using grunt, compose and bower images
- 3. Create a local network called '*cbvposdev_default*'
- 4. Create Apache container named '*cbvposdev-php*' and map the git folder to */app*
- 5. Create MariaDB container named '*cbvposdev-db*' and import database from *./database/cbvpos_import.sql*
- 6. Create PHPMyAdmin container named '*cbvposdev-pma*' and map to the db container
+The automatic build process will take a *few minutes* to complete and depends on available system resources - you can *optionally* omit the `-d` flag below to view the build output.
 
- After a few minutes have passed, you can access the installation.
-  
-### Access the installation
- 
-http://localhost - cbvpos installation<br>
-http://localhost:8080 - PHPMyAdmin (Database management)<br>
-**Username**: admin<br>
-**Password**: pointofsale <br>
+The automatic build involves a number of steps including the creation of docker network and volumes, sourcing and deploying container images from [Docker Hub](https://hub.docker.com/r/joshtf/) and building the required dependencies (php, node) files.
+<br>
 
-### Contributing
+## Access the installation
+
+After the build process is complete, you will be able to access the installation. Provided you have not modified the docker-compose configuration, the site url will be:
+
+| Details | Description |
+|---|-----------------------------------------------|
+| http://localhost | cbvpos Installation) |
+| http://localhost:8080 | PHPMyAdmin (Database Management) |
+| admin | Default username |
+|  pointofsale | Default Password |
+
+## Contributing
 
  - Request access to contribute to this repository (or the development branch)
  - Pull down the latest copy of the branch `git pull https://github.com/josh-tf/cbvpos.git`
  - Make your changes locally and test on your Docker installation
  - Push changes back to the repository - *handle any conflicts from other users commits*
- - Join the Slack group for discussions, to-do and other colab tools
+ - Join the Slack group for discussions, to-do and other collaboration tools
 
-![enter image description here](https://i.imgur.com/2KXM4Ab.png)
- 
-### Todos
 
- - Sort out the build end for the web based testing
+## Authors
+
+ - Originally created by the [opensourcepos](https://www.opensourcepos.org/) team
+ - Currently developed with ❤️ by [josh-tf](https://github.com/josh-tf) - [h00pl4](https://github.com/h00pl4) - [rjobeirne](https://github.com/rjobeirne)
+
+<br>
+
+![Slack logo](https://i.imgur.com/2KXM4Ab.png)
+
+License
+----
+
+MIT
