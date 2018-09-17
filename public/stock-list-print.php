@@ -68,7 +68,7 @@ $sql.= " 	quantity > 0 AND";
 
 					<?php
 					$cat = "Desktop";
-					$stmt = $conn->prepare($sql.' category = ?;');
+					$stmt = $conn->prepare($sql.' category = ? ORDER BY unit_price;');
 					$stmt->bind_param('s',$cat); // 's' specifies the variable type => 'string'
 
 					$stmt->execute();
@@ -123,7 +123,7 @@ $sql.= " 	quantity > 0 AND";
 
 					<?php
 					$cat = "Laptop";
-					$stmt = $conn->prepare($sql.' category = ?;');
+					$stmt = $conn->prepare($sql.' category = ? ORDER BY unit_price;');
 					$stmt->bind_param('s',$cat); // 's' specifies the variable type => 'string'
 
 					$stmt->execute();
