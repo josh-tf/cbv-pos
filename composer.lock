@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "12c4734410923f9fe0a05a430e9a3ce2",
-    "content-hash": "97dd0d7ef3fa197669bd6dbc0ceb4a41",
+    "hash": "b2409bf432f1299f214a189451e901bc",
+    "content-hash": "f6ad939a9d4ea5cb3f83d213ea2a299b",
     "packages": [
         {
             "name": "codeigniter/framework",
@@ -220,16 +220,16 @@
         },
         {
             "name": "tamtamchik/namecase",
-            "version": "1.0.3",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tamtamchik/namecase.git",
-                "reference": "a0d83e8c39141fc27898993c9339cfc4cf4680de"
+                "reference": "b4facc6022420bd1575d0c1d188c2ef870ef176b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tamtamchik/namecase/zipball/a0d83e8c39141fc27898993c9339cfc4cf4680de",
-                "reference": "a0d83e8c39141fc27898993c9339cfc4cf4680de",
+                "url": "https://api.github.com/repos/tamtamchik/namecase/zipball/b4facc6022420bd1575d0c1d188c2ef870ef176b",
+                "reference": "b4facc6022420bd1575d0c1d188c2ef870ef176b",
                 "shasum": ""
             },
             "require": {
@@ -273,7 +273,7 @@
                 "strings",
                 "tamtamchik"
             ],
-            "time": "2018-09-12 10:40:55"
+            "time": "2016-02-06 10:46:26"
         }
     ],
     "packages-dev": [
