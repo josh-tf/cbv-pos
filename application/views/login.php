@@ -7,12 +7,14 @@
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="<?php echo 'dist/bootswatch/' . (empty($this->config->item('theme')) ? 'flatly' : $this->config->item('theme')) . '/bootstrap.min.css' ?>"/>
 	<!-- start css template tags -->
-	<link rel="stylesheet" type="text/css" href="css/login.css"/>
-	<!-- end css template tags -->
+
+	<link rel="stylesheet" type="text/css" href="css/login.css"/>
+
+	<!-- end css template tags -->
 </head>
 
 <body>
-	<div id="logo" align="center"><img src="<?php echo base_url();?>/images/cbv-logo-black.png"></div>
+	<div id="logo" align="center"><img src="<?php echo base_url();?>images/cbv-logo-black.png" class="login-logo"></div>
 
 	<div id="login">
 		<?php echo form_open('login') ?>
