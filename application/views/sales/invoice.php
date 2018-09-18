@@ -64,14 +64,19 @@ $(document).ready(function()
 
 		<div id="logo">
 			<?php
-			if($this->Appconfig->get('company_logo') != '')
+			if($this->Appconfig->get('company_logo') === null)
 			{
 			?>
 				<img id="image" src="<?php echo base_url('uploads/' . $this->Appconfig->get('company_logo')); ?>" alt="company_logo" />
 			<?php
+			} else {
+			?>
+				<img id="image" class="cbv-invoice-logo" src="<?php echo base_url('images/cbv-logo-black.png'); ?>" alt="company_logo" />
+			<?php
 			}
 			?>
 			<div>&nbsp</div>
+			<div id="tax-invoice">TAX INVOICE</div>
 			<?php
 			if($this->Appconfig->get('receipt_show_company_name'))
 			{
@@ -117,7 +122,7 @@ $(document).ready(function()
 			<tr class="item-row">
 				<td class="item-name"><textarea rows="4" cols="6"><?php echo $item['name']; ?></textarea></td>
 				<td style='text-align:center;'><textarea rows="5" cols="6"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
-				<td><textarea rows="4" cols="6"><?php echo to_currency($item['price']); ?></textarea></td>
+				<td><textarea rows="4" cols="4"><?php echo to_currency($item['price']); ?></textarea></td>
 				<td style='text-align:center;'><textarea rows="4" cols="6"><?php echo $item['discount'] . '%'; ?></textarea></td>
 				<td style='border-right: solid 1px; text-align:right;'><textarea rows="4" cols="6"><?php echo to_currency($item['discounted_total']); ?></textarea></td>
 			</tr>
@@ -126,7 +131,23 @@ $(document).ready(function()
 			{
 			?>
 				<tr class="item-row" >
-					<td class="item-description" colspan = "4" ><div><?php echo $item['description']; ?></div></td>
+					<td class="item-description" colspan = "5" ><div>
+
+						<?php
+
+							if(!empty($item['description'])){
+
+								$descArr = explode(",", $item['description'], 2); // break up the description based on , delimiter
+								$firstItem = $descArr[0]; // grab the first item in the array
+
+								if($firstItem == 'Laptop' || $firstItem == 'Desktop') { // if its Laptop or Desktop then
+									echo '<b>Machine Specs:</b>  '; // Echo "Machine Specs" prior to the description
+								}
+									echo str_replace(", ,",", ",$item['description']); //strip double comma ', ,' - a little bit cleaner for missing custom fields
+							}
+						?>
+
+						</div></td>
 				</tr>
 		<?php
 			}
@@ -134,11 +155,11 @@ $(document).ready(function()
 		?>
 
 		<tr>
-			<td class="blank" colspan="7" align="center"><?php echo '&nbsp;'; ?></td>
+			<td class="blank" colspan="5" text-align="center"><?php echo '&nbsp;'; ?></td>
 		</tr>
 
 		<tr>
-			<td colspan="4" class="blank-bottom"> </td>
+			<td colspan="2" class="blank-bottom"> </td>
 			<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_sub_total'); ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="subtotal"><?php echo to_currency($subtotal); ?></textarea></td>
 		</tr>
@@ -148,7 +169,7 @@ $(document).ready(function()
 		{
 		?>
 			<tr>
-				<td colspan="4" class="blank"> </td>
+				<td colspan="2" class="blank"> </td>
 				<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $sales_tax['tax_group']; ?></textarea></td>
 				<td class="total-value"><textarea rows="5" cols="6" id="taxes"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></textarea></td>
 			</tr>
@@ -157,7 +178,7 @@ $(document).ready(function()
 		?>
 
 		<tr>
-			<td colspan="4" class="blank"> </td>
+			<td colspan="2" class="blank"> </td>
 			<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_total'); ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="total"><?php echo to_currency($total); ?></textarea></td>
 		</tr>
@@ -172,7 +193,7 @@ $(document).ready(function()
 			$show_giftcard_remainder |= $splitpayment[0] == $this->lang->line('sales_giftcard');
 		?>
 			<tr>
-				<td colspan="4" class="blank"> </td>
+				<td colspan="2" class="blank"> </td>
 				<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $splitpayment[0]; ?></textarea></td>
 				<td class="total-value"><textarea rows="5" cols="6" id="paid"><?php echo to_currency( $payment['payment_amount'] * -1 ); ?></textarea></td>
 			</tr>
@@ -183,7 +204,7 @@ $(document).ready(function()
 		{
 		?>
 			<tr>
-				<td colspan="4" class="blank"> </td>
+				<td colspan="2" class="blank"> </td>
 				<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_giftcard_balance'); ?></textarea></td>
 				<td class="total-value"><textarea rows="5" cols="6" id="giftcard"><?php echo to_currency($cur_giftcard_value); ?></textarea></td>
 			</tr>
@@ -194,7 +215,7 @@ $(document).ready(function()
 		{
 		?>
 		<tr>
-			<td colspan="4" class="blank"> </td>
+			<td colspan="2" class="blank"> </td>
 			<td colspan="2" class="total-line"> <textarea rows="5" cols="6"><?php echo $this->lang->line($amount_change >= 0 ? ($only_sale_check ? 'sales_check_balance' : 'sales_change_due') : 'sales_amount_due') ; ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="change"><?php echo to_currency($amount_change); ?></textarea></td>
 		</tr>
