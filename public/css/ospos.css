@@ -152,7 +152,7 @@ label.required
 }
 
 @media (min-width: 768px)
-{	
+{
 	.navbar-nav > li > a
 	{
 		padding: 10px 10px 9px;
@@ -199,3 +199,27 @@ label.required
 		 margin: 9px 0 1px 0;
 	 }
  }
+
+/* Receipt and Invoice */
+
+ div#company_name {
+    font-size: 150%;
+    text-align:left;
+}
+div#tax-invoice {
+    font-size: 1.5em;
+    margin-top: -15px;
+    text-align:left;
+}
+
+td.item-description {
+    border-bottom: solid 1px #000 !important;
+}
+
+#block2 {
+    padding-top: 20px;
+}
+
+td.item-description {
+    background: #efefef;
+}
