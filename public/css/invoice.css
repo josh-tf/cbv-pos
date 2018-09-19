@@ -17,7 +17,7 @@
 
 /* first row */
 #logo { text-align: right; margin-top: 15px; float: left; position: relative; border: 1px solid #fff; max-height: 150px; overflow: hidden; }
-#logo img { max-height: 150px; max-width: 270px; }
+#logo img { max-height: 150px; max-width: 270px !important; } /* prevent css @print override for max-wdith */
 /*#logo:hover, #logo.edit { border: 1px solid #000; margin-top: 0px; max-height: 125px; }*/
 #logoctr { display: none; }
 #logo:hover #logoctr, #logo.edit #logoctr { display: block; text-align: right; line-height: 25px; background: #eee; padding: 0 5px; }
@@ -59,3 +59,27 @@
 
 .delete-wpr { position: relative; }
 .delete { display: block; color: #000; text-decoration: none; position: absolute; background: #EEEEEE; font-weight: bold; padding: 0px 3px; border: 1px solid; top: -6px; left: -22px; font-family: Verdana; font-size: 12px; }
+
+/* Receipt and Invoice */
+
+div#company_name {
+    font-size: 150%;
+    text-align:left;
+}
+div#tax-invoice {
+    font-size: 1.5em;
+    margin-top: -15px;
+    text-align:left;
+}
+
+td.item-description {
+    border-bottom: solid 1px #333 !important;
+}
+
+#block2 {
+    padding-top: 20px;
+}
+
+td.item-description {
+    background: #efefef;
+}
