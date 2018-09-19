@@ -1,51 +1,80 @@
     table {
       border-collapse: collapse;
     }
-    th, td {
+
+    th,
+    td {
       padding: 5px 10px;
       border: 1px solid #999;
     }
+
     th {
       background-color: #eee;
     }
-    th[data-sort]{
-      cursor:pointer;
+
+    th[data-sort] {
+      cursor: pointer;
     }
-    tr.awesome{
+
+    tr.awesome {
       color: red;
     }
-th:first-child, td:first-child {
-    padding-left: 10px !important;
-}
-.u-full-width {
-    width: 100% !important;
-}
-body {
-    font-size: 0.8em !important;
-}
-.desktop-stocklist { page-break-inside:avoid }
-.laptop-stocklist { page-break-inside:avoid;padding-top:35px; }
 
-table { page-break-inside:avoid }
-tr    { page-break-inside:avoid; page-break-after:auto }
-thead { display:table-header-group }
-tfoot { display:table-footer-group }
+    th:first-child,
+    td:first-child {
+      padding-left: 10px !important;
+    }
 
-/* Auto height - used to shift laptop stocklist to second page if its too big */
-body.A4.landscape .sheet {
-  height: auto !important;
-}
-body.A4 .sheet {
-  height: auto !important
-}
+    .u-full-width {
+      width: 100% !important;
+    }
 
-img.logo {
-  width: 225px;
-  float: right;
-  margin-bottom: 25px;
-}
+    body {
+      font-size: 0.8em !important;
+    }
 
-.head {
-  margin-top: 40px;
-  float: left;
-}
+    .desktop-stocklist {
+      page-break-inside: avoid
+    }
+
+    .laptop-stocklist {
+      page-break-inside: avoid;
+      padding-top: 35px;
+    }
+
+    table {
+      page-break-inside: avoid
+    }
+
+    tr {
+      page-break-inside: avoid;
+      page-break-after: auto
+    }
+
+    thead {
+      display: table-header-group
+    }
+
+    tfoot {
+      display: table-footer-group
+    }
+
+    /* Auto height - used to shift laptop stocklist to second page if its too big */
+    body.A4.landscape .sheet {
+      height: auto !important;
+    }
+
+    body.A4 .sheet {
+      height: auto !important
+    }
+
+    img.logo {
+      width: 225px;
+      float: right;
+      margin-bottom: 25px;
+    }
+
+    .head {
+      margin-top: 40px;
+      float: left;
+    }
