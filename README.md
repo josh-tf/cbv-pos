@@ -40,7 +40,7 @@ In a terminal of your choice, clone the GitHub repository
 $ git clone https://github.com/josh-tf/cbvpos.git
 ```
  &nbsp;
-Next we will run the automated build process
+Next we will run the automated build process - note that as docker binds to Unix ports, sudo will be required on *nix variants unless you are added to the `docker` usergroup. Please refer to [this article](https://docs.docker.com/install/linux/linux-postinstall/) for more details.
 
 ```sh
 $ cd ./cbvpos
