@@ -1,8 +1,9 @@
 <?php $this->load->view("partial/header"); ?>
 
-/*
-/ TODO: replicate changes over to reciept template
-*/
+<!--
+/ TODO: replicate changes over to receipt template
+  TODO: fix print templates
+-->
 
 <?php
 if(isset($error_message))
