@@ -1,4 +1,4 @@
-<?php $this->load->view("partial/header"); ?>
+<?php $this->load->view("partial/header");?>
 
 <!--
 / TODO: replicate changes over to receipt template
@@ -6,14 +6,13 @@
 -->
 
 <?php
-if(isset($error_message))
-{
-	echo "<div class='alert alert-dismissible alert-danger'>".$error_message."</div>";
-	exit;
+if (isset($error_message)) {
+    echo "<div class='alert alert-dismissible alert-danger'>" . $error_message . "</div>";
+    exit;
 }
 ?>
 
-<?php if(!empty($customer_email)): ?>
+<?php if (!empty($customer_email)): ?>
 <script type="text/javascript">
 	$(document).ready(function () {
 		var send_email = function () {
@@ -28,14 +27,14 @@ if(isset($error_message))
 
 		$("#show_email_button").click(send_email);
 
-		<?php if(!empty($email_receipt)): ?>
+		<?php if (!empty($email_receipt)): ?>
 		send_email();
-		<?php endif; ?>
+		<?php endif;?>
 	});
 </script>
-<?php endif; ?>
+<?php endif;?>
 
-<?php $this->load->view('partial/print_receipt', array('print_after_sale'=>$print_after_sale, 'selected_printer'=>'invoice_printer')); ?>
+<?php $this->load->view('partial/print_receipt', array('print_after_sale' => $print_after_sale, 'selected_printer' => 'invoice_printer'));?>
 
 <div class="print_hide" id="control_buttons" style="text-align:right">
 	<a href="javascript:printdoc();">
@@ -43,21 +42,21 @@ if(isset($error_message))
 			<?php echo '<span class="glyphicon glyphicon-print">&nbsp</span>' . $this->lang->line('common_print'); ?>
 		</div>
 	</a>
-	<?php /* this line will allow to print and go back to sales automatically.... echo anchor("sales", '<span class="glyphicon glyphicon-print">&nbsp</span>' . $this->lang->line('common_print'), array('class'=>'btn btn-info btn-sm', 'id'=>'show_print_button', 'onclick'=>'window.print();')); */ ?>
-	<?php if(isset($customer_email) && !empty($customer_email)): ?>
+	<?php /* this line will allow to print and go back to sales automatically.... echo anchor("sales", '<span class="glyphicon glyphicon-print">&nbsp</span>' . $this->lang->line('common_print'), array('class'=>'btn btn-info btn-sm', 'id'=>'show_print_button', 'onclick'=>'window.print();')); */?>
+	<?php if (isset($customer_email) && !empty($customer_email)): ?>
 	<a href="javascript:void(0);">
 		<div class="btn btn-info btn-sm" , id="show_email_button">
 			<?php echo '<span class="glyphicon glyphicon-envelope">&nbsp</span>' . $this->lang->line('sales_send_invoice'); ?>
 		</div>
 	</a>
-	<?php endif; ?>
-	<?php echo anchor("sales", '<span class="glyphicon glyphicon-shopping-cart">&nbsp</span>' . $this->lang->line('sales_register'), array('class'=>'btn btn-info btn-sm', 'id'=>'show_sales_button')); ?>
-	<?php echo anchor("sales/manage", '<span class="glyphicon glyphicon-list-alt">&nbsp</span>' . $this->lang->line('sales_takings'), array('class'=>'btn btn-info btn-sm', 'id'=>'show_takings_button')); ?>
+	<?php endif;?>
+	<?php echo anchor("sales", '<span class="glyphicon glyphicon-shopping-cart">&nbsp</span>' . $this->lang->line('sales_register'), array('class' => 'btn btn-info btn-sm', 'id' => 'show_sales_button')); ?>
+	<?php echo anchor("sales/manage", '<span class="glyphicon glyphicon-list-alt">&nbsp</span>' . $this->lang->line('sales_takings'), array('class' => 'btn btn-info btn-sm', 'id' => 'show_takings_button')); ?>
 </div>
 
 <?php
-	// Temporarily loads the system language for _lang to print invoice in the system language rather than user defined.
-	load_language(TRUE,array('sales','common'));
+// Temporarily loads the system language for _lang to print invoice in the system language rather than user defined.
+load_language(true, array('sales', 'common'));
 ?>
 
 <div id="page-wrap">
@@ -67,40 +66,37 @@ if(isset($error_message))
 	<div id="block1">
 		<div id="customer-title">
 			<?php
-			if(isset($customer))
-			{
-			?>
+if (isset($customer)) {
+    ?>
 			<textarea id="customer" rows="5" cols="6"><?php echo $customer_info ?></textarea>
 			<?php
-			}
-			?>
+}
+?>
 		</div>
 
 		<div id="logo">
 			<?php
-			if($this->Appconfig->get('company_logo') === null)
-			{
-			?>
+if ($this->Appconfig->get('company_logo') === null) {
+    ?>
 			<img id="image" src="<?php echo base_url('uploads/' . $this->Appconfig->get('company_logo')); ?>" alt="company_logo" />
 			<?php
-			} else {
-			?>
+} else {
+    ?>
 			<img id="image" class="cbv-invoice-logo" src="<?php echo base_url('images/cbv-logo-black.png'); ?>" alt="company_logo" />
 			<?php
-			}
-			?>
+}
+?>
 			<div>&nbsp</div>
 			<div id="tax-invoice">TAX INVOICE</div>
 			<?php
-			if($this->Appconfig->get('receipt_show_company_name'))
-			{
-			?>
+if ($this->Appconfig->get('receipt_show_company_name')) {
+    ?>
 			<div id="company_name">
 				<?php echo $this->config->item('company'); ?>
 			</div>
 			<?php
-			}
-			?>
+}
+?>
 		</div>
 	</div>
 
@@ -109,7 +105,7 @@ if(isset($error_message))
 		<table id="meta">
 			<tr>
 				<td class="meta-head">
-					<?php echo $this->lang->line('sales_invoice_number');?>
+					<?php echo $this->lang->line('sales_invoice_number'); ?>
 				</td>
 				<td><textarea rows="5" cols="6"><?php echo $invoice_number; ?></textarea></td>
 			</tr>
@@ -148,9 +144,8 @@ if(isset($error_message))
 		</tr>
 
 		<?php
-		foreach($cart as $line=>$item)
-		{
-		?>
+foreach ($cart as $line => $item) {
+    ?>
 		<tr class="item-row">
 			<td class="item-name"><textarea rows="4" cols="6"><?php echo $item['name']; ?></textarea></td>
 			<td style='text-align:center;'><textarea rows="5" cols="6"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
@@ -159,34 +154,33 @@ if(isset($error_message))
 			<td style='border-right: solid 1px; text-align:right;'><textarea rows="4" cols="6"><?php echo to_currency($item['discounted_total']); ?></textarea></td>
 		</tr>
 		<?php
-			if($this->config->item('receipt_show_description'))
-			{
-			?>
+if ($this->config->item('receipt_show_description')) {
+        ?>
 		<tr class="item-row">
 			<td class="item-description" colspan="5">
 				<div>
 
 					<?php
 
-							if(!empty($item['description'])){
+        if (!empty($item['description'])) {
 
-								$descArr = explode(",", $item['description'], 2); // break up the description based on , delimiter
-								$firstItem = $descArr[0]; // grab the first item in the array
+            $descArr = explode(",", $item['description'], 2); // break up the description based on , delimiter
+            $firstItem = $descArr[0]; // grab the first item in the array
 
-								if($firstItem == 'Laptop' || $firstItem == 'Desktop') { // if its Laptop or Desktop then
-									echo '<b>Machine Specs:</b>  '; // Echo "Machine Specs" prior to the description
-								}
-									echo str_replace(", ,",", ",$item['description']); //strip double comma ', ,' - a little bit cleaner for missing custom fields
-							}
-						?>
+            if ($firstItem == 'Laptop' || $firstItem == 'Desktop') { // if its Laptop or Desktop then
+                echo '<b>Machine Specs:</b>  '; // Echo "Machine Specs" prior to the description
+            }
+            echo str_replace(", ,", ", ", $item['description']); //strip double comma ', ,' - a little bit cleaner for missing custom fields
+        }
+        ?>
 
 				</div>
 			</td>
 		</tr>
 		<?php
-			}
-		}
-		?>
+}
+}
+?>
 
 		<tr>
 			<td class="blank" colspan="5" text-align="center">
@@ -201,17 +195,16 @@ if(isset($error_message))
 		</tr>
 
 		<?php
-		foreach($taxes as $tax_group_index=>$sales_tax)
-		{
-		?>
+foreach ($taxes as $tax_group_index => $sales_tax) {
+    ?>
 		<tr>
 			<td colspan="2" class="blank"> </td>
 			<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $sales_tax['tax_group']; ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="taxes"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></textarea></td>
 		</tr>
 		<?php
-		}
-		?>
+}
+?>
 
 		<tr>
 			<td colspan="2" class="blank"> </td>
@@ -220,44 +213,41 @@ if(isset($error_message))
 		</tr>
 
 		<?php
-		$only_sale_check = FALSE;
-		$show_giftcard_remainder = FALSE;
-		foreach($payments as $payment_id=>$payment)
-		{
-			$only_sale_check |= $payment['payment_type'] == $this->lang->line('sales_check');
-			$splitpayment = explode(':', $payment['payment_type']);
-			$show_giftcard_remainder |= $splitpayment[0] == $this->lang->line('sales_giftcard');
-		?>
+$only_sale_check = false;
+$show_giftcard_remainder = false;
+foreach ($payments as $payment_id => $payment) {
+    $only_sale_check |= $payment['payment_type'] == $this->lang->line('sales_check');
+    $splitpayment = explode(':', $payment['payment_type']);
+    $show_giftcard_remainder |= $splitpayment[0] == $this->lang->line('sales_giftcard');
+    ?>
 		<tr>
 			<td colspan="2" class="blank"> </td>
 			<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $splitpayment[0]; ?></textarea></td>
-			<td class="total-value"><textarea rows="5" cols="6" id="paid"><?php echo to_currency( $payment['payment_amount'] * -1 ); ?></textarea></td>
+			<td class="total-value"><textarea rows="5" cols="6" id="paid"><?php echo to_currency($payment['payment_amount'] * -1); ?></textarea></td>
 		</tr>
 		<?php
-		}
+}
 
-		if(isset($cur_giftcard_value) && $show_giftcard_remainder)
-		{
-		?>
+if (isset($cur_giftcard_value) && $show_giftcard_remainder) {
+    ?>
 		<tr>
 			<td colspan="2" class="blank"> </td>
 			<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_giftcard_balance'); ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="giftcard"><?php echo to_currency($cur_giftcard_value); ?></textarea></td>
 		</tr>
 		<?php
-		}
+}
 
-		if(!empty($payments))
-		{
-		?>
+if (!empty($payments)) {
+    ?>
 		<tr>
 			<td colspan="2" class="blank"> </td>
-			<td colspan="2" class="total-line"> <textarea rows="5" cols="6"><?php echo $this->lang->line($amount_change >= 0 ? ($only_sale_check ? 'sales_check_balance' : 'sales_change_due') : 'sales_amount_due') ; ?></textarea></td>
+			<td colspan="2" class="total-line"> <textarea rows="5" cols="6"><?php echo $this->lang->line($amount_change >= 0 ? ($only_sale_check ? 'sales_check_balance' : 'sales_change_due') : 'sales_amount_due'); ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="change"><?php echo to_currency($amount_change); ?></textarea></td>
 		</tr>
 		<?php
-		}
-		?>
+}
+?>
 
 	</table>
 
@@ -277,28 +267,26 @@ if(isset($error_message))
 	$(window).on("load", function () {
 		// install firefox addon in order to use this plugin
 		if (window.jsPrintSetup) {
-			<?php if(!$this->Appconfig->get('print_header'))
-		{
-		?>
+			<?php if (!$this->Appconfig->get('print_header')) {
+    ?>
 			// set page header
 			jsPrintSetup.setOption('headerStrLeft', '');
 			jsPrintSetup.setOption('headerStrCenter', '');
 			jsPrintSetup.setOption('headerStrRight', '');
 			<?php
-		}
+}
 
-		if(!$this->Appconfig->get('print_footer'))
-		{
-		?>
+if (!$this->Appconfig->get('print_footer')) {
+    ?>
 			// set empty page footer
 			jsPrintSetup.setOption('footerStrLeft', '');
 			jsPrintSetup.setOption('footerStrCenter', '');
 			jsPrintSetup.setOption('footerStrRight', '');
 			<?php
-		}
-		?>
+}
+?>
 		}
 	});
 </script>
 
-<?php $this->load->view("partial/footer"); ?>
+<?php $this->load->view("partial/footer");?>
