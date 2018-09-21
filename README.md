@@ -51,7 +51,7 @@ Next we will run the automated build process - note that as docker binds to Unix
 ```sh
 $ cd ./cbvpos
 $ docker-compose up -d
-```i
+```
 
 
 ### Automatic Build process
