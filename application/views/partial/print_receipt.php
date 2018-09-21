@@ -10,25 +10,23 @@ function printdoc()
 		jsPrintSetup.setOption('marginBottom', '<?php echo $this->config->item('print_bottom_margin'); ?>');
 		jsPrintSetup.setOption('marginRight', '<?php echo $this->config->item('print_right_margin'); ?>');
 
-		<?php if (!$this->config->item('print_header'))
-		{
-		?>
+		<?php if (!$this->config->item('print_header')) {
+    ?>
 			// set page header
 			jsPrintSetup.setOption('headerStrLeft', '');
 			jsPrintSetup.setOption('headerStrCenter', '');
 			jsPrintSetup.setOption('headerStrRight', '');
 		<?php
-		}
-		if (!$this->config->item('print_footer'))
-		{
-		?>
+}
+if (!$this->config->item('print_footer')) {
+    ?>
 			// set empty page footer
 			jsPrintSetup.setOption('footerStrLeft', '');
 			jsPrintSetup.setOption('footerStrCenter', '');
 			jsPrintSetup.setOption('footerStrRight', '');
 		<?php
-		}
-		?>
+}
+?>
 
 		var printers = jsPrintSetup.getPrintersList().split(',');
 		// get right printer here..
@@ -41,14 +39,13 @@ function printdoc()
 				// clears user preferences always silent print value
 				// to enable using 'printSilent' option
 				jsPrintSetup.clearSilentPrint();
-				<?php if (!$this->config->item('print_silently'))
-				{
-				?>
+				<?php if (!$this->config->item('print_silently')) {
+    ?>
 					// Suppress print dialog (for this context only)
 					jsPrintSetup.setOption('printSilent', 1);
 				<?php
-				}
-				?>
+}
+?>
 				// Do Print
 				// When print is submitted it is executed asynchronous and
 				// script flow continues after print independently of completetion of print process!
@@ -62,15 +59,14 @@ function printdoc()
 	}
 }
 
-<?php 
-if($print_after_sale)
-{
-?>
-	$(window).load(function() 
+<?php
+if ($print_after_sale) {
+    ?>
+	$(window).load(function()
 	{
 	   // executes when complete page is fully loaded, including all frames, objects and images
 	   printdoc();
-	}); 
+	});
 <?php
 }
 ?>
