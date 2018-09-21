@@ -55,7 +55,7 @@ foreach ($exec as $cmd) {
 $webhook = $_SERVER['SLACK_WEBHOOK'];
 
   define('SLACK_WEBHOOK', $webhook);
-  $message = array('payload' => json_encode(array('text' => 'A rebuild has successfully been completed on the Development build server')));
+  $message = array('payload' => json_encode(array('text' => 'A rebuild has successfully been completed on the development build server')));
   $c = curl_init(SLACK_WEBHOOK);
   curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
   curl_setopt($c, CURLOPT_POST, true);
