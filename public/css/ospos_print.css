@@ -64,4 +64,9 @@
 		border: 1px solid #000;
 		background: none;
 	}
+
+	#logo img { /* Make the logo b&w on print to save ink if printed in color somehow */
+		-webkit-filter: grayscale(100%);
+		filter: grayscale(100%);
+	}
 }
