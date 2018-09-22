@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["items_add_minus"] = "Inventory to add or subtract.";
 $lang["items_allow_alt_desciption"] = "";
@@ -104,3 +104,24 @@ $lang["items_unit_price_required"] = "Retail Price is a required field.";
 $lang["items_upc_database"] = "Barcode Database";
 $lang["items_update"] = "Update Item";
 $lang["items_use_inventory_menu"] = "Use Inventory Menu";
+
+
+$lang["custom2_helper"]= "e.g Lenovo T440";
+$lang["custom3_helper"]= "e.g i7";
+$lang["custom4_helper"]= "e.g 3.2";
+$lang["custom5_helper"]= "e.g 4";
+$lang["custom6_helper"]= "e.g 250";
+$lang["custom7_helper"]= "e.g Ubuntu 18.04";
+$lang["custom8_helper"]= "e.g 22";
+$lang["custom9_helper"]= "e.g DVD-RW";
+$lang["custom10_helper"]= "e.g All-in-One (if applicable)";
+$lang["custom11_helper"]= "e.g 2.2";
+$lang["custom12_helper"]= "e.g 150";
+$lang["custom13_helper"]= "Include any extras such as widescreen, speakers, new bag, etc.";
+$lang["custom14_helper"]= "Include any other notes for staff viewing only";
+$lang["custom15_helper"]= "Edit this in app>lang>en-us>items_lang.php";
+$lang["custom16_helper"]= "Edit this in app>lang>en-us>items_lang.php";
+$lang["custom17_helper"]= "Edit this in app>lang>en-us>items_lang.php";
+$lang["custom18_helper"]= "Edit this in app>lang>en-us>items_lang.php";
+$lang["custom19_helper"]= "Edit this in app>lang>en-us>items_lang.php";
+$lang["custom20_helper"]= "Edit this in app>lang>en-us>items_lang.php";
