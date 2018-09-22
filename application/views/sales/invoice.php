@@ -190,8 +190,8 @@ if ($this->config->item('receipt_show_description')) {
 		</tr>
 
 		<tr>
-			<td colspan="2" class="blank-bottom"> </td>
-			<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_sub_total'); ?></textarea></td>
+			<td colspan="3" class="blank-bottom"> </td>
+			<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_sub_total'); ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="subtotal"><?php echo to_currency($subtotal); ?></textarea></td>
 		</tr>
 
@@ -199,8 +199,8 @@ if ($this->config->item('receipt_show_description')) {
 foreach ($taxes as $tax_group_index => $sales_tax) {
     ?>
 		<tr>
-			<td colspan="2" class="blank"> </td>
-			<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $sales_tax['tax_group']; ?></textarea></td>
+			<td colspan="3" class="blank"> </td>
+			<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $sales_tax['tax_group']; ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="taxes"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></textarea></td>
 		</tr>
 		<?php
@@ -208,8 +208,8 @@ foreach ($taxes as $tax_group_index => $sales_tax) {
 ?>
 
 		<tr>
-			<td colspan="2" class="blank"> </td>
-			<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_total'); ?></textarea></td>
+			<td colspan="3" class="blank"> </td>
+			<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_total'); ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="total"><?php echo to_currency($total); ?></textarea></td>
 		</tr>
 
@@ -222,8 +222,8 @@ foreach ($payments as $payment_id => $payment) {
     $show_giftcard_remainder |= $splitpayment[0] == $this->lang->line('sales_giftcard');
     ?>
 		<tr>
-			<td colspan="2" class="blank"> </td>
-			<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $splitpayment[0]; ?></textarea></td>
+			<td colspan="3" class="blank"> </td>
+			<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $splitpayment[0]; ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="paid"><?php echo to_currency($payment['payment_amount'] * -1); ?></textarea></td>
 		</tr>
 		<?php
@@ -232,8 +232,8 @@ foreach ($payments as $payment_id => $payment) {
 if (isset($cur_giftcard_value) && $show_giftcard_remainder) {
     ?>
 		<tr>
-			<td colspan="2" class="blank"> </td>
-			<td colspan="2" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_giftcard_balance'); ?></textarea></td>
+			<td colspan="3" class="blank"> </td>
+			<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_giftcard_balance'); ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="giftcard"><?php echo to_currency($cur_giftcard_value); ?></textarea></td>
 		</tr>
 		<?php
@@ -242,8 +242,8 @@ if (isset($cur_giftcard_value) && $show_giftcard_remainder) {
 if (!empty($payments)) {
     ?>
 		<tr>
-			<td colspan="2" class="blank"> </td>
-			<td colspan="2" class="total-line"> <textarea rows="5" cols="6"><?php echo $this->lang->line($amount_change >= 0 ? ($only_sale_check ? 'sales_check_balance' : 'sales_change_due') : 'sales_amount_due'); ?></textarea></td>
+			<td colspan="3" class="blank"> </td>
+			<td colspan="1" class="total-line"> <textarea rows="5" cols="6"><?php echo $this->lang->line($amount_change >= 0 ? ($only_sale_check ? 'sales_check_balance' : 'sales_change_due') : 'sales_amount_due'); ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="change"><?php echo to_currency($amount_change); ?></textarea></td>
 		</tr>
 		<?php
