@@ -316,59 +316,37 @@
 			</div>
 		</div>
 
-		<div id="computer-fields">
+<?php
+
+$itemTypes = array('custom1' => 'date', 'custom8' => 'number' );
+$itemSteps = array('test1' => 850, 'test2' => 850);
+
+if in_array($get_opt, $switchTable)
+
+	return $switchTable[$get_opt];
+
+else return 950;
 
 
-
-
-		</div>
-
-
-
-
+?>
 
 
 		<div id="computer-fields">
 			<?php
-			for ($i = 1; $i <= 10; ++$i)
-			{
-			?>
-				<?php
+			for ($i = 1; $i <= 10; ++$i){
 				if($this->config->item('custom'.$i.'_name') != NULL)
 				{
 					$item_arr = (array)$item_info;
 				?>
+
 					<div class="form-group form-group-sm">
 						<?php echo form_label($this->config->item('custom'.$i.'_name'), 'custom'.$i, array('class'=>'control-label col-xs-3')); ?>
 						<div class='col-xs-8'>
 							<div class="input-group input-group-sm">
-							<?php
-							switch($i) {
-								case 1:
-									?>
-									<span class="input-group-addon input-sm"><span class="glyphicon glyphicon-calendar"></span></span>
-									<?php
-									$type = 'date';
-									$step = 1;
-									break;
-								case 4:
-								case 5:
-								case 6:
-								case 7:
-									$type = 'number';
-									$step = 0.1;
-									break;
-								case 10:
-									if (!currency_side()): ?>
-										<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-									<?php endif;
-									$type = 'number';
-									$step = 1;
-									break;
-								default:
-									$type = 'text';
-									$step = 1;
-							}
+
+<?php
+							// check for custom options, else use default
+
 							echo form_input(array(
 									'name'=>'custom'.$i,
 									'id'=>'custom'.$i,
@@ -377,30 +355,9 @@
 									'class'=>'form-control input-sm',
 									'value'=>$item_arr['custom'.$i])
 									);
-							switch($i) {
-								case 4:
-									?>
-									<span class="input-group-addon input-sm"><b>GHz</b></span>
-									<?php
-									break;
-								case 5:
-								case 6:
-									?>
-									<span class="input-group-addon input-sm"><b>GB</b></span>
-									<?php
-									break;
-								case 7:
-									?>
-									<span class="input-group-addon input-sm"><b>Inches</b></span>
-									<?php
-									break;
-								case 10:
-									if (currency_side()): ?>
-										<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-									<?php endif;
-									break;
-							}
-								?>
+
+?>
+
 							</div>
 						</div>
 					</div>
@@ -430,7 +387,7 @@ $(document).ready(function()
 {
 	const TAXABLE_CATEGORIES = ['Support', 'Miscellaneous-new'];
 	const NON_STOCKED_CATEGORIES = ['Support'];
-	const COMPUTER_CATEGORIES = ['Laptop', 'Desktop', 'Tower', 'All-in-One'];
+	const COMPUTER_CATEGORIES = ['Laptop', 'Desktop'];
 	const DEFAULT_TAX_RATE = '<?php echo to_tax_decimals($default_tax_1_rate);?>';
 	const updateFieldsBasedOnCategory = () => {
 		let category = $('#category').val();
@@ -478,9 +435,9 @@ $(document).ready(function()
 	// Update description
 	$('#computer-fields').change(() => {
 		$('#description').val(`${$('#category').val()}, ${$('#custom2').val()}, ${$('#custom3').val()}, ${$('#custom4').val()} GHz, ${$('#custom5').val()} GB RAM, ${$('#custom6').val()} GB HDD, ${$('#custom8').val()}, ${$('#custom7').val()}" Screen`);
-	});
+	}); //TODO: update this to only con-cat fields that are there
 
-	<?php for ($i = 1; $i <= 10; ++$i)
+	<?php for ($i = 1; $i <= 20; ++$i)
 	{
 	?>
 		$("#custom" + <?php echo $i; ?>).autocomplete({
