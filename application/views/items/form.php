@@ -317,6 +317,18 @@
 		</div>
 
 		<div id="computer-fields">
+
+
+
+
+		</div>
+
+
+
+
+
+
+		<div id="computer-fields">
 			<?php
 			for ($i = 1; $i <= 10; ++$i)
 			{
@@ -330,7 +342,7 @@
 						<?php echo form_label($this->config->item('custom'.$i.'_name'), 'custom'.$i, array('class'=>'control-label col-xs-3')); ?>
 						<div class='col-xs-8'>
 							<div class="input-group input-group-sm">
-							<?php 
+							<?php
 							switch($i) {
 								case 1:
 									?>
@@ -429,7 +441,7 @@ $(document).ready(function()
 			$('#computer-fields').removeClass('hidden');
 		} else {
 			$('#computer-fields').addClass('hidden');
-		}		
+		}
 
 		// Querying radio buttons by id will only return the first element http://www.mkyong.com/jquery/how-to-select-a-radio-button-with-jquery/
 		$('input:radio[name=stock_type]')[0].checked = isStocked;
@@ -448,7 +460,7 @@ $(document).ready(function()
 
 	var no_op = function(event, data, formatted){};
 	$("#category").autocomplete({source: "<?php echo site_url('items/suggest_category');?>",delay:10,appendTo: '.modal-content'});
-	
+
 	// Update tax percent after category changes
 	$("#category").blur(function(eventObject) {
 		var category = $(this).val();

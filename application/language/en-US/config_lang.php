@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Company Address";
 $lang["config_address_required"] = "Company address is a required field.";
@@ -47,7 +47,6 @@ $lang["config_country_codes_tooltip"] = "Comma separated list of country codes f
 $lang["config_currency_decimals"] = "Currency Decimals";
 $lang["config_currency_symbol"] = "Currency Symbol";
 $lang["config_custom1"] = "Custom Field 1";
-$lang["config_custom10"] = "Custom Field 10";
 $lang["config_custom2"] = "Custom Field 2";
 $lang["config_custom3"] = "Custom Field 3";
 $lang["config_custom4"] = "Custom Field 4";
@@ -56,6 +55,17 @@ $lang["config_custom6"] = "Custom Field 6";
 $lang["config_custom7"] = "Custom Field 7";
 $lang["config_custom8"] = "Custom Field 8";
 $lang["config_custom9"] = "Custom Field 9";
+$lang["config_custom10"] = "Custom Field 10";
+$lang["config_custom11"] = "Custom Field 11";
+$lang["config_custom12"] = "Custom Field 12";
+$lang["config_custom13"] = "Custom Field 13";
+$lang["config_custom14"] = "Custom Field 14";
+$lang["config_custom15"] = "Custom Field 15";
+$lang["config_custom16"] = "Custom Field 16";
+$lang["config_custom17"] = "Custom Field 17";
+$lang["config_custom18"] = "Custom Field 18";
+$lang["config_custom19"] = "Custom Field 19";
+$lang["config_custom20"] = "Custom Field 20";
 $lang["config_customer_reward"] = "Reward";
 $lang["config_customer_reward_duplicate"] = "Reward must be unique.";
 $lang["config_customer_reward_enable"] = "Enable Customer Rewards";

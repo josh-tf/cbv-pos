@@ -199,37 +199,29 @@
 
 <!-- routine for inserting extra info like passwords, for PC and Laptop sales -->
 
-	<?php
+<?php
 
 foreach ($cart as $line => $item) {
 
-if (!in_array($item['item_category'], ['Laptop', 'Desktop', 'Tower', 'All-in-One'])) {
-
-?>
-
-		<div class="Thankyou-Note"><?php echo $this->lang->line('sales_receipt_thank_you'); ?></div>
-
-<?php
-
-	} else {
+	if (in_array($item['item_category'], ['Laptop', 'Desktop', 'Tower', 'All-in-One'])) {
 
 ?>
 
 		<div class="Thankyou-Note"><?php echo $this->lang->line('sales_receipt_extra_page_note'); ?></div>
 		<div class="page2 noscreen" style="align-content:center">
-
+			<iframe src="https://docs.google.com/document/d/e/2PACX-1vTP5AZ1BVBGMpsB2J1bulYhVUtHS70bMxXBBzN5BM2SuHKCVMjeWpLhAZ2w8sxJ5yWAqTUIBNwqYHGp/pub?embedded=true" height="1100px" width="950px" scrolling="no" style="border:none;"></iframe>
+		</div>
 <?php
-		echo '<iframe src="https://docs.google.com/document/d/e/2PACX-1vTP5AZ1BVBGMpsB2J1bulYhVUtHS70bMxXBBzN5BM2SuHKCVMjeWpLhAZ2w8sxJ5yWAqTUIBNwqYHGp/pub?embedded=true" height="1100px" width="950px" scrolling="no" style="border:none;"></iframe>';
+		$hasMachines = True;
 		break;
-	}
+		}
+
+	if(!hasMachines){
 ?>
-
-	</div>
-
+		<div class="Thankyou-Note"><?php echo $this->lang->line('sales_receipt_thank_you'); ?></div>
 <?php
-
+	}
 }
-
 ?>
 
 </div>
