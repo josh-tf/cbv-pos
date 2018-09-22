@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_available_points"] = "Available Points";
 $lang["rewards_package"] = "Rewards";
@@ -112,6 +112,8 @@ $lang["sales_receipt_no_email"] = "This customer does not have a valid email add
 $lang["sales_receipt_number"] = "Sale #";
 $lang["sales_receipt_sent"] = "Receipt sent to";
 $lang["sales_receipt_unsent"] = "Receipt failed to be sent to";
+$lang["sales_receipt_extra_page_note"] = "FOR WARRANTY KEEP YOUR RECEIPT. SEE OVERLEAF FOR DETAILS OF WARRANTY, SUPPORT & PASSWORDS.";
+$lang["sales_receipt_thank_you"] = "THANK YOU FOR SUPPORTING COMPUTERBANK";
 $lang["sales_register"] = "Sales Register";
 $lang["sales_remove_customer"] = "Remove Customer";
 $lang["sales_return"] = "Return";

@@ -1,4 +1,4 @@
-<?php 
+<?php
 	// Temporarily loads the system language for to print receipt in the system language rather than user defined.
 	load_language(TRUE,array('customers','sales','employees'));
 ?>
@@ -33,7 +33,6 @@
 
 	<div id="receipt_general_info">
 		<?php
-		$comp_check=0;
 		if(isset($customer))
 		{
 		?>
@@ -101,18 +100,11 @@
 				</tr>
 			<?php
 			}
-			?>
-		<?php
-			if(in_array($item['item_category'], ['Laptop', 'Desktop', 'Tower', 'All-in-One']))    //Added to check for any computer purchases -rjob
-			{
-				$comp_check=1;
-			}
 		}
 		?>
 
 		<?php
-		if($this->config->item('receipt_show_total_discount') && $discount > 0)
-		{
+		if($this->config->item('receipt_show_total_discount') && $discount > 0)	{
 		?>
 			<tr>
 				<td colspan="3" style='text-align:right;border-top:2px solid #000000;'><?php echo $this->lang->line('sales_sub_total'); ?></td>
@@ -200,27 +192,44 @@
 		</tr>
 	</table>
 
-	<div id="sale_return_policy" style="position:absolute; bottom:0">
+	<div id="sale_return_policy" style="">
 		<?php echo nl2br($this->config->item('return_policy')); ?>
 	</div>
 
-		<?php
-				echo '<br><br><br><br>';	
-			if($comp_check == 1)
-			{//if any purchases are computers, print warranty overleaf etc.
-				echo 'FOR WARRANTY KEEP YOUR RECEIPT. SEE OVERLEAF FOR DETAILS OF WARRANTY, SUPPORT & PASSWORDS.';
-			}else{ //not a computer
-				echo 'THANK YOU FOR SUPPORTING COMPUTERBANK';
-			}
-		?>
 
-	<div style="page-break-after: always;"></div>
-	<div class="page2 noscreen" style="align-content:center"> 
-		<?php
-			if($comp_check == 1) 
-			{ //if any purchases are computers, print back page
-			echo '<iframe src="https://docs.google.com/document/d/e/2PACX-1vTP5AZ1BVBGMpsB2J1bulYhVUtHS70bMxXBBzN5BM2SuHKCVMjeWpLhAZ2w8sxJ5yWAqTUIBNwqYHGp/pub?embedded=true" height="1100px" width="950px" scrolling="no" style="border:none;"></iframe>';
-			}
-		?>
+<!-- routine for inserting extra info like passwords, for PC and Laptop sales -->
+
+	<?php
+
+foreach ($cart as $line => $item) {
+
+if (!in_array($item['item_category'], ['Laptop', 'Desktop', 'Tower', 'All-in-One'])) {
+
+?>
+
+		<div class="Thankyou-Note"><?php echo $this->lang->line('sales_receipt_thank_you'); ?></div>
+
+<?php
+
+	} else {
+
+?>
+
+		<div class="Thankyou-Note"><?php echo $this->lang->line('sales_receipt_extra_page_note'); ?></div>
+		<div class="page2 noscreen" style="align-content:center">
+
+<?php
+		echo '<iframe src="https://docs.google.com/document/d/e/2PACX-1vTP5AZ1BVBGMpsB2J1bulYhVUtHS70bMxXBBzN5BM2SuHKCVMjeWpLhAZ2w8sxJ5yWAqTUIBNwqYHGp/pub?embedded=true" height="1100px" width="950px" scrolling="no" style="border:none;"></iframe>';
+		break;
+	}
+?>
+
 	</div>
+
+<?php
+
+}
+
+?>
+
 </div>
