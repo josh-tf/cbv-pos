@@ -170,3 +170,12 @@ label.required {
 		margin: 9px 0 1px 0;
 	}
 }
+
+
+
+/* Custom CSS on top of the default Bootswatch theme 'United' for CBV theming */
+
+.navbar-default {
+    background-color: #d1541a;
+    border-color: #af4819;
+}

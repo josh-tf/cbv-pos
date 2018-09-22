@@ -2,7 +2,6 @@
 
 <!--
 / TODO: replicate changes over to receipt template
-  TODO: fix print templates
 -->
 
 <?php
