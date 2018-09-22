@@ -57,7 +57,7 @@ class Item extends CI_Model
 	public function item_number_exists($item_number, $item_id = '')
 	{
 		if($this->config->item('allow_duplicate_barcodes') != FALSE)
-		{			
+		{
 			return FALSE;
 		}
 
@@ -136,6 +136,16 @@ class Item extends CI_Model
 			$this->db->select('MAX(items.custom8) as custom8');
 			$this->db->select('MAX(items.custom9) as custom9');
 			$this->db->select('MAX(items.custom10) as custom10');
+			$this->db->select('MAX(items.custom11) as custom11');
+			$this->db->select('MAX(items.custom12) as custom12');
+			$this->db->select('MAX(items.custom13) as custom13');
+			$this->db->select('MAX(items.custom14) as custom14');
+			$this->db->select('MAX(items.custom15) as custom15');
+			$this->db->select('MAX(items.custom16) as custom16');
+			$this->db->select('MAX(items.custom17) as custom17');
+			$this->db->select('MAX(items.custom18) as custom18');
+			$this->db->select('MAX(items.custom19) as custom19');
+			$this->db->select('MAX(items.custom20) as custom20');
 
 			$this->db->select('MAX(suppliers.person_id) as person_id');
 			$this->db->select('MAX(suppliers.company_name) as company_name');
@@ -327,7 +337,7 @@ class Item extends CI_Model
 
 		$this->db->where('items.deleted', 0);
 
-		// limit to only 1 so there is a result in case two are returned 
+		// limit to only 1 so there is a result in case two are returned
 		// due to barcode and item_id clash
 		$this->db->limit(1);
 
@@ -469,20 +479,20 @@ class Item extends CI_Model
 	function get_search_suggestion_format($seed = NULL)
 	{
 		$seed .= ',' . $this->config->item('suggestions_first_column');
-		
+
 		if($this->config->item('suggestions_second_column') !== '')
 		{
 			$seed .= ',' . $this->config->item('suggestions_second_column');
 		}
-			
+
 		if($this->config->item('suggestions_third_column') !== '')
 		{
 			$seed .= ',' . $this->config->item('suggestions_third_column');
 		}
-		
+
 		return $seed;
 	}
-	
+
 	function get_search_suggestion_label($result_row)
 	{
 		$label1 = $this->config->item('suggestions_first_column');
@@ -490,20 +500,20 @@ class Item extends CI_Model
 		$label3 = $this->config->item('suggestions_third_column');
 
 		$label = $result_row->$label1;
-		
+
 		if($label2 !== '')
 		{
 			$label .= ' | '. $result_row->$label2;
 		}
-		
+
 		if($label3 !== '')
 		{
 			$label .= ' | '. $result_row->$label3;
-		}	
-		
+		}
+
 		return $label;
-	}	
-	
+	}
+
 	public function get_search_suggestions($search, $filters = array('is_deleted' => FALSE, 'search_custom' => FALSE), $unique = FALSE, $limit = 25)
 	{
 		$suggestions = array();
