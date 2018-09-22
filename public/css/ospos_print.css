@@ -59,4 +59,9 @@
 	.fixed-table-container thead th .sortable {
 		padding-right: 10px;
 	}
+
+	#customer-title textarea {
+		border: 1px solid #000;
+		background: none;
+	}
 }
