@@ -360,7 +360,7 @@ $itemPartStep = array('4','5','8'); // default is 1, place here for 0.1 stepping
 							//Show a textarea instead of a input type for the "Other Notes" and "Extras" fields
 							echo ($i == 13 || $i == 14 ? form_textarea($inputContents) : form_input($inputContents));
 
-							$helperVal = 	($i == 4 ? 'GHz' : //Custom 4 is CPI Speed
+							$helperVal = 	($i == 4 ? 'GHz' : //Custom 4 is CPU Speed
 											($i == 5 || $i == 6 ? 'GB' : // Custom 5 RAM, Custom 6 Storage
 											($i == 8 ? 'Inches' : // Custom 8 is screen size
 											($i == 11 ? 'Hours' : null)))); // Custom 11 is Battery life, otherwise no return
