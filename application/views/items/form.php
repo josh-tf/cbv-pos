@@ -317,55 +317,68 @@
 		</div>
 
 <?php
+// add the custom step values and item types here - Defaults are `text` and `1`
 
-$itemTypes = array('custom1' => 'date', 'custom8' => 'number' );
-$itemSteps = array('test1' => 850, 'test2' => 850);
-
-if in_array($get_opt, $switchTable)
-
-	return $switchTable[$get_opt];
-
-else return 950;
-
-
+$itemTypeInt = array('4','5','6','8','12'); //default type is text, put here for number/integer
+$itemDate = array('1'); // default type is text, put here for date
+$itemPartStep = array('4','5','8'); // default is 1, place here for 0.1 stepping value
 ?>
 
 
-		<div id="computer-fields">
-			<?php
-			for ($i = 1; $i <= 10; ++$i){
-				if($this->config->item('custom'.$i.'_name') != NULL)
-				{
-					$item_arr = (array)$item_info;
+	<div id="computer-fields">
+		<?php
+		for ($i = 1; $i <= 20; ++$i){
+			if($this->config->item('custom'.$i.'_name') != NULL){
+				$item_arr = (array)$item_info;
 				?>
 
-					<div class="form-group form-group-sm">
-						<?php echo form_label($this->config->item('custom'.$i.'_name'), 'custom'.$i, array('class'=>'control-label col-xs-3')); ?>
-						<div class='col-xs-8'>
-							<div class="input-group input-group-sm">
+				<div class="form-group form-group-sm">
+					<?php echo form_label($this->config->item('custom'.$i.'_name'), 'custom'.$i, array('class'=>'control-label col-xs-3')); ?>
+					<div class='col-xs-8'>
+						<div class="input-group input-group-sm">
 
-<?php
+							<?php
+
+							if($i == 1) {
+								echo '<span class="input-group-addon input-sm"><span class="glyphicon glyphicon-calendar"></span></span>';
+							} elseif($i == 12) {
+								echo '<span class="input-group-addon input-sm"><b>' . $this->config->item('currency_symbol') . '</b></span>';
+							};
+
+
+							$type = 	(in_array($i, $itemTypeInt) ? 'number' : //Check the itemTypeInt array for matching custom field ID
+										(in_array($i, $itemDate) ? 'date' : 'text')); //Check the itemTypeDt array for matching custom field ID
+
+							$step = 	(in_array($i, $itemPartStep)) ? 0.1 : 1;//Check the itemPartStep array for matching custom field ID
 							// check for custom options, else use default
 
 							echo form_input(array(
-									'name'=>'custom'.$i,
-									'id'=>'custom'.$i,
-									'type'=> $type,
-									'step'=> $step,
-									'class'=>'form-control input-sm',
-									'value'=>$item_arr['custom'.$i])
-									);
+								'name'=>'custom'.$i,
+								'id'=>'custom'.$i,
+								'type'=> $type,
+								'step'=> $step,
+								'class'=>'form-control input-sm' . ' custom'.$i, // add the class for custom resizing of indv fields via css
+								'value'=>$item_arr['custom'.$i])
+							);
 
-?>
+							$helperVal = 	($i == 4 ? 'GHz' : //Custom 4 is CPI Speed
+											($i == 5 || $i == 6 ? 'GB' : // Custom 5 RAM, Custom 6 Storage
+											($i == 8 ? 'Inches' : // Custom 8 is screen size
+											($i == 11 ? 'Hours' : null)))); // Custom 11 is Battery life, otherwise no return
 
-							</div>
+							//only print if returned value
+							if(isset($helperVal)){ echo '<span class="input-group-addon input-sm">'. $helperVal . '</span>';};
+
+							?>
+
 						</div>
 					</div>
-			<?php
-				}
+				</div>
+				<?php
 			}
-			?>
-		</div>
+		}
+		?>
+	</div>
 
 		<div class="form-group form-group-sm">
 			<?php echo form_label($this->lang->line('items_description'), 'description', array('class'=>'control-label col-xs-3')); ?>
