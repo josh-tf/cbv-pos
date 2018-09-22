@@ -326,25 +326,21 @@ $itemPartStep = array('4','5','8'); // default is 1, place here for 0.1 stepping
 
 
 	<div id="computer-fields">
-		<?php
-		for ($i = 1; $i <= 20; ++$i){
-			if($this->config->item('custom'.$i.'_name') != NULL){
+<?php
+		for ($i = 1; $i <= 20; ++$i){ //Loop through all 20 custom items in the DB
+			if($this->config->item('custom'.$i.'_name') != null){ // Only proceed if the item is notnull
 				$item_arr = (array)$item_info;
-				?>
-
-				<div class="form-group form-group-sm">
+?>
+				<div class="form-group form-group-sm custom<?php echo $i; ?>">
 					<?php echo form_label($this->config->item('custom'.$i.'_name'), 'custom'.$i, array('class'=>'control-label col-xs-3')); ?>
 					<div class='col-xs-8'>
-						<div class="input-group input-group-sm">
-
-							<?php
-
-							if($i == 1) {
+						<div class="input-group input-group-sm custom">
+<?php
+							if($i == 1) { //If its the Build Date field, show a calendar icon
 								echo '<span class="input-group-addon input-sm"><span class="glyphicon glyphicon-calendar"></span></span>';
-							} elseif($i == 12) {
+							} elseif($i == 12) { // If its the Box Price field then show a $ symbol
 								echo '<span class="input-group-addon input-sm"><b>' . $this->config->item('currency_symbol') . '</b></span>';
 							};
-
 
 							$type = 	(in_array($i, $itemTypeInt) ? 'number' : //Check the itemTypeInt array for matching custom field ID
 										(in_array($i, $itemDate) ? 'date' : 'text')); //Check the itemTypeDt array for matching custom field ID
@@ -352,14 +348,17 @@ $itemPartStep = array('4','5','8'); // default is 1, place here for 0.1 stepping
 							$step = 	(in_array($i, $itemPartStep)) ? 0.1 : 1;//Check the itemPartStep array for matching custom field ID
 							// check for custom options, else use default
 
-							echo form_input(array(
-								'name'=>'custom'.$i,
-								'id'=>'custom'.$i,
-								'type'=> $type,
-								'step'=> $step,
-								'class'=>'form-control input-sm' . ' custom'.$i, // add the class for custom resizing of indv fields via css
-								'value'=>$item_arr['custom'.$i])
-							);
+							$inputContents = array(
+											'name'=>'custom'.$i,
+											'id'=>'custom'.$i,
+											'type'=> $type,
+											'step'=> $step,
+											'class'=>'form-control input-sm' . ' custom'.$i, // add the class for custom resizing of indv fields via css
+											'value'=>$item_arr['custom'.$i],
+											'placeholder'=>$this->lang->line('custom' . $i . '_helper')); //Add a placeholder example text from the lang file
+
+							//Show a textarea instead of a input type for the "Other Notes" and "Extras" fields
+							echo ($i == 13 || $i == 14 ? form_textarea($inputContents) : form_input($inputContents));
 
 							$helperVal = 	($i == 4 ? 'GHz' : //Custom 4 is CPI Speed
 											($i == 5 || $i == 6 ? 'GB' : // Custom 5 RAM, Custom 6 Storage
@@ -368,16 +367,14 @@ $itemPartStep = array('4','5','8'); // default is 1, place here for 0.1 stepping
 
 							//only print if returned value
 							if(isset($helperVal)){ echo '<span class="input-group-addon input-sm">'. $helperVal . '</span>';};
-
-							?>
-
+?>
 						</div>
 					</div>
 				</div>
-				<?php
+<?php
 			}
 		}
-		?>
+?>
 	</div>
 
 		<div class="form-group form-group-sm">
@@ -413,6 +410,16 @@ $(document).ready(function()
 			$('#computer-fields').addClass('hidden');
 		}
 
+		if (category == 'Desktop') { // isComputer and is a Desktop (Specific items: 10,12)
+			$('.custom10').removeClass('hidden');
+			$('.custom12').removeClass('hidden');
+			$('.custom11').addClass('hidden');
+		} else { // isComputer (above logic) and now is a laptop (Specific items: 11)
+			$('.custom10').addClass('hidden');
+			$('.custom12').addClass('hidden');
+			$('.custom11').removeClass('hidden');
+		}
+
 		// Querying radio buttons by id will only return the first element http://www.mkyong.com/jquery/how-to-select-a-radio-button-with-jquery/
 		$('input:radio[name=stock_type]')[0].checked = isStocked;
 		$('input:radio[name=stock_type]')[1].checked = !isStocked;
@@ -445,10 +452,50 @@ $(document).ready(function()
 		updateFieldsBasedOnCategory(); // Check whether we should hide the custom fields
 	});
 
+function createDescription() {
+
+	// has to be a cleaner way..
+	var cat = $('#category').val();
+	var c1 = $('#custom1').val();
+	var c2 = $('#custom2').val();
+	var c3 = $('#custom3').val();
+	var c4 = $('#custom4').val();
+	var c5 = $('#custom5').val();
+	var c6 = $('#custom6').val();
+	var c7 = $('#custom7').val();
+	var c8 = $('#custom8').val();
+	var c9 = $('#custom9').val();
+	var c10 = $('#custom10').val();
+	var c11 = $('#custom11').val();
+	var c12 = $('#custom12').val();
+	var c13 = $('#custom13').val();
+	var c14 = "" //$('#custom14').val(); -- Removed as this is the staff only notes field
+	var c15 = $('#custom15').val();
+	var c16 = $('#custom16').val();
+	var c17 = $('#custom17').val();
+	var c18 = $('#custom18').val();
+	var c19 = $('#custom19').val();
+	var c20 = $('#custom20').val();
+
+	// Add on the extentions only if notnull - important for the next step
+
+	if(c10){cat += ' ('+c10+')';} // if type (i.e All in One) specified, it will be displayed as "Desktop (All in One) in the description"
+
+	if(c4){c4 += ' Ghz';} //Add in Ghz on the CPU Speed field
+	if(c5){c5 += ' GB RAM';} // Add in GB RAM to the RAM field
+	if(c6){c6 += ' GB HDD';} // Add in GB HDD to the Storage field
+	if(c8){c8 += ' Inches';}  //  Add in Inches to the Screen field
+
+	// Contact all fields together if they are not null
+	return $.grep([cat, c1, c2, c3, c4, c5, c6, c7, c8, c9, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20], Boolean).join(", "); // skip c10 as its included in cat string
+
+};
 	// Update description
 	$('#computer-fields').change(() => {
-		$('#description').val(`${$('#category').val()}, ${$('#custom2').val()}, ${$('#custom3').val()}, ${$('#custom4').val()} GHz, ${$('#custom5').val()} GB RAM, ${$('#custom6').val()} GB HDD, ${$('#custom8').val()}, ${$('#custom7').val()}" Screen`);
-	}); //TODO: update this to only con-cat fields that are there
+
+		$('#description').val(createDescription); //createDescription();
+
+});
 
 	<?php for ($i = 1; $i <= 20; ++$i)
 	{

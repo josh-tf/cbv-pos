@@ -179,3 +179,9 @@ label.required {
     background-color: #d1541a;
     border-color: #af4819;
 }
+
+
+/* Make the input boxes on items>form a little smaller to make things cleaner */
+textarea#custom13, textarea#custom14, textarea#description {
+    height: 100px;
+}
