@@ -307,7 +307,17 @@ class Config extends Secure_Controller
 			'custom7_name' => $this->input->post('custom7_name'),
 			'custom8_name' => $this->input->post('custom8_name'),
 			'custom9_name' => $this->input->post('custom9_name'),
-			'custom10_name' => $this->input->post('custom10_name')
+			'custom10_name' => $this->input->post('custom10_name'),
+			'custom11_name' => $this->input->post('custom11_name'),
+			'custom12_name' => $this->input->post('custom12_name'),
+			'custom13_name' => $this->input->post('custom13_name'),
+			'custom14_name' => $this->input->post('custom14_name'),
+			'custom15_name' => $this->input->post('custom15_name'),
+			'custom16_name' => $this->input->post('custom16_name'),
+			'custom17_name' => $this->input->post('custom17_name'),
+			'custom18_name' => $this->input->post('custom18_name'),
+			'custom19_name' => $this->input->post('custom19_name'),
+			'custom20_name' => $this->input->post('custom20_name')
 		);
 
 		$this->Module->set_show_office_group($this->input->post('show_office_group') != NULL);
