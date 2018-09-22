@@ -13,12 +13,12 @@ chdir('/git-dir');
 $exec = array(
     'echo $PWD',
     'whoami',
-    'git reset --hard HEAD',
-    'git pull',
-    'git status',
-    'git submodule sync',
-    'git submodule update',
-    'git submodule status',
+    'sudo git reset --hard HEAD',
+    'sudo git pull',
+    'sudo git status',
+    'sudo git submodule sync',
+    'sudo git submodule update',
+    'sudo git submodule status',
 );
 
 $output = null;
