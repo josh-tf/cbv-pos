@@ -11,7 +11,6 @@ if($inputSecret != $serverSecret){
 chdir('/git-dir');
 
 $exec = array(
-    'cd /git-dir',
     'echo $PWD',
     'whoami',
     'git reset --hard HEAD',
