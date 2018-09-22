@@ -112,8 +112,13 @@
     margin-top: 40px;
 }
 
+/* Little bit nicer formatting */
+
 #customer-title textarea {
     width: 200px;
+    border: 1px solid #333;
+    background: #eee;
+    padding: 5px;
 }
 
 /* second row */

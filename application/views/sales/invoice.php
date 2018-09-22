@@ -59,9 +59,10 @@ load_language(true, array('sales', 'common'));
 ?>
 
 <div id="page-wrap">
-	<div id="header">
+	<!-- <div id="header"> // hiding this element as 'Tax Invoice' is present under the logo
 		<?php echo $this->lang->line('sales_invoice'); ?>
-	</div>
+	</div> -->
+
 	<div id="block1">
 		<div id="customer-title">
 			<?php
@@ -87,6 +88,11 @@ if ($this->Appconfig->get('company_logo') === null) {
 ?>
 			<div>&nbsp</div>
 			<div id="tax-invoice">TAX INVOICE</div>
+		</div>
+	</div>
+
+	<div id="block2">
+
 			<?php
 if ($this->Appconfig->get('receipt_show_company_name')) {
     ?>
@@ -96,10 +102,6 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
 			<?php
 }
 ?>
-		</div>
-	</div>
-
-	<div id="block2">
 		<textarea id="company-title" rows="5" cols="35"><?php echo $company_info ?></textarea>
 		<table id="meta">
 			<tr>
