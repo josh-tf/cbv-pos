@@ -285,4 +285,9 @@ td.item-description {
 
 td.item-description {
     background: #efefef;
+    border-top: 1px solid #aaa !important;
+}
+
+tr.item-row {
+    border-top: 1px #333 solid;
 }
