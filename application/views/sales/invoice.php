@@ -2,6 +2,7 @@
 
 <!--
 / TODO: replicate changes over to receipt template
+/ TODO: hide description row if its blank
 -->
 
 <?php
@@ -155,7 +156,7 @@ foreach ($cart as $line => $item) {
 			<td style='border-right: solid 1px; text-align:right;'><textarea rows="4" cols="6"><?php echo to_currency($item['discounted_total']); ?></textarea></td>
 		</tr>
 		<?php
-if ($this->config->item('receipt_show_description')) {
+if ($this->config->item('receipt_show_description') && !empty($item['description'])) {
         ?>
 		<tr class="item-row">
 			<td class="item-description" colspan="5">
