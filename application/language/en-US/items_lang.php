@@ -104,8 +104,6 @@ $lang["items_unit_price_required"] = "Retail Price is a required field.";
 $lang["items_upc_database"] = "Barcode Database";
 $lang["items_update"] = "Update Item";
 $lang["items_use_inventory_menu"] = "Use Inventory Menu";
-
-
 $lang["custom2_helper"]= "e.g Lenovo T440";
 $lang["custom3_helper"]= "e.g i7";
 $lang["custom4_helper"]= "e.g 3.2";
