@@ -74,26 +74,59 @@ Function buildFailed($msg){
     $errMsg .= "```\n";
     $errMsg .= "Build attempt occurred at `" . date('D d M Y h i A') . " (AEST)`";
 
-    postSlack($errMsg); // post to slack via curl
+    $slackContent = array (
+        'text' => $errMsg,
+        'channel' => 'CCVHHM9N2',
+        'attachments' =>
+        array (
+        0 =>
+        array (
+            'fallback' => 'Attempt a manual rebuild via http://cbvpos.josh.tf:8081/deploy.php?secret=cbvbuild-server-fd76z5v',
+            'actions' =>
+            array (
+            0 =>
+            array (
+                'type' => 'button',
+                'text' => 'Attempt Rebuild 🤖',
+                'url' => 'http://cbvpos.josh.tf:8081/deploy.php?secret=cbvbuild-server-fd76z5v',
+            ),
+            1 =>
+            array (
+                'type' => 'button',
+                'text' => 'View random cat 🐱',
+                'url' => 'http://random.cat/',
+            ),
+            ),
+        ),
+        ),
+    );
+
+    postSlack($slackContent); // post to slack via curl
 
 };
 
 Function buildSuccess(){
 
+
     // create our success message
     $successMsg = "A build has *successfully* taken place on the Dev Server\n";
     $successMsg .= "This rebuild took place at `" . date('D d M Y h i A') . " (AEST)`";
 
-    postSlack($successMsg); // post to slack via curl
+    $slackContent = array (
+                            'text' => $successMsg,
+                            'channel' => 'CCVHHM9N2',
+    );
+
+    postSlack($slackContent); // post to slack via curl
 
 };
 
-Function postSlack($msg){
+Function postSlack($slackContent){
 
     $webhook = $_SERVER['SLACK_WEBHOOK'];
 
     define('SLACK_WEBHOOK', $webhook);
-    $message = array('payload' => json_encode(array('text' => $msg)));
+    $message = array('payload' => json_encode($slackContent));
     $c = curl_init(SLACK_WEBHOOK);
     curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($c, CURLOPT_POST, true);
