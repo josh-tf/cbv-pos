@@ -195,16 +195,33 @@ if ($this->config->item('receipt_show_description')) {
 			<td class="total-value"><textarea rows="5" cols="6" id="subtotal"><?php echo to_currency($subtotal); ?></textarea></td>
 		</tr>
 
-		<?php
-foreach ($taxes as $tax_group_index => $sales_tax) {
-    ?>
+<?php
+
+	if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%	$0.00" line per request
+?>
+
+
 		<tr>
 			<td colspan="3" class="blank"> </td>
-			<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $sales_tax['tax_group']; ?></textarea></td>
-			<td class="total-value"><textarea rows="5" cols="6" id="taxes"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></textarea></td>
+			<td colspan="1" class="total-line"><textarea rows="5" cols="6">GST 10%</textarea></td>
+			<td class="total-value"><textarea rows="5" cols="6" id="taxes"><?php echo to_currency_tax(0); ?></textarea></td>
 		</tr>
-		<?php
-}
+
+<?php
+
+	}else{
+
+		foreach ($taxes as $tax_group_index => $sales_tax) {
+?>
+				<tr>
+					<td colspan="3" class="blank"> </td>
+					<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $sales_tax['tax_group']; ?></textarea></td>
+					<td class="total-value"><textarea rows="5" cols="6" id="taxes"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></textarea></td>
+				</tr>
+<?php
+		}
+	}
+
 ?>
 
 		<tr>
