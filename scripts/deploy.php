@@ -4,7 +4,7 @@ $inputSecret = htmlspecialchars($_GET["secret"]);
 $serverSecret = $_SERVER['SYNC_SECRET'];
 
 if($inputSecret != $serverSecret){
-    //die("Unauthorised access - please provide the secret");
+    die("Unauthorised access - please provide the secret");
 }
 
 # set our Timezone for Slack message timestamp
