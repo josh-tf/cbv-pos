@@ -63,3 +63,41 @@
 	font-weight: bold;
 }
 
+@media all {
+	.page-break {
+		display: none;
+	}
+}
+
+@media print {
+	.page-break {
+		display: block;
+		page-break-before: always;
+	}
+}
+
+.computer-info {
+	font-size: 0.9em;
+	line-height: 14px;
+}
+
+hr {
+	margin-bottom: 0px;
+}
+
+.Thankyou-Note {
+	text-align: center;
+	margin: 35px auto 35px auto;
+	font-weight: bold;
+}
+
+#sale_return_policy {
+	width: 80%;
+	margin: 35px auto 35px auto;
+	text-align: center;
+}
+
+.block2r {
+	padding-top: 0;
+	padding-bottom: 20px;
+}

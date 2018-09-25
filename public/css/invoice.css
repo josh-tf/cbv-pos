@@ -51,7 +51,6 @@
 /* first row */
 #logo {
     text-align: right;
-    margin-top: 35px;
     float: left;
     position: relative;
     border: 1px solid #fff;
@@ -169,6 +168,7 @@
 #items textarea {
     width: 80px;
     height: 20px;
+    text-align: center;
 }
 
 #items tr.item-row td {
@@ -286,8 +286,10 @@ td.item-description {
 td.item-description {
     background: #efefef;
     border-top: 1px solid #aaa !important;
+    text-align:left;
 }
 
 tr.item-row {
     border-top: 1px #333 solid;
+    text-align: center;
 }
