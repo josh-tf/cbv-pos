@@ -306,17 +306,5 @@ foreach ($cart as $line => $item) {
 		<div class="page-break"></div>
 
 			<?php include 'user-info.php'; // in ~/public/ ?>
-<?php
-$hasMachines = true;
-        break;
-    }
-
-    if (!hasMachines) {
-        ?>
-		<div class="Thankyou-Note"><?php echo $this->lang->line('sales_receipt_thank_you'); ?></div>
-<?php
-}
-}
-?>
 
 </div>
