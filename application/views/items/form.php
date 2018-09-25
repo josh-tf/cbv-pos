@@ -485,7 +485,7 @@ function createDescription() {
 	if(c4){c4 += ' Ghz';} //Add in Ghz on the CPU Speed field
 	if(c5){c5 += ' GB RAM';} // Add in GB RAM to the RAM field
 	if(c6){c6 += ' GB HDD';} // Add in GB HDD to the Storage field
-	if(c8){c8 += ' Inches';}  //  Add in Inches to the Screen field
+	if(c8){c8 += ' Inch Screen';}  //  Add in Inches to the Screen field
 	if(c11){c11 += ' Hours';}  //  Add in Hours to Battery field
 
 	// Contact all fields together if they are not null
