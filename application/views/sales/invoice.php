@@ -71,17 +71,7 @@ if (isset($customer)) {
 		</div>
 
 		<div id="logo">
-			<?php
-if ($this->Appconfig->get('company_logo') === null) {
-    ?>
-			<img id="image" src="<?php echo base_url('uploads/' . $this->Appconfig->get('company_logo')); ?>" alt="company_logo" />
-			<?php
-} else {
-    ?>
 			<img id="image" class="cbv-invoice-logo" src="<?php echo base_url('images/cbv-logo-black.png'); ?>" alt="company_logo" />
-			<?php
-}
-?>
 			<div>&nbsp</div>
 			<div id="tax-invoice">TAX INVOICE</div>
 		</div>
@@ -159,17 +149,15 @@ if ($this->config->item('receipt_show_description') && !empty($item['description
 
 					<?php
 
-        if (!empty($item['description'])) {
+				if ($item['item_category'] == "Laptop" || $item['item_category'] === "Desktop") {
 
-            $descArr = explode(",", $item['description'], 2); // break up the description based on , delimiter
-            $firstItem = $descArr[0]; // grab the first item in the array
+					echo '<b>Machine Specs:</b> ' . $item['description'];
 
-            if ($firstItem == 'Laptop' || $firstItem == 'Desktop') { // if its Laptop or Desktop then
-                echo '<b>Machine Specs:</b>  '; // Echo "Machine Specs" prior to the description
-            }
-            echo str_replace(", ,", ", ", $item['description']); //strip double comma ', ,' - a little bit cleaner for missing custom fields
-        }
-        ?>
+				} else {
+
+					echo  $item['description'];
+				}
+				?>
 
 				</div>
 			</td>
