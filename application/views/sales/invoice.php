@@ -1,10 +1,5 @@
 <?php $this->load->view("partial/header");?>
 
-<!--
-/ TODO: replicate changes over to receipt template
-/ TODO: hide description row if its blank
--->
-
 <?php
 if (isset($error_message)) {
     echo "<div class='alert alert-dismissible alert-danger'>" . $error_message . "</div>";
@@ -69,7 +64,7 @@ load_language(true, array('sales', 'common'));
 			<?php
 if (isset($customer)) {
     ?>
-			<textarea id="customer" rows="5" cols="6"><?php echo $customer_info ?></textarea>
+			<textarea id="customer" rows="4" cols="6"><?php echo $customer_info ?></textarea>
 			<?php
 }
 ?>
@@ -197,9 +192,8 @@ if ($this->config->item('receipt_show_description') && !empty($item['description
 		</tr>
 
 <?php
-
-	if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%	$0.00" line per request
-?>
+if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request
+    ?>
 
 
 		<tr>
@@ -210,18 +204,18 @@ if ($this->config->item('receipt_show_description') && !empty($item['description
 
 <?php
 
-	}else{
+} else {
 
-		foreach ($taxes as $tax_group_index => $sales_tax) {
-?>
+    foreach ($taxes as $tax_group_index => $sales_tax) {
+        ?>
 				<tr>
 					<td colspan="3" class="blank"> </td>
 					<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $sales_tax['tax_group']; ?></textarea></td>
 					<td class="total-value"><textarea rows="5" cols="6" id="taxes"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></textarea></td>
 				</tr>
 <?php
-		}
-	}
+}
+}
 
 ?>
 
@@ -261,7 +255,7 @@ if (!empty($payments)) {
     ?>
 		<tr>
 			<td colspan="3" class="blank"> </td>
-			<td colspan="1" class="total-line"> <textarea rows="5" cols="6"><?php echo $this->lang->line($amount_change >= 0 ? ($only_sale_check ? 'sales_check_balance' : 'sales_change_due') : 'sales_amount_due'); ?></textarea></td>
+			<td colspan="1" class="total-line"> <textarea rows="5" cols="6">Amount Due</textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="change"><?php echo to_currency($amount_change); ?></textarea></td>
 		</tr>
 		<?php
@@ -273,9 +267,9 @@ if (!empty($payments)) {
 	<div id="terms">
 		<div id="sale_return_policy">
 			<h5> <!-- To keep things clean and as we dont really use these fields, hiding if they are empty -->
-				<?php if(!empty($this->config->item('payment_message'))){?><textarea rows="5" cols="6"><?php echo nl2br($this->config->item('payment_message')); ?></textarea> <?php } ?>
-				<?php if(!empty($comments)){?><textarea rows="5" cols="6"><?php echo empty($comments) ? '' : $this->lang->line('sales_comments') . ': ' . $comments; ?></textarea> <?php } ?>
-				<?php if(!empty($this->config->item('invoice_default_comments'))){?><textarea rows="5" cols="6"><?php echo $this->config->item('invoice_default_comments'); ?></textarea> <?php } ?>
+				<?php if (!empty($this->config->item('payment_message'))) {?><textarea rows="5" cols="6"><?php echo nl2br($this->config->item('payment_message')); ?></textarea> <?php }?>
+				<?php if (!empty($comments)) {?><textarea rows="5" cols="6"><?php echo empty($comments) ? '' : $this->lang->line('sales_comments') . ': ' . $comments; ?></textarea> <?php }?>
+				<?php if (!empty($this->config->item('invoice_default_comments'))) {?><textarea rows="5" cols="6"><?php echo $this->config->item('invoice_default_comments'); ?></textarea> <?php }?>
 			</h5>
 			<?php echo nl2br($this->config->item('return_policy')); ?>
 		</div>

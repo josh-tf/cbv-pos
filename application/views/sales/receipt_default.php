@@ -1,6 +1,6 @@
 <?php
-	// Temporarily loads the system language for to print receipt in the system language rather than user defined.
-	load_language(TRUE,array('customers','sales','employees'));
+// Temporarily loads the system language for to print receipt in the system language rather than user defined.
+load_language(true, array('customers', 'sales', 'employees'));
 ?>
 
 <div id="page-wrap">
@@ -12,7 +12,7 @@
 			<?php
 if (isset($customer)) {
     ?>
-			<textarea id="customer" rows="5" cols="6"><?php echo $customer_info ?></textarea>
+			<textarea id="customer" rows="4" cols="6"><?php echo $customer_info ?></textarea>
 			<?php
 }
 ?>
@@ -20,31 +20,30 @@ if (isset($customer)) {
 
 
 		<?php
-		if($this->config->item('company_logo') != '')
-		{
-		?>
+if ($this->config->item('company_logo') != '') {
+    ?>
 		<div id="logo">
 			<?php
 if ($this->Appconfig->get('company_logo') === null) {
-    ?>
+        ?>
 			<img id="image" src="<?php echo base_url('uploads/' . $this->Appconfig->get('company_logo')); ?>" alt="company_logo" />
 			<?php
 } else {
-    ?>
+        ?>
 			<img id="image" class="cbv-invoice-logo" src="<?php echo base_url('images/cbv-logo-black.png'); ?>" alt="company_logo" />
 			<?php
 }
-?>
+    ?>
 			<div>&nbsp</div>
 			<div id="tax-invoice">TAX INVOICE</div>
 		</div>
 	</div>
 		<?php
-		}
-		?>
+}
+?>
 
 
-<div id="block2">
+<div id="block2" class="block2r">
 
 			<?php
 if ($this->Appconfig->get('receipt_show_company_name')) {
@@ -65,9 +64,8 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
 				<td><textarea rows="5" cols="6"><?php echo $sale_id; ?></textarea></td>
 			</tr>
 		<?php
-		if(!empty($invoice_number))
-		{
-		?>
+if (!empty($invoice_number)) {
+    ?>
 			<tr>
 				<td class="meta-head">
 					<?php echo $this->lang->line('sales_invoice_number') ?>
@@ -75,8 +73,8 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
 				<td><textarea rows="5" cols="6"><?php echo $invoice_number; ?></textarea></td>
 			</tr>
 		<?php
-		}
-		?>
+}
+?>
 			<tr>
 				<td class="meta-head">
 					<?php echo $this->lang->line('employees_employee') ?>
@@ -111,15 +109,23 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
 		</tr>
 
 		<?php
-		foreach($cart as $line=>$item)
-		{
-		?>
+foreach ($cart as $line => $item) {
+
+    if ($item['item_category'] == "Laptop" || $item['item_category'] === "Desktop") { // if the item is a desktop or laptop
+
+        $itemName = "CBV " . $item['name'] . " (" . $item['item_category'] . ")"; // change the name to "CBV XXXX (Type)"
+
+    } else {
+        $itemName = ucfirst($item['name']); // otherwise just use the name
+    }
+
+    ?>
 
 		<tr class="item-row">
-			<td colspan="2" class="item-name"><textarea rows="4" cols="6"><?php echo ucfirst($item['name']); ?></textarea></td>
+			<td colspan="2" class="item-name"><textarea rows="4" cols="6"><?php echo $itemName ?></textarea></td>
 			<td style='text-align:center;'><textarea rows="5" cols="6"><?php echo to_currency($item['price']); ?></textarea></td>
 			<td><textarea rows="4" cols="4"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
-			<td class="total-value" style='border-right: solid 1px; text-align:right;'><textarea rows="4" cols="6"><?php echo to_currency($item[($this->config->item('receipt_show_total_discount') ? 'total' : 'discounted_total')]); ?></textarea></td>
+			<td class="" style=''><textarea rows="4" cols="6"><?php echo to_currency($item[($this->config->item('receipt_show_total_discount') ? 'total' : 'discounted_total')]); ?></textarea></td>
 		</tr>
 
 		<?php
@@ -139,7 +145,7 @@ if ($this->config->item('receipt_show_description') && !empty($item['description
             if ($firstItem == 'Laptop' || $firstItem == 'Desktop') { // if its Laptop or Desktop then
                 echo '<b>Machine Specs:</b>  '; // Echo "Machine Specs" prior to the description
             }
-            echo str_replace(", ,", ", ", $item['description']); //strip double comma ', ,' - a little bit cleaner for missing custom fields
+            echo $item['description']; //strip double comma ', ,' - a little bit cleaner for missing custom fields
         }
         ?>
 
@@ -148,20 +154,19 @@ if ($this->config->item('receipt_show_description') && !empty($item['description
 		</tr>
 		<?php
 }
-?>
+    ?>
 			<?php
-			if($item['discount'] > 0)
-			{
-			?>
+if ($item['discount'] > 0) {
+        ?>
 				<tr>
 				<td colspan="3" class="blank"> </td>
-					<td colspan="1" class="blank"><?php echo number_format($item['discount'], 0) . " " . $this->lang->line("sales_discount_included")?></td>
-					<td class="total-line"><?php echo to_currency($item['discounted_total']) ; ?></td>
+					<td colspan="1" class="blank"><?php echo number_format($item['discount'], 0) . " " . $this->lang->line("sales_discount_included") ?></td>
+					<td class="total-line"><?php echo to_currency($item['discounted_total']); ?></td>
 				</tr>
 			<?php
-			}
-		}
-		?>
+}
+}
+?>
 
 		<tr>
 			<td class="blank" colspan="5" text-align="center">
@@ -170,8 +175,8 @@ if ($this->config->item('receipt_show_description') && !empty($item['description
 		</tr>
 
 		<?php
-		if($this->config->item('receipt_show_total_discount') && $discount > 0)	{
-		?>
+if ($this->config->item('receipt_show_total_discount') && $discount > 0) {
+    ?>
 			<tr>
 			<td colspan="3" class="blank"> </td>
 				<td colspan="1" class="total-line" style='text-align:right;border-top:2px solid #000000;'><?php echo $this->lang->line('sales_sub_total'); ?></td>
@@ -183,42 +188,59 @@ if ($this->config->item('receipt_show_description') && !empty($item['description
 				<td class="total-value"><?php echo to_currency($discount * -1); ?></td>
 			</tr>
 		<?php
-		}
-		?>
+}
+?>
 
 		<?php
-		if($this->config->item('receipt_show_taxes'))
-		{
-		?>
+if ($this->config->item('receipt_show_taxes')) {
+    ?>
 			<tr>
 				<td colspan="3" class="blank"> </td>
 				<td colspan="1" class="total-line" style='text-align:right;border-top:2px solid #000000;'><?php echo $this->lang->line('sales_sub_total'); ?></td>
 				<td class="total-value" style='text-align:right;border-top:2px solid #000000;'><?php echo to_currency($subtotal); ?></td>
 			</tr>
 			<?php
-			foreach($taxes as $tax_group_index=>$sales_tax)
-			{
-			?>
-				<tr>
-					<td colspan="3" class="blank"> </td>
-					<td colspan="1" class="total-line"><?php echo $sales_tax['tax_group']; ?>:</td>
-					<td class="total-value"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></td>
-				</tr>
-			<?php
-			}
-			?>
+
+    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request
+        ?>
+
+
+			<tr>
+				<td colspan="3" class="blank"> </td>
+				<td colspan="1" class="total-line" style='text-align:right;'>GST 10%</td>
+				<td class="total-value"><?php echo to_currency(0); ?></td>
+			</tr>
+
+<?php
+
+    } else {
+
+        foreach ($taxes as $tax_group_index => $sales_tax) {
+            ?>
+			<tr>
+				<td colspan="3" class="blank"> </td>
+				<td colspan="1" class="total-line" style='text-align:right;'><?php echo $sales_tax['tax_group']; ?></td>
+				<td class="total-value"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></td>
+			</tr>
+<?php
+}
+    }
+
+    ?>
+
+
 		<?php
-		}
-		?>
+}
+?>
 
 		<tr>
 		</tr>
 
-		<?php $border = (!$this->config->item('receipt_show_taxes') && !($this->config->item('receipt_show_total_discount') && $discount > 0)); ?>
+		<?php $border = (!$this->config->item('receipt_show_taxes') && !($this->config->item('receipt_show_total_discount') && $discount > 0));?>
 		<tr>
 			<td colspan="3" class="blank"> </td>
-			<td colspan="1" class="total-line" style="text-align:right;<?php echo $border? 'border-top: 2px solid black;' :''; ?>"><?php echo $this->lang->line('sales_total'); ?></td>
-			<td class="total-value" style="text-align:right;<?php echo $border? 'border-top: 2px solid black;' :''; ?>"><?php echo to_currency($total); ?></td>
+			<td colspan="1" class="total-line" style="text-align:right;<?php echo $border ? 'border-top: 2px solid black;' : ''; ?>"><?php echo $this->lang->line('sales_total'); ?></td>
+			<td class="total-value" style="text-align:right;<?php echo $border ? 'border-top: 2px solid black;' : ''; ?>"><?php echo to_currency($total); ?></td>
 		</tr>
 
 		<tr>
@@ -228,38 +250,36 @@ if ($this->config->item('receipt_show_description') && !empty($item['description
 		</tr>
 
 		<?php
-		$only_sale_check = FALSE;
-		$show_giftcard_remainder = FALSE;
-		foreach($payments as $payment_id=>$payment)
-		{
-			$only_sale_check |= $payment['payment_type'] == $this->lang->line('sales_check');
-			$splitpayment = explode(':', $payment['payment_type']);
-			$show_giftcard_remainder |= $splitpayment[0] == $this->lang->line('sales_giftcard');
-		?>
+$only_sale_check = false;
+$show_giftcard_remainder = false;
+foreach ($payments as $payment_id => $payment) {
+    $only_sale_check |= $payment['payment_type'] == $this->lang->line('sales_check');
+    $splitpayment = explode(':', $payment['payment_type']);
+    $show_giftcard_remainder |= $splitpayment[0] == $this->lang->line('sales_giftcard');
+    ?>
 			<tr>
 				<td colspan="3" class="blank"> </td>
 				<td colspan="1" style="text-align:right;" class="total-line"><?php echo $splitpayment[0]; ?> </td>
-				<td class="total-value"><?php echo to_currency( $payment['payment_amount'] * -1 ); ?></td>
+				<td class="total-value"><?php echo to_currency($payment['payment_amount'] * -1); ?></td>
 			</tr>
 		<?php
-		}
-		?>
+}
+?>
 
 		<?php
-		if(isset($cur_giftcard_value) && $show_giftcard_remainder)
-		{
-		?>
+if (isset($cur_giftcard_value) && $show_giftcard_remainder) {
+    ?>
 		<tr>
 		<td colspan="3" class="blank"> </td>
 			<td colspan="1" style="text-align:right;"><?php echo $this->lang->line('sales_giftcard_balance'); ?></td>
 			<td class="total-value"><?php echo to_currency($cur_giftcard_value); ?></td>
 		</tr>
 		<?php
-		}
-		?>
+}
+?>
 		<tr>
 		<td colspan="3" class="blank"> </td>
-			<td colspan="1" style="text-align:right;" class="total-line"> <?php echo $this->lang->line($amount_change >= 0 ? ($only_sale_check ? 'sales_check_balance' : 'sales_change_due') : 'sales_amount_due') ; ?> </td>
+			<td colspan="1" style="text-align:right;" class="total-line"> Amount Due </td>
 			<td class="total-value"><?php echo to_currency($amount_change); ?></td>
 		</tr>
 	</table>
@@ -270,29 +290,32 @@ if ($this->config->item('receipt_show_description') && !empty($item['description
 
 
 <!-- routine for inserting extra info like passwords, for PC and Laptop sales -->
-<br><br><br> <!-- TODO: Remove this ! -->
+<!-- TODO: Remove this ! -->
 <?php
 
 foreach ($cart as $line => $item) {
 
-	if (in_array($item['item_category'], ['Laptop', 'Desktop', 'Tower', 'All-in-One'])) {
+    if (in_array($item['item_category'], ['Laptop', 'Desktop', 'Tower', 'All-in-One'])) {
 
-?>
+        ?>
+
+
 
 		<div class="Thankyou-Note"><?php echo $this->lang->line('sales_receipt_extra_page_note'); ?></div>
-		<div class="page2 noscreen" style="align-content:center">
-			<iframe src="https://docs.google.com/document/d/e/2PACX-1vTP5AZ1BVBGMpsB2J1bulYhVUtHS70bMxXBBzN5BM2SuHKCVMjeWpLhAZ2w8sxJ5yWAqTUIBNwqYHGp/pub?embedded=true" height="1100px" width="950px" scrolling="no" style="border:none;"></iframe>
-		</div>
-<?php
-		$hasMachines = True;
-		break;
-		}
 
-	if(!hasMachines){
-?>
+		<div class="page-break"></div>
+
+			<?php include 'user-info.php'; // in ~/public/ ?>
+<?php
+$hasMachines = true;
+        break;
+    }
+
+    if (!hasMachines) {
+        ?>
 		<div class="Thankyou-Note"><?php echo $this->lang->line('sales_receipt_thank_you'); ?></div>
 <?php
-	}
+}
 }
 ?>
 

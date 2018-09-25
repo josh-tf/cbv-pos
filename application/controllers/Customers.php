@@ -236,7 +236,9 @@ class Customers extends Persons
 			'company_name' => $this->input->post('company_name') == '' ? NULL : $this->input->post('company_name'),
 			'discount_percent' => $this->input->post('discount_percent') == '' ? 0.00 : $this->input->post('discount_percent'),
 			'package_id' => $this->input->post('package_id') == '' ? NULL : $this->input->post('package_id'),
-			'taxable' => $this->input->post('taxable') != NULL
+			'taxable' => 1  // Taxable removed from add customer form - forcing all customers to be tax
+			//'taxable' => $this->input->post('taxable') != NULL                           //applicable
+
 		);
 
 		$tax_code = $this->input->post('sales_tax_code');

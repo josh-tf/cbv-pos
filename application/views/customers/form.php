@@ -94,7 +94,8 @@
 							</div>
 						</div>
 					</div>
-					
+
+
 					<div class="form-group form-group-sm">
 						<?php echo form_label($this->lang->line('customers_max'), 'max', array('class' => 'control-label col-xs-3')); ?>
 						<div class="col-xs-4">
@@ -115,7 +116,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="form-group form-group-sm">
 						<?php echo form_label($this->lang->line('customers_min'), 'min', array('class' => 'control-label col-xs-3')); ?>
 						<div class="col-xs-4">
@@ -136,7 +137,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="form-group form-group-sm">
 						<?php echo form_label($this->lang->line('customers_average'), 'average', array('class' => 'control-label col-xs-3')); ?>
 						<div class="col-xs-4">
@@ -157,7 +158,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="form-group form-group-sm">
 						<?php echo form_label($this->lang->line('customers_quantity'), 'quantity', array('class' => 'control-label col-xs-3')); ?>
 						<div class="col-xs-4">
@@ -203,7 +204,7 @@
 					<div class="form-group form-group-sm">
 						<?php echo form_label($this->lang->line('customers_mailchimp_status'), 'mailchimp_status', array('class' => 'control-label col-xs-3')); ?>
 						<div class='col-xs-4'>
-							<?php echo form_dropdown('mailchimp_status', 
+							<?php echo form_dropdown('mailchimp_status',
 								array(
 									'subscribed' => 'subscribed',
 									'unsubscribed' => 'unsubscribed',
@@ -311,7 +312,7 @@
 		}
 		?>
 	</div>
-	
+
 
 	<?php if ($customer_sales_tax_enabled) { ?>
 		<div class="form-group  form-group-sm">
@@ -381,7 +382,7 @@ $(document).ready(function()
 			}
    		},
 
-		messages: 
+		messages:
 		{
      		first_name: "<?php echo $this->lang->line('common_first_name_required'); ?>",
      		last_name: "<?php echo $this->lang->line('common_last_name_required'); ?>",
