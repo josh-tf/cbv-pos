@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: cbvposdev-db
--- Generation Time: Sep 25, 2018 at 08:17 AM
+-- Generation Time: Sep 25, 2018 at 08:05 AM
 -- Server version: 10.1.21-MariaDB-1~jessie
 -- PHP Version: 7.2.8
 
@@ -189,14 +189,6 @@ CREATE TABLE `cbvpos_customers` (
   `points` int(11) DEFAULT NULL,
   `deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `cbvpos_customers`
---
-
-INSERT INTO `cbvpos_customers` (`person_id`, `company_name`, `account_number`, `taxable`, `sales_tax_code`, `discount_percent`, `package_id`, `points`, `deleted`) VALUES
-(46, NULL, NULL, 1, '', '0.00', NULL, NULL, 0),
-(47, NULL, NULL, 1, '', '0.00', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -412,16 +404,6 @@ CREATE TABLE `cbvpos_inventory` (
   `trans_inventory` decimal(15,3) NOT NULL DEFAULT '0.000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `cbvpos_inventory`
---
-
-INSERT INTO `cbvpos_inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_date`, `trans_comment`, `trans_location`, `trans_inventory`) VALUES
-(318, 112, 1, '2018-09-25 18:14:39', 'Manual Edit of Quantity', 1, '1.000'),
-(319, 113, 1, '2018-09-25 18:15:24', 'Manual Edit of Quantity', 1, '1.000'),
-(320, 114, 1, '2018-09-25 18:15:56', 'Manual Edit of Quantity', 1, '1.000'),
-(321, 115, 1, '2018-09-25 18:16:25', 'Manual Edit of Quantity', 1, '1.000');
-
 -- --------------------------------------------------------
 
 --
@@ -574,11 +556,7 @@ INSERT INTO `cbvpos_items` (`name`, `category`, `supplier_id`, `item_number`, `d
 ('9033', 'Laptop', NULL, NULL, 'Laptop, Asus 5750G, i5, 2.4 GHz, 4 GB RAM, 640 GB HDD, DVD-RW, 15.6\" Monitor', '0.00', '235.00', '0.000', '1.000', 97, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', 'Asus 5750G', 'i5', '2.4', '4', '640', '15.6', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('9035', 'Laptop', NULL, NULL, 'Laptop, Dell XPS 13 L322X, i7, 1.9 GHz, 8 GB RAM,  GB HDD, , 13.3\" Monitor', '0.00', '275.00', '0.000', '1.000', 98, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', 'Dell XPS 13 L322X', 'i7', '1.9', '8', '', '13.3', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('400W PSU', 'Used Parts', NULL, NULL, '', '0.00', '5.00', '0.000', '1.000', 99, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Macbook 7.1', 'Used Parts', NULL, NULL, '', '0.00', '150.00', '0.000', '1.000', 100, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8111', 'Laptop', NULL, NULL, 'Lenovo T440, i5, 2.4 Ghz, 4 GB RAM, 250 GB HDD, Ubuntu 18.04, 14 Inch Screen, 2.2 Hours, Has SSD drive', '0.00', '200.00', '0.000', '1.000', 112, NULL, 0, 0, 0, 0, 0, 0, '2018-09-24', 'Lenovo T440', 'i5', '2.4', '4', '250', 'Ubuntu 18.04', '14', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8222', 'Desktop', NULL, NULL, 'Dell Optiplex 7010, i7, 3.2 Ghz, 8 GB RAM, 500 GB HDD, Ubuntu 18.04, 22 Inch Screen, DVD-RW, Second HDD: 1TB Drive', '0.00', '150.00', '0.000', '1.000', 113, NULL, 0, 0, 0, 0, 0, 0, '2018-09-24', 'Dell Optiplex 7010', 'i7', '3.2', '8', '500', 'Ubuntu 18.04', '22', 'DVD-RW', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('USB Wifi Stick', 'Miscellaneous-new', NULL, NULL, 'New USB stick for sale with computers', '0.00', '10.00', '0.000', '1.000', 114, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Old Case', 'Miscellaneous-old', NULL, NULL, 'Old PC Case - empty with no PSU', '0.00', '5.00', '0.000', '1.000', 115, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+('Macbook 7.1', 'Used Parts', NULL, NULL, '', '0.00', '150.00', '0.000', '1.000', 100, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -593,16 +571,6 @@ CREATE TABLE `cbvpos_items_taxes` (
   `name` varchar(255) NOT NULL,
   `percent` decimal(15,3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `cbvpos_items_taxes`
---
-
-INSERT INTO `cbvpos_items_taxes` (`item_id`, `name`, `percent`) VALUES
-(112, ' GST', '0.000'),
-(113, ' GST', '0.000'),
-(114, ' GST', '10.000'),
-(115, ' GST', '0.000');
 
 -- --------------------------------------------------------
 
@@ -650,16 +618,6 @@ CREATE TABLE `cbvpos_item_quantities` (
   `location_id` int(11) NOT NULL,
   `quantity` decimal(15,3) NOT NULL DEFAULT '0.000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `cbvpos_item_quantities`
---
-
-INSERT INTO `cbvpos_item_quantities` (`item_id`, `location_id`, `quantity`) VALUES
-(112, 1, '1.000'),
-(113, 1, '1.000'),
-(114, 1, '1.000'),
-(115, 1, '1.000');
 
 -- --------------------------------------------------------
 
@@ -746,9 +704,7 @@ CREATE TABLE `cbvpos_people` (
 --
 
 INSERT INTO `cbvpos_people` (`first_name`, `last_name`, `gender`, `phone_number`, `email`, `address_1`, `address_2`, `city`, `state`, `zip`, `country`, `comments`, `person_id`) VALUES
-('John', 'Doe', NULL, '555-555-5555', 'changeme@example.com', 'Address 1', '', '', 'Victoria', '', 'Australia', '', 1),
-('John', 'Smith', NULL, '0400000000', 'j.smith@cbv.pos', '123 Fake Street', '', 'Melbourne', 'Victoria', '3000', 'Australia', '', 46),
-('Jane', 'Doe', NULL, '0400000000', 'j.doe@cbv.pos', '489 Database Lane', '', 'Brighton', 'Victoria', '3185', 'Australia', '', 47);
+('John', 'Doe', NULL, '555-555-5555', 'changeme@example.com', 'Address 1', '', '', 'Victoria', '', 'Australia', '', 1);
 
 -- --------------------------------------------------------
 
@@ -971,14 +927,6 @@ CREATE TABLE `cbvpos_sessions` (
   `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `cbvpos_sessions`
---
-
-INSERT INTO `cbvpos_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('d263b540eedd02fde6200a1fc9ee74a9f27880ad', '172.19.0.1', 1537863201, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533373836333230313b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b),
-('dda55417311e1b488c01410b7f077723edea5c2b', '172.19.0.1', 1537863449, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533373836333230313b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b);
 
 -- --------------------------------------------------------
 
@@ -1368,13 +1316,13 @@ ALTER TABLE `cbvpos_giftcards`
 -- AUTO_INCREMENT for table `cbvpos_inventory`
 --
 ALTER TABLE `cbvpos_inventory`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=322;
+  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=318;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_items`
 --
 ALTER TABLE `cbvpos_items`
-  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_item_kits`
@@ -1386,7 +1334,7 @@ ALTER TABLE `cbvpos_item_kits`
 -- AUTO_INCREMENT for table `cbvpos_people`
 --
 ALTER TABLE `cbvpos_people`
-  MODIFY `person_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `person_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_receivings`
