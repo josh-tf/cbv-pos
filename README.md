@@ -71,6 +71,10 @@ After the build process is complete, you will be able to access the installation
 | admin | Default username |
 |  pointofsale | Default Password |
 
+## The Wiki
+
+We have a Wiki available with some basic information and guides, for more information you can check it out [here](https://github.com/josh-tf/cbvpos/wiki).
+
 ## Contributing
 
 - Request access to contribute to this repository (or the development branch)
