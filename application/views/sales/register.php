@@ -110,7 +110,7 @@ if(isset($success))
 				<th style="width: 35%;"><?php echo $this->lang->line('sales_item_name'); ?></th>
 				<th style="width: 10%;"><?php echo $this->lang->line('sales_price'); ?></th>
 				<th style="width: 10%;"><?php echo $this->lang->line('sales_quantity'); ?></th>
-				<th style="width: 10%;"><?php echo $this->lang->line('sales_discount'); ?></th>
+				<th style="width: 10%;">Disc ($)</th>
 				<th style="width: 10%;"><?php echo $this->lang->line('sales_total'); ?></th>
 				<th style="width: 5%;"><?php echo $this->lang->line('sales_update'); ?></th>
 			</tr>

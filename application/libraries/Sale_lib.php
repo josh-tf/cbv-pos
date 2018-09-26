@@ -1242,7 +1242,8 @@ class Sale_lib
 		$total = bcmul($quantity, $price);
 		$discount_fraction = bcdiv($discount_percentage, 100);
 
-		return round(bcmul($total, $discount_fraction), totals_decimals(), PHP_ROUND_HALF_UP);
+		//return round(bcmul($total, $discount_fraction), totals_decimals(), PHP_ROUND_HALF_UP);
+		return $discount_percentage; // return the full amount to remove from the item
 	}
 
 	public function get_item_tax($quantity, $price, $discount_percentage, $tax_percentage)
