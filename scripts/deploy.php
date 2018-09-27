@@ -86,7 +86,7 @@ Function updateDatabase(){
 
 }
 
-Function buildFailed($msg){
+Function buildFailed($msg, $serverSecret){
 
 // create our error message
     $errMsg = "Oh no.. A build has failed on the Dev Server\n";
@@ -127,7 +127,7 @@ Function buildFailed($msg){
 
 };
 
-Function buildSuccess(){
+Function buildSuccess($serverSecret){
 
     // create our success message
     $successMsg = "A build has *successfully* taken place on the Dev Server\n";
