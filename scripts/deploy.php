@@ -1,30 +1,12 @@
 <?php
 
+$actionType = htmlspecialchars($_GET["action"]);
 $inputSecret = htmlspecialchars($_GET["secret"]);
 $serverSecret = $_SERVER['SYNC_SECRET'];
 $mysqlPassword = $_SERVER['POSDB_PASS'];
 
-if($inputSecret != $serverSecret){
-    die("Unauthorised access - please provide the secret");
-}
-
 # set our Timezone for Slack message timestamp
 date_default_timezone_set('Australia/Melbourne');
-
-# set our working directory
-chdir('/git-dir');
-
-$exec = array(
-    'echo $PWD',
-    'whoami',
-    'sudo git reset --hard HEAD',
-    'sudo git pull',
-    'sudo git status',
-    'sudo git submodule sync',
-    'sudo git submodule update',
-    'sudo git submodule status',
-    'sh ./public/scripts/update-db.sh cbvpos cbvposdev-db root pointofsale'
-);
 ?>
 
 <!DOCTYPE HTML>
@@ -47,16 +29,46 @@ $exec = array(
 
 <?php
 
-$output = null;
-foreach ($exec as $cmd) {
+if($inputSecret != $serverSecret){
+    die("Unauthorised access - please provide the secret");
+}
 
-    echo "<span style=\"color: #ff3333;\">\$</span> <span style=\"color: #ff8686;\">{$cmd}\n</span>";
-    $result = system($cmd, $code);
-    $termStdOut .= htmlentities(trim($result)) . "\n";
+if($actionType == "rebuild"){
+        updateBuild();
+}elseif($actionType == "updatedb"){
+        updateDatabase();
+}else{
+        die("Invalid action parameter provided");
+    }
 
-    if($code != 0){
-        buildFailed($termStdOut);
-        break;
+Function updateBuild(){
+
+        # set our working directory
+    chdir('/git-dir');
+
+    $exec = array(
+        'echo $PWD',
+        'whoami',
+        'sudo git reset --hard HEAD',
+        'sudo git pull',
+        'sudo git status',
+        'sudo git submodule sync',
+        'sudo git submodule update',
+        'sudo git submodule status'
+    );
+
+    $output = null;
+    foreach ($exec as $cmd) {
+
+        echo "<span style=\"color: #ff3333;\">\$</span> <span style=\"color: #ff8686;\">{$cmd}\n</span>";
+        $result = system($cmd, $code);
+        $termStdOut .= htmlentities(trim($result)) . "\n";
+
+        if($code != 0){
+            buildFailed($termStdOut);
+            break;
+        }
+
     }
 
 }
@@ -64,6 +76,14 @@ foreach ($exec as $cmd) {
 // after foreach is broken out of/finished, check if there is an error
 if($code == 0){
     buildSuccess($msg);
+}
+
+Function updateDatabase(){
+
+    chdir('/git-dir/scripts');
+    $output = shell_exec('./update-db.sh cbvpos cbvposdev-db admin ' . $mysqlPassword);
+    echo $output;
+
 }
 
 Function buildFailed($msg){
@@ -83,14 +103,14 @@ Function buildFailed($msg){
         array (
         0 =>
         array (
-            'fallback' => 'Attempt a manual rebuild via http://cbvpos.josh.tf:8081/deploy.php?secret=cbvbuild-server-fd76z5v',
+            'fallback' => 'Attempt a manual rebuild via http://cbvpos.josh.tf:8081/deploy.php?secret=' . $serverSecret . '&action=rebuild',
             'actions' =>
             array (
             0 =>
             array (
                 'type' => 'button',
                 'text' => 'Attempt Rebuild 🤖',
-                'url' => 'http://cbvpos.josh.tf:8081/deploy.php?secret=cbvbuild-server-fd76z5v',
+                'url' => 'http://cbvpos.josh.tf:8081/deploy.php?secret=?secret=' . $serverSecret . '&action=rebuild',
             ),
             1 =>
             array (
@@ -109,14 +129,29 @@ Function buildFailed($msg){
 
 Function buildSuccess(){
 
-
     // create our success message
     $successMsg = "A build has *successfully* taken place on the Dev Server\n";
     $successMsg .= "This rebuild took place at `" . date('D d M Y h i A') . " (AEST)`";
 
     $slackContent = array (
-                            'text' => $successMsg,
-                            'channel' => 'CCVHHM9N2',
+        'text' => $successMsg,
+        'channel' => 'CCVHHM9N2',
+        'attachments' =>
+        array (
+        0 =>
+        array (
+            'fallback' => 'Attempt a database rebuild via http://cbvpos.josh.tf:8081/deploy.php??secret=' . $serverSecret . '&action=updatedb',
+            'actions' =>
+            array (
+            0 =>
+            array (
+                'type' => 'button',
+                'text' => 'Rebuild Database ⚙️',
+                'url' => 'http://cbvpos.josh.tf:8081/deploy.php?secret=' . $serverSecret . '&action=updatedb',
+            ),
+            ),
+        ),
+        ),
     );
 
     postSlack($slackContent); // post to slack via curl
