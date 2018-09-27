@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: cbvposdev-db
--- Generation Time: Sep 25, 2018 at 08:17 AM
+-- Generation Time: Sep 27, 2018 at 10:55 PM
 -- Server version: 10.1.21-MariaDB-1~jessie
 -- PHP Version: 7.2.8
 
@@ -26,8 +26,6 @@ SET time_zone = "+00:00";
 
 --
 -- Table structure for table `cbvpos_app_config`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_app_config` (
@@ -175,8 +173,6 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 --
 -- Table structure for table `cbvpos_customers`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_customers` (
   `person_id` int(10) NOT NULL,
@@ -203,8 +199,6 @@ INSERT INTO `cbvpos_customers` (`person_id`, `company_name`, `account_number`, `
 --
 -- Table structure for table `cbvpos_customers_packages`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_customers_packages` (
   `package_id` int(11) NOT NULL,
@@ -229,8 +223,6 @@ INSERT INTO `cbvpos_customers_packages` (`package_id`, `package_name`, `points_p
 --
 -- Table structure for table `cbvpos_customers_points`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_customers_points` (
   `id` int(11) NOT NULL,
@@ -244,8 +236,6 @@ CREATE TABLE `cbvpos_customers_points` (
 
 --
 -- Table structure for table `cbvpos_dinner_tables`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_dinner_tables` (
@@ -267,8 +257,6 @@ INSERT INTO `cbvpos_dinner_tables` (`dinner_table_id`, `name`, `status`, `delete
 
 --
 -- Table structure for table `cbvpos_employees`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_employees` (
@@ -293,8 +281,6 @@ INSERT INTO `cbvpos_employees` (`username`, `password`, `person_id`, `deleted`, 
 --
 -- Table structure for table `cbvpos_expenses`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_expenses` (
   `expense_id` int(10) NOT NULL,
@@ -315,8 +301,6 @@ CREATE TABLE `cbvpos_expenses` (
 --
 -- Table structure for table `cbvpos_expense_categories`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_expense_categories` (
   `expense_category_id` int(10) NOT NULL,
@@ -329,8 +313,6 @@ CREATE TABLE `cbvpos_expense_categories` (
 
 --
 -- Table structure for table `cbvpos_giftcards`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_giftcards` (
@@ -346,8 +328,6 @@ CREATE TABLE `cbvpos_giftcards` (
 
 --
 -- Table structure for table `cbvpos_grants`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_grants` (
@@ -399,8 +379,6 @@ INSERT INTO `cbvpos_grants` (`permission_id`, `person_id`, `menu_group`) VALUES
 --
 -- Table structure for table `cbvpos_inventory`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_inventory` (
   `trans_id` int(11) NOT NULL,
@@ -426,8 +404,6 @@ INSERT INTO `cbvpos_inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_
 
 --
 -- Table structure for table `cbvpos_items`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_items` (
@@ -475,106 +451,6 @@ CREATE TABLE `cbvpos_items` (
 --
 
 INSERT INTO `cbvpos_items` (`name`, `category`, `supplier_id`, `item_number`, `description`, `cost_price`, `unit_price`, `reorder_level`, `receiving_quantity`, `item_id`, `pic_filename`, `allow_alt_description`, `is_serialized`, `stock_type`, `item_type`, `tax_category_id`, `deleted`, `custom1`, `custom2`, `custom3`, `custom4`, `custom5`, `custom6`, `custom7`, `custom8`, `custom9`, `custom10`, `custom11`, `custom12`, `custom13`, `custom14`, `custom15`, `custom16`, `custom17`, `custom18`, `custom19`, `custom20`) VALUES
-('Item Name', 'Category', NULL, NULL, '', '0.00', '50.00', '1.000', '1.000', 1, NULL, 0, 0, 0, 0, 0, 1, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Item Name 2', 'Category', NULL, NULL, '', '0.00', '50.00', '1.000', '1.000', 2, NULL, 0, 0, 0, 0, 0, 1, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Blah', 'Laptop', NULL, NULL, '', '0.00', '40.00', '1.000', '0.000', 3, NULL, 0, 0, 0, 0, 0, 1, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('822', 'Laptop', NULL, NULL, 'Laptop, Dell E6400, C2D, 2.4 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 15.6\" Monitor', '0.00', '100.00', '0.000', '1.000', 4, NULL, 0, 0, 0, 0, 0, 1, '23/4/18', 'Dell E6400', 'C2D', '2.4', '4', '160', '15.6', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('823', 'Desktop', NULL, NULL, 'Desktop, Generic, i7, 2.8 GHz, 8 GB RAM, 250 GB HDD, DVD-RW, 22\" Monitor', '0.00', '250.00', '0.000', '1.000', 5, NULL, 0, 0, 0, 0, 0, 1, '23/4/18', 'Generic', 'i7', '2.8', '8', '250', '22', 'DVD-RW', '', '220', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8910', 'Laptop', NULL, NULL, 'Laptop,\r\n Lenovo T520, i5, 2.3 GHz, 4 GB RAM, 320 GB HDD, DVD-RW, 15.6\" Monitor', '0.00', '155.00', '0.000', '1.000', 6, NULL, 0, 0, 0, 0, 0, 0, '', 'Lenovo T520', 'i5', '2.3', '4', '320', '15.6', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8907', 'Laptop', NULL, NULL, 'Laptop, Lenovo T520, i5, 2.4 GHz, 4 GB RAM, 750 GB HDD, DVD-RW, 15.6\" Monitor', '0.00', '165.00', '0.000', '1.000', 7, NULL, 0, 0, 0, 0, 0, 0, '', 'Lenovo T520', 'i5', '2.4', '4', '750', '15.6', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8914', 'Laptop', NULL, NULL, 'Lenovo T520, Lenovo T520, i5, 2.6 GHz, 4 GB RAM, 320 GB HDD, DVD-RW, 15.6\" Monitor', '0.00', '165.00', '0.000', '1.000', 8, NULL, 0, 0, 0, 0, 0, 0, '', 'Lenovo T520', 'i5', '2.6', '4', '320', '15.6', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8941', 'Laptop', NULL, NULL, 'Laptop, HP Elitebook 8440P, i5, 2.9 GHz, 4 GB RAM, 320 GB HDD, DVD-RW, 14\" Monitor', '0.00', '180.00', '0.000', '1.000', 9, NULL, 0, 0, 0, 0, 0, 0, '', 'HP Elitebook 8440P', 'i5', '2.9', '4', '320', '14', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8944', 'Laptop', NULL, NULL, 'Laptop, HP Elitebook 8460P, i5, 3.2 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 14\" Monitor', '0.00', '235.00', '0.000', '1.000', 10, NULL, 0, 0, 0, 0, 0, 0, '', 'HP Elitebook 8460P', 'i5', '3.2', '4', '160 SSD', '14', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8939', 'Laptop', NULL, NULL, 'Laptop, 240, i5, 3.2 GHz, 4 GB RAM, 160 SSD GB HDD, DVD-RW, 14\" Monitor', '0.00', '163.00', '0.000', '1.000', 11, NULL, 0, 0, 0, 0, 0, 0, '', '240', 'i5', '3.2', '4', '160 SSD', '14', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8945', 'Laptop', NULL, NULL, 'Laptop, Hp Elitebook 9470U, i5, 2.8 GHz, 8 GB RAM, 320 SSD GB HDD, , 15.6\" Monitor', '0.00', '265.00', '0.000', '1.000', 12, NULL, 0, 0, 0, 0, 0, 0, '', 'Hp Elitebook 9470U', 'i5', '2.8', '8', '320 SSD', '15.6', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8937', 'Desktop', NULL, NULL, 'Desktop, Lenovo, C2D, 3.0 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 15\" Monitor', '0.00', '50.00', '0.000', '1.000', 13, NULL, 0, 0, 0, 0, 0, 0, '2018-06-13', 'Lenovo', 'C2D', '3.0', '4', '160', '15', 'DVD-RW', '', '34', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8923', 'Desktop', NULL, NULL, 'Desktop, Lenovo, C2D, 3.0 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 19\" Monitor', '0.00', '58.00', '0.000', '1.000', 14, NULL, 0, 0, 0, 0, 0, 0, '', 'Lenovo', 'C2D', '3.0', '4', '160', '19', 'DVD-RW', '', '38', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8947', 'Desktop', NULL, NULL, 'Desktop, HP, C2D, 3.0 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 19\" Monitor', '0.00', '58.00', '0.000', '1.000', 15, NULL, 0, 0, 0, 0, 0, 0, '', 'HP', 'C2D', '3.0', '4', '160', '19', 'DVD-RW', '', '38', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8787', 'Desktop', NULL, NULL, 'Desktop, Lenovo, i5, 3.2 GHz, 4 GB RAM, 250 GB HDD, DVD-RW, 19\" Monitor', '0.00', '163.00', '0.000', '1.000', 16, NULL, 0, 0, 0, 0, 0, 0, '', 'Lenovo', 'i5', '3.2', '4', '250', '19', 'DVD-RW', '', '140', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8946', 'Desktop', NULL, NULL, 'Desktop, HP 4300 SFF, i5, 2.9 GHz, 4 GB RAM, 500 GB HDD, DVD-RW, 19\" Monitor', '0.00', '180.00', '0.000', '1.000', 17, NULL, 0, 0, 0, 0, 0, 0, '', 'HP 4300 SFF', 'i5', '2.9', '4', '500', '19', 'DVD-RW', '', '160', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8911', 'Desktop', NULL, NULL, ', , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '200.00', '0.000', '1.000', 18, NULL, 0, 0, 0, 0, 0, 0, '', 'Lenovo', 'i5', '3.6', '4', '500', '19 + spkrs', 'DVD-RW', '', '177', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8940', 'Desktop', NULL, NULL, 'Desktop, Lenovo Thinkcentre, i5, 3.2 GHz, 8 GB RAM, 500 GB HDD, DVD-RW, 22\" Monitor', '0.00', '220.00', '0.000', '1.000', 19, NULL, 0, 0, 0, 0, 0, 0, '', 'Lenovo Thinkcentre', 'i5', '3.2', '8', '500', '22', 'DVD-RW', '', '190', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8924', 'Tower', NULL, NULL, 'Tower, Generic, i7, 2.8 GHz, 8 GB RAM, 1000 GB HDD, DVD-RW, 22\" Monitor', '0.00', '230.00', '0.000', '1.000', 20, NULL, 0, 0, 0, 0, 0, 0, '', 'Generic', 'i7', '2.8', '8', '1000', '22', 'DVD-RW', '1 G', '200', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8935', 'Desktop', NULL, NULL, ', , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '230.00', '0.000', '1.000', 21, NULL, 0, 0, 0, 0, 0, 0, '', 'Dell 9020', 'i5', '3.3', '8', '500', '19', 'DVD-RW', '', '210', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8932', 'Desktop', NULL, NULL, ', , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '255.00', '0.000', '1.000', 22, NULL, 0, 0, 0, 0, 0, 0, '', 'HP 6300', 'i7', '3.4', '8', '1000', '19', 'DVD-RW', '', '230', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8931', 'Tower', NULL, NULL, 'Tower, Generic, i5, 3.4 GHz, 8 GB RAM, 250 + 1TB GB HDD, DVD-RW, 19 + spkrs\" Monitor', '0.00', '268.00', '0.000', '1.000', 23, NULL, 0, 0, 0, 0, 0, 0, '', 'Generic', 'i5', '3.4', '8', '250 + 1TB', '19 + spkrs', 'DVD-RW', '2 GB', '245', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8933', 'Desktop', NULL, NULL, 'Desktop, HP 6800, i7, 3.4 GHz, 8 GB RAM, 1000 GB HDD, DVD-RW, 23 wide\" Monitor', '0.00', '310.00', '0.000', '1.000', 24, NULL, 0, 0, 0, 0, 0, 0, '', 'HP 6800', 'i7', '3.4', '8', '1000', '23 wide', 'DVD-RW', '', '230', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Laptop Case', 'Miscellaneous', NULL, NULL, 'Miscellaneous, , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '0.00', '0.000', '1.000', 25, NULL, 0, 0, 1, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Computer case', 'Miscellaneous', NULL, NULL, ', , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '0.00', '0.000', '1.000', 26, NULL, 0, 0, 1, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Keyboard + Mouse', 'Miscellaneous', NULL, NULL, ', , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '5.00', '0.000', '1.000', 27, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Keyboard+mouse', 'Miscellaneous', NULL, NULL, ', , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '5.00', '0.000', '1.000', 28, NULL, 0, 0, 1, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('USB Wifi', 'Miscellaneous', NULL, NULL, ', , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '10.00', '0.000', '1.000', 29, NULL, 0, 0, 1, 0, 0, 1, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('4G DDR3 1333 RAM', 'Miscellaneous', NULL, NULL, 'Miscellaneous, , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '0.00', '0.000', '1.000', 30, NULL, 0, 0, 1, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8948', 'Desktop', NULL, NULL, 'Desktop, HP 8000, C2D, 3.0 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 19\" Monitor', '0.00', '58.00', '0.000', '1.000', 31, NULL, 0, 0, 0, 0, 0, 0, '15/6/18', 'HP 8000', 'C2D', '3.0', '4', '160', '19', 'DVD-RW', '', '38', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8949', 'Desktop', NULL, NULL, 'Desktop, HP 6000, C2D, 3.06 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 19\" Monitor', '0.00', '58.00', '0.000', '1.000', 32, NULL, 0, 0, 0, 0, 0, 0, '', 'HP 6000', 'C2D', '3.06', '4', '160', '19', 'DVD-RW', '', '38', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Apple iPad 3rd Gen', 'Ebay Sale', NULL, NULL, ', , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '140.00', '0.000', '1.000', 33, NULL, 0, 0, 1, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Apple iPad 3rd gen', 'Ebay Sale', NULL, NULL, ', , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '140.00', '0.000', '1.000', 34, NULL, 0, 0, 1, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('5507 iPad 3rd gen', 'Ebay Sale', NULL, NULL, ', , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '140.00', '0.000', '1.000', 35, NULL, 0, 0, 1, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('801', 'Desktop', NULL, NULL, 'Desktop, Lenovo, C2D, 2.3 GHz, 4 GB RAM, 160 GB HDD, , 19\" Monitor', '0.00', '56.00', '0.000', '1.000', 36, NULL, 0, 0, 0, 0, 0, 0, '15/6/18', 'Lenovo', 'C2D', '2.3', '4', '160', '19', '', '', '36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Test', 'Miscellaneous', NULL, NULL, ', , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '10.00', '0.000', '1.000', 37, NULL, 0, 0, 1, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('User Support (per hour)', 'Support', NULL, NULL, 'Support Hours', '0.00', '25.00', '0.000', '1.000', 38, NULL, 0, 0, 1, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Wifi USB', 'Miscellaneous-new', NULL, NULL, 'Miscellaneous-new', '0.00', '10.00', '0.000', '1.000', 39, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('811', 'Laptop', NULL, NULL, 'Laptop, Dell, i3, 2.3 GHz, 4 GB RAM, 160 GB HDD, , 14\" Monitor', '0.00', '100.00', '0.000', '1.000', 40, NULL, 0, 0, 0, 0, 0, 0, '', 'Dell', 'i3', '2.3', '4', '160', '14', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8949', 'All-in-One', NULL, NULL, 'All-in-One, HP Touchsmart, AMD-Athlon, 2.8 GHz, 4 GB RAM, 640 GB HDD, DVD-RW, 20\" Monitor', '0.00', '140.00', '0.000', '1.000', 41, NULL, 0, 0, 0, 0, 0, 0, '', 'HP Touchsmart', 'AMD-Athlon', '2.8', '4', '640', '20', 'DVD-RW', '', '140', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8952', 'Laptop', NULL, NULL, 'Laptop, Dell Inspiron 6400, C2D, 1.73 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 15.4\" Monitor', '0.00', '85.00', '0.000', '1.000', 42, NULL, 0, 0, 0, 0, 0, 0, '', 'Dell Inspiron 6400', 'C2D', '1.73', '4', '160', '15.4', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8950', 'Laptop', NULL, NULL, 'Laptop, Dell Inspiron 6400, C2D, 1.73 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 15.4\" Monitor', '0.00', '90.00', '0.000', '1.000', 43, NULL, 0, 0, 0, 0, 0, 0, '22/6/18', 'Dell Inspiron 6400', 'C2D', '1.73', '4', '160', '15.4', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8951', 'Laptop', NULL, NULL, 'Laptop, Dell Inspiron 6400, C2D, 1.73 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 15.4\" Monitor', '0.00', '90.00', '0.000', '1.000', 44, NULL, 0, 0, 0, 0, 0, 0, '20/6/18', 'Dell Inspiron 6400', 'C2D', '1.73', '4', '160', '15.4', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8957', 'Laptop', NULL, NULL, 'Laptop, Toshiba Satellite L750, i5, 2.4 GHz, 4 GB RAM, 500 GB HDD, DVD-RW, 15.6\" Monitor', '0.00', '145.00', '0.000', '1.000', 45, NULL, 0, 0, 0, 0, 0, 0, '20/6/18', 'Toshiba Satellite L750', 'i5', '2.4', '4', '500', '15.6', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8955', 'Laptop', NULL, NULL, 'Laptop, HP Elitebook 8440P, i5, 2.4 GHz, 4 GB RAM, 160 SSD GB HDD, DVD-RW, 14\" Monitor', '0.00', '220.00', '0.000', '1.000', 46, NULL, 0, 0, 0, 0, 0, 0, '', 'HP Elitebook 8440P', 'i5', '2.4', '4', '', '14', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8956', 'Laptop', NULL, NULL, 'Laptop, , ,  GHz,  GB RAM,  GB HDD, , \" Monitor', '0.00', '240.00', '0.000', '1.000', 47, NULL, 0, 0, 0, 0, 0, 0, '', 'HP Elitebook 8460P', 'i5', '2.4', '4', '', '14', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8954', 'Laptop', NULL, NULL, '', '0.00', '250.00', '0.000', '1.000', 48, NULL, 0, 0, 0, 0, 0, 0, '20/6/18', 'HP Elitebook 8460P', 'i5', '2.5 - 3.2', '4', '160 SSD', '14', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Cable', 'Miscellaneous', NULL, NULL, '', '0.00', '2.00', '0.000', '1.000', 49, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('111', 'Desktop', NULL, NULL, 'Desktop, Dell, i3, 2.5 GHz, 4 GB RAM, 160 GB HDD, , 17\" Monitor', '0.00', '100.00', '0.000', '1.000', 50, NULL, 0, 0, 0, 0, 0, 0, '', 'Dell', 'i3', '2.5', '4', '160', '17', '', '', '80', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8934', 'Laptop', NULL, NULL, 'Laptop, Dell 6420, i7, 2.2 GHz, 8 GB RAM, 240 SSD GB HDD, DVD-RW, 14\" Monitor', '0.00', '325.00', '0.000', '1.000', 51, NULL, 0, 0, 0, 0, 0, 0, '31/5/18', 'Dell 6420', 'i7', '2.2', '8', '240 SSD', '14', 'DVD-RW', 'NVS 4200M 512MB', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8958', 'Desktop', NULL, NULL, 'Desktop, Dell Optiplex 990, i5, 3.1 GHz, 4 GB RAM, 320 GB HDD, DVD-RW, 19\" Monitor', '0.00', '143.00', '0.000', '1.000', 52, NULL, 0, 0, 0, 0, 0, 0, '22/6/18', 'Dell Optiplex 990', 'i5', '3.1', '4', '320', '19', 'DVD-RW', '', '120', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('200 GB IDE Hard drive', 'Miscellaneous', NULL, NULL, '', '0.00', '15.00', '0.000', '1.000', 53, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('1GB DDR2 5300 RAM', 'Miscellaneous', NULL, NULL, '', '0.00', '7.00', '0.000', '1.000', 54, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('19\" Monitor with spkrs', 'Miscellaneous', NULL, NULL, '', '0.00', '23.00', '0.000', '1.000', 55, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('PSU 460W', 'Miscellaneous', NULL, NULL, '', '0.00', '20.00', '0.000', '1.000', 56, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Monitor 19\" w spkrs', 'Miscellaneous', NULL, NULL, '', '0.00', '23.00', '0.000', '1.000', 57, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8961', 'Desktop', NULL, NULL, 'Desktop, HP Pro3000, C2D, 3.00 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 17\" Monitor', '0.00', '48.00', '0.000', '1.000', 58, NULL, 0, 0, 0, 0, 0, 0, '22/6/18', 'HP Pro3000', 'C2D', '3.00', '4', '160', '17', 'DVD-RW', '', '38', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Old case', 'Miscellaneous', NULL, NULL, '', '0.00', '10.00', '0.000', '1.000', 59, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8962', 'Desktop', NULL, NULL, 'Desktop, Dell Optiplex 780, C2D, 2.93 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 19\" Monitor', '0.00', '53.00', '0.000', '1.000', 60, NULL, 0, 0, 0, 0, 0, 0, '22/6/18', 'Dell Optiplex 780', 'C2D', '2.93', '4', '160', '19', 'DVD-RW', '', '33', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('TaxTest', 'User Support', NULL, NULL, '', '0.00', '10.00', '0.000', '1.000', 61, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8963', 'Desktop', NULL, NULL, 'Desktop, Dell Optiplex 990, i5, 3.1 GHz, 4 GB RAM, 320 GB HDD, DVD-RW, 19\" Monitor', '0.00', '165.00', '0.000', '1.000', 62, NULL, 0, 0, 0, 0, 0, 0, '22/6/18', 'Dell Optiplex 990', 'i5', '3.1', '4', '320', '19', 'DVD-RW', '', '135', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8964', 'Laptop', NULL, NULL, 'Laptop, Dell E6430, i7, 3.6 GHz, 8 GB RAM, 256 SSFD GB HDD, DVD-RW, 14\" Monitor', '0.00', '345.00', '0.000', '1.000', 63, NULL, 0, 0, 0, 0, 0, 0, '', 'Dell E6430', 'i7', '3.6', '8', '', '14', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8965', 'Laptop', NULL, NULL, 'Laptop, Dell inspiron 6400, C2D, 1.73 GHz, 4 GB RAM, 320 GB HDD, DVD-RW, 15.6\" Monitor', '0.00', '90.00', '0.000', '1.000', 64, NULL, 0, 0, 0, 0, 0, 0, '', 'Dell inspiron 6400', 'C2D', '1.73', '4', '320', '15.6', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8966', 'Laptop', NULL, NULL, 'Laptop, Dell Inspiron 6400, C2D, 1.73 GHz, 3 GB RAM, 320 GB HDD, DVD-RW, 15.4\" Monitor', '0.00', '80.00', '0.000', '1.000', 65, NULL, 0, 0, 0, 0, 0, 0, '', 'Dell Inspiron 6400', 'C2D', '1.73', '3', '320', '15.4', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8967', 'Laptop', NULL, NULL, 'Laptop, Dell inspiron 6400, C2D, 1.73 GHz, 3 GB RAM, 320 GB HDD, DVD-RW, 15.4\" Monitor', '0.00', '80.00', '0.000', '1.000', 66, NULL, 0, 0, 0, 0, 0, 0, '', 'Dell inspiron 6400', 'C2D', '1.73', '3', '320', '15.4', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8968', 'Laptop', NULL, NULL, 'Laptop, Dell inspiron 6400, C2D, 1.73 GHz, 4 GB RAM, 320 GB HDD, DVD-RW, 15.34\" Monitor', '0.00', '90.00', '0.000', '1.000', 67, NULL, 0, 0, 0, 0, 0, 0, '', 'Dell inspiron 6400', 'C2D', '1.73', '4', '320', '15.34', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8969', 'Laptop', NULL, NULL, 'Laptop, Dell Inspiron 6400, C2D, 1.73 GHz, 3 GB RAM, 320 GB HDD, DVD-RW, 15.4\" Monitor', '0.00', '80.00', '0.000', '1.000', 68, NULL, 0, 0, 0, 0, 0, 0, '', 'Dell Inspiron 6400', 'C2D', '1.73', '3', '320', '15.4', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8970', 'Laptop', NULL, NULL, 'Laptop, Dell Inspiron 6400, C2D, 1.73 GHz, 3 GB RAM, 320 GB HDD, DVD-RW, 15.4\" Monitor', '0.00', '80.00', '0.000', '1.000', 69, NULL, 0, 0, 0, 0, 0, 0, '', 'Dell Inspiron 6400', 'C2D', '1.73', '3', '320', '15.4', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Cat 5 Cable', 'Miscellaneous', NULL, NULL, '', '0.00', '2.00', '0.000', '1.000', 70, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Webcam', 'Miscellaneous', NULL, NULL, '', '0.00', '5.00', '0.000', '1.000', 71, NULL, 0, 0, 1, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('KVM + Keyboard', 'Miscellaneous', NULL, NULL, '', '0.00', '10.00', '0.000', '1.000', 72, NULL, 0, 0, 1, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8971', 'Desktop', NULL, NULL, '', '0.00', '43.00', '0.000', '1.000', 73, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8960', 'Desktop', NULL, NULL, '', '0.00', '55.00', '0.000', '1.000', 74, NULL, 0, 0, 0, 0, 0, 0, '2018-06-22', 'Lenovo Thinkcentre', 'C2D', '2.66', '4', '160', '17', 'DVD-RW', '', '35', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8959', 'Desktop', NULL, NULL, '', '0.00', '200.00', '0.000', '1.000', 75, NULL, 0, 0, 0, 0, 0, 0, '2018-06-21', 'Acer verton', 'i5', '3.6', '4', '500', '24', 'DVD-RW', '', '145', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8974', 'Desktop', NULL, NULL, '', '0.00', '175.00', '0.000', '1.000', 76, NULL, 0, 0, 0, 0, 0, 0, '2018-07-05', 'HP 8300', 'i5', '3.2', '4', '500', '19', 'DVD-RW', '', '155', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8976', 'Tower', NULL, NULL, '', '0.00', '370.00', '0.000', '1.000', 77, NULL, 0, 0, 0, 0, 0, 0, '2018-07-05', 'Dell XPS', 'i7', '3.4', '8', '', '24', 'DVD-RW', 'GT545 1 GB', '305', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8980', 'Tower', NULL, NULL, '', '0.00', '275.00', '0.000', '1.000', 78, NULL, 0, 0, 0, 0, 0, 0, '2018-07-05', 'Generic', 'i7', '3', '6', '750', '24', 'DVD-RW Blue-ray', 'GT430 1 GB', '220', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8979', 'Laptop', NULL, NULL, '', '0.00', '140.00', '0.000', '1.000', 79, NULL, 0, 0, 0, 0, 0, 0, '2018-07-05', 'Toshiba', 'i3', '2.3', '4', '500', '15.6', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8978', 'Laptop', NULL, NULL, '', '0.00', '145.00', '0.000', '1.000', 80, NULL, 0, 0, 0, 0, 0, 0, '2018-07-05', 'Toshiba', 'i3', '2.2', '4', '320', '15.6', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8975', 'Laptop', NULL, NULL, '', '0.00', '165.00', '0.000', '1.000', 81, NULL, 0, 0, 0, 0, 0, 0, '2018-07-05', 'Asus F501A', 'i3', '2.3', '4', '500', '15.6', 'None', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8977', 'Laptop', NULL, NULL, '', '0.00', '185.00', '0.000', '1.000', 82, NULL, 0, 0, 0, 0, 0, 0, '2018-07-05', 'Sony Vaio', 'i5', '2.5', '4', '500', '13.3', 'DVD reader', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8973', 'Laptop', NULL, NULL, '', '0.00', '245.00', '0.000', '1.000', 83, NULL, 0, 0, 0, 0, 0, 0, '2018-07-05', 'Asus U315', 'i5', '2.4', '8', '500', '13.3', 'None', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('2G DDR2 RAM', 'Miscellaneous', NULL, NULL, '', '0.00', '7.00', '0.000', '1.000', 84, NULL, 0, 0, 1, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('888', 'Laptop', NULL, NULL, 'Laptop, Dell 6420, i3, 2.2 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 15.6\" Monitor', '0.00', '100.00', '0.000', '1.000', 85, NULL, 0, 0, 0, 0, 0, 0, '2018-07-07', 'Dell 6420', 'i3', '2.2', '4', '160', '15.6', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('89dummy', 'Desktop', NULL, NULL, 'Desktop, Dell, i3, 2.2 GHz, 3.9 GB RAM, 160 GB HDD, DVD-RW, 19\" Monitor', '0.00', '100.00', '0.000', '1.000', 86, NULL, 0, 0, 0, 0, 0, 0, '2018-07-08', 'Dell', 'i3', '2.2', '3.9', '160', '19', 'DVD-RW', '', '80', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8974', 'Laptop', NULL, NULL, 'Laptop, Dell 6420, i5, 2.2 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 15\" Monitor', '0.00', '150.00', '0.000', '1.000', 87, NULL, 0, 0, 0, 0, 0, 0, '2018-08-09', 'Dell 6420', 'i5', '2.2', '4', '160', '15', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('9039', 'Desktop', NULL, NULL, 'Desktop, Lenovo Thinkcentre, i5, 3.1 GHz, 4 GB RAM, 250 GB HDD, DVD-RW, 19\" Monitor', '0.00', '140.00', '0.000', '1.000', 88, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', 'Lenovo Thinkcentre', 'i5', '3.1', '4', '250', '19', 'DVD-RW', '', '200', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('9037', 'Desktop', NULL, NULL, 'Desktop, , Dell optiplex 7010, 3.4 GHz, 4 GB RAM, 500 GB HDD, DVD-RW, 19\" Monitor', '0.00', '195.00', '0.000', '1.000', 89, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', '', 'Dell optiplex 7010', '3.4', '4', '500', '19', 'DVD-RW', 'with speakers', '170', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('9036', 'Desktop', NULL, NULL, 'Desktop, Dell Optiplex 7010, i7, 3.4 GHz, 4 GB RAM, 500 GB HDD, DVD-RW, 19\" Monitor', '0.00', '200.00', '0.000', '1.000', 90, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', 'Dell Optiplex 7010', 'i7', '3.4', '4', '500', '19', 'DVD-RW', '1GB', '180', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8994', 'Desktop', NULL, NULL, 'Desktop, Lenovo Thinkcentre, i5, 2.6 GHz, 4 GB RAM, 500 GB HDD, DVD-RW, 20\" Monitor', '0.00', '220.00', '0.000', '1.000', 91, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', 'Lenovo Thinkcentre', 'i5', '2.6', '4', '500', '20', 'DVD-RW', '', '200', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('9038', 'Desktop', NULL, NULL, 'Desktop, Dell Optiplex 7010, i7, 3.4 GHz, 4 GB RAM, 1000 GB HDD, DVD-RW, 19\" Monitor', '0.00', '225.00', '0.000', '1.000', 92, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', 'Dell Optiplex 7010', 'i7', '3.4', '4', '1000', '19', 'DVD-RW', '1 GB', '205', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('9018', 'Laptop', NULL, NULL, 'Laptop, Dell E4310, i5, 2.4 GHz, 4 GB RAM, 160 GB HDD, DVD-RW, 13.3\" Monitor', '0.00', '150.00', '0.000', '1.000', 93, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', 'Dell E4310', 'i5', '2.4', '4', '160', '13.3', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('9034', 'Laptop', NULL, NULL, 'Laptop, Sony Vaio, i5, 2.5 GHz, 4 GB RAM, 500 GB HDD, DVD-RW, 13.3\" Monitor', '0.00', '165.00', '0.000', '1.000', 94, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', 'Sony Vaio', 'i5', '2.5', '4', '500', '13.3', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('9031', 'Laptop', NULL, NULL, 'Laptop, Toshiba Dyna book, i5, 1.8 GHz, 4 GB RAM,  GB HDD, , 13.3\" Monitor', '0.00', '180.00', '0.000', '1.000', 95, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', 'Toshiba Dyna book', 'i5', '1.8', '4', '', '13.3', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('9040', 'Laptop', NULL, NULL, 'Laptop, HP Elitebook 8440P, I5, 2.4 GHz, 4 GB RAM,  GB HDD, DVD-RW, 14\" Monitor', '0.00', '210.00', '0.000', '1.000', 96, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', 'HP Elitebook 8440P', 'I5', '2.4', '4', '', '14', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('9033', 'Laptop', NULL, NULL, 'Laptop, Asus 5750G, i5, 2.4 GHz, 4 GB RAM, 640 GB HDD, DVD-RW, 15.6\" Monitor', '0.00', '235.00', '0.000', '1.000', 97, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', 'Asus 5750G', 'i5', '2.4', '4', '640', '15.6', 'DVD-RW', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('9035', 'Laptop', NULL, NULL, 'Laptop, Dell XPS 13 L322X, i7, 1.9 GHz, 8 GB RAM,  GB HDD, , 13.3\" Monitor', '0.00', '275.00', '0.000', '1.000', 98, NULL, 0, 0, 0, 0, 0, 0, '2018-08-16', 'Dell XPS 13 L322X', 'i7', '1.9', '8', '', '13.3', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('400W PSU', 'Used Parts', NULL, NULL, '', '0.00', '5.00', '0.000', '1.000', 99, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Macbook 7.1', 'Used Parts', NULL, NULL, '', '0.00', '150.00', '0.000', '1.000', 100, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('8111', 'Laptop', NULL, NULL, 'Lenovo T440, i5, 2.4 Ghz, 4 GB RAM, 250 GB HDD, Ubuntu 18.04, 14 Inch Screen, 2.2 Hours, Has SSD drive', '0.00', '200.00', '0.000', '1.000', 112, NULL, 0, 0, 0, 0, 0, 0, '2018-09-24', 'Lenovo T440', 'i5', '2.4', '4', '250', 'Ubuntu 18.04', '14', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('8222', 'Desktop', NULL, NULL, 'Dell Optiplex 7010, i7, 3.2 Ghz, 8 GB RAM, 500 GB HDD, Ubuntu 18.04, 22 Inch Screen, DVD-RW, Second HDD: 1TB Drive', '0.00', '150.00', '0.000', '1.000', 113, NULL, 0, 0, 0, 0, 0, 0, '2018-09-24', 'Dell Optiplex 7010', 'i7', '3.2', '8', '500', 'Ubuntu 18.04', '22', 'DVD-RW', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('USB Wifi Stick', 'Miscellaneous-new', NULL, NULL, 'New USB stick for sale with computers', '0.00', '10.00', '0.000', '1.000', 114, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -584,8 +460,6 @@ INSERT INTO `cbvpos_items` (`name`, `category`, `supplier_id`, `item_number`, `d
 
 --
 -- Table structure for table `cbvpos_items_taxes`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_items_taxes` (
@@ -609,8 +483,6 @@ INSERT INTO `cbvpos_items_taxes` (`item_id`, `name`, `percent`) VALUES
 --
 -- Table structure for table `cbvpos_item_kits`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_item_kits` (
   `item_kit_id` int(11) NOT NULL,
@@ -627,8 +499,6 @@ CREATE TABLE `cbvpos_item_kits` (
 --
 -- Table structure for table `cbvpos_item_kit_items`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_item_kit_items` (
   `item_kit_id` int(11) NOT NULL,
@@ -641,8 +511,6 @@ CREATE TABLE `cbvpos_item_kit_items` (
 
 --
 -- Table structure for table `cbvpos_item_quantities`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_item_quantities` (
@@ -666,8 +534,6 @@ INSERT INTO `cbvpos_item_quantities` (`item_id`, `location_id`, `quantity`) VALU
 --
 -- Table structure for table `cbvpos_migrations`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_migrations` (
   `version` bigint(20) NOT NULL
@@ -684,8 +550,6 @@ INSERT INTO `cbvpos_migrations` (`version`) VALUES
 
 --
 -- Table structure for table `cbvpos_modules`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_modules` (
@@ -722,8 +586,6 @@ INSERT INTO `cbvpos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_
 --
 -- Table structure for table `cbvpos_people`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_people` (
   `first_name` varchar(255) NOT NULL,
@@ -754,8 +616,6 @@ INSERT INTO `cbvpos_people` (`first_name`, `last_name`, `gender`, `phone_number`
 
 --
 -- Table structure for table `cbvpos_permissions`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_permissions` (
@@ -807,8 +667,6 @@ INSERT INTO `cbvpos_permissions` (`permission_id`, `module_id`, `location_id`) V
 --
 -- Table structure for table `cbvpos_receivings`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_receivings` (
   `receiving_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -824,8 +682,6 @@ CREATE TABLE `cbvpos_receivings` (
 
 --
 -- Table structure for table `cbvpos_receivings_items`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_receivings_items` (
@@ -847,8 +703,6 @@ CREATE TABLE `cbvpos_receivings_items` (
 --
 -- Table structure for table `cbvpos_sales`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_sales` (
   `sale_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -868,8 +722,6 @@ CREATE TABLE `cbvpos_sales` (
 
 --
 -- Table structure for table `cbvpos_sales_items`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_sales_items` (
@@ -891,8 +743,6 @@ CREATE TABLE `cbvpos_sales_items` (
 --
 -- Table structure for table `cbvpos_sales_items_taxes`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_sales_items_taxes` (
   `sale_id` int(10) NOT NULL,
@@ -912,8 +762,6 @@ CREATE TABLE `cbvpos_sales_items_taxes` (
 --
 -- Table structure for table `cbvpos_sales_payments`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_sales_payments` (
   `sale_id` int(10) NOT NULL,
@@ -925,8 +773,6 @@ CREATE TABLE `cbvpos_sales_payments` (
 
 --
 -- Table structure for table `cbvpos_sales_reward_points`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_sales_reward_points` (
@@ -940,8 +786,6 @@ CREATE TABLE `cbvpos_sales_reward_points` (
 
 --
 -- Table structure for table `cbvpos_sales_taxes`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_sales_taxes` (
@@ -962,8 +806,6 @@ CREATE TABLE `cbvpos_sales_taxes` (
 --
 -- Table structure for table `cbvpos_sessions`
 --
--- Creation: Sep 25, 2018 at 08:02 AM
---
 
 CREATE TABLE `cbvpos_sessions` (
   `id` varchar(40) NOT NULL,
@@ -972,20 +814,10 @@ CREATE TABLE `cbvpos_sessions` (
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `cbvpos_sessions`
---
-
-INSERT INTO `cbvpos_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('d263b540eedd02fde6200a1fc9ee74a9f27880ad', '172.19.0.1', 1537863201, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533373836333230313b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b),
-('dda55417311e1b488c01410b7f077723edea5c2b', '172.19.0.1', 1537863449, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533373836333230313b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b);
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `cbvpos_stock_locations`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_stock_locations` (
@@ -1006,8 +838,6 @@ INSERT INTO `cbvpos_stock_locations` (`location_id`, `location_name`, `deleted`)
 --
 -- Table structure for table `cbvpos_suppliers`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_suppliers` (
   `person_id` int(10) NOT NULL,
@@ -1021,8 +851,6 @@ CREATE TABLE `cbvpos_suppliers` (
 
 --
 -- Table structure for table `cbvpos_tax_categories`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_tax_categories` (
@@ -1045,8 +873,6 @@ INSERT INTO `cbvpos_tax_categories` (`tax_category_id`, `tax_category`, `tax_gro
 --
 -- Table structure for table `cbvpos_tax_codes`
 --
--- Creation: Sep 25, 2018 at 07:54 AM
---
 
 CREATE TABLE `cbvpos_tax_codes` (
   `tax_code` varchar(32) NOT NULL,
@@ -1060,8 +886,6 @@ CREATE TABLE `cbvpos_tax_codes` (
 
 --
 -- Table structure for table `cbvpos_tax_code_rates`
---
--- Creation: Sep 25, 2018 at 07:54 AM
 --
 
 CREATE TABLE `cbvpos_tax_code_rates` (
