@@ -34,14 +34,14 @@ if($inputSecret != $serverSecret){
 }
 
 if($actionType == "rebuild"){
-        updateBuild();
+        updateBuild($serverSecret);
 }elseif($actionType == "updatedb"){
         updateDatabase();
 }else{
         die("Invalid action parameter provided");
     }
 
-Function updateBuild(){
+Function updateBuild($serverSecret){
 
         # set our working directory
     chdir('/git-dir');
@@ -65,7 +65,7 @@ Function updateBuild(){
         $termStdOut .= htmlentities(trim($result)) . "\n";
 
         if($code != 0){
-            buildFailed($termStdOut);
+            buildFailed($termStdOut,$serverSecret);
             break;
         }
 
@@ -75,7 +75,7 @@ Function updateBuild(){
 
 // after foreach is broken out of/finished, check if there is an error
 if($code == 0){
-    buildSuccess($msg);
+    buildSuccess($msg, $serverSecret);
 }
 
 Function updateDatabase(){
