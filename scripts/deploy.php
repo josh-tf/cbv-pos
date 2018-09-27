@@ -79,9 +79,9 @@ if($code == 0){
 }
 
 Function updateDatabase(){
-
     chdir('/git-dir/scripts');
-    $output = shell_exec('./update-db.sh cbvpos cbvposdev-db admin ' . $mysqlPassword);
+    echo $pwd;
+    $output = shell_exec('./update-db.sh cbvpos cbvposdev-db admin ' . $_SERVER['POSDB_PASS']);
     echo $output;
 
 }
