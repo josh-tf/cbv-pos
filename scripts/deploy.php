@@ -30,18 +30,18 @@ date_default_timezone_set('Australia/Melbourne');
 <?php
 
 if($inputSecret != $serverSecret){
-    die("Unauthorised access - please provide the secret");
+   die("Unauthorised access - please provide the secret");
 }
 
 if($actionType == "rebuild"){
-        updateBuild($serverSecret);
+        updateBuild();
 }elseif($actionType == "updatedb"){
         updateDatabase();
 }else{
         die("Invalid action parameter provided");
     }
 
-Function updateBuild($serverSecret){
+Function updateBuild(){
 
         # set our working directory
     chdir('/git-dir');
@@ -65,7 +65,7 @@ Function updateBuild($serverSecret){
         $termStdOut .= htmlentities(trim($result)) . "\n";
 
         if($code != 0){
-            buildFailed($termStdOut,$serverSecret);
+            buildFailed($termStdOut);
             break;
         }
 
@@ -75,7 +75,7 @@ Function updateBuild($serverSecret){
 
 // after foreach is broken out of/finished, check if there is an error
 if($code == 0){
-    buildSuccess($msg, $serverSecret);
+    buildSuccess($msg);
 }
 
 Function updateDatabase(){
@@ -86,7 +86,7 @@ Function updateDatabase(){
 
 }
 
-Function buildFailed($msg, $serverSecret){
+Function buildFailed($msg){
 
 // create our error message
     $errMsg = "Oh no.. A build has failed on the Dev Server\n";
@@ -103,14 +103,14 @@ Function buildFailed($msg, $serverSecret){
         array (
         0 =>
         array (
-            'fallback' => 'Attempt a manual rebuild via http://cbvpos.josh.tf:8081/deploy.php?secret=' . $serverSecret . '&action=rebuild',
+            'fallback' => 'Attempt a manual rebuild via http://cbvpos.josh.tf:8081/deploy.php?secret=' . $_SERVER['SYNC_SECRET'] . '&action=rebuild',
             'actions' =>
             array (
             0 =>
             array (
                 'type' => 'button',
                 'text' => 'Attempt Rebuild 🤖',
-                'url' => 'http://cbvpos.josh.tf:8081/deploy.php?secret=?secret=' . $serverSecret . '&action=rebuild',
+                'url' => 'http://cbvpos.josh.tf:8081/deploy.php?secret=?secret=' . $_SERVER['SYNC_SECRET'] . '&action=rebuild',
             ),
             1 =>
             array (
@@ -127,7 +127,7 @@ Function buildFailed($msg, $serverSecret){
 
 };
 
-Function buildSuccess($serverSecret){
+Function buildSuccess(){
 
     // create our success message
     $successMsg = "A build has *successfully* taken place on the Dev Server\n";
@@ -140,14 +140,14 @@ Function buildSuccess($serverSecret){
         array (
         0 =>
         array (
-            'fallback' => 'Attempt a database rebuild via http://cbvpos.josh.tf:8081/deploy.php??secret=' . $serverSecret . '&action=updatedb',
+            'fallback' => 'Attempt a database rebuild via http://cbvpos.josh.tf:8081/deploy.php??secret=' . $_SERVER['SYNC_SECRET'] . '&action=updatedb',
             'actions' =>
             array (
             0 =>
             array (
                 'type' => 'button',
                 'text' => 'Rebuild Database ⚙️',
-                'url' => 'http://cbvpos.josh.tf:8081/deploy.php?secret=' . $serverSecret . '&action=updatedb',
+                'url' => 'http://cbvpos.josh.tf:8081/deploy.php?secret=' . $_SERVER['SYNC_SECRET'] . '&action=updatedb',
             ),
             ),
         ),
