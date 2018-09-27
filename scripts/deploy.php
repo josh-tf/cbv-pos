@@ -2,6 +2,7 @@
 
 $inputSecret = htmlspecialchars($_GET["secret"]);
 $serverSecret = $_SERVER['SYNC_SECRET'];
+$mysqlPassword = $_SERVER['POSDB_PASS'];
 
 if($inputSecret != $serverSecret){
     die("Unauthorised access - please provide the secret");
@@ -22,6 +23,7 @@ $exec = array(
     'sudo git submodule sync',
     'sudo git submodule update',
     'sudo git submodule status',
+    'sh ./public/scripts/update-db.sh cbvpos cbvposdev-db root pointofsale'
 );
 ?>
 
