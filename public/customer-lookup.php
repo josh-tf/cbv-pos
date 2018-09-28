@@ -112,7 +112,7 @@ while ($row = $result->fetch_assoc()) {
       <td><?php echo $row['last_name']; ?></td>
       <td><?php echo $row['email']; ?></td>
       <td><?php echo $row['address_1']; ?> <?php echo $row['address_2']; ?> <?php echo $row['city']; ?></td>
-      <td><?php echo $row['comments']; ?></td>
+      <td style="font-weight:bold;color:#F33;font-size: 1.2em;"><?php echo $row['comments']; ?></td>
     </tr>
 
 <?php
