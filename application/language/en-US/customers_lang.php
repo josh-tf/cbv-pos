@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "Account #";
 $lang["customers_account_number_duplicate"] = "Account Number is already present in the database.";
@@ -13,7 +13,7 @@ $lang["customers_confirm_restore"] = "Are you sure you want to restore selected 
 $lang["customers_customer"] = "Customer";
 $lang["customers_discount"] = "Discount";
 $lang["customers_email_duplicate"] = "Email Address is already present in the database.";
-$lang["customers_error_adding_updating"] = "Customer add or update failed.";
+$lang["customers_error_adding_updating"] = "Customer add or update failed (Possible duplicate concession ID).";
 $lang["customers_excel_import_failed"] = "Excel import failed";
 $lang["customers_excel_import_nodata_wrongformat"] = "The uploaded file has no data or is incorrectly formatted.";
 $lang["customers_excel_import_partially_failed"] = "Customer import successful with some failures:";

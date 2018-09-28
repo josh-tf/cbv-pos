@@ -34,18 +34,6 @@
 			<fieldset>
 				<?php $this->load->view("people/form_basic_info"); ?>
 
-				<div class="form-group form-group-sm">
-					<?php echo form_label($this->lang->line('customers_company_name'), 'company_name', array('class' => 'control-label col-xs-3')); ?>
-					<div class='col-xs-8'>
-						<?php echo form_input(array(
-								'name'=>'company_name',
-								'id'=>'company_name',
-								'class'=>'form-control input-sm',
-								'value'=>$person_info->company_name)
-								);?>
-					</div>
-				</div>
-
 				<?php if($this->config->item('customer_reward_enable') == TRUE): ?>
 					<div class="form-group form-group-sm">
 						<?php echo form_label($this->lang->line('rewards_package'), 'rewards', array('class'=>'control-label col-xs-3')); ?>
@@ -343,8 +331,14 @@ $(document).ready(function()
 			$(form).ajaxSubmit({
 				success: function(response)
 				{
-					dialog_support.hide();
+					//dialog_support.hide();
 					table_support.handle_submit('<?php echo site_url($controller_name); ?>', response);
+
+					if(response.success){
+						dialog_support.hide();
+					}
+
+
 				},
 				dataType: 'json'
 			});
