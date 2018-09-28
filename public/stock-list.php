@@ -10,12 +10,12 @@ $dbname = getenv('MYSQL_DB_NAME');
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 $sql = "SELECT *";
-$sql.= " FROM";
-$sql.= "     cbvpos_item_quantities t1";
-$sql.= "         INNER JOIN";
-$sql.= "     cbvpos_items t2 ON t1.item_id = t2.item_id";
-$sql.= " WHERE";
-$sql.= " 	quantity > 0 AND";
+$sql .= " FROM";
+$sql .= "     cbvpos_item_quantities t1";
+$sql .= "         INNER JOIN";
+$sql .= "     cbvpos_items t2 ON t1.item_id = t2.item_id";
+$sql .= " WHERE";
+$sql .= " 	quantity > 0 AND";
 
 ?>
 
@@ -77,44 +77,54 @@ body {
 <p>The listed concession price is only available to concession card holders. Please have a valid concession card ready when you make your purchase. You may purchase a desktop computer without a concession card, but you will be charged our market price, as shown below.</p>
 
 <table class="u-full-width">
-  <thead>
+<thead>
     <tr>
-      <th>ID</th>
-      <th>Conc. Price</th>
-      <th>Market Price</th>
-      <th>Processor</th>
-      <th>Memory</th>
-      <th>Storage</th>
-      <th>Extras</th>
+    <th>ID</th>
+    <th>Type</th>
+    <th>Concession Price</th>
+    <th>Retail Price</th>
+    <th>Model</th>
+    <th>CPU Type</th>
+    <th>CPU Speed</th>
+    <th>RAM</th>
+    <th>HDD</th>
+    <th>Screen Size</th>
+    <th>Optical Drive</th>
+    <th>Notes (Extras, etc)</th>
+    <th>Operating System</th>
     </tr>
   </thead>
   <tbody>
 
 <?php
 $cat = "Desktop";
-$stmt = $conn->prepare($sql.' category = ? ORDER BY unit_price;');
-$stmt->bind_param('s',$cat); // 's' specifies the variable type => 'string'
+$stmt = $conn->prepare($sql . ' category = ? ORDER BY unit_price;');
+$stmt->bind_param('s', $cat); // 's' specifies the variable type => 'string'
 
 $stmt->execute();
 
- $result = $stmt->get_result();
+$result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
-?>
+    ?>
 
     <tr>
       <td><?php echo $row["name"]; ?></td>
-      <td>$<?php echo number_format((float)round(($row["unit_price"])/5) * 5, 2, '.', ''); ?></td>
-      <td>$<?php echo number_format((float)round(($row["unit_price"] * 1.25)/5) * 5, 2, '.', ''); ?></td>
-      <td><?php echo $row["custom3"]." ". $row["custom4"]; ?> Ghz</td>
-      <td><?php echo $row["custom5"]; ?> GB</td>
-      <td><?php echo $row["custom6"]; ?> GB</td>
-      <td><?php if($row["custom7"]){echo $row["custom7"]. "in screen ";};
-		if($row["custom8"]){echo $row["custom8"]. " ";};
-		if($row["custom9"]){echo $row["custom9"]. "";};; ?></td>
+      <td><?php echo ($row["custom10"]) ? $row["custom10"] : "Tower"; // type  ?></td>
+      <td>$<?php echo number_format((float) ($row["unit_price"]), 2, '.', ''); ?></td>
+      <td>$<?php echo number_format((float) ($row["unit_price"]) * 1.5, 2, '.', ''); ?></td>
+      <td><?php echo $row["custom2"]; //brand/model   ?></td>
+      <td><?php echo $row["custom3"]; // cpu type  ?></td>
+      <td><?php echo $row["custom4"]; // cpu speed  ?> Ghz</td>
+      <td><?php echo $row["custom5"]; // ram  ?> GB</td>
+      <td><?php echo $row["custom6"]; // hdd  ?> GB</td>
+      <td><?php echo $row["custom8"]; // screen  ?>in</td>
+      <td><?php echo ($row["custom9"]) ? $row["custom9"] : "None"; // optical drive  ?></td>
+      <td><?php echo ($row["custom13"]) ? $row["custom13"] : "None"; // extras  ?></td>
+      <td><?php echo $row["custom7"]; // operating system  ?></td>
     </tr>
 
 <?php
-    }
+}
 ?>
   </tbody>
 </table>
@@ -136,10 +146,10 @@ while ($row = $result->fetch_assoc()) {
     <th>Concession Price</th>
     <th>Model</th>
     <th>CPU Type</th>
-    <th>CPU Speed (Ghz)</th>
-    <th>RAM (GB)</th>
-    <th>HDD (GB)</th>
-    <th>Screen Size (Inches)</th>
+    <th>CPU Speed</th>
+    <th>RAM</th>
+    <th>HDD</th>
+    <th>Screen Size</th>
     <th>Optical Drive</th>
     <th>Battery Life</th>
     <th>Notes (Extras, etc)</th>
@@ -150,32 +160,32 @@ while ($row = $result->fetch_assoc()) {
 
 <?php
 $cat = "Laptop";
-$stmt = $conn->prepare($sql.' category = ? ORDER BY unit_price;');
-$stmt->bind_param('s',$cat); // 's' specifies the variable type => 'string'
+$stmt = $conn->prepare($sql . ' category = ? ORDER BY unit_price;');
+$stmt->bind_param('s', $cat); // 's' specifies the variable type => 'string'
 
 $stmt->execute();
 
- $result = $stmt->get_result();
+$result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
-?>
+    ?>
 
     <tr>
       <td><?php echo $row["name"]; ?></td>
-      <td>$<?php echo number_format((float)($row["unit_price"]), 2, '.', ''); ?></td>
-      <td><?php echo $row["custom2"]; ?></td>
-      <td><?php echo $row["custom3"]; ?></td>
-      <td><?php echo $row["custom4"]; ?></td>
-      <td><?php echo $row["custom5"]; ?></td>
-      <td><?php echo $row["custom6"]; ?></td>
-      <td><?php echo $row["custom8"]; ?></td>
-      <td><?php echo $row["custom9"]; ?></td>
-      <td><?php echo $row["custom11"]; ?></td>
-      <td><?php echo $row["custom13"]; ?></td>
-      <td><?php echo $row["custom7"]; ?></td>
+      <td>$<?php echo number_format((float) ($row["unit_price"]), 2, '.', ''); ?></td>
+      <td><?php echo $row["custom2"]; //brand/model   ?></td>
+      <td><?php echo $row["custom3"]; // cpu type  ?></td>
+      <td><?php echo $row["custom4"]; // cpu speed  ?> Ghz</td>
+      <td><?php echo $row["custom5"]; // ram  ?> GB</td>
+      <td><?php echo $row["custom6"]; // hdd  ?> GB</td>
+      <td><?php echo $row["custom8"]; // screen  ?>in</td>
+      <td><?php echo ($row["custom9"]) ? $row["custom9"] : "None"; // optical drive  ?></td>
+      <td><?php echo $row["custom11"]; // battery life  ?> hrs</td>
+      <td><?php echo ($row["custom13"]) ? $row["custom13"] : "None"; // extras  ?></td>
+      <td><?php echo $row["custom7"]; // operating system  ?></td>
     </tr>
 
 <?php
-    }
+}
 ?>
   </tbody>
 </table>
