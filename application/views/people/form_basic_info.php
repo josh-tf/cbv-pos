@@ -22,6 +22,20 @@
 	</div>
 </div>
 
+
+				<div class="form-group form-group-sm">
+					<?php echo form_label("Concession ID", 'company_name', array('class' => 'control-label col-xs-3')); ?>
+					<div class='col-xs-8'>
+						<?php echo form_input(array(
+								'name'=>'company_name',
+								'id'=>'company_name',
+								'class'=>'form-control input-sm',
+								'value'=>$person_info->company_name)
+								);?>
+					</div>
+				</div>
+
+
 <div class="form-group form-group-sm">
 	<?php echo form_label($this->lang->line('common_email'), 'email', array('class'=>'control-label col-xs-3')); ?>
 	<div class='col-xs-8'>

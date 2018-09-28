@@ -178,11 +178,39 @@ class Customer extends Person
 		return ($this->db->get()->num_rows() == 1);
 	}
 
+
+	/*
+	Checks if customer email exists
+	*/
+	public function check_concession_exists($company_name)
+	{
+		// if the email is empty return like it is not existing
+		if(empty($company_name))
+		{
+			return FALSE;
+		}
+
+		$this->db->from('customers');
+		$this->db->where('customers.company_name', $company_name);
+
+		return ($this->db->get()->num_rows() >= 1);
+	}
+
 	/*
 	Inserts or updates a customer
 	*/
 	public function save_customer(&$person_data, &$customer_data, $customer_id = FALSE)
 	{
+
+		$this->db->from('customers');
+		$this->db->where('customers.company_name', $customer_data['company_name']);
+
+		if($this->db->get()->num_rows() >= 1){
+			return false;
+		}
+
+
+
 		$success = FALSE;
 
 		//Run these queries as a transaction, we want to make sure we do all or nothing
