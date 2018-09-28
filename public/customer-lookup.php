@@ -36,7 +36,7 @@ $matchCount = mysqli_num_rows($result);
 <head>
 
   <meta charset="utf-8">
-  <title>Computerbank Stocklist - <?php echo date('D d M y'); ?></title>
+  <title>Customer Concession ID Lookup - <?php echo $concID; ?></title>
   <meta name="description" content="">
   <meta name="author" content="">
 
