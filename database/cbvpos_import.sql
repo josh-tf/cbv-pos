@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: cbvposdev-db
--- Generation Time: Sep 28, 2018 at 08:08 AM
+-- Generation Time: Sep 28, 2018 at 08:13 AM
 -- Server version: 10.1.21-MariaDB-1~jessie
 -- PHP Version: 7.2.8
 
@@ -398,7 +398,14 @@ INSERT INTO `cbvpos_inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_
 (318, 112, 1, '2018-09-25 18:14:39', 'Manual Edit of Quantity', 1, '1.000'),
 (319, 113, 1, '2018-09-25 18:15:24', 'Manual Edit of Quantity', 1, '1.000'),
 (320, 114, 1, '2018-09-25 18:15:56', 'Manual Edit of Quantity', 1, '1.000'),
-(321, 115, 1, '2018-09-25 18:16:25', 'Manual Edit of Quantity', 1, '1.000');
+(321, 115, 1, '2018-09-25 18:16:25', 'Manual Edit of Quantity', 1, '1.000'),
+(322, 112, 1, '2018-09-28 18:12:47', 'POS 1', 1, '-1.000'),
+(323, 113, 1, '2018-09-28 18:12:59', 'POS 2', 1, '-1.000'),
+(324, 114, 1, '2018-09-28 18:12:59', 'POS 2', 1, '-1.000'),
+(325, 112, 1, '2018-09-28 18:13:06', 'Manual Edit of Quantity', 1, '5.000'),
+(326, 113, 1, '2018-09-28 18:13:09', 'Manual Edit of Quantity', 1, '5.000'),
+(327, 114, 1, '2018-09-28 18:13:12', 'Manual Edit of Quantity', 1, '5.000'),
+(328, 115, 1, '2018-09-28 18:13:16', 'Manual Edit of Quantity', 1, '4.000');
 
 -- --------------------------------------------------------
 
@@ -451,10 +458,10 @@ CREATE TABLE `cbvpos_items` (
 --
 
 INSERT INTO `cbvpos_items` (`name`, `category`, `supplier_id`, `item_number`, `description`, `cost_price`, `unit_price`, `reorder_level`, `receiving_quantity`, `item_id`, `pic_filename`, `allow_alt_description`, `is_serialized`, `stock_type`, `item_type`, `tax_category_id`, `deleted`, `custom1`, `custom2`, `custom3`, `custom4`, `custom5`, `custom6`, `custom7`, `custom8`, `custom9`, `custom10`, `custom11`, `custom12`, `custom13`, `custom14`, `custom15`, `custom16`, `custom17`, `custom18`, `custom19`, `custom20`) VALUES
-('8111', 'Laptop', NULL, NULL, 'Lenovo T440, i5, 2.4 Ghz, 4 GB RAM, 250 GB HDD, Ubuntu 18.04, 14 Inch Screen, 2.2 Hours, Has SSD drive', '0.00', '200.00', '0.000', '1.000', 112, NULL, 0, 0, 0, 0, 0, 0, '2018-09-24', 'Lenovo T440', 'i5', '2.4', '4', '250', 'Ubuntu 18.04', '14', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8222', 'Desktop', NULL, NULL, 'Dell Optiplex 7010, i7, 3.2 Ghz, 8 GB RAM, 500 GB HDD, Ubuntu 18.04, 22 Inch Screen, DVD-RW, Second HDD: 1TB Drive', '0.00', '150.00', '0.000', '1.000', 113, NULL, 0, 0, 0, 0, 0, 0, '2018-09-24', 'Dell Optiplex 7010', 'i7', '3.2', '8', '500', 'Ubuntu 18.04', '22', 'DVD-RW', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('USB Wifi Stick', 'Miscellaneous-new', NULL, NULL, 'New USB stick for sale with computers', '0.00', '10.00', '0.000', '1.000', 114, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Old Case', 'Miscellaneous-old', NULL, NULL, 'Old PC Case - empty with no PSU', '0.00', '5.00', '0.000', '1.000', 115, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+('8111', 'Laptop', NULL, NULL, 'Lenovo T440, i5, 2.4 Ghz, 4 GB RAM, 250 GB HDD, Ubuntu 18.04, 14 Inch Screen, 2.2 Hours, Has SSD drive', '0.00', '200.00', '0.000', '1.000', 112, NULL, 0, 0, 0, 0, 0, 0, '2018-09-24', 'Lenovo T440', 'i5', '2.4', '4', '250', 'Ubuntu 18.04', '14', '', '', '', '', '', '', '', '', '', '', '', ''),
+('8222', 'Desktop', NULL, NULL, 'Dell Optiplex 7010, i7, 3.2 Ghz, 8 GB RAM, 500 GB HDD, Ubuntu 18.04, 22 Inch Screen, DVD-RW, Second HDD: 1TB Drive', '0.00', '150.00', '0.000', '1.000', 113, NULL, 0, 0, 0, 0, 0, 0, '2018-09-24', 'Dell Optiplex 7010', 'i7', '3.2', '8', '500', 'Ubuntu 18.04', '22', 'DVD-RW', '', '', '', '', '', '', '', '', '', '', ''),
+('USB Wifi Stick', 'Miscellaneous-new', NULL, NULL, 'New USB stick for sale with computers', '0.00', '10.00', '0.000', '1.000', 114, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Old Case', 'Miscellaneous-old', NULL, NULL, 'Old PC Case - empty with no PSU', '0.00', '5.00', '0.000', '1.000', 115, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -524,10 +531,10 @@ CREATE TABLE `cbvpos_item_quantities` (
 --
 
 INSERT INTO `cbvpos_item_quantities` (`item_id`, `location_id`, `quantity`) VALUES
-(112, 1, '1.000'),
-(113, 1, '1.000'),
-(114, 1, '1.000'),
-(115, 1, '1.000');
+(112, 1, '5.000'),
+(113, 1, '5.000'),
+(114, 1, '5.000'),
+(115, 1, '5.000');
 
 -- --------------------------------------------------------
 
@@ -718,6 +725,14 @@ CREATE TABLE `cbvpos_sales` (
   `sale_type` tinyint(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `cbvpos_sales`
+--
+
+INSERT INTO `cbvpos_sales` (`sale_time`, `customer_id`, `employee_id`, `comment`, `invoice_number`, `quote_number`, `sale_id`, `sale_status`, `dinner_table_id`, `work_order_number`, `sale_type`) VALUES
+('2018-09-28 18:12:47', 47, 1, '', '0', NULL, 1, 0, NULL, NULL, 1),
+('2018-09-28 18:12:59', 46, 1, '', NULL, NULL, 2, 0, NULL, NULL, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -738,6 +753,15 @@ CREATE TABLE `cbvpos_sales_items` (
   `print_option` tinyint(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `cbvpos_sales_items`
+--
+
+INSERT INTO `cbvpos_sales_items` (`sale_id`, `item_id`, `description`, `serialnumber`, `line`, `quantity_purchased`, `item_cost_price`, `item_unit_price`, `discount_percent`, `item_location`, `print_option`) VALUES
+(1, 112, 'Lenovo T440, i5, 2.4 Ghz, 4 GB RAM, 250 GB HDD, Ubuntu 18.04, 14 Inch Screen, 2.2 Hours, Has SSD drive', '', 1, '1.000', '0.00', '200.00', '0.00', 1, 0),
+(2, 113, 'Dell Optiplex 7010, i7, 3.2 Ghz, 8 GB RAM, 500 GB HDD, Ubuntu 18.04, 22 Inch Screen, DVD-RW, Second HDD: 1TB Drive', '', 1, '1.000', '0.00', '150.00', '0.00', 1, 0),
+(2, 114, 'New USB stick for sale with computers', '', 2, '1.000', '0.00', '10.00', '0.00', 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -757,6 +781,13 @@ CREATE TABLE `cbvpos_sales_items_taxes` (
   `item_tax_amount` decimal(15,4) NOT NULL DEFAULT '0.0000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `cbvpos_sales_items_taxes`
+--
+
+INSERT INTO `cbvpos_sales_items_taxes` (`sale_id`, `item_id`, `line`, `name`, `percent`, `tax_type`, `rounding_code`, `cascade_tax`, `cascade_sequence`, `item_tax_amount`) VALUES
+(2, 114, 2, ' GST', '10.0000', 0, 1, 0, 0, '0.9091');
+
 -- --------------------------------------------------------
 
 --
@@ -768,6 +799,14 @@ CREATE TABLE `cbvpos_sales_payments` (
   `payment_type` varchar(40) NOT NULL,
   `payment_amount` decimal(15,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cbvpos_sales_payments`
+--
+
+INSERT INTO `cbvpos_sales_payments` (`sale_id`, `payment_type`, `payment_amount`) VALUES
+(1, 'Cash', '200.00'),
+(2, 'Cash', '160.00');
 
 -- --------------------------------------------------------
 
@@ -801,6 +840,13 @@ CREATE TABLE `cbvpos_sales_taxes` (
   `rounding_code` tinyint(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `cbvpos_sales_taxes`
+--
+
+INSERT INTO `cbvpos_sales_taxes` (`sale_id`, `tax_type`, `tax_group`, `sale_tax_basis`, `sale_tax_amount`, `print_sequence`, `name`, `tax_rate`, `sales_tax_code`, `rounding_code`) VALUES
+(2, 0, '10%  GST', '10.0000', '0.9100', 0, ' GST', '10.0000', '', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -813,13 +859,6 @@ CREATE TABLE `cbvpos_sessions` (
   `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `cbvpos_sessions`
---
-
-INSERT INTO `cbvpos_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('a3f71cb78cde104abe5395ac9891932ed9ac41f0', '172.19.0.1', 1538121626, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533383132313632343b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b);
 
 -- --------------------------------------------------------
 
@@ -1199,7 +1238,7 @@ ALTER TABLE `cbvpos_giftcards`
 -- AUTO_INCREMENT for table `cbvpos_inventory`
 --
 ALTER TABLE `cbvpos_inventory`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=322;
+  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=329;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_items`
@@ -1229,7 +1268,7 @@ ALTER TABLE `cbvpos_receivings`
 -- AUTO_INCREMENT for table `cbvpos_sales`
 --
 ALTER TABLE `cbvpos_sales`
-  MODIFY `sale_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `sale_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_sales_reward_points`
