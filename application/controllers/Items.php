@@ -415,13 +415,15 @@ class Items extends Secure_Controller
 			}
 		}
 
-
-		$exists = $this->Item->nameExists($this->input->post('name'));
-		if($exists && $item_id == -1){ // only check if its a new item
-			$message = $this->xss_clean("An item with this name already exists" . ' ' . $item_data['name']);
-			echo json_encode(array('success' => FALSE, 'message' => $message, 'id' => $item_id));
-			die();
+		if($this->input->post('category') == "Desktop" || $this->input->post('category') == "Laptop"){ // if its a laptop or desktop
+			$exists = $this->Item->nameExists($this->input->post('name')); // check if the item name already exists
+			if($exists && $item_id == -1){ // only check if its a new item
+					$message = $this->xss_clean("An item with this name already exists" . ' ' . $item_data['name']);
+					echo json_encode(array('success' => FALSE, 'message' => $message, 'id' => $item_id)); // exit with error if it does
+				die();
+			}
 		}
+
 
 		$employee_id = $this->Employee->get_logged_in_employee_info()->person_id;
 		$cur_item_info = $this->Item->get_info($item_id);
