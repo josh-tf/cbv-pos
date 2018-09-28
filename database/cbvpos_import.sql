@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: cbvposdev-db
--- Generation Time: Sep 27, 2018 at 10:55 PM
+-- Generation Time: Sep 28, 2018 at 08:08 AM
 -- Server version: 10.1.21-MariaDB-1~jessie
 -- PHP Version: 7.2.8
 
@@ -814,6 +814,13 @@ CREATE TABLE `cbvpos_sessions` (
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `cbvpos_sessions`
+--
+
+INSERT INTO `cbvpos_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
+('a3f71cb78cde104abe5395ac9891932ed9ac41f0', '172.19.0.1', 1538121626, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533383132313632343b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b);
+
 -- --------------------------------------------------------
 
 --
@@ -1174,13 +1181,13 @@ ALTER TABLE `cbvpos_dinner_tables`
 -- AUTO_INCREMENT for table `cbvpos_expenses`
 --
 ALTER TABLE `cbvpos_expenses`
-  MODIFY `expense_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `expense_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_expense_categories`
 --
 ALTER TABLE `cbvpos_expense_categories`
-  MODIFY `expense_category_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `expense_category_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_giftcards`
@@ -1216,13 +1223,13 @@ ALTER TABLE `cbvpos_people`
 -- AUTO_INCREMENT for table `cbvpos_receivings`
 --
 ALTER TABLE `cbvpos_receivings`
-  MODIFY `receiving_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `receiving_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_sales`
 --
 ALTER TABLE `cbvpos_sales`
-  MODIFY `sale_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `sale_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_sales_reward_points`
