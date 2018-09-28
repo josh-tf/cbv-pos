@@ -649,3 +649,8 @@ there.
   width: 85%;
   margin: 5% auto
 }
+
+body {
+
+  font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
