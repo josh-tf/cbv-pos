@@ -417,7 +417,7 @@ class Items extends Secure_Controller
 
 
 		$exists = $this->Item->nameExists($this->input->post('name'));
-		if($exists){
+		if($exists && $item_id == -1){ // only check if its a new item
 			$message = $this->xss_clean("An item with this name already exists" . ' ' . $item_data['name']);
 			echo json_encode(array('success' => FALSE, 'message' => $message, 'id' => $item_id));
 			die();
