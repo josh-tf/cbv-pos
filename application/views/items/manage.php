@@ -10,7 +10,7 @@ $(document).ready(function()
             '_blank' // <- This is what makes it open in a new window.
         );
     });
-	
+
 	// when any filter is clicked and the dropdown window is closed
 	$('#filters').on('hidden.bs.select', function(e)
 	{
@@ -57,10 +57,10 @@ $(document).ready(function()
 });
 
 function openTicket() {
-	
+
 var cbvid = document.getElementById('cbvid').value; // get the textbox value
-	
-if (cbvid == "CBV ID:") {
+
+if (cbvid == 'CBV ID:') {
 	throw ''; // exit if you just click the generate button without entering anything
 };
 	window.open('./sales-ticket.php?id=' + cbvid) // open the sales ticket
@@ -79,19 +79,19 @@ if (cbvid == "CBV ID:") {
             title='<?php echo $this->lang->line($controller_name . '_new'); ?>'>
         <span class="glyphicon glyphicon-tag">&nbsp</span><?php echo $this->lang->line($controller_name. '_new'); ?>
     </button>
-	
+
     <button class='btn btn-info btn-sm pull-right' onclick="window.open('./stock-list-print.php')">
         <span class="glyphicon glyphicon-print">&nbsp</span>Print Stocklist
     </button>
-	
+
     <button class='btn btn-info btn-sm pull-right' onclick="window.open('./stock-list.php')">
         <span class="glyphicon glyphicon-file">&nbsp</span>View Stocklist
     </button>
-	
+
     <button class='btn btn-info btn-sm pull-right' onclick="openTicket()">
         <span class="glyphicon glyphicon-file">&nbsp</span>Generate Ticket
     </button>
-	
+
 	<input type="text" id="cbvid" onfocus="this.value=''" value="CBV ID:" class="form-control input-sm" id="" style="width: 85px;float: right;margin-right: 5px;">
 </div>
 

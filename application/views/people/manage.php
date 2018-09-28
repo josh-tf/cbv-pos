@@ -26,6 +26,16 @@ $(document).ready(function()
 		location.href = "mailto:" + recipients.join(",");
 	});
 });
+
+function openConcCheck() {
+
+	var concID = document.getElementById('conc-id').value; // get the textbox value
+
+	if (concID == 'Concession ID:') {
+		throw ''; // exit if you just click the generate button without entering anything
+	};
+		window.open('./customer-lookup.php?conc-id=' + concID) // open the sales ticket
+	}
 </script>
 
 <div id="title_bar" class="btn-toolbar">
@@ -44,6 +54,15 @@ $(document).ready(function()
 			title='<?php echo $this->lang->line($controller_name . '_new'); ?>'>
 		<span class="glyphicon glyphicon-user">&nbsp</span><?php echo $this->lang->line($controller_name . '_new'); ?>
 	</button>
+
+<!-- Look up Customer ID -->
+
+    <button class='btn btn-info btn-sm pull-right' onclick="openConcCheck()">
+        <span class="glyphicon glyphicon-file">&nbsp</span>Lookup ID
+    </button>
+
+	<input type="text" id="conc-id" onfocus="this.value=''" value="Concession ID:" class="form-control input-sm" id="" style="width: 125px;float: right;margin-right: 5px;">
+
 </div>
 
 <div id="toolbar">
