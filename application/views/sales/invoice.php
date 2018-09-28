@@ -132,9 +132,18 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
 
 		<?php
 foreach ($cart as $line => $item) {
+
+    if ($item['item_category'] == "Laptop" || $item['item_category'] === "Desktop") { // if the item is a desktop or laptop
+
+        $itemName = "CBV " . $item['name'] . " (" . $item['item_category'] . ")"; // change the name to "CBV XXXX (Type)"
+
+    } else {
+        $itemName = ucfirst($item['name']); // otherwise just use the name
+    }
+
     ?>
 		<tr class="item-row">
-			<td class="item-name"><textarea rows="4" cols="6"><?php echo $item['name']; ?></textarea></td>
+			<td class="item-name"><textarea rows="4" cols="6"><?php echo $itemName; ?></textarea></td>
 			<td style='text-align:center;'><textarea rows="5" cols="6"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
 			<td><textarea rows="4" cols="4"><?php echo to_currency($item['price']); ?></textarea></td>
 			<td style='text-align:center;'><textarea rows="4" cols="6">$<?php echo number_format($item['discount'], 2); ?></textarea></td>
