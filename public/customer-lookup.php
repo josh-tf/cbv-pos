@@ -154,11 +154,21 @@ while ($num = mysqli_fetch_assoc($resultCount)) {
     $totalSpent += $num['unit_price'];
 }
 
+$stmt->execute();
+$discountCount = $stmt->get_result();
+
+$discCount = mysqli_num_rows($result);
+
+$discTotal= 0;
+while ($num = mysqli_fetch_assoc($discountCount)) {
+    $discTotal += $num['discount_percent'];
+}
+
 ?>
 
 <br><br>
 
-<h5>Sales for Concession ID [<b><?php echo $concID ?></b>] - Total Spent: <b>$<?php echo number_format((float) ($totalSpent), 2, '.', ''); ?></b></h5>
+<h5>Sales for Concession ID [<b><?php echo $concID ?></b>] - Total Spent: <b>$<?php echo number_format((float) ($totalSpent), 2, '.', ''); ?></b> - Total Discount: <b>$<?php echo number_format((float) ($discTotal), 2, '.', ''); ?></b></h5>
 <p>There are <?php echo $matchCount; ?> matches for this concession ID in the sales database.</p>
 
 <table class="u-full-width">
