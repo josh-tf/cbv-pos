@@ -705,7 +705,17 @@ class Items extends Secure_Controller
 							'custom7'				=> $data[20],
 							'custom8'				=> $data[21],
 							'custom9'				=> $data[22],
-							'custom10'				=> $data[23]
+							'custom10'				=> $data[23],
+							'custom11'				=> $data[24],
+							'custom12'				=> $data[25],
+							'custom13'				=> $data[26],
+							'custom14'				=> $data[27],
+							'custom15'				=> $data[28],
+							'custom16'				=> $data[29],
+							'custom17'				=> $data[30],
+							'custom18'				=> $data[31],
+							'custom19'				=> $data[32],
+							'custom20'				=> $data[33]
 						);
 
 						/* we could do something like this, however, the effectiveness of
