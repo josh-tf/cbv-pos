@@ -547,10 +547,12 @@ function createDescription() {
 						$(':input', '#item_form').not('#item_category_id').removeAttr('checked').removeAttr('selected');
 					}
 					else
-					{
-						dialog_support.hide();
-					}
 					table_support.handle_submit('<?php echo site_url('items'); ?>', response, stay_open);
+
+					if(response.success) {
+						dialog_support.hide(); // only hide if successful
+					};
+
 				},
 				dataType: 'json'
 			});
@@ -560,23 +562,6 @@ function createDescription() {
 		{
 			name: "required",
 			category: "required",
-			item_number:
-			{
-				required: false,
-				remote:
-				{
-					url: "<?php echo site_url($controller_name . '/check_item_number') ?>",
-					type: "post",
-					data: $.extend(csrf_form_base(),
-					{
-						"item_id": "<?php echo $item_info->item_id; ?>",
-						"item_number": function()
-						{
-							return $("#item_number").val();
-						},
-					})
-				}
-			},
 			cost_price:
 			{
 				required: true,

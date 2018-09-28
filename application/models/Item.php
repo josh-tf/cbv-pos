@@ -50,6 +50,19 @@ class Item extends CI_Model
 
 		return FALSE;
 	}
+	/*
+	Determines if a given item_id is an item
+	*/
+	public function nameExists($item_name, $ignore_deleted = FALSE, $deleted = FALSE)
+	{
+		// check if $item_id is a number and not a string starting with 0
+		// because cases like 00012345 will be seen as a number where it is a barcode
+			$this->db->from('items');
+			$this->db->where('name', (string) $item_name);
+			return ($this->db->get()->num_rows() >= 1);
+
+		return FALSE;
+	}
 
 	/*
 	Determines if a given item_number exists
@@ -213,6 +226,16 @@ class Item extends CI_Model
 					$this->db->or_like('custom8', $search);
 					$this->db->or_like('custom9', $search);
 					$this->db->or_like('custom10', $search);
+					$this->db->or_like('custom11', $search);
+					$this->db->or_like('custom12', $search);
+					$this->db->or_like('custom13', $search);
+					$this->db->or_like('custom14', $search);
+					$this->db->or_like('custom15', $search);
+					$this->db->or_like('custom16', $search);
+					$this->db->or_like('custom17', $search);
+					$this->db->or_like('custom18', $search);
+					$this->db->or_like('custom19', $search);
+					$this->db->or_like('custom20', $search);
 				$this->db->group_end();
 			}
 		}
