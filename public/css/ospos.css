@@ -248,3 +248,9 @@ h3.text-center {
 	}
   }
 
+  .topbar {
+    background: #0f007d;
+}
+.topbar a {
+    color: #ffc0a8;
+}
