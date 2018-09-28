@@ -384,16 +384,16 @@ class Items extends Secure_Controller
 			'custom8' => $this->input->post('custom8') == NULL ? '' : $this->input->post('custom8'),
 			'custom9' => $this->input->post('custom9') == NULL ? '' : $this->input->post('custom9'),
 			'custom10' => $this->input->post('custom10') == NULL ? '' : $this->input->post('custom10'),
-			'custom11' => $this->input->post('custom10') == NULL ? '' : $this->input->post('custom11'),
-			'custom12' => $this->input->post('custom10') == NULL ? '' : $this->input->post('custom12'),
-			'custom13' => $this->input->post('custom10') == NULL ? '' : $this->input->post('custom13'),
-			'custom14' => $this->input->post('custom10') == NULL ? '' : $this->input->post('custom14'),
-			'custom15' => $this->input->post('custom10') == NULL ? '' : $this->input->post('custom15'),
-			'custom16' => $this->input->post('custom10') == NULL ? '' : $this->input->post('custom16'),
-			'custom17' => $this->input->post('custom10') == NULL ? '' : $this->input->post('custom17'),
-			'custom18' => $this->input->post('custom10') == NULL ? '' : $this->input->post('custom18'),
-			'custom19' => $this->input->post('custom10') == NULL ? '' : $this->input->post('custom19'),
-			'custom20' => $this->input->post('custom10') == NULL ? '' : $this->input->post('custom20')
+			'custom11' => $this->input->post('custom11') == NULL ? '' : $this->input->post('custom11'),
+			'custom12' => $this->input->post('custom12') == NULL ? '' : $this->input->post('custom12'),
+			'custom13' => $this->input->post('custom13') == NULL ? '' : $this->input->post('custom13'),
+			'custom14' => $this->input->post('custom14') == NULL ? '' : $this->input->post('custom14'),
+			'custom15' => $this->input->post('custom15') == NULL ? '' : $this->input->post('custom15'),
+			'custom16' => $this->input->post('custom16') == NULL ? '' : $this->input->post('custom16'),
+			'custom17' => $this->input->post('custom17') == NULL ? '' : $this->input->post('custom17'),
+			'custom18' => $this->input->post('custom18') == NULL ? '' : $this->input->post('custom18'),
+			'custom19' => $this->input->post('custom19') == NULL ? '' : $this->input->post('custom19'),
+			'custom20' => $this->input->post('custom20') == NULL ? '' : $this->input->post('custom20')
 		);
 
 		$x = $this->input->post('tax_category_id');

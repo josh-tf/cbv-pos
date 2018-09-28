@@ -625,6 +625,16 @@ class Item extends CI_Model
 					$this->db->or_like('custom8', $search);
 					$this->db->or_like('custom9', $search);
 					$this->db->or_like('custom10', $search);
+					$this->db->or_like('custom11', $search);
+					$this->db->or_like('custom12', $search);
+					$this->db->or_like('custom13', $search);
+					$this->db->or_like('custom14', $search);
+					$this->db->or_like('custom15', $search);
+					$this->db->or_like('custom16', $search);
+					$this->db->or_like('custom17', $search);
+					$this->db->or_like('custom18', $search);
+					$this->db->or_like('custom19', $search);
+					$this->db->or_like('custom20', $search);
 				$this->db->group_end();
 				$this->db->where('deleted', $filters['is_deleted']);
 				$this->db->where_in('item_type', $non_kit); // standard, exclude kit items since kits will be picked up later
@@ -735,6 +745,16 @@ class Item extends CI_Model
 				$this->db->or_like('custom8', $search);
 				$this->db->or_like('custom9', $search);
 				$this->db->or_like('custom10', $search);
+				$this->db->or_like('custom11', $search);
+				$this->db->or_like('custom12', $search);
+				$this->db->or_like('custom13', $search);
+				$this->db->or_like('custom14', $search);
+				$this->db->or_like('custom15', $search);
+				$this->db->or_like('custom16', $search);
+				$this->db->or_like('custom17', $search);
+				$this->db->or_like('custom18', $search);
+				$this->db->or_like('custom19', $search);
+				$this->db->or_like('custom20', $search);
 				$this->db->group_end();
 				$this->db->where_in('item_type', $non_kit); // standard, exclude kit items since kits will be picked up later
 				$this->db->where("stock_type = '0'"); // stocked items only
@@ -838,6 +858,16 @@ class Item extends CI_Model
 				$this->db->or_like('custom8', $search);
 				$this->db->or_like('custom9', $search);
 				$this->db->or_like('custom10', $search);
+				$this->db->or_like('custom11', $search);
+				$this->db->or_like('custom12', $search);
+				$this->db->or_like('custom13', $search);
+				$this->db->or_like('custom14', $search);
+				$this->db->or_like('custom15', $search);
+				$this->db->or_like('custom16', $search);
+				$this->db->or_like('custom17', $search);
+				$this->db->or_like('custom18', $search);
+				$this->db->or_like('custom19', $search);
+				$this->db->or_like('custom20', $search);
 				$this->db->group_end();
 				$this->db->where('deleted', $filters['is_deleted']);
 				foreach($this->db->get()->result() as $row)
