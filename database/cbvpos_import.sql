@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: cbvposdev-db
--- Generation Time: Sep 28, 2018 at 08:13 AM
+-- Generation Time: Sep 28, 2018 at 08:14 AM
 -- Server version: 10.1.21-MariaDB-1~jessie
 -- PHP Version: 7.2.8
 
@@ -191,8 +191,8 @@ CREATE TABLE `cbvpos_customers` (
 --
 
 INSERT INTO `cbvpos_customers` (`person_id`, `company_name`, `account_number`, `taxable`, `sales_tax_code`, `discount_percent`, `package_id`, `points`, `deleted`) VALUES
-(46, NULL, NULL, 1, '', '0.00', NULL, NULL, 0),
-(47, NULL, NULL, 1, '', '0.00', NULL, NULL, 0);
+(46, 'JS3944583', NULL, 1, '', '0.00', NULL, NULL, 0),
+(47, 'JS3944583', NULL, 1, '', '0.00', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
