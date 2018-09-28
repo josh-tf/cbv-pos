@@ -82,6 +82,16 @@ class Item_kit extends CI_Model
 		custom8,
 		custom9,
 		custom10,
+		custom11,
+		custom12,
+		custom13,
+		custom14,
+		custom15,
+		custom16,
+		custom17,
+		custom18,
+		custom19,
+		custom20,
 		item_type,
 		stock_type');
 
