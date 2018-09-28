@@ -415,8 +415,8 @@ class Items extends Secure_Controller
 			}
 		}
 
-		if($this->input->post('category') == "Desktop" || $this->input->post('category') == "Laptop"){ // if its a laptop or desktop
-			$exists = $this->Item->nameExists($this->input->post('name')); // check if the item name already exists
+		if($item_data['category'] == "Desktop" || $item_data['category'] == "Laptop"){ // if its a laptop or desktop
+			$exists = $this->Item->nameExists($item_data['name']); // check if the item name already exists
 			if($exists && $item_id == -1){ // only check if its a new item
 					$message = $this->xss_clean("An item with this name already exists" . ' ' . $item_data['name']);
 					echo json_encode(array('success' => FALSE, 'message' => $message, 'id' => $item_id)); // exit with error if it does
