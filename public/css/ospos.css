@@ -185,3 +185,8 @@ label.required {
 textarea#custom13, textarea#custom14, textarea#description {
     height: 100px;
 }
+
+/* For warning if item name exists */
+.alert-danger {
+	z-index: 9999 !important;
+	}
