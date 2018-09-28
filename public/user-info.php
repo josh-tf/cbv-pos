@@ -1,7 +1,7 @@
-<div class="computer-info">
+<div class='computer-info'>
 
 
-<h4 align="center">Disclaimer</h4>
+<h4 align='center'>Disclaimer</h4>
 
 <p>Computerbank has a standard three month warranty for our hardware.</p>
 
@@ -24,7 +24,7 @@ result of the misuse or abuse of equipment. Regularly backup all important data.
 
 <hr>
 
-<h4 align="center">Warranty for your Computerbank Computer</h4>
+<h4 align='center'>Warranty for your Computerbank Computer</h4>
 
 <p>
 <b>Return Policy:</b> We will refund your money <b>within two weeks of purchase</b> if there is a hardware
@@ -44,7 +44,7 @@ the first three months of receiving it, we will replace faulty hardware or reins
 
 <hr>
 
-<h4 align="center">What happens after the warranty?</h4>
+<h4 align='center'>What happens after the warranty?</h4>
 
 <p>
 If your computer breaks down after the warranty and you would like us to fix it
@@ -70,7 +70,7 @@ Please call before coming in. Our rates for repairing and troubleshooting comput
 <hr>
 
 
-<h4 align="center">Support for your Computerbank Computer</h4>
+<h4 align='center'>Support for your Computerbank Computer</h4>
 
 <p>Before ringing us, check the Computerbank Linux Desktop Guide. There is
 an electronic copy of the guide on the computer. The guide answers many common questions.
@@ -96,7 +96,7 @@ to put “ubuntu linux” in the search box.</p>
 
 <br>
 
-<table id="user-info">
+<table id='user-info'>
 
   <tr>
     <td><b>Default username:</b></td>

@@ -1,10 +1,10 @@
 <?php
 // grab our ID from the url
-$cbvid = htmlspecialchars($_GET["id"]);
+$cbvid = htmlspecialchars($_GET['id']);
 
 // exit if the id is empty
 if (empty($cbvid)) {
-    die("Invalid ID Provided");
+    die('Invalid ID Provided');
 }
 
 // using docker env vars
@@ -26,7 +26,7 @@ $result = $stmt->get_result();
 
 // if no results, exit
 if ($result->num_rows == 0) {
-  die("Invalid ID Provided");
+  die('Invalid ID Provided');
 }
 
 while ($row = $result->fetch_assoc()) {
@@ -42,14 +42,14 @@ while ($row = $result->fetch_assoc()) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
-  
+
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-  
+
   <link rel="stylesheet" href="css/extra/normalize.css">
   <link rel="stylesheet" href="css/extra/skeleton.css">
 
   <style>@page { size: A4 landscape }</style>
-  
+
 </head>
 
 <body class="A4 landscape">
@@ -70,11 +70,11 @@ while ($row = $result->fetch_assoc()) {
   <tbody>
     <tr>
       <td><b class="pricing">Concession</b></td> <!-- round up or down to nearest $5 -->
-      <td><b class="pricing">$<?php echo number_format((float)round(($row["unit_price"])/5) * 5, 2, '.', ''); ?></b></td>
+      <td><b class="pricing">$<?php echo number_format((float)round(($row['unit_price'])/5) * 5, 2, '.', ''); ?></b></td>
     </tr>
     <tr>
       <td><b class="pricing">Non Concession</b></td> <!-- the php below adds 25% and rounds up/down to nearest $5 -->
-      <td><b class="pricing">$<?php echo number_format((float)round(($row["unit_price"] * 1.25)/5) * 5, 2, '.', ''); ?></b></td>
+      <td><b class="pricing">$<?php echo number_format((float)round(($row['unit_price'] * 1.25)/5) * 5, 2, '.', ''); ?></b></td>
     </tr>
     <tr>
       <td><i>Without Accessories</i></td>
@@ -95,25 +95,25 @@ while ($row = $result->fetch_assoc()) {
   <tbody>
     <tr>
       <td><img src="images/ticket-icons/cbvid.png" class="ticket-icon" /> <b>CBV ID</b></td>
-      <td><?php echo $row["name"]." - ".$row["custom2"]; ?></td>
+      <td><?php echo $row['name'].' - '.$row['custom2']; ?></td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/processor.png" class="ticket-icon" /> <b>Processor</b></td>
-      <td><?php echo $row["custom3"]." ". $row["custom4"]; ?> Ghz</td>
+      <td><?php echo $row['custom3'].' '. $row['custom4']; ?> Ghz</td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/memory.png" class="ticket-icon" /> <b>Memory</b></td>
-      <td><?php echo $row["custom5"]; ?> GB</td>
+      <td><?php echo $row['custom5']; ?> GB</td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/storage.png" class="ticket-icon" /> <b>Storage</b></td>
-      <td><?php echo $row["custom6"]; ?> GB</td>
+      <td><?php echo $row['custom6']; ?> GB</td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Extras</b></td>
-      <td><?php if($row["custom7"]){echo $row["custom7"]. "in screen ";};
-		if($row["custom8"]){echo $row["custom8"]. " ";};
-		if($row["custom9"]){echo $row["custom9"]. "";};; ?></td>
+      <td><?php if($row['custom7']){echo $row['custom7']. 'in screen ';};
+		if($row['custom8']){echo $row['custom8']. ' ';};
+		if($row['custom9']){echo $row['custom9']. '';};; ?></td>
     </tr>
   </tbody>
 </table>
