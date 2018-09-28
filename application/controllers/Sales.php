@@ -839,14 +839,7 @@ class Sales extends Secure_Controller
 		{
 			$customer_info = $this->Customer->get_info($customer_id);
 			$data['customer_id'] = $customer_id;
-			if(!empty($customer_info->company_name))
-			{
-				$data['customer'] = $customer_info->company_name;
-			}
-			else
-			{
 				$data['customer'] = $customer_info->first_name . ' ' . $customer_info->last_name;
-			}
 			$data['first_name'] = $customer_info->first_name;
 			$data['last_name'] = $customer_info->last_name;
 			$data['customer_email'] = $customer_info->email;
