@@ -168,7 +168,7 @@ while ($num = mysqli_fetch_assoc($discountCount)) {
 
 <br><br>
 
-<h5>Sales for Concession ID [<b><?php echo $concID ?></b>] - Total Spent: <b>$<?php echo number_format((float) ($totalSpent), 2, '.', ''); ?></b> - Total Discount: <b>$<?php echo number_format((float) ($discTotal), 2, '.', ''); ?></b></h5>
+<h5>Sales for Concession ID [<b><?php echo $concID ?></b>] - Total Spent: <b>$<?php echo number_format((float) ($totalSpent-$discTotal), 2, '.', ''); ?></b> - Total Discount: <b>$<?php echo number_format((float) ($discTotal), 2, '.', ''); ?></b></h5>
 <p>There are <?php echo $matchCount; ?> matches for this concession ID in the sales database.</p>
 
 <table class="u-full-width">
@@ -179,6 +179,7 @@ while ($num = mysqli_fetch_assoc($discountCount)) {
     <th>Item Name</th>
     <th>Unit Price</th>
     <th>Discount</th>
+    <th>Amount Paid</th>
     <th>Description</th>
     </tr>
   </thead>
@@ -195,6 +196,7 @@ while ($row = $result->fetch_assoc()) {
       <td><?php echo $row['name']; ?> (<?php echo $row['category']; ?>)</td>
       <td>$<?php echo number_format((float) ($row['unit_price']), 2, '.', ''); ?></td>
       <td>$<?php echo number_format((float) ($row['discount_percent']), 2, '.', ''); ?></td>
+      <td>$<?php echo number_format((float) ($row['unit_price']-$row['discount_percent']), 2, '.', ''); ?></td>
       <td><?php echo $row['description']; ?></td>
     </tr>
 
