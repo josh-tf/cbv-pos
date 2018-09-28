@@ -9,8 +9,7 @@ $dbname = getenv('MYSQL_DB_NAME');
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql = "SELECT";
-$sql.= "     `name`,`unit_price`, `custom3`,`custom4`,`custom5`,`custom6`,`custom7`,`custom8`,`custom9`,`quantity`";
+$sql = "SELECT *";
 $sql.= " FROM";
 $sql.= "     cbvpos_item_quantities t1";
 $sql.= "         INNER JOIN";
@@ -128,15 +127,23 @@ while ($row = $result->fetch_assoc()) {
 </p>
 
 <table class="u-full-width">
+
+
+<table>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Conc. Price</th>
-      <th>Market Price</th>
-      <th>Processor</th>
-      <th>Memory</th>
-      <th>Storage</th>
-      <th>Extras</th>
+    <th>ID</th>
+    <th>Concession Price</th>
+    <th>Model</th>
+    <th>CPU Type</th>
+    <th>CPU Speed (Ghz)</th>
+    <th>RAM (GB)</th>
+    <th>HDD (GB)</th>
+    <th>Screen Size (Inches)</th>
+    <th>Optical Drive</th>
+    <th>Battery Life</th>
+    <th>Notes (Extras, etc)</th>
+    <th>Operating System</th>
     </tr>
   </thead>
   <tbody>
@@ -154,14 +161,17 @@ while ($row = $result->fetch_assoc()) {
 
     <tr>
       <td><?php echo $row["name"]; ?></td>
-      <td>$<?php echo number_format((float)round(($row["unit_price"])/5) * 5, 2, '.', ''); ?></td>
-      <td>$<?php echo number_format((float)round(($row["unit_price"] * 1.25)/5) * 5, 2, '.', ''); ?></td>
-      <td><?php echo $row["custom3"]." ". $row["custom4"]; ?> Ghz</td>
-      <td><?php echo $row["custom5"]; ?> GB</td>
-      <td><?php echo $row["custom6"]; ?> GB</td>
-      <td><?php if($row["custom7"]){echo $row["custom7"]. "in screen ";};
-		if($row["custom8"]){echo $row["custom8"]. " ";};
-		if($row["custom9"]){echo $row["custom9"]. "";};; ?></td>
+      <td>$<?php echo number_format((float)($row["unit_price"]), 2, '.', ''); ?></td>
+      <td><?php echo $row["custom2"]; ?></td>
+      <td><?php echo $row["custom3"]; ?></td>
+      <td><?php echo $row["custom4"]; ?></td>
+      <td><?php echo $row["custom5"]; ?></td>
+      <td><?php echo $row["custom6"]; ?></td>
+      <td><?php echo $row["custom8"]; ?></td>
+      <td><?php echo $row["custom9"]; ?></td>
+      <td><?php echo $row["custom11"]; ?></td>
+      <td><?php echo $row["custom13"]; ?></td>
+      <td><?php echo $row["custom7"]; ?></td>
     </tr>
 
 <?php
