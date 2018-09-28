@@ -178,6 +178,7 @@ while ($num = mysqli_fetch_assoc($discountCount)) {
     <th>Sale Date</th>
     <th>Item Name</th>
     <th>Unit Price</th>
+    <th>Discount</th>
     <th>Description</th>
     </tr>
   </thead>
@@ -193,6 +194,7 @@ while ($row = $result->fetch_assoc()) {
       <td><?php echo $row['sale_time']; ?></td>
       <td><?php echo $row['name']; ?> (<?php echo $row['category']; ?>)</td>
       <td>$<?php echo number_format((float) ($row['unit_price']), 2, '.', ''); ?></td>
+      <td>$<?php echo number_format((float) ($row['discount_percent']), 2, '.', ''); ?></td>
       <td><?php echo $row['description']; ?></td>
     </tr>
 
