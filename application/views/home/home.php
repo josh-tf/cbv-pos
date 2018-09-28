@@ -4,7 +4,8 @@
 	dialog_support.init("a.modal-dlg");
 </script>
 
-<h3 class="text-center"><?php echo $this->lang->line('common_welcome_message'); ?></h3>
+<center><img src="./images/banner.png" style="text-align: center;width: 60%;"></center>
+<h3 class="text-center">Welcome to <b>CBVPOS</b>: click a module below to get started.</h3>
 
 <div id="home_module_list">
 	<?php

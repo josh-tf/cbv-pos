@@ -190,3 +190,60 @@ textarea#custom13, textarea#custom14, textarea#description {
 .alert-danger {
 	z-index: 9999 !important;
 	}
+
+/* Main Menu items */
+
+.module_item a {
+    color: #0f007d;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+/* Make this a little cleaner */
+
+.jumbotron.push-spaces {
+    margin: 0;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+.jumbotron {
+    padding-top: 35px;
+    padding-bottom: 30px;
+}
+
+/* Buttons */
+
+.btn-info, .btn-primary  {
+    color: #ffffff;
+    background-color: #0f007d;
+    border-color: #080042;
+}
+
+.btn-info:hover, .btn-primary:hover, .btn-primary:active:hover,
+ .btn-info:active, .btn-primary:active, .btn-info:active:hover,
+  .btn-info:hover, .btn-info:focus, .btn-primary:focus,
+   .btn-primary.focus {
+    color: #ffffff;
+    background-color: #080042;
+    border-color: #0f007d;
+}
+
+.bootstrap-dialog.type-primary .modal-header {
+    background-color: #0f007d;
+}
+
+h3.text-center {
+    color: #0f007d;
+}
+
+.container-b {
+    margin-bottom: 100px;
+}
+
+@media print {
+	.container-b {
+		margin-bottom: 0px;
+	}
+  }
