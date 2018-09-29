@@ -23,9 +23,12 @@ $sql .= "     cbvpos_customers t1";
 $sql .= "         INNER JOIN";
 $sql .= "     cbvpos_people t2 ON t1.person_id = t2.person_id";
 $sql .= " WHERE";
-$sql .= " 	company_name = '" . $concID . "'";
+$sql .= " 	company_name = ?";
 
 $stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $concID);
+
+
 
 $stmt->execute();
 
@@ -163,9 +166,10 @@ $sql .= "     cbvpos_items t4 ON t3.item_id = t4.item_id";
 $sql .= "         INNER JOIN";
 $sql .= "     cbvpos_people t5 ON t2.person_id = t5.person_id";
 $sql .= " WHERE";
-$sql .= " 	company_name = '" . $concID .  "' AND sale_time >= '" . $searchRange->format('Y-m-d H:i:s') . "';";
+$sql .= " 	company_name = ? AND sale_time >= '" . $searchRange->format('Y-m-d H:i:s') . "';";
 
 $stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $concID);
 
 $stmt->execute();
 $result = $stmt->get_result();
