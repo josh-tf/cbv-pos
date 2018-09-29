@@ -34,7 +34,7 @@ function openConcCheck() {
 	if (concID == 'Concession ID:') {
 		throw ''; // exit if you just click the generate button without entering anything
 	};
-		window.open('./customer-lookup.php?conc-id=' + concID) // open the sales ticket
+		window.open('./customer-lookup.php?conc-id=' + concID + '&range=alltime') // open the sales ticket
 	}
 </script>
 
