@@ -262,3 +262,16 @@ h3.text-center {
     color: #d1541a;
     opacity: 1;
 }
+
+.lookup {
+    background: #F33;
+    color: #fff;
+    width: 59px;
+    height: 32px;
+    padding: 6px;
+    margin: -2px 0px 1px -20px;
+}
+
+.lookup a{
+    color: #fff;
+}
