@@ -63,6 +63,12 @@ th:first-child, td:first-child {
 body {
     font-size: 1.2em !important;
 }
+th, td {
+    white-space: nowrap;
+}
+th, td {
+    padding: 2px 12px;
+}
   </style>
 
 
