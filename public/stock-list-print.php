@@ -65,7 +65,7 @@ $sql .= ' 	quantity > 0 AND';
     <th>HDD</th>
     <th>Screen Size</th>
     <th>DVD Drive</th>
-    <th>Notes)</th>
+    <th>Notes</th>
     <th>System</th>
     </tr>
 						</thead>
