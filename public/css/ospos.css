@@ -258,3 +258,7 @@ h3.text-center {
     color: #ffffff;
     opacity: 1;
 }
+.close:hover, .close:focus {
+    color: #d1541a;
+    opacity: 1;
+}
