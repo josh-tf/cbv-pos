@@ -81,6 +81,13 @@ th:first-child, td:first-child {
 body {
     font-size: 1.2em !important;
 }
+th, td {
+    padding: 5px 15px;
+}
+
+th, td {
+    white-space: normal;
+}
   </style>
 
 
