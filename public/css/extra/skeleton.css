@@ -641,3 +641,6 @@ th:last-child, td:last-child {
 a:hover {
   color: #ffffff;
 }
+th, td {
+  white-space: nowrap;
+}

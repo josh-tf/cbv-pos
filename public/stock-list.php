@@ -42,7 +42,7 @@ $sql .= ' 	quantity > 0 AND';
       border-collapse: collapse;
     }
     th, td {
-      padding: 5px 10px;
+      padding: 3px 3px;
       border: 1px solid #999;
     }
     th {
@@ -81,7 +81,7 @@ body {
     <tr>
     <th>ID</th>
     <th>Type</th>
-    <th>Concession Price</th>
+    <th>Conc. Price</th>
     <th>Retail Price</th>
     <th>Model</th>
     <th>CPU Type</th>
@@ -89,9 +89,9 @@ body {
     <th>RAM</th>
     <th>HDD</th>
     <th>Screen Size</th>
-    <th>Optical Drive</th>
-    <th>Notes (Extras, etc)</th>
-    <th>Operating System</th>
+    <th>DVD Drive</th>
+    <th>Notes</th>
+    <th>System</th>
     </tr>
   </thead>
   <tbody>
@@ -143,17 +143,17 @@ while ($row = $result->fetch_assoc()) {
   <thead>
     <tr>
     <th>ID</th>
-    <th>Concession Price</th>
+    <th>Conc. Price</th>
     <th>Model</th>
     <th>CPU Type</th>
     <th>CPU Speed</th>
     <th>RAM</th>
     <th>HDD</th>
     <th>Screen Size</th>
-    <th>Optical Drive</th>
+    <th>DVD Drive</th>
     <th>Battery Life</th>
-    <th>Notes (Extras, etc)</th>
-    <th>Operating System</th>
+    <th>Notes</th>
+    <th>System</th>
     </tr>
   </thead>
   <tbody>
