@@ -36,6 +36,7 @@
 					<div class='col-xs-2'>
 <div class="lookup">
 <a   href="#"
+	target="_blank"
     class=""
   onclick="this.href='/customer-lookup.php?conc-id='
                       +document.getElementById('company_name').value+'&range=alltime';
