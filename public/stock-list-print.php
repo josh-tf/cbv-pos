@@ -49,14 +49,14 @@ $sql .= ' 	quantity > 0 AND';
 
     	<img src="images/cbv-logo-black.png" class="logo"/>
 
-			<h1 class="head">Computerbank: Desktop Stocklist</h1>
+			<h1 class="head">Desktop Stocklist</h1>
 
 					<table class="u-full-width">
 						<thead>
 						<tr>
     <th>ID</th>
     <th>Type</th>
-    <th>Concession Price</th>
+    <th>Conc. Price</th>
     <th>Retail Price</th>
     <th>Model</th>
     <th>CPU Type</th>
@@ -64,9 +64,9 @@ $sql .= ' 	quantity > 0 AND';
     <th>RAM</th>
     <th>HDD</th>
     <th>Screen Size</th>
-    <th>Optical Drive</th>
-    <th>Notes (Extras, etc)</th>
-    <th>Operating System</th>
+    <th>DVD Drive</th>
+    <th>Notes)</th>
+    <th>System</th>
     </tr>
 						</thead>
 						<tbody>
@@ -110,27 +110,27 @@ while ($row = $result->fetch_assoc()) {
 
 </div>
 
-			<div class="laptop-stocklist">
+			<div class="pagebreak laptop-stocklist">
 
     	<img src="images/cbv-logo-black.png" class="logo"/>
 
-			<h1 class="head">Computerbank: Laptop Stocklist</h1>
+			<h1 class="head">Laptop Stocklist</h1>
 
 					<table class="u-full-width">
 						<thead>
 						<tr>
     <th>ID</th>
-    <th>Concession Price</th>
+    <th>Conc. Price</th>
     <th>Model</th>
     <th>CPU Type</th>
     <th>CPU Speed</th>
     <th>RAM</th>
     <th>HDD</th>
     <th>Screen Size</th>
-    <th>Optical Drive</th>
+    <th>DVD Drive</th>
     <th>Battery Life</th>
-    <th>Notes (Extras, etc)</th>
-    <th>Operating System</th>
+    <th>Notes</th>
+    <th>System</th>
     </tr>
 						</thead>
 						<tbody>

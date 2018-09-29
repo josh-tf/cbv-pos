@@ -4,7 +4,7 @@
 
     th,
     td {
-      padding: 5px 10px;
+      padding: 3px 3px;
       border: 1px solid #999;
     }
 
@@ -83,3 +83,5 @@ body {
 
       font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
+
+  .pagebreak { page-break-before: always; }
