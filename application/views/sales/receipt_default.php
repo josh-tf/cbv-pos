@@ -285,7 +285,7 @@ foreach ($cart as $line => $item) {
 
 		<div class="Thankyou-Note"><?php echo $this->lang->line('sales_receipt_extra_page_note'); ?></div>
 
-		<div class="page-break"></div>
+		<div class="pagebreak"></div>
 
 			<?php include 'user-info.php'; // in ~/public/ ?>
 <?php
