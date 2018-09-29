@@ -222,7 +222,9 @@ while ($num = mysqli_fetch_assoc($discountCount)) {
 
 <?php
 $siteurl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$siteurl = strstr($siteurl, '&', true);
+if (strpos($siteurl, '&')){ //if no param provided
+  $siteurl = strstr($siteurl, '&', true);
+}
 ?>
 
 </table>
