@@ -254,3 +254,7 @@ h3.text-center {
 .topbar a {
     color: #ffc0a8;
 }
+.close {
+    color: #ffffff;
+    opacity: 1;
+}
