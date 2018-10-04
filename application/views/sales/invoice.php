@@ -104,7 +104,7 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
 			</tr>
 			<tr>
 				<td class="meta-head">
-					<?php echo $this->lang->line('sales_amount_due'); ?>
+					Invoice Total
 				</td>
 				<td><textarea rows="5" cols="6"><?php echo to_currency($total); ?></textarea></td>
 			</tr>
