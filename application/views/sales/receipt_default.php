@@ -61,12 +61,6 @@ if (!empty($invoice_number)) {
 ?>
 			<tr>
 				<td class="meta-head">
-					<?php echo $this->lang->line('employees_employee') ?>
-				</td>
-				<td><textarea rows="5" cols="6"><?php echo $employee; ?></textarea></td>
-			</tr>
-			<tr>
-				<td class="meta-head">
 				<?php echo $this->lang->line('sales_receipt'); ?>
 				</td>
 				<td><textarea rows="5" cols="6"><?php echo $transaction_time ?></textarea></td>
