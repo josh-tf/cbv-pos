@@ -273,7 +273,7 @@ class Customers extends Persons
 		else // Failure
 		{
 			echo json_encode(array('success' => FALSE,
-							'message' => $this->lang->line('customers_error_adding_updating') . ' ' . $first_name . ' ' . $last_name,
+							'message' => $this->lang->line('customers_error_adding_updating') . ' ' . $first_name . ' ' . $last_name . ' (' . $customer_data['company_name'] . ')',
 							'id' => -1));
 		}
 	}
