@@ -7,6 +7,54 @@ if (isset($error_message)) {
 }
 ?>
 
+<!-- Modal -->
+<div class="modal" id="printWarning" tabindex="-1" role="dialog" aria-labelledby="printWarningLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="printWarningLabel">Printer Settings</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+<h3>Important</h3>
+<p>
+To ensure the invoice is printed correctly, please ensure
+the printer settings in the popup dialog are configured as follows:
+</p>
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Setting</th>
+      <th scope="col">Option</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">2-Sided</th>
+      <td>Yes - Long Edge</td>
+    </tr>
+    <tr>
+      <th scope="row">Orientation</th>
+      <td>Landscape</td>
+    </tr>
+    <tr>
+      <th scope="row">Scaling</th>
+      <td colspan="2">85%</td>
+    </tr>
+  </tbody>
+</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+					<button type="button" onclick="printdoc();" class="btn btn-primary">Print Invoice</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <?php if (!empty($customer_email)): ?>
 <script type="text/javascript">
 	$(document).ready(function () {
@@ -32,7 +80,7 @@ if (isset($error_message)) {
 <?php $this->load->view('partial/print_receipt', array('print_after_sale' => $print_after_sale, 'selected_printer' => 'invoice_printer'));?>
 
 <div class="print_hide" id="control_buttons" style="text-align:right">
-	<a href="javascript:printdoc();">
+	<a data-toggle="modal" data-target="#printWarning">
 		<div class="btn btn-info btn-sm" , id="show_print_button">
 			<?php echo '<span class="glyphicon glyphicon-print">&nbsp</span>' . $this->lang->line('common_print'); ?>
 		</div>
