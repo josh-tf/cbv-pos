@@ -263,9 +263,7 @@ foreach ($stock_locations as $key => $location_detail) {
 				<div class="fileinput <?php echo $logo_exists ? 'fileinput-exists' : 'fileinput-new'; ?>" data-provides="fileinput">
 					<div class="fileinput-new thumbnail" style="width: 100px; height: 100px;"></div>
 					<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 100px; max-height: 100px;">
-						<img data-src="holder.js/100%x100%" alt="<?php echo $this->lang->line('items_image'); ?>"
-							 src="<?php echo $image_path; ?>"
-							 style="max-height: 100%; max-width: 100%;">
+						<img data-src="holder.js/100%x100%" alt="<?php echo $this->lang->line('items_image'); ?>" src="<?php echo $image_path; ?>"" style="max-height: 100%; max-width: 100%;">
 					</div>
 					<div>
 						<span class="btn btn-default btn-sm btn-file">
@@ -550,7 +548,11 @@ function createDescription() {
 					table_support.handle_submit('<?php echo site_url('items'); ?>', response, stay_open);
 
 					if(response.success) {
-						dialog_support.hide(); // only hide if successful
+
+						var answer = confirm("Do you want to reset the form?")
+						if (answer) {
+							dialog_support.hide();
+						}
 					};
 
 				},
