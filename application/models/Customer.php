@@ -184,11 +184,17 @@ class Customer extends Person
 	public function save_customer(&$person_data, &$customer_data, $customer_id = FALSE)
 	{
 			if(!$customer_id || !$this->exists($customer_id)){
-				$this->db->from('customers');
-				$this->db->where('customers.company_name', $customer_data['company_name']);
 
-				if($this->db->get()->num_rows() >= 1){
-					return false;
+				if(!$customer_data['company_name'] == null){
+
+					$this->db->from('customers');
+					$this->db->where('customers.company_name', $customer_data['company_name']);
+
+					if($this->db->get()->num_rows() >= 1){
+						return false;
+
+				}
+
 			}
 		}
 
