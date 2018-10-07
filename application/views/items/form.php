@@ -2,6 +2,7 @@
 
 <ul id="error_message_box" class="error_message_box"></ul>
 
+
 <?php echo form_open('items/save/' . $item_info->item_id, array('id' => 'item_form', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal')); ?>
 	<fieldset id="item_basic_info">
 		<div class="form-group form-group-sm hidden">
@@ -312,28 +313,198 @@ foreach ($stock_locations as $key => $location_detail) {
 ); ?>
 			</div>
 		</div>
+	<div id="computer-fields">
 
-<?php
-// add the custom step values and item types here - Defaults are `text` and `1`
-
-$itemTypeInt = array('4', '5', '6', '8', '12'); //default type is text, put here for number/integer
-$itemDate = array('1'); // default type is text, put here for date
-$itemPartStep = array('4', '5', '8'); // default is 1, place here for 0.1 stepping value
-?>
-
-<div class="form-group form-group-sm custom3">
-<?php echo form_label($this->config->item('custom_name'), 'custom', array('class' => 'control-label col-xs-3')); ?>
+<div class="form-group form-group-sm custom1">
+<?php echo form_label($this->config->item('custom1_name'), 'custom1', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom3'] ?>" placeholder="<?php echo $this->lang->line('custom' . $i . '_helper') ?>" list="custom3" class="form-control input-sm" name="custom3"><datalist id="custom3"><option value="texto A"><option value="texto B"></datalist>
-<span class="input-group-addon input-sm">xx</span>
+<span class="input-group-addon input-sm"><span class="glyphicon glyphicon-calendar"></span></span>
+<input value="<?php $item_arr['custom1'] ?>" placeholder="<?php echo $this->lang->line('custom1_helper') ?>" list="custom1" class="form-control input-sm" name="custom1" type="date" id="custom1">
 </div>
 </div>
 </div>
 
-	<div id="computer-fields">
+<div class="form-group form-group-sm custom2">
+<?php echo form_label($this->config->item('custom2_name'), 'custom2', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<div class="input-group input-group-sm custom">
+<input value="<?php $item_arr['custom2'] ?>" placeholder="<?php echo $this->lang->line('custom2_helper') ?>" list="custom2" class="form-control input-sm" name="custom2" id="custom2">
+</div>
+</div>
+</div>
+
+<div class="form-group form-group-sm custom3">
+<?php echo form_label($this->config->item('custom3_name'), 'custom3', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<div class="input-group input-group-sm custom">
+<input value="<?php $item_arr['custom3'] ?>" placeholder="<?php echo $this->lang->line('custom3_helper') ?>" list="custom3" class="form-control input-sm" name="custom3">
+<datalist id="custom3">
+
 <?php
-for ($i = 1; $i <= 20; ++$i) { //Loop through all 20 custom items in the DB
+
+$variable = $this->config->item('cbvopt_item_cpu');
+$var=explode(',',$variable);
+
+foreach($var as $row){
+echo '<option value="' . trim($row) . '">';
+ }
+?>
+
+</datalist>
+</div>
+</div>
+</div>
+
+<div class="form-group form-group-sm custom4">
+<?php echo form_label($this->config->item('custom4_name'), 'custom4', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<div class="input-group input-group-sm custom">
+<input value="<?php $item_arr['custom4'] ?>" placeholder="<?php echo $this->lang->line('custom4_helper') ?>" list="custom4" class="form-control input-sm" name="custom4" id="custom4" type="number" step="0.1">
+<span class="input-group-addon input-sm">Ghz</span>
+</div>
+</div>
+</div>
+
+<div class="form-group form-group-sm custom5">
+<?php echo form_label($this->config->item('custom5_name'), 'custom5', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<div class="input-group input-group-sm custom">
+<input value="<?php $item_arr['custom5'] ?>" placeholder="<?php echo $this->lang->line('custom5_helper') ?>" list="custom5" class="form-control input-sm" name="custom5">
+<datalist id="custom5">
+
+<?php
+
+$variable = $this->config->item('cbvopt_item_ram');
+$var=explode(',',$variable);
+
+foreach($var as $row){
+echo '<option value="' . trim($row) . '">';
+ }
+?>
+
+</datalist>
+<span class="input-group-addon input-sm">GB</span>
+</div>
+</div>
+</div>
+
+<div class="form-group form-group-sm custom6">
+<?php echo form_label($this->config->item('custom6_name'), 'custom6', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<div class="input-group input-group-sm custom">
+<input value="<?php $item_arr['custom6'] ?>" placeholder="<?php echo $this->lang->line('custom6_helper') ?>" list="custom6" class="form-control input-sm" name="custom6">
+<datalist id="custom6">
+
+<?php
+
+$variable = $this->config->item('cbvopt_item_storage');
+$var=explode(',',$variable);
+
+foreach($var as $row){
+echo '<option value="' . trim($row) . '">';
+ }
+?>
+</datalist>
+<span class="input-group-addon input-sm">GB</span>
+</div>
+</div>
+</div>
+
+<div class="form-group form-group-sm custom7">
+<?php echo form_label($this->config->item('custom7_name'), 'custom7', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<div class="input-group input-group-sm custom">
+<input value="<?php echo $this->config->item('cbvopt_distver') ?>" placeholder="<?php echo $this->lang->line('custom7_helper') ?>" list="custom7" class="form-control input-sm" name="custom7" id="custom7">
+</div>
+</div>
+</div>
+
+<div class="form-group form-group-sm custom8">
+<?php echo form_label($this->config->item('custom8_name'), 'custom8', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<div class="input-group input-group-sm custom">
+<input value="<?php $item_arr['custom8'] ?>" placeholder="<?php echo $this->lang->line('custom8_helper') ?>" list="custom8" class="form-control input-sm" name="custom8">
+<datalist id="custom8">
+
+<?php
+
+$variable = $this->config->item('cbvopt_item_screen');
+$var=explode(',',$variable);
+
+foreach($var as $row){
+echo '<option value="' . trim($row) . '">';
+ }
+?>
+</datalist>
+<span class="input-group-addon input-sm">Inches</span>
+</div>
+</div>
+</div>
+
+<div class="form-group form-group-sm custom9">
+<?php echo form_label($this->config->item('custom9_name'), 'custom9', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<div class="input-group input-group-sm custom">
+<input value="<?php $item_arr['custom9'] ?>" placeholder="<?php echo $this->lang->line('custom9_helper') ?>" list="custom9" class="form-control input-sm" name="custom9">
+<datalist id="custom9">
+
+<?php
+
+$variable = $this->config->item('cbvopt_item_optical');
+$var=explode(',',$variable);
+
+foreach($var as $row){
+echo '<option value="' . trim($row) . '">';
+ }
+?>
+</datalist>
+</div>
+</div>
+</div>
+
+<div class="form-group form-group-sm custom10">
+<?php echo form_label($this->config->item('custom10_name'), 'custom10', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<div class="input-group input-group-sm custom">
+<input value="<?php $item_arr['custom10'] ?>" placeholder="<?php echo $this->lang->line('custom10_helper') ?>" list="custom10" class="form-control input-sm" name="custom10">
+<datalist id="custom10">
+
+<?php
+
+$variable = $this->config->item('cbvopt_item_type');
+$var=explode(',',$variable);
+
+foreach($var as $row){
+echo '<option value="' . trim($row) . '">';
+ }
+?>
+
+</datalist>
+</div>
+</div>
+</div>
+
+<div class="form-group form-group-sm custom11">
+<?php echo form_label($this->config->item('custom11_name'), 'custom11', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<div class="input-group input-group-sm custom">
+<input value="<?php $item_arr['custom11'] ?>" placeholder="<?php echo $this->lang->line('custom11_helper') ?>" list="custom11" class="form-control input-sm" name="custom11" id="custom11">
+</div>
+</div>
+</div>
+
+<div class="form-group form-group-sm custom12">
+<?php echo form_label($this->config->item('custom12_name'), 'custom12', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<div class="input-group input-group-sm custom">
+<input value="<?php $item_arr['custom12'] ?>" placeholder="<?php echo $this->lang->line('custom12_helper') ?>" list="custom12" class="form-control input-sm" name="custom12" id="custom12" type="number" step="1">
+</div>
+</div>
+</div>
+
+<?php
+for ($i = 13; $i <= 20; ++$i) { //Loop through all 20 custom items in the DB
     if ($this->config->item('custom' . $i . '_name') != null) { // Only proceed if the item is notnull
         $item_arr = (array) $item_info;
         ?>
@@ -366,15 +537,6 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
 
         //Show a textarea instead of a input type for the "Other Notes" and "Extras" fields
         echo ($i == 13 || $i == 14 ? form_textarea($inputContents) : form_input($inputContents));
-
-        $helperVal = ($i == 4 ? 'GHz' : //Custom 4 is CPU Speed
-            ($i == 5 || $i == 6 ? 'GB' : // Custom 5 RAM, Custom 6 Storage
-                ($i == 8 ? 'Inches' : // Custom 8 is screen size
-                    ($i == 11 ? 'Hours' : null)))); // Custom 11 is Battery life, otherwise no return
-
-        //only print if returned value
-        if (isset($helperVal)) {echo '<span class="input-group-addon input-sm">' . $helperVal . '</span>';}
-        ;
         ?>
 						</div>
 					</div>
