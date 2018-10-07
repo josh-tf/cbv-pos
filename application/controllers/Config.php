@@ -435,7 +435,12 @@ class Config extends Secure_Controller
 			'cbvopt_distuser' => $this->input->post('cbvopt_distuser'),
 			'cbvopt_distpass' => $this->input->post('cbvopt_distpass'),
 			'cbvopt_distver' => $this->input->post('cbvopt_distver'),
-			'cbvopt_item_cpu' => $this->input->post('cbvopt_item_cpu')
+			'cbvopt_item_cpu' => $this->input->post('cbvopt_item_cpu'),
+			'cbvopt_item_ram' => $this->input->post('cbvopt_item_ram'),
+			'cbvopt_item_storage' => $this->input->post('cbvopt_item_storage'),
+			'cbvopt_item_screen' => $this->input->post('cbvopt_item_screen'),
+			'cbvopt_item_optical' => $this->input->post('cbvopt_item_optical'),
+			'cbvopt_item_type' => $this->input->post('cbvopt_item_type')
 		);
 
 		$result = $this->Appconfig->batch_save($batch_save_data);
