@@ -27,7 +27,6 @@ $lang["sales_customer_address"] = "Address";
 $lang["sales_customer_discount"] = "Discount";
 $lang["sales_customer_email"] = "Email";
 $lang["sales_customer_location"] = "Location";
-$lang["sales_customer_mailchimp_status"] = "Mailchimp status";
 $lang["sales_customer_optional"] = "(Optional)";
 $lang["sales_customer_required"] = "(Required)";
 $lang["sales_customer_total"] = "Total";

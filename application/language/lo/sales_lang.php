@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_available_points"] = "Available Points";
 $lang["rewards_package"] = "Rewards";
@@ -27,7 +27,6 @@ $lang["sales_customer_address"] = "Address";
 $lang["sales_customer_discount"] = "Discount";
 $lang["sales_customer_email"] = "Email";
 $lang["sales_customer_location"] = "Location";
-$lang["sales_customer_mailchimp_status"] = "Mailchimp status";
 $lang["sales_customer_total"] = "Total";
 $lang["sales_date"] = "Sale Date";
 $lang["sales_date_range"] = "Date Range";

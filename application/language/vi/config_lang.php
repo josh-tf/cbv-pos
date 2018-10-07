@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Địa chỉ công ty";
 $lang["config_address_required"] = "Trường địa chỉ công ty là bắt buộc.";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Kho";
 $lang["config_location_configuration"] = "Vị trí kho";
 $lang["config_location_info"] = "Thông tin cấu hình vị trí";
 $lang["config_logout"] = "Bạn có muốn sao lưu dự phòng trước khi đăng xuất ra không? Bấm chuột vào [OK] để sao lưu hoặc [Cancel] để đăng xuất.";
-$lang["config_mailchimp"] = "Mailchimp";
-$lang["config_mailchimp_api_key"] = "Khóa API Mailchimp";
-$lang["config_mailchimp_configuration"] = "Cấu hình Mailchimp";
-$lang["config_mailchimp_key_successfully"] = "API Key hợp lệ.";
-$lang["config_mailchimp_key_unsuccessfully"] = "API Key không hợp lệ.";
-$lang["config_mailchimp_lists"] = "Bó thư Mailchimp";
-$lang["config_mailchimp_tooltip"] = "Bấm vào biểu tượng để lấy khóa API.";
 $lang["config_message"] = "Nhắn tin";
 $lang["config_message_configuration"] = "Cấu hình nhắn tin";
 $lang["config_msg_msg"] = "Tin nhắn văn bản đã lưu";

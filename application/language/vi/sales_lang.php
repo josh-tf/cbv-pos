@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_available_points"] = "Các điểm sẵn có";
 $lang["rewards_package"] = "Tiền thưởng";
@@ -27,7 +27,6 @@ $lang["sales_customer_address"] = "Địa chỉ";
 $lang["sales_customer_discount"] = "Giảm giá";
 $lang["sales_customer_email"] = "Thư điện tử";
 $lang["sales_customer_location"] = "Vị trí";
-$lang["sales_customer_mailchimp_status"] = "Tình trạng Mailchimp";
 $lang["sales_customer_total"] = "Tổng cộng";
 $lang["sales_date"] = "Ngày bán";
 $lang["sales_date_range"] = "Phạm vi Ngày";

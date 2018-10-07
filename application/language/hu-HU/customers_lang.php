@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "Számla #";
 $lang["customers_account_number_duplicate"] = "Ez a számlaszám már szerepel az adatbázisban.";
@@ -19,16 +19,6 @@ $lang["customers_excel_import_nodata_wrongformat"] = "A feltöltött fájlban ni
 $lang["customers_excel_import_partially_failed"] = "A legtöbb vásárló importálva. alább a lista a kimaradottakról";
 $lang["customers_excel_import_success"] = "Vásárlók importálása sikeres";
 $lang["customers_import_items_excel"] = "Vevők importálása Excelből";
-$lang["customers_mailchimp_activity_click"] = "";
-$lang["customers_mailchimp_activity_lastopen"] = "";
-$lang["customers_mailchimp_activity_open"] = "";
-$lang["customers_mailchimp_activity_total"] = "";
-$lang["customers_mailchimp_activity_unopen"] = "";
-$lang["customers_mailchimp_email_client"] = "";
-$lang["customers_mailchimp_info"] = "";
-$lang["customers_mailchimp_member_rating"] = "";
-$lang["customers_mailchimp_status"] = "";
-$lang["customers_mailchimp_vip"] = "";
 $lang["customers_max"] = "";
 $lang["customers_min"] = "";
 $lang["customers_new"] = "Új vevő";

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Endereço";
 $lang["config_address_required"] = "Endereço da empresa é um campo obrigatório.";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Estoque";
 $lang["config_location_configuration"] = "Localização do Estoque";
 $lang["config_location_info"] = "Informações da localização";
 $lang["config_logout"] = "Você não quer fazer uma cópia de segurança antes de sair? Clique [OK] para fazer a cópia de segurança.";
-$lang["config_mailchimp"] = "Configuração Mailchimp";
-$lang["config_mailchimp_api_key"] = "Mailchimp chave API";
-$lang["config_mailchimp_configuration"] = "Configuração Mailchimp";
-$lang["config_mailchimp_key_successfully"] = "API chave válida.";
-$lang["config_mailchimp_key_unsuccessfully"] = "API chave inválida.";
-$lang["config_mailchimp_lists"] = "Lista Mailchimp";
-$lang["config_mailchimp_tooltip"] = "Clique no ícone de uma chave de API.";
 $lang["config_message"] = "Mensagem";
 $lang["config_message_configuration"] = "Configuração de Mensagens";
 $lang["config_msg_msg"] = "Salvar mensagem de texto";

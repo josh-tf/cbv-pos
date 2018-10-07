@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "";
 $lang["config_address_required"] = "";
@@ -158,13 +158,6 @@ $lang["config_location"] = "";
 $lang["config_location_configuration"] = "";
 $lang["config_location_info"] = "";
 $lang["config_logout"] = "";
-$lang["config_mailchimp"] = "";
-$lang["config_mailchimp_api_key"] = "";
-$lang["config_mailchimp_configuration"] = "";
-$lang["config_mailchimp_key_successfully"] = "";
-$lang["config_mailchimp_key_unsuccessfully"] = "";
-$lang["config_mailchimp_lists"] = "";
-$lang["config_mailchimp_tooltip"] = "";
 $lang["config_message"] = "";
 $lang["config_message_configuration"] = "";
 $lang["config_msg_msg"] = "";

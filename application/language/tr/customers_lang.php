@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "Hesap No";
 $lang["customers_account_number_duplicate"] = "Bu hesap numarası zaten var";
@@ -19,16 +19,6 @@ $lang["customers_excel_import_nodata_wrongformat"] = "Yüklenen dosya herhangi b
 $lang["customers_excel_import_partially_failed"] = "Birçok Müşteri içe aktarıldı. Ama bazıları değil, listesi burada";
 $lang["customers_excel_import_success"] = "Müşteri aktarımı başarılı";
 $lang["customers_import_items_excel"] = "Müşterileri Excel sayfasından aktar";
-$lang["customers_mailchimp_activity_click"] = "";
-$lang["customers_mailchimp_activity_lastopen"] = "";
-$lang["customers_mailchimp_activity_open"] = "";
-$lang["customers_mailchimp_activity_total"] = "";
-$lang["customers_mailchimp_activity_unopen"] = "";
-$lang["customers_mailchimp_email_client"] = "";
-$lang["customers_mailchimp_info"] = "";
-$lang["customers_mailchimp_member_rating"] = "";
-$lang["customers_mailchimp_status"] = "";
-$lang["customers_mailchimp_vip"] = "";
 $lang["customers_max"] = "";
 $lang["customers_min"] = "";
 $lang["customers_new"] = "Yeni Müşteri";

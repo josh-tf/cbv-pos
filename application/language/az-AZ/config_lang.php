@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Şirkət Adresi";
 $lang["config_address_required"] = "Şirkətin adı olan boşluq  sahəsi doldurulmalıdı.";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Fond";
 $lang["config_location_configuration"] = "Anbar Yerləri";
 $lang["config_location_info"] = "Yer Konfiqurasiya Məlumatı";
 $lang["config_logout"] = "Çıxışdan əvvəl məlumatlari ehtiyat bazasına köçürmək istəyirsinizmi? Çıxış üçün Bekap və ya [Ləğv] üçün [OK]' düyməsinə basın.";
-$lang["config_mailchimp"] = "Mailçimp";
-$lang["config_mailchimp_api_key"] = "Mailchimp API Açarı";
-$lang["config_mailchimp_configuration"] = "Mailchimp Konfiqurasiyası";
-$lang["config_mailchimp_key_successfully"] = "API Açarı etibarlıdır.";
-$lang["config_mailchimp_key_unsuccessfully"] = "API Açarı etibarsızdır.";
-$lang["config_mailchimp_lists"] = "Mailchimp siyahısı (lar)";
-$lang["config_mailchimp_tooltip"] = "API Açarının İşarəsinə basın.";
 $lang["config_message"] = "Mesaj";
 $lang["config_message_configuration"] = "Mesaj Konfiqurasiyası";
 $lang["config_msg_msg"] = "Saxlanılan Mətn Mesajı";

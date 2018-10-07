@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Adresse";
 $lang["config_address_required"] = "Adresse ist erforderlich.";
@@ -153,13 +153,6 @@ $lang["config_location"] = "Lagerort";
 $lang["config_location_configuration"] = "Lagerort";
 $lang["config_location_info"] = "Lagerort-Information";
 $lang["config_logout"] = "Wollen Sie vor dem Beenden eine Sicherung erstellen? Klicke [OK] für Sicherung.";
-$lang["config_mailchimp"] = "Mailchimp";
-$lang["config_mailchimp_api_key"] = "Mailchimp API Key";
-$lang["config_mailchimp_configuration"] = "Mailchimp Konfiguration";
-$lang["config_mailchimp_key_successfully"] = "API Key ist gültig.";
-$lang["config_mailchimp_key_unsuccessfully"] = "API Key ist ungültig.";
-$lang["config_mailchimp_lists"] = "Mailchimp Liste(n)";
-$lang["config_mailchimp_tooltip"] = "Icon anklicken um API Key zu erhalten.";
 $lang["config_message"] = "Nachricht";
 $lang["config_message_configuration"] = "Nachrichtenkonfiguration";
 $lang["config_msg_msg"] = "Gespeicherte Nachricht";

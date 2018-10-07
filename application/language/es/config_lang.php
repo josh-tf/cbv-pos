@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Dirección del Comercio";
 $lang["config_address_required"] = "Dirección del Comercio es requerida.";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Inventario";
 $lang["config_location_configuration"] = "Ubicación de Inventario";
 $lang["config_location_info"] = "Información de Configuración de Ubicación";
 $lang["config_logout"] = "Desea hacer un respaldo antes de salir? Pulsa [OK] para respaldar o [Cancelar] para salir.";
-$lang["config_mailchimp"] = "Correo Chimp";
-$lang["config_mailchimp_api_key"] = "Clave de la API Mailchimp";
-$lang["config_mailchimp_configuration"] = "Configuración de Mailchimp";
-$lang["config_mailchimp_key_successfully"] = "Clave API correcta.";
-$lang["config_mailchimp_key_unsuccessfully"] = "Clave API incorrecta.";
-$lang["config_mailchimp_lists"] = "Lista(s) de Mailchimp";
-$lang["config_mailchimp_tooltip"] = "Haga clic en el icono de una clave de API.";
 $lang["config_message"] = "Mensaje";
 $lang["config_message_configuration"] = "Configuracion del mensaje";
 $lang["config_msg_msg"] = "Texto del mensaje guardado";

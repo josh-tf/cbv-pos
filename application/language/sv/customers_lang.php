@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "Konto #";
 $lang["customers_account_number_duplicate"] = "Kontonummer finns redan i databasen.";
@@ -19,16 +19,6 @@ $lang["customers_excel_import_nodata_wrongformat"] = "Den uppladdade filen har i
 $lang["customers_excel_import_partially_failed"] = "Kundimporten lyckades med några misslyckanden:";
 $lang["customers_excel_import_success"] = "Kundimporten lyckades.";
 $lang["customers_import_items_excel"] = "Kund import från Excel";
-$lang["customers_mailchimp_activity_click"] = "E-post klick";
-$lang["customers_mailchimp_activity_lastopen"] = "Senast öppet e-mail";
-$lang["customers_mailchimp_activity_open"] = "E-post öppnad";
-$lang["customers_mailchimp_activity_total"] = "E-mail skickad";
-$lang["customers_mailchimp_activity_unopen"] = "E-mail oöppnad";
-$lang["customers_mailchimp_email_client"] = "E-mailklient";
-$lang["customers_mailchimp_info"] = "Mailchimp";
-$lang["customers_mailchimp_member_rating"] = "Betyg";
-$lang["customers_mailchimp_status"] = "Status";
-$lang["customers_mailchimp_vip"] = "VIP";
 $lang["customers_max"] = "Max. spenderat";
 $lang["customers_min"] = "Min. spenderat";
 $lang["customers_new"] = "Ny kund";

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "رقم الحساب";
 $lang["customers_account_number_duplicate"] = "رقم الحساب هذا موجود فى قاعدة البيانات من قبل.";
@@ -19,16 +19,6 @@ $lang["customers_excel_import_nodata_wrongformat"] = "الملف الذى رفع
 $lang["customers_excel_import_partially_failed"] = "تم استيراد معظم العملاء. البعض لم يتم استيرادهم ، وهذه هى القائمة:";
 $lang["customers_excel_import_success"] = "تم استيراد العملاء بنجاح.";
 $lang["customers_import_items_excel"] = "استيراد العملا ء من ورقة عمل اكسل";
-$lang["customers_mailchimp_activity_click"] = "النقر على البريد الإلكتروني";
-$lang["customers_mailchimp_activity_lastopen"] = "آخر رسالة إلكترونية مفتوحة";
-$lang["customers_mailchimp_activity_open"] = "رسالة إلكترونية مفتوحة";
-$lang["customers_mailchimp_activity_total"] = "تم ارسال الرسالة الإلكترونية بنجاح";
-$lang["customers_mailchimp_activity_unopen"] = "رسالة إلكترونية غير مفتوحة";
-$lang["customers_mailchimp_email_client"] = "بريد الكتروني";
-$lang["customers_mailchimp_info"] = "ميل تشيمب";
-$lang["customers_mailchimp_member_rating"] = "التقييم";
-$lang["customers_mailchimp_status"] = "الحالة";
-$lang["customers_mailchimp_vip"] = "مهم";
 $lang["customers_max"] = "الحد الأقصى";
 $lang["customers_min"] = "الحد الأدنى";
 $lang["customers_new"] = "عميل جديد";

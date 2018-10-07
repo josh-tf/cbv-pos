@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Cég cím";
 $lang["config_address_required"] = "Cég cím kötelező mező";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Készlet";
 $lang["config_location_configuration"] = "Készlet helye";
 $lang["config_location_info"] = "Helyszin konfigurációs információk";
 $lang["config_logout"] = "Nem szeretne mentést csinálni kilépés előtt? Kattintson az [OK]-ra a mentéshez, [Mégsem] a kilépéshez";
-$lang["config_mailchimp"] = "";
-$lang["config_mailchimp_api_key"] = "";
-$lang["config_mailchimp_configuration"] = "";
-$lang["config_mailchimp_key_successfully"] = "";
-$lang["config_mailchimp_key_unsuccessfully"] = "";
-$lang["config_mailchimp_lists"] = "";
-$lang["config_mailchimp_tooltip"] = "";
 $lang["config_message"] = "Üzenet";
 $lang["config_message_configuration"] = "Üzenet beállítások";
 $lang["config_msg_msg"] = "Mentett text üzenet";

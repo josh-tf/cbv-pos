@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_available_points"] = "Доступные баллы";
 $lang["rewards_package"] = "награды";
@@ -27,7 +27,6 @@ $lang["sales_customer_address"] = "Customer Address";
 $lang["sales_customer_discount"] = "Скидка";
 $lang["sales_customer_email"] = "Customer Email";
 $lang["sales_customer_location"] = "Customer Location";
-$lang["sales_customer_mailchimp_status"] = "Статус Mailchimp";
 $lang["sales_customer_total"] = "Total";
 $lang["sales_date"] = "Число";
 $lang["sales_date_range"] = "размах числа";
