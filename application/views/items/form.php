@@ -321,6 +321,15 @@ $itemDate = array('1'); // default type is text, put here for date
 $itemPartStep = array('4', '5', '8'); // default is 1, place here for 0.1 stepping value
 ?>
 
+<div class="form-group form-group-sm custom3">
+<?php echo form_label($this->config->item('custom_name'), 'custom', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<div class="input-group input-group-sm custom">
+<input value="<?php $item_arr['custom3'] ?>" placeholder="<?php echo $this->lang->line('custom' . $i . '_helper') ?>" list="custom3" class="form-control input-sm" name="custom3"><datalist id="custom3"><option value="texto A"><option value="texto B"></datalist>
+<span class="input-group-addon input-sm">xx</span>
+</div>
+</div>
+</div>
 
 	<div id="computer-fields">
 <?php

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_available_points"] = "Налични точки";
 $lang["rewards_package"] = "Награди";
@@ -27,7 +27,6 @@ $lang["sales_customer_address"] = "Адрес";
 $lang["sales_customer_discount"] = "Намаление";
 $lang["sales_customer_email"] = "Електронна поща";
 $lang["sales_customer_location"] = "Местоположение";
-$lang["sales_customer_mailchimp_status"] = "Състояние на Mailchimp";
 $lang["sales_customer_total"] = "Обща сума";
 $lang["sales_date"] = "Дата на продажба";
 $lang["sales_date_range"] = "Период от време";

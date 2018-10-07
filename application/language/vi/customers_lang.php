@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "Tài khoản #";
 $lang["customers_account_number_duplicate"] = "Số tài khoản đã sẵn có trong cơ sở dữ liệu rồi.";
@@ -19,16 +19,6 @@ $lang["customers_excel_import_nodata_wrongformat"] = "Tập tin tải lên khôn
 $lang["customers_excel_import_partially_failed"] = "Nhập khách hàng thành công với một số lỗi:";
 $lang["customers_excel_import_success"] = "Nhập khách hàng thành công.";
 $lang["customers_import_items_excel"] = "Nhập khách hàng từ Excel";
-$lang["customers_mailchimp_activity_click"] = "Bấm thư";
-$lang["customers_mailchimp_activity_lastopen"] = "Thư mở cuối cùng";
-$lang["customers_mailchimp_activity_open"] = "Mở thư";
-$lang["customers_mailchimp_activity_total"] = "Gửi thư";
-$lang["customers_mailchimp_activity_unopen"] = "Không mở thư";
-$lang["customers_mailchimp_email_client"] = "Trình khách nhận thư";
-$lang["customers_mailchimp_info"] = "Mailchimp";
-$lang["customers_mailchimp_member_rating"] = "Đánh giá";
-$lang["customers_mailchimp_status"] = "Tình trạng";
-$lang["customers_mailchimp_vip"] = "VIP";
 $lang["customers_max"] = "Trả tối đa";
 $lang["customers_min"] = "Trả tối thiểu";
 $lang["customers_new"] = "Khách hàng mới";

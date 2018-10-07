@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "عنوان الشركة";
 $lang["config_address_required"] = "عنوان الشركة مطلوب.";
@@ -158,13 +158,6 @@ $lang["config_location"] = "المخزون";
 $lang["config_location_configuration"] = "أماكن المخزون";
 $lang["config_location_info"] = "معلومات تهيئة الأماكن";
 $lang["config_logout"] = "هل تريد عمل نسخة إحتياطية قبل الخروج؟ اضغط [نعم] لعمل النسخة أو [الغاء] للخروج.";
-$lang["config_mailchimp"] = "mailchimp ميل تشامب";
-$lang["config_mailchimp_api_key"] = "mailchimp مفتاح";
-$lang["config_mailchimp_configuration"] = "إعدادات mailchimp";
-$lang["config_mailchimp_key_successfully"] = "نجاح.";
-$lang["config_mailchimp_key_unsuccessfully"] = "فشل.";
-$lang["config_mailchimp_lists"] = "mailchimp قوائم";
-$lang["config_mailchimp_tooltip"] = "انقر على رمز مفتاح API.";
 $lang["config_message"] = "الرسائل";
 $lang["config_message_configuration"] = "إعدادات الرسائل";
 $lang["config_msg_msg"] = "الرسائل النصية المحفوظة";

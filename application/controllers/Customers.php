@@ -9,12 +9,7 @@ class Customers extends Persons
 	public function __construct()
 	{
 		parent::__construct('customers');
-
-		$this->load->library('mailchimp_lib');
-
 		$CI =& get_instance();
-
-		$this->_list_id = $CI->encryption->decrypt($CI->Appconfig->get('mailchimp_list_id'));
 	}
 
 	public function index()
@@ -145,62 +140,6 @@ class Customers extends Persons
 			}
 			$data['stats'] = $stats;
 		}
-
-		// retrieve the info from Mailchimp only if there is an email address assigned
-		if(!empty($info->email))
-		{
-			// collect mailchimp customer info
-			if(($mailchimp_info = $this->mailchimp_lib->getMemberInfo($this->_list_id, $info->email)) !== FALSE)
-			{
-				$data['mailchimp_info'] = $this->xss_clean($mailchimp_info);
-
-				// collect customer mailchimp emails activities (stats)
-				if(($activities = $this->mailchimp_lib->getMemberActivity($this->_list_id, $info->email)) !== FALSE)
-				{
-					if(array_key_exists('activity', $activities))
-					{
-						$open = 0;
-						$unopen = 0;
-						$click = 0;
-						$total = 0;
-						$lastopen = '';
-
-						foreach($activities['activity'] as $activity)
-						{
-							if($activity['action'] == 'sent')
-							{
-								++$unopen;
-							}
-							elseif($activity['action'] == 'open')
-							{
-								if(empty($lastopen))
-								{
-									$lastopen = substr($activity['timestamp'], 0, 10);
-								}
-								++$open;
-							}
-							elseif($activity['action'] == 'click')
-							{
-								if(empty($lastopen))
-								{
-									$lastopen = substr($activity['timestamp'], 0, 10);
-								}
-								++$click;
-							}
-
-							++$total;
-						}
-
-						$data['mailchimp_activity']['total'] = $total;
-						$data['mailchimp_activity']['open'] = $open;
-						$data['mailchimp_activity']['unopen'] = $unopen;
-						$data['mailchimp_activity']['click'] = $click;
-						$data['mailchimp_activity']['lastopen'] = $lastopen;
-					}
-				}
-			}
-		}
-
 		$this->load->view("customers/form", $data);
 	}
 
@@ -253,9 +192,6 @@ class Customers extends Persons
 
 		if($this->Customer->save_customer($person_data, $customer_data, $customer_id))
 		{
-			// save customer to Mailchimp selected list
-			$this->mailchimp_lib->addOrUpdateMember($this->_list_id, $email, $first_name, $last_name, $this->input->post('mailchimp_status'), array('vip' => $this->input->post('mailchimp_vip') != NULL));
-
 			// New customer
 			if($customer_id == -1)
 			{
@@ -315,11 +251,6 @@ class Customers extends Persons
 
 		if($this->Customer->delete_list($customers_to_delete))
 		{
-			foreach($customers_info->result() as $info)
-			{
-				// remove customer from Mailchimp selected list
-				$this->mailchimp_lib->removeMember($this->_list_id, $info->email);
-			}
 
 			echo json_encode(array('success' => TRUE,
 				'message' => $this->lang->line('customers_successful_deleted') . ' ' . count($customers_to_delete) . ' ' . $this->lang->line('customers_one_or_multiple')));
@@ -411,11 +342,6 @@ class Customers extends Persons
 					if($invalidated)
 					{
 						$failCodes[] = $i;
-					}
-					elseif($this->Customer->save_customer($person_data, $customer_data))
-					{
-						// save customer to Mailchimp selected list
-						$this->mailchimp_lib->addOrUpdateMember($this->_list_id, $person_data['email'], $person_data['first_name'], '', $person_data['last_name']);
 					}
 					else
 					{

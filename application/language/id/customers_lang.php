@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "No Pelanggan";
 $lang["customers_account_number_duplicate"] = "Nomor akun ini telah tersimpan di basis data";
@@ -19,16 +19,6 @@ $lang["customers_excel_import_nodata_wrongformat"] = "Berkas yang Anda unggah ti
 $lang["customers_excel_import_partially_failed"] = "Impor pelanggan berhasil dwngan beberapa kesalahan:";
 $lang["customers_excel_import_success"] = "Impor pelanggan berhasil";
 $lang["customers_import_items_excel"] = "Impor pelanggan dari Excel";
-$lang["customers_mailchimp_activity_click"] = "";
-$lang["customers_mailchimp_activity_lastopen"] = "";
-$lang["customers_mailchimp_activity_open"] = "";
-$lang["customers_mailchimp_activity_total"] = "";
-$lang["customers_mailchimp_activity_unopen"] = "";
-$lang["customers_mailchimp_email_client"] = "";
-$lang["customers_mailchimp_info"] = "";
-$lang["customers_mailchimp_member_rating"] = "";
-$lang["customers_mailchimp_status"] = "";
-$lang["customers_mailchimp_vip"] = "";
 $lang["customers_max"] = "";
 $lang["customers_min"] = "";
 $lang["customers_new"] = "Pelanggan Baru";
