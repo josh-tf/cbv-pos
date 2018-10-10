@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Alamat Perusahaan";
 $lang["config_address_required"] = "Alamat Perusahaan wajib diisi";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Lokasi Stock";
 $lang["config_location_configuration"] = "Lokasi Stock";
 $lang["config_location_info"] = "Informasi konfigurasi lokasi stock";
 $lang["config_logout"] = "Apakah Anda akan membuat cadangan sebelum anda keluar? Klik [OK] untuk pencadangan, [Batal] untuk keluar";
-$lang["config_mailchimp"] = "";
-$lang["config_mailchimp_api_key"] = "";
-$lang["config_mailchimp_configuration"] = "";
-$lang["config_mailchimp_key_successfully"] = "";
-$lang["config_mailchimp_key_unsuccessfully"] = "";
-$lang["config_mailchimp_lists"] = "";
-$lang["config_mailchimp_tooltip"] = "";
 $lang["config_message"] = "Pesan";
 $lang["config_message_configuration"] = "Pengaturan Pesan";
 $lang["config_msg_msg"] = "Pesan teks tersimpan";

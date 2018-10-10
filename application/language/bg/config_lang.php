@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Адрес на компанията";
 $lang["config_address_required"] = "Адресът на компанията е задължително поле.";
@@ -156,13 +156,6 @@ $lang["config_location"] = "Stock";
 $lang["config_location_configuration"] = "Stock Locations";
 $lang["config_location_info"] = "Location Configuration Information";
 $lang["config_logout"] = "Do you want to make a backup before logging out? Click [OK] to backup or [Cancel] to logout.";
-$lang["config_mailchimp"] = "Mailchimp";
-$lang["config_mailchimp_api_key"] = "Mailchimp API Key";
-$lang["config_mailchimp_configuration"] = "Mailchimp Configuration";
-$lang["config_mailchimp_key_successfully"] = "API Key is valid.";
-$lang["config_mailchimp_key_unsuccessfully"] = "API Key is invalid.";
-$lang["config_mailchimp_lists"] = "Mailchimp List(s)";
-$lang["config_mailchimp_tooltip"] = "Click the icon for an API Key.";
 $lang["config_message"] = "Message";
 $lang["config_message_configuration"] = "Message Configuration";
 $lang["config_msg_msg"] = "Saved Text Message";

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Адрес Компании";
 $lang["config_address_required"] = "Адрес Компании - обязательный пробел.";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Инвентаризации";
 $lang["config_location_configuration"] = "Расположение Инвентаря";
 $lang["config_location_info"] = "Сведения Настройки Местоположении";
 $lang["config_logout"] = "Вы хотите сделать резервную копию перед выходом? Нажмите [OK] для резервного копирования или [Отмена] для выхода из системы.";
-$lang["config_mailchimp"] = "Электронной Chimp";
-$lang["config_mailchimp_api_key"] = "Ключ API Mailchimp";
-$lang["config_mailchimp_configuration"] = "Настройка Mailchimp";
-$lang["config_mailchimp_key_successfully"] = "Ключ API правильно.";
-$lang["config_mailchimp_key_unsuccessfully"] = "Ключ API неправильно.";
-$lang["config_mailchimp_lists"] = "Список(s) Mailchimp";
-$lang["config_mailchimp_tooltip"] = "Нажмите на значок ключа API.";
 $lang["config_message"] = "Сообщение";
 $lang["config_message_configuration"] = "Настройки сообщение";
 $lang["config_msg_msg"] = "Текст сообщения сохранен";

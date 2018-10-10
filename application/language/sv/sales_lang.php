@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_available_points"] = "Tillgängliga poäng";
 $lang["rewards_package"] = "Belöning";
@@ -27,7 +27,6 @@ $lang["sales_customer_address"] = "Adress";
 $lang["sales_customer_discount"] = "Rabatt";
 $lang["sales_customer_email"] = "E-mail";
 $lang["sales_customer_location"] = "Plats";
-$lang["sales_customer_mailchimp_status"] = "Mailchimp status";
 $lang["sales_customer_total"] = "Totalt";
 $lang["sales_date"] = "Försäljningsdag";
 $lang["sales_date_range"] = "Datumintervall";

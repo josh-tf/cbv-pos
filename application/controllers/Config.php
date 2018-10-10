@@ -215,21 +215,13 @@ class Config extends Secure_Controller
 		// load all the themes, already XSS cleaned in the private function
 		$data['themes'] = $this->_themes();
 
-		$data['mailchimp'] = array();
-		if($this->_check_encryption())
-		{
-			$data['mailchimp']['api_key'] = $this->encryption->decrypt($this->config->item('mailchimp_api_key'));
-			$data['mailchimp']['list_id'] = $this->encryption->decrypt($this->config->item('mailchimp_list_id'));
+		$data['cbvconf'] = array();{
+// Todo: update this
+			$data['cbvconf']['cbvopt_distuser'] = '';
+			$data['cbvconf']['cbvopt_distpass'] = '';
+			$data['cbvconf']['cbvopt_distver'] = '';
+			$data['cbvconf']['cbvopt_item_cpu'] = '';
 		}
-		else
-		{
-			$data['mailchimp']['api_key'] = '';
-			$data['mailchimp']['list_id'] = '';
-		}
-
-		// load mailchimp lists associated to the given api key, already XSS cleaned in the private function
-		$data['mailchimp']['lists'] = $this->_mailchimp();
-
 		$this->load->view("configs/manage", $data);
 	}
 
@@ -436,60 +428,19 @@ class Config extends Secure_Controller
 		));
 	}
 
-	/*
-	* This function fetches all the available lists from Mailchimp for the given API key
-	*/
-	private function _mailchimp($api_key = '')
+	public function save_cbvconf()
 	{
-		$this->load->library('mailchimp_lib', array('api_key' => $api_key));
-
-		$result = array();
-
-		if(($lists = $this->mailchimp_lib->getLists()) !== FALSE)
-		{
-			if(is_array($lists) && !empty($lists['lists']) && is_array($lists['lists']))
-			{
-				foreach($lists['lists'] as $list)
-				{
-					$list = $this->xss_clean($list);
-					$result[$list['id']] = $list['name'] . ' [' . $list['stats']['member_count'] . ']';
-				}
-			}
-		}
-
-		return $result;
-	}
-
-	/*
-	AJAX call from mailchimp config form to fetch the Mailchimp lists when a valid API key is inserted
-	*/
-	public function ajax_check_mailchimp_api_key()
-	{
-		// load mailchimp lists associated to the given api key, already XSS cleaned in the private function
-		$lists = $this->_mailchimp($this->input->post('mailchimp_api_key'));
-		$success = count($lists) > 0 ? TRUE : FALSE;
-
-		echo json_encode(array(
-			'success' => $success,
-			'message' => $this->lang->line('config_mailchimp_key_' . ($success ? '' : 'un') . 'successfully'),
-			'mailchimp_lists' => $lists
-		));
-	}
-
-	public function save_mailchimp()
-	{
-		$api_key = '';
-		$list_id = '';
-
-		if($this->_check_encryption())
-		{
-			$api_key = $this->encryption->encrypt($this->input->post('mailchimp_api_key'));
-			$list_id = $this->encryption->encrypt($this->input->post('mailchimp_list_id'));
-		}
 
 		$batch_save_data = array(
-			'mailchimp_api_key' => $api_key,
-			'mailchimp_list_id' => $list_id
+			'cbvopt_distuser' => $this->input->post('cbvopt_distuser'),
+			'cbvopt_distpass' => $this->input->post('cbvopt_distpass'),
+			'cbvopt_distver' => $this->input->post('cbvopt_distver'),
+			'cbvopt_item_cpu' => $this->input->post('cbvopt_item_cpu'),
+			'cbvopt_item_ram' => $this->input->post('cbvopt_item_ram'),
+			'cbvopt_item_storage' => $this->input->post('cbvopt_item_storage'),
+			'cbvopt_item_screen' => $this->input->post('cbvopt_item_screen'),
+			'cbvopt_item_optical' => $this->input->post('cbvopt_item_optical'),
+			'cbvopt_item_type' => $this->input->post('cbvopt_item_type')
 		);
 
 		$result = $this->Appconfig->batch_save($batch_save_data);

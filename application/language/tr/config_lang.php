@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Şirket Adresi";
 $lang["config_address_required"] = "Şirket Adresi zorunlu alandır";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Stok";
 $lang["config_location_configuration"] = "Stok Konumları";
 $lang["config_location_info"] = "Konum Yapılandırma Bilgisi";
 $lang["config_logout"] = "Don't you want to make a backup before logging out?";
-$lang["config_mailchimp"] = "";
-$lang["config_mailchimp_api_key"] = "";
-$lang["config_mailchimp_configuration"] = "";
-$lang["config_mailchimp_key_successfully"] = "";
-$lang["config_mailchimp_key_unsuccessfully"] = "";
-$lang["config_mailchimp_lists"] = "";
-$lang["config_mailchimp_tooltip"] = "";
 $lang["config_message"] = "Mesaj";
 $lang["config_message_configuration"] = "İleti Yapılandırması";
 $lang["config_msg_msg"] = "Kaydedilen Metin İletisi";

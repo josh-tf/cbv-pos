@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "Сметка #";
 $lang["customers_account_number_duplicate"] = "Номерът на сметката вече е в базата данни.";
@@ -19,16 +19,6 @@ $lang["customers_excel_import_nodata_wrongformat"] = "Каченият файл 
 $lang["customers_excel_import_partially_failed"] = "Вносът на клиента е успешен с няколко грешки:";
 $lang["customers_excel_import_success"] = "Вносът на клиенти е успешен.";
 $lang["customers_import_items_excel"] = "Импортиране на клиент от Excel";
-$lang["customers_mailchimp_activity_click"] = "Email click";
-$lang["customers_mailchimp_activity_lastopen"] = "Последно отворен Имейл";
-$lang["customers_mailchimp_activity_open"] = "Имейлът е отворен";
-$lang["customers_mailchimp_activity_total"] = "Имейлът е изпратен";
-$lang["customers_mailchimp_activity_unopen"] = "Имейлът е неотворен";
-$lang["customers_mailchimp_email_client"] = "Имейл клиент";
-$lang["customers_mailchimp_info"] = "Mailchimp";
-$lang["customers_mailchimp_member_rating"] = "Оценка";
-$lang["customers_mailchimp_status"] = "Статус";
-$lang["customers_mailchimp_vip"] = "VIP";
 $lang["customers_max"] = "Максимално похарчени";
 $lang["customers_min"] = "Минимално похарчено";
 $lang["customers_new"] = "Нов клиент";

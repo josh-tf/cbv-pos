@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "Btwnummer";
 $lang["customers_account_number_duplicate"] = "Deze VAT nummer is reeds aanwezig in de database.";
@@ -19,16 +19,6 @@ $lang["customers_excel_import_nodata_wrongformat"] = "Je geüploade bestand heef
 $lang["customers_excel_import_partially_failed"] = "De meeste klanten zijn geïmporteerd. Maar sommige niet, hier is de lijst:";
 $lang["customers_excel_import_success"] = "Klanten met succes geïmporteerd.";
 $lang["customers_import_items_excel"] = "Importeer klanten vanuit een Excel bestand";
-$lang["customers_mailchimp_activity_click"] = "Email klik";
-$lang["customers_mailchimp_activity_lastopen"] = "Laatst geopende email";
-$lang["customers_mailchimp_activity_open"] = "Email open";
-$lang["customers_mailchimp_activity_total"] = "Email verstuurd";
-$lang["customers_mailchimp_activity_unopen"] = "Email ongeopend";
-$lang["customers_mailchimp_email_client"] = "Email client";
-$lang["customers_mailchimp_info"] = "Mailchimp";
-$lang["customers_mailchimp_member_rating"] = "Waardering";
-$lang["customers_mailchimp_status"] = "Status";
-$lang["customers_mailchimp_vip"] = "VIP";
 $lang["customers_max"] = "Max. uitgegeven";
 $lang["customers_min"] = "Min. uitgegeven";
 $lang["customers_new"] = "Nieuwe Klant";

@@ -37,7 +37,7 @@ the printer settings in the popup dialog are configured as follows:
     </tr>
     <tr>
       <th scope="row">Orientation</th>
-      <td>Landscape</td>
+      <td>Portrait</td>
     </tr>
     <tr>
       <th scope="row">Scaling</th>

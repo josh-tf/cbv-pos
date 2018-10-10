@@ -220,14 +220,16 @@ for ($i = 1; $i <= 20; $i++) {
 }
 ?>
 
-			<div class="form-group form-group-sm">
-				<?php echo form_label($this->lang->line('config_backup_database'), 'config_backup_database', array('class' => 'control-label col-xs-2')); ?>
-				<div class='col-xs-2'>
-					<div id="backup_db" class="btn btn-default btn-sm">
-						<span style="top:22%;"><?php echo $this->lang->line('config_backup_button'); ?></span>
-					</div>
-				</div>
+	<div class="form-group form-group-sm">
+		<?php echo form_label($this->lang->line('config_custom' . $i), 'config_custom' . $i, array('class' => 'control-label col-xs-2')); ?>
+			<div class='col-xs-2'>
+				<?php echo form_input(array(
+					'name' => 'custom' .  $i . '_name',
+					'id' => 'custom' . $i . '_name',
+					'class' => 'form-control input-sm',
+					'value' => $this->config->item('custom' . $i . '_name'))); ?>
 			</div>
+	</div>
 
 			<?php echo form_submit(array(
 				'name' => 'submit_general',

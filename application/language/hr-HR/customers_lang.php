@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "IBAN:";
 $lang["customers_account_number_duplicate"] = "Ovaj IBAN već postoji";
@@ -19,16 +19,6 @@ $lang["customers_excel_import_nodata_wrongformat"] = "Your uploaded file has no 
 $lang["customers_excel_import_partially_failed"] = "Most Customers imported. But some were not, here is the list";
 $lang["customers_excel_import_success"] = "Import of Customers successful";
 $lang["customers_import_items_excel"] = "Učitaj kupce iz excel datoteke";
-$lang["customers_mailchimp_activity_click"] = "";
-$lang["customers_mailchimp_activity_lastopen"] = "";
-$lang["customers_mailchimp_activity_open"] = "";
-$lang["customers_mailchimp_activity_total"] = "";
-$lang["customers_mailchimp_activity_unopen"] = "";
-$lang["customers_mailchimp_email_client"] = "";
-$lang["customers_mailchimp_info"] = "";
-$lang["customers_mailchimp_member_rating"] = "";
-$lang["customers_mailchimp_status"] = "";
-$lang["customers_mailchimp_vip"] = "";
 $lang["customers_max"] = "";
 $lang["customers_min"] = "";
 $lang["customers_new"] = "Novi kupac";
