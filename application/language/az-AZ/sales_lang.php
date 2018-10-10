@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_available_points"] = "Münasib Ballar";
 $lang["rewards_package"] = "Mükafatlar";
@@ -24,7 +24,6 @@ $lang["sales_customer_address"] = "Ünvan";
 $lang["sales_customer_discount"] = "Endirim";
 $lang["sales_customer_email"] = "Elektron Ünvan";
 $lang["sales_customer_location"] = "Yer";
-$lang["sales_customer_mailchimp_status"] = "Mailchimp Statusu";
 $lang["sales_customer_total"] = "Cəm";
 $lang["sales_date"] = "Satış Tarixi";
 $lang["sales_date_range"] = "Tarix Aralığı";

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Adres";
 $lang["config_address_required"] = "Het adres van het bedrijf moet ingevuld worden.";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Voorraad";
 $lang["config_location_configuration"] = "Stock Locaties";
 $lang["config_location_info"] = "Instellingen Locatie";
 $lang["config_logout"] = "Wilt u een backup maken alvorens uit te loggen?";
-$lang["config_mailchimp"] = "Mailchimp";
-$lang["config_mailchimp_api_key"] = "Mailchimp API Key";
-$lang["config_mailchimp_configuration"] = "Mailchimp Configuratie";
-$lang["config_mailchimp_key_successfully"] = "API sleutel is geldig.";
-$lang["config_mailchimp_key_unsuccessfully"] = "API sleutel is ongeldig.";
-$lang["config_mailchimp_lists"] = "Mailchimp lijst(en)";
-$lang["config_mailchimp_tooltip"] = "Klik op het icoon voor een API sleutel.";
 $lang["config_message"] = "Message";
 $lang["config_message_configuration"] = "Message Configuration";
 $lang["config_msg_msg"] = "Opgeslagen SMS-bericht";

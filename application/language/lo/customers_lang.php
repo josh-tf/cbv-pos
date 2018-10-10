@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "Account #";
 $lang["customers_account_number_duplicate"] = "Account Number is already present in the database.";
@@ -19,16 +19,6 @@ $lang["customers_excel_import_nodata_wrongformat"] = "The uploaded file has no d
 $lang["customers_excel_import_partially_failed"] = "Customer import successful with some failures:";
 $lang["customers_excel_import_success"] = "Customer import successful.";
 $lang["customers_import_items_excel"] = "Customer Import from Excel";
-$lang["customers_mailchimp_activity_click"] = "Email click";
-$lang["customers_mailchimp_activity_lastopen"] = "Last open email";
-$lang["customers_mailchimp_activity_open"] = "Email open";
-$lang["customers_mailchimp_activity_total"] = "Email sent";
-$lang["customers_mailchimp_activity_unopen"] = "Email unopen";
-$lang["customers_mailchimp_email_client"] = "Email client";
-$lang["customers_mailchimp_info"] = "Mailchimp";
-$lang["customers_mailchimp_member_rating"] = "Rating";
-$lang["customers_mailchimp_status"] = "Status";
-$lang["customers_mailchimp_vip"] = "VIP";
 $lang["customers_max"] = "Max. spent";
 $lang["customers_min"] = "Min. spent";
 $lang["customers_new"] = "New Customer";

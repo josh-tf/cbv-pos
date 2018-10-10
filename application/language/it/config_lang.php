@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Indirizzo Azienda";
 $lang["config_address_required"] = "Il campo Indirizzo Azienda è obbligatorio.";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Magazzino";
 $lang["config_location_configuration"] = "Locazione Magazzino";
 $lang["config_location_info"] = "Informazioni di Configurazione Posizione";
 $lang["config_logout"] = "Vuoi fare il backup prima di effettuare il logout? Premere [OK] per eseguirlo o [Cancella] per il logout.";
-$lang["config_mailchimp"] = "Mailchimp";
-$lang["config_mailchimp_api_key"] = "Mailchimp API Key";
-$lang["config_mailchimp_configuration"] = "Configurazione Mailchimp";
-$lang["config_mailchimp_key_successfully"] = "API Key valida.";
-$lang["config_mailchimp_key_unsuccessfully"] = "API Key non valida.";
-$lang["config_mailchimp_lists"] = "Lista/e Mailchimp";
-$lang["config_mailchimp_tooltip"] = "Click the icon for an API Key.";
 $lang["config_message"] = "SMS";
 $lang["config_message_configuration"] = "Configurazione SMS";
 $lang["config_msg_msg"] = "Testo Messaggio Salvato";

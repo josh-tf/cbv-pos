@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_available_points"] = "النقاط المتاحة";
 $lang["rewards_package"] = "مكافآت";
@@ -27,7 +27,6 @@ $lang["sales_customer_address"] = "العنوان";
 $lang["sales_customer_discount"] = "الخصم";
 $lang["sales_customer_email"] = "البريد الإلكترونى";
 $lang["sales_customer_location"] = "المكان";
-$lang["sales_customer_mailchimp_status"] = "حالة ميل تشيمب";
 $lang["sales_customer_total"] = "المجموع";
 $lang["sales_date"] = "تاريخ البيع";
 $lang["sales_date_range"] = "الفترة الزمنية";

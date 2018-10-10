@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Adresa tvrtke";
 $lang["config_address_required"] = "Adresu tvrtke je potrebno unijeti";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Skladišta";
 $lang["config_location_configuration"] = "Mjesto skladišta";
 $lang["config_location_info"] = "Info o lokaciji skladišta";
 $lang["config_logout"] = "Želite napraviti arhivu prije nego izađete? Pritisnite [OK] za arhivu, [Cancel] to otkazivanje.";
-$lang["config_mailchimp"] = "";
-$lang["config_mailchimp_api_key"] = "";
-$lang["config_mailchimp_configuration"] = "";
-$lang["config_mailchimp_key_successfully"] = "";
-$lang["config_mailchimp_key_unsuccessfully"] = "";
-$lang["config_mailchimp_lists"] = "";
-$lang["config_mailchimp_tooltip"] = "";
 $lang["config_message"] = "Message";
 $lang["config_message_configuration"] = "Message Configuration";
 $lang["config_msg_msg"] = "Saved Text Message";

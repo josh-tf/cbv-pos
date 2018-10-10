@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "Номер счота";
 $lang["customers_account_number_duplicate"] = "Номер счета уже присутствует в базе данных.";
@@ -19,16 +19,6 @@ $lang["customers_excel_import_nodata_wrongformat"] = "Your uploaded file has no 
 $lang["customers_excel_import_partially_failed"] = "Импорт клиента успешно с некоторыми сбоями:";
 $lang["customers_excel_import_success"] = "Import of Customers successful.";
 $lang["customers_import_items_excel"] = "Import customers from Excel sheet";
-$lang["customers_mailchimp_activity_click"] = "Электронной почты нажмите";
-$lang["customers_mailchimp_activity_lastopen"] = "Последнее открытое письмо";
-$lang["customers_mailchimp_activity_open"] = "Открытое письмо";
-$lang["customers_mailchimp_activity_total"] = "Отправлено по электронной почте";
-$lang["customers_mailchimp_activity_unopen"] = "Электронная почта не открыта";
-$lang["customers_mailchimp_email_client"] = "Почтовый клиент";
-$lang["customers_mailchimp_info"] = "В mailchimp";
-$lang["customers_mailchimp_member_rating"] = "Рейтинг";
-$lang["customers_mailchimp_status"] = "Статус";
-$lang["customers_mailchimp_vip"] = "ВИП";
 $lang["customers_max"] = "Макс. расходуемый";
 $lang["customers_min"] = "Мин. расходуемый";
 $lang["customers_new"] = "Новый Клиент";

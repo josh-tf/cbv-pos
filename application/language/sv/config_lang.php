@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Företagsadress";
 $lang["config_address_required"] = "Företagsadress är ett obligatoriskt fält.";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Lager";
 $lang["config_location_configuration"] = "Lagerplatser";
 $lang["config_location_info"] = "Platskonfigurationsinformation";
 $lang["config_logout"] = "Vill du göra en säkerhetskopiering innan du loggar ut? Klicka på [OK] för att säkerhetskopiera eller [Avbryt] för att logga ut.";
-$lang["config_mailchimp"] = "Mailchimp";
-$lang["config_mailchimp_api_key"] = "Mailchimp API Key";
-$lang["config_mailchimp_configuration"] = "Mailchimp konfiguration";
-$lang["config_mailchimp_key_successfully"] = "API-nyckeln är giltig.";
-$lang["config_mailchimp_key_unsuccessfully"] = "API-nyckeln är ogiltig.";
-$lang["config_mailchimp_lists"] = "Mailchimp Listor";
-$lang["config_mailchimp_tooltip"] = "Klicka på ikonen för en API-nyckel.";
 $lang["config_message"] = "Medelande";
 $lang["config_message_configuration"] = "Meddelandekonfiguration";
 $lang["config_msg_msg"] = "Sparade SMS";

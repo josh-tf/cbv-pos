@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["customers_account_number"] = "hesab nömrəsi";
 $lang["customers_account_number_duplicate"] = "";
@@ -22,16 +22,6 @@ $lang["customers_excel_import_nodata_wrongformat"] = "Yüklənmiş faylda heç b
 $lang["customers_excel_import_partially_failed"] = "Müştəri əlavəsi bəzi səhvlər olmaqla uğurla alındı";
 $lang["customers_excel_import_success"] = "Müştəri Əlavəsi uğurla alındı";
 $lang["customers_import_items_excel"] = "Exceldən müştəri əlavə et";
-$lang["customers_mailchimp_activity_click"] = "Elektron poçt düyməsi";
-$lang["customers_mailchimp_activity_lastopen"] = "Son açılan məktub";
-$lang["customers_mailchimp_activity_open"] = "Açıq məktub";
-$lang["customers_mailchimp_activity_total"] = "Məktub göndərildi";
-$lang["customers_mailchimp_activity_unopen"] = "Açılmamış məktub";
-$lang["customers_mailchimp_email_client"] = "Müştəriyə Məktub Göndər";
-$lang["customers_mailchimp_info"] = "Mailchimp";
-$lang["customers_mailchimp_member_rating"] = "Reytinq";
-$lang["customers_mailchimp_status"] = "Status";
-$lang["customers_mailchimp_vip"] = "siz silmək üçün heç bir müştəri seçməmisiniz";
 $lang["customers_max"] = "Ən çox xərclənən";
 $lang["customers_min"] = "Ən az xərclənən";
 $lang["customers_new"] = "Yeni Müştəri";

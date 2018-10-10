@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "公司地址";
 $lang["config_address_required"] = "公司地址為必填";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Stock";
 $lang["config_location_configuration"] = "Stock Locations";
 $lang["config_location_info"] = "Location Configuration Information";
 $lang["config_logout"] = "Don't you want to make a backup before logging out?";
-$lang["config_mailchimp"] = "";
-$lang["config_mailchimp_api_key"] = "";
-$lang["config_mailchimp_configuration"] = "";
-$lang["config_mailchimp_key_successfully"] = "";
-$lang["config_mailchimp_key_unsuccessfully"] = "";
-$lang["config_mailchimp_lists"] = "";
-$lang["config_mailchimp_tooltip"] = "";
 $lang["config_message"] = "Message";
 $lang["config_message_configuration"] = "Message Configuration";
 $lang["config_msg_msg"] = "Saved Text Message";

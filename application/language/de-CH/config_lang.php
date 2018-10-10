@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["config_address"] = "Adresse";
 $lang["config_address_required"] = "Adresse ist erforderlich";
@@ -158,13 +158,6 @@ $lang["config_location"] = "Lagerort";
 $lang["config_location_configuration"] = "Lagerort";
 $lang["config_location_info"] = "Lagerort-Information";
 $lang["config_logout"] = "Wollen Sie eine Sicherung machen vor dem Beenden? Klicke [OK] für Sicherung";
-$lang["config_mailchimp"] = "";
-$lang["config_mailchimp_api_key"] = "";
-$lang["config_mailchimp_configuration"] = "";
-$lang["config_mailchimp_key_successfully"] = "";
-$lang["config_mailchimp_key_unsuccessfully"] = "";
-$lang["config_mailchimp_lists"] = "";
-$lang["config_mailchimp_tooltip"] = "";
 $lang["config_message"] = "Message";
 $lang["config_message_configuration"] = "Message Configuration";
 $lang["config_msg_msg"] = "Saved Text Message";
