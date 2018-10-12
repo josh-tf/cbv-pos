@@ -690,47 +690,30 @@ class Items extends Secure_Controller
 					{
 						$item_data = array(
 							'name'					=> $data[1],
-							'description'			=> $data[11],
 							'category'				=> $data[2],
-							'cost_price'			=> $data[4],
-							'unit_price'			=> $data[5],
-							'reorder_level'			=> $data[10],
-							'supplier_id'			=> $this->Supplier->exists($data[3]) ? $data[3] : NULL,
-							'allow_alt_description'	=> $data[12] != '' ? '1' : '0',
-							'is_serialized'			=> $data[13] != '' ? '1' : '0',
-							'custom1'				=> $data[14],
-							'custom2'				=> $data[15],
-							'custom3'				=> $data[16],
-							'custom4'				=> $data[17],
-							'custom5'				=> $data[18],
-							'custom6'				=> $data[19],
-							'custom7'				=> $data[20],
-							'custom8'				=> $data[21],
-							'custom9'				=> $data[22],
-							'custom10'				=> $data[23],
-							'custom11'				=> $data[24],
-							'custom12'				=> $data[25],
-							'custom13'				=> $data[26],
-							'custom14'				=> $data[27],
-							'custom15'				=> $data[28],
-							'custom16'				=> $data[29],
-							'custom17'				=> $data[30],
-							'custom18'				=> $data[31],
-							'custom19'				=> $data[32],
-							'custom20'				=> $data[33]
+							'cost_price'			=> '0',
+							'unit_price'			=> $data[3],
+							'reorder_level'			=> NULL,
+							'supplier_id'			=> NULL,
+							'allow_alt_description'	=> '0',
+							'is_serialized'			=> '0',
+							'custom1'				=> $data[4],
+							'custom2'				=> $data[5],
+							'custom3'				=> $data[6],
+							'custom4'				=> $data[7],
+							'custom5'				=> $data[8],
+							'custom6'				=> $data[9],
+							'custom7'				=> $data[10],
+							'custom8'				=> $data[11],
+							'custom9'				=> $data[12],
+							'custom10'				=> $data[13],
+							'custom11'				=> $data[14],
+							'custom12'				=> $data[15],
+							'custom13'				=> $data[16],
+							'custom14'				=> $data[17],
+							'description'			=> $data[18]
 						);
 
-						/* we could do something like this, however, the effectiveness of
-						  this is rather limited, since for now, you have to upload files manually
-						  into that directory, so you really can do whatever you want, this probably
-						  needs further discussion  */
-
-						$pic_file = $data[24];
-						/*if(strcmp('.htaccess', $pic_file)==0)
-						{
-							$pic_file='';
-						}*/
-						$item_data['pic_filename'] = $pic_file;
 
 						$item_number = $data[0];
 						$invalidated = FALSE;
@@ -747,24 +730,6 @@ class Items extends Secure_Controller
 
 					if(!$invalidated && $this->Item->save($item_data))
 					{
-						$items_taxes_data = NULL;
-						//tax 1
-						if(is_numeric($data[7]) && $data[6] != '')
-						{
-							$items_taxes_data[] = array('name' => $data[6], 'percent' => $data[7] );
-						}
-
-						//tax 2
-						if(is_numeric($data[9]) && $data[8] != '')
-						{
-							$items_taxes_data[] = array('name' => $data[8], 'percent' => $data[9] );
-						}
-
-						// save tax values
-						if(count($items_taxes_data) > 0)
-						{
-							$this->Item_taxes->save($items_taxes_data, $item_data['item_id']);
-						}
 
 						// quantities & inventory Info
 						$employee_id = $this->Employee->get_logged_in_employee_info()->person_id;
@@ -777,13 +742,13 @@ class Items extends Secure_Controller
 						$allowed_locations = $this->Stock_location->get_allowed_locations();
 						for($col = 25; $col < $cols; $col = $col + 2)
 						{
-							$location_id = $data[$col];
+							$location_id = '1';
 							if(array_key_exists($location_id, $allowed_locations))
 							{
 								$item_quantity_data = array(
 									'item_id' => $item_data['item_id'],
 									'location_id' => $location_id,
-									'quantity' => $data[$col + 1],
+									'quantity' => '1',
 								);
 								$this->Item_quantity->save($item_quantity_data, $item_data['item_id'], $location_id);
 
@@ -791,8 +756,8 @@ class Items extends Secure_Controller
 									'trans_items' => $item_data['item_id'],
 									'trans_user' => $employee_id,
 									'trans_comment' => $comment,
-									'trans_location' => $data[$col],
-									'trans_inventory' => $data[$col + 1]
+									'trans_location' => '1',
+									'trans_inventory' => '1'
 								);
 
 								$this->Inventory->insert($excel_data);
