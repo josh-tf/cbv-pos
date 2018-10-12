@@ -350,11 +350,11 @@ $item_arr = (array) $item_info; // if editing, get the item data
 <?php
 
 $variable = $this->config->item('cbvopt_item_cpu');
-$var=explode(',',$variable);
+$var = explode(',', $variable);
 
-foreach($var as $row){
-echo '<option value="' . trim($row) . '">';
- }
+foreach ($var as $row) {
+    echo '<option value="' . trim($row) . '">';
+}
 ?>
 
 </datalist>
@@ -382,11 +382,11 @@ echo '<option value="' . trim($row) . '">';
 <?php
 
 $variable = $this->config->item('cbvopt_item_ram');
-$var=explode(',',$variable);
+$var = explode(',', $variable);
 
-foreach($var as $row){
-echo '<option value="' . trim($row) . '">';
- }
+foreach ($var as $row) {
+    echo '<option value="' . trim($row) . '">';
+}
 ?>
 
 </datalist>
@@ -405,11 +405,11 @@ echo '<option value="' . trim($row) . '">';
 <?php
 
 $variable = $this->config->item('cbvopt_item_storage');
-$var=explode(',',$variable);
+$var = explode(',', $variable);
 
-foreach($var as $row){
-echo '<option value="' . trim($row) . '">';
- }
+foreach ($var as $row) {
+    echo '<option value="' . trim($row) . '">';
+}
 ?>
 </datalist>
 <span class="input-group-addon input-sm">GB</span>
@@ -436,11 +436,11 @@ echo '<option value="' . trim($row) . '">';
 <?php
 
 $variable = $this->config->item('cbvopt_item_screen');
-$var=explode(',',$variable);
+$var = explode(',', $variable);
 
-foreach($var as $row){
-echo '<option value="' . trim($row) . '">';
- }
+foreach ($var as $row) {
+    echo '<option value="' . trim($row) . '">';
+}
 ?>
 </datalist>
 <span class="input-group-addon input-sm">Inches</span>
@@ -458,11 +458,11 @@ echo '<option value="' . trim($row) . '">';
 <?php
 
 $variable = $this->config->item('cbvopt_item_optical');
-$var=explode(',',$variable);
+$var = explode(',', $variable);
 
-foreach($var as $row){
-echo '<option value="' . trim($row) . '">';
- }
+foreach ($var as $row) {
+    echo '<option value="' . trim($row) . '">';
+}
 ?>
 </datalist>
 </div>
@@ -479,11 +479,11 @@ echo '<option value="' . trim($row) . '">';
 <?php
 
 $variable = $this->config->item('cbvopt_item_type');
-$var=explode(',',$variable);
+$var = explode(',', $variable);
 
-foreach($var as $row){
-echo '<option value="' . trim($row) . '">';
- }
+foreach ($var as $row) {
+    echo '<option value="' . trim($row) . '">';
+}
 ?>
 
 </datalist>
