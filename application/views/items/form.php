@@ -315,12 +315,18 @@ foreach ($stock_locations as $key => $location_detail) {
 		</div>
 	<div id="computer-fields">
 
+<?php
+
+$item_arr = (array) $item_info; // if editing, get the item data
+
+?>
+
 <div class="form-group form-group-sm custom1">
 <?php echo form_label($this->config->item('custom1_name'), 'custom1', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
 <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-calendar"></span></span>
-<input value="<?php $item_arr['custom1'] ?>" placeholder="<?php echo $this->lang->line('custom1_helper') ?>" list="custom1" class="form-control input-sm" name="custom1" type="date" id="custom1">
+<input value="" placeholder="<?php echo $this->lang->line('custom1_helper') ?>" list="custom1" class="form-control input-sm" name="custom1" type="date" id="custom1">
 </div>
 </div>
 </div>
@@ -329,7 +335,7 @@ foreach ($stock_locations as $key => $location_detail) {
 <?php echo form_label($this->config->item('custom2_name'), 'custom2', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom2'] ?>" placeholder="<?php echo $this->lang->line('custom2_helper') ?>" list="custom2" class="form-control input-sm" name="custom2" id="custom2">
+<input value="<?php echo $item_arr['custom2'] ?>" placeholder="<?php echo $this->lang->line('custom2_helper') ?>" list="custom2" class="form-control input-sm" name="custom2" id="custom2">
 </div>
 </div>
 </div>
@@ -338,7 +344,7 @@ foreach ($stock_locations as $key => $location_detail) {
 <?php echo form_label($this->config->item('custom3_name'), 'custom3', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom3'] ?>" placeholder="<?php echo $this->lang->line('custom3_helper') ?>" list="custom3" class="form-control input-sm" name="custom3">
+<input value="<?php echo $item_arr['custom3'] ?>" placeholder="<?php echo $this->lang->line('custom3_helper') ?>" list="custom3" class="form-control input-sm" name="custom3">
 <datalist id="custom3">
 
 <?php
@@ -360,7 +366,7 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom4_name'), 'custom4', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom4'] ?>" placeholder="<?php echo $this->lang->line('custom4_helper') ?>" list="custom4" class="form-control input-sm" name="custom4" id="custom4" type="number" step="0.1">
+<input value="<?php echo $item_arr['custom4'] ?>" placeholder="<?php echo $this->lang->line('custom4_helper') ?>" list="custom4" class="form-control input-sm" name="custom4" id="custom4" type="number" step="0.1">
 <span class="input-group-addon input-sm">Ghz</span>
 </div>
 </div>
@@ -370,7 +376,7 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom5_name'), 'custom5', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom5'] ?>" placeholder="<?php echo $this->lang->line('custom5_helper') ?>" list="custom5" class="form-control input-sm" name="custom5">
+<input value="<?php echo $item_arr['custom5'] ?>" placeholder="<?php echo $this->lang->line('custom5_helper') ?>" list="custom5" class="form-control input-sm" name="custom5">
 <datalist id="custom5">
 
 <?php
@@ -393,7 +399,7 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom6_name'), 'custom6', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom6'] ?>" placeholder="<?php echo $this->lang->line('custom6_helper') ?>" list="custom6" class="form-control input-sm" name="custom6">
+<input value="<?php echo $item_arr['custom6'] ?>" placeholder="<?php echo $this->lang->line('custom6_helper') ?>" list="custom6" class="form-control input-sm" name="custom6">
 <datalist id="custom6">
 
 <?php
@@ -424,7 +430,7 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom8_name'), 'custom8', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom8'] ?>" placeholder="<?php echo $this->lang->line('custom8_helper') ?>" list="custom8" class="form-control input-sm" name="custom8">
+<input value="<?php echo $item_arr['custom8'] ?>" placeholder="<?php echo $this->lang->line('custom8_helper') ?>" list="custom8" class="form-control input-sm" name="custom8">
 <datalist id="custom8">
 
 <?php
@@ -446,7 +452,7 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom9_name'), 'custom9', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom9'] ?>" placeholder="<?php echo $this->lang->line('custom9_helper') ?>" list="custom9" class="form-control input-sm" name="custom9">
+<input value="<?php echo $item_arr['custom9'] ?>" placeholder="<?php echo $this->lang->line('custom9_helper') ?>" list="custom9" class="form-control input-sm" name="custom9">
 <datalist id="custom9">
 
 <?php
@@ -467,7 +473,7 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom10_name'), 'custom10', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom10'] ?>" placeholder="<?php echo $this->lang->line('custom10_helper') ?>" list="custom10" class="form-control input-sm" name="custom10">
+<input value="<?php echo $item_arr['custom10'] ?>" placeholder="<?php echo $this->lang->line('custom10_helper') ?>" list="custom10" class="form-control input-sm" name="custom10">
 <datalist id="custom10">
 
 <?php
@@ -489,7 +495,7 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom11_name'), 'custom11', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom11'] ?>" placeholder="<?php echo $this->lang->line('custom11_helper') ?>" list="custom11" class="form-control input-sm" name="custom11" id="custom11">
+<input value="<?php echo $item_arr['custom11'] ?>" placeholder="<?php echo $this->lang->line('custom11_helper') ?>" list="custom11" class="form-control input-sm" name="custom11" id="custom11">
 </div>
 </div>
 </div>
@@ -498,7 +504,7 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom12_name'), 'custom12', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom12'] ?>" placeholder="<?php echo $this->lang->line('custom12_helper') ?>" list="custom12" class="form-control input-sm" name="custom12" id="custom12" type="number" step="1">
+<input value="<?php echo $item_arr['custom12'] ?>" placeholder="<?php echo $this->lang->line('custom12_helper') ?>" list="custom12" class="form-control input-sm" name="custom12" id="custom12" type="number" step="1">
 </div>
 </div>
 </div>
