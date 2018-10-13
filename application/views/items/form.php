@@ -496,6 +496,7 @@ foreach ($var as $row) {
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
 <input value="<?php echo $item_arr['custom11'] ?>" placeholder="<?php echo $this->lang->line('custom11_helper') ?>" list="custom11" class="form-control input-sm" name="custom11" id="custom11">
+<span class="input-group-addon input-sm">Hours</span>
 </div>
 </div>
 </div>
@@ -713,6 +714,7 @@ function createDescription() {
 					table_support.handle_submit('<?php echo site_url('items'); ?>', response, stay_open);
 
 					if(response.success) {
+
 						var answer = confirm("Do you want to reset the form?")
 						if (answer) {
 							dialog_support.hide();
