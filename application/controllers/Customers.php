@@ -224,13 +224,6 @@ class Customers extends Persons
 		echo !$exists ? 'true' : 'false';
 	}
 
-	public function ajax_check_concession()
-	{
-		$exists = $this->Customer->check_concession_exists($this->input->post('company_name'));
-
-		echo !$exists ? 'true' : 'false';
-	}
-
 	/*
 	AJAX call to verify if an account number already exists
 	*/
@@ -324,10 +317,6 @@ class Customers extends Persons
 
 						// don't duplicate people with same email
 						$invalidated = $this->Customer->check_email_exists($email);
-
-						// don't duplicate people with same email
-						$invalidated = $this->Customer->check_concession_exists($company_name);
-
 						if($account_number != '')
 						{
 							$customer_data['account_number'] = $account_number;
