@@ -713,7 +713,6 @@ function createDescription() {
 					table_support.handle_submit('<?php echo site_url('items'); ?>', response, stay_open);
 
 					if(response.success) {
-
 						var answer = confirm("Do you want to reset the form?")
 						if (answer) {
 							dialog_support.hide();

@@ -544,10 +544,6 @@ class Item extends CI_Model
 		$this->db->select($this->get_search_suggestion_format('items.item_id, name'));
 		$this->db->from('items');
 
-		if($hideZeroQty == TRUE){
-			$this->db->join('item_quantities', 'item_quantities.item_id = items.item_id'); //These 2 lines added to not list sold items -rjob
-			$this->db->where('quantity >', 0);
-		}
 
 		$this->db->where('deleted', $filters['is_deleted']);
 		$this->db->where_in('item_type', $non_kit); // standard, exclude kit items since kits will be picked up later
