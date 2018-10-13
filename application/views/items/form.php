@@ -631,32 +631,20 @@ $(document).ready(function()
 function createDescription() {
 
 	// has to be a cleaner way..
-	var cat = "" // $('#category').val(); - this is already shown on reciept from diff function refer to reciept_default.php #Line 117
-	var c1 = "" //$('#custom1').val(); Don't show the build date on description
-	var c2 = $('#custom2').val();
-	var c3 = $('#custom3').val();
-	var c4 = $('#custom4').val();
-	var c5 = $('#custom5').val();
-	var c6 = $('#custom6').val();
-	var c7 = $('#custom7').val();
-	var c8 = $('#custom8').val();
-	var c9 = $('#custom9').val();
-	var c10 = $('#custom10').val();
-	var c11 = $('#custom11').val();
-	var c12 = "" // $('#custom12').val(); -- dont include boxonly price in description
-	var c13 = $('#custom13').val();
-	var c14 = "" //$('#custom14').val(); -- Removed as this is the staff only notes field
-	var c15 = $('#custom15').val();
-	var c16 = $('#custom16').val();
-	var c17 = $('#custom17').val();
-	var c18 = $('#custom18').val();
-	var c19 = $('#custom19').val();
-	var c20 = $('#custom20').val();
+	var c2 = $('[name="custom2"]').val();
+	var c3 = $('[name="custom3"]').val();
+	var c4 = $('[name="custom4"]').val();
+	var c5 = $('[name="custom5"]').val();
+	var c6 = $('[name="custom6"]').val();
+	var c7 = $('[name="custom7"]').val();
+	var c8 = $('[name="custom8"]').val();
+	var c9 = $('[name="custom9"]').val();
+	var c10 = $('[name="custom10"]').val();
+	var c11 = $('[name="custom11"]').val();
+	var c13 = $('[name="custom13"]').val();
 
 	// Add on the extentions only if notnull - important for the next step
-
-	if(c10){cat += ' ('+c10+')';} // if type (i.e All in One) specified, it will be displayed as "Desktop (All in One) in the description"
-
+	if(c10){c10 = 'Type: ' + c10;}
 	if(c4){c4 += ' Ghz';} //Add in Ghz on the CPU Speed field
 	if(c5){c5 += ' GB RAM';} // Add in GB RAM to the RAM field
 	if(c6){c6 += ' GB HDD';} // Add in GB HDD to the Storage field
@@ -664,14 +652,12 @@ function createDescription() {
 	if(c11){c11 += ' Hours';}  //  Add in Hours to Battery field
 
 	// Contact all fields together if they are not null
-	return $.grep([cat, c1, c2, c3, c4, c5, c6, c7, c8, c9, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20], Boolean).join(", "); // skip c10 as its included in cat string
+	return $.grep([c10, c2, c3, c4, c5, c6, c7, c8, c9, c11, c13], Boolean).join(", "); // skip c10 as its included in cat string
 
 };
 	// Update description
 	$('#computer-fields').change(() => {
-
 		$('#description').val(createDescription); //createDescription();
-
 });
 
 	<?php for ($i = 1; $i <= 20; ++$i) {
