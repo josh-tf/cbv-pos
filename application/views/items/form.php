@@ -219,7 +219,7 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 define("DEFAULT_STOCK_LEVEL", 1);
 foreach ($stock_locations as $key => $location_detail) {
     ?>
-			<div class="form-group form-group-sm" id="qty">
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('items_quantity') . ' ' . $location_detail['location_name'], 'quantity_' . $key, array('class' => 'required control-label col-xs-3')); ?>
 				<div class='col-xs-4'>
 					<?php echo form_input(array(
@@ -583,11 +583,9 @@ $(document).ready(function()
 		if (isComputer) {
 			$('#computer-fields').removeClass('hidden');
 			$('#tax').addClass('hidden');
-			$('#qty').addClass('hidden');
 		} else {
 			$('#computer-fields').addClass('hidden');
 			$('#tax').removeClass('hidden');
-			$('#qty').removeClass('hidden');
 		}
 
 		if (category == 'Desktop') { // isComputer and is a Desktop (Specific items: 10,12)

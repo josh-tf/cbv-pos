@@ -537,14 +537,18 @@ class Item extends CI_Model
 		return $label;
 	}
 
-	public function get_search_suggestions($search, $filters = array('is_deleted' => FALSE, 'search_custom' => FALSE), $unique = FALSE, $limit = 25)
+	public function get_search_suggestions($search, $filters = array('is_deleted' => FALSE, 'search_custom' => FALSE), $unique = FALSE, $limit = 25, $hideZeroQty = TRUE)
 	{
 		$suggestions = array();
 		$non_kit = array(ITEM, ITEM_AMOUNT_ENTRY);
 		$this->db->select($this->get_search_suggestion_format('items.item_id, name'));
 		$this->db->from('items');
-		$this->db->join('item_quantities', 'item_quantities.item_id = items.item_id'); //These 2 lines added to not
-		$this->db->where('quantity >', 0);	      //list sold items -rjob
+
+		if($hideZeroQty == TRUE){
+			$this->db->join('item_quantities', 'item_quantities.item_id = items.item_id'); //These 2 lines added to not list sold items -rjob
+			$this->db->where('quantity >', 0);
+		}
+
 		$this->db->where('deleted', $filters['is_deleted']);
 		$this->db->where_in('item_type', $non_kit); // standard, exclude kit items since kits will be picked up later
 		$this->db->like('name', $search);
