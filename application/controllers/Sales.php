@@ -112,8 +112,18 @@ class Sales extends Secure_Controller
 			// if a valid receipt or invoice was found the search term will be replaced with a receipt number (POS #)
 			$suggestions[] = $receipt;
 		}
-		$suggestions = array_merge($suggestions, $this->Item->get_search_suggestions($search, array('search_custom' => FALSE, 'is_deleted' => FALSE), TRUE));
-		$suggestions = array_merge($suggestions, $this->Item_kit->get_search_suggestions($search));
+
+		if($this->sale_lib->get_mode() == 'return'){
+			$suggestions = array_merge($suggestions, $this->Item->get_search_suggestions($search, array('search_custom' => FALSE, 'is_deleted' => FALSE), TRUE, 25, FALSE));
+			$suggestions = array_merge($suggestions, $this->Item_kit->get_search_suggestions($search));
+		}else{
+			$suggestions = array_merge($suggestions, $this->Item->get_search_suggestions($search, array('search_custom' => FALSE, 'is_deleted' => FALSE), TRUE, 25, TRUE));
+			$suggestions = array_merge($suggestions, $this->Item_kit->get_search_suggestions($search));
+		}
+
+
+
+
 
 		$suggestions = $this->xss_clean($suggestions);
 
@@ -389,6 +399,7 @@ class Sales extends Secure_Controller
 		$this->barcode_lib->parse_barcode_fields($quantity, $item_id_or_number_or_item_kit_or_receipt);
 		$mode = $this->sale_lib->get_mode();
 		$quantity = ($mode == 'return') ? -$quantity : $quantity;
+
 		$item_location = $this->sale_lib->get_sale_location();
 
 		if($mode == 'return' && $this->Sale->is_valid_receipt($item_id_or_number_or_item_kit_or_receipt))
