@@ -131,27 +131,26 @@ the printer settings in the popup dialog are configured as follows:
 <table class="u-full-width">
   <thead>
     <tr>
-      <th>Type</th>
       <th>Price</th>
+      <th>Concession</th>
+      <th>Full</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><b class="pricing">Concession</b></td> <!-- round up or down to nearest $5 -->
+      <td><b class="pricing">Full System</b></td> <!-- round up or down to nearest $5 -->
       <td><b class="pricing">$<?php echo number_format((float)round(($row['unit_price'])/5) * 5, 2, '.', ''); ?></b></td>
+      <td>$<?php echo number_format((float)round(($row['unit_price'] * 1.5)/5) * 5, 2, '.', ''); ?></b></td><!-- the php below adds 25% and rounds up/down to nearest $5 -->
     </tr>
     <tr>
-      <td><b class="pricing">Non Concession</b></td> <!-- the php below adds 25% and rounds up/down to nearest $5 -->
-      <td><b class="pricing">$<?php echo number_format((float)round(($row['unit_price'] * 1.25)/5) * 5, 2, '.', ''); ?></b></td>
-    </tr>
-    <tr>
-      <td><i>Without Accessories</i></td>
-      <td>-$20 discount</td>
+      <td><b class="pricing">Box Only</b></td> 
+      <td><b class="pricing">$<?php echo number_format((float)round(($row['custom12'])/5) * 5, 2, '.', ''); ?></b></td>
+      <td>$<?php echo number_format((float)round(($row['custom12'] * 1.5)/5) * 5, 2, '.', ''); ?></b></td>
     </tr>
   </tbody>
 </table>
 
-<p class="discount-info">The discount above aplies if you wish to purchase the desktop only - you will need to supply your own monitor, keyboard and mouse.</p>
+<p class="discount-info">Box Only applies if you wish to purchase the desktop only - you will need to supply your own monitor, keyboard and mouse.</p>
 
 <table class="u-full-width">
   <thead>
@@ -179,9 +178,12 @@ the printer settings in the popup dialog are configured as follows:
     </tr>
     <tr>
       <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Extras</b></td>
-      <td><?php if($row['custom7']){echo $row['custom7']. 'in screen ';};
-		if($row['custom8']){echo $row['custom8']. ' ';};
-		if($row['custom9']){echo $row['custom9']. '';};; ?></td>
+      <td><?php if($row['custom8']){echo $row['custom8']. ' in screen ';};
+		if($row['custom9']){echo $row['custom9']. ' ';};
+		if($row['custom13']){echo $row['custom13']. '';};; ?></td>
+    </tr>
+      <td><img src="images/ticket-icons/tux.png" class="ticket-icon" /> <b>OS</b></td>
+      <td><?php echo $row['custom7']; ?></td>
     </tr>
   </tbody>
 </table>
