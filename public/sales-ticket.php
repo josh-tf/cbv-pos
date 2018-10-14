@@ -178,14 +178,14 @@ the printer settings in the popup dialog are configured as follows:
     </tr>
     <tr>
       <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Extras</b></td>
-      <td><?php if($row['custom8']){echo $row['custom8']. ' in screen ';};
+      <td><?php if($row['custom8']){echo $row['custom8']. '" screen ';};
 		if($row['custom9']){echo $row['custom9']. ' ';};
 		if($row['custom13']){echo $row['custom13']. '';};; ?></td>
     </tr>
       <td><img src="images/ticket-icons/tux.png" class="ticket-icon" /> <b>OS</b></td>
       <td><?php echo $row['custom7']; ?></td>
     </tr>
-  </tbody>
+  </tbody>John 	JS554433
 </table>
 
 	  </div>
