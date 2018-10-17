@@ -50,31 +50,13 @@ while ($row = $result->fetch_assoc()) {
     $ticket['concPriceFull'] = "$" . formatPrice($row['unit_price']);
     $ticket['nonConcPriceFull'] = "$" . formatPrice($row['unit_price'], true); // + 50% for non Concession
     $ticket['concPriceBox'] = "$" . formatPrice($row['custom12']);
-    $ticket['nonConcPriceBox'] = "$" . formatPrice(formatPrice($row['unit_price'], true) - $boxDiscount); // refer below L60-L69 // this formula is ((unit_price * 50%)-$boxDiscount)
+    $ticket['nonConcPriceBox'] = "$" . formatPrice(formatPrice($row['unit_price'], true) - $boxDiscount); // this formula is ((unit_price * 50%)-$boxDiscount)
     $ticket['specID'] = $row['name'] . ' - ' . $row['custom2'];
     $ticket['specCPU'] = $row['custom3'] . ' ' . $row['custom4'] . " Ghz";
     $ticket['specRAM'] = $row['custom5'] . " GB";
     $ticket['specHDD'] = $row['custom6'] . " GB";
-    $ticket['specEX'] = implode(", ", array_filter([$row['custom8'] ? $row['custom8'] . '" Screen' : null, $row['custom9'], $row['custom13']])); // refer below L72
+    $ticket['specEX'] = implode(", ", array_filter([$row['custom8'] ? $row['custom8'] . '" Screen' : null, $row['custom9'], $row['custom13']]));
     $ticket['specOS'] = $row['custom7'];
-
-//     ####### For the 'nonConcPriceBox' item ########
-    // To ensure that the correct amount is deducted from the box only price
-    // we are first getting unit price and adding 50% to the amount, then we
-    // are removing the 'box only' discount which needs to be calculated. if
-    // we do not do this we will end up charging 1.5x the box price rather than
-    // pc price less the discount - some examples are:
-
-    // $75 conc price = $115 full price (1.5x) - $20 discount for monitor
-    // if we 1.5x the box only price we get $82.50 rounded to $85.00 ($30 disc)
-    // using the above new method, we get $115 then take off $20 = $95.00 i.e
-    // the full non-conc price less the $20 discount for monitor.
-
-//     ############# For the 'SpexEX' item #############
-    // Using implode to join the extras fields if they are there, as we are
-    // adding {" Screen} to the screen, we only want to add this if the value
-    // is there, if no screen is there it will still add {" Screen} otherwise
-
     ?>
 
 <!DOCTYPE html>
