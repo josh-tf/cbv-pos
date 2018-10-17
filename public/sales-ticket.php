@@ -26,18 +26,62 @@ $result = $stmt->get_result();
 
 // if no results, exit
 if ($result->num_rows == 0) {
-  die('Invalid ID Provided');
+    die('Invalid ID Provided');
 }
 
 while ($row = $result->fetch_assoc()) {
 
-?>
+// generate our numbers for use
+
+    function formatPrice($value, $ncp = false)
+    { // ncp is a bool for non concession price
+
+        if (!$ncp) {
+            return number_format((float) $value, 2, '.', ''); // round to two dec
+        } else {
+            return number_format((float) round(($value * 1.5) / 5) * 5, 2, '.', ''); // if ncp bool is set to true then multiply by 150% and round to nearest 5 i.e 23.50 becomes 25.00
+        }
+
+    }
+
+    $boxDiscount = $row['unit_price'] - $row['custom12']; // calculate the difference between full and box only
+
+    // create an array to be used below
+    $ticket['concPriceFull'] = "$" . formatPrice($row['unit_price']);
+    $ticket['nonConcPriceFull'] = "$" . formatPrice($row['unit_price'], true); // + 50% for non Concession
+    $ticket['concPriceBox'] = "$" . formatPrice($row['custom12']);
+    $ticket['nonConcPriceBox'] = "$" . formatPrice(formatPrice($row['unit_price'], true) - $boxDiscount); // refer below L60-L69 // this formula is ((unit_price * 50%)-$boxDiscount)
+    $ticket['specID'] = $row['name'] . ' - ' . $row['custom2'];
+    $ticket['specCPU'] = $row['custom3'] . ' ' . $row['custom4'] . " Ghz";
+    $ticket['specRAM'] = $row['custom5'] . " GB";
+    $ticket['specHDD'] = $row['custom6'] . " GB";
+    $ticket['specEX'] = implode(", ", array_filter([$row['custom8'] ? $row['custom8'] . '" Screen' : null, $row['custom9'], $row['custom13']])); // refer below L72
+    $ticket['specOS'] = $row['custom7'];
+
+//     ####### For the 'nonConcPriceBox' item ########
+    // To ensure that the correct amount is deducted from the box only price
+    // we are first getting unit price and adding 50% to the amount, then we
+    // are removing the 'box only' discount which needs to be calculated. if
+    // we do not do this we will end up charging 1.5x the box price rather than
+    // pc price less the discount - some examples are:
+
+    // $75 conc price = $115 full price (1.5x) - $20 discount for monitor
+    // if we 1.5x the box only price we get $82.50 rounded to $85.00 ($30 disc)
+    // using the above new method, we get $115 then take off $20 = $95.00 i.e
+    // the full non-conc price less the $20 discount for monitor.
+
+//     ############# For the 'SpexEX' item #############
+    // Using implode to join the extras fields if they are there, as we are
+    // adding {" Screen} to the screen, we only want to add this if the value
+    // is there, if no screen is there it will still add {" Screen} otherwise
+
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>CBV Sales Ticket - <? echo $cbvid; ?></title>
+  <title>CBV Sales Ticket - <?echo $cbvid; ?></title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
 
@@ -139,13 +183,13 @@ the printer settings in the popup dialog are configured as follows:
   <tbody>
     <tr>
       <td><b class="pricing">Full System</b></td> <!-- round up or down to nearest $5 -->
-      <td><b class="pricing">$<?php echo number_format((float)round(($row['unit_price'])/5) * 5, 2, '.', ''); ?></b></td>
-      <td>$<?php echo number_format((float)round(($row['unit_price'] * 1.5)/5) * 5, 2, '.', ''); ?></b></td><!-- the php below adds 25% and rounds up/down to nearest $5 -->
+      <td><b class="pricing"><?php echo $ticket['concPriceFull'] ?></b></td>
+      <td><?php echo $ticket['nonConcPriceFull'] ?></td></b></td><!-- the php below adds 25% and rounds up/down to nearest $5 -->
     </tr>
     <tr>
-      <td><b class="pricing">Box Only</b></td> 
-      <td><b class="pricing">$<?php echo number_format((float)round(($row['custom12'])/5) * 5, 2, '.', ''); ?></b></td>
-      <td>$<?php echo number_format((float)round(($row['custom12'] * 1.5)/5) * 5, 2, '.', ''); ?></b></td>
+      <td><b class="pricing">Box Only</b></td>
+      <td><b class="pricing"><?php echo $ticket['concPriceBox'] ?></b></td>
+      <td><?php echo $ticket['nonConcPriceBox'] ?></b></td>
     </tr>
   </tbody>
 </table>
@@ -159,31 +203,29 @@ the printer settings in the popup dialog are configured as follows:
       <th>Details</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody>   <?php echo $ticket['']; ?>
     <tr>
       <td><img src="images/ticket-icons/cbvid.png" class="ticket-icon" /> <b>CBV ID</b></td>
-      <td><?php echo $row['name'].' - '.$row['custom2']; ?></td>
+      <td><?php echo $ticket['specID']; ?></td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/processor.png" class="ticket-icon" /> <b>Processor</b></td>
-      <td><?php echo $row['custom3'].' '. $row['custom4']; ?> Ghz</td>
+      <td><?php echo $ticket['specCPU']; ?></td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/memory.png" class="ticket-icon" /> <b>Memory</b></td>
-      <td><?php echo $row['custom5']; ?> GB</td>
+      <td><?php echo $ticket['specRAM']; ?></td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/storage.png" class="ticket-icon" /> <b>Storage</b></td>
-      <td><?php echo $row['custom6']; ?> GB</td>
+      <td><?php echo $ticket['specHDD']; ?></td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Extras</b></td>
-      <td><?php if($row['custom8']){echo $row['custom8']. '" screen ';};
-		if($row['custom9']){echo $row['custom9']. ' ';};
-		if($row['custom13']){echo $row['custom13']. '';};; ?></td>
+      <td><?php echo $ticket['specEX']; ?></td>
     </tr>
       <td><img src="images/ticket-icons/tux.png" class="ticket-icon" /> <b>OS</b></td>
-      <td><?php echo $row['custom7']; ?></td>
+      <td><?php echo $ticket['specOS'] ?></td>
     </tr>
   </tbody>
 </table>
@@ -213,5 +255,5 @@ the printer settings in the popup dialog are configured as follows:
 </html>
 
 <?php
-    }
+}
 ?>
