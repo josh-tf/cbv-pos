@@ -37,7 +37,7 @@ function openConcCheck() {
 		window.open('./customer-lookup.php?conc-id=' + concID + '&range=alltime') // open the sales ticket
 	}
 
-function checkKey() {
+function checkKey(event) {
     if(event.key === 'Enter') {
         openConcCheck();
     }
@@ -67,7 +67,7 @@ function checkKey() {
         <span class="glyphicon glyphicon-file">&nbsp</span>Lookup ID
     </button>
 
-	<input type="text" id="conc-id" onfocus="this.value=''" onkeydown="checkKey()" value="Concession ID:" class="form-control input-sm" id="" style="width: 125px;float: right;margin-right: 5px;">
+	<input type="text" id="conc-id" onfocus="this.value=''" onkeydown="checkKey(event)" value="Concession ID:" class="form-control input-sm" id="" style="width: 125px;float: right;margin-right: 5px;">
 
 </div>
 
