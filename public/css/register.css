@@ -119,3 +119,42 @@ input#amount_tendered:disabled {
 .alert {
 	margin-bottom: 5px;
 }
+
+.non-sale#mode_form {
+	background-color: #6f0000;
+}
+
+.non-sale#add_item_form,
+.non-sale#overall_sale {
+	background-color: #ff7676;
+}
+
+.non-sale {
+	color: #7d0000;
+}
+
+.non-sale.panel-body {
+	color: #ff7676;
+}
+
+.non-sale.btn-info,
+.non-sale.btn-primary {
+	background-color: #7d0000;
+	border-color: #420000;
+	color: #fff;
+}
+
+.non-sale.btn-info:hover,
+.non-sale.btn-primary:hover,
+.non-sale.btn-primary:active:hover,
+.non-sale.btn-info:active,
+.non-sale.btn-primary:active,
+.non-sale.btn-info:active:hover,
+.non-sale.btn-info:hover,
+.non-sale.btn-info:focus,
+.non-sale.btn-primary:focus,
+.non-sale.btn-primary.focus {
+	background-color: #420000;
+	border-color: #7d0000;
+	color: #fff;
+}
