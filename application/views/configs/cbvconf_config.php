@@ -44,6 +44,17 @@
 <h5>Item Dropdowns</h5>
 
 	<div class="form-group form-group-sm">
+		<?php echo form_label($this->lang->line('cbvopt_item_cat'), 'cbvopt_item_cat', array('class' => 'control-label col-xs-2')); ?>
+			<div class='col-xs-2'>
+				<?php echo form_input(array(
+					'name' => 'cbvopt_item_cat',
+					'id' => 'cbvopt_item_cat',
+					'class' => 'form-control input-sm',
+					'value' => $this->config->item('cbvopt_item_cat'))); ?>
+			</div>
+	</div>
+
+	<div class="form-group form-group-sm">
 		<?php echo form_label($this->lang->line('cbvopt_item_cpu'), 'cbvopt_item_cpu', array('class' => 'control-label col-xs-2')); ?>
 			<div class='col-xs-2'>
 				<?php echo form_input(array(
@@ -51,6 +62,17 @@
 					'id' => 'cbvopt_item_cpu',
 					'class' => 'form-control input-sm',
 					'value' => $this->config->item('cbvopt_item_cpu'))); ?>
+			</div>
+	</div>
+
+	<div class="form-group form-group-sm">
+		<?php echo form_label($this->lang->line('cbvopt_item_os'), 'cbvopt_item_os', array('class' => 'control-label col-xs-2')); ?>
+			<div class='col-xs-2'>
+				<?php echo form_input(array(
+					'name' => 'cbvopt_item_os',
+					'id' => 'cbvopt_item_os',
+					'class' => 'form-control input-sm',
+					'value' => $this->config->item('cbvopt_item_os'))); ?>
 			</div>
 	</div>
 
