@@ -337,6 +337,7 @@ class Items extends Secure_Controller
 
     public function save($item_id = -1)
     {
+
         $upload_success = $this->_handle_image_upload();
         $upload_data = $this->upload->data();
 
