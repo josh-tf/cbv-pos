@@ -216,11 +216,17 @@ class Config extends Secure_Controller
 		$data['themes'] = $this->_themes();
 
 		$data['cbvconf'] = array();{
-// Todo: update this
 			$data['cbvconf']['cbvopt_distuser'] = '';
 			$data['cbvconf']['cbvopt_distpass'] = '';
 			$data['cbvconf']['cbvopt_distver'] = '';
+			$data['cbvconf']['cbvopt_item_cat'] = '';
 			$data['cbvconf']['cbvopt_item_cpu'] = '';
+			$data['cbvconf']['cbvopt_item_os'] = '';
+			$data['cbvconf']['cbvopt_item_ram'] = '';
+			$data['cbvconf']['cbvopt_item_storage'] = '';
+			$data['cbvconf']['cbvopt_item_screen'] = '';
+			$data['cbvconf']['cbvopt_item_optical'] = '';
+			$data['cbvconf']['cbvopt_item_type'] = '';
 		}
 		$this->load->view("configs/manage", $data);
 	}
@@ -435,7 +441,9 @@ class Config extends Secure_Controller
 			'cbvopt_distuser' => $this->input->post('cbvopt_distuser'),
 			'cbvopt_distpass' => $this->input->post('cbvopt_distpass'),
 			'cbvopt_distver' => $this->input->post('cbvopt_distver'),
+			'cbvopt_item_cat' => $this->input->post('cbvopt_item_cat'),
 			'cbvopt_item_cpu' => $this->input->post('cbvopt_item_cpu'),
+			'cbvopt_item_os' => $this->input->post('cbvopt_item_os'),
 			'cbvopt_item_ram' => $this->input->post('cbvopt_item_ram'),
 			'cbvopt_item_storage' => $this->input->post('cbvopt_item_storage'),
 			'cbvopt_item_screen' => $this->input->post('cbvopt_item_screen'),
