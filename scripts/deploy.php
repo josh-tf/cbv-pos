@@ -29,21 +29,23 @@ date_default_timezone_set('Australia/Melbourne');
 
 <?php
 
-if($inputSecret != $serverSecret){
-   die("Unauthorised access - please provide the secret");
+if ($inputSecret != $serverSecret) {
+    die("Unauthorised access - please provide the secret");
 }
 
-if($actionType == "rebuild"){
-        updateBuild();
-}elseif($actionType == "updatedb"){
-        updateDatabase();
-}else{
-        die("Invalid action parameter provided");
-    }
+if ($actionType == "rebuild") {
+    updateBuild();
+} elseif ($actionType == "updatedb") {
+    updateDatabase();
+    exit(0);
+} else {
+    die("Invalid action parameter provided");
+}
 
-Function updateBuild(){
+function updateBuild()
+{
 
-        # set our working directory
+    # set our working directory
     chdir('/git-dir');
 
     $exec = array(
@@ -54,7 +56,7 @@ Function updateBuild(){
         'sudo git status',
         'sudo git submodule sync',
         'sudo git submodule update',
-        'sudo git submodule status'
+        'sudo git submodule status',
     );
 
     $output = null;
@@ -64,7 +66,7 @@ Function updateBuild(){
         $result = system($cmd, $code);
         $termStdOut .= htmlentities(trim($result)) . "\n";
 
-        if($code != 0){
+        if ($code != 0) {
             buildFailed($termStdOut);
             break;
         }
@@ -74,11 +76,12 @@ Function updateBuild(){
 }
 
 // after foreach is broken out of/finished, check if there is an error
-if($code == 0){
+if ($code == 0) {
     buildSuccess($msg);
 }
 
-Function updateDatabase(){
+function updateDatabase()
+{
     chdir('/git-dir/scripts');
     echo $pwd;
     $output = shell_exec('./update-db.sh cbvpos cbvposdev-db admin ' . $_SERVER['POSDB_PASS']);
@@ -88,7 +91,7 @@ Function updateDatabase(){
     $successMsg = "A database rebuild has *successfully* taken place on the Dev Server\n";
     $successMsg .= "This sql action took place at `" . date('D d M Y h i A') . " (AEST)`";
 
-    $slackContent = array (
+    $slackContent = array(
         'text' => $successMsg,
         'channel' => 'CCVHHM9N2',
     );
@@ -97,7 +100,8 @@ Function updateDatabase(){
 
 }
 
-Function buildFailed($msg){
+function buildFailed($msg)
+{
 
 // create our error message
     $errMsg = "Oh no.. A git sync has failed on the Dev Server\n";
@@ -107,30 +111,25 @@ Function buildFailed($msg){
     $errMsg .= "```\n";
     $errMsg .= "Build attempt occurred at `" . date('D d M Y h i A') . " (AEST)`";
 
-    $slackContent = array (
+    $slackContent = array(
         'text' => $errMsg,
         'channel' => 'CCVHHM9N2',
-        'attachments' =>
-        array (
-        0 =>
-        array (
-            'fallback' => 'Attempt a manual git sync via http://cbvpos.josh.tf:8081/deploy.php?secret=' . $_SERVER['SYNC_SECRET'] . '&action=rebuild',
-            'actions' =>
-            array (
-            0 =>
-            array (
-                'type' => 'button',
-                'text' => 'Attempt Git Sync 🤖',
-                'url' => 'http://cbvpos.josh.tf:8081/deploy.php?secret=?secret=' . $_SERVER['SYNC_SECRET'] . '&action=rebuild',
+        'attachments' => array(
+            0 => array(
+                'fallback' => 'Attempt a manual git sync via http://cbvpos.josh.tf:8081/deploy.php?secret=' . $_SERVER['SYNC_SECRET'] . '&action=rebuild',
+                'actions' => array(
+                    0 => array(
+                        'type' => 'button',
+                        'text' => 'Attempt Git Sync 🤖',
+                        'url' => 'http://cbvpos.josh.tf:8081/deploy.php?secret=?secret=' . $_SERVER['SYNC_SECRET'] . '&action=rebuild',
+                    ),
+                    1 => array(
+                        'type' => 'button',
+                        'text' => 'View random cat 🐱',
+                        'url' => 'http://random.cat/',
+                    ),
+                ),
             ),
-            1 =>
-            array (
-                'type' => 'button',
-                'text' => 'View random cat 🐱',
-                'url' => 'http://random.cat/',
-            ),
-            ),
-        ),
         ),
     );
 
@@ -138,30 +137,27 @@ Function buildFailed($msg){
 
 };
 
-Function buildSuccess(){
+function buildSuccess()
+{
 
     // create our success message
     $successMsg = "A git sync has *successfully* taken place on the Dev Server\n";
     $successMsg .= "This build took place at `" . date('D d M Y h i A') . " (AEST)`";
 
-    $slackContent = array (
+    $slackContent = array(
         'text' => $successMsg,
         'channel' => 'CCVHHM9N2',
-        'attachments' =>
-        array (
-        0 =>
-        array (
-            'fallback' => 'Attempt a database rebuild via http://cbvpos.josh.tf:8081/deploy.php??secret=' . $_SERVER['SYNC_SECRET'] . '&action=updatedb',
-            'actions' =>
-            array (
-            0 =>
-            array (
-                'type' => 'button',
-                'text' => 'Rebuild Database ⚙️',
-                'url' => 'http://cbvpos.josh.tf:8081/deploy.php?secret=' . $_SERVER['SYNC_SECRET'] . '&action=updatedb',
+        'attachments' => array(
+            0 => array(
+                'fallback' => 'Attempt a database rebuild via http://cbvpos.josh.tf:8081/deploy.php??secret=' . $_SERVER['SYNC_SECRET'] . '&action=updatedb',
+                'actions' => array(
+                    0 => array(
+                        'type' => 'button',
+                        'text' => 'Rebuild Database ⚙️',
+                        'url' => 'http://cbvpos.josh.tf:8081/deploy.php?secret=' . $_SERVER['SYNC_SECRET'] . '&action=updatedb',
+                    ),
+                ),
             ),
-            ),
-        ),
         ),
     );
 
@@ -169,7 +165,8 @@ Function buildSuccess(){
 
 };
 
-Function postSlack($slackContent){
+function postSlack($slackContent)
+{
 
     $webhook = $_SERVER['SLACK_WEBHOOK'];
 
