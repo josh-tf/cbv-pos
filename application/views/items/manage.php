@@ -67,7 +67,7 @@ if (cbvid == 'CBV ID:') {
 	window.open('./sales-ticket.php?id=' + cbvid) // open the sales ticket
 }
 
-function checkKey() {
+function checkKey(event) {
     if(event.key === 'Enter') {
         openTicket();
     }
@@ -100,7 +100,7 @@ function checkKey() {
         <span class="glyphicon glyphicon-file">&nbsp</span>Generate Ticket
     </button>
 
-	<input type="text" id="cbvid" onfocus="this.value=''" value="CBV ID:" onkeydown="checkKey()" class="form-control input-sm" id="" style="width: 85px;float: right;margin-right: 5px;">
+	<input type="text" id="cbvid" onfocus="this.value=''" value="CBV ID:" onkeydown="checkKey(event)" class="form-control input-sm" id="" style="width: 85px;float: right;margin-right: 5px;">
 </div>
 
 <div id="toolbar">
