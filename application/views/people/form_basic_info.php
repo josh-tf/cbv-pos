@@ -43,7 +43,7 @@
 
 
 <div class="form-group form-group-sm">
-	<?php echo form_label($his->lang->line('common_email'), 'email', array('class' => 'control-label col-xs-3')); ?>
+	<?php echo form_label($this->lang->line('common_email'), 'email', array('class' => 'control-label col-xs-3')); ?>
 	<div class='col-xs-8'>
 		<div class="input-group">
 			<span class="input-group-addon input-sm"><span class="glyphicon glyphicon-envelope"></span></span>
