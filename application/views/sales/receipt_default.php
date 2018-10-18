@@ -117,12 +117,12 @@ if ($this->config->item('receipt_show_description') && !empty($item['description
 
         if ($item['item_category'] == "Laptop" || $item['item_category'] === "Desktop") {
 
-			echo '<b>Machine Specs:</b> ' . $item['description'];
+            echo '<b>Machine Specs:</b> ' . $item['description'];
 
-		} else {
+        } else {
 
-			echo  $item['description'];
-		}
+            echo $item['description'];
+        }
         ?>
 
 				</div>
@@ -266,33 +266,32 @@ if (isset($cur_giftcard_value) && $show_giftcard_remainder) {
 
 
 <!-- routine for inserting extra info like passwords, for PC and Laptop sales -->
-<!-- TODO: Remove this ! -->
 <?php
 
-foreach ($cart as $line => $item) {
+function isComputer($cats, $array) // input is list to search (arr) and the arr of items in cart
+{
 
-    if (in_array($item['item_category'], ['Laptop', 'Desktop', 'Tower', 'All-in-One'])) {
-
-        ?>
-
-
-
-		<div class="Thankyou-Note"><?php echo $this->lang->line('sales_receipt_extra_page_note'); ?></div>
-
-		<div class="pagebreak"></div>
-
-			<?php include 'user-info.php'; // in ~/public/ ?>
-<?php
-$hasMachines = true;
-        break;
+    foreach ($cats as &$value) {
+        if (in_array($value, array_column($array, 'item_category'))) {
+            return true;
+            break; // exit loop on first match
+        }
     }
+}
 
-    if (!hasMachines) {
-        ?>
-		<div class="Thankyou-Note"><?php echo $this->lang->line('sales_receipt_thank_you'); ?></div>
-<?php
+if (isComputer(array("Laptop", "Desktop"), $cart) && ($total > 0)) { // search value in the array only if its a sale
+
+    echo '<div class="Thankyou-Note">' . $this->lang->line('sales_receipt_extra_page_note') . '</div>';
+	echo '<div class="pagebreak"></div>';
+
+	include 'user-info.php'; // in ./public/
+
+} else {
+
+	echo '<div class="Thankyou-Note">' . $this->lang->line('sales_receipt_thank_you') . '</div>';
+
 }
-}
+
 ?>
 
 </div>
