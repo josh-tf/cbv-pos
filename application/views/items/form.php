@@ -2,7 +2,6 @@
 
 <ul id="error_message_box" class="error_message_box"></ul>
 
-
 <?php echo form_open('items/save/' . $item_info->item_id, array('id' => 'item_form', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal')); ?>
 	<fieldset id="item_basic_info">
 		<div class="form-group form-group-sm hidden">
@@ -37,13 +36,19 @@
 			<div class='col-xs-8'>
 				<div class="input-group">
 					<span class="input-group-addon input-sm"><span class="glyphicon glyphicon-tag"></span></span>
-					<?php echo form_input(array(
-    'name' => 'category',
-    'id' => 'category',
-    'class' => 'form-control input-sm',
-    'value' => $item_info->category)
-); ?>
-				</div>
+    <select class="form-control input-sm" id="category" name="category">
+	<option selected disabled>Please Select..</option>
+	<?php
+
+$variable = $this->config->item('cbvopt_item_cat');
+$var = explode(',', $variable);
+
+foreach ($var as $row) {
+    echo '<option>' . trim($row) . '</option>';
+}
+?>
+    </select>
+					</div>
 			</div>
 		</div>
 
@@ -348,7 +353,6 @@ $item_arr = (array) $item_info; // if editing, get the item data
 <datalist id="custom3">
 
 <?php
-
 $variable = $this->config->item('cbvopt_item_cpu');
 $var = explode(',', $variable);
 
@@ -380,7 +384,6 @@ foreach ($var as $row) {
 <datalist id="custom5">
 
 <?php
-
 $variable = $this->config->item('cbvopt_item_ram');
 $var = explode(',', $variable);
 
@@ -403,7 +406,6 @@ foreach ($var as $row) {
 <datalist id="custom6">
 
 <?php
-
 $variable = $this->config->item('cbvopt_item_storage');
 $var = explode(',', $variable);
 
@@ -421,7 +423,18 @@ foreach ($var as $row) {
 <?php echo form_label($this->config->item('custom7_name'), 'custom7', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php echo $this->config->item('cbvopt_distver') ?>" placeholder="<?php echo $this->lang->line('custom7_helper') ?>" list="custom7" class="form-control input-sm" name="custom7" id="custom7">
+<select class="form-control input-sm" id="custom7" name="custom7">
+	<option selected disabled>Please Select..</option>
+	<?php
+$variable = $this->config->item('cbvopt_item_os');
+$var = explode(',', $variable);
+
+foreach ($var as $row) {
+    echo '<option>' . trim($row) . '</option>';
+}
+?>
+    </select>
+
 </div>
 </div>
 </div>
@@ -434,7 +447,6 @@ foreach ($var as $row) {
 <datalist id="custom8">
 
 <?php
-
 $variable = $this->config->item('cbvopt_item_screen');
 $var = explode(',', $variable);
 
@@ -456,7 +468,6 @@ foreach ($var as $row) {
 <datalist id="custom9">
 
 <?php
-
 $variable = $this->config->item('cbvopt_item_optical');
 $var = explode(',', $variable);
 
@@ -477,7 +488,6 @@ foreach ($var as $row) {
 <datalist id="custom10">
 
 <?php
-
 $variable = $this->config->item('cbvopt_item_type');
 $var = explode(',', $variable);
 
@@ -566,6 +576,7 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
 			</div>
 		</div>
 	</fieldset>
+
 <?php echo form_close(); ?>
 
 <script type="text/javascript">
@@ -577,7 +588,8 @@ $(document).ready(function()
 	const COMPUTER_CATEGORIES = ['Laptop', 'Desktop'];
 	const DEFAULT_TAX_RATE = '<?php echo to_tax_decimals($default_tax_1_rate); ?>';
 	const updateFieldsBasedOnCategory = () => {
-		let category = $('#category').val();
+
+		let category = $('#category option:selected').text();
 		let isComputer = COMPUTER_CATEGORIES.indexOf(category) !== -1;
 		let isStocked = NON_STOCKED_CATEGORIES.indexOf(category) === -1;
 
@@ -603,6 +615,15 @@ $(document).ready(function()
 		$('input:radio[name=stock_type]')[0].checked = isStocked;
 		$('input:radio[name=stock_type]')[1].checked = !isStocked;
 	};
+
+	var itemCat = '<?php echo $item_arr['category']; ?>';
+	var itemOS = '<?php echo $item_arr['custom7']; ?>';
+
+	if (!(itemCat === '')) { // if a cat is defined then its an existing item being edited, so set our select boxes
+		$('#category').val(itemCat);
+		$('#custom7').val(itemOS);
+	}
+
 	updateFieldsBasedOnCategory(); // Run as soon as document is ready
 
 	$("#new").click(function() {
@@ -618,7 +639,7 @@ $(document).ready(function()
 	$("#category").autocomplete({source: "<?php echo site_url('items/suggest_category'); ?>",delay:10,appendTo: '.modal-content'});
 
 	// Update tax percent after category changes
-	$("#category").blur(function(eventObject) {
+	$(document).on('change','#category',function(){
 		var category = $(this).val();
 		var taxRate = '0.00';
 
