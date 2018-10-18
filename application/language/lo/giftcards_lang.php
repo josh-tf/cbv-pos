@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["giftcards_add_minus"] = "Inventory to add or subtract.";
 $lang["giftcards_allow_alt_description"] = "Allow Alternate Description";
@@ -61,7 +61,7 @@ $lang["giftcards_supplier"] = "Supplier";
 $lang["giftcards_tax_1"] = "Tax 1";
 $lang["giftcards_tax_2"] = "Tax 2";
 $lang["giftcards_tax_percent"] = "Tax Percent";
-$lang["giftcards_tax_percents"] = "Tax Percent(s)";
+$lang["giftcards_tax_percents"] = "Tax Percent";
 $lang["giftcards_unit_price"] = "Retail Value";
 $lang["giftcards_upc_database"] = "Barcode Database";
 $lang["giftcards_update"] = "Update Gift Card";

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["items_add_minus"] = "Inventory to add or subtract";
 $lang["items_allow_alt_desciption"] = "";
@@ -96,7 +96,7 @@ $lang["items_tax_2"] = "Tax 2";
 $lang["items_tax_percent"] = "Tax Percent";
 $lang["items_tax_percent_number"] = "Tax Percent must be a numeric value";
 $lang["items_tax_percent_required"] = "Tax Percent is a required field";
-$lang["items_tax_percents"] = "Tax Percent(s)";
+$lang["items_tax_percents"] = "Tax Percent";
 $lang["items_type"] = "Item Type";
 $lang["items_unit_price"] = "Sell Price";
 $lang["items_unit_price_number"] = "Sell Price must be a number";
