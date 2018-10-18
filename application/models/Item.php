@@ -245,6 +245,10 @@ class Item extends CI_Model
 		{
 			$this->db->where('quantity > 0', NULL);
 		}
+		if($filters['cat_computer'] != FALSE)
+		{
+			$this->db->where('`category` = "Laptop" OR `category` = "Desktop"', NULL);
+		}
 		if($filters['empty_upc'] != FALSE)
 		{
 			$this->db->where('item_number', NULL);

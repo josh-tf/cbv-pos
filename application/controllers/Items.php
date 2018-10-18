@@ -21,6 +21,7 @@ class Items extends Secure_Controller
 		// filters that will be loaded in the multiselect dropdown
 		$data['filters'] = array(
 			'in_stock' => $this->lang->line('items_in_stock'),
+			'cat_computer' => $this->lang->line('items_cat_computer'),
 			'empty_upc' => $this->lang->line('items_empty_upc_items'),
 			'low_inventory' => $this->lang->line('items_low_inventory_items'),
 			'is_serialized' => $this->lang->line('items_serialized_items'),
@@ -48,6 +49,7 @@ class Items extends Secure_Controller
 						'end_date' => $this->input->get('end_date'),
 						'stock_location_id' => $this->item_lib->get_item_location(),
 						'in_stock' => FALSE,
+						'cat_computer' => FALSE,
 						'empty_upc' => FALSE,
 						'low_inventory' => FALSE,
 						'is_serialized' => FALSE,
