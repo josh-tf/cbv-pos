@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: cbvposdev-db
--- Generation Time: Oct 13, 2018 at 11:20 AM
+-- Generation Time: Oct 18, 2018 at 07:00 AM
 -- Server version: 10.1.21-MariaDB-1~jessie
 -- PHP Version: 7.2.8
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cbvpos`
+-- Database: `cbvpos_blank`
 --
 
 -- --------------------------------------------------------
@@ -59,8 +59,10 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('cbvopt_distpass', 'cbvuser'),
 ('cbvopt_distuser', 'user'),
 ('cbvopt_distver', 'Ubuntu 16.04'),
+('cbvopt_item_cat', 'Desktop,Laptop,Used Equipment,New Equipment,User Support,Ebay Sales,Recycling Fees,CBV Membership'),
 ('cbvopt_item_cpu', 'C2D,i3,i5,i7'),
 ('cbvopt_item_optical', 'DVD-RW,Blueray'),
+('cbvopt_item_os', 'Ubuntu 16.04, Ubuntu 18.04'),
 ('cbvopt_item_ram', '2,4,6,8,10,12'),
 ('cbvopt_item_screen', '12,14,15.4,17,19,20,22'),
 ('cbvopt_item_storage', '160,200,250,360,500,1000'),
