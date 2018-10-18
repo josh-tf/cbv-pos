@@ -19,19 +19,6 @@
 		?>
 	</ul>
 
-				<div class="form-group form-group-sm">
-					<?php echo form_label($this->lang->line('customers_account_number'), 'account_number', array('class' => 'control-label col-xs-3')); ?>
-					<div class='col-xs-4'>
-						<?php echo form_input(array(
-								'name'=>'account_number',
-								'id'=>'account_number',
-								'class'=>'form-control input-sm',
-								'value'=>$person_info->account_number)
-								);?>
-					</div>
-				</div>
-
-
 	<div class="tab-content">
 		<div class="tab-pane fade in active" id="customer_basic_info">
 			<fieldset>
