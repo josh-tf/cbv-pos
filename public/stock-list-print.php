@@ -32,15 +32,84 @@ $sql .= ' 	quantity > 0 AND';
   <link rel="stylesheet" href="css/extra/normalize.css">
   <link rel="stylesheet" href="css/extra/stocklist.css">
 
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <style>@page { size: A4 landscape }</style>
 
   <style type="text/css">
 
   </style>
 
+<script type="text/javascript">
+    $(window).on('load',function(){
+        $('#printWarning').modal('show');
+    });
+
+    function printdoc(){
+      $('#printWarning').modal('hide');
+		  window.print();
+    }
+</script>
+
 </head>
 
-	<body onload="window.print()" class="A4 landscape">
+<!-- Modal -->
+<div class="modal" id="printWarning" tabindex="-1" role="dialog" aria-labelledby="printWarningLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="printWarningLabel">Printer Settings</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+<h3>Important</h3>
+<p>
+To ensure the sales ticket is printed correctly, please ensure
+the printer settings in the popup dialog are configured as follows:
+</p>
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Setting</th>
+      <th scope="col">Option</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">2-Sided</th>
+      <td>Any</td>
+    </tr>
+    <tr>
+      <th scope="row">Orientation</th>
+      <td>Landscape</td>
+    </tr>
+    <tr>
+      <th scope="row">Scaling</th>
+      <td colspan="2">100%</td>
+    </tr>
+  </tbody>
+</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+					<button type="button" onclick="printdoc();" class="btn btn-primary">Print Sales Ticket</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<body class="A4 landscape">
 
 	  <section class="sheet padding-10mm">
 		<div class="row">
