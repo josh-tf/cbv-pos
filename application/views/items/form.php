@@ -331,7 +331,7 @@ $item_arr = (array) $item_info; // if editing, get the item data
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
 <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-calendar"></span></span>
-<input value="" placeholder="<?php echo $this->lang->line('custom1_helper') ?>" list="custom1" class="form-control input-sm" name="custom1" type="date" id="custom1">
+<input value="<?php echo $item_arr['custom1'] ?>" list="custom1" class="form-control input-sm" name="custom1" type="date" id="custom1">
 </div>
 </div>
 </div>
