@@ -19,6 +19,11 @@
 		?>
 	</ul>
 
+	<div class="tab-content">
+		<div class="tab-pane fade in active" id="customer_basic_info">
+
+			<fieldset>
+
 				<div class="form-group form-group-sm">
 					<?php echo form_label($this->lang->line('customers_account_number'), 'account_number', array('class' => 'control-label col-xs-3')); ?>
 					<div class='col-xs-4'>
@@ -31,9 +36,6 @@
 					</div>
 				</div>
 
-	<div class="tab-content">
-		<div class="tab-pane fade in active" id="customer_basic_info">
-			<fieldset>
 				<?php $this->load->view("people/form_basic_info"); ?>
 
 				<?php if($this->config->item('customer_reward_enable') == TRUE): ?>
@@ -58,12 +60,16 @@
 					</div>
 				<?php endif; ?>
 
+				</fieldset>
+		</div>
+
 		<?php
 		if(!empty($stats))
 		{
 		?>
 			<div class="tab-pane" id="customer_stats_info">
 				<fieldset>
+
 					<div class="form-group form-group-sm">
 						<?php echo form_label($this->lang->line('customers_total'), 'total', array('class' => 'control-label col-xs-3')); ?>
 						<div class="col-xs-4">
