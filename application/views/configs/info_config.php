@@ -4,7 +4,7 @@
 			<div id="required_fields_message"><?php echo $this->lang->line('common_fields_required_message'); ?></div>
 			<ul id="info_error_message_box" class="error_message_box"></ul>
 
-			<div class="form-group form-group-sm">	
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_company'), 'company', array('class' => 'control-label col-xs-2 required')); ?>
 				<div class="col-xs-6">
 					<div class="input-group">
@@ -18,7 +18,8 @@
 				</div>
 			</div>
 
-			<div class="form-group form-group-sm">	
+<!--
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_company_logo'), 'company_logo', array('class' => 'control-label col-xs-2')); ?>
 				<div class='col-xs-6'>
 					<div class="fileinput <?php echo $logo_exists ? 'fileinput-exists' : 'fileinput-new'; ?>" data-provides="fileinput">
@@ -39,8 +40,9 @@
 					</div>
 				</div>
 			</div>
+-->
 
-			<div class="form-group form-group-sm">	
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_address'), 'address', array('class' => 'control-label col-xs-2 required')); ?>
 				<div class='col-xs-6'>
 					<?php echo form_textarea(array(
@@ -51,7 +53,7 @@
 				</div>
 			</div>
 
-			<div class="form-group form-group-sm">	
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_website'), 'website', array('class' => 'control-label col-xs-2')); ?>
 				<div class="col-xs-6">
 					<div class="input-group">
@@ -65,7 +67,7 @@
 				</div>
 			</div>
 
-			<div class="form-group form-group-sm">	
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('common_email'), 'email', array('class' => 'control-label col-xs-2')); ?>
 				<div class="col-xs-6">
 					<div class="input-group">
@@ -80,7 +82,7 @@
 				</div>
 			</div>
 
-			<div class="form-group form-group-sm">	
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_phone'), 'phone', array('class' => 'control-label col-xs-2 required')); ?>
 				<div class="col-xs-6">
 					<div class="input-group">
@@ -94,7 +96,7 @@
 				</div>
 			</div>
 
-			<div class="form-group form-group-sm">	
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_fax'), 'fax', array('class' => 'control-label col-xs-2')); ?>
 				<div class="col-xs-6">
 					<div class="input-group">
@@ -108,7 +110,7 @@
 				</div>
 			</div>
 
-			<div class="form-group form-group-sm">	
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('common_return_policy'), 'return_policy', array('class' => 'control-label col-xs-2 required')); ?>
 				<div class='col-xs-6'>
 					<?php echo form_textarea(array(
@@ -150,10 +152,10 @@ $(document).ready(function()
 			address: "required",
 			phone: "required",
     		email: "email",
-    		return_policy: "required" 		
+    		return_policy: "required"
    		},
 
-		messages: 
+		messages:
 		{
 			company: "<?php echo $this->lang->line('config_company_required'); ?>",
 			address: "<?php echo $this->lang->line('config_address_required'); ?>",

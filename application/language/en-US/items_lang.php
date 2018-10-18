@@ -30,6 +30,7 @@ $lang["items_do_nothing"] = "Do Nothing";
 $lang["items_edit_fields_you_want_to_update"] = "Edit the desired fields for selected item(s).";
 $lang["items_edit_multiple_items"] = "Editing Multiple Items";
 $lang["items_empty_upc_items"] = "Empty Barcode Items";
+$lang["items_in_stock"] = "In Stock Items";
 $lang["items_error_adding_updating"] = "Error adding/updating item";
 $lang["items_error_updating_multiple"] = "Error updating items";
 $lang["items_excel_import_failed"] = "Excel import failed";

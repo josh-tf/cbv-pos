@@ -19,7 +19,9 @@ class Items extends Secure_Controller
 		$data['stock_locations'] = $this->xss_clean($this->Stock_location->get_allowed_locations());
 
 		// filters that will be loaded in the multiselect dropdown
-		$data['filters'] = array('empty_upc' => $this->lang->line('items_empty_upc_items'),
+		$data['filters'] = array(
+			'in_stock' => $this->lang->line('items_in_stock'),
+			'empty_upc' => $this->lang->line('items_empty_upc_items'),
 			'low_inventory' => $this->lang->line('items_low_inventory_items'),
 			'is_serialized' => $this->lang->line('items_serialized_items'),
 			'no_description' => $this->lang->line('items_no_description_items'),
@@ -45,6 +47,7 @@ class Items extends Secure_Controller
 		$filters = array('start_date' => $this->input->get('start_date'),
 						'end_date' => $this->input->get('end_date'),
 						'stock_location_id' => $this->item_lib->get_item_location(),
+						'in_stock' => FALSE,
 						'empty_upc' => FALSE,
 						'low_inventory' => FALSE,
 						'is_serialized' => FALSE,

@@ -84,7 +84,8 @@ a.none {
 }
 
 #config_info {
-	text-align: left;
+    text-align: left;
+    padding-left: 15px;
 }
 
 #config_info .wide {
