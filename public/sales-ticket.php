@@ -31,6 +31,14 @@ if ($result->num_rows == 0) {
 
 while ($row = $result->fetch_assoc()) {
 
+    // exit if they provided something other than a desktop
+
+    $itemCat = $row['category'];
+
+    if (!($itemCat === 'Desktop')) {
+        die('ID Provided was not a desktop type (Category is "' . $itemCat .  '")');
+    }
+
 // generate our numbers for use
 
     function formatPrice($value, $ncp = false)
