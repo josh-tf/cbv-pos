@@ -276,3 +276,7 @@ h3.text-center {
 .lookup a{
     color: #fff;
 }
+
+td.print_hide {
+    text-align: center;
+}
