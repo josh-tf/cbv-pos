@@ -269,6 +269,7 @@ if (isset($cur_giftcard_value) && $show_giftcard_remainder) {
 <?php
 
 function isComputer($cats, $array) // input is list to search (arr) and the arr of items in cart
+
 {
 
     foreach ($cats as &$value) {
@@ -282,13 +283,13 @@ function isComputer($cats, $array) // input is list to search (arr) and the arr 
 if (isComputer(array("Laptop", "Desktop"), $cart) && ($total > 0)) { // search value in the array only if its a sale
 
     echo '<div class="Thankyou-Note">' . $this->lang->line('sales_receipt_extra_page_note') . '</div>';
-	echo '<div class="pagebreak"></div>';
+    echo '<div class="pagebreak"></div>';
 
-	include 'user-info.php'; // in ./public/
+    include 'user-info.php'; // in ./public/
 
 } else {
 
-	echo '<div class="Thankyou-Note">' . $this->lang->line('sales_receipt_thank_you') . '</div>';
+    echo '<div class="Thankyou-Note">' . $this->lang->line('sales_receipt_thank_you') . '</div>';
 
 }
 
