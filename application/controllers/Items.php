@@ -22,10 +22,7 @@ class Items extends Secure_Controller
 		$data['filters'] = array(
 			'in_stock' => $this->lang->line('items_in_stock'),
 			'cat_computer' => $this->lang->line('items_cat_computer'),
-			'empty_upc' => $this->lang->line('items_empty_upc_items'),
 			'low_inventory' => $this->lang->line('items_low_inventory_items'),
-			'is_serialized' => $this->lang->line('items_serialized_items'),
-			'no_description' => $this->lang->line('items_no_description_items'),
 			'search_custom' => $this->lang->line('items_search_custom_items'),
 			'is_deleted' => $this->lang->line('items_is_deleted'));
 
@@ -50,10 +47,7 @@ class Items extends Secure_Controller
 						'stock_location_id' => $this->item_lib->get_item_location(),
 						'in_stock' => FALSE,
 						'cat_computer' => FALSE,
-						'empty_upc' => FALSE,
 						'low_inventory' => FALSE,
-						'is_serialized' => FALSE,
-						'no_description' => FALSE,
 						'search_custom' => FALSE,
 						'is_deleted' => FALSE);
 
