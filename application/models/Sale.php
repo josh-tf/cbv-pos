@@ -1006,15 +1006,15 @@ class Sale extends CI_Model
 		//$payments[$this->lang->line('sales_due')] = $this->lang->line('sales_due');
 		$payments[$this->lang->line('sales_check')] = $this->lang->line('sales_check');
 
-		if($giftcard)
-		{
-			$payments[$this->lang->line('sales_giftcard')] = $this->lang->line('sales_giftcard');
-		}
+		//if($giftcard)
+		//{
+		//	$payments[$this->lang->line('sales_giftcard')] = $this->lang->line('sales_giftcard');
+		//}
 
-		if($reward_points)
-		{
-			$payments[$this->lang->line('sales_rewards')] = $this->lang->line('sales_rewards');
-		}
+		//if($reward_points)
+		//{
+		//	$payments[$this->lang->line('sales_rewards')] = $this->lang->line('sales_rewards');
+		//}
 
 		if($this->sale_lib->get_mode() == 'sale_work_order')
 		{
