@@ -31,7 +31,7 @@ if (isset($success))
 					<?php echo form_dropdown('mode', $modes, $mode, array('onchange'=>"$('#mode_form').submit();", 'class'=>'selectpicker show-menu-arrow', 'data-style'=>'btn-default btn-sm', 'data-width'=>'fit')); ?>
 				</li>
 
-				<?php 
+				<?php
 				if ($show_stock_locations)
 				{
 				?>
@@ -41,7 +41,7 @@ if (isset($success))
 					<li class="pull-left">
 						<?php echo form_dropdown('stock_source', $stock_locations, $stock_source, array('onchange'=>"$('#mode_form').submit();", 'class'=>'selectpicker show-menu-arrow', 'data-style'=>'btn-default btn-sm', 'data-width'=>'fit')); ?>
 					</li>
-					
+
 					<?php
 					if($mode=='requisition')
 					{
@@ -78,7 +78,7 @@ if (isset($success))
 							<?php echo $this->lang->line('receivings_find_or_scan_item_or_receipt'); ?>
 						<?php
 						}
-						?>			
+						?>
 					</label>
 				</li>
 				<li class="pull-left">
@@ -96,7 +96,7 @@ if (isset($success))
 			</ul>
 		</div>
 	<?php echo form_close(); ?>
-	
+
 <!-- Receiving Items List -->
 
 	<table class="sales_table_100" id="register">
@@ -138,7 +138,7 @@ if (isset($success))
 								<?php echo form_hidden('location', $item['item_location']); ?>
 							</td>
 
-							<?php 
+							<?php
 							if ($items_module_allowed && $mode !='requisition')
 							{
 							?>
@@ -155,24 +155,24 @@ if (isset($success))
 							<?php
 							}
 							?>
-							
+
 							<td><?php echo form_input(array('name'=>'quantity', 'class'=>'form-control input-sm', 'value'=>to_quantity_decimals($item['quantity']))); ?></td>
 							<?php
-							if ($item['receiving_quantity'] > 1) 
+							if ($item['receiving_quantity'] > 1)
 							{
 							?>
-								<td><?php echo 'x'.to_quantity_decimals($item['receiving_quantity']); ?></td>	
-							<?php 
+								<td><?php echo 'x'.to_quantity_decimals($item['receiving_quantity']); ?></td>
+							<?php
 							}
 							else
 							{
 							?>
 								<td></td>
-							<?php 
+							<?php
 							}
 							?>
-						
-							<?php       
+
+							<?php
 							if ($items_module_allowed && $mode!='requisition')
 							{
 							?>
@@ -187,17 +187,17 @@ if (isset($success))
 							<?php
 							}
 							?>
-							<td><?php echo to_currency($item['price']*$item['quantity']*$item['receiving_quantity']-$item['price']*$item['quantity']*$item['receiving_quantity']*$item['discount']/100); ?></td> 
+							<td><?php echo to_currency($item['price']*$item['quantity']*$item['receiving_quantity']-$item['price']*$item['quantity']*$item['receiving_quantity']*$item['discount']/100); ?></td>
 							<td><a href="javascript:$('#<?php echo 'cart_'.$line ?>').submit();" title=<?php echo $this->lang->line('receivings_update')?> ><span class="glyphicon glyphicon-refresh"></span></a></td>
 						</tr>
 						<tr>
-							<?php 
+							<?php
 							if($item['allow_alt_description']==1)
 							{
 							?>
 								<td style="color: #2F4F4F;"><?php echo $this->lang->line('sales_description_abbrv').':';?></td>
-							<?php 
-							} 
+							<?php
+							}
 							?>
 							<td colspan='2' style="text-align: left;">
 								<?php
@@ -278,7 +278,7 @@ if (isset($success))
 				}
 				?>
 			</table>
-			
+
 			<?php echo anchor($controller_name."/remove_supplier", '<span class="glyphicon glyphicon-remove">&nbsp</span>' . $this->lang->line('common_remove').' '.$this->lang->line('suppliers_supplier'),
 								array('class'=>'btn btn-danger btn-sm', 'id'=>'remove_supplier_button', 'title'=>$this->lang->line('common_remove').' '.$this->lang->line('suppliers_supplier'))); ?>
 		<?php
@@ -310,14 +310,14 @@ if (isset($success))
 				?>
 					<th style="width: 55%;"><?php echo $this->lang->line('sales_total'); ?></th>
 					<th style="width: 45%; text-align: right;"><?php echo to_currency($total); ?></th>
-				<?php 
+				<?php
 				}
 				else
 				{
 				?>
 					<th style="width: 55%;"></th>
 					<th style="width: 45%; text-align: right;"></th>
-				<?php 
+				<?php
 				}
 				?>
 			</tr>
@@ -338,7 +338,7 @@ if (isset($success))
 							<?php echo form_textarea(array('name'=>'comment', 'id'=>'comment', 'class'=>'form-control input-sm', 'value'=>$comment, 'rows'=>'4')); ?>
 
 							<div class="btn btn-sm btn-danger pull-left" id='cancel_receiving_button'><span class="glyphicon glyphicon-remove">&nbsp</span><?php echo $this->lang->line('receivings_cancel_receiving'); ?></div>
-							
+
 							<div class="btn btn-sm btn-success pull-right" id='finish_receiving_button'><span class="glyphicon glyphicon-ok">&nbsp</span><?php echo $this->lang->line('receivings_complete_receiving'); ?></div>
 						</div>
 					<?php echo form_close(); ?>
@@ -361,7 +361,7 @@ if (isset($success))
 								</tr>
 
 								<?php
-								if ($mode == "receive") 
+								if ($mode == "receive")
 								{
 								?>
 									<tr>
@@ -370,7 +370,7 @@ if (isset($success))
 											<?php echo form_input(array('name'=>'recv_reference', 'id'=>'recv_reference', 'class'=>'form-control input-sm', 'value'=>$reference, 'size'=>5));?>
 										</td>
 									</tr>
-								<?php 
+								<?php
 								}
 								?>
 								<tr>
@@ -389,7 +389,7 @@ if (isset($success))
 							</table>
 
 							<div class='btn btn-sm btn-danger pull-left' id='cancel_receiving_button'><span class="glyphicon glyphicon-remove">&nbsp</span><?php echo $this->lang->line('receivings_cancel_receiving') ?></div>
-							
+
 							<div class='btn btn-sm btn-success pull-right' id='finish_receiving_button'><span class="glyphicon glyphicon-ok">&nbsp</span><?php echo $this->lang->line('receivings_complete_receiving') ?></div>
 						</div>
 					<?php echo form_close(); ?>
@@ -433,12 +433,12 @@ $(document).ready(function()
     	$(this).attr('value',"<?php echo $this->lang->line('sales_start_typing_item_name'); ?>");
     });
 
-	$('#comment').keyup(function() 
+	$('#comment').keyup(function()
 	{
 		$.post('<?php echo site_url($controller_name."/set_comment");?>', {comment: $('#comment').val()});
 	});
 
-	$('#recv_reference').keyup(function() 
+	$('#recv_reference').keyup(function()
 	{
 		$.post('<?php echo site_url($controller_name."/set_reference");?>', {recv_reference: $('#recv_reference').val()});
 	});
