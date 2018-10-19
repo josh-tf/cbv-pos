@@ -195,7 +195,7 @@ class Receiving extends CI_Model
 
 		// execute transaction
 		$this->db->trans_complete();
-	
+
 		return $this->db->trans_status();
 	}
 
@@ -206,7 +206,7 @@ class Receiving extends CI_Model
 
 		return $this->db->get();
 	}
-	
+
 	public function get_supplier($receiving_id)
 	{
 		$this->db->from('receivings');
@@ -219,9 +219,9 @@ class Receiving extends CI_Model
 	{
 		return array(
 			$this->lang->line('sales_cash') => $this->lang->line('sales_cash'),
-			$this->lang->line('sales_check') => $this->lang->line('sales_check'),
+			//$this->lang->line('sales_check') => $this->lang->line('sales_check'),
 			$this->lang->line('sales_debit') => $this->lang->line('sales_debit'),
-			$this->lang->line('sales_credit') => $this->lang->line('sales_credit')
+			//$this->lang->line('sales_credit') => $this->lang->line('sales_credit')
 		);
 	}
 
@@ -249,7 +249,7 @@ class Receiving extends CI_Model
 		$this->db->query('CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('receivings_items_temp') .
 			' (INDEX(receiving_date), INDEX(receiving_time), INDEX(receiving_id))
 			(
-				SELECT 
+				SELECT
 					MAX(DATE(receiving_time)) AS receiving_date,
 					MAX(receiving_time) AS receiving_time,
 					receivings_items.receiving_id,
@@ -257,7 +257,7 @@ class Receiving extends CI_Model
 					MAX(item_location) AS item_location,
 					MAX(reference) AS reference,
 					MAX(payment_type) AS payment_type,
-					MAX(employee_id) AS employee_id, 
+					MAX(employee_id) AS employee_id,
 					items.item_id,
 					MAX(receivings.supplier_id) AS supplier_id,
 					MAX(quantity_purchased) AS quantity_purchased,
