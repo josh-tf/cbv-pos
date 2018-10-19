@@ -17,7 +17,7 @@
 
 #mode_form {
 	background-color: #DDD;
-    margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 #mode_form ul,
@@ -43,7 +43,7 @@
 
 #add_item_form {
 	background-color: #BBB;
-    margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 #register {
@@ -144,15 +144,15 @@ input#amount_tendered:disabled {
 }
 
 .non-sale#register td {
-    background-color: #ffc6c6;
+	background-color: #ffc6c6;
 }
 
 .non-sale#register th {
-    background-color: #6f0000;
+	background-color: #6f0000;
 }
 
 .non-sale#register td {
-    background-color: #ffc6c6;
+	background-color: #ffc6c6;
 }
 
 .non-sale.btn-info,
@@ -177,8 +177,9 @@ input#amount_tendered:disabled {
 	color: #fff;
 }
 
-.non-sale#sale_totals, .non-sale#payment_totals {
-    border-top: 1px solid #6f0000;
+.non-sale#sale_totals,
+.non-sale#payment_totals {
+	border-top: 1px solid #6f0000;
 }
 
 .non-sale#payment_details {
@@ -188,35 +189,37 @@ input#amount_tendered:disabled {
 
 /* Register improvements */
 
-  .sale-list {
+.sale-list {
 	background: #e2e2e2 !important;
 	border-bottom: 2px solid #828282;
-  }
+}
 
-  .non-sale.sale-list {
+.non-sale.sale-list {
 	background: #faa !important;
 	border-bottom: 2px solid #d84e4e;
-  }
+}
 
 #register tr:first-child th:first-child {
 	border-top-left-radius: 6px;
-  }
+}
 
-  #register tr:first-child th:last-child {
+#register tr:first-child th:last-child {
 	border-top-right-radius: 6px;
-  }
+}
 
-  #register tr:last-child td:first-child {
+#register tr:last-child td:first-child {
 	border-bottom-left-radius: 6px;
-  }
-  #register tr:last-child td:last-child {
-	border-bottom-right-radius: 6px;
-  }
+	border-bottom: none;
+}
 
-  .panel {
-    border-radius: 6px;
+#register tr:last-child td:last-child {
+	border-bottom-right-radius: 6px;
+}
+
+.panel {
+	border-radius: 6px;
 }
 
 .form-horizontal .control-label {
-    padding-top: 6px;
+	padding-top: 6px;
 }
