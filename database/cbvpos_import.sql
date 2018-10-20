@@ -225,8 +225,8 @@ CREATE TABLE `cbvpos_customers` (
 --
 
 INSERT INTO `cbvpos_customers` (`person_id`, `company_name`, `conc_id`, `taxable`, `sales_tax_code`, `discount_percent`, `package_id`, `points`, `deleted`) VALUES
-(2, 'JD334455', NULL, 1, '', '0.00', NULL, NULL, 0),
-(3, 'JS554433', NULL, 1, '', '0.00', NULL, NULL, 0);
+(2, '', 'JD334455', 1, '', '0.00', NULL, NULL, 0),
+(3, '', 'JS554433', 1, '', '0.00', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
