@@ -157,7 +157,7 @@ class Item extends CI_Model
             $this->db->select('MAX(suppliers.person_id) as person_id');
             $this->db->select('MAX(suppliers.company_name) as company_name');
             $this->db->select('MAX(suppliers.agency_name) as agency_name');
-            $this->db->select('MAX(suppliers.conc_id) as conc_id');
+            $this->db->select('MAX(suppliers.account_number) as account_number');
             $this->db->select('MAX(suppliers.deleted) as deleted');
 
             $this->db->select('MAX(inventory.trans_id) as trans_id');
