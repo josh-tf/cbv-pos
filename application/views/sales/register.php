@@ -125,7 +125,7 @@ if (count($cart) == 0) {
     ?>
 				<tr>
 					<td colspan='8'>
-						<div class='alert alert-dismissible alert-info'><?php echo $this->lang->line('sales_no_items_in_cart'); ?></div>
+						<div class='alert alert-dismissible alert-<?php echo (!($saleMode == 'sale') ? 'warning' : 'info') ?>'><?php echo $this->lang->line('sales_no_items_in_cart'); ?></div>
 					</td>
 				</tr>
 			<?php
