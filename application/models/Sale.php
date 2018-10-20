@@ -910,8 +910,8 @@ class Sale extends CI_Model
             //$payments[$this->lang->line('sales_credit')] = $this->lang->line('sales_credit');
         }
 
-        //$payments[$this->lang->line('sales_due')] = $this->lang->line('sales_due');
         $payments[$this->lang->line('sales_check')] = $this->lang->line('sales_check');
+		$payments[$this->lang->line('sales_due')] = $this->lang->line('sales_due');
 
         //if($giftcard)
         //{

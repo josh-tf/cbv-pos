@@ -527,7 +527,7 @@ class Sales extends Secure_Controller
 		$data['company_info'] = implode("\n", array(
 			$this->config->item('address'),
 			$this->config->item('phone'),
-			$this->config->item('account_number')
+			$this->config->item('conc_id')
 		));
 		$data['invoice_number_enabled'] = $this->sale_lib->is_invoice_mode();
 		$data['cur_giftcard_value'] = $this->sale_lib->get_giftcard_remainder();
@@ -850,7 +850,15 @@ class Sales extends Secure_Controller
 		{
 			$customer_info = $this->Customer->get_info($customer_id);
 			$data['customer_id'] = $customer_id;
-				$data['customer'] = $customer_info->first_name . ' ' . $customer_info->last_name;
+
+			if(!empty($customer_info->company_name))
+			{
+				$data['customer'] = ($customer_info->first_name . ' ' . $customer_info->last_name . ' (' . $customer_info->company_name . ')');
+			}
+			else
+			{
+			$data['customer'] = $customer_info->first_name . ' ' . $customer_info->last_name;
+}
 			$data['first_name'] = $customer_info->first_name;
 			$data['last_name'] = $customer_info->last_name;
 			$data['customer_email'] = $customer_info->email;
@@ -863,7 +871,7 @@ class Sales extends Secure_Controller
 			{
 				$data['customer_location'] = '';
 			}
-			$data['customer_account_number'] = $customer_info->account_number;
+			//$data['customer_conc_id'] = $customer_info->conc_id;
 			$data['customer_discount_percent'] = $customer_info->discount_percent;
 			$package_id = $this->Customer->get_info($customer_id)->package_id;
 			if($package_id != NULL)
@@ -885,7 +893,7 @@ class Sales extends Secure_Controller
 				$data['customer'],
 				$data['customer_address'],
 				$data['customer_location'],
-				$data['customer_account_number']
+				$data['customer_conc_id']
 			));
 		}
 
@@ -948,7 +956,7 @@ class Sales extends Secure_Controller
 		$data['company_info'] = implode("\n", array(
 			$this->config->item('address'),
 			$this->config->item('phone'),
-			$this->config->item('account_number')
+			$this->config->item('conc_id')
 		));
 		$data['barcode'] = $this->barcode_lib->generate_receipt_barcode($data['sale_id']);
 		$data['print_after_sale'] = FALSE;

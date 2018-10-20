@@ -24,19 +24,19 @@ if (!empty($stats)) {
 			<fieldset>
 
 				<div class="form-group form-group-sm">
-					<?php echo form_label("Concession ID", 'account_number', array('class' => 'control-label col-xs-3')); ?>
+					<?php echo form_label($this->lang->line('customers_conc_id'), 'conc_id', array('class' => 'control-label col-xs-3')); ?>
 					<div class='col-xs-6'>
 						<?php echo form_input(array(
-    'name' => 'account_number',
-    'id' => 'account_number',
+    'name' => 'conc_id',
+    'id' => 'conc_id',
     'class' => 'form-control input-sm',
-    'value' => $person_info->account_number)
+    'value' => $person_info->conc_id)
 ); ?>
 					</div>
-				
+
 
 					<div class='col-xs-2'>
-                        <div class="lookup"><a href="#" target="_blank" onclick="this.href='/customer-lookup.php?conc-id='+document.getElementById('account_number').value+'&range=alltime';">Lookup</a>
+                        <div class="lookup"><a href="#" target="_blank" onclick="this.href='/customer-lookup.php?conc-id='+document.getElementById('conc_id').value+'&range=alltime';">Lookup</a>
                         </div>
 					</div>
 
@@ -257,16 +257,16 @@ $(document).ready(function()
 					})
 				}
 			},
-    		account_number:
+    		conc_id:
 			{
 				remote:
 				{
-					url: "<?php echo site_url($controller_name . '/ajax_check_account_number') ?>",
+					url: "<?php echo site_url($controller_name . '/ajax_check_conc_id') ?>",
 					type: "post",
 					data: $.extend(csrf_form_base(),
 					{
 						"person_id" : "<?php echo $person_info->person_id; ?>"
-						// account_number is posted by default
+						// conc_id is posted by default
 					})
 				}
 			}
@@ -277,7 +277,7 @@ $(document).ready(function()
      		first_name: "<?php echo $this->lang->line('common_first_name_required'); ?>",
      		last_name: "<?php echo $this->lang->line('common_last_name_required'); ?>",
      		email: "<?php echo $this->lang->line('customers_email_duplicate'); ?>",
-			account_number: "<?php echo $this->lang->line('customers_account_number_duplicate'); ?>"
+			 conc_id: "<?php echo $this->lang->line('customers_conc_id_duplicate'); ?>"
 		}
 	}, form_support.error));
 });
