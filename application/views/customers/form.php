@@ -24,8 +24,8 @@ if (!empty($stats)) {
 			<fieldset>
 
 				<div class="form-group form-group-sm">
-					<?php echo form_label($this->lang->line('customers_account_number'), 'account_number', array('class' => 'control-label col-xs-3')); ?>
-					<div class='col-xs-4'>
+					<?php echo form_label("Concession ID", 'account_number', array('class' => 'control-label col-xs-3')); ?>
+					<div class='col-xs-6'>
 						<?php echo form_input(array(
     'name' => 'account_number',
     'id' => 'account_number',
@@ -33,7 +33,14 @@ if (!empty($stats)) {
     'value' => $person_info->account_number)
 ); ?>
 					</div>
-				</div>
+				
+
+					<div class='col-xs-2'>
+                        <div class="lookup"><a href="#" target="_blank" onclick="this.href='/customer-lookup.php?conc-id='+document.getElementById('account_number').value+'&range=alltime';">Lookup</a>
+                        </div>
+					</div>
+
+                    </div>
 
 				<?php $this->load->view("people/form_basic_info");?>
 
