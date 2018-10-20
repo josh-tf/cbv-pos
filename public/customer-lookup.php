@@ -23,7 +23,7 @@ $sql .= "     cbvpos_customers t1";
 $sql .= "         INNER JOIN";
 $sql .= "     cbvpos_people t2 ON t1.person_id = t2.person_id";
 $sql .= " WHERE";
-$sql .= " 	company_name = ?";
+$sql .= " 	conc_id = ?";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $concID);
@@ -156,7 +156,7 @@ switch ($saleRange) {
 if($saleRange == 'All Time'){
     $timeString = $saleRange;
   }else{
-    $timeString = $saleRange . ' (from ' . $searchRange->format('d m Y') . ')';
+    $timeString = $saleRange . ' (from ' . $searchRange->format('d/m/Y') . ')';
   }
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -173,7 +173,7 @@ $sql .= "     cbvpos_items t4 ON t3.item_id = t4.item_id";
 $sql .= "         INNER JOIN";
 $sql .= "     cbvpos_people t5 ON t2.person_id = t5.person_id";
 $sql .= " WHERE";
-$sql .= " 	company_name = ? AND sale_time >= '" . $searchRange->format('Y-m-d H:i:s') . "';";
+$sql .= " 	conc_id = ? AND sale_time >= '" . $searchRange->format('Y-m-d H:i:s') . "';";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $concID);

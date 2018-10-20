@@ -211,7 +211,7 @@ CREATE TABLE `cbvpos_cash_up` (
 CREATE TABLE `cbvpos_customers` (
   `person_id` int(10) NOT NULL,
   `company_name` varchar(255) DEFAULT NULL,
-  `account_number` varchar(255) DEFAULT NULL,
+  `conc_id` varchar(255) DEFAULT NULL,
   `taxable` int(1) NOT NULL DEFAULT '1',
   `sales_tax_code` varchar(32) NOT NULL DEFAULT '1',
   `discount_percent` decimal(15,2) NOT NULL DEFAULT '0.00',
@@ -826,7 +826,7 @@ CREATE TABLE `cbvpos_suppliers` (
   `person_id` int(10) NOT NULL,
   `company_name` varchar(255) NOT NULL,
   `agency_name` varchar(255) NOT NULL,
-  `account_number` varchar(255) DEFAULT NULL,
+  `conc_id` varchar(255) DEFAULT NULL,
   `deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -907,7 +907,7 @@ ALTER TABLE `cbvpos_cash_up`
 -- Indexes for table `cbvpos_customers`
 --
 ALTER TABLE `cbvpos_customers`
-  ADD UNIQUE KEY `account_number` (`account_number`),
+  ADD UNIQUE KEY `conc_id` (`conc_id`),
   ADD KEY `person_id` (`person_id`),
   ADD KEY `package_id` (`package_id`);
 
@@ -1118,7 +1118,7 @@ ALTER TABLE `cbvpos_stock_locations`
 -- Indexes for table `cbvpos_suppliers`
 --
 ALTER TABLE `cbvpos_suppliers`
-  ADD UNIQUE KEY `account_number` (`account_number`),
+  ADD UNIQUE KEY `conc_id` (`conc_id`),
   ADD KEY `person_id` (`person_id`);
 
 --

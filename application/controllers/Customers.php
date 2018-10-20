@@ -171,7 +171,7 @@ class Customers extends Persons
 		);
 
 		$customer_data = array(
-			'account_number' => $this->input->post('account_number') == '' ? NULL : $this->input->post('account_number'),
+			'conc_id' => $this->input->post('conc_id') == '' ? NULL : $this->input->post('conc_id'),
 			'company_name' => $this->input->post('company_name') == '' ? NULL : $this->input->post('company_name'),
 			'discount_percent' => $this->input->post('discount_percent') == '' ? 0.00 : $this->input->post('discount_percent'),
 			'package_id' => $this->input->post('package_id') == '' ? NULL : $this->input->post('package_id'),
@@ -225,11 +225,11 @@ class Customers extends Persons
 	}
 
 	/*
-	AJAX call to verify if an account number already exists
+	AJAX call to verify if an concession ID already exists
 	*/
-	public function ajax_check_account_number()
+	public function ajax_check_conc_id()
 	{
-		$exists = $this->Customer->check_account_number_exists($this->input->post('account_number'), $this->input->post('person_id'));
+		$exists = $this->Customer->check_conc_id_exists($this->input->post('conc_id'), $this->input->post('person_id'));
 
 		echo !$exists ? 'true' : 'false';
 	}
@@ -313,14 +313,14 @@ class Customers extends Persons
 							'discount_percent'	=> $data[14],
 							'taxable'			=> $data[15] == '' ? 0 : 1
 						);
-						$account_number = $data[13];
+						$conc_id = $data[13];
 
 						// don't duplicate people with same email
 						$invalidated = $this->Customer->check_email_exists($email);
-						if($account_number != '')
+						if($conc_id != '')
 						{
-							$customer_data['account_number'] = $account_number;
-							$invalidated &= $this->Customer->check_account_number_exists($account_number);
+							$customer_data['conc_id'] = $conc_id;
+							$invalidated &= $this->Customer->check_conc_id_exists($conc_id);
 						}
 					}
 					else

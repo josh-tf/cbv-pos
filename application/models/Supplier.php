@@ -5,16 +5,16 @@
  */
 
 class Supplier extends Person
-{	
+{
 	/*
 	Determines if a given person_id is a customer
 	*/
 	public function exists($person_id)
 	{
-		$this->db->from('suppliers');	
+		$this->db->from('suppliers');
 		$this->db->join('people', 'people.person_id = suppliers.person_id');
 		$this->db->where('suppliers.person_id', $person_id);
-		
+
 		return ($this->db->get()->num_rows() == 1);
 	}
 
@@ -28,14 +28,14 @@ class Supplier extends Person
 
 		return $this->db->count_all_results();
 	}
-	
+
 	/*
 	Returns all the suppliers
 	*/
 	public function get_all($limit_from = 0, $rows = 0)
 	{
 		$this->db->from('suppliers');
-		$this->db->join('people', 'suppliers.person_id = people.person_id');			
+		$this->db->join('people', 'suppliers.person_id = people.person_id');
 		$this->db->where('deleted', 0);
 		$this->db->order_by('company_name', 'asc');
 		if($rows > 0)
@@ -43,19 +43,19 @@ class Supplier extends Person
 			$this->db->limit($rows, $limit_from);
 		}
 
-		return $this->db->get();		
+		return $this->db->get();
 	}
-	
+
 	/*
 	Gets information about a particular supplier
 	*/
 	public function get_info($supplier_id)
 	{
-		$this->db->from('suppliers');	
+		$this->db->from('suppliers');
 		$this->db->join('people', 'people.person_id = suppliers.person_id');
 		$this->db->where('suppliers.person_id', $supplier_id);
 		$query = $this->db->get();
-		
+
 		if($query->num_rows() == 1)
 		{
 			return $query->row();
@@ -64,31 +64,31 @@ class Supplier extends Person
 		{
 			//Get empty base parent object, as $supplier_id is NOT an supplier
 			$person_obj = parent::get_info(-1);
-			
-			//Get all the fields from supplier table		
+
+			//Get all the fields from supplier table
 			//append those fields to base parent object, we we have a complete empty object
 			foreach($this->db->list_fields('suppliers') as $field)
 			{
 				$person_obj->$field = '';
 			}
-			
+
 			return $person_obj;
 		}
 	}
-	
+
 	/*
 	Gets information about multiple suppliers
 	*/
 	public function get_multiple_info($suppliers_ids)
 	{
 		$this->db->from('suppliers');
-		$this->db->join('people', 'people.person_id = suppliers.person_id');		
+		$this->db->join('people', 'people.person_id = suppliers.person_id');
 		$this->db->where_in('suppliers.person_id', $suppliers_ids);
 		$this->db->order_by('last_name', 'asc');
 
 		return $this->db->get();
 	}
-	
+
 	/*
 	Inserts or updates a suppliers
 	*/
@@ -98,7 +98,7 @@ class Supplier extends Person
 
 		//Run these queries as a transaction, we want to make sure we do all or nothing
 		$this->db->trans_start();
-		
+
 		if(parent::save($person_data,$supplier_id))
 		{
 			if(!$supplier_id || !$this->exists($supplier_id))
@@ -112,14 +112,14 @@ class Supplier extends Person
 				$success = $this->db->update('suppliers', $supplier_data);
 			}
 		}
-		
+
 		$this->db->trans_complete();
-		
+
 		$success &= $this->db->trans_status();
 
 		return $success;
 	}
-	
+
 	/*
 	Deletes one supplier
 	*/
@@ -129,7 +129,7 @@ class Supplier extends Person
 
 		return $this->db->update('suppliers', array('deleted' => 1));
 	}
-	
+
 	/*
 	Deletes a list of suppliers
 	*/
@@ -139,7 +139,7 @@ class Supplier extends Person
 
 		return $this->db->update('suppliers', array('deleted' => 1));
  	}
- 	
+
  	/*
 	Get search suggestions to find suppliers
 	*/
@@ -173,7 +173,7 @@ class Supplier extends Person
 		$this->db->join('people', 'suppliers.person_id = people.person_id');
 		$this->db->group_start();
 			$this->db->like('first_name', $search);
-			$this->db->or_like('last_name', $search); 
+			$this->db->or_like('last_name', $search);
 			$this->db->or_like('CONCAT(first_name, " ", last_name)', $search);
 		$this->db->group_end();
 		$this->db->where('deleted', 0);
@@ -208,11 +208,11 @@ class Supplier extends Person
 			$this->db->from('suppliers');
 			$this->db->join('people', 'suppliers.person_id = people.person_id');
 			$this->db->where('deleted', 0);
-			$this->db->like('account_number', $search);
-			$this->db->order_by('account_number', 'asc');
+			$this->db->like('conc_id', $search);
+			$this->db->order_by('conc_id', 'asc');
 			foreach($this->db->get()->result() as $row)
 			{
-				$suggestions[] = array('value' => $row->person_id, 'label' => $row->account_number);
+				$suggestions[] = array('value' => $row->person_id, 'label' => $row->conc_id);
 			}
 		}
 
@@ -232,7 +232,7 @@ class Supplier extends Person
 	{
 		return $this->search($search, 0, 0, 'last_name', 'asc', TRUE);
 	}
-	
+
 	/*
 	Perform a search on suppliers
 	*/
@@ -253,11 +253,11 @@ class Supplier extends Person
 			$this->db->or_like('agency_name', $search);
 			$this->db->or_like('email', $search);
 			$this->db->or_like('phone_number', $search);
-			$this->db->or_like('account_number', $search);
+			$this->db->or_like('conc_id', $search);
 			$this->db->or_like('CONCAT(first_name, " ", last_name)', $search);
 		$this->db->group_end();
 		$this->db->where('deleted', 0);
-		
+
 		// get_found_rows case
 		if($count_only == TRUE)
 		{

@@ -224,10 +224,11 @@ function get_customer_manage_table_headers()
 	$CI =& get_instance();
 
 	$headers = array(
-		array('people.person_id' => $CI->lang->line('common_id')),
+		//array('people.person_id' => $CI->lang->line('common_id')),
 		array('last_name' => $CI->lang->line('common_last_name')),
 		array('first_name' => $CI->lang->line('common_first_name')),
-		array('company_name' => 'Concession ID'),
+		array('conc_id' => $CI->lang->line('customers_conc_id')),
+		array('company_name' => $CI->lang->line('customers_company_name')),
 		array('email' => $CI->lang->line('common_email')),
 		array('phone_number' => $CI->lang->line('common_phone_number')),
 		array('total' => $CI->lang->line('common_total_spent'), 'sortable' => FALSE)
@@ -250,9 +251,10 @@ function get_customer_data_row($person, $stats)
 	$controller_name = strtolower(get_class($CI));
 
 	return array (
-		'people.person_id' => $person->person_id,
+		//'people.person_id' => $person->person_id,
 		'last_name' => $person->last_name,
 		'first_name' => $person->first_name,
+		'conc_id' => $person->conc_id,
 		'company_name' => $person->company_name,
 		'email' => empty($person->email) ? '' : mailto($person->email, $person->email),
 		'phone_number' => $person->phone_number,
