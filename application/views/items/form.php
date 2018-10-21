@@ -583,8 +583,8 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
 //validation and submit handling
 $(document).ready(function()
 {
-	const TAXABLE_CATEGORIES = ['Support', 'Miscellaneous-new'];
-	const NON_STOCKED_CATEGORIES = ['Support'];
+	const TAXABLE_CATEGORIES = ['New Equipment', 'User Support'];
+	const NON_STOCKED_CATEGORIES = ['User Support','Recycling Fees','CBV Membership'];
 	const COMPUTER_CATEGORIES = ['Laptop', 'Desktop'];
 	const DEFAULT_TAX_RATE = '<?php echo to_tax_decimals($default_tax_1_rate); ?>';
 	const updateFieldsBasedOnCategory = () => {
