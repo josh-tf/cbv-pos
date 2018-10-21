@@ -218,7 +218,7 @@ if ($item['allow_alt_description'] == 1) {
 
 <div id="overall_sale" class="panel panel-default<?php echo (!($saleMode == 'sale') ? ' non-sale' : '') ?>">
 	<div class="panel-body">
-		<?php echo form_open($controller_name . "/select_customer", array('id' => 'select_customer_form', 'class' => 'form-horizontal')); ?>
+		<?php echo form_open($controller_name . "/select_customer", array('id' => 'select_customer_form', 'class' => 'form-horizontal' . (!($saleMode == 'sale') ? ' non-sale' : ''))); ?>
 			<?php
 if (isset($customer)) {
     ?>
