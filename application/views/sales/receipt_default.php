@@ -256,7 +256,7 @@ if (isset($cur_giftcard_value) && $show_giftcard_remainder) {
 		<tr>
 		<td colspan="3" class="blank"> </td>
 			<td colspan="1" style="text-align:right;" class="total-line"> Amount Due </td>
-			<td class="total-value"><?php echo to_currency($amount_change); ?></td>
+			<td class="total-value"><?php echo to_currency($amount_change * -1); ?></td>
 		</tr>
 	</table>
 
