@@ -826,7 +826,7 @@ CREATE TABLE `cbvpos_suppliers` (
   `person_id` int(10) NOT NULL,
   `company_name` varchar(255) NOT NULL,
   `agency_name` varchar(255) NOT NULL,
-  `conc_id` varchar(255) DEFAULT NULL,
+  `account_number` varchar(255) DEFAULT NULL,
   `deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
