@@ -920,7 +920,7 @@ class Item extends CI_Model
         $this->db->where('quantity > 0');
         $this->db->order_by("unit_price asc");
 
-        // pass as the function resulr
+        // pass as the function result
         $query = $this->db->get();
         return $query->result();
 
