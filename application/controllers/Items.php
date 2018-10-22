@@ -34,7 +34,7 @@ class Items extends Secure_Controller
     public function stocklist()
     {
 
-        $this->data['stocklist'] = $this->Item->get_stocklist(); // calling ITem model method get_stocklist()
+        $this->data['stocklist'] = $this->Item->get_stocklist(); // calling Item model method get_stocklist()
         $this->load->view('items/stocklist', $this->data); // load the view file , we are passing $data array to view file
     }
 
