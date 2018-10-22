@@ -15,10 +15,10 @@ if (isset($success)) {
 
 $saleMode = $mode;
 
-if ($saleMode == "return"){
-	$cusReq = "(Required for Refund)";
-}else{
-	$cusReq = $customer_required;
+if ($saleMode == "return") {
+    $cusReq = "(Required for Refund)";
+} else {
+    $cusReq = $customer_required;
 }
 
 ?>
@@ -194,7 +194,7 @@ if ($item['allow_alt_description'] == 1) {
             echo form_input(array('name' => 'description', 'class' => 'form-control input-sm', 'value' => $item['description'], 'onClick' => 'this.select();'));
         } else {
             if ($item['description'] != '') {
-				echo '<b>Description: </b>';
+                echo '<b>Description: </b>';
                 echo $item['description'];
                 echo form_hidden('description', $item['description']);
             } else {

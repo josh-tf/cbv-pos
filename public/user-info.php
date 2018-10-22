@@ -1,6 +1,6 @@
 <?php
-if(!defined('incKey')) {
-   die('Direct access not permitted');
+if (!defined('incKey')) {
+    die('Direct access not permitted');
 }
 ?>
 
