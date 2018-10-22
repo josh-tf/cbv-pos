@@ -283,6 +283,7 @@ if (($total > 0) && isComputer(array("Laptop", "Desktop"), $cart)) { // search v
     echo '<div class="Thankyou-Note">' . $this->lang->line('sales_receipt_extra_page_note') . '</div>';
     echo '<div class="pagebreak"></div>';
 
+	define('incKey', TRUE);
     include 'user-info.php'; // in ./public/
 
 } else {

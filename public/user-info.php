@@ -1,3 +1,9 @@
+<?php
+if(!defined('incKey')) {
+   die('Direct access not permitted');
+}
+?>
+
 <div class='computer-info'>
 
 
