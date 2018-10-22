@@ -31,6 +31,13 @@ class Items extends Secure_Controller
         $this->load->view('items/manage', $data);
     }
 
+    public function stocklist()
+    {
+
+        $this->data['stocklist'] = $this->Item->get_stocklist(); // calling ITem model method get_stocklist()
+        $this->load->view('items/stocklist', $this->data); // load the view file , we are passing $data array to view file
+    }
+
     /*
     Returns Items table data rows. This will be called with AJAX.
      */
