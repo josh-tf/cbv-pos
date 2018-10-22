@@ -911,7 +911,8 @@ class Item extends CI_Model
         return $this->save($data, $item_id);
     }
 
-    function get_stocklist(){
+    public function get_stocklist()
+    {
 
         // select our data from the database
         $this->db->select("*");
@@ -924,7 +925,6 @@ class Item extends CI_Model
         $query = $this->db->get();
         return $query->result();
 
-       }
-
+    }
 
 }

@@ -188,7 +188,7 @@ input#amount_tendered:disabled {
 }
 
 .non-sale a.modal-dlg {
-    color: #6f0000;
+	color: #6f0000;
 }
 
 /* Register improvements */
@@ -227,4 +227,3 @@ input#amount_tendered:disabled {
 .form-horizontal .control-label {
 	padding-top: 6px;
 }
-
