@@ -88,12 +88,8 @@ function checkKey(event) {
         <span class="glyphicon glyphicon-tag">&nbsp</span><?php echo $this->lang->line($controller_name . '_new'); ?>
     </button>
 
-    <button class='btn btn-info btn-sm pull-right' onclick="window.open('./stock-list-print.php')">
-        <span class="glyphicon glyphicon-print">&nbsp</span>Print Stocklist
-    </button>
-
-    <button class='btn btn-info btn-sm pull-right' onclick="window.open('./stock-list.php')">
-        <span class="glyphicon glyphicon-file">&nbsp</span>View Stocklist
+    <button class='btn btn-info btn-sm pull-right' onclick="window.location.href='/items/stocklist'">
+        <span class="glyphicon glyphicon-th-list">&nbsp</span>View Stocklist
     </button>
 
     <button class='btn btn-info btn-sm pull-right' id="cbvid-btn" onclick="openTicket()">
