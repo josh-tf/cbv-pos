@@ -27,21 +27,6 @@ $(document).ready(function()
 	});
 });
 
-function openConcCheck() {
-
-	var concID = document.getElementById('conc-id').value; // get the textbox value
-
-	if (concID == 'Concession ID:' || concID == '' ) {
-		throw ''; // exit if you just click the generate button without entering anything
-	};
-		window.open('./customer-lookup.php?conc-id=' + concID + '&range=alltime') // open the sales ticket
-	}
-
-function checkKey(event) {
-    if(event.key === 'Enter') {
-        openConcCheck();
-    }
-}
 </script>
 
 <div id="title_bar" class="btn-toolbar">
@@ -62,11 +47,14 @@ if ($controller_name == 'customers') {
 
 <!-- Look up Customer ID -->
 
-    <button class='btn btn-info btn-sm pull-right' onclick="openConcCheck()">
+    <form action="/customers/lookup/" method="post">
+	<button class='btn btn-info btn-sm pull-right'>
         <span class="glyphicon glyphicon-file">&nbsp</span>Lookup ID
     </button>
-
-	<input type="text" id="conc-id" onfocus="this.value=''" onkeydown="checkKey(event)" value="Concession ID:" class="form-control input-sm" id="" style="width: 125px;float: right;margin-right: 5px;">
+		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+		<input type="text" name="conc_id_check" id="conc_id_check" onfocus="this.value=''" value="Concession ID:" class="form-control input-sm" style="width: 125px;float: right;margin-right: 5px;">
+		<input type="submit" id="submit-conc" class="hidden" />
+	</form>
 
 </div>
 
@@ -84,5 +72,6 @@ if ($controller_name == 'customers') {
 <div id="table_holder">
 	<table id="table"></table>
 </div>
+
 
 <?php $this->load->view("partial/footer");?>

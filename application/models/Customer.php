@@ -365,5 +365,39 @@ class Customer extends Person
 
 		return $this->db->get();
 	}
+
+	public function lookup_cus_info($conc_id)
+    {
+
+        // select our data from the database
+        $this->db->select("*");
+        $this->db->from('cbvpos_customers');
+        $this->db->join('cbvpos_people', 'cbvpos_customers.person_id = cbvpos_people.person_id');
+        $this->db->where('conc_id =', $conc_id);
+
+        // pass as the function result
+        $query = $this->db->get();
+        return $query->result();
+
+	}
+
+	public function lookup_cus_sales($conc_id)
+    {
+
+        // select our data from the database
+        $this->db->select("*");
+        $this->db->from('cbvpos_sales');
+        $this->db->join('cbvpos_customers', 'cbvpos_sales.customer_id = cbvpos_customers.person_id');
+        $this->db->join('cbvpos_sales_items', 'cbvpos_sales.sale_id = cbvpos_sales_items.sale_id');
+        $this->db->join('cbvpos_items', 'cbvpos_sales_items.item_id = cbvpos_items.item_id');
+        $this->db->join('cbvpos_people', 'cbvpos_customers.person_id = cbvpos_people.person_id');
+        $this->db->where('conc_id =', $conc_id);
+
+        // pass as the function result
+        $query = $this->db->get();
+        return $query->result();
+
+    }
+
 }
 ?>

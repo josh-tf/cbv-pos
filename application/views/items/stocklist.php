@@ -121,13 +121,6 @@
     </div>
 </div>
 
-     <?php foreach ($stocklist as $computer) {?>
-     <tr>
-         <td><?php echo $post->name; ?></td>
-         <td><?php echo $post->unit_price; ?></td>
-      </tr>
-     <?php }?>
-
 <div id="title_bar" class="btn-toolbar print_hide">
 
 <button data-toggle="modal" data-target="#printWarning" class="btn btn-info btn-sm pull-right">
@@ -139,8 +132,6 @@
 </button>
 </div>
 
-<div class="container">
-<div class="row">
 
     <div class="desktop-stocklist">
 
@@ -176,17 +167,17 @@ foreach ($stocklist as $computer) {
         ?>
     <tr>
       <td><?php echo $computer->name; ?></td>
-      <td><?php echo ($computer->custom10) ? $computer->custom10 : 'Tower'; // type      ?></td>
+      <td><?php echo ($computer->custom10) ? $computer->custom10 : 'Tower'; // type       ?></td>
       <td>$<?php echo number_format((float) ($computer->unit_price), 2, '.', ''); ?></td>
       <td>$<?php echo number_format((float) ($computer->unit_price) * 1.5, 2, '.', ''); ?></td>
-      <td><?php echo $computer->custom2; //brand/model       ?></td>
-      <td><?php echo $computer->custom3; // cpu type      ?></td>
-      <td><?php echo $computer->custom4; // cpu speed      ?> Ghz</td>
-      <td><?php echo $computer->custom5; // ram      ?> GB</td>
-      <td><?php echo $computer->custom6; // hdd      ?> GB</td>
-      <td><?php echo $computer->custom8; // screen      ?>in</td>
-      <td><?php echo ($computer->custom9) ? $computer->custom9 : 'None'; // optical drive      ?></td>
-      <td><?php echo $computer->custom7; // operating system      ?></td>
+      <td><?php echo $computer->custom2; //brand/model        ?></td>
+      <td><?php echo $computer->custom3; // cpu type       ?></td>
+      <td><?php echo $computer->custom4; // cpu speed       ?> Ghz</td>
+      <td><?php echo $computer->custom5; // ram       ?> GB</td>
+      <td><?php echo $computer->custom6; // hdd       ?> GB</td>
+      <td><?php echo $computer->custom8; // screen       ?>in</td>
+      <td><?php echo ($computer->custom9) ? $computer->custom9 : 'None'; // optical drive       ?></td>
+      <td><?php echo $computer->custom7; // operating system       ?></td>
     </tr>
 
 <?php
@@ -235,15 +226,15 @@ foreach ($stocklist as $computer) {
     <tr>
       <td><?php echo $computer->name; ?></td>
       <td>$<?php echo number_format((float) ($computer->unit_price), 2, '.', ''); ?></td>
-      <td><?php echo $computer->custom2; //brand/model       ?></td>
-      <td><?php echo $computer->custom3; // cpu type      ?></td>
-      <td><?php echo $computer->custom4; // cpu speed      ?> Ghz</td>
-      <td><?php echo $computer->custom5; // ram      ?> GB</td>
-      <td><?php echo $computer->custom6; // hdd      ?> GB</td>
-      <td><?php echo $computer->custom8; // screen      ?>in</td>
-      <td><?php echo ($computer->custom9) ? $computer->custom9 : 'None'; // optical drive      ?></td>
-      <td><?php echo $computer->custom11; // battery life      ?> hrs</td>
-      <td><?php echo $computer->custom7; // operating system      ?></td>
+      <td><?php echo $computer->custom2; //brand/model        ?></td>
+      <td><?php echo $computer->custom3; // cpu type       ?></td>
+      <td><?php echo $computer->custom4; // cpu speed       ?> Ghz</td>
+      <td><?php echo $computer->custom5; // ram       ?> GB</td>
+      <td><?php echo $computer->custom6; // hdd       ?> GB</td>
+      <td><?php echo $computer->custom8; // screen       ?>in</td>
+      <td><?php echo ($computer->custom9) ? $computer->custom9 : 'None'; // optical drive       ?></td>
+      <td><?php echo $computer->custom11; // battery life       ?> hrs</td>
+      <td><?php echo $computer->custom7; // operating system       ?></td>
     </tr>
 
     <?php
@@ -257,8 +248,5 @@ foreach ($stocklist as $computer) {
 </div>
 
 <br><br>
-
-      </div>
-  </div>
 
 <?php $this->load->view("partial/footer");?>

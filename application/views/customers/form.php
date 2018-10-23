@@ -34,9 +34,8 @@ if (!empty($stats)) {
 ); ?>
 					</div>
 
-
-					<div class='col-xs-2'>
-                        <div class="lookup"><a href="#" target="_blank" onclick="this.href='/customer-lookup.php?conc-id='+document.getElementById('conc_id').value+'&range=alltime';">Lookup</a>
+						<div class="lookup">
+						<label for="submit-conc" class="lookupConc">Lookup</label>
                         </div>
 					</div>
 
@@ -221,6 +220,9 @@ if (!empty($stats)) {
 //validation and submit handling
 $(document).ready(function()
 {
+	$("#conc_id").on('change keydown paste input', function(){
+		document.getElementById("conc_id_check").value = document.getElementById("conc_id").value // helper val used for post/form request
+	});
 	$('#customer_form').validate($.extend({
 		submitHandler: function(form)
 		{
