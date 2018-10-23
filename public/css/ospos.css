@@ -265,12 +265,13 @@ h3.text-center {
 }
 
 .lookup {
-    background: #F33;
+    background: #0f007d;
     color: #fff;
     width: 59px;
     height: 32px;
-    padding: 6px;
-    margin: -2px 0px 1px -20px;
+	padding: 6px;
+	float:right;
+    margin-right: 50px;
 }
 
 .lookup a{
