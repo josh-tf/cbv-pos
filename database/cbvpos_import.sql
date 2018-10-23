@@ -1206,7 +1206,6 @@ ALTER TABLE `cbvpos_stock_locations`
 -- Indexes for table `cbvpos_suppliers`
 --
 ALTER TABLE `cbvpos_suppliers`
-  ADD UNIQUE KEY `conc_id` (`conc_id`),
   ADD KEY `person_id` (`person_id`);
 
 --
