@@ -1,5 +1,26 @@
 <?php $this->load->view("partial/header");?>
 
+<?php
+
+// machine count
+$desktopCt = 0;
+$laptopCt = 0;
+
+foreach ($stocklist as $computer) {
+
+    if($computer->category == "Desktop"){
+
+        $desktopCt += 1;
+
+    }elseif($computer->category == "Laptop"){
+
+        $laptopCt += 1;
+
+    }
+}
+?>
+
+
 <style>
     td {
         padding: 4px !important;
@@ -133,7 +154,7 @@
 </div>
 
 
-    <div class="desktop-stocklist">
+    <div class="desktop-stocklist"<?php echo ($desktopCt == 0) ? ' style="display:none;"' : '' ?>>
 
         <img src="images/cbv-logo-black.png" class="logo" />
 
@@ -192,7 +213,7 @@ foreach ($stocklist as $computer) {
 <br>
 <br>
 
-<div class="pagebreak laptop-stocklist">
+<div class="pagebreak laptop-stocklist"<?php echo ($laptopCt === 0) ? ' style="display:none;"' : '' ?>>
 
     <img src="images/cbv-logo-black.png" class="logo" />
 
