@@ -25,6 +25,12 @@ $(document).ready(function()
 		});
 		location.href = "mailto:" + recipients.join(",");
 	});
+
+$('#conc_check_fr').submit(function() {
+    if ($.trim($("#conc_id_check").val()) === "" || $.trim($("#conc_id_check").val()) === "Concession ID:") {
+        return false; // ignore if nothing entered
+    }
+});
 });
 
 </script>
@@ -47,7 +53,7 @@ if ($controller_name == 'customers') {
 
 <!-- Look up Customer ID -->
 
-    <form action="/customers/lookup/" method="post">
+    <form id="conc_check_fr" action="/customers/lookup/" method="post">
 	<button class='btn btn-info btn-sm pull-right'>
         <span class="glyphicon glyphicon-file">&nbsp</span>Lookup ID
     </button>
