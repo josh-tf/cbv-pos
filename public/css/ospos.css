@@ -267,11 +267,12 @@ h3.text-center {
 .lookup {
     background: #0f007d;
     color: #fff;
-    width: 59px;
+    width: 64px;
     height: 32px;
-	padding: 6px;
-	float:right;
+    padding: 6px;
+    float: right;
     margin-right: 50px;
+    border-radius: 4px;
 }
 
 .lookup a{
