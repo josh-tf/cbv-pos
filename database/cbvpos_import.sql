@@ -161,7 +161,7 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('sales_quote_format', 'Q%y{QSEQ:6}'),
 ('smtp_crypto', 'ssl'),
 ('smtp_host', ''),
-('smtp_pass', 'c674c8c5be8783c02d7aac3fd6b91bea3772370334608c437b0d363c0c476c207c7036ce0b30db9eaa529d3b94a785655f182074e13c77410bfe2d31f3add05a+/Q67NyQgEmUpGH7PzX1SnXTT7ct4rOxLTcuXydHFKA='),
+('smtp_pass', ''),
 ('smtp_port', ''),
 ('smtp_timeout', ''),
 ('smtp_user', ''),
@@ -643,8 +643,8 @@ CREATE TABLE `cbvpos_people` (
 
 INSERT INTO `cbvpos_people` (`first_name`, `last_name`, `gender`, `phone_number`, `email`, `address_1`, `address_2`, `city`, `state`, `zip`, `country`, `comments`, `person_id`) VALUES
 ('Front', 'Desk', NULL, '(03) 9600 9161', 'info@computerbank.org.au', '483 Victoria Street', '', 'West Melbourne', 'Victoria', '3003', 'Australia', '', 1),
-('Jane', 'Doe', NULL, '', 'j.doe.cbv@josh.tf', '123 Database Lane', '', 'Melbourne', 'Victoria', '3000', 'Australia', '', 2),
-('John', 'Smith', NULL, '', 'j.smith.cbv@josh.tf', '334 Dorcas Street', '', 'South Melbourne', 'Victoria', '3205', 'Australia', '', 3);
+('Jane', 'Doe', NULL, '0422111333', 'j.doe.cbv@josh.tf', '123 Database Lane', '', 'Melbourne', 'Victoria', '3000', 'Australia', '', 2),
+('John', 'Smith', NULL, '0499222444', 'j.smith.cbv@josh.tf', '334 Dorcas Street', '', 'South Melbourne', 'Victoria', '3205', 'Australia', '', 3);
 
 -- --------------------------------------------------------
 
@@ -1307,7 +1307,6 @@ ALTER TABLE `cbvpos_receivings`
 --
 ALTER TABLE `cbvpos_sales`
   MODIFY `sale_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `cbvpos_sales_reward_points`
 --
