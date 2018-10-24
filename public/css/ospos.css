@@ -282,3 +282,13 @@ h3.text-center {
 td.print_hide {
     text-align: center;
 }
+
+.ticket-icon {
+    width: 34px;
+    vertical-align: middle;
+    padding-right: 10px;
+}
+
+.pricing {
+    font-size: 1.3em;
+}
