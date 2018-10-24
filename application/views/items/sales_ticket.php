@@ -1,10 +1,4 @@
-<?php $this->load->view("partial/header"); //exit if they provided something other than a desktop
-
-//  $itemCat = $row['category;
-
-//   if (!($itemCat === 'Desktop')) {
-//      die('ID Provided was not a desktop type (Category is "' . $itemCat .  '")');
-//  }
+<?php $this->load->view("partial/header");
 
 // generate our numbers for use
 
@@ -20,6 +14,12 @@ function formatPrice($value, $ncp = false)
 }
 
 foreach ($cbv_info as $computer) {
+
+  $itemCat = $computer->category;
+
+   if (!($itemCat === 'Desktop')) {
+      die('ID Provided was not a desktop type (Category is "' . $itemCat .  '")');
+  }
 
     $boxDiscount = $computer->unit_price - $computer->custom12; // calculate the difference between full and box only
 
