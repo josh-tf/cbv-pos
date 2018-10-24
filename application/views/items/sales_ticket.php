@@ -214,4 +214,4 @@ the printer settings in the popup dialog are configured as follows:
 </div>
     </div>
 
-<br><br>
+<?php $this->load->view("partial/footer");?>
