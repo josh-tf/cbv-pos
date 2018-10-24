@@ -56,23 +56,6 @@ $(document).ready(function()
     });
 });
 
-
-function openTicket() {
-
-var cbvid = document.getElementById('cbvid').value; // get the textbox value
-
-if (cbvid == 'CBV ID:') {
-	throw ''; // exit if you just click the generate button without entering anything
-};
-	window.open('./sales-ticket.php?id=' + cbvid) // open the sales ticket
-}
-
-function checkKey(event) {
-    if(event.key === 'Enter') {
-        openTicket();
-    }
-}
-
 </script>
 
 <div id="title_bar" class="btn-toolbar print_hide">
@@ -92,11 +75,14 @@ function checkKey(event) {
         <span class="glyphicon glyphicon-th-list">&nbsp</span>View Stocklist
     </button>
 
+<?php echo form_open(base_url('items/sales_ticket'), array('id' => 'login', 'class' => 'login')); ?>
+
     <button class='btn btn-info btn-sm pull-right' id="cbvid-btn" onclick="openTicket()">
         <span class="glyphicon glyphicon-file">&nbsp</span>Generate Ticket
     </button>
 
-	<input type="text" id="cbvid" onfocus="this.value=''" value="CBV ID:" onkeydown="checkKey(event)" class="form-control input-sm" id="" style="width: 85px;float: right;margin-right: 5px;">
+	<input type="text" id="cbv_id" name="cbv_id" onfocus="this.value=''" value="CBV ID:" class="form-control input-sm" id="" style="width: 85px;float: right;margin-right: 5px;">
+    <?php echo form_close(); ?>
 </div>
 
 <div id="toolbar">

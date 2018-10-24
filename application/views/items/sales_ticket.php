@@ -1,89 +1,40 @@
-<?php $this->load->view("partial/header");?>
+<?php $this->load->view("partial/header"); //exit if they provided something other than a desktop
 
-<?php
-// grab our ID from the url
-$cbvid = "8222";
+//  $itemCat = $row['category;
 
-// exit if the id is empty
-if (empty($cbvid)) {
-    die('Invalid ID Provided');
-}
-
-// using docker env vars
-$servername = getenv('MYSQL_HOST_NAME');
-$username = getenv('MYSQL_USERNAME');
-$password = getenv('MYSQL_PASSWORD');
-$dbname = getenv('MYSQL_DB_NAME');
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Using prepared statements to prevent possible SQL injection
-$stmt = $conn->prepare('SELECT * FROM cbvpos_items WHERE name = ?');
-$stmt->bind_param('s', $cbvid); // 's' specifies the variable type => 'string'
-
-$stmt->execute();
-
-$result = $stmt->get_result();
-
-// if no results, exit
-if ($result->num_rows == 0) {
-    die('Invalid ID Provided');
-}
-
-while ($row = $result->fetch_assoc()) {
-
-    // exit if they provided something other than a desktop
-
-    $itemCat = $row['category'];
-
-    if (!($itemCat === 'Desktop')) {
-        die('ID Provided was not a desktop type (Category is "' . $itemCat .  '")');
-    }
+//   if (!($itemCat === 'Desktop')) {
+//      die('ID Provided was not a desktop type (Category is "' . $itemCat .  '")');
+//  }
 
 // generate our numbers for use
 
-    function formatPrice($value, $ncp = false)
-    { // ncp is a bool for non concession price
+function formatPrice($value, $ncp = false)
+{ // ncp is a bool for non concession price
 
-        if (!$ncp) {
-            return number_format((float) $value, 2, '.', ''); // round to two dec
-        } else {
-            return number_format((float) round(($value * 1.5) / 5) * 5, 2, '.', ''); // if ncp bool is set to true then multiply by 150% and round to nearest 5 i.e 23.50 becomes 25.00
-        }
-
+    if (!$ncp) {
+        return number_format((float) $value, 2, '.', ''); // round to two dec
+    } else {
+        return number_format((float) round(($value * 1.5) / 5) * 5, 2, '.', ''); // if ncp bool is set to true then multiply by 150% and round to nearest 5 i.e 23.50 becomes 25.00
     }
 
-    $boxDiscount = $row['unit_price'] - $row['custom12']; // calculate the difference between full and box only
+}
+
+foreach ($cbv_info as $computer) {
+
+    $boxDiscount = $computer->unit_price - $computer->custom12; // calculate the difference between full and box only
 
     // create an array to be used below
-    $ticket['concPriceFull'] = "$" . formatPrice($row['unit_price']);
-    $ticket['nonConcPriceFull'] = "$" . formatPrice($row['unit_price'], true); // + 50% for non Concession
-    $ticket['concPriceBox'] = "$" . formatPrice($row['custom12']);
-    $ticket['nonConcPriceBox'] = "$" . formatPrice(formatPrice($row['unit_price'], true) - $boxDiscount); // this formula is ((unit_price * 50%)-$boxDiscount)
-    $ticket['specID'] = $row['name'] . ' - ' . $row['custom2'];
-    $ticket['specCPU'] = $row['custom3'] . ' ' . $row['custom4'] . " Ghz";
-    $ticket['specRAM'] = $row['custom5'] . " GB";
-    $ticket['specHDD'] = $row['custom6'] . " GB";
-    $ticket['specEX'] = implode(", ", array_filter([$row['custom8'] ? $row['custom8'] . '" Screen' : null, $row['custom9'], $row['custom13']]));
-    $ticket['specOS'] = $row['custom7'];
+    $concPriceFull = "$" . formatPrice($computer->unit_price);
+    $nonConcPriceFull = "$" . formatPrice($computer->unit_price, true); // + 50% for non Concession
+    $concPriceBox = "$" . formatPrice($computer->custom12);
+    $nonConcPriceBox = "$" . formatPrice(formatPrice($computer->unit_price, true) - $boxDiscount); // this formula is ((unit_price * 50%)-$boxDiscount)
+    $specID = $computer->name . ' - ' . $computer->custom2;
+    $specCPU = $computer->custom3 . ' ' . $computer->custom4 . " Ghz";
+    $specRAM = $computer->custom5 . " GB";
+    $specHDD = $computer->custom6 . " GB";
+    $specEX = implode(", ", array_filter($computer->custom8 ? $computer->custom8 . '" Screen' : null, $computer->custom9, $computer->custom13));
+    $specOS = $computer->custom7;
 
-
-// machine count
-$desktopCt = 0;
-$laptopCt = 0;
-
-foreach ($stocklist as $computer) {
-
-    if($computer->category == "Desktop"){
-
-        $desktopCt += 1;
-
-    }elseif($computer->category == "Laptop"){
-
-        $laptopCt += 1;
-
-    }
 }
 ?>
 
@@ -168,7 +119,7 @@ the printer settings in the popup dialog are configured as follows:
 <div id="title_bar" class="btn-toolbar print_hide">
 
 <button data-toggle="modal" data-target="#printWarning" class="btn btn-info btn-sm pull-right">
-    <span class="glyphicon glyphicon-print">&nbsp</span>Print Stocklist
+    <span class="glyphicon glyphicon-print">&nbsp</span>Print Ticket
 </button>
 
 <button class='btn btn-info btn-sm pull-right' onclick="window.location.href='/items/'">
@@ -197,13 +148,13 @@ the printer settings in the popup dialog are configured as follows:
   <tbody>
     <tr>
       <td><b class="pricing">Full System</b></td> <!-- round up or down to nearest $5 -->
-      <td><b class="pricing"><?php echo $ticket['concPriceFull'] ?></b></td>
-      <td><?php echo $ticket['nonConcPriceFull'] ?></td></b></td><!-- the php below adds 25% and rounds up/down to nearest $5 -->
+      <td><b class="pricing"><?php echo $concPriceFull ?></b></td>
+      <td><?php echo $nonConcPriceFull ?></td></b></td><!-- the php below adds 25% and rounds up/down to nearest $5 -->
     </tr>
     <tr>
       <td><b class="pricing">Box Only</b></td>
-      <td><b class="pricing"><?php echo $ticket['concPriceBox'] ?></b></td>
-      <td><?php echo $ticket['nonConcPriceBox'] ?></b></td>
+      <td><b class="pricing"><?php echo $concPriceBox ?></b></td>
+      <td><?php echo $nonConcPriceBox ?></b></td>
     </tr>
   </tbody>
 </table>
@@ -217,29 +168,29 @@ the printer settings in the popup dialog are configured as follows:
       <th>Details</th>
     </tr>
   </thead>
-  <tbody>   <?php echo $ticket['']; ?>
+  <tbody>
     <tr>
       <td><img src="images/ticket-icons/cbvid.png" class="ticket-icon" /> <b>CBV ID</b></td>
-      <td><?php echo $ticket['specID']; ?></td>
+      <td><?php echo $specID; ?></td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/processor.png" class="ticket-icon" /> <b>Processor</b></td>
-      <td><?php echo $ticket['specCPU']; ?></td>
+      <td><?php echo $specCPU; ?></td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/memory.png" class="ticket-icon" /> <b>Memory</b></td>
-      <td><?php echo $ticket['specRAM']; ?></td>
+      <td><?php echo $specRAM; ?></td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/storage.png" class="ticket-icon" /> <b>Storage</b></td>
-      <td><?php echo $ticket['specHDD']; ?></td>
+      <td><?php echo $specHDD; ?></td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Extras</b></td>
-      <td><?php echo $ticket['specEX']; ?></td>
+      <td><?php echo $specEX ? $specEX : "None"; ?></td>
     </tr>
       <td><img src="images/ticket-icons/tux.png" class="ticket-icon" /> <b>OS</b></td>
-      <td><?php echo $ticket['specOS'] ?></td>
+      <td><?php echo $specOS ?></td>
     </tr>
   </tbody>
 </table>
@@ -264,11 +215,3 @@ the printer settings in the popup dialog are configured as follows:
     </div>
 
 <br><br>
-
-
-<?php
-}
-?>
-
-
-<?php $this->load->view("partial/footer");?>
