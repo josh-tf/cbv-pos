@@ -927,4 +927,18 @@ class Item extends CI_Model
 
     }
 
+    public function get_sales_ticket($cbv_id)
+    {
+
+        // select our data from the database
+        $this->db->select("*");
+        $this->db->from('cbvpos_items');
+        $this->db->where('name',$cbv_id);
+
+        // pass as the function result
+        $query = $this->db->get();
+        return $query->result();
+
+    }
+
 }
