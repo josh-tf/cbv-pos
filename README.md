@@ -60,6 +60,8 @@ The automatic build process will take a *few minutes* to complete and depends on
 
 The automatic build involves a number of steps including the creation of docker network and volumes, sourcing and deploying container images from [Docker Hub](https://hub.docker.com/r/joshtf/) and building the required dependencies (php, node) files.
 
+**Optional**: Enable ssl support via this guide on the wiki: [Enabling HTTPS/SSL on your install](https://github.com/josh-tf/cbvpos/wiki/Using-HTTPS-SSL-on-your-install)
+
 ## Access the installation
 
 After the build process is complete, you will be able to access the installation. Provided you have not modified the docker-compose configuration, the site url will be:

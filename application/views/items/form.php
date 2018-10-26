@@ -2,7 +2,6 @@
 
 <ul id="error_message_box" class="error_message_box"></ul>
 
-
 <?php echo form_open('items/save/' . $item_info->item_id, array('id' => 'item_form', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal')); ?>
 	<fieldset id="item_basic_info">
 		<div class="form-group form-group-sm hidden">
@@ -37,13 +36,19 @@
 			<div class='col-xs-8'>
 				<div class="input-group">
 					<span class="input-group-addon input-sm"><span class="glyphicon glyphicon-tag"></span></span>
-					<?php echo form_input(array(
-    'name' => 'category',
-    'id' => 'category',
-    'class' => 'form-control input-sm',
-    'value' => $item_info->category)
-); ?>
-				</div>
+    <select class="form-control input-sm" id="category" name="category">
+	<option selected disabled>Please Select..</option>
+	<?php
+
+$variable = $this->config->item('cbvopt_item_cat');
+$var = explode(',', $variable);
+
+foreach ($var as $row) {
+    echo '<option>' . trim($row) . '</option>';
+}
+?>
+    </select>
+					</div>
 			</div>
 		</div>
 
@@ -160,7 +165,7 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 			</div>
 		</div>
 
-		<div class="form-group form-group-sm">
+		<div class="form-group form-group-sm" id="tax">
 			<?php echo form_label($this->lang->line('items_tax_1'), 'tax_percent_1', array('class' => 'control-label col-xs-3')); ?>
 			<div class='col-xs-4'>
 				<?php echo form_input(array(
@@ -315,12 +320,18 @@ foreach ($stock_locations as $key => $location_detail) {
 		</div>
 	<div id="computer-fields">
 
+<?php
+
+$item_arr = (array) $item_info; // if editing, get the item data
+
+?>
+
 <div class="form-group form-group-sm custom1">
 <?php echo form_label($this->config->item('custom1_name'), 'custom1', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
 <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-calendar"></span></span>
-<input value="<?php $item_arr['custom1'] ?>" placeholder="<?php echo $this->lang->line('custom1_helper') ?>" list="custom1" class="form-control input-sm" name="custom1" type="date" id="custom1">
+<input value="<?php echo $item_arr['custom1'] ?>" list="custom1" class="form-control input-sm" name="custom1" type="date" id="custom1">
 </div>
 </div>
 </div>
@@ -329,7 +340,7 @@ foreach ($stock_locations as $key => $location_detail) {
 <?php echo form_label($this->config->item('custom2_name'), 'custom2', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom2'] ?>" placeholder="<?php echo $this->lang->line('custom2_helper') ?>" list="custom2" class="form-control input-sm" name="custom2" id="custom2">
+<input value="<?php echo $item_arr['custom2'] ?>" placeholder="<?php echo $this->lang->line('custom2_helper') ?>" list="custom2" class="form-control input-sm" name="custom2" id="custom2">
 </div>
 </div>
 </div>
@@ -338,17 +349,16 @@ foreach ($stock_locations as $key => $location_detail) {
 <?php echo form_label($this->config->item('custom3_name'), 'custom3', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom3'] ?>" placeholder="<?php echo $this->lang->line('custom3_helper') ?>" list="custom3" class="form-control input-sm" name="custom3">
+<input value="<?php echo $item_arr['custom3'] ?>" placeholder="<?php echo $this->lang->line('custom3_helper') ?>" list="custom3" class="form-control input-sm" name="custom3">
 <datalist id="custom3">
 
 <?php
-
 $variable = $this->config->item('cbvopt_item_cpu');
-$var=explode(',',$variable);
+$var = explode(',', $variable);
 
-foreach($var as $row){
-echo '<option value="' . trim($row) . '">';
- }
+foreach ($var as $row) {
+    echo '<option value="' . trim($row) . '">';
+}
 ?>
 
 </datalist>
@@ -360,7 +370,7 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom4_name'), 'custom4', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom4'] ?>" placeholder="<?php echo $this->lang->line('custom4_helper') ?>" list="custom4" class="form-control input-sm" name="custom4" id="custom4" type="number" step="0.1">
+<input value="<?php echo $item_arr['custom4'] ?>" placeholder="<?php echo $this->lang->line('custom4_helper') ?>" list="custom4" class="form-control input-sm" name="custom4" id="custom4" type="number" step="0.1">
 <span class="input-group-addon input-sm">Ghz</span>
 </div>
 </div>
@@ -370,17 +380,16 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom5_name'), 'custom5', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom5'] ?>" placeholder="<?php echo $this->lang->line('custom5_helper') ?>" list="custom5" class="form-control input-sm" name="custom5">
+<input value="<?php echo $item_arr['custom5'] ?>" placeholder="<?php echo $this->lang->line('custom5_helper') ?>" list="custom5" class="form-control input-sm" name="custom5">
 <datalist id="custom5">
 
 <?php
-
 $variable = $this->config->item('cbvopt_item_ram');
-$var=explode(',',$variable);
+$var = explode(',', $variable);
 
-foreach($var as $row){
-echo '<option value="' . trim($row) . '">';
- }
+foreach ($var as $row) {
+    echo '<option value="' . trim($row) . '">';
+}
 ?>
 
 </datalist>
@@ -393,17 +402,16 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom6_name'), 'custom6', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom6'] ?>" placeholder="<?php echo $this->lang->line('custom6_helper') ?>" list="custom6" class="form-control input-sm" name="custom6">
+<input value="<?php echo $item_arr['custom6'] ?>" placeholder="<?php echo $this->lang->line('custom6_helper') ?>" list="custom6" class="form-control input-sm" name="custom6">
 <datalist id="custom6">
 
 <?php
-
 $variable = $this->config->item('cbvopt_item_storage');
-$var=explode(',',$variable);
+$var = explode(',', $variable);
 
-foreach($var as $row){
-echo '<option value="' . trim($row) . '">';
- }
+foreach ($var as $row) {
+    echo '<option value="' . trim($row) . '">';
+}
 ?>
 </datalist>
 <span class="input-group-addon input-sm">GB</span>
@@ -415,7 +423,18 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom7_name'), 'custom7', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php echo $this->config->item('cbvopt_distver') ?>" placeholder="<?php echo $this->lang->line('custom7_helper') ?>" list="custom7" class="form-control input-sm" name="custom7" id="custom7">
+<select class="form-control input-sm" id="custom7" name="custom7">
+	<option selected disabled>Please Select..</option>
+	<?php
+$variable = $this->config->item('cbvopt_item_os');
+$var = explode(',', $variable);
+
+foreach ($var as $row) {
+    echo '<option>' . trim($row) . '</option>';
+}
+?>
+    </select>
+
 </div>
 </div>
 </div>
@@ -424,17 +443,16 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom8_name'), 'custom8', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom8'] ?>" placeholder="<?php echo $this->lang->line('custom8_helper') ?>" list="custom8" class="form-control input-sm" name="custom8">
+<input value="<?php echo $item_arr['custom8'] ?>" placeholder="<?php echo $this->lang->line('custom8_helper') ?>" list="custom8" class="form-control input-sm" name="custom8">
 <datalist id="custom8">
 
 <?php
-
 $variable = $this->config->item('cbvopt_item_screen');
-$var=explode(',',$variable);
+$var = explode(',', $variable);
 
-foreach($var as $row){
-echo '<option value="' . trim($row) . '">';
- }
+foreach ($var as $row) {
+    echo '<option value="' . trim($row) . '">';
+}
 ?>
 </datalist>
 <span class="input-group-addon input-sm">Inches</span>
@@ -446,17 +464,16 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom9_name'), 'custom9', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom9'] ?>" placeholder="<?php echo $this->lang->line('custom9_helper') ?>" list="custom9" class="form-control input-sm" name="custom9">
+<input value="<?php echo $item_arr['custom9'] ?>" placeholder="<?php echo $this->lang->line('custom9_helper') ?>" list="custom9" class="form-control input-sm" name="custom9">
 <datalist id="custom9">
 
 <?php
-
 $variable = $this->config->item('cbvopt_item_optical');
-$var=explode(',',$variable);
+$var = explode(',', $variable);
 
-foreach($var as $row){
-echo '<option value="' . trim($row) . '">';
- }
+foreach ($var as $row) {
+    echo '<option value="' . trim($row) . '">';
+}
 ?>
 </datalist>
 </div>
@@ -467,17 +484,16 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom10_name'), 'custom10', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom10'] ?>" placeholder="<?php echo $this->lang->line('custom10_helper') ?>" list="custom10" class="form-control input-sm" name="custom10">
+<input value="<?php echo $item_arr['custom10'] ?>" placeholder="<?php echo $this->lang->line('custom10_helper') ?>" list="custom10" class="form-control input-sm" name="custom10">
 <datalist id="custom10">
 
 <?php
-
 $variable = $this->config->item('cbvopt_item_type');
-$var=explode(',',$variable);
+$var = explode(',', $variable);
 
-foreach($var as $row){
-echo '<option value="' . trim($row) . '">';
- }
+foreach ($var as $row) {
+    echo '<option value="' . trim($row) . '">';
+}
 ?>
 
 </datalist>
@@ -489,7 +505,8 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom11_name'), 'custom11', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom11'] ?>" placeholder="<?php echo $this->lang->line('custom11_helper') ?>" list="custom11" class="form-control input-sm" name="custom11" id="custom11">
+<input value="<?php echo $item_arr['custom11'] ?>" placeholder="<?php echo $this->lang->line('custom11_helper') ?>" list="custom11" class="form-control input-sm" name="custom11" id="custom11">
+<span class="input-group-addon input-sm">Hours</span>
 </div>
 </div>
 </div>
@@ -498,7 +515,7 @@ echo '<option value="' . trim($row) . '">';
 <?php echo form_label($this->config->item('custom12_name'), 'custom12', array('class' => 'control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php $item_arr['custom12'] ?>" placeholder="<?php echo $this->lang->line('custom12_helper') ?>" list="custom12" class="form-control input-sm" name="custom12" id="custom12" type="number" step="1">
+<input value="<?php echo $item_arr['custom12'] ?>" placeholder="<?php echo $this->lang->line('custom12_helper') ?>" list="custom12" class="form-control input-sm" name="custom12" id="custom12" type="number" step="1">
 </div>
 </div>
 </div>
@@ -559,25 +576,29 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
 			</div>
 		</div>
 	</fieldset>
+
 <?php echo form_close(); ?>
 
 <script type="text/javascript">
 //validation and submit handling
 $(document).ready(function()
 {
-	const TAXABLE_CATEGORIES = ['Support', 'Miscellaneous-new'];
-	const NON_STOCKED_CATEGORIES = ['Support'];
+	const TAXABLE_CATEGORIES = ['New Equipment', 'User Support'];
+	const NON_STOCKED_CATEGORIES = ['User Support','Recycling Fees','CBV Membership'];
 	const COMPUTER_CATEGORIES = ['Laptop', 'Desktop'];
 	const DEFAULT_TAX_RATE = '<?php echo to_tax_decimals($default_tax_1_rate); ?>';
 	const updateFieldsBasedOnCategory = () => {
-		let category = $('#category').val();
+
+		let category = $('#category option:selected').text();
 		let isComputer = COMPUTER_CATEGORIES.indexOf(category) !== -1;
 		let isStocked = NON_STOCKED_CATEGORIES.indexOf(category) === -1;
 
 		if (isComputer) {
 			$('#computer-fields').removeClass('hidden');
+			$('#tax').addClass('hidden');
 		} else {
 			$('#computer-fields').addClass('hidden');
+			$('#tax').removeClass('hidden');
 		}
 
 		if (category == 'Desktop') { // isComputer and is a Desktop (Specific items: 10,12)
@@ -594,6 +615,15 @@ $(document).ready(function()
 		$('input:radio[name=stock_type]')[0].checked = isStocked;
 		$('input:radio[name=stock_type]')[1].checked = !isStocked;
 	};
+
+	var itemCat = '<?php echo $item_arr['category']; ?>';
+	var itemOS = '<?php echo $item_arr['custom7']; ?>';
+
+	if (!(itemCat === '')) { // if a cat is defined then its an existing item being edited, so set our select boxes
+		$('#category').val(itemCat);
+		$('#custom7').val(itemOS);
+	}
+
 	updateFieldsBasedOnCategory(); // Run as soon as document is ready
 
 	$("#new").click(function() {
@@ -611,7 +641,7 @@ $(document).ready(function()
 	$("#category").trigger("change");
 
 	// Update tax percent after category changes
-	$("#category").blur(function(eventObject) {
+	$(document).on('change','#category',function(){
 		var category = $(this).val();
 		var taxRate = '0.00';
 
@@ -627,32 +657,20 @@ $(document).ready(function()
 function createDescription() {
 
 	// has to be a cleaner way..
-	var cat = "" // $('#category').val(); - this is already shown on reciept from diff function refer to reciept_default.php #Line 117
-	var c1 = "" //$('#custom1').val(); Don't show the build date on description
-	var c2 = $('#custom2').val();
-	var c3 = $('#custom3').val();
-	var c4 = $('#custom4').val();
-	var c5 = $('#custom5').val();
-	var c6 = $('#custom6').val();
-	var c7 = $('#custom7').val();
-	var c8 = $('#custom8').val();
-	var c9 = $('#custom9').val();
-	var c10 = $('#custom10').val();
-	var c11 = $('#custom11').val();
-	var c12 = "" // $('#custom12').val(); -- dont include boxonly price in description
-	var c13 = $('#custom13').val();
-	var c14 = "" //$('#custom14').val(); -- Removed as this is the staff only notes field
-	var c15 = $('#custom15').val();
-	var c16 = $('#custom16').val();
-	var c17 = $('#custom17').val();
-	var c18 = $('#custom18').val();
-	var c19 = $('#custom19').val();
-	var c20 = $('#custom20').val();
+	var c2 = $('[name="custom2"]').val();
+	var c3 = $('[name="custom3"]').val();
+	var c4 = $('[name="custom4"]').val();
+	var c5 = $('[name="custom5"]').val();
+	var c6 = $('[name="custom6"]').val();
+	var c7 = $('[name="custom7"]').val();
+	var c8 = $('[name="custom8"]').val();
+	var c9 = $('[name="custom9"]').val();
+	var c10 = $('[name="custom10"]').val();
+	var c11 = $('[name="custom11"]').val();
+	var c13 = $('[name="custom13"]').val();
 
 	// Add on the extentions only if notnull - important for the next step
-
-	if(c10){cat += ' ('+c10+')';} // if type (i.e All in One) specified, it will be displayed as "Desktop (All in One) in the description"
-
+	if(c10){c10 = 'Type: ' + c10;}
 	if(c4){c4 += ' Ghz';} //Add in Ghz on the CPU Speed field
 	if(c5){c5 += ' GB RAM';} // Add in GB RAM to the RAM field
 	if(c6){c6 += ' GB HDD';} // Add in GB HDD to the Storage field
@@ -660,14 +678,12 @@ function createDescription() {
 	if(c11){c11 += ' Hours';}  //  Add in Hours to Battery field
 
 	// Contact all fields together if they are not null
-	return $.grep([cat, c1, c2, c3, c4, c5, c6, c7, c8, c9, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20], Boolean).join(", "); // skip c10 as its included in cat string
+	return $.grep([c10, c2, c3, c4, c5, c6, c7, c8, c9, c11, c13], Boolean).join(", "); // skip c10 as its included in cat string
 
 };
 	// Update description
 	$('#computer-fields').change(() => {
-
 		$('#description').val(createDescription); //createDescription();
-
 });
 
 	<?php for ($i = 1; $i <= 20; ++$i) {
@@ -720,13 +736,13 @@ function createDescription() {
 					else
 					table_support.handle_submit('<?php echo site_url('items'); ?>', response, stay_open);
 
-					if(response.success) {
+//					  if(response.success) {
 
-						var answer = confirm("Do you want to reset the form?")
-						if (answer) {
+//						var answer = confirm("Do you want to reset the form?")
+//						if (answer) {
 							dialog_support.hide();
-						}
-					};
+//						}
+//					};
 
 				},
 				dataType: 'json'

@@ -36,11 +36,11 @@ class Sale_lib
 		else
 		{
 			$register_modes['sale'] = $this->CI->lang->line('sales_receipt');
-			$register_modes['sale_quote'] = $this->CI->lang->line('sales_quote');
-			if($this->CI->config->item('work_order_enable') == '1')
-			{
-				$register_modes['sale_work_order'] = $this->CI->lang->line('sales_work_order');
-			}
+			// $register_modes['sale_quote'] = $this->CI->lang->line('sales_quote');
+			//if($this->CI->config->item('work_order_enable') == '1')
+			//{
+			//	$register_modes['sale_work_order'] = $this->CI->lang->line('sales_work_order');
+			//}
 			$register_modes['sale_invoice'] = $this->CI->lang->line('sales_invoice');
 		}
 		$register_modes['return'] = $this->CI->lang->line('sales_return');

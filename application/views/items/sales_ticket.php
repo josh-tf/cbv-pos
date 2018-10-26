@@ -32,7 +32,11 @@ foreach ($cbv_info as $computer) {
     $specCPU = $computer->custom3 . ' ' . $computer->custom4 . " Ghz";
     $specRAM = $computer->custom5 . " GB";
     $specHDD = $computer->custom6 . " GB";
+<<<<<<< HEAD
     $specEX = $computer->custom13;
+=======
+    $specEX = implode(", ", array_filter($computer->custom8 ? $computer->custom8 . '" Screen' : null, $computer->custom9, $computer->custom13));
+>>>>>>> master
     $specOS = $computer->custom7;
 
 }

@@ -25,7 +25,7 @@ class Suppliers extends Persons
 
 		echo json_encode($data_row);
 	}
-	
+
 	/*
 	Returns Supplier table data rows. This will be called with AJAX.
 	*/
@@ -48,7 +48,7 @@ class Suppliers extends Persons
 
 		echo json_encode(array('total' => $total_rows, 'rows' => $data_rows));
 	}
-	
+
 	/*
 	Gives search suggestions based on what is being searched for
 	*/
@@ -65,7 +65,7 @@ class Suppliers extends Persons
 
 		echo json_encode($suggestions);
 	}
-	
+
 	/*
 	Loads the supplier edit form
 	*/
@@ -80,7 +80,7 @@ class Suppliers extends Persons
 
 		$this->load->view("suppliers/form", $data);
 	}
-	
+
 	/*
 	Inserts/updates a supplier
 	*/
@@ -112,7 +112,7 @@ class Suppliers extends Persons
 		$supplier_data = array(
 			'company_name' => $this->input->post('company_name'),
 			'agency_name' => $this->input->post('agency_name'),
-			'account_number' => $this->input->post('account_number') == '' ? NULL : $this->input->post('account_number')
+			'conc_id' => $this->input->post('conc_id') == '' ? NULL : $this->input->post('conc_id')
 		);
 
 		if($this->Supplier->save_supplier($person_data, $supplier_data, $supplier_id))
@@ -142,7 +142,7 @@ class Suppliers extends Persons
 							'id' => -1));
 		}
 	}
-	
+
 	/*
 	This deletes suppliers from the suppliers table
 	*/
@@ -160,6 +160,6 @@ class Suppliers extends Persons
 			echo json_encode(array('success' => FALSE,'message' => $this->lang->line('suppliers_cannot_be_deleted')));
 		}
 	}
-	
+
 }
 ?>

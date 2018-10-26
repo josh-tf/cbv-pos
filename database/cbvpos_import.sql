@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: cbvposdev-db
--- Generation Time: Sep 28, 2018 at 08:14 AM
+-- Generation Time: Oct 18, 2018 at 07:00 AM
 -- Server version: 10.1.21-MariaDB-1~jessie
 -- PHP Version: 7.2.8
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cbvpos`
+-- Database: `cbvpos_blank`
 --
 
 -- --------------------------------------------------------
@@ -56,6 +56,17 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('barcode_width', '250'),
 ('cash_decimals', '2'),
 ('cash_rounding_code', '1'),
+('cbvopt_distpass', 'cbvuser'),
+('cbvopt_distuser', 'user'),
+('cbvopt_distver', 'Ubuntu 16.04'),
+('cbvopt_item_cat', 'Desktop,Laptop,Used Equipment,New Equipment,User Support,Ebay Sales,Recycling Fees,CBV Membership'),
+('cbvopt_item_cpu', 'C2D,i3,i5,i7'),
+('cbvopt_item_optical', 'DVD-RW,Blueray'),
+('cbvopt_item_os', 'Ubuntu 16.04, Ubuntu 18.04'),
+('cbvopt_item_ram', '2,4,6,8,10,12'),
+('cbvopt_item_screen', '12,14,15.4,17,19,20,22'),
+('cbvopt_item_storage', '160,200,250,360,500,1000'),
+('cbvopt_item_type', 'Tower,All-in-One,Small Form'),
 ('client_id', '8024ef54-5c31-4aa0-99ab-8d37e5f5561d'),
 ('company', 'Computerbank Victoria Inc.'),
 ('company_logo', ''),
@@ -133,7 +144,7 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('print_right_margin', ''),
 ('print_silently', '0'),
 ('print_top_margin', ''),
-('protocol', 'sendmail'),
+('protocol', 'smtp'),
 ('quantity_decimals', '0'),
 ('quote_default_comments', 'This is a default quote comment'),
 ('receipt_font_size', '12'),
@@ -144,15 +155,15 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('receipt_show_total_discount', '1'),
 ('receipt_template', 'receipt_default'),
 ('receiving_calculate_average_price', '0'),
-('recv_invoice_format', '{CO}'),
+('recv_invoice_format', '{ISEQ:3}'),
 ('return_policy', 'GST IS NOT APPLICABLE ON SECOND-HAND GOODS.'),
-('sales_invoice_format', '{CO}'),
+('sales_invoice_format', '{ISEQ:3}'),
 ('sales_quote_format', 'Q%y{QSEQ:6}'),
 ('smtp_crypto', 'ssl'),
-('smtp_host', 'imap.gmail.com'),
-('smtp_pass', 'db1d6664c705b08988ced5ccd726c0115edabbca33ec148634dd011c1a85a7242d6cfed14578748d6587f497f93551269b8a732220bb56ceb630e36ab6511714tX/HhFucWgLOyPwdUHezPuecnUscPTPFcyL/sQeYW+Y='),
-('smtp_port', '993'),
-('smtp_timeout', '5'),
+('smtp_host', ''),
+('smtp_pass', ''),
+('smtp_port', ''),
+('smtp_timeout', ''),
 ('smtp_user', ''),
 ('statistics', '1'),
 ('suggestions_first_column', 'name'),
@@ -171,13 +182,36 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cbvpos_cash_up`
+--
+
+CREATE TABLE `cbvpos_cash_up` (
+  `cashup_id` int(10) NOT NULL,
+  `open_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `close_date` timestamp NULL DEFAULT NULL,
+  `open_amount_cash` decimal(15,2) NOT NULL,
+  `transfer_amount_cash` decimal(15,2) NOT NULL,
+  `note` int(1) NOT NULL,
+  `closed_amount_cash` decimal(15,2) NOT NULL,
+  `closed_amount_card` decimal(15,2) NOT NULL,
+  `closed_amount_check` decimal(15,2) NOT NULL,
+  `closed_amount_total` decimal(15,2) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `open_employee_id` int(10) NOT NULL,
+  `close_employee_id` int(10) NOT NULL,
+  `deleted` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cbvpos_customers`
 --
 
 CREATE TABLE `cbvpos_customers` (
   `person_id` int(10) NOT NULL,
   `company_name` varchar(255) DEFAULT NULL,
-  `account_number` varchar(255) DEFAULT NULL,
+  `conc_id` varchar(255) DEFAULT NULL,
   `taxable` int(1) NOT NULL DEFAULT '1',
   `sales_tax_code` varchar(32) NOT NULL DEFAULT '1',
   `discount_percent` decimal(15,2) NOT NULL DEFAULT '0.00',
@@ -190,9 +224,9 @@ CREATE TABLE `cbvpos_customers` (
 -- Dumping data for table `cbvpos_customers`
 --
 
-INSERT INTO `cbvpos_customers` (`person_id`, `company_name`, `account_number`, `taxable`, `sales_tax_code`, `discount_percent`, `package_id`, `points`, `deleted`) VALUES
-(46, 'JS3944583', NULL, 1, '', '0.00', NULL, NULL, 0),
-(47, 'JS3944583', NULL, 1, '', '0.00', NULL, NULL, 0);
+INSERT INTO `cbvpos_customers` (`person_id`, `company_name`, `conc_id`, `taxable`, `sales_tax_code`, `discount_percent`, `package_id`, `points`, `deleted`) VALUES
+(2, '', 'JD334455', 1, '', '0.00', NULL, NULL, 0),
+(3, '', 'JS554433', 1, '', '0.00', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -341,20 +375,18 @@ CREATE TABLE `cbvpos_grants` (
 --
 
 INSERT INTO `cbvpos_grants` (`permission_id`, `person_id`, `menu_group`) VALUES
+('cashups', 1, 'home'),
 ('config', 1, 'office'),
 ('customers', 1, 'home'),
 ('employees', 1, 'office'),
 ('expenses', 1, 'home'),
-('expenses_categories', 1, 'home'),
-('giftcards', 1, 'home'),
+('expenses_categories', 1, 'office'),
 ('home', 1, 'office'),
 ('items', 1, 'home'),
 ('items_stock', 1, '--'),
-('item_kits', 1, 'home'),
-('messages', 1, 'home'),
+('item_kits', 1, 'office'),
+('messages', 1, 'office'),
 ('office', 1, 'home'),
-('receivings', 1, 'home'),
-('receivings_stock', 1, '--'),
 ('reports', 1, 'home'),
 ('reports_categories', 1, '--'),
 ('reports_customers', 1, '--'),
@@ -371,7 +403,6 @@ INSERT INTO `cbvpos_grants` (`permission_id`, `person_id`, `menu_group`) VALUES
 ('sales', 1, 'home'),
 ('sales_delete', 1, '--'),
 ('sales_stock', 1, '--'),
-('suppliers', 1, 'home'),
 ('taxes', 1, 'office');
 
 -- --------------------------------------------------------
@@ -395,17 +426,12 @@ CREATE TABLE `cbvpos_inventory` (
 --
 
 INSERT INTO `cbvpos_inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_date`, `trans_comment`, `trans_location`, `trans_inventory`) VALUES
-(318, 112, 1, '2018-09-25 18:14:39', 'Manual Edit of Quantity', 1, '1.000'),
-(319, 113, 1, '2018-09-25 18:15:24', 'Manual Edit of Quantity', 1, '1.000'),
-(320, 114, 1, '2018-09-25 18:15:56', 'Manual Edit of Quantity', 1, '1.000'),
-(321, 115, 1, '2018-09-25 18:16:25', 'Manual Edit of Quantity', 1, '1.000'),
-(322, 112, 1, '2018-09-28 18:12:47', 'POS 1', 1, '-1.000'),
-(323, 113, 1, '2018-09-28 18:12:59', 'POS 2', 1, '-1.000'),
-(324, 114, 1, '2018-09-28 18:12:59', 'POS 2', 1, '-1.000'),
-(325, 112, 1, '2018-09-28 18:13:06', 'Manual Edit of Quantity', 1, '5.000'),
-(326, 113, 1, '2018-09-28 18:13:09', 'Manual Edit of Quantity', 1, '5.000'),
-(327, 114, 1, '2018-09-28 18:13:12', 'Manual Edit of Quantity', 1, '5.000'),
-(328, 115, 1, '2018-09-28 18:13:16', 'Manual Edit of Quantity', 1, '4.000');
+(1, 1, 1, '2018-10-13 22:16:53', 'Manual Edit of Quantity', 1, '1.000'),
+(2, 2, 1, '2018-10-13 22:17:49', 'Manual Edit of Quantity', 1, '1.000'),
+(3, 3, 1, '2018-10-13 22:19:22', 'Manual Edit of Quantity', 1, '100.000'),
+(4, 4, 1, '2018-10-13 22:19:40', 'Manual Edit of Quantity', 1, '5.000'),
+(5, 3, 1, '2018-10-13 22:19:56', 'POS 1', 1, '-1.000'),
+(6, 1, 1, '2018-10-13 22:19:56', 'POS 1', 1, '-1.000');
 
 -- --------------------------------------------------------
 
@@ -458,10 +484,10 @@ CREATE TABLE `cbvpos_items` (
 --
 
 INSERT INTO `cbvpos_items` (`name`, `category`, `supplier_id`, `item_number`, `description`, `cost_price`, `unit_price`, `reorder_level`, `receiving_quantity`, `item_id`, `pic_filename`, `allow_alt_description`, `is_serialized`, `stock_type`, `item_type`, `tax_category_id`, `deleted`, `custom1`, `custom2`, `custom3`, `custom4`, `custom5`, `custom6`, `custom7`, `custom8`, `custom9`, `custom10`, `custom11`, `custom12`, `custom13`, `custom14`, `custom15`, `custom16`, `custom17`, `custom18`, `custom19`, `custom20`) VALUES
-('8111', 'Laptop', NULL, NULL, 'Lenovo T440, i5, 2.4 Ghz, 4 GB RAM, 250 GB HDD, Ubuntu 18.04, 14 Inch Screen, 2.2 Hours, Has SSD drive', '0.00', '200.00', '0.000', '1.000', 112, NULL, 0, 0, 0, 0, 0, 0, '2018-09-24', 'Lenovo T440', 'i5', '2.4', '4', '250', 'Ubuntu 18.04', '14', '', '', '', '', '', '', '', '', '', '', '', ''),
-('8222', 'Desktop', NULL, NULL, 'Dell Optiplex 7010, i7, 3.2 Ghz, 8 GB RAM, 500 GB HDD, Ubuntu 18.04, 22 Inch Screen, DVD-RW, Second HDD: 1TB Drive', '0.00', '150.00', '0.000', '1.000', 113, NULL, 0, 0, 0, 0, 0, 0, '2018-09-24', 'Dell Optiplex 7010', 'i7', '3.2', '8', '500', 'Ubuntu 18.04', '22', 'DVD-RW', '', '', '', '', '', '', '', '', '', '', ''),
-('USB Wifi Stick', 'Miscellaneous-new', NULL, NULL, 'New USB stick for sale with computers', '0.00', '10.00', '0.000', '1.000', 114, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-('Old Case', 'Miscellaneous-old', NULL, NULL, 'Old PC Case - empty with no PSU', '0.00', '5.00', '0.000', '1.000', 115, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+('8111', 'Laptop', NULL, NULL, 'Lenovo T440, i5, 2.4 Ghz, 8 GB RAM, 250 GB HDD, Ubuntu 16.04, 14 Inch Screen, 4.4 Hours, Has SSD, New Bag', '0.00', '250.00', '0.000', '1.000', 1, NULL, 0, 0, 0, 0, 0, 0, '2018-10-13', 'Lenovo T440', 'i5', '2.4', '8', '250', 'Ubuntu 16.04', '14', '', '', '4.4', '', 'Has SSD, New Bag', '', '', '', '', '', '', ''),
+('8222', 'Desktop', NULL, NULL, 'Type: Tower, Dell Optiplex 4000, C2D, 2.2 Ghz, 4 GB RAM, 160 GB HDD, Ubuntu 16.04, 20 Inch Screen, DVD-RW', '0.00', '75.00', '0.000', '1.000', 2, NULL, 0, 0, 0, 0, 0, 0, '2018-10-13', 'Dell Optiplex 4000', 'C2D', '2.2', '4', '160', 'Ubuntu 16.04', '20', 'DVD-RW', 'Tower', '', '55', '', '', '', '', '', '', '', ''),
+('Wifi USB', 'Misc (New)', NULL, NULL, 'New USB Wifi Stick', '0.00', '10.00', '0.000', '1.000', 3, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 'Ubuntu 16.04', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Used Case', 'Misc (Used)', NULL, NULL, 'Used PC Case without power supply', '0.00', '10.00', '0.000', '1.000', 4, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 'Ubuntu 16.04', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -480,10 +506,10 @@ CREATE TABLE `cbvpos_items_taxes` (
 --
 
 INSERT INTO `cbvpos_items_taxes` (`item_id`, `name`, `percent`) VALUES
-(112, ' GST', '0.000'),
-(113, ' GST', '0.000'),
-(114, ' GST', '10.000'),
-(115, ' GST', '0.000');
+(1, ' GST', '0.000'),
+(2, ' GST', '0.000'),
+(3, ' GST', '10.000'),
+(4, ' GST', '0.000');
 
 -- --------------------------------------------------------
 
@@ -531,10 +557,10 @@ CREATE TABLE `cbvpos_item_quantities` (
 --
 
 INSERT INTO `cbvpos_item_quantities` (`item_id`, `location_id`, `quantity`) VALUES
-(112, 1, '5.000'),
-(113, 1, '5.000'),
-(114, 1, '5.000'),
-(115, 1, '5.000');
+(1, 1, '0.000'),
+(2, 1, '1.000'),
+(3, 1, '99.000'),
+(4, 1, '5.000');
 
 -- --------------------------------------------------------
 
@@ -571,22 +597,23 @@ CREATE TABLE `cbvpos_modules` (
 --
 
 INSERT INTO `cbvpos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`) VALUES
-('module_config', 'module_config_desc', 110, 'config'),
-('module_customers', 'module_customers_desc', 10, 'customers'),
-('module_employees', 'module_employees_desc', 80, 'employees'),
-('module_expenses', 'module_expenses_desc', 108, 'expenses'),
-('module_expenses_categories', 'module_expenses_categories_desc', 109, 'expenses_categories'),
-('module_giftcards', 'module_giftcards_desc', 90, 'giftcards'),
+('module_cashups', 'module_cashups_desc', 50, 'cashups'),
+('module_config', 'module_config_desc', 900, 'config'),
+('module_customers', 'module_customers_desc', 30, 'customers'),
+('module_employees', 'module_employees_desc', 70, 'employees'),
+('module_expenses', 'module_expenses_desc', 40, 'expenses'),
+('module_expenses_categories', 'module_expenses_categories_desc', 90, 'expenses_categories'),
+('module_giftcards', 'module_giftcards_desc', 100, 'giftcards'),
 ('module_home', 'module_home_desc', 1, 'home'),
 ('module_items', 'module_items_desc', 20, 'items'),
-('module_item_kits', 'module_item_kits_desc', 30, 'item_kits'),
-('module_messages', 'module_messages_desc', 98, 'messages'),
+('module_item_kits', 'module_item_kits_desc', 110, 'item_kits'),
+('module_messages', 'module_messages_desc', 60, 'messages'),
 ('module_office', 'module_office_desc', 999, 'office'),
-('module_receivings', 'module_receivings_desc', 60, 'receivings'),
-('module_reports', 'module_reports_desc', 50, 'reports'),
-('module_sales', 'module_sales_desc', 70, 'sales'),
-('module_suppliers', 'module_suppliers_desc', 40, 'suppliers'),
-('module_taxes', 'module_taxes_desc', 105, 'taxes');
+('module_receivings', 'module_receivings_desc', 120, 'receivings'),
+('module_reports', 'module_reports_desc', 40, 'reports'),
+('module_sales', 'module_sales_desc', 10, 'sales'),
+('module_suppliers', 'module_suppliers_desc', 130, 'suppliers'),
+('module_taxes', 'module_taxes_desc', 80, 'taxes');
 
 -- --------------------------------------------------------
 
@@ -615,9 +642,9 @@ CREATE TABLE `cbvpos_people` (
 --
 
 INSERT INTO `cbvpos_people` (`first_name`, `last_name`, `gender`, `phone_number`, `email`, `address_1`, `address_2`, `city`, `state`, `zip`, `country`, `comments`, `person_id`) VALUES
-('John', 'Doe', NULL, '555-555-5555', 'changeme@example.com', 'Address 1', '', '', 'Victoria', '', 'Australia', '', 1),
-('John', 'Smith', NULL, '0400000000', 'j.smith@cbv.pos', '123 Fake Street', '', 'Melbourne', 'Victoria', '3000', 'Australia', '', 46),
-('Jane', 'Doe', NULL, '0400000000', 'j.doe@cbv.pos', '489 Database Lane', '', 'Brighton', 'Victoria', '3185', 'Australia', '', 47);
+('Front', 'Desk', NULL, '(03) 9600 9161', 'info@computerbank.org.au', '483 Victoria Street', '', 'West Melbourne', 'Victoria', '3003', 'Australia', '', 1),
+('Jane', 'Doe', NULL, '0422111333', 'j.doe.cbv@josh.tf', '123 Database Lane', '', 'Melbourne', 'Victoria', '3000', 'Australia', '', 2),
+('John', 'Smith', NULL, '0499222444', 'j.smith.cbv@josh.tf', '334 Dorcas Street', '', 'South Melbourne', 'Victoria', '3205', 'Australia', '', 3);
 
 -- --------------------------------------------------------
 
@@ -636,6 +663,7 @@ CREATE TABLE `cbvpos_permissions` (
 --
 
 INSERT INTO `cbvpos_permissions` (`permission_id`, `module_id`, `location_id`) VALUES
+('cashups', 'cashups', NULL),
 ('config', 'config', NULL),
 ('customers', 'customers', NULL),
 ('employees', 'employees', NULL),
@@ -730,8 +758,7 @@ CREATE TABLE `cbvpos_sales` (
 --
 
 INSERT INTO `cbvpos_sales` (`sale_time`, `customer_id`, `employee_id`, `comment`, `invoice_number`, `quote_number`, `sale_id`, `sale_status`, `dinner_table_id`, `work_order_number`, `sale_type`) VALUES
-('2018-09-28 18:12:47', 47, 1, '', '0', NULL, 1, 0, NULL, NULL, 1),
-('2018-09-28 18:12:59', 46, 1, '', NULL, NULL, 2, 0, NULL, NULL, 0);
+('2018-10-13 22:19:56', 2, 1, '', NULL, NULL, 1, 0, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -758,9 +785,8 @@ CREATE TABLE `cbvpos_sales_items` (
 --
 
 INSERT INTO `cbvpos_sales_items` (`sale_id`, `item_id`, `description`, `serialnumber`, `line`, `quantity_purchased`, `item_cost_price`, `item_unit_price`, `discount_percent`, `item_location`, `print_option`) VALUES
-(1, 112, 'Lenovo T440, i5, 2.4 Ghz, 4 GB RAM, 250 GB HDD, Ubuntu 18.04, 14 Inch Screen, 2.2 Hours, Has SSD drive', '', 1, '1.000', '0.00', '200.00', '0.00', 1, 0),
-(2, 113, 'Dell Optiplex 7010, i7, 3.2 Ghz, 8 GB RAM, 500 GB HDD, Ubuntu 18.04, 22 Inch Screen, DVD-RW, Second HDD: 1TB Drive', '', 1, '1.000', '0.00', '150.00', '0.00', 1, 0),
-(2, 114, 'New USB stick for sale with computers', '', 2, '1.000', '0.00', '10.00', '0.00', 1, 0);
+(1, 1, 'Lenovo T440, i5, 2.4 Ghz, 8 GB RAM, 250 GB HDD, Ubuntu 16.04, 14 Inch Screen, 4.4 Hours, Has SSD, New Bag', '', 2, '1.000', '0.00', '250.00', '0.00', 1, 0),
+(1, 3, 'New USB Wifi Stick', '', 1, '1.000', '0.00', '10.00', '0.00', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -786,7 +812,7 @@ CREATE TABLE `cbvpos_sales_items_taxes` (
 --
 
 INSERT INTO `cbvpos_sales_items_taxes` (`sale_id`, `item_id`, `line`, `name`, `percent`, `tax_type`, `rounding_code`, `cascade_tax`, `cascade_sequence`, `item_tax_amount`) VALUES
-(2, 114, 2, ' GST', '10.0000', 0, 1, 0, 0, '0.9091');
+(1, 3, 1, ' GST', '10.0000', 0, 1, 0, 0, '0.9091');
 
 -- --------------------------------------------------------
 
@@ -805,8 +831,7 @@ CREATE TABLE `cbvpos_sales_payments` (
 --
 
 INSERT INTO `cbvpos_sales_payments` (`sale_id`, `payment_type`, `payment_amount`) VALUES
-(1, 'Cash', '200.00'),
-(2, 'Cash', '160.00');
+(1, 'Cash', '260.00');
 
 -- --------------------------------------------------------
 
@@ -845,7 +870,7 @@ CREATE TABLE `cbvpos_sales_taxes` (
 --
 
 INSERT INTO `cbvpos_sales_taxes` (`sale_id`, `tax_type`, `tax_group`, `sale_tax_basis`, `sale_tax_amount`, `print_sequence`, `name`, `tax_rate`, `sales_tax_code`, `rounding_code`) VALUES
-(2, 0, '10%  GST', '10.0000', '0.9100', 0, ' GST', '10.0000', '', 1);
+(1, 0, '10%  GST', '10.0000', '0.9100', 0, ' GST', '10.0000', '', 1);
 
 -- --------------------------------------------------------
 
@@ -959,10 +984,18 @@ ALTER TABLE `cbvpos_app_config`
   ADD PRIMARY KEY (`key`);
 
 --
+-- Indexes for table `cbvpos_cash_up`
+--
+ALTER TABLE `cbvpos_cash_up`
+  ADD PRIMARY KEY (`cashup_id`),
+  ADD KEY `open_employee_id` (`open_employee_id`),
+  ADD KEY `close_employee_id` (`close_employee_id`);
+
+--
 -- Indexes for table `cbvpos_customers`
 --
 ALTER TABLE `cbvpos_customers`
-  ADD UNIQUE KEY `account_number` (`account_number`),
+  ADD UNIQUE KEY `conc_id` (`conc_id`),
   ADD KEY `person_id` (`person_id`),
   ADD KEY `package_id` (`package_id`);
 
@@ -1173,7 +1206,6 @@ ALTER TABLE `cbvpos_stock_locations`
 -- Indexes for table `cbvpos_suppliers`
 --
 ALTER TABLE `cbvpos_suppliers`
-  ADD UNIQUE KEY `account_number` (`account_number`),
   ADD KEY `person_id` (`person_id`);
 
 --
@@ -1199,6 +1231,12 @@ ALTER TABLE `cbvpos_tax_code_rates`
 --
 
 --
+-- AUTO_INCREMENT for table `cbvpos_cash_up`
+--
+ALTER TABLE `cbvpos_cash_up`
+  MODIFY `cashup_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `cbvpos_customers_packages`
 --
 ALTER TABLE `cbvpos_customers_packages`
@@ -1220,13 +1258,13 @@ ALTER TABLE `cbvpos_dinner_tables`
 -- AUTO_INCREMENT for table `cbvpos_expenses`
 --
 ALTER TABLE `cbvpos_expenses`
-  MODIFY `expense_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `expense_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_expense_categories`
 --
 ALTER TABLE `cbvpos_expense_categories`
-  MODIFY `expense_category_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `expense_category_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_giftcards`
@@ -1238,13 +1276,13 @@ ALTER TABLE `cbvpos_giftcards`
 -- AUTO_INCREMENT for table `cbvpos_inventory`
 --
 ALTER TABLE `cbvpos_inventory`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=329;
+  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_items`
 --
 ALTER TABLE `cbvpos_items`
-  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_item_kits`
@@ -1256,7 +1294,7 @@ ALTER TABLE `cbvpos_item_kits`
 -- AUTO_INCREMENT for table `cbvpos_people`
 --
 ALTER TABLE `cbvpos_people`
-  MODIFY `person_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `person_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_receivings`
@@ -1268,8 +1306,7 @@ ALTER TABLE `cbvpos_receivings`
 -- AUTO_INCREMENT for table `cbvpos_sales`
 --
 ALTER TABLE `cbvpos_sales`
-  MODIFY `sale_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `sale_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `cbvpos_sales_reward_points`
 --
@@ -1291,6 +1328,13 @@ ALTER TABLE `cbvpos_tax_categories`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cbvpos_cash_up`
+--
+ALTER TABLE `cbvpos_cash_up`
+  ADD CONSTRAINT `cbvpos_cash_up_ibfk_1` FOREIGN KEY (`open_employee_id`) REFERENCES `cbvpos_employees` (`person_id`),
+  ADD CONSTRAINT `cbvpos_cash_up_ibfk_2` FOREIGN KEY (`close_employee_id`) REFERENCES `cbvpos_employees` (`person_id`);
 
 --
 -- Constraints for table `cbvpos_customers`

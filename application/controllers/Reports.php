@@ -882,7 +882,14 @@ class Reports extends Secure_Controller
 		}
 
 		$customer_info = $this->Customer->get_info($customer_id);
-		$customer_name = trim($customer_info->first_name . ' ' . $customer_info->last_name);
+		if(!empty($customer_info->company_name))
+		{
+			$customer_name ='[ '.$customer_info->company_name.' ]';
+		}
+		else
+		{
+			$customer_name = $customer_info->company_name;
+		}
 
 		$data = array(
 			'title' => $this->xss_clean($customer_info->first_name . ' ' . $customer_info->last_name . ' ' . $this->lang->line('reports_report')),

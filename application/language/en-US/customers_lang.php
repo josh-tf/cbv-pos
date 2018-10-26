@@ -1,13 +1,13 @@
 <?php
 
-$lang["customers_account_number"] = "Account #";
-$lang["customers_account_number_duplicate"] = "Account Number is already present in the database.";
+$lang["customers_conc_id"] = "Concession ID";
+$lang["customers_conc_id_duplicate"] = "Concession Card Number is already present in the database.";
 $lang["customers_available_points"] = "Available Points";
 $lang["customers_average"] = "Average spent";
 $lang["customers_avg_discount"] = "Average discount";
 $lang["customers_basic_information"] = "Information";
 $lang["customers_cannot_be_deleted"] = "Could not delete selected customers, one or more of the selected customers has sales.";
-$lang["customers_company_name"] = "Company";
+$lang["customers_company_name"] = "Agency Name";
 $lang["customers_confirm_delete"] = "Are you sure you want to delete the selected customer(s)?";
 $lang["customers_confirm_restore"] = "Are you sure you want to restore selected customers(s)?";
 $lang["customers_customer"] = "Customer";

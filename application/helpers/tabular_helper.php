@@ -224,10 +224,11 @@ function get_customer_manage_table_headers()
 	$CI =& get_instance();
 
 	$headers = array(
-		array('people.person_id' => $CI->lang->line('common_id')),
+		//array('people.person_id' => $CI->lang->line('common_id')),
 		array('last_name' => $CI->lang->line('common_last_name')),
 		array('first_name' => $CI->lang->line('common_first_name')),
-		array('company_name' => 'Concession ID'),
+		array('conc_id' => $CI->lang->line('customers_conc_id')),
+		array('company_name' => $CI->lang->line('customers_company_name')),
 		array('email' => $CI->lang->line('common_email')),
 		array('phone_number' => $CI->lang->line('common_phone_number')),
 		array('total' => $CI->lang->line('common_total_spent'), 'sortable' => FALSE)
@@ -250,9 +251,10 @@ function get_customer_data_row($person, $stats)
 	$controller_name = strtolower(get_class($CI));
 
 	return array (
-		'people.person_id' => $person->person_id,
+		//'people.person_id' => $person->person_id,
 		'last_name' => $person->last_name,
 		'first_name' => $person->first_name,
+		'conc_id' => $person->conc_id,
 		'company_name' => $person->company_name,
 		'email' => empty($person->email) ? '' : mailto($person->email, $person->email),
 		'phone_number' => $person->phone_number,
@@ -394,8 +396,8 @@ function get_item_data_row($item)
 		'stock' => anchor($controller_name."/count_details/$item->item_id", '<span class="glyphicon glyphicon-list-alt"></span>',
 			array('class' => 'modal-dlg', 'title' => $CI->lang->line($controller_name.'_details_count'))
 		),
-		'ticket' => anchor("/sales-ticket.php?id=$item->name", '<span class="glyphicon glyphicon-print"></span>',
-			array('target' => '_blank', 'class' => '', 'title' => 'Print Sales Ticket')
+		'ticket' => anchor("/items/redir?id=" . $item->name, '<span class="glyphicon glyphicon-print"></span>',
+			array('target' => '_blank', 'class' => '', 'id' => 'cbv_id', 'name'=>'cbv_id', 'title' => 'Print Sales Ticket')
 		),
 		'edit' => anchor($controller_name."/view/$item->item_id", '<span class="glyphicon glyphicon-edit"></span>',
 			array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name.'_update'))
@@ -642,6 +644,55 @@ function get_expenses_manage_payments_summary($payments, $expenses)
 	$table .= '</div>';
 
 	return $table;
+}
+
+/*
+Get the header for the cashup tabular view
+*/
+function get_cashups_manage_table_headers()
+{
+	$CI =& get_instance();
+	$headers = array(
+		array('cashup_id' => $CI->lang->line('cashups_id')),
+		array('open_date' => $CI->lang->line('cashups_opened_date')),
+		array('open_employee_id' => $CI->lang->line('cashups_open_employee')),
+		array('open_amount_cash' => $CI->lang->line('cashups_open_amount_cash')),
+		array('transfer_amount_cash' => $CI->lang->line('cashups_transfer_amount_cash')),
+		array('close_date' => $CI->lang->line('cashups_closed_date')),
+		array('close_employee_id' => $CI->lang->line('cashups_close_employee')),
+		array('closed_amount_cash' => $CI->lang->line('cashups_closed_amount_cash')),
+		array('note' => $CI->lang->line('cashups_note')),
+		array('closed_amount_card' => $CI->lang->line('cashups_closed_amount_card')),
+		array('closed_amount_check' => $CI->lang->line('cashups_closed_amount_check')),
+		array('closed_amount_total' => $CI->lang->line('cashups_closed_amount_total'))
+	);
+
+	return transform_headers($headers);
+}
+
+/*
+Gets the html data row for the cashups
+*/
+function get_cash_up_data_row($cash_up)
+{
+	$CI =& get_instance();
+	$controller_name = strtolower(get_class($CI));
+	return array (
+		'cashup_id' => $cash_up->cashup_id,
+		'open_date' => date($CI->config->item('dateformat') . ' ' . $CI->config->item('timeformat'), strtotime($cash_up->open_date)),
+		'open_employee_id' => $cash_up->open_first_name . ' ' . $cash_up->open_last_name,
+		'open_amount_cash' => to_currency($cash_up->open_amount_cash),
+		'transfer_amount_cash' => to_currency($cash_up->transfer_amount_cash),
+		'close_date' => date($CI->config->item('dateformat') . ' ' . $CI->config->item('timeformat'), strtotime($cash_up->close_date)),
+		'close_employee_id' => $cash_up->close_first_name . ' ' . $cash_up->close_last_name,
+		'closed_amount_cash' => to_currency($cash_up->closed_amount_cash),
+		'note' => $cash_up->note ? '<span class="glyphicon glyphicon-ok"></span>' : '<span class="glyphicon glyphicon-remove"></span>',
+		'closed_amount_card' => to_currency($cash_up->closed_amount_card),
+		'closed_amount_check' => to_currency($cash_up->closed_amount_check),
+		'closed_amount_total' => to_currency($cash_up->closed_amount_total),
+		'edit' => anchor($controller_name."/view/$cash_up->cashup_id", '<span class="glyphicon glyphicon-edit"></span>',
+			array('class'=>'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title'=>$CI->lang->line($controller_name.'_update'))
+		));
 }
 
 ?>

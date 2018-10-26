@@ -19,12 +19,12 @@ class Customer extends Person
 	}
 
 	/*
-	Checks if account number exists
+	Checks if concession id exists
 	*/
-	public function check_account_number_exists($account_number, $person_id = '')
+	public function check_conc_id_exists($conc_id, $person_id = '')
 	{
 		$this->db->from('customers');
-		$this->db->where('account_number', $account_number);
+		$this->db->where('conc_id', $conc_id);
 
 		if(!empty($person_id))
 		{
@@ -183,23 +183,6 @@ class Customer extends Person
 	*/
 	public function save_customer(&$person_data, &$customer_data, $customer_id = FALSE)
 	{
-			if(!$customer_id || !$this->exists($customer_id)){
-
-				if(!$customer_data['company_name'] == null){
-
-					$this->db->from('customers');
-					$this->db->where('customers.company_name', $customer_data['company_name']);
-
-					if($this->db->get()->num_rows() >= 1){
-						return false;
-
-				}
-
-			}
-		}
-
-
-
 
 		$success = FALSE;
 
@@ -309,11 +292,11 @@ class Customer extends Person
 			$this->db->from('customers');
 			$this->db->join('people', 'customers.person_id = people.person_id');
 			$this->db->where('deleted', 0);
-			$this->db->like('account_number', $search);
-			$this->db->order_by('account_number', 'asc');
+			$this->db->like('conc_id', $search);
+			$this->db->order_by('conc_id', 'asc');
 			foreach($this->db->get()->result() as $row)
 			{
-				$suggestions[] = array('value' => $row->person_id, 'label' => $row->account_number);
+				$suggestions[] = array('value' => $row->person_id, 'label' => $row->conc_id);
 			}
 			$this->db->from('customers');
 			$this->db->join('people', 'customers.person_id = people.person_id');
@@ -361,7 +344,7 @@ class Customer extends Person
 			$this->db->or_like('last_name', $search);
 			$this->db->or_like('email', $search);
 			$this->db->or_like('phone_number', $search);
-			$this->db->or_like('account_number', $search);
+			$this->db->or_like('conc_id', $search);
 			$this->db->or_like('company_name', $search);
 			$this->db->or_like('CONCAT(first_name, " ", last_name)', $search);
 		$this->db->group_end();
@@ -382,5 +365,39 @@ class Customer extends Person
 
 		return $this->db->get();
 	}
+
+	public function lookup_cus_info($conc_id)
+    {
+
+        // select our data from the database
+        $this->db->select("*");
+        $this->db->from('cbvpos_customers');
+        $this->db->join('cbvpos_people', 'cbvpos_customers.person_id = cbvpos_people.person_id');
+        $this->db->where('conc_id =', $conc_id);
+
+        // pass as the function result
+        $query = $this->db->get();
+        return $query->result();
+
+	}
+
+	public function lookup_cus_sales($conc_id)
+    {
+
+        // select our data from the database
+        $this->db->select("*");
+        $this->db->from('cbvpos_sales');
+        $this->db->join('cbvpos_customers', 'cbvpos_sales.customer_id = cbvpos_customers.person_id');
+        $this->db->join('cbvpos_sales_items', 'cbvpos_sales.sale_id = cbvpos_sales_items.sale_id');
+        $this->db->join('cbvpos_items', 'cbvpos_sales_items.item_id = cbvpos_items.item_id');
+        $this->db->join('cbvpos_people', 'cbvpos_customers.person_id = cbvpos_people.person_id');
+        $this->db->where('conc_id =', $conc_id);
+
+        // pass as the function result
+        $query = $this->db->get();
+        return $query->result();
+
+    }
+
 }
 ?>

@@ -293,3 +293,9 @@ tr.item-row {
     border-top: 1px #333 solid;
     text-align: center;
 }
+
+.tab-content {
+    padding-top: 15px;
+    border: 1px solid #ddd;
+    border-top: none;
+}
