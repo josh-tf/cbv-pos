@@ -638,6 +638,8 @@ $(document).ready(function()
 	var no_op = function(event, data, formatted){};
 	$("#category").autocomplete({source: "<?php echo site_url('items/suggest_category'); ?>",delay:10,appendTo: '.modal-content'});
 
+	$("#category").trigger("change");
+
 	// Update tax percent after category changes
 	$(document).on('change','#category',function(){
 		var category = $(this).val();
