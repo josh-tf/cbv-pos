@@ -153,6 +153,7 @@ foreach ($stocklist as $computer) {
 </button>
 </div>
 
+<?php echo ($desktopCt == 0) ? 'No Desktops on Stocklist' : '' ?>
 
     <div class="desktop-stocklist"<?php echo ($desktopCt == 0) ? ' style="display:none;"' : '' ?>>
 
@@ -212,6 +213,8 @@ foreach ($stocklist as $computer) {
 
 <br>
 <br>
+
+<?php echo ($laptopCt == 0) ? 'No Laptops on Stocklist' : '' ?>
 
 <div class="pagebreak laptop-stocklist"<?php echo ($laptopCt === 0) ? ' style="display:none;"' : '' ?>>
 
