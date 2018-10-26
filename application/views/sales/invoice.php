@@ -152,7 +152,7 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
 			</tr>
 			<tr>
 				<td class="meta-head">
-					Invoice Total
+					<?php echo $this->lang->line('sales_amount_due'); ?>
 				</td>
 				<td><textarea rows="5" cols="6"><?php echo to_currency($total); ?></textarea></td>
 			</tr>
@@ -300,7 +300,7 @@ if (!empty($payments)) {
     ?>
 		<tr>
 			<td colspan="3" class="blank"> </td>
-			<td colspan="1" class="total-line"> <textarea rows="5" cols="6">Amount Due</textarea></td>
+			<td colspan="1" class="total-line"> <textarea rows="5" cols="6"><?php echo $this->lang->line('sales_amount_due'); ?></textarea></td>
 			<td class="total-value"><textarea rows="5" cols="6" id="change"><?php echo to_currency($amount_change); ?></textarea></td>
 		</tr>
 		<?php

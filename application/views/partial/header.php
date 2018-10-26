@@ -56,7 +56,6 @@
 	<script src="bower_components/jspdf-autotable/dist/jspdf.plugin.autotable.js"></script>
 	<script src="bower_components/tableExport.jquery.plugin/tableExport.min.js"></script>
 	<script src="bower_components/chartist/dist/chartist.min.js"></script>
-	<script src="bower_components/chartist-plugin-axistitle/dist/chartist-plugin-axistitle.min.js"></script>
 	<script src="bower_components/chartist-plugin-pointlabels/dist/chartist-plugin-pointlabels.min.js"></script>
 	<script src="bower_components/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
 	<script src="bower_components/chartist-plugin-barlabels/dist/chartist-plugin-barlabels.min.js"></script>
@@ -75,10 +74,10 @@
 		<![endif]-->
 	<!-- start mincss template tags -->
 	<link rel="stylesheet" type="text/css" href="dist/jquery-ui/jquery-ui.min.css" />
-	<link rel="stylesheet" type="text/css" href="dist/opensourcepos.min.css?rel=c9b634158c" />
+	<link rel="stylesheet" type="text/css" href="dist/opensourcepos.min.css?rel=49a693d2ca" />
 	<!-- end mincss template tags -->
 	<!-- start minjs template tags -->
-	<script type="text/javascript" src="dist/opensourcepos.min.js?rel=d25ea74009"></script>
+	<script type="text/javascript" src="dist/opensourcepos.min.js?rel=df9c8d326c"></script>
 	<!-- end minjs template tags -->
 	<?php endif;?>
 

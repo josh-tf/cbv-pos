@@ -24,24 +24,14 @@
 
 
 				<div class="form-group form-group-sm">
-					<?php echo form_label("Concession ID", 'company_name', array('class' => 'control-label col-xs-3')); ?>
-					<div class='col-xs-6'>
+					<?php echo form_label($this->lang->line('customers_company_name'), 'company_name', array('class' => 'control-label col-xs-3')); ?>
+					<div class='col-xs-8'>
 						<?php echo form_input(array(
     'name' => 'company_name',
     'id' => 'company_name',
     'class' => 'form-control input-sm',
     'value' => $person_info->company_name)
 ); ?>
-					</div>
-					<div class='col-xs-2'>
-<div class="lookup">
-<a   href="#"
-	target="_blank"
-    class=""
-  onclick="this.href='/customer-lookup.php?conc-id='
-                      +document.getElementById('company_name').value+'&range=alltime';
-           somefunction(this, event); return true;">Lookup</a>
-</div>
 					</div>
 
 				</div>

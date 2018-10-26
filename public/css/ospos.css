@@ -84,7 +84,8 @@ a.none {
 }
 
 #config_info {
-	text-align: left;
+    text-align: left;
+    padding-left: 15px;
 }
 
 #config_info .wide {
@@ -264,14 +265,30 @@ h3.text-center {
 }
 
 .lookup {
-    background: #F33;
+    background: #0f007d;
     color: #fff;
-    width: 59px;
+    width: 64px;
     height: 32px;
     padding: 6px;
-    margin: -2px 0px 1px -20px;
+    float: right;
+    margin-right: 50px;
+    border-radius: 4px;
 }
 
 .lookup a{
     color: #fff;
+}
+
+td.print_hide {
+    text-align: center;
+}
+
+.ticket-icon {
+    width: 34px;
+    vertical-align: middle;
+    padding-right: 10px;
+}
+
+.pricing {
+    font-size: 1.3em;
 }

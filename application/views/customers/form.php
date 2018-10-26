@@ -2,33 +2,52 @@
 
 <ul id="error_message_box" class="error_message_box"></ul>
 
-<?php echo form_open($controller_name . '/save/' . $person_info->person_id, array('id'=>'customer_form', 'class'=>'form-horizontal')); ?>
+<?php echo form_open($controller_name . '/save/' . $person_info->person_id, array('id' => 'customer_form', 'class' => 'form-horizontal')); ?>
 	<ul class="nav nav-tabs nav-justified" data-tabs="tabs">
 		<li class="active" role="presentation">
 			<a data-toggle="tab" href="#customer_basic_info"><?php echo $this->lang->line("customers_basic_information"); ?></a>
 		</li>
 		<?php
-		if(!empty($stats))
-		{
-		?>
+if (!empty($stats)) {
+    ?>
 			<li role="presentation">
 				<a data-toggle="tab" href="#customer_stats_info"><?php echo $this->lang->line("customers_stats_info"); ?></a>
 			</li>
 		<?php
-		}
-		?>
+}
+?>
 	</ul>
 
 	<div class="tab-content">
 		<div class="tab-pane fade in active" id="customer_basic_info">
-			<fieldset>
-				<?php $this->load->view("people/form_basic_info"); ?>
 
-				<?php if($this->config->item('customer_reward_enable') == TRUE): ?>
+			<fieldset>
+
+				<div class="form-group form-group-sm">
+					<?php echo form_label($this->lang->line('customers_conc_id'), 'conc_id', array('class' => 'control-label col-xs-3')); ?>
+					<div class='col-xs-6'>
+						<?php echo form_input(array(
+    'name' => 'conc_id',
+    'id' => 'conc_id',
+    'class' => 'form-control input-sm',
+    'value' => $person_info->conc_id)
+); ?>
+					</div>
+
+						<div class="lookup">
+						<label for="submit-conc" class="lookupConc">Lookup</label>
+                        </div>
+					</div>
+
+                    </div>
+
+				<?php $this->load->view("people/form_basic_info");?>
+
+				<?php if ($this->config->item('customer_reward_enable') == true): ?>
 					<div class="form-group form-group-sm">
-						<?php echo form_label($this->lang->line('rewards_package'), 'rewards', array('class'=>'control-label col-xs-3')); ?>
+						<?php echo form_label($this->lang->line('rewards_package'), 'rewards', array('class' => 'control-label col-xs-3')); ?>
 						<div class='col-xs-8'>
-							<?php echo form_dropdown('package_id', $packages, $selected_package, array('class'=>'form-control')); ?>
+							<?php echo form_dropdown('package_id', $packages, $selected_package, array('class' => 'form-control')); ?>
 						</div>
 					</div>
 
@@ -36,39 +55,42 @@
 						<?php echo form_label($this->lang->line('customers_available_points'), 'available_points', array('class' => 'control-label col-xs-3')); ?>
 						<div class='col-xs-4'>
 							<?php echo form_input(array(
-									'name'=>'available_points',
-									'id'=>'available_points',
-									'class'=>'form-control input-sm',
-									'value'=>$person_info->points,
-									'disabled'=>'')
-									);?>
+    'name' => 'available_points',
+    'id' => 'available_points',
+    'class' => 'form-control input-sm',
+    'value' => $person_info->points,
+    'disabled' => '')
+); ?>
 						</div>
 					</div>
-				<?php endif; ?>
+				<?php endif;?>
+
+				</fieldset>
+		</div>
 
 		<?php
-		if(!empty($stats))
-		{
-		?>
+if (!empty($stats)) {
+    ?>
 			<div class="tab-pane" id="customer_stats_info">
 				<fieldset>
+
 					<div class="form-group form-group-sm">
 						<?php echo form_label($this->lang->line('customers_total'), 'total', array('class' => 'control-label col-xs-3')); ?>
 						<div class="col-xs-4">
 							<div class="input-group input-group-sm">
 								<?php if (!currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif; ?>
+								<?php endif;?>
 								<?php echo form_input(array(
-										'name'=>'total',
-										'id'=>'total',
-										'class'=>'form-control input-sm',
-										'value'=>to_currency_no_money($stats->total),
-										'disabled'=>'')
-										);?>
+        'name' => 'total',
+        'id' => 'total',
+        'class' => 'form-control input-sm',
+        'value' => to_currency_no_money($stats->total),
+        'disabled' => '')
+    ); ?>
 								<?php if (currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif; ?>
+								<?php endif;?>
 							</div>
 						</div>
 					</div>
@@ -80,17 +102,17 @@
 							<div class="input-group input-group-sm">
 								<?php if (!currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif; ?>
+								<?php endif;?>
 								<?php echo form_input(array(
-										'name'=>'max',
-										'id'=>'max',
-										'class'=>'form-control input-sm',
-										'value'=>to_currency_no_money($stats->max),
-										'disabled'=>'')
-										);?>
+        'name' => 'max',
+        'id' => 'max',
+        'class' => 'form-control input-sm',
+        'value' => to_currency_no_money($stats->max),
+        'disabled' => '')
+    ); ?>
 								<?php if (currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif; ?>
+								<?php endif;?>
 							</div>
 						</div>
 					</div>
@@ -101,17 +123,17 @@
 							<div class="input-group input-group-sm">
 								<?php if (!currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif; ?>
+								<?php endif;?>
 								<?php echo form_input(array(
-										'name'=>'min',
-										'id'=>'min',
-										'class'=>'form-control input-sm',
-										'value'=>to_currency_no_money($stats->min),
-										'disabled'=>'')
-										);?>
+        'name' => 'min',
+        'id' => 'min',
+        'class' => 'form-control input-sm',
+        'value' => to_currency_no_money($stats->min),
+        'disabled' => '')
+    ); ?>
 								<?php if (currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif; ?>
+								<?php endif;?>
 							</div>
 						</div>
 					</div>
@@ -122,17 +144,17 @@
 							<div class="input-group input-group-sm">
 								<?php if (!currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif; ?>
+								<?php endif;?>
 								<?php echo form_input(array(
-										'name'=>'average',
-										'id'=>'average',
-										'class'=>'form-control input-sm',
-										'value'=>to_currency_no_money($stats->average),
-										'disabled'=>'')
-										);?>
+        'name' => 'average',
+        'id' => 'average',
+        'class' => 'form-control input-sm',
+        'value' => to_currency_no_money($stats->average),
+        'disabled' => '')
+    ); ?>
 								<?php if (currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif; ?>
+								<?php endif;?>
 							</div>
 						</div>
 					</div>
@@ -142,12 +164,12 @@
 						<div class="col-xs-4">
 							<div class="input-group input-group-sm">
 								<?php echo form_input(array(
-										'name'=>'quantity',
-										'id'=>'quantity',
-										'class'=>'form-control input-sm',
-										'value'=>$stats->quantity,
-										'disabled'=>'')
-										);?>
+        'name' => 'quantity',
+        'id' => 'quantity',
+        'class' => 'form-control input-sm',
+        'value' => $stats->quantity,
+        'disabled' => '')
+    ); ?>
 							</div>
 						</div>
 					</div>
@@ -157,12 +179,12 @@
 						<div class="col-xs-3">
 							<div class="input-group input-group-sm">
 								<?php echo form_input(array(
-										'name'=>'avg_discount',
-										'id'=>'avg_discount',
-										'class'=>'form-control input-sm',
-										'value'=>$stats->avg_discount,
-										'disabled'=>'')
-										);?>
+        'name' => 'avg_discount',
+        'id' => 'avg_discount',
+        'class' => 'form-control input-sm',
+        'value' => $stats->avg_discount,
+        'disabled' => '')
+    ); ?>
 								<span class="input-group-addon input-sm"><b>%</b></span>
 							</div>
 						</div>
@@ -170,34 +192,37 @@
 				</fieldset>
 			</div>
 		<?php
-		}
-		?>
+}
+?>
 	</div>
 
 
-	<?php if ($customer_sales_tax_enabled) { ?>
+	<?php if ($customer_sales_tax_enabled) {?>
 		<div class="form-group  form-group-sm">
-			<?php echo form_label($this->lang->line('customers_tax_code'), 'sales_tax_code_name', array('class'=>'control-label col-xs-3')); ?>
+			<?php echo form_label($this->lang->line('customers_tax_code'), 'sales_tax_code_name', array('class' => 'control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
 				<div class="input-group input-group-sm">
 					<?php echo form_input(array(
-							'name'=>'sales_tax_code_name',
-							'id'=>'sales_tax_code_name',
-							'class'=>'form-control input-sm',
-							'size'=>'50',
-							'value'=>$sales_tax_code_label)
-					); ?>
-					<?php echo form_hidden('sales_tax_code', $person_info->sales_tax_code);?>
+    'name' => 'sales_tax_code_name',
+    'id' => 'sales_tax_code_name',
+    'class' => 'form-control input-sm',
+    'size' => '50',
+    'value' => $sales_tax_code_label)
+); ?>
+					<?php echo form_hidden('sales_tax_code', $person_info->sales_tax_code); ?>
 				</div>
 			</div>
 		</div>
-	<?php } ?>
+	<?php }?>
 <?php echo form_close(); ?>
 
 <script type="text/javascript">
 //validation and submit handling
 $(document).ready(function()
 {
+	$("#conc_id").on('change keydown paste input', function(){
+		document.getElementById("conc_id_check").value = document.getElementById("conc_id").value // helper val used for post/form request
+	});
 	$('#customer_form').validate($.extend({
 		submitHandler: function(form)
 		{
@@ -225,7 +250,7 @@ $(document).ready(function()
 			{
 				remote:
 				{
-					url: "<?php echo site_url($controller_name . '/ajax_check_email')?>",
+					url: "<?php echo site_url($controller_name . '/ajax_check_email') ?>",
 					type: "post",
 					data: $.extend(csrf_form_base(),
 					{
@@ -234,16 +259,16 @@ $(document).ready(function()
 					})
 				}
 			},
-    		account_number:
+    		conc_id:
 			{
 				remote:
 				{
-					url: "<?php echo site_url($controller_name . '/ajax_check_account_number')?>",
+					url: "<?php echo site_url($controller_name . '/ajax_check_conc_id') ?>",
 					type: "post",
 					data: $.extend(csrf_form_base(),
 					{
 						"person_id" : "<?php echo $person_info->person_id; ?>"
-						// account_number is posted by default
+						// conc_id is posted by default
 					})
 				}
 			}
@@ -254,7 +279,7 @@ $(document).ready(function()
      		first_name: "<?php echo $this->lang->line('common_first_name_required'); ?>",
      		last_name: "<?php echo $this->lang->line('common_last_name_required'); ?>",
      		email: "<?php echo $this->lang->line('customers_email_duplicate'); ?>",
-			account_number: "<?php echo $this->lang->line('customers_account_number_duplicate'); ?>"
+			 conc_id: "<?php echo $this->lang->line('customers_conc_id_duplicate'); ?>"
 		}
 	}, form_support.error));
 });

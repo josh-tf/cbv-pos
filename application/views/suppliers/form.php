@@ -16,7 +16,7 @@
 			</div>
 		</div>
 
-		<div class="form-group form-group-sm">	
+		<div class="form-group form-group-sm">
 			<?php echo form_label($this->lang->line('suppliers_agency_name'), 'agency_name', array('class'=>'control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
 				<?php echo form_input(array(
@@ -30,14 +30,14 @@
 
 		<?php $this->load->view("people/form_basic_info"); ?>
 
-		<div class="form-group form-group-sm">	
-			<?php echo form_label($this->lang->line('suppliers_account_number'), 'account_number', array('class'=>'control-label col-xs-3')); ?>
+		<div class="form-group form-group-sm">
+			<?php echo form_label($this->lang->line('suppliers_conc_id'), 'conc_id', array('class'=>'control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
 				<?php echo form_input(array(
-					'name'=>'account_number',
-					'id'=>'account_number',
+					'name'=>'conc_id',
+					'id'=>'conc_id',
 					'class'=>'form-control input-sm',
-					'value'=>$person_info->account_number)
+					'value'=>$person_info->conc_id)
 					);?>
 			</div>
 		</div>
@@ -68,7 +68,7 @@ $(document).ready(function()
 			last_name: "required",
 			email: "email"
    		},
-		messages: 
+		messages:
 		{
 			company_name: "<?php echo $this->lang->line('suppliers_company_name_required'); ?>",
 			first_name: "<?php echo $this->lang->line('common_first_name_required'); ?>",
