@@ -131,6 +131,10 @@ foreach ($stocklist as $computer) {
                             <th scope="row">Scaling</th>
                             <td colspan="2">100%</td>
                         </tr>
+                        <tr>
+                            <th scope="row">Headers/Footers</th>
+                            <td colspan="2">Off</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

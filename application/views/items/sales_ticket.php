@@ -90,24 +90,28 @@ the printer settings in the popup dialog are configured as follows:
 <br>
 <table class="table table-bordered">
   <thead>
-    <tr>
-      <th scope="col">Setting</th>
-      <th scope="col">Option</th>
-    </tr>
+  <tr>
+    <th scope="col">Setting</th>
+    <th scope="col">Option</th>
+  </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">2-Sided</th>
-      <td>Any</td>
-    </tr>
-    <tr>
-      <th scope="row">Orientation</th>
-      <td>Landscape</td>
-    </tr>
-    <tr>
-      <th scope="row">Scaling</th>
-      <td colspan="2">100%</td>
-    </tr>
+  <tr>
+    <th scope="row">2-Sided</th>
+    <td>Any</td>
+  </tr>
+  <tr>
+    <th scope="row">Orientation</th>
+    <td>Landscape</td>
+  </tr>
+  <tr>
+    <th scope="row">Scaling</th>
+    <td colspan="2">100%</td>
+  </tr>
+  <tr>
+    <th scope="row">Headers/Footers</th>
+    <td colspan="2">Off</td>
+  </tr>
   </tbody>
 </table>
 				</div>
@@ -210,7 +214,7 @@ the printer settings in the popup dialog are configured as follows:
 	  <h3>What Software is included?</h3>
         <p>Every Computerbank computer comes bundled with a range of useful software including Chrome and Firefox, the OpenOffice office suite, a range of games and other useful tools. Ask us for a full list for more information.</p>
 
-	  <h3>Warranty Information</h3>
+	  <h3git>Warranty Information</h3git>
 		Our restored computers come with a <b>three months</b> back to base warranty. For desktops, we extend the warranty to <b>six months</b> if the original operating system, Linux, is still installed on the computer. If you have a problem you can organise an appointment to bring it back in.
 		<br />
 
