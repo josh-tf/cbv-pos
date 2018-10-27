@@ -25,26 +25,30 @@ the printer settings in the popup dialog are configured as follows:
 </p>
 <br>
 <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Setting</th>
-      <th scope="col">Option</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">2-Sided</th>
-      <td>Yes - Long Edge</td>
-    </tr>
-    <tr>
-      <th scope="row">Orientation</th>
-      <td>Portrait</td>
-    </tr>
-    <tr>
-      <th scope="row">Scaling</th>
-      <td colspan="2">85%</td>
-    </tr>
-  </tbody>
+	<thead>
+		<tr>
+			<th scope="col">Setting</th>
+			<th scope="col">Option</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">2-Sided</th>
+			<td>Yes - Long Edge</td>
+		</tr>
+		<tr>
+			<th scope="row">Orientation</th>
+			<td>Portrait</td>
+		</tr>
+		<tr>
+			<th scope="row">Scaling</th>
+			<td colspan="2">85%</td>
+		</tr>
+		<tr>
+			<th scope="row">Headers/Footers</th>
+			<td colspan="2">Off</td>
+		</tr>
+	</tbody>
 </table>
 				</div>
 				<div class="modal-footer">
