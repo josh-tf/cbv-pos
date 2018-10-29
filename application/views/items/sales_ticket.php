@@ -27,12 +27,11 @@ foreach ($cbv_info as $computer) {
     $concPriceFull = "$" . formatPrice($computer->unit_price);
     $nonConcPriceFull = "$" . formatPrice($computer->unit_price, true); // + 50% for non Concession
     $concPriceBox = "$" . formatPrice($computer->custom12);
-    $nonConcPriceBox = "$" . formatPrice($computer->custom12, true); // box only price +50% for non Concession
+    $nonConcPriceBox = "$" . formatPrice(formatPrice($computer->unit_price, true) - $boxDiscount); // this formula is ((unit_price * 50%)-$boxDiscount)
     $specID = $computer->name . ' - ' . $computer->custom2;
-    $specCPU = $computer->custom3 . ' @ ' . $computer->custom4 . " Ghz";
+    $specCPU = $computer->custom3 . ' ' . $computer->custom4 . " Ghz";
     $specRAM = $computer->custom5 . " GB";
     $specHDD = $computer->custom6 . " GB";
-    $specMON = $computer->custom8 .'"';
     $specEX = $computer->custom13;
     $specOS = $computer->custom7;
 
@@ -178,32 +177,27 @@ the printer settings in the popup dialog are configured as follows:
   </thead>
   <tbody>
     <tr>
-      <td width="160"><img src="images/ticket-icons/cbvid.png" class="ticket-icon" /> <b class="specs">CBV ID</b></td>
-      <td class="specs"><?php echo $specID; ?></td>
+      <td><img src="images/ticket-icons/cbvid.png" class="ticket-icon" /> <b>CBV ID</b></td>
+      <td><?php echo $specID; ?></td>
     </tr>
     <tr>
-      <td><img src="images/ticket-icons/processor.png" class="ticket-icon" /> <b class="specs">Processor</b></td>
-      <td class="specs"><?php echo $specCPU; ?></td>
+      <td><img src="images/ticket-icons/processor.png" class="ticket-icon" /> <b>Processor</b></td>
+      <td><?php echo $specCPU; ?></td>
     </tr>
     <tr>
-      <td><img src="images/ticket-icons/memory.png" class="ticket-icon" /> <b class="specs">Memory</b></td>
-      <td class="specs"><?php echo $specRAM; ?></td>
+      <td><img src="images/ticket-icons/memory.png" class="ticket-icon" /> <b>Memory</b></td>
+      <td><?php echo $specRAM; ?></td>
     </tr>
     <tr>
-      <td><img src="images/ticket-icons/storage.png" class="ticket-icon" /> <b class="specs">Storage</b></td>
-      <td class="specs"><?php echo $specHDD; ?></td>
+      <td><img src="images/ticket-icons/storage.png" class="ticket-icon" /> <b>Storage</b></td>
+      <td><?php echo $specHDD; ?></td>
     </tr>
     <tr>
-      <td><img src="images/ticket-icons/monitor.png" class="ticket-icon" /> <b class="specs">Monitor</b></td>
-      <td class="specs"><?php echo $specMON; ?></td>
+      <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Extras</b></td>
+      <td><?php echo $specEX ? $specEX : "None"; ?></td>
     </tr>
-    <tr>
-      <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b class="specs">Extras</b></td>
-      <td class="specs"><?php echo $specEX ? $specEX : "None"; ?></td>
-    </tr>
-    <tr>
-      <td><img src="images/ticket-icons/tux.png" class="ticket-icon" /> <b class="specs">OS</b></td>
-      <td class="specs"><?php echo $specOS ?></td>
+      <td><img src="images/ticket-icons/tux.png" class="ticket-icon" /> <b>OS</b></td>
+      <td><?php echo $specOS ?></td>
     </tr>
   </tbody>
 </table>
