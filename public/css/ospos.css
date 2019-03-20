@@ -84,8 +84,8 @@ a.none {
 }
 
 #config_info {
-    text-align: left;
-    padding-left: 15px;
+	text-align: left;
+	padding-left: 15px;
 }
 
 #config_info .wide {
@@ -172,124 +172,141 @@ label.required {
 	}
 }
 
-
-
 /* Custom CSS on top of the default Bootswatch theme 'United' for CBV theming */
 
 .navbar-default {
-    background-color: #d1541a;
-    border-color: #af4819;
+	background-color: #d1541a;
+	border-color: #af4819;
 }
 
 
 /* Make the input boxes on items>form a little smaller to make things cleaner */
-textarea#custom13, textarea#custom14, textarea#description {
-    height: 100px;
+textarea#custom13,
+textarea#custom14,
+textarea#description {
+	height: 100px;
 }
 
 /* For warning if item name exists */
 .alert-danger {
 	z-index: 9999 !important;
-	}
+}
 
 /* Main Menu items */
 
 .module_item a {
-    color: #0f007d;
-    font-weight: bold;
-    padding-top: 10px;
+	color: #0f007d;
+	font-weight: bold;
+	padding-top: 10px;
 }
 
 /* Make this a little cleaner */
 
 .jumbotron.push-spaces {
-    margin: 0;
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
+	margin: 0;
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
 }
 
 .jumbotron {
-    padding-top: 35px;
-    padding-bottom: 30px;
+	padding-top: 35px;
+	padding-bottom: 30px;
 }
 
 /* Buttons */
 
-.btn-info, .btn-primary  {
-    color: #ffffff;
-    background-color: #0f007d;
-    border-color: #080042;
+.btn-info,
+.btn-primary {
+	color: #ffffff;
+	background-color: #0f007d;
+	border-color: #080042;
 }
 
-.btn-info:hover, .btn-primary:hover, .btn-primary:active:hover,
- .btn-info:active, .btn-primary:active, .btn-info:active:hover,
-  .btn-info:hover, .btn-info:focus, .btn-primary:focus,
-   .btn-primary.focus {
-    color: #ffffff;
-    background-color: #080042;
-    border-color: #0f007d;
+.btn-info:hover,
+.btn-primary:hover,
+.btn-primary:active:hover,
+.btn-info:active,
+.btn-primary:active,
+.btn-info:active:hover,
+.btn-info:hover,
+.btn-info:focus,
+.btn-primary:focus,
+.btn-primary.focus {
+	color: #ffffff;
+	background-color: #080042;
+	border-color: #0f007d;
 }
 
 .bootstrap-dialog.type-primary .modal-header {
-    background-color: #0f007d;
+	background-color: #0f007d;
 }
 
 h3.text-center {
-    color: #0f007d;
+	color: #0f007d;
 }
 
 .container-b {
-    margin-bottom: 100px;
+	margin-bottom: 100px;
 }
 
 @media print {
 	.container-b {
 		margin-bottom: 0px;
 	}
-  }
+}
 
-  .topbar {
-    background: #0f007d;
+.topbar {
+	background: #0f007d;
 }
+
 .topbar a {
-    color: #ffc0a8;
+	color: #ffc0a8;
 }
+
 .close {
-    color: #ffffff;
-    opacity: 1;
+	color: #ffffff;
+	opacity: 1;
 }
-.close:hover, .close:focus {
-    color: #d1541a;
-    opacity: 1;
+
+.close:hover,
+.close:focus {
+	color: #d1541a;
+	opacity: 1;
 }
 
 .lookup {
-    background: #0f007d;
-    color: #fff;
-    width: 64px;
-    height: 32px;
-    padding: 6px;
-    float: right;
-    margin-right: 50px;
-    border-radius: 4px;
+	background: #0f007d;
+	color: #fff;
+	width: 64px;
+	height: 32px;
+	padding: 6px;
+	float: right;
+	margin-right: 50px;
+	border-radius: 4px;
 }
 
-.lookup a{
-    color: #fff;
+/** sales ticket related **/
+
+.ticket-icon {
+	width: 34px;
+	vertical-align: middle;
+	padding-right: 10px;
+}
+
+.ticketCatErr {
+	font-size: 20px;
+	color: #d1541a;
+}
+
+.lookup a {
+	color: #fff;
 }
 
 td.print_hide {
-    text-align: center;
-}
-
-.ticket-icon {
-    width: 34px;
-    vertical-align: middle;
-    padding-right: 10px;
+	text-align: center;
 }
 
 .pricing {
-    font-size: 1.3em;
+	font-size: 1.3em;
 }
-
