@@ -32,12 +32,13 @@ foreach ($cbv_info as $computer) {
     $nonConcPriceFull = "$" . formatPrice($computer->unit_price, true); // + 50% for non Concession
     $concPriceBox = "$" . formatPrice($computer->custom12);
     $nonConcPriceBox = "$" . formatPrice(formatPrice($computer->unit_price, true) - $boxDiscount); // this formula is ((unit_price * 50%)-$boxDiscount)
-    $specID = $computer->name . ' - ' . $computer->custom2;
-    $specCPU = $computer->custom3 . ' ' . $computer->custom4 . " Ghz";
+    $specID = $computer->name;
+    $specModel = $computer->custom2;
+    $specCPU = $computer->custom3 . " " . $computer->custom4 . " Ghz";
     $specRAM = $computer->custom5 . " GB";
     $specHDD = $computer->custom6 . " GB";
+    $specMonitor = $computer->custom8 . " inches";
     $specEX = $computer->custom13;
-    $specOS = $computer->custom7;
 
 }
 ?>
@@ -142,7 +143,10 @@ the printer settings in the popup dialog are configured as follows:
     <div class="row" id="content">
         <div class="col-sm-6">
 
-	  <center><img src="images/logo-cbv.png" width="420px" /></center>
+	  <div style="height:77px">
+      <img src="images/ticket-logo.png" width="252px" style="float:left;" />
+      <div class="ticket-cbvid"><b>ID:</b> <?php echo $specID ?></div>
+    </div>
 
 <br />
 
@@ -170,9 +174,9 @@ the printer settings in the popup dialog are configured as follows:
   </tbody>
 </table>
 
-<p class="discount-info">Box Only applies if you wish to purchase the desktop only - you will need to supply your own monitor, keyboard and mouse.</p>
+<p class="discount-info">The Box Only price applies if you wish to purchase the desktop only, you will need to supply your own monitor, keyboard and mouse.</p>
 
-<table class="table table-sm table-bordered table-striped">
+<table class="table table-sm table-bordered table-striped ticket-specs">
   <thead>
     <tr>
       <th>Spec</th>
@@ -181,8 +185,8 @@ the printer settings in the popup dialog are configured as follows:
   </thead>
   <tbody>
     <tr>
-      <td><img src="images/ticket-icons/cbvid.png" class="ticket-icon" /> <b>CBV ID</b></td>
-      <td><?php echo $specID; ?></td>
+      <td><img src="images/ticket-icons/cbvid.png" class="ticket-icon" /> <b>Model</b></td>
+      <td><?php echo $specModel; ?></td>
     </tr>
     <tr>
       <td><img src="images/ticket-icons/processor.png" class="ticket-icon" /> <b>Processor</b></td>
@@ -196,30 +200,34 @@ the printer settings in the popup dialog are configured as follows:
       <td><img src="images/ticket-icons/storage.png" class="ticket-icon" /> <b>Storage</b></td>
       <td><?php echo $specHDD; ?></td>
     </tr>
+    </tr>
+      <td><img src="images/ticket-icons/monitor.png" class="ticket-icon" /> <b>Monitor</b></td>
+      <td><?php echo $specMonitor ?></td>
+    </tr>
     <tr>
       <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Extras</b></td>
       <td><?php echo $specEX ? $specEX : "None"; ?></td>
-    </tr>
-      <td><img src="images/ticket-icons/tux.png" class="ticket-icon" /> <b>OS</b></td>
-      <td><?php echo $specOS ?></td>
-    </tr>
   </tbody>
 </table>
 
 </div>
         <div class="col-sm-6">
 
-	   <img src="images/linux.jpg" width="240px" />
+	   <img src="images/ticket-linux.png" width="570px" />
+
 	  <h3>What is Linux?</h3>
-        <p>Our computers <b>do not</b> come with Microsoft Windows. We run Linux instead. Linux is similar to other systems you may have used before, such as Windows or OS X.</p>
+    <p>Our computers <b>do not</b> come with Microsoft Windows. We run Linux instead. Linux is similar to other systems you may have used before, such as Windows or OS X.</p>
 		<p>Our operating system includes a built in firewall and does not require any aditional antivirus software.
 		</p>
 
 	  <h3>What Software is included?</h3>
-        <p>Every Computerbank computer comes bundled with a range of useful software including Chrome and Firefox, the OpenOffice office suite, a range of games and other useful tools. Ask us for a full list for more information.</p>
+        <p>Every Computerbank computer comes bundled with a range of useful software including Chrome and Firefox, the OpenOffice office suite and a range of games and other useful tools.</p>
+        <p>Please ask us if you have any questions about the included or available software.</p>
 
-	  <h3git>Warranty Information</h3git>
-		Our restored computers come with a <b>three months</b> back to base warranty. For desktops, we extend the warranty to <b>six months</b> if the original operating system, Linux, is still installed on the computer. If you have a problem you can organise an appointment to bring it back in.
+	  <h3>Warranty Information</h3>
+		Our restored computers come with a <b>three months</b> back to base warranty.</p>
+    <p>For desktops, we extend the warranty to <b>six months</b> if the original operating system, Linux, is still installed on the computer.</p>
+    <p>If you have a problem you can organise an appointment to bring it back in.</p>
 		<br />
 
 </div>
