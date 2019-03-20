@@ -310,3 +310,18 @@ td.print_hide {
 .pricing {
 	font-size: 1.3em;
 }
+
+.ticket-specs {
+    font-size: 20px;
+}
+
+.ticket-cbvid {
+    width: 170px;
+    height: 100%;
+    float: right;
+    font-size: 35px;
+    background-color: #f3f3f3;
+    text-align: center;
+    line-height: 77px;
+    border: 1px solid #000;
+}
