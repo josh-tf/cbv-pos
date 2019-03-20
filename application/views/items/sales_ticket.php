@@ -25,13 +25,11 @@ foreach ($cbv_info as $computer) {
 
   }
 
-    $boxDiscount = $computer->unit_price - $computer->custom12; // calculate the difference between full and box only
-
     // create an array to be used below
     $concPriceFull = "$" . formatPrice($computer->unit_price);
-    $nonConcPriceFull = "$" . formatPrice($computer->unit_price, true); // + 50% for non Concession
+    $nonConcPriceFull = "$" . formatPrice($computer->unit_price, true); // item price x1.5 for non Concession
     $concPriceBox = "$" . formatPrice($computer->custom12);
-    $nonConcPriceBox = "$" . formatPrice(formatPrice($computer->unit_price, true) - $boxDiscount); // this formula is ((unit_price * 50%)-$boxDiscount)
+    $nonConcPriceBox = "$" . formatPrice($computer->custom12, true); // box only x1.5 for non Concession
     $specID = $computer->name;
     $specModel = $computer->custom2;
     $specCPU = $computer->custom3 . " " . $computer->custom4 . " Ghz";
