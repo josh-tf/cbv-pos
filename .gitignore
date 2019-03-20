@@ -20,6 +20,3 @@ vendor/
 
 # ide
 .vscode
-
-# local files but kept out of source
-package-lock.json
