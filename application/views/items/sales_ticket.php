@@ -18,7 +18,11 @@ foreach ($cbv_info as $computer) {
   $itemCat = $computer->category;
 
    if (!($itemCat === 'Desktop')) {
-      die('ID Provided was not a desktop type (Category is "' . $itemCat .  '")');
+
+      print('<span class="ticketCatErr"><b>An error has occured..</b><br><br> Sales ticket is only available for the "Desktop" item type. <br>The category for the selected item was <i>"' . $itemCat .  '"</><br>');
+      print('<br><b><a href="../items">Back to Items</a></b></span>');
+      die();
+
   }
 
     $boxDiscount = $computer->unit_price - $computer->custom12; // calculate the difference between full and box only
