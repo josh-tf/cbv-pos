@@ -19,7 +19,7 @@ foreach ($cbv_info as $computer) {
 
    if (!($itemCat === 'Desktop')) {
 
-      print('<span class="ticketCatErr"><b>An error has occured..</b><br><br> Sales ticket is only available for the "Desktop" item type. <br>The category for the selected item was <i>"' . $itemCat .  '"</><br>');
+      print('<span class="ticketCatErr"><b>An error has occurred..</b><br><br> Sales ticket is only available for the "Desktop" item type. <br>The category for the selected item was <i>"' . $itemCat .  '"</><br>');
       print('<br><b><a href="../items">Back to Items</a></b></span>');
       die();
 
