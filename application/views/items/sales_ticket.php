@@ -164,12 +164,12 @@ foreach ($cbv_info as $computer) {
       </thead>
       <tbody>
         <tr>
-          <td><b class="pricing">Full System</b></td> <!-- round up or down to nearest $5 -->
+          <td><b class="pricing">Full System</b></td>
           <td><b class="pricing">
               <?php echo $concPriceFull ?></b></td>
           <td>
             <?php echo $nonConcPriceFull ?>
-          </td></b></td><!-- the php below adds 25% and rounds up/down to nearest $5 -->
+          </td></b></td>
         </tr>
         <tr>
           <td><b class="pricing">Box Only</b></td>
@@ -238,7 +238,7 @@ foreach ($cbv_info as $computer) {
     <h3>What is Linux?</h3>
     <p>Our computers <b>do not</b> come with Microsoft Windows. We run Linux instead. Linux is similar to other systems
       you may have used before, such as Windows or OS X.</p>
-    <p>Our operating system includes a built in firewall and does not require any aditional antivirus software.
+    <p>Our operating system includes a built in firewall and does not require any additional antivirus software.
     </p>
 
     <h3>What Software is included?</h3>
