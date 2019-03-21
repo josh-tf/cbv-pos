@@ -286,7 +286,7 @@ h3.text-center {
 	border-radius: 4px;
 }
 
-/** sales ticket related **/
+/* sales ticket related */
 
 .ticket-icon {
 	width: 34px;
@@ -312,16 +312,23 @@ td.print_hide {
 }
 
 .ticket-specs {
-    font-size: 20px;
+	font-size: 20px;
 }
 
 .ticket-cbvid {
-    width: 170px;
-    height: 100%;
-    float: right;
-    font-size: 35px;
-    background-color: #f3f3f3;
-    text-align: center;
-    line-height: 77px;
-    border: 1px solid #000;
+	width: 170px;
+	height: 100%;
+	float: right;
+	font-size: 35px;
+	background-color: #f3f3f3;
+	text-align: center;
+	line-height: 77px;
+	border: 1px solid #000;
+}
+
+/* Reports page cleanup / theme matching */
+
+.panel-primary>.panel-heading {
+	background-color: #d34615;
+	border-color: #d34615;
 }
