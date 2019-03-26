@@ -130,8 +130,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<?php foreach ($allowed_modules as $module): ?>
 						<li class="<?php echo $module->module_id == $this->uri->segment(1) ? 'active' : ''; ?>">
-							<a href="<?php echo base_url() . $module->module_id; ?>" title="
-								<?php echo $this->lang->line(" module_" . $module->module_id); ?>" class="menu-icon">
+							<a href="<?php echo base_url() . $module->module_id; ?>" title="<?php echo $this->lang->line("module_".$module->module_id.'_desc') ?>" class="menu-icon">
 								<img src="<?php echo base_url() . 'images/menubar/' . $module->module_id . '.png'; ?>" border="0" alt="Module Icon" /><br />
 								<?php echo $this->lang->line("module_" . $module->module_id) ?>
 							</a>
