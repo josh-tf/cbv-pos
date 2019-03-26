@@ -280,12 +280,9 @@ div#tax-invoice {
 }
 
 td.item-description {
-    border-bottom: solid 1px #333 !important;
-}
-
-td.item-description {
     background: #efefef;
     border-top: 1px solid #aaa !important;
+    border-bottom: 2px solid #333 !important;
     text-align:left;
 }
 

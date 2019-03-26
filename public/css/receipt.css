@@ -6,14 +6,9 @@
 	text-align: center;
 }
 
-#company_name {
+#conc_id {
 	font-size: 150%;
 	font-weight: bold;
-}
-
-#company_name img {
-	max-width: 150px;
-	max-height: 150px;
 }
 
 #company_phone {
@@ -102,3 +97,12 @@ hr {
 	padding-bottom: 20px;
 }
 .pagebreak { page-break-before: always; }
+
+.disc {
+    border: 1px solid black !important;
+    text-align: center;
+}
+
+.al-right{
+	text-align: right !important;
+}

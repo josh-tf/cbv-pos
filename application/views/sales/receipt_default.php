@@ -136,7 +136,7 @@ if ($item['discount'] > 0) {
         ?>
 				<tr>
 				<td colspan="3" class="blank"> </td>
-					<td colspan="1" class="blank">$<?php echo number_format($item['discount'], 2) ?> Discount</td>
+					<td colspan="1" class="blank disc">$<?php echo number_format($item['discount'], 2) ?> Discount</td>
 					<td class="total-line"><?php echo to_currency($item['discounted_total']); ?></td>
 				</tr>
 			<?php
@@ -155,12 +155,12 @@ if ($this->config->item('receipt_show_total_discount') && $discount > 0) {
     ?>
 			<tr>
 			<td colspan="3" class="blank"> </td>
-				<td colspan="1" class="total-line" style='text-align:right;border-top:2px solid #000000;'><?php echo $this->lang->line('sales_sub_total'); ?></td>
-				<td class="total-value" style='text-align:right;border-top:2px solid #000000;'><?php echo to_currency($prediscount_subtotal); ?></td>
+				<td colspan="1" class="total-line al-right" style='border-top:2px solid #000000;'><?php echo $this->lang->line('sales_sub_total'); ?></td>
+				<td class="total-value al-right" style=';border-top:2px solid #000000;'><?php echo to_currency($prediscount_subtotal); ?></td>
 			</tr>
 			<tr>
 				<td colspan="3" class="blank"> </td>
-				<td colspan="1" class="total-line"><?php echo $this->lang->line('sales_customer_discount'); ?>:</td>
+				<td colspan="1" class="total-line al-right"><?php echo $this->lang->line('sales_customer_discount'); ?></td>
 				<td class="total-value"><?php echo to_currency($discount * -1); ?></td>
 			</tr>
 		<?php
@@ -172,8 +172,8 @@ if ($this->config->item('receipt_show_taxes')) {
     ?>
 			<tr>
 				<td colspan="3" class="blank"> </td>
-				<td colspan="1" class="total-line" style='text-align:right;border-top:2px solid #000000;'><?php echo $this->lang->line('sales_sub_total'); ?></td>
-				<td class="total-value" style='text-align:right;border-top:2px solid #000000;'><?php echo to_currency($subtotal); ?></td>
+				<td colspan="1" class="total-line al-right" style='border-top:2px solid #000000;'><?php echo $this->lang->line('sales_sub_total'); ?></td>
+				<td class="total-value al-right" style='border-top:2px solid #000000;'><?php echo to_currency($subtotal); ?></td>
 			</tr>
 			<?php
 
