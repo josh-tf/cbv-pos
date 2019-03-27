@@ -1,5 +1,5 @@
 <plaintext><h3>Desktops</h3>
-The listed concession price is only available to concession card holders. Please have a valid concession card ready when you make your purchase. You may purchase a desktop computer without a concession card, but you will be charged our market price, as shown below.
+The listed concession price is only available to concession card holders. Please have a valid concession card ready when you make your purchase. You may purchase a desktop computer without a concession card, but you will be charged our market price, as shown in brackets.
 
 
 <?php
@@ -9,6 +9,7 @@ $servername = getenv('MYSQL_HOST_NAME');
 $username = getenv('MYSQL_USERNAME');
 $password = getenv('MYSQL_PASSWORD');
 $dbname = getenv('MYSQL_DB_NAME');
+$siteurl = "https://new.computerbank.org.au";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -46,20 +47,20 @@ echo "[su_tabs vertical='yes']";
 <table style="max-width: 353px; height: 100px;" width="273">
 <tbody>
 <tr>
-<td style="width: 58px;" colspan="3"><img class="aligncenter wp-image-5674" src="https://cbv.josh.tf/wp-content/uploads/2019/03/googlelogo_color_116x41dp.png" alt="" width="180" /></td>
+<td style="width: 58px;" colspan="3"><img class="aligncenter wp-image-5674" src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/computerbank.png" alt="" width="180" /></td>
 </tr>
 <tr>
 <td style="width: 58px; text-align: center;" colspan="3"><strong><?php echo $row["Model"] ?> - $<?php echo number_format((float) ($row["ConcPrice"]), 2, '.', ''); ?> </strong>($<?php echo number_format((float) ($row["ConcPrice"]) * 1.5, 2, '.', ''); ?>) ID: <?php echo $row["CBVID"] ?></td>
 </tr>
 <tr>
-<td style="width: 58px;"><img src="https://cbv.josh.tf/wp-content/uploads/2018/03/processor-bit-064-icon.png" alt="" width="16" height="16" /> <?php echo $row["CPUType"] ?> <?php echo $row["CPUSpeed"] ?></td>
-<td style="width: 59px;"><img src="https://cbv.josh.tf/wp-content/uploads/2018/03/Devices-drive-harddisk-icon.png" alt="" width="16" height="16" /> <?php echo $row["HDD"] ?> GB</td>
-<td style="width: 59px;"><img src="https://cbv.josh.tf/wp-content/uploads/2018/03/DVD-icon.png" alt="" width="16" height="16" /><?php echo $row["DVD"] ? $row["DVD"] : 'None'; ?></td>
+<td style="width: 58px;"><img src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/cpu.png" alt="" width="16" height="16" /> <?php echo $row["CPUType"] ?> <?php echo $row["CPUSpeed"] ?></td>
+<td style="width: 59px;"><img src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/hdd.png" alt="" width="16" height="16" /> <?php echo $row["HDD"] ?> GB</td>
+<td style="width: 59px;"><img src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/dvd.png" alt="" width="16" height="16" /><?php echo $row["DVD"] ? $row["DVD"] : 'None'; ?></td>
 </tr>
 <tr>
-<td style="width: 58px;"><img src="https://cbv.josh.tf/wp-content/uploads/2018/03/RAM-icon.png" alt="" width="16" height="16" /><?php echo $row["RAM"] ?> GB</td>
-<td style="width: 59px;"><img src="https://cbv.josh.tf/wp-content/uploads/2018/03/linux-icon.png" alt="" width="16" height="16" /> Ubuntu</td>
-<td style="width: 59px;"><img src="https://cbv.josh.tf/wp-content/uploads/2018/03/06-Computer-Windows-7-icon.png" alt="" width="16" height="16" /> <?php echo $row["Screen"] ?> in</td>
+<td style="width: 58px;"><img src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/ram.png" alt="" width="16" height="16" /><?php echo $row["RAM"] ?> GB</td>
+<td style="width: 59px;"><img src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/os.png" alt="" width="16" height="16" /> Ubuntu</td>
+<td style="width: 59px;"><img src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/screen.png" alt="" width="16" height="16" /> <?php echo $row["Screen"] ?> in</td>
 </tr>
 </tbody>
 </table>
@@ -69,8 +70,8 @@ echo "[su_tabs vertical='yes']";
  	<li>USB Keyboard and Mouse set</li>
  	<li>LCD Monitor (Size listed above)</li>
  	<li>All required cables</li>
- 	<li><a href="https://cbv.josh.tf/about-us/our-computers/">3 Month warranty</a></li>
- 	<li><a href="https://cbv.josh.tf/about-us/our-computers/">User Guide</a></li>
+ 	<li><a href="<?php echo $siteurl; ?>/about-us/our-computers/">3 Month warranty</a></li>
+ 	<li><a href="<?php echo $siteurl; ?>/about-us/our-computers/">User Guide</a></li>
 </ul>
 [/su_tab]
 
@@ -120,20 +121,20 @@ echo "[su_tabs vertical='yes']";
 <table style="max-width: 353px; height: 100px;" width="273">
 <tbody>
 <tr>
-<td style="width: 58px;" colspan="3"><img class="aligncenter wp-image-5674" src="https://cbv.josh.tf/wp-content/uploads/2019/03/googlelogo_color_116x41dp.png" alt="" width="180" /></td>
+<td style="width: 58px;" colspan="3"><img class="aligncenter wp-image-5674" src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/computerbank.png" alt="" width="180" /></td>
 </tr>
 <tr>
 <td style="width: 58px; text-align: center;" colspan="3"><strong><?php echo $row["Model"] ?> - $<?php echo number_format((float) ($row["ConcPrice"]), 2, '.', ''); ?> </strong>($<?php echo number_format((float) ($row["ConcPrice"]) * 1.5, 2, '.', ''); ?>) ID: <?php echo $row["CBVID"] ?></td>
 </tr>
 <tr>
-<td style="width: 58px;"><img src="https://cbv.josh.tf/wp-content/uploads/2018/03/processor-bit-064-icon.png" alt="" width="16" height="16" /> <?php echo $row["CPUType"] ?> <?php echo $row["CPUSpeed"] ?></td>
-<td style="width: 59px;"><img src="https://cbv.josh.tf/wp-content/uploads/2018/03/Devices-drive-harddisk-icon.png" alt="" width="16" height="16" /> <?php echo $row["HDD"] ?> GB</td>
-<td style="width: 59px;"><img src="https://cbv.josh.tf/wp-content/uploads/2018/03/battery-3-icon.png" alt="" width="16" height="16" /><?php echo $row["Battery"] ?> Hrs</td>
+<td style="width: 58px;"><img src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/cpu.png" alt="" width="16" height="16" /> <?php echo $row["CPUType"] ?> <?php echo $row["CPUSpeed"] ?></td>
+<td style="width: 59px;"><img src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/hdd.png" alt="" width="16" height="16" /> <?php echo $row["HDD"] ?> GB</td>
+<td style="width: 59px;"><img src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/battery.png" alt="" width="16" height="16" /><?php echo $row["Battery"] ?> Hrs</td>
 </tr>
 <tr>
-<td style="width: 58px;"><img src="https://cbv.josh.tf/wp-content/uploads/2018/03/RAM-icon.png" alt="" width="16" height="16" /><?php echo $row["RAM"] ?> GB</td>
-<td style="width: 59px;"><img src="https://cbv.josh.tf/wp-content/uploads/2018/03/linux-icon.png" alt="" width="16" height="16" /> Ubuntu</td>
-<td style="width: 59px;"><img src="https://cbv.josh.tf/wp-content/uploads/2018/03/06-Computer-Windows-7-icon.png" alt="" width="16" height="16" /> <?php echo $row["Screen"] ?> in</td>
+<td style="width: 58px;"><img src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/ram.png" alt="" width="16" height="16" /><?php echo $row["RAM"] ?> GB</td>
+<td style="width: 59px;"><img src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/os.png" alt="" width="16" height="16" /> Ubuntu</td>
+<td style="width: 59px;"><img src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/screen.png" alt="" width="16" height="16" /> <?php echo $row["Screen"] ?> in</td>
 </tr>
 </tbody>
 </table>
@@ -142,8 +143,8 @@ echo "[su_tabs vertical='yes']";
  	<li>Ubuntu Linux 16.04 (Computerbank Edition)</li>
  	<li>Laptop Care Guide</li>
  	<li>Tested Power Adaptor</li>
- 	<li><a href="https://cbv.josh.tf/about-us/our-computers/">3 Month warranty</a></li>
- 	<li><a href="https://cbv.josh.tf/about-us/our-computers/">User Guide</a></li>
+ 	<li><a href="<?php echo $siteurl; ?>/about-us/our-computers/">3 Month warranty</a></li>
+ 	<li><a href="<?php echo $siteurl; ?>/about-us/our-computers/">User Guide</a></li>
 </ul>
 [/su_tab]
 
