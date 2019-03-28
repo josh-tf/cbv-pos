@@ -408,7 +408,7 @@ class Sale extends CI_Model
 
         if ($this->db->count_all_results() == 0) {
             return 1;
-        }else{
+        } else {
             $this->db->count_all_results();
         }
     }
@@ -583,8 +583,18 @@ class Sale extends CI_Model
 
         $sales_taxes = array();
 
+        $soldComputer = false;
+
         foreach ($items as $line => $item) {
             $cur_item_info = $this->Item->get_info($item['item_id']);
+
+            // get item category from custom function
+            $item_cat = $this->Item->get_item_cat($item['item_id']);
+
+            // check if we have sold a computer in this sale
+            if (($item_cat == "Laptop") || ($item_cat == "Desktop")) {
+                $soldComputer = true;
+            }
 
             $sales_items_data = array(
                 'sale_id' => $sale_id,
@@ -703,6 +713,20 @@ class Sale extends CI_Model
 
         if ($this->db->trans_status() === false) {
             return -1;
+        }
+
+        // update the stocklist if the url (env) is set AND category is a laptop or desktop
+        if (getenv("STOCKLIST_UPDATE_URL") && $soldComputer) {
+
+            $request_opts = array(
+                'http' => array(
+                    'method' => 'GET',
+                ),
+            );
+
+            $context = stream_context_create($request_opts);
+            $stocklist_update = file_get_contents(getenv("STOCKLIST_UPDATE_URL"), null, $context);
+
         }
 
         return $sale_id;
@@ -915,7 +939,7 @@ class Sale extends CI_Model
         }
 
         $payments[$this->lang->line('sales_check')] = $this->lang->line('sales_check');
-		$payments[$this->lang->line('sales_due')] = $this->lang->line('sales_due');
+        $payments[$this->lang->line('sales_due')] = $this->lang->line('sales_due');
 
         //if($giftcard)
         //{
