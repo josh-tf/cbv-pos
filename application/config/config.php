@@ -69,12 +69,12 @@ Uncomment to enable auto http detection, required to have it force set due to ng
 
  */
 
-$whitelist = array('127.0.0.1', "::1"); // if on localhost then don't redirect to https
+$whitelist = array('127.0.0.1', "::1", "172.18.0.1"); // if on localhost then don't redirect to https
 
 if (!in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
-    $config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || isset($_ENV['FORCE_HTTPS'])) ? 'https' : 'http';
-} else {
     $config['base_url'] = 'https'; // force https in production
+} else {
+    $config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || isset($_ENV['FORCE_HTTPS'])) ? 'https' : 'http';
 }
 
 $config['base_url'] .= '://' . $_SERVER['HTTP_HOST'];
