@@ -308,6 +308,23 @@ class Item extends CI_Model
     }
 
     /*
+    Return item category based on item ID, used to check category and update stocklist during sale
+     */
+    public function get_item_cat($item_id)
+    {
+        $this->db->select('items.category');
+        $this->db->from('items');
+        $this->db->where('item_id', $item_id);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 1) {
+            return $query->row()->category;
+        }
+
+    }
+
+    /*
     Gets information about a particular item by item id or number
      */
     public function get_info_by_id_or_number($item_id)
@@ -933,7 +950,7 @@ class Item extends CI_Model
         // select our data from the database
         $this->db->select("*");
         $this->db->from('cbvpos_items');
-        $this->db->where('name',$cbv_id);
+        $this->db->where('name', $cbv_id);
 
         // pass as the function result
         $query = $this->db->get();
