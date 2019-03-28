@@ -1,4 +1,4 @@
-<?php $this->load->view("partial/header");?>
+<?php $this->load->view('partial/header');?>
 
 <?php
 
@@ -8,11 +8,11 @@ $laptopCt = 0;
 
 foreach ($stocklist as $computer) {
 
-    if ($computer->category == "Desktop") {
+    if ($computer->category == 'Desktop') {
 
         $desktopCt += 1;
 
-    } elseif ($computer->category == "Laptop") {
+    } elseif ($computer->category == 'Laptop') {
 
         $laptopCt += 1;
 
@@ -188,7 +188,7 @@ foreach ($stocklist as $computer) {
 <?php
 foreach ($stocklist as $computer) {
 
-    if (($computer->category) == "Desktop") {
+    if (($computer->category) == 'Desktop') {
 
         ?>
     <tr>
@@ -277,4 +277,4 @@ foreach ($stocklist as $computer) {
 
 <br><br>
 
-<?php $this->load->view("partial/footer");?>
+<?php $this->load->view('partial/footer');?>

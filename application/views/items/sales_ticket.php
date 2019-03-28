@@ -1,4 +1,4 @@
-<?php $this->load->view("partial/header");
+<?php $this->load->view('partial/header');
 
 // generate our numbers for use
 
@@ -26,16 +26,16 @@ foreach ($cbv_info as $computer) {
   }
 
     // create an array to be used below
-    $concPriceFull = "$" . formatPrice($computer->unit_price);
-    $nonConcPriceFull = "$" . formatPrice($computer->unit_price, true); // item price x1.5 for non Concession
-    $concPriceBox = "$" . formatPrice($computer->custom12);
-    $nonConcPriceBox = "$" . formatPrice($computer->custom12, true); // box only x1.5 for non Concession
+    $concPriceFull = '$' . formatPrice($computer->unit_price);
+    $nonConcPriceFull = '$' . formatPrice($computer->unit_price, true); // item price x1.5 for non Concession
+    $concPriceBox = '$' . formatPrice($computer->custom12);
+    $nonConcPriceBox = '$' . formatPrice($computer->custom12, true); // box only x1.5 for non Concession
     $specID = $computer->name;
     $specModel = $computer->custom2;
-    $specCPU = $computer->custom3 . " " . $computer->custom4 . " Ghz";
-    $specRAM = $computer->custom5 . " GB";
-    $specHDD = $computer->custom6 . " GB";
-    $specMonitor = $computer->custom8 . " inches";
+    $specCPU = $computer->custom3 . ' ' . $computer->custom4 . ' Ghz';
+    $specRAM = $computer->custom5 . ' GB';
+    $specHDD = $computer->custom6 . ' GB';
+    $specMonitor = $computer->custom8 . ' inches';
     $specEX = $computer->custom13;
 
 }
@@ -256,4 +256,4 @@ foreach ($cbv_info as $computer) {
   </div>
 </div>
 
-<?php $this->load->view("partial/footer");?>
+<?php $this->load->view('partial/footer');?>

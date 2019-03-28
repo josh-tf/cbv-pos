@@ -2,7 +2,7 @@
     exit('No direct script access allowed');
 }
 
-require_once "Secure_Controller.php";
+require_once 'Secure_Controller.php';
 
 class Items extends Secure_Controller
 {
@@ -179,7 +179,7 @@ class Items extends Secure_Controller
 
     public function get_row($item_ids)
     {
-        $item_infos = $this->Item->get_multiple_info(explode(":", $item_ids), $this->item_lib->get_item_location());
+        $item_infos = $this->Item->get_multiple_info(explode(':', $item_ids), $this->item_lib->get_item_location());
 
         $result = array();
         foreach ($item_infos->result() as $item_info) {
@@ -407,10 +407,10 @@ class Items extends Secure_Controller
             }
         }
 
-        if ($item_data['category'] == "Desktop" || $item_data['category'] == "Laptop") { // if its a laptop or desktop
+        if ($item_data['category'] == 'Desktop' || $item_data['category'] == 'Laptop') { // if its a laptop or desktop
             $exists = $this->Item->nameExists($item_data['name']); // check if the item name already exists
             if ($exists && $item_id == -1) { // only check if its a new item
-                $message = $this->xss_clean("An item with this name already exists" . ' ' . $item_data['name']);
+                $message = $this->xss_clean('An item with this name already exists' . ' ' . $item_data['name']);
                 echo json_encode(array('success' => false, 'message' => $message, 'id' => $item_id)); // exit with error if it does
                 die();
             }
@@ -481,9 +481,9 @@ class Items extends Secure_Controller
         }
 
         // update the stocklist if the url (env) is set AND category is a laptop or desktop
-        if (getenv("STOCKLIST_UPDATE_URL")) {
+        if (getenv('STOCKLIST_UPDATE_URL')) {
 
-            if (($this->input->post('category') == "Laptop") || ($this->input->post('category') == "Desktop")) {
+            if (($this->input->post('category') == 'Laptop') || ($this->input->post('category') == 'Desktop')) {
 
                 $request_opts = array(
                     'http' => array(
@@ -492,7 +492,7 @@ class Items extends Secure_Controller
                 );
 
                 $context = stream_context_create($request_opts);
-                $stocklist_update = file_get_contents(getenv("STOCKLIST_UPDATE_URL"), null, $context);
+                $stocklist_update = file_get_contents(getenv('STOCKLIST_UPDATE_URL'), null, $context);
 
             }
 
@@ -588,9 +588,9 @@ class Items extends Secure_Controller
         foreach ($_POST as $key => $value) {
             //This field is nullable, so treat it differently
             if ($key == 'supplier_id' && $value != '') {
-                $item_data["$key"] = $value;
+                $item_data['$key'] = $value;
             } elseif ($value != '' && !(in_array($key, array('item_ids', 'tax_names', 'tax_percents')))) {
-                $item_data["$key"] = $value;
+                $item_data['$key'] = $value;
             }
         }
 
