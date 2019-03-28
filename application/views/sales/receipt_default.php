@@ -89,9 +89,9 @@ if (!empty($invoice_number)) {
 		<?php
 foreach ($cart as $line => $item) {
 
-    if ($item['item_category'] == "Laptop" || $item['item_category'] === "Desktop") { // if the item is a desktop or laptop
+    if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop
 
-        $itemName = "CBV " . $item['name'] . " (" . $item['item_category'] . ")"; // change the name to "CBV XXXX (Type)"
+        $itemName = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
 
     } else {
         $itemName = ucfirst($item['name']); // otherwise just use the name

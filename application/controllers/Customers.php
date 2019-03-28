@@ -2,7 +2,7 @@
     exit('No direct script access allowed');
 }
 
-require_once "Persons.php";
+require_once 'Persons.php';
 
 class Customers extends Persons
 {
@@ -140,7 +140,7 @@ class Customers extends Persons
             }
             $data['stats'] = $stats;
         }
-        $this->load->view("customers/form", $data);
+        $this->load->view('customers/form', $data);
     }
 
     /*

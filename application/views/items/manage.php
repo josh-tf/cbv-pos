@@ -1,4 +1,4 @@
-<?php $this->load->view("partial/header");?>
+<?php $this->load->view('partial/header');?>
 
 <script type="text/javascript">
 $(document).ready(function()
@@ -111,4 +111,4 @@ if (count($stock_locations) > 1) {
     <table id="table"></table>
 </div>
 
-<?php $this->load->view("partial/footer");?>
+<?php $this->load->view('partial/footer');?>

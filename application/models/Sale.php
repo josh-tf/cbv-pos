@@ -592,7 +592,7 @@ class Sale extends CI_Model
             $item_cat = $this->Item->get_item_cat($item['item_id']);
 
             // check if we have sold a computer in this sale
-            if (($item_cat == "Laptop") || ($item_cat == "Desktop")) {
+            if (($item_cat == 'Laptop') || ($item_cat == 'Desktop')) {
                 $soldComputer = true;
             }
 
@@ -716,7 +716,7 @@ class Sale extends CI_Model
         }
 
         // update the stocklist if the url (env) is set AND category is a laptop or desktop
-        if (getenv("STOCKLIST_UPDATE_URL") && $soldComputer) {
+        if (getenv('STOCKLIST_UPDATE_URL') && $soldComputer) {
 
             $request_opts = array(
                 'http' => array(
@@ -725,7 +725,7 @@ class Sale extends CI_Model
             );
 
             $context = stream_context_create($request_opts);
-            $stocklist_update = file_get_contents(getenv("STOCKLIST_UPDATE_URL"), null, $context);
+            $stocklist_update = file_get_contents(getenv('STOCKLIST_UPDATE_URL'), null, $context);
 
         }
 

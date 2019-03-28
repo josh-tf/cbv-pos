@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-require_once("Secure_Controller.php");
+require_once('Secure_Controller.php');
 
 define('PRICE_MODE_STANDARD', 0);
 define('PRICE_MODE_KIT', 1);
@@ -524,7 +524,7 @@ class Sales extends Secure_Controller
 		$employee_id = $this->Employee->get_logged_in_employee_info()->person_id;
 		$employee_info = $this->Employee->get_info($employee_id);
 		$data['employee'] = $employee_info->first_name . ' ' . $employee_info->last_name[0];
-		$data['company_info'] = implode("\n", array(
+		$data['company_info'] = implode('\n', array(
 			$this->config->item('address'),
 			$this->config->item('phone'),
 			$this->config->item('conc_id')
@@ -538,15 +538,15 @@ class Sales extends Secure_Controller
 		$customer_id = $this->sale_lib->get_customer();
 		$invoice_number_enabled = $this->sale_lib->get_invoice_number_enabled();
 		$invoice_number = $this->sale_lib->get_invoice_number();
-		$data["invoice_number"] = $invoice_number;
+		$data['invoice_number'] = $invoice_number;
 		$work_order_number = $this->sale_lib->get_work_order_number();
-		$data["work_order_number"] = $work_order_number;
+		$data['work_order_number'] = $work_order_number;
 		$quote_number = $this->sale_lib->get_quote_number();
-		$data["quote_number"] = $quote_number;
+		$data['quote_number'] = $quote_number;
 		$customer_info = $this->_load_customer_data($customer_id, $data);
 		if($customer_info != NULL)
 		{
-			$data["customer_comments"] = $customer_info->comments;
+			$data['customer_comments'] = $customer_info->comments;
 		}
 		$data['taxes'] = $this->sale_lib->get_taxes();
 		$data['discount'] = $this->sale_lib->get_discount();
@@ -785,8 +785,8 @@ class Sales extends Secure_Controller
 		if(!empty($sale_data['customer_email']))
 		{
 			$to = $sale_data['customer_email'];
-			$number = $sale_data[$type."_number"];
-			$subject = $this->lang->line("sales_$type") . ' ' . $number;
+			$number = $sale_data[$type.'_number'];
+			$subject = $this->lang->line('sales_$type') . ' ' . $number;
 
 			$text = $this->config->item('invoice_email_message');
 			$tokens = array(new Token_invoice_sequence($sale_data['invoice_number']),
@@ -795,16 +795,16 @@ class Sales extends Secure_Controller
 			$text = $this->token_lib->render($text, $tokens);
 
 			// generate email attachment: invoice in pdf format
-			$html = $this->load->view("sales/" . $type . "_email", $sale_data, TRUE);
+			$html = $this->load->view('sales/' . $type . '_email', $sale_data, TRUE);
 			// load pdf helper
 			$this->load->helper(array('dompdf', 'file'));
-			$filename = sys_get_temp_dir() . '/' . $this->lang->line("sales_$type") . '-' . str_replace('/', '-', $number) . '.pdf';
+			$filename = sys_get_temp_dir() . '/' . $this->lang->line('sales_$type') . '-' . str_replace('/', '-', $number) . '.pdf';
 			if(file_put_contents($filename, pdf_create($html)) !== FALSE)
 			{
 				$result = $this->email_lib->sendEmail($to, $subject, $text, $filename);
 			}
 
-			$message = $this->lang->line($result ? "sales_" . $type . "_sent" : "sales_" . $type . "_unsent") . ' ' . $to;
+			$message = $this->lang->line($result ? 'sales_' . $type . '_sent' : 'sales_' . $type . '_unsent') . ' ' . $to;
 		}
 
 		echo json_encode(array('success' => $result, 'message' => $message, 'id' => $sale_id));
@@ -889,7 +889,7 @@ class Sales extends Secure_Controller
 				$data['customer_total'] = empty($cust_stats) ? 0 : $cust_stats->total;
 			}
 
-			$data['customer_info'] = implode("\n", array(
+			$data['customer_info'] = implode('\n', array(
 				$data['customer'],
 				$data['customer_address'],
 				$data['customer_location'],
@@ -953,7 +953,7 @@ class Sales extends Secure_Controller
 		$data['invoice_number'] = $sale_info['invoice_number'];
 		$data['quote_number'] = $sale_info['quote_number'];
 		$data['sale_status'] = $sale_info['sale_status'];
-		$data['company_info'] = implode("\n", array(
+		$data['company_info'] = implode('\n', array(
 			$this->config->item('address'),
 			$this->config->item('phone'),
 			$this->config->item('conc_id')
@@ -1099,7 +1099,7 @@ class Sales extends Secure_Controller
 
 		$data = $this->xss_clean($data);
 
-		$this->load->view("sales/register", $data);
+		$this->load->view('sales/register', $data);
 	}
 
 	public function receipt($sale_id)
