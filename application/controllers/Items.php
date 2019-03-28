@@ -479,6 +479,25 @@ class Items extends Secure_Controller
 
             echo json_encode(array('success' => false, 'message' => $message, 'id' => -1));
         }
+
+        // update the stocklist if the url (env) is set AND category is a laptop or desktop
+        if (getenv("STOCKLIST_UPDATE_URL")) {
+
+            if (($this->input->post('category') == "Laptop") || ($this->input->post('category') == "Desktop")) {
+
+                $request_opts = array(
+                    'http' => array(
+                        'method' => 'GET',
+                    ),
+                );
+
+                $context = stream_context_create($request_opts);
+                $stocklist_update = file_get_contents(getenv("STOCKLIST_UPDATE_URL"), null, $context);
+
+            }
+
+        }
+
     }
 
     public function check_item_number()
