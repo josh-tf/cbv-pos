@@ -51,7 +51,7 @@ Next we will run the automated build process - note that as docker binds to Unix
 
 **Note:** For Windows these commands can be run through Powershell.
 
-Enter the working directory and copy the `docker-compose` file:
+Enter the working directory, copy the `docker-compose` file and start the installation:
 ```sh
 cd ./cbvpos
 cp ./deploy/docker/docker-compose/development/docker-compose.yml .
@@ -79,7 +79,7 @@ After the build process is complete, you will be able to access the installation
 
 ## The Wiki
 
-We have a Wiki available with some basic information and guides, for more information you can check it out [here](https://github.com/josh-tf/cbvpos/wiki).
+We have a Wiki available with some basic information and guides, for more information you can check it out [here](https://github.com/josh-tf/cbvpos/wiki). You can view some more details on our modified docker image at [docker-hub:cbv-php](https://cloud.docker.com/repository/docker/joshtf/cbv-php).
 
 ## Contributing
 
