@@ -1,22 +1,27 @@
-node_modules
-tmp
-application/config/email.php
-application/sessions/*
-application/logs/*
-application/uploads/*
-public/license/.licenses
-public/license/bower.LICENSES
-public/dist
-public/uploads
-dist/
-public/bower_components
+# application files (mostly created on build or are tmp files)
+app/node_modules
+app/tmp
+app/application/config/email.php
+app/application/sessions/*git
+app/application/logs/*
+app/application/uploads/*
+app/public/license/.licenses
+app/public/license/bower.LICENSES
+app/public/dist
+app/app/public/uploads
+app/dist/
+app/public/bower_components
+
+# other files
 *.bash
-.swp
-.buildpath
-.project
-.settings/*
-vendor/
-.env
+*.swp
+*.buildpath
+*.project
+*.settings/*
+*vendor/
+
+# shhh its a secret
+*.env
 
 # ide
 .vscode
