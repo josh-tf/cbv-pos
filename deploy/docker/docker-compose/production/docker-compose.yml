@@ -1,11 +1,9 @@
-# https://computerbank.org.au - Josh Bowden 2019-03-27
+# https://computerbank.org.au - Josh Bowden 2019-04-01
 
 # Docker-Compose file - using ver 2 for compatibility
-# download and run php, mysql and phpmyadmin containers
-# downloads node, php modules on build.
+# production containers for pos/web, db and some utils
 
-# sets up reverse nginx proxy for mapping hostname to
-# container along with lets encrypt SSL generation
+# .env file required, see source for example.
 
 version: '2'
 services:
@@ -75,7 +73,6 @@ services:
         container_name: cbv-prod-pma
         image: phpmyadmin/phpmyadmin
         environment:
-        environment:
                 - PMA_HOST=cbv-prod-db
         links:
                 - cbv-prod-db
@@ -131,7 +128,7 @@ services:
     cbvposdev-build-php:
         container_name: cbv-prod-pos-build-php
         image: lucor/php7-cli
-        command: "php bin/install.php translations develop"
+        command: "php /app/bin/install.php translations develop"
         volumes:
                 - ./pos:/app
 

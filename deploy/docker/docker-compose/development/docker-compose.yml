@@ -1,4 +1,4 @@
-# https://github.com/josh-tf/cbvpos
+# https://github.com/josh-tf/cbvpos  - Josh Bowden 2019-04-01
 # Docker-Compose file - using ver 2 for compatibility
 # download and run php, mysql and phpmyadmin containers
 # downloads node, php modules on build.
@@ -6,50 +6,45 @@
 version: '2'
 services:
 
-    cbvposdev-php:
-        container_name: cbvposdev-php
+    cbv-dev-pos:
+        container_name: cbv-dev-pos
         environment:
-            - PHP_TIMEZONE=UTC
+            - PHP_TIMEZONE=Australia/Melbourne
+            - MYSQL_DB_NAME=cbvpos
             - MYSQL_USERNAME=admin
             - MYSQL_PASSWORD=pointofsale
-            - MYSQL_DB_NAME=cbvpos
-            - MYSQL_HOST_NAME=cbvposdev-db
-        image: joshtf/cbvposdev-php
+            - MYSQL_HOST_NAME=cbv-dev-db
+        image: joshtf/cbv-php
         links:
-                - cbvposdev-db
+                - cbv-dev-db
         ports:
                 - "80:80"
         restart: always
         volumes:
                 - uploads:/app/public/uploads
-                - ./:/app
+                - ./app/:/app
 
-    cbvposdev-db:
-        container_name: cbvposdev-db
+    cbv-dev-db:
+        container_name: cbv-dev-db
         environment:
-            - MYSQL_ROOT_PASSWORD=pointofsale
-            - MYSQL_DATABASE=cbvpos
             - MYSQL_USER=admin
+            - MYSQL_DATABASE=cbvpos
             - MYSQL_PASSWORD=pointofsale
-        image: joshtf/cbvposdev-db
+            - MYSQL_ROOT_PASSWORD=pointofsale
+        image: mysql:5.7
         ports:
                 - "3306:3306"
         restart: always
         volumes:
-                - ./database/cbvpos_import.sql:/docker-entrypoint-initdb.d/dump.sql
+                - ./app/database/cbvpos_import.sql:/docker-entrypoint-initdb.d/dump.sql
 
-    cbvposdev-pma:
-        container_name: cbvposdev-pma
+    cbv-dev-pma:
+        container_name: cbv-dev-pma
         environment:
-            - MYSQL_ROOT_PASSWORD=pointofsale
-            - MYSQL_DATABASE=cbvpos
-            - MYSQL_USER=admin
-            - MYSQL_PASSWORD=pointofsale
-            - MYSQL_HOST_NAME=cbvposdev-db
-            - PMA_HOST=cbvposdev-db
-        image: joshtf/cbvposdev-pma
+                - PMA_HOST=cbv-dev-db
+        image: phpmyadmin/phpmyadmin
         links:
-                - cbvposdev-db
+                - cbv-dev-db
         ports:
                 - "8080:80"
         restart: always
@@ -64,21 +59,21 @@ services:
         image: composer/composer
         command: "install"
         volumes:
-                - ./:/app
+                - ./app/:/app
 
     cbvposdev-build-php:
         container_name: cbvposdev-build-php
         image: lucor/php7-cli
-        command: "php bin/install.php translations develop"
+        command: "php install.php translations develop"
         volumes:
-                - ./:/app
+                - ./deploy/scripts/:/app
 
     cbvposdev-build-nodejs:
         container_name: cbvposdev-build-nodejs
         image: digitallyseamless/nodejs-bower-grunt
         command: bash -c "cd /app && npm install && bower install"
         volumes:
-                - ./:/app
+                - ./app/:/app
 
 volumes:
     uploads:
