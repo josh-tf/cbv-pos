@@ -29,7 +29,7 @@ services:
                 - "443"
         volumes:
                 - uploads:/app/public/uploads
-                - ./pos:/app
+                - ./cbvpos/app:/app
         restart: always
 
     cbv-prod-web: # cbv main wordpress website
@@ -123,21 +123,21 @@ services:
         image: composer/composer
         command: "install"
         volumes:
-                - ./pos:/app
+                - ./cbvpos/app:/app
 
     cbvposdev-build-php:
         container_name: cbv-prod-pos-build-php
         image: lucor/php7-cli
-        command: "php /app/bin/install.php translations develop"
+        command: "php /app/deploy/scripts/install.php translations develop"
         volumes:
-                - ./pos:/app
+                - ./cbvpos:/app
 
     cbvposdev-build-nodejs:
         container_name: cbv-prod-pos-build-nodejs
         image: digitallyseamless/nodejs-bower-grunt
         command: bash -c "cd /app && npm install && bower install"
         volumes:
-                - ./pos:/app
+                - ./cbvpos/app:/app
 
 # Volumes
 #   - uploads for cbvpos use

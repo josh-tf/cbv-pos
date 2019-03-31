@@ -22,7 +22,7 @@ services:
         restart: always
         volumes:
                 - uploads:/app/public/uploads
-                - ./app/:/app
+                - ./app:/app
 
     cbv-dev-db:
         container_name: cbv-dev-db
@@ -59,21 +59,21 @@ services:
         image: composer/composer
         command: "install"
         volumes:
-                - ./app/:/app
+                - ./app:/app
 
     cbvposdev-build-php:
         container_name: cbvposdev-build-php
         image: lucor/php7-cli
-        command: "php install.php translations develop"
+        command: "php /app/deploy/scripts/install.php translations develop"
         volumes:
-                - ./deploy/scripts/:/app
+                - ./:/app
 
     cbvposdev-build-nodejs:
         container_name: cbvposdev-build-nodejs
         image: digitallyseamless/nodejs-bower-grunt
         command: bash -c "cd /app && npm install && bower install"
         volumes:
-                - ./app/:/app
+                - ./app:/app
 
 volumes:
     uploads:
