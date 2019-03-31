@@ -1,9 +1,8 @@
 # Computerbank Point of Sale
 
-![Computerbank](https://cbv.josh.tf/wp-content/uploads/2018/03/banner.png)
+![Computerbank](https://i.imgur.com/QyNlLow.png)
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/josh-tf/cbvpos/graphs/commit-activity)
-[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://cbvpos.josh.tf)
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/josh-tf/cbvpos.svg)](https://github.com/josh-tf/cbvpos/pulls/)
 [![GitHub issues](https://img.shields.io/github/issues/josh-tf/cbvpos.svg)](https://GitHub.com/josh-tf/cbvpos/issues/)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
