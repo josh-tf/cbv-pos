@@ -47,10 +47,14 @@ git clone https://github.com/josh-tf/cbvpos.git
 ```
 
  &nbsp;
-Next we will run the automated build process - note that as docker binds to Unix ports, sudo will be required on *nix variants unless you are added to the `docker` usergroup. Please refer to [this article](https://docs.docker.com/install/linux/linux-postinstall/) for more details.
+Next we will run the automated build process - note that as docker binds to Unix ports and as such, sudo will be required on *nix variants unless you are added to the `docker` usergroup (recommended). Please refer to [this article](https://docs.docker.com/install/linux/linux-postinstall/) for more details.
 
+**Note:** For Windows these commands can be run through Powershell.
+
+Enter the working directory and copy the `docker-compose` file:
 ```sh
 cd ./cbvpos
+cp ./deploy/docker/docker-compose/development/docker-compose.yml .
 docker-compose up -d
 ```
 
@@ -60,7 +64,7 @@ The automatic build process will take a *few minutes* to complete and depends on
 
 The automatic build involves a number of steps including the creation of docker network and volumes, sourcing and deploying container images from [Docker Hub](https://hub.docker.com/r/joshtf/) and building the required dependencies (php, node) files.
 
-**Optional**: Enable ssl support via this guide on the wiki: [Enabling HTTPS/SSL on your install](https://github.com/josh-tf/cbvpos/wiki/Using-HTTPS-SSL-on-your-install)
+**Optional**: Enable ssl support via this guide on the wiki (not available for localhost): [Enabling HTTPS/SSL on your install](https://github.com/josh-tf/cbvpos/wiki/Using-HTTPS-SSL-on-your-install)
 
 ## Access the installation
 
