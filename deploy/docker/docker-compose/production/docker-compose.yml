@@ -91,6 +91,7 @@ services:
                 - /etc/nginx/vhost.d
                 - /usr/share/nginx/html
                 - /var/run/docker.sock:/tmp/docker.sock:ro
+                - ./proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
         restart: always
 
     cbv-prod-ssl-certs: # letsencrypt SSL generator for containers
