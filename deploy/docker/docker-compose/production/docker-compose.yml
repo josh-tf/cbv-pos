@@ -55,6 +55,7 @@ services:
                 - "443"
         volumes:
                 - ./web:/app/public
+                - ./conf/php.ini:/usr/local/etc/php/conf.d/uploads.ini
         restart: always
 
     cbv-prod-db: # MariaDB for wordpress and cbvpos
@@ -91,7 +92,7 @@ services:
                 - /etc/nginx/vhost.d
                 - /usr/share/nginx/html
                 - /var/run/docker.sock:/tmp/docker.sock:ro
-                - ./proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
+                - ./conf/proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
         restart: always
 
     cbv-prod-ssl-certs: # letsencrypt SSL generator for containers
