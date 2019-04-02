@@ -52,8 +52,7 @@ Next we will run the automated build process - note that as docker binds to Unix
 
 Enter the working directory, copy the `docker-compose` file and start the installation:
 ```sh
-cd ./cbvpos
-cp ./deploy/docker/docker-compose/development/docker-compose.yml .
+cp ./cbvpos/deploy/docker/development/docker-compose.yml .
 docker-compose up -d
 ```
 
