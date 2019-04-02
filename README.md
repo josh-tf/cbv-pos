@@ -70,7 +70,7 @@ After the build process is complete, you will be able to access the installation
 
 | Details | Description |
 |---|-----------------------------------------------|
-| [localhost](http://localhost) | cbvpos Installation) |
+| [localhost](http://localhost) | cbvpos Installation |
 | [localhost:8080](http://localhost:8080) | PHPMyAdmin (Database Management) |
 | admin | Default username |
 |  pointofsale | Default Password |
