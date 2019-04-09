@@ -1,3 +1,10 @@
+<?php 
+// if state or country are blank then set default values
+$person_info->state = ($person_info->state == NULL ? 'Victoria' : $person_info->state);
+$person_info->country = ($person_info->country ==  NULL ? 'Australia' : $person_info->country);
+
+?>
+
 <div class="form-group form-group-sm">
 	<?php echo form_label($this->lang->line('common_first_name'), 'first_name', array('class' => 'required control-label col-xs-3')); ?>
 	<div class='col-xs-8'>
@@ -93,13 +100,6 @@
 </div>
 
 <div class="form-group form-group-sm">
-    <?php /* check if person_info->state is null, then load 'Victoria' else load $person_info */
-if ($person_info->state == "") {
-    $person_info->state = "Victoria";
-}
-?>
-
-<div class="form-group form-group-sm">
 	<?php echo form_label($this->lang->line('common_state'), 'state', array('class' => 'control-label col-xs-3')); ?>
 	<div class='col-xs-8'>
 		<?php echo form_input(array(
@@ -122,13 +122,6 @@ if ($person_info->state == "") {
 ); ?>
 	</div>
 </div>
-
-<div class="form-group form-group-sm">
-    <?php /* check if person_info->country is null, then load 'Australia' else load $person_info */
-if ($person_info->country == "") {
-    $person_info->country = "Australia";
-}
-?>
 
 <div class="form-group form-group-sm">
 	<?php echo form_label($this->lang->line('common_country'), 'country', array('class' => 'control-label col-xs-3')); ?>
