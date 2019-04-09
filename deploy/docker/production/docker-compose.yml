@@ -32,7 +32,7 @@ services:
                 - ./cbvpos/app:/app
         restart: always
         extra_hosts:
-               - "${web_main_host}:${server_ip}"
+                - "${web_main_host}:${server_ip}"
  
    cbv-prod-web: # cbv main wordpress website
         container_name: cbv-prod-web
