@@ -26,12 +26,15 @@ if (!empty($stats)) {
 				<div class="form-group form-group-sm">
 					<?php echo form_label($this->lang->line('customers_conc_id'), 'conc_id', array('class' => 'control-label col-xs-3')); ?>
 					<div class='col-xs-6'>
-						<?php echo form_input(array(
-    'name' => 'conc_id',
-    'id' => 'conc_id',
-    'class' => 'form-control input-sm',
-    'value' => $person_info->conc_id)
-); ?>
+						<div class="input-group input-group-sm">
+							<span class="input-group-addon input-sm"><b>CRN</b></span>
+							<?php echo form_input(array(
+							'name' => 'conc_id',
+							'id' => 'conc_id',
+							'class' => 'form-control input-sm',
+							'value' => $person_info->conc_id)
+						); ?>
+						</div>
 					</div>
 
 						<div class="lookup">
