@@ -229,8 +229,11 @@ class Item extends CI_Model
         if ($filters['in_stock'] != false) {
             $this->db->where('quantity > 0', null);
         }
-        if ($filters['cat_computer'] != false) {
-            $this->db->where('`category` = "Laptop" OR `category` = "Desktop"', null);
+        if ($filters['cat_avail_computer'] != false) {
+            $this->db->where('( `category` = "Laptop" OR `category` = "Desktop" ) AND `quantity` > 0', null);
+        }
+        if ($filters['cat_sold_computer'] != false) {
+            $this->db->where('( `category` = "Laptop" OR `category` = "Desktop" ) AND `quantity` <= 0', null);
         }
         if ($filters['low_inventory'] != false) {
             $this->db->where('quantity <=', 'reorder_level');
