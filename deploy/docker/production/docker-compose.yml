@@ -31,8 +31,10 @@ services:
                 - uploads:/app/public/uploads
                 - ./cbvpos/app:/app
         restart: always
-
-    cbv-prod-web: # cbv main wordpress website
+        extra_hosts:
+               - "${web_main_host}:${server_ip}"
+ 
+   cbv-prod-web: # cbv main wordpress website
         container_name: cbv-prod-web
         image: joshtf/cbv-php
         environment:
