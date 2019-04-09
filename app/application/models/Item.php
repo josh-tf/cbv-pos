@@ -226,18 +226,21 @@ class Item extends CI_Model
         }
 
         $this->db->where('items.deleted', $filters['is_deleted']);
-        if ($filters['in_stock'] != false) {
-            $this->db->where('quantity > 0', null);
-        }
         if ($filters['cat_avail_computer'] != false) {
-            $this->db->where('( `category` = "Laptop" OR `category` = "Desktop" ) AND `quantity` > 0', null);
+            $this->db->where('`category` in("Laptop","Desktop") AND `quantity` > 0', null);
         }
         if ($filters['cat_sold_computer'] != false) {
-            $this->db->where('( `category` = "Laptop" OR `category` = "Desktop" ) AND `quantity` <= 0', null);
+            $this->db->where('`category` in("Laptop","Desktop")AND `quantity` <= 0', null);
         }
-        if ($filters['low_inventory'] != false) {
-            $this->db->where('quantity <=', 'reorder_level');
+        if ($filters['in_stock'] != false) {
+            $this->db->where('quantity > 0 AND `category` NOT in("Laptop","Desktop")', null);
         }
+        if ($filters['out_stock'] != false) {
+            $this->db->where('quantity <= 0 AND `category` NOT in("Laptop","Desktop")', null);
+        }
+       // if ($filters['low_inventory'] != false) {
+       //     $this->db->where('quantity <=', 'reorder_level');
+       // }
 
         // get_found_rows case
         if ($count_only == true) {
