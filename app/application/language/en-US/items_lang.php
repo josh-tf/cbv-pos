@@ -117,5 +117,5 @@ $lang["custom9_helper"]= "e.g DVD-RW";
 $lang["custom10_helper"]= "e.g All-in-One (if applicable)";
 $lang["custom11_helper"]= "e.g 2.2";
 $lang["custom12_helper"]= "e.g 150";
-$lang["custom13_helper"]= "Include any extras such as widescreen, speakers, new bag, etc.";
+$lang["custom13_helper"]= "SSD, Wifi, etc - Max 35 chars";
 $lang["custom14_helper"]= "Include any other notes for staff viewing only";
