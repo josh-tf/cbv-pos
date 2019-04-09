@@ -549,11 +549,12 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
             'type' => $type,
             'step' => $step,
             'class' => 'form-control input-sm' . ' custom' . $i, // add the class for custom resizing of indv fields via css
-            'value' => $item_arr['custom' . $i],
+			'value' => $item_arr['custom' . $i],
+			'maxlength' => ($i == 13 ? '35' : '255' ), // max 35chars for the 'extras' field as this is displayed on the sales ticket
             'placeholder' => $this->lang->line('custom' . $i . '_helper')); //Add a placeholder example text from the lang file
 
-        //Show a textarea instead of a input type for the "Other Notes" and "Extras" fields
-        echo ($i == 13 || $i == 14 ? form_textarea($inputContents) : form_input($inputContents));
+        //Show a textarea instead of a input type for the "Other Notes" field
+		echo ($i == 14 ? form_textarea($inputContents) : form_input($inputContents));
         ?>
 						</div>
 					</div>
