@@ -77,7 +77,7 @@ $(document).ready(function()
 
 <?php echo form_open(base_url('items/sales_ticket'), array('id' => 'login', 'class' => 'login')); ?>
 
-    <button class='btn btn-info btn-sm pull-right' id="cbvid-btn" onclick="openTicket()">
+    <button class='btn btn-info btn-sm pull-right' id="cbvid-btn" onclick="return checkInput()">
         <span class="glyphicon glyphicon-file">&nbsp</span>Generate Ticket
     </button>
 
@@ -106,6 +106,20 @@ if (count($stock_locations) > 1) {
 ?>
     </div>
 </div>
+
+<script type="text/javascript">
+
+function checkInput() { // check that a value is selected before submitting form
+    var x;
+    x = document.getElementById("cbv_id").value;
+    if (x == "" || x == "CBV ID:") {
+        document.getElementById("cbv_id").focus(); // if blank then set focus
+        return false; // and cancel submit
+    };
+}
+
+</script>
+
 
 <div id="table_holder">
     <table id="table"></table>
