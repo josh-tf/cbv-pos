@@ -1,4 +1,4 @@
-<?php 
+<?php
 // if state or country are blank then set default values
 $person_info->state = ($person_info->state == NULL ? 'Victoria' : $person_info->state);
 $person_info->country = ($person_info->country ==  NULL ? 'Australia' : $person_info->country);
@@ -6,7 +6,7 @@ $person_info->country = ($person_info->country ==  NULL ? 'Australia' : $person_
 ?>
 
 <div class="form-group form-group-sm">
-	<?php echo form_label($this->lang->line('common_first_name'), 'first_name', array('class' => 'required control-label col-xs-3')); ?>
+	<?php echo form_label(($this->uri->segment(1) == "employees" ? $this->lang->line('common_employee_name') : $this->lang->line('common_first_name')), 'first_name', array('class' => 'required control-label col-xs-3'));  //if employees page then show 'display name' ?>
 	<div class='col-xs-8'>
 		<?php echo form_input(array(
     'name' => 'first_name',
@@ -17,20 +17,20 @@ $person_info->country = ($person_info->country ==  NULL ? 'Australia' : $person_
 	</div>
 </div>
 
-<div class="form-group form-group-sm">
-	<?php echo form_label($this->lang->line('common_last_name'), 'last_name', array('class' => 'required control-label col-xs-3')); ?>
+<div class="form-group form-group-sm" <?php echo ($this->uri->segment(1) == "employees" ? 'style="display:none;"' : '') // hide from employee form ?>>
+	<?php	echo form_label($this->lang->line('common_last_name'), 'last_name', array('class' => ($this->uri->segment(1) == "employees" ? '' : 'required ') . 'control-label col-xs-3')); //if employees page then last name is optional ?>
 	<div class='col-xs-8'>
 		<?php echo form_input(array(
     'name' => 'last_name',
     'id' => 'last_name',
     'class' => 'form-control input-sm',
-    'value' => $person_info->last_name)
+    'value' => $person_info->last_name) // common_employee_name
 ); ?>
 	</div>
 </div>
 
 
-				<div class="form-group form-group-sm">
+				<div class="form-group form-group-sm" <?php echo ($this->uri->segment(1) == "employees" ? 'style="display:none;"' : '') // hide from employee form ?>>
 					<?php echo form_label($this->lang->line('customers_company_name'), 'company_name', array('class' => 'control-label col-xs-3')); ?>
 					<div class='col-xs-8'>
 						<?php echo form_input(array(

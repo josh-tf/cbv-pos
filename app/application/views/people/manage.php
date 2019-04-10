@@ -53,7 +53,7 @@ if ($controller_name == 'customers') {
 
 <!-- Look up Customer ID -->
 
-    <form id="conc_check_fr" action="/customers/lookup/" method="post">
+    <form <?php echo ($this->uri->segment(1) == "employees" ? 'style="display:none;"' : '') // hide from employee form ?>  id="conc_check_fr" action="/customers/lookup/" method="post">
 	<button class='btn btn-info btn-sm pull-right'>
         <span class="glyphicon glyphicon-file">&nbsp</span>Lookup ID
     </button>

@@ -180,8 +180,8 @@ function get_people_manage_table_headers()
 
 	$headers = array(
 		array('people.person_id' => $CI->lang->line('common_id')),
-		array('last_name' => $CI->lang->line('common_last_name')),
-		array('first_name' => $CI->lang->line('common_first_name')),
+		array('first_name' => $CI->lang->line('common_employee_name')),
+		//array('last_name' => $CI->lang->line('common_last_name')),
 		array('email' => $CI->lang->line('common_email')),
 		array('phone_number' => $CI->lang->line('common_phone_number'))
 	);

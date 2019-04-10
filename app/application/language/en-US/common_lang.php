@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["common_address_1"] = "Address";
 $lang["common_address_2"] = "Address 2";
@@ -33,6 +33,7 @@ $lang["common_import_full_path"] = "Full path to excel file required";
 $lang["common_import_remove_file"] = "Remove";
 $lang["common_import_select_file"] = "Select file";
 $lang["common_inv"] = "inv";
+$lang["common_employee_name"] = "Display Name";
 $lang["common_last_name"] = "Last Name";
 $lang["common_last_name_required"] = "Last Name is a required field.";
 $lang["common_last_page"] = "Last";
