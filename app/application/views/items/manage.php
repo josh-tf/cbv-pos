@@ -58,7 +58,7 @@ $(document).ready(function()
 
 
     $('#cbvid_check_form').submit(function() {
-    if ($.trim($("#cbvid_check").val()) === "" || $.trim($("#cbvid_check").val()) === "CBV ID:") {
+    if ($.trim($("#cbvid_check").val()) === "" || $.trim($("#cbvid_check").val()) === "<?php echo $this->lang->line('lookup_cbvid_default') ?>") {
 		$("#cbvid_check").focus();
         return false; // ignore if nothing entered
     }

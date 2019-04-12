@@ -27,7 +27,7 @@ $(document).ready(function()
 	});
 
 $('#conc_check_form').submit(function() {
-    if ($.trim($("#conc_id_check").val()) === "" || $.trim($("#conc_id_check").val()) === "Concession ID:") {
+    if ($.trim($("#conc_id_check").val()) === "" || $.trim($("#conc_id_check").val()) === "<?php echo $this->lang->line('lookup_conc_id_default') ?>") {
 		$("#conc_id_check").focus();
         return false; // ignore if nothing entered
     }
@@ -73,7 +73,7 @@ if ($controller_name == 'customers') {
 <div id="toolbar">
 	<div class="pull-left btn-toolbar">
 		<button id="delete" class="btn btn-default btn-sm">
-			<span class="glyphicon glyphicon-trash">&nbsp</span><?php echo $this->lang->line("common_delete"); ?>
+			<span class="glyphicon glyphicqon-trash">&nbsp</span><?php echo $this->lang->line("common_delete"); ?>
 		</button>
 		<button id="email" class="btn btn-default btn-sm">
 			<span class="glyphicon glyphicon-envelope">&nbsp</span><?php echo $this->lang->line("common_email"); ?>
