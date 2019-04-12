@@ -38,7 +38,21 @@ if (!empty($stats)) {
 					</div>
 
 						<div class="lookup">
-						<label for="submit-conc" class="lookupConc">Lookup</label>
+
+<!-- Look up Customer ID -->
+<?php
+
+echo form_open(base_url('/customers/lookup/'), array('id' => 'conc_check_form', 'class' => 'conc_check_form', 'target' => '_blank'));
+
+$submitLabel = array(
+	'class' => 'lookupConc',
+	'onClick' => 'conc_check_form.submit()',
+);
+
+echo form_label('Lookup', 'conc_id', $submitLabel);
+echo form_close();
+?>
+
                         </div>
 					</div>
 
