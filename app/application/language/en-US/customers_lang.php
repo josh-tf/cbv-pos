@@ -36,4 +36,3 @@ $lang["customers_update"] = "Update Customer";
 $lang["rewards_package"] = "Rewards Package";
 $lang["lookup_conc_id"] = "Lookup ID";
 $lang["lookup_conc_id_default"] = "Concession ID:";
-

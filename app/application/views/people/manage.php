@@ -53,7 +53,7 @@ if ($controller_name == 'customers') {
 	</button>
 
 <!-- Look up Customer ID -->
-<div <?php echo ($this->uri->segment(1) == "employees" ? 'style="display:none;"' : '') // hide from employee form  ?>>
+<div <?php echo ($this->uri->segment(1) == "employees" ? 'style="display:none;"' : '') // hide from employee form    ?>>
 
 <?php echo form_open(base_url('/customers/lookup/'), array('id' => 'conc_check_form', 'class' => 'conc_check_form'));
 
