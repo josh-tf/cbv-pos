@@ -53,17 +53,18 @@ if ($controller_name == 'customers') {
 	</button>
 
 <!-- Look up Customer ID -->
-<div <?php echo ($this->uri->segment(1) == "employees" ? 'style="display:none;"' : '') // hide from employee form    ?>>
+<?php if ($controller_name == 'customers') {
 
-<?php echo form_open(base_url('/customers/lookup/'), array('id' => 'conc_check_form', 'class' => 'conc_check_form'));
+    echo form_open(base_url('/customers/lookup/'), array('id' => 'conc_check_form', 'class' => 'conc_check_form'));
 
-$btnContent = '<span class="glyphicon glyphicon-file">&nbsp</span>' . $this->lang->line('lookup_conc_id');
+    $btnContent = '<span class="glyphicon glyphicon-file">&nbsp</span>' . $this->lang->line('lookup_conc_id');
 
-echo form_button(['type' => 'submit', 'id' => 'conc_check_btn', 'content' => $btnContent, 'class' => 'btn btn-info btn-sm pull-right']);
-echo form_input(['type' => 'hidden', 'name' => $this->security->get_csrf_token_name(), 'value' => $this->security->get_csrf_token_name()]);
-echo form_input(['type' => 'text', 'id' => 'conc_id_check', 'name' => 'conc_id_check', 'value' => $this->lang->line('lookup_conc_id_default'), 'class' => 'form-control input-sm conc_id_check', 'onFocus' => 'this.value=\'\'']);
+    echo form_button(['type' => 'submit', 'id' => 'conc_check_btn', 'content' => $btnContent, 'class' => 'btn btn-info btn-sm pull-right']);
+    echo form_input(['type' => 'hidden', 'name' => $this->security->get_csrf_token_name(), 'value' => $this->security->get_csrf_token_name()]);
+    echo form_input(['type' => 'text', 'id' => 'conc_id_check', 'name' => 'conc_id_check', 'value' => $this->lang->line('lookup_conc_id_default'), 'class' => 'form-control input-sm conc_id_check', 'onFocus' => 'this.value=\'\'']);
 
-echo form_close();
+    echo form_close();
+}
 ?>
 </div>
 
