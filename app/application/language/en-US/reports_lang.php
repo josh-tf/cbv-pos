@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["reports_all"] = "All";
 $lang["reports_canceled"] = "Canceled";
@@ -31,7 +31,7 @@ $lang["reports_detailed_reports"] = "Detailed Reports";
 $lang["reports_detailed_requisition_report"] = "";
 $lang["reports_detailed_sales_report"] = "Detailed Transactions Report";
 $lang["reports_discount"] = "Discount";
-$lang["reports_discount_percent"] = "Discount Percent";
+$lang["reports_discount_amount"] = "Discount Amount";
 $lang["reports_discounts"] = "Discounts";
 $lang["reports_discounts_summary_report"] = "Discounts Summary Report";
 $lang["reports_earned"] = "Points Earned";

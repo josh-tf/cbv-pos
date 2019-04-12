@@ -99,7 +99,6 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('date_or_time_format', ''),
 ('default_origin_tax_code', ''),
 ('default_register_mode', 'sale'),
-('default_sales_discount', '0'),
 ('default_tax_1_name', ' GST'),
 ('default_tax_1_rate', '10'),
 ('default_tax_2_name', ''),
@@ -214,7 +213,7 @@ CREATE TABLE `cbvpos_customers` (
   `conc_id` varchar(255) DEFAULT NULL,
   `taxable` int(1) NOT NULL DEFAULT '1',
   `sales_tax_code` varchar(32) NOT NULL DEFAULT '1',
-  `discount_percent` decimal(15,2) NOT NULL DEFAULT '0.00',
+  `discount_amount` decimal(15,2) NOT NULL DEFAULT '0.00',
   `package_id` int(11) DEFAULT NULL,
   `points` int(11) DEFAULT NULL,
   `deleted` int(1) NOT NULL DEFAULT '0'
@@ -224,7 +223,7 @@ CREATE TABLE `cbvpos_customers` (
 -- Dumping data for table `cbvpos_customers`
 --
 
-INSERT INTO `cbvpos_customers` (`person_id`, `company_name`, `conc_id`, `taxable`, `sales_tax_code`, `discount_percent`, `package_id`, `points`, `deleted`) VALUES
+INSERT INTO `cbvpos_customers` (`person_id`, `company_name`, `conc_id`, `taxable`, `sales_tax_code`, `discount_amount`, `package_id`, `points`, `deleted`) VALUES
 (2, '', 'JD334455', 1, '', '0.00', NULL, NULL, 0),
 (3, '', 'JS554433', 1, '', '0.00', NULL, NULL, 0);
 
@@ -521,7 +520,7 @@ CREATE TABLE `cbvpos_item_kits` (
   `item_kit_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `item_id` int(10) NOT NULL DEFAULT '0',
-  `kit_discount_percent` decimal(15,2) NOT NULL DEFAULT '0.00',
+  `kit_discount_amount` decimal(15,2) NOT NULL DEFAULT '0.00',
   `price_option` tinyint(2) NOT NULL DEFAULT '0',
   `print_option` tinyint(2) NOT NULL DEFAULT '0',
   `description` varchar(255) NOT NULL
@@ -728,7 +727,7 @@ CREATE TABLE `cbvpos_receivings_items` (
   `quantity_purchased` decimal(15,3) NOT NULL DEFAULT '0.000',
   `item_cost_price` decimal(15,2) NOT NULL,
   `item_unit_price` decimal(15,2) NOT NULL,
-  `discount_percent` decimal(15,2) NOT NULL DEFAULT '0.00',
+  `discount_amount` decimal(15,2) NOT NULL DEFAULT '0.00',
   `item_location` int(11) NOT NULL,
   `receiving_quantity` decimal(15,3) NOT NULL DEFAULT '1.000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -775,7 +774,7 @@ CREATE TABLE `cbvpos_sales_items` (
   `quantity_purchased` decimal(15,3) NOT NULL DEFAULT '0.000',
   `item_cost_price` decimal(15,2) NOT NULL,
   `item_unit_price` decimal(15,2) NOT NULL,
-  `discount_percent` decimal(15,2) NOT NULL DEFAULT '0.00',
+  `discount_amount` decimal(15,2) NOT NULL DEFAULT '0.00',
   `item_location` int(11) NOT NULL,
   `print_option` tinyint(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -784,7 +783,7 @@ CREATE TABLE `cbvpos_sales_items` (
 -- Dumping data for table `cbvpos_sales_items`
 --
 
-INSERT INTO `cbvpos_sales_items` (`sale_id`, `item_id`, `description`, `serialnumber`, `line`, `quantity_purchased`, `item_cost_price`, `item_unit_price`, `discount_percent`, `item_location`, `print_option`) VALUES
+INSERT INTO `cbvpos_sales_items` (`sale_id`, `item_id`, `description`, `serialnumber`, `line`, `quantity_purchased`, `item_cost_price`, `item_unit_price`, `discount_amount`, `item_location`, `print_option`) VALUES
 (1, 1, 'Lenovo T440, i5, 2.4 Ghz, 8 GB RAM, 250 GB HDD, Ubuntu 16.04, 14 Inch Screen, 4.4 Hours, Has SSD, New Bag', '', 2, '1.000', '0.00', '250.00', '0.00', 1, 0),
 (1, 3, 'New USB Wifi Stick', '', 1, '1.000', '0.00', '10.00', '0.00', 1, 0);
 

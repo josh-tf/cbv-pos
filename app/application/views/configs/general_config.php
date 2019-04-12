@@ -12,23 +12,6 @@
 			</div>
 
 			<div class="form-group form-group-sm">
-				<?php echo form_label($this->lang->line('config_default_sales_discount'), 'default_sales_discount', array('class' => 'control-label col-xs-2 required')); ?>
-				<div class='col-xs-2'>
-					<div class="input-group">
-						<?php echo form_input(array(
-    'name' => 'default_sales_discount',
-    'id' => 'default_sales_discount',
-    'class' => 'form-control input-sm required',
-    'type' => 'number',
-    'min' => 0,
-    'max' => 100,
-    'value' => $this->config->item('default_sales_discount'))); ?>
-						<span class="input-group-addon input-sm">%</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_receiving_calculate_average_price'), 'receiving_calculate_average_price', array('class' => 'control-label col-xs-2')); ?>
 				<div class='col-xs-1'>
 					<?php echo form_checkbox(array(
@@ -267,11 +250,6 @@ $(document).ready(function()
 				required: true,
 				remote: "<?php echo site_url($controller_name . '/check_numeric') ?>"
 			},
-			default_sales_discount:
-			{
-				required: true,
-				remote: "<?php echo site_url($controller_name . '/check_numeric') ?>"
-			},
 			gcaptcha_site_key:
 			{
 				required: "#gcaptcha_enable:checked"
@@ -284,11 +262,6 @@ $(document).ready(function()
 
 		messages:
 		{
-			default_sales_discount:
-			{
-				required: "<?php echo $this->lang->line('config_default_sales_discount_required'); ?>",
-				number: "<?php echo $this->lang->line('config_default_sales_discount_number'); ?>"
-			},
 			lines_per_page:
 			{
 				required: "<?php echo $this->lang->line('config_lines_per_page_required'); ?>",

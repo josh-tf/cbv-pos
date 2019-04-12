@@ -99,7 +99,6 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('date_or_time_format', ''),
 ('default_origin_tax_code', ''),
 ('default_register_mode', 'sale'),
-('default_sales_discount', '0'),
 ('default_tax_1_name', ' GST'),
 ('default_tax_1_rate', '10'),
 ('default_tax_2_name', ''),
@@ -214,7 +213,7 @@ CREATE TABLE `cbvpos_customers` (
   `conc_id` varchar(255) DEFAULT NULL,
   `taxable` int(1) NOT NULL DEFAULT '1',
   `sales_tax_code` varchar(32) NOT NULL DEFAULT '1',
-  `discount_percent` decimal(15,2) NOT NULL DEFAULT '0.00',
+  `discount_amount` decimal(15,2) NOT NULL DEFAULT '0.00',
   `package_id` int(11) DEFAULT NULL,
   `points` int(11) DEFAULT NULL,
   `deleted` int(1) NOT NULL DEFAULT '0'
@@ -481,7 +480,7 @@ CREATE TABLE `cbvpos_item_kits` (
   `item_kit_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `item_id` int(10) NOT NULL DEFAULT '0',
-  `kit_discount_percent` decimal(15,2) NOT NULL DEFAULT '0.00',
+  `kit_discount_amount` decimal(15,2) NOT NULL DEFAULT '0.00',
   `price_option` tinyint(2) NOT NULL DEFAULT '0',
   `print_option` tinyint(2) NOT NULL DEFAULT '0',
   `description` varchar(255) NOT NULL
@@ -676,7 +675,7 @@ CREATE TABLE `cbvpos_receivings_items` (
   `quantity_purchased` decimal(15,3) NOT NULL DEFAULT '0.000',
   `item_cost_price` decimal(15,2) NOT NULL,
   `item_unit_price` decimal(15,2) NOT NULL,
-  `discount_percent` decimal(15,2) NOT NULL DEFAULT '0.00',
+  `discount_amount` decimal(15,2) NOT NULL DEFAULT '0.00',
   `item_location` int(11) NOT NULL,
   `receiving_quantity` decimal(15,3) NOT NULL DEFAULT '1.000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -716,7 +715,7 @@ CREATE TABLE `cbvpos_sales_items` (
   `quantity_purchased` decimal(15,3) NOT NULL DEFAULT '0.000',
   `item_cost_price` decimal(15,2) NOT NULL,
   `item_unit_price` decimal(15,2) NOT NULL,
-  `discount_percent` decimal(15,2) NOT NULL DEFAULT '0.00',
+  `discount_amount` decimal(15,2) NOT NULL DEFAULT '0.00',
   `item_location` int(11) NOT NULL,
   `print_option` tinyint(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
