@@ -54,6 +54,12 @@ class Customers extends Persons
         echo json_encode($data_row);
     }
 
+    // redirect handler for the Concession ID lookup
+    public function redir()
+    {
+        $this->load->view('customers/redir'); // load the view file , we are passing $data array to view file
+    }
+
     /*
     Returns customer table data rows. This will be called with AJAX.
      */

@@ -46,6 +46,7 @@ class Items extends Secure_Controller
         $this->load->view('items/sales_ticket', $this->data); // load the view file , we are passing $data array to view file
     }
 
+    // redirect handler for the CBV ID lookup
     public function redir()
     {
         $this->load->view('items/redir'); // load the view file , we are passing $data array to view file
