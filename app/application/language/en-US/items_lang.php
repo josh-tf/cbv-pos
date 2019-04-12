@@ -123,3 +123,4 @@ $lang["custom13_helper"] = "SSD, Wifi, etc - Max 35 chars";
 $lang["custom14_helper"] = "Include any other notes for staff viewing only";
 $lang["lookup_cbvid"] = "Generate Ticket";
 $lang["lookup_cbvid_default"] = "CBV ID:";
+$lang["generate_stocklist"] = "View Stocklist";

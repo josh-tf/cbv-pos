@@ -81,7 +81,7 @@ $(document).ready(function()
     </button>
 
     <button class='btn btn-info btn-sm pull-right' onclick="window.location.href='/items/stocklist'">
-        <span class="glyphicon glyphicon-th-list">&nbsp</span>View Stocklist
+        <span class="glyphicon glyphicon-th-list">&nbsp</span><?php echo $this->lang->line('generate_stocklist') ?>
     </button>
 
 <!-- Look up CBV ID -->
@@ -110,9 +110,6 @@ echo form_close();
 				title='<?php echo $this->lang->line('items_edit_multiple_items'); ?>'>
             <span class="glyphicon glyphicon-edit">&nbsp</span><?php echo $this->lang->line("items_bulk_edit"); ?>
         </button>
-        <!-- <button id="generate_barcodes" class="btn btn-default btn-sm print_hide" data-href='<?php echo site_url($controller_name . "/generate_barcodes"); ?>' title='<?php echo $this->lang->line('items_generate_barcodes'); ?>'>
-            <span class="glyphicon glyphicon-barcode">&nbsp</span><?php echo $this->lang->line("items_generate_barcodes"); ?>
-        </button> -->
         <?php echo form_input(array('name' => 'daterangepicker', 'class' => 'form-control input-sm', 'id' => 'daterangepicker')); ?>
         <?php echo form_multiselect('filters[]', $filters, '', array('id' => 'filters', 'class' => 'selectpicker show-menu-arrow', 'data-none-selected-text' => $this->lang->line('common_none_selected_text'), 'data-selected-text-format' => 'count > 1', 'data-style' => 'btn-default btn-sm', 'data-width' => 'fit')); ?>
         <?php

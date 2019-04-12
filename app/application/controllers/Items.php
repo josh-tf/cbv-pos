@@ -41,8 +41,8 @@ class Items extends Secure_Controller
 
     public function sales_ticket()
     {
-        $cbv_id = $this->input->post('cbv_id');
-        $this->data['cbv_info'] = $this->Item->get_sales_ticket($cbv_id); // calling Item model method get_stocklist()
+        $cbvid_check = $this->input->post('cbvid_check');
+        $this->data['cbvid_check'] = $this->Item->get_sales_ticket($cbvid_check); // calling Item model method get_stocklist()
         $this->load->view('items/sales_ticket', $this->data); // load the view file , we are passing $data array to view file
     }
 
