@@ -99,7 +99,6 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('date_or_time_format', ''),
 ('default_origin_tax_code', ''),
 ('default_register_mode', 'sale'),
-('default_sales_discount', '0'),
 ('default_tax_1_name', ' GST'),
 ('default_tax_1_rate', '10'),
 ('default_tax_2_name', ''),

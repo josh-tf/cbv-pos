@@ -328,11 +328,6 @@ class Sales extends Secure_Controller
             }
         }
 
-        // if the customer discount is 0 or no customer is selected apply the default sales discount
-        if ($discount == 0) {
-            $discount = $this->config->item('default_sales_discount');
-        }
-
         $item_id_or_number_or_item_kit_or_receipt = $this->input->post('item');
         $this->barcode_lib->parse_barcode_fields($quantity, $item_id_or_number_or_item_kit_or_receipt);
         $mode = $this->sale_lib->get_mode();
