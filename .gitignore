@@ -25,3 +25,4 @@ app/public/bower_components
 
 # ide
 .vscode
+/app/application/views/customers
