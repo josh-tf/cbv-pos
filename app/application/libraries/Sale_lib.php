@@ -437,7 +437,7 @@ class Sale_lib
 				$item_count++;
 				$total_units += $item['quantity'];
 			}
-			$discount_amount = $this->get_item_discount($item['quantity'], $item['price'], $item['discount']);
+			$discount_amount = $item['discount'];
 			$total_discount = bcadd($total_discount, $discount_amount);
 
 			$extended_amount = $this->get_extended_amount($item['quantity'], $item['price']);
@@ -1141,7 +1141,7 @@ class Sale_lib
 		{
 			if($item['discount'] > 0)
 			{
-				$item_discount = $this->get_item_discount($item['quantity'], $item['price'], $item['discount']);
+				$item_discount = $item['discount'];
 				$discount = bcadd($discount, $item_discount);
 			}
 		}
@@ -1186,8 +1186,6 @@ class Sale_lib
 		$total = bcmul($quantity, $price);
 		if($include_discount)
 		{
-			$discount_amount = $this->get_item_discount($quantity, $price, $discount_amount);
-
 			return bcsub($total, $discount_amount);
 		}
 
@@ -1213,11 +1211,6 @@ class Sale_lib
 		$extended_amount = bcmul($quantity, $price);
 
 		return bcsub($extended_amount, $discount_amount);
-	}
-
-	public function get_item_discount($quantity, $price, $discount_amount) // ! revisit: not needed
-	{
-		return $discount_amount;
 	}
 
 	public function get_item_tax($quantity, $price, $discount_amount, $tax_percentage)
