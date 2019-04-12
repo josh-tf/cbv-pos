@@ -29,11 +29,11 @@ if (!empty($stats)) {
 						<div class="input-group input-group-sm">
 							<span class="input-group-addon input-sm"><b>CRN</b></span>
 							<?php echo form_input(array(
-							'name' => 'conc_id',
-							'id' => 'conc_id',
-							'class' => 'form-control input-sm',
-							'value' => $person_info->conc_id)
-						); ?>
+    'name' => 'conc_id',
+    'id' => 'conc_id',
+    'class' => 'form-control input-sm',
+    'value' => $person_info->conc_id)
+); ?>
 						</div>
 					</div>
 
@@ -190,7 +190,7 @@ if (!empty($stats)) {
         'class' => 'form-control input-sm',
         'value' => $stats->total_discount,
         'disabled' => '')
-	); ?>
+    ); ?>
 								<?php if (currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
 								<?php endif;?>
