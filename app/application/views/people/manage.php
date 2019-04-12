@@ -26,8 +26,9 @@ $(document).ready(function()
 		location.href = "mailto:" + recipients.join(",");
 	});
 
-$('#conc_check_fr').submit(function() {
+$('#conc_check_form').submit(function() {
     if ($.trim($("#conc_id_check").val()) === "" || $.trim($("#conc_id_check").val()) === "Concession ID:") {
+		$("#conc_id_check").focus();
         return false; // ignore if nothing entered
     }
 });
@@ -52,15 +53,19 @@ if ($controller_name == 'customers') {
 	</button>
 
 <!-- Look up Customer ID -->
+<div <?php echo ($this->uri->segment(1) == "employees" ? 'style="display:none;"' : '') // hide from employee form  ?>>
 
-    <form <?php echo ($this->uri->segment(1) == "employees" ? 'style="display:none;"' : '') // hide from employee form  ?>  id="conc_check_fr" action="/customers/lookup/" method="post">
-	<button class='btn btn-info btn-sm pull-right'>
-        <span class="glyphicon glyphicon-file">&nbsp</span>Lookup ID
-    </button>
-		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-		<input type="text" name="conc_id_check" id="conc_id_check" onfocus="this.value=''" value="Concession ID:" class="form-control input-sm" style="width: 125px;float: right;margin-right: 5px;">
-		<input type="submit" id="submit-conc" class="hidden" />
-	</form>
+<?php echo form_open(base_url('/customers/lookup/'), array('id' => 'conc_check_form', 'class' => 'conc_check_form'));
+
+$btnContent = '<span class="glyphicon glyphicon-file">&nbsp</span>' . $this->lang->line('lookup_conc_id');
+
+echo form_button(['type' => 'submit', 'id' => 'conc_check_btn', 'content' => $btnContent, 'class' => 'btn btn-info btn-sm pull-right']);
+echo form_input(['type' => 'hidden', 'name' => $this->security->get_csrf_token_name(), 'value' => $this->security->get_csrf_token_name()]);
+echo form_input(['type' => 'text', 'id' => 'conc_id_check', 'name' => 'conc_id_check', 'value' => $this->lang->line('lookup_conc_id_default'), 'class' => 'form-control input-sm conc_id_check', 'onFocus' => 'this.value=\'\'']);
+
+echo form_close();
+?>
+</div>
 
 </div>
 

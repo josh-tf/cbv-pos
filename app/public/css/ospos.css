@@ -332,3 +332,16 @@ td.print_hide {
 	background-color: #d1541a;
 	border-color: #d1541a;
 }
+
+/* For conc ID and CBV ID Lookup */
+input#conc_id_check {
+    width: 125px;
+    float: right;
+    margin-right: 5px;
+}
+
+input#cbvid_check {
+	width: 85px;
+	float: right;
+	margin-right: 5px;
+}
