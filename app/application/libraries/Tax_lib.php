@@ -31,12 +31,12 @@ class Tax_lib
 	/*
 	 * Compute the tax basis and returns the tax amount
 	 */
-	public function get_item_sales_tax($quantity, $price, $discount_percentage, $tax_percentage, $rounding_code)
+	public function get_item_sales_tax($quantity, $price, $discount_amount, $tax_percentage, $rounding_code)
 	{
 		$decimals = tax_decimals();
 
 		// The tax basis should be returned at the currency scale
-		$tax_basis = $this->CI->sale_lib->get_item_total($quantity, $price, $discount_percentage, TRUE);
+		$tax_basis = $this->CI->sale_lib->get_item_total($quantity, $price, $discount_amount, TRUE);
 
 		return $this->get_sales_tax_for_amount($tax_basis, $tax_percentage, $rounding_code, $decimals);
 	}

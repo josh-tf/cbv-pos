@@ -67,25 +67,25 @@ class Specific_customer extends Report
 			MAX(payment_type) AS payment_type,
 			MAX(comment) AS comment');
 		$this->db->from('sales_items_temp');
-		$this->db->where('customer_id', $inputs['customer_id']);  
-		
+		$this->db->where('customer_id', $inputs['customer_id']);
+
 		if($inputs['payment_type'] == 'invoices')
 		{
 			$this->db->where('sale_type', SALE_TYPE_INVOICE);
-		}	
-		elseif ($inputs['payment_type'] != 'all') 
+		}
+		elseif ($inputs['payment_type'] != 'all')
 		{
 			$this->db->like('payment_type', $this->lang->line('sales_'.$inputs['payment_type']));
-		}	
+		}
 
-		
+
 		if($inputs['sale_type'] == 'complete')
 		{
 			$this->db->where('sale_status', COMPLETED);
 			$this->db->group_start();
 			$this->db->where('sale_type', SALE_TYPE_POS);
 			$this->db->or_where('sale_type', SALE_TYPE_INVOICE);
-			$this->db->or_where('sale_type', SALE_TYPE_RETURN);			
+			$this->db->or_where('sale_type', SALE_TYPE_RETURN);
 			$this->db->group_end();
 		}
 		elseif($inputs['sale_type'] == 'sales')
@@ -94,7 +94,7 @@ class Specific_customer extends Report
 			$this->db->group_start();
 			$this->db->where('sale_type', SALE_TYPE_POS);
 			$this->db->or_where('sale_type', SALE_TYPE_INVOICE);
-			
+
 			$this->db->group_end();
 		}
 		elseif($inputs['sale_type'] == 'quotes')
@@ -127,7 +127,7 @@ class Specific_customer extends Report
 
 		foreach($data['summary'] as $key=>$value)
 		{
-			$this->db->select('name, category, serialnumber, description, quantity_purchased, subtotal, tax, total, cost, profit, discount_percent');
+			$this->db->select('name, category, serialnumber, description, quantity_purchased, subtotal, tax, total, cost, profit, discount_amount');
 			$this->db->from('sales_items_temp');
 			$this->db->where('sale_id', $value['sale_id']);
 			$data['details'][$key] = $this->db->get()->result_array();
@@ -145,16 +145,16 @@ class Specific_customer extends Report
 		$this->db->select('SUM(subtotal) AS subtotal, SUM(tax) AS tax, SUM(total) AS total, SUM(cost) AS cost, SUM(profit) AS profit');
 		$this->db->from('sales_items_temp');
 		$this->db->where('customer_id', $inputs['customer_id']);
-		
+
 		if($inputs['payment_type'] == 'invoices')
 		{
 			$this->db->where('sale_type', SALE_TYPE_INVOICE);
-		}	
-		elseif ($inputs['payment_type'] != 'all') 
+		}
+		elseif ($inputs['payment_type'] != 'all')
 		{
 			$this->db->like('payment_type', $this->lang->line('sales_'.$inputs['payment_type']));
-		}	
-		
+		}
+
 		if($inputs['sale_type'] == 'complete')
 		{
 			$this->db->where('sale_status', COMPLETED);
@@ -190,7 +190,7 @@ class Specific_customer extends Report
 		{
 			$this->db->where('sale_status', COMPLETED);
 			$this->db->where('sale_type', SALE_TYPE_RETURN);
-		}		
+		}
 
 		return $this->db->get()->row_array();
 	}

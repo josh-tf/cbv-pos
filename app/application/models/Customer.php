@@ -104,7 +104,7 @@ class Customer extends Person
 			(
 				SELECT
 					sales.sale_id AS sale_id,
-					AVG(sales_items.discount_percent) AS avg_discount,
+					SUM(sales_items.discount_amount) AS total_discount,
 					SUM(sales_items.quantity_purchased) AS quantity
 				FROM ' . $this->db->dbprefix('sales') . ' AS sales
 				INNER JOIN ' . $this->db->dbprefix('sales_items') . ' AS sales_items
@@ -123,7 +123,7 @@ class Customer extends Person
 						MAX(sales_payments.payment_amount) AS max,
 						AVG(sales_payments.payment_amount) AS average,
 						' . "
-						ROUND(AVG(sales_items_temp.avg_discount), $totals_decimals) AS avg_discount,
+						SUM(sales_items_temp.total_discount) AS total_discount,
 						ROUND(SUM(sales_items_temp.quantity), $quantity_decimals) AS quantity
 						");
 		$this->db->from('sales');

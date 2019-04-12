@@ -34,16 +34,16 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <?php echo form_label($this->lang->line('item_kits_discount_percent'), 'kit_discount_percent', array('class' => 'control-label col-xs-3')); ?>
+            <?php echo form_label($this->lang->line('item_kits_discount_amount'), 'kit_discount_amount', array('class' => 'control-label col-xs-3')); ?>
             <div class='col-xs-3'>
                 <div class="input-group input-group-sm">
                     <?php echo form_input(array(
-                            'name'=>'kit_discount_percent',
+                            'name'=>'kit_discount_amount',
                             'size'=>'5',
                             'maxlength'=>'5',
-                            'id'=>'kit_discount_percent',
+                            'id'=>'kit_discount_amount',
                             'class'=>'form-control input-sm',
-                            'value'=>$item_kit_info->kit_discount_percent)
+                            'value'=>$item_kit_info->kit_discount_amount)
                     );?>
                     <span class="input-group-addon input-sm"><b>%</b></span>
                 </div>

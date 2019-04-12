@@ -45,7 +45,7 @@ class Customers extends Persons
             $stats->min = 0;
             $stats->max = 0;
             $stats->average = 0;
-            $stats->avg_discount = 0;
+            $stats->total_discount = 0;
             $stats->quantity = 0;
         }
 
@@ -79,7 +79,7 @@ class Customers extends Persons
                 $stats->min = 0;
                 $stats->max = 0;
                 $stats->average = 0;
-                $stats->avg_discount = 0;
+                $stats->total_discount = 0;
                 $stats->quantity = 0;
             }
 
@@ -173,7 +173,6 @@ class Customers extends Persons
         $customer_data = array(
             'conc_id' => $this->input->post('conc_id') == '' ? null : $this->input->post('conc_id'),
             'company_name' => $this->input->post('company_name') == '' ? null : $this->input->post('company_name'),
-            'discount_percent' => $this->input->post('discount_percent') == '' ? 0.00 : $this->input->post('discount_percent'),
             'package_id' => $this->input->post('package_id') == '' ? null : $this->input->post('package_id'),
             'taxable' => 1, // Taxable removed from add customer form - forcing all customers to be tax
             //'taxable' => $this->input->post('taxable') != NULL                           //applicable
@@ -275,7 +274,7 @@ class Customers extends Persons
                     // XSS file data sanity check
                     $data = $this->xss_clean($data);
 
-                    if (sizeof($data) >= 15) {
+                    if (sizeof($data) >= 14) {
                         $email = strtolower($data[3]);
                         $person_data = array(
                             'first_name' => $data[0],
@@ -294,8 +293,7 @@ class Customers extends Persons
 
                         $customer_data = array(
                             'company_name' => $data[12],
-                            'discount_percent' => $data[14],
-                            'taxable' => $data[15] == '' ? 0 : 1,
+                            'taxable' => $data[14] == '' ? 0 : 1,
                         );
                         $conc_id = $data[13];
 

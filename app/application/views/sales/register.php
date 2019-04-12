@@ -257,10 +257,6 @@ if (!empty($customer_location)) {
 					<?php
 }
     ?>
-					<tr>
-						<th style='width: 55%;'><?php echo $this->lang->line("sales_customer_discount"); ?></th>
-						<th style="width: 45%; text-align: right;"><?php echo $customer_discount_percent . ' %'; ?></th>
-					</tr>
 					<?php if ($this->config->item('customer_reward_enable') == true): ?>
 					<?php
 if (!empty($customer_rewards)) {
