@@ -92,7 +92,6 @@ $(document).ready(function()
 $btnContent = '<span class="glyphicon glyphicon-file">&nbsp</span>' . $this->lang->line('lookup_cbvid');
 
 echo form_button(['type' => 'submit', 'id' => 'cbvid_check_btn', 'content' => $btnContent, 'class' => 'btn btn-info btn-sm pull-right']);
-echo form_input(['type' => 'hidden', 'name' => $this->security->get_csrf_token_name(), 'value' => $this->security->get_csrf_token_name()]);
 echo form_input(['type' => 'text', 'id' => 'cbvid_check', 'name' => 'cbvid_check', 'value' => $this->lang->line('lookup_cbvid_default'), 'class' => 'form-control input-sm cbvid-check', 'onFocus' => 'this.value=\'\'']);
 
 echo form_close();

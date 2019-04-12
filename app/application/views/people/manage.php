@@ -60,7 +60,6 @@ if ($controller_name == 'customers') {
     $btnContent = '<span class="glyphicon glyphicon-file">&nbsp</span>' . $this->lang->line('lookup_conc_id');
 
     echo form_button(['type' => 'submit', 'id' => 'conc_check_btn', 'content' => $btnContent, 'class' => 'btn btn-info btn-sm pull-right']);
-    echo form_input(['type' => 'hidden', 'name' => $this->security->get_csrf_token_name(), 'value' => $this->security->get_csrf_token_name()]);
     echo form_input(['type' => 'text', 'id' => 'conc_id_check', 'name' => 'conc_id_check', 'value' => $this->lang->line('lookup_conc_id_default'), 'class' => 'form-control input-sm conc_id_check', 'onFocus' => 'this.value=\'\'']);
 
     echo form_close();
