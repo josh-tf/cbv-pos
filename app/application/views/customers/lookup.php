@@ -59,7 +59,7 @@ $discTotal = 0;
 
 foreach ($cus_sales as $sale) {
     $totalSpent += $sale->unit_price;
-    $discTotal += $sale->discount_percent;
+    $discTotal += $sale->discount_amount;
 }
 
 ?>
@@ -116,8 +116,8 @@ foreach ($cus_sales as $sale) {
       <td><?php echo $sale->sale_time; ?></td>
       <td><?php echo $sale->name; ?> (<?php echo $sale->category; ?>)</td>
       <td>$<?php echo number_format((float) ($sale->unit_price), 2, '.', ''); ?></td>
-      <td>$<?php echo number_format((float) ($sale->discount_percent), 2, '.', ''); ?></td>
-      <td>$<?php echo number_format((float) ($sale->unit_price - $sale->discount_percent), 2, '.', ''); ?></td>
+      <td>$<?php echo number_format((float) ($sale->discount_amount), 2, '.', ''); ?></td>
+      <td>$<?php echo number_format((float) ($sale->unit_price - $sale->discount_amount), 2, '.', ''); ?></td>
       <td><?php echo $sale->description; ?></td>
     </tr>
 

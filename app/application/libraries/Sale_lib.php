@@ -949,7 +949,7 @@ class Sale_lib
 
 		foreach($this->CI->Sale->get_sale_items_ordered($sale_id)->result() as $row)
 		{
-			$this->add_item($row->item_id, -$row->quantity_purchased, $row->item_location, $row->discount_percent, PRICE_MODE_STANDARD, NULL, NULL, $row->item_unit_price, $row->description, $row->serialnumber, TRUE);
+			$this->add_item($row->item_id, -$row->quantity_purchased, $row->item_location, $row->discount_amount, PRICE_MODE_STANDARD, NULL, NULL, $row->item_unit_price, $row->description, $row->serialnumber, TRUE);
 		}
 
 		$this->set_customer($this->CI->Sale->get_customer($sale_id)->person_id);
@@ -982,7 +982,7 @@ class Sale_lib
 
 		foreach($this->CI->Sale->get_sale_items_ordered($sale_id)->result() as $row)
 		{
-			$this->add_item($row->item_id, $row->quantity_purchased, $row->item_location, $row->discount_percent, PRICE_MODE_STANDARD, NULL, NULL, $row->item_unit_price, $row->description, $row->serialnumber, TRUE);
+			$this->add_item($row->item_id, $row->quantity_purchased, $row->item_location, $row->discount_amount, PRICE_MODE_STANDARD, NULL, NULL, $row->item_unit_price, $row->description, $row->serialnumber, TRUE);
 		}
 
 		foreach($this->CI->Sale->get_sale_payments($sale_id)->result() as $row)
@@ -1010,7 +1010,7 @@ class Sale_lib
 		$this->empty_cart();
 		foreach($this->CI->Sale->get_sale_items_ordered($sale_id)->result() as $row)
 		{
-			$this->add_item($row->item_id, $row->quantity_purchased, $row->item_location, $row->discount_percent, PRICE_MODE_STANDARD, NULL, NULL, $row->item_unit_price, $row->description, $row->serialnumber, TRUE);
+			$this->add_item($row->item_id, $row->quantity_purchased, $row->item_location, $row->discount_amount, PRICE_MODE_STANDARD, NULL, NULL, $row->item_unit_price, $row->description, $row->serialnumber, TRUE);
 		}
 
 		return $this->CI->session->userdata('sales_cart');
@@ -1134,28 +1134,6 @@ class Sale_lib
 		return $sales_taxes;
 	}
 
-	public function apply_customer_discount($discount_percent)
-	{
-		// Get all items in the cart so far...
-		$items = $this->get_cart();
-
-		foreach($items as &$item)
-		{
-			$quantity = $item['quantity'];
-			$price = $item['price'];
-
-			// set a new discount only if the current one is 0
-			if($item['discount'] == 0)
-			{
-				$item['discount'] = $discount_percent;
-				$item['total'] = $this->get_item_total($quantity, $price, $discount_percent);
-				$item['discounted_total'] = $this->get_item_total($quantity, $price, $discount_percent, TRUE);
-			}
-		}
-
-		$this->set_cart($items);
-	}
-
 	public function get_discount()
 	{
 		$discount = 0;
@@ -1176,39 +1154,39 @@ class Sale_lib
 		return $this->calculate_subtotal($include_discount, $exclude_tax);
 	}
 
-	public function get_item_total_tax_exclusive($item_id, $quantity, $price, $discount_percentage, $include_discount = FALSE)
+	public function get_item_total_tax_exclusive($item_id, $quantity, $price, $discount_amount, $include_discount = FALSE)
 	{
 		$tax_info = $this->CI->Item_taxes->get_info($item_id);
-		$item_total = $this->get_item_total($quantity, $price, $discount_percentage, $include_discount);
+		$item_total = $this->get_item_total($quantity, $price, $discount_amount, $include_discount);
 		// only additive tax here
 		foreach($tax_info as $tax)
 		{
 			$tax_percentage = $tax['percent'];
-			$item_total = bcsub($item_total, $this->get_item_tax($quantity, $price, $discount_percentage, $tax_percentage));
+			$item_total = bcsub($item_total, $this->get_item_tax($quantity, $price, $discount_amount, $tax_percentage));
 		}
 
 		return $item_total;
 	}
 
-	public function get_extended_total_tax_exclusive($item_id, $discounted_extended_amount, $quantity, $price, $discount_percentage = 0)
+	public function get_extended_total_tax_exclusive($item_id, $discounted_extended_amount, $quantity, $price, $discount_amount = 0)
 	{
 		$tax_info = $this->CI->Item_taxes->get_info($item_id);
 		// only additive tax here
 		foreach($tax_info as $tax)
 		{
 			$tax_percentage = $tax['percent'];
-			$discounted_extended_amount = bcsub($discounted_extended_amount, $this->get_item_tax($quantity, $price, $discount_percentage, $tax_percentage));
+			$discounted_extended_amount = bcsub($discounted_extended_amount, $this->get_item_tax($quantity, $price, $discount_amount, $tax_percentage));
 		}
 
 		return $discounted_extended_amount;
 	}
 
-	public function get_item_total($quantity, $price, $discount_percentage, $include_discount = FALSE)
+	public function get_item_total($quantity, $price, $discount_amount, $include_discount = FALSE)
 	{
 		$total = bcmul($quantity, $price);
 		if($include_discount)
 		{
-			$discount_amount = $this->get_item_discount($quantity, $price, $discount_percentage);
+			$discount_amount = $this->get_item_discount($quantity, $price, $discount_amount);
 
 			return bcsub($total, $discount_amount);
 		}
@@ -1237,18 +1215,14 @@ class Sale_lib
 		return bcsub($extended_amount, $discount_amount);
 	}
 
-	public function get_item_discount($quantity, $price, $discount_percentage)
+	public function get_item_discount($quantity, $price, $discount_amount) // ! revisit: not needed
 	{
-		$total = bcmul($quantity, $price);
-		$discount_fraction = bcdiv($discount_percentage, 100);
-
-		//return round(bcmul($total, $discount_fraction), totals_decimals(), PHP_ROUND_HALF_UP);
-		return $discount_percentage; // return the full amount to remove from the item
+		return $discount_amount;
 	}
 
-	public function get_item_tax($quantity, $price, $discount_percentage, $tax_percentage)
+	public function get_item_tax($quantity, $price, $discount_amount, $tax_percentage)
 	{
-		$price = $this->get_item_total($quantity, $price, $discount_percentage, TRUE);
+		$price = $this->get_item_total($quantity, $price, $discount_amount, TRUE);
 		if($this->CI->config->item('tax_included'))
 		{
 			$tax_fraction = bcadd(100, $tax_percentage);

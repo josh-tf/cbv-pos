@@ -333,7 +333,7 @@ class Reports extends Secure_Controller
 		foreach($report_data as $row)
 		{
 			$tabular_data[] = $this->xss_clean(array(
-				'discount' => $row['discount_percent'],
+				'discount' => $row['discount_amount'],
 				'count' => $row['count']
 			));
 		}
@@ -722,7 +722,7 @@ class Reports extends Secure_Controller
 		{
 			$row = $this->xss_clean($row);
 
-			$labels[] = $row['discount_percent'];
+			$labels[] = $row['discount_amount'];
 			$series[] = $row['count'];
 		}
 
@@ -734,7 +734,7 @@ class Reports extends Secure_Controller
 			'series_data_1' => $series,
 			'summary_data_1' => $summary,
 			'yaxis_title' => $this->lang->line('reports_count'),
-			'xaxis_title' => $this->lang->line('reports_discount_percent'),
+			'xaxis_title' => $this->lang->line('reports_discount_amount'),
 			'show_currency' => FALSE
 		);
 
@@ -869,7 +869,7 @@ class Reports extends Secure_Controller
 					to_currency($drow['total']),
 					to_currency($drow['cost']),
 					to_currency($drow['profit']),
-					$drow['discount_percent'].'%'));
+					$drow['discount_amount'].'%'));
 			}
 
 			if(isset($report_data['rewards'][$key]))
@@ -980,7 +980,7 @@ class Reports extends Secure_Controller
 					to_currency($drow['total']),
 					to_currency($drow['cost']),
 					to_currency($drow['profit']),
-					$drow['discount_percent'].'%'));
+					$drow['discount_amount']));
 			}
 
 			if(isset($report_data['rewards'][$key]))
@@ -1085,7 +1085,7 @@ class Reports extends Secure_Controller
 					to_currency($drow['total']),
 					to_currency($drow['cost']),
 					to_currency($drow['profit']),
-					$drow['discount_percent'].'%'));
+					$drow['discount_amount']));
 			}
 
 			if(isset($report_data['rewards'][$key]))
@@ -1238,7 +1238,7 @@ class Reports extends Secure_Controller
 					to_currency($drow['total']),
 					to_currency($drow['cost']),
 					to_currency($drow['profit']),
-					$drow['discount_percent'].'%'));
+					$drow['discount_amount']));
 			}
 
 			if(isset($report_data['rewards'][$key]))
@@ -1340,7 +1340,7 @@ class Reports extends Secure_Controller
 					$drow['category'],
 					$quantity_purchased,
 					to_currency($drow['total']),
-					$drow['discount_percent'].'%'));
+					$drow['discount_amount']));
 			}
 		}
 

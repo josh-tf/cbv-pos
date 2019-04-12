@@ -68,9 +68,9 @@ class Detailed_sales extends Report
 
 	public function getData(array $inputs)
 	{
-		$this->db->select('sale_id, 
+		$this->db->select('sale_id,
 			MAX(CASE
-			WHEN sale_type = ' . SALE_TYPE_POS . ' && sale_status = ' . COMPLETED . ' THEN \'' . $this->lang->line('reports_code_pos') . '\'			
+			WHEN sale_type = ' . SALE_TYPE_POS . ' && sale_status = ' . COMPLETED . ' THEN \'' . $this->lang->line('reports_code_pos') . '\'
 			WHEN sale_type = ' . SALE_TYPE_INVOICE . ' && sale_status = ' . COMPLETED . ' THEN \'' . $this->lang->line('reports_code_invoice') . '\'
 			WHEN sale_type = ' . SALE_TYPE_WORK_ORDER . ' && sale_status = ' . SUSPENDED . ' THEN \'' . $this->lang->line('reports_code_work_order') . '\'
 			WHEN sale_type = ' . SALE_TYPE_QUOTE . ' && sale_status = ' . SUSPENDED . ' THEN \'' . $this->lang->line('reports_code_quote') . '\'
@@ -144,7 +144,7 @@ class Detailed_sales extends Report
 
 		foreach($data['summary'] as $key=>$value)
 		{
-			$this->db->select('name, category, quantity_purchased, item_location, serialnumber, description, subtotal, tax, total, cost, profit, discount_percent, sale_status');
+			$this->db->select('name, category, quantity_purchased, item_location, serialnumber, description, subtotal, tax, total, cost, profit, discount_amount, sale_status');
 			$this->db->from('sales_items_temp');
 			$this->db->where('sale_id', $value['sale_id']);
 			$data['details'][$key] = $this->db->get()->result_array();

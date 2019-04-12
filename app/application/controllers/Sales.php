@@ -133,12 +133,6 @@ class Sales extends Secure_Controller
         $customer_id = $this->input->post('customer');
         if ($this->Customer->exists($customer_id)) {
             $this->sale_lib->set_customer($customer_id);
-            $discount_percent = $this->Customer->get_info($customer_id)->discount_percent;
-
-            // apply customer default discount to items that have 0 discount
-            if ($discount_percent != '') {
-                $this->sale_lib->apply_customer_discount($discount_percent);
-            }
         }
 
         $this->_reload();
@@ -321,11 +315,6 @@ class Sales extends Secure_Controller
         // check if any discount is assigned to the selected customer
         $customer_id = $this->sale_lib->get_customer();
         if ($customer_id != -1) {
-            // load the customer discount if any
-            $discount_percent = $this->Customer->get_info($customer_id)->discount_percent;
-            if ($discount_percent != '') {
-                $discount = $discount_percent;
-            }
         }
 
         $item_id_or_number_or_item_kit_or_receipt = $this->input->post('item');
@@ -346,8 +335,8 @@ class Sales extends Secure_Controller
             $kit_price_option = $item_kit_info->price_option;
             $kit_print_option = $item_kit_info->print_option; // 0-all, 1-priced, 2-kit-only
 
-            if ($item_kit_info->kit_discount_percent != 0 && $item_kit_info->kit_discount_percent > $discount) {
-                $discount = $item_kit_info->kit_discount_percent;
+            if ($item_kit_info->kit_discount_amount != 0 && $item_kit_info->kit_discount_amount > $discount) {
+                $discount = $item_kit_info->kit_discount_amount;
             }
 
             $price = null;
@@ -732,7 +721,6 @@ class Sales extends Secure_Controller
                 $data['customer_location'] = '';
             }
             //$data['customer_conc_id'] = $customer_info->conc_id;
-            $data['customer_discount_percent'] = $customer_info->discount_percent;
             $package_id = $this->Customer->get_info($customer_id)->package_id;
             if ($package_id != null) {
                 $package_name = $this->Customer_rewards->get_name($package_id);
