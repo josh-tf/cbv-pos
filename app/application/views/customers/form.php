@@ -29,11 +29,11 @@ if (!empty($stats)) {
 						<div class="input-group input-group-sm">
 							<span class="input-group-addon input-sm"><b>CRN</b></span>
 							<?php echo form_input(array(
-							'name' => 'conc_id',
-							'id' => 'conc_id',
-							'class' => 'form-control input-sm',
-							'value' => $person_info->conc_id)
-						); ?>
+    'name' => 'conc_id',
+    'id' => 'conc_id',
+    'class' => 'form-control input-sm',
+    'value' => $person_info->conc_id)
+); ?>
 						</div>
 					</div>
 
@@ -178,17 +178,22 @@ if (!empty($stats)) {
 					</div>
 
 					<div class="form-group form-group-sm">
-						<?php echo form_label($this->lang->line('customers_avg_discount'), 'avg_discount', array('class' => 'control-label col-xs-3')); ?>
-						<div class="col-xs-3">
+						<?php echo form_label($this->lang->line('customers_total_discount'), 'total_discount', array('class' => 'control-label col-xs-3')); ?>
+						<div class="col-xs-4">
 							<div class="input-group input-group-sm">
+							<?php if (!currency_side()): ?>
+									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
+								<?php endif;?>
 								<?php echo form_input(array(
-        'name' => 'avg_discount',
-        'id' => 'avg_discount',
+        'name' => 'total_discount',
+        'id' => 'total_discount',
         'class' => 'form-control input-sm',
-        'value' => $stats->avg_discount,
+        'value' => $stats->total_discount,
         'disabled' => '')
     ); ?>
-								<span class="input-group-addon input-sm"><b>%</b></span>
+								<?php if (currency_side()): ?>
+									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
+								<?php endif;?>
 							</div>
 						</div>
 					</div>
