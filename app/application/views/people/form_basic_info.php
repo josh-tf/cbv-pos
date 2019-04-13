@@ -40,9 +40,7 @@ $person_info->country = ($person_info->country == null ? 'Australia' : $person_i
     'value' => $person_info->company_name)
 ); ?>
 					</div>
-
 				</div>
-
 
 
 <div class="form-group form-group-sm">

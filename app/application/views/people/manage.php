@@ -67,8 +67,6 @@ if ($controller_name == 'customers') {
 ?>
 </div>
 
-</div>
-
 <div id="toolbar">
 	<div class="pull-left btn-toolbar">
 		<button id="delete" class="btn btn-default btn-sm">

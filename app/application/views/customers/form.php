@@ -53,8 +53,6 @@ echo form_close();
                         </div>
 					</div>
 
-                    </div>
-
 				<?php $this->load->view("people/form_basic_info");?>
 
 				<?php if ($this->config->item('customer_reward_enable') == true): ?>
