@@ -106,7 +106,7 @@ services:
                 - cbv-prod-nginx-proxy
         restart: always
 
-    node-portainer: # portainer instance for docker management
+    cbv-prod-portainer: # portainer instance for docker management
         container_name: node-portainer
         image: portainer/portainer
         command: -H unix:///var/run/docker.sock
@@ -117,7 +117,7 @@ services:
                 - /var/run/docker.sock:/var/run/docker.sock
         restart: always
 
-    backup:
+    cbv-prod-backup:
         image: databack/mysql-backup
         volumes:
                 - /backup:/db
@@ -128,7 +128,6 @@ services:
                 - DB_USER=${backup_db_user}
                 - DB_PASS=${backup_db_pass}
                 - DB_DUMP_FREQ=${backup_db_frq}
-                - DB_DUMP_BEGIN=${backup_db_start}
                 - DB_SERVER=cbv-prod-db
         restart: always
 
