@@ -26,8 +26,7 @@ class Items extends Secure_Controller
             'cat_sold_computer' => $this->lang->line('items_cat_sold_computer'),
             'in_stock' => $this->lang->line('items_in_stock'),
             'out_stock' => $this->lang->line('items_out_stock'),
-            //'low_inventory' => $this->lang->line('items_low_inventory_items'),
-            //'search_custom' => $this->lang->line('items_search_custom_items'),
+            'out_stock_all' => $this->lang->line('items_out_stock_all'),
             'is_deleted' => $this->lang->line('items_is_deleted'));
 
         $this->load->view('items/manage', $data);
@@ -70,10 +69,9 @@ class Items extends Secure_Controller
             'stock_location_id' => $this->item_lib->get_item_location(),
             'in_stock' => false,
             'out_stock' => false,
+            'out_stock_all' => false,
             'cat_avail_computer' => false,
             'cat_sold_computer' => false,
-            //'low_inventory' => false,
-            //'search_custom' => false,
             'is_deleted' => false);
 
         // check if any filter is set in the multiselect dropdown

@@ -238,10 +238,9 @@ class Item extends CI_Model
         if ($filters['out_stock'] != false) {
             $this->db->where('quantity <= 0 AND `category` NOT in("Laptop","Desktop")', null);
         }
-        // if ($filters['low_inventory'] != false) {
-        //     $this->db->where('quantity <=', 'reorder_level');
-        // }
-
+        if ($filters['out_stock_all'] != false) {
+            $this->db->where('quantity <= 0', null);
+        }
         // get_found_rows case
         if ($count_only == true) {
             return $this->db->get()->row()->count;
