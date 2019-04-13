@@ -146,7 +146,7 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 		</div>
 
 		<!-- item on hold related -->
-		<div class="form-group form-group-sm">
+		<div class="form-group form-group-sm on_hold">
 			<?php echo form_label($this->lang->line('items_on_hold'), 'on_hold', array('class' => 'control-label col-xs-3')); ?>
 			<div class='col-xs-4'>
 				<div class="input-group input-group-sm">
@@ -628,9 +628,12 @@ $(document).ready(function()
 		let isStocked = NON_STOCKED_CATEGORIES.indexOf(category) === -1;
 
 		if (isComputer) {
-			$('#computer-fields').removeClass('hidden');
+			$('.on_hold').removeClass('hidden');
+			$('.hold_for').removeClass('hidden');
 			$('#tax').addClass('hidden');
 		} else {
+			$('.on_hold').addClass('hidden');
+			$('.hold_for').addClass('hidden');
 			$('#computer-fields').addClass('hidden');
 			$('#tax').removeClass('hidden');
 		}
@@ -880,5 +883,6 @@ foreach ($stock_locations as $key => $location_detail) {
 			}
 		}
 	}, form_support.error));
+
 });
 </script>
