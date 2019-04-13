@@ -232,6 +232,9 @@ class Item extends CI_Model
         if ($filters['cat_sold_computer'] != false) {
             $this->db->where('`category` in("Laptop","Desktop") AND `quantity` <= 0', null);
         }
+        if ($filters['cat_hold_computer'] != false) {
+            $this->db->where('`category` in("Laptop","Desktop") AND `on_hold` = TRUE', null);
+        }
         if ($filters['in_stock'] != false) {
             $this->db->where('quantity > 0 AND `category` NOT in("Laptop","Desktop")', null);
         }

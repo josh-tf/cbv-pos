@@ -36,6 +36,7 @@ $lang["items_out_stock"] = "Out of Stock (Other)";
 $lang["items_out_stock_all"] = "Out of Stock (All)";
 $lang["items_cat_avail_computer"] = "In-Stock Computers";
 $lang["items_cat_sold_computer"] = "Sold Computers";
+$lang["items_cat_hold_computer"] = "Held Computers";
 $lang["items_error_adding_updating"] = "Error adding/updating item";
 $lang["items_error_updating_multiple"] = "Error updating items";
 $lang["items_excel_import_failed"] = "Excel import failed";
