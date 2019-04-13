@@ -23,7 +23,7 @@ class Customers extends Persons
 
     public function lookup()
     {
-        $conc_id = $this->input->post('conc_id_check');
+        $conc_id = str_replace(array('-',' '),'',$this->input->post('conc_id_check'));
         $this->data['cus_info'] = $this->Customer->lookup_cus_info($conc_id); // get our customer info
         $this->data['cus_sales'] = $this->Customer->lookup_cus_sales($conc_id); // get our sales list
         $this->load->view('customers/lookup', $this->data); // load the view file , we are passing $data array to view file
@@ -177,7 +177,7 @@ class Customers extends Persons
         );
 
         $customer_data = array(
-            'conc_id' => $this->input->post('conc_id') == '' ? null : $this->input->post('conc_id'),
+            'conc_id' => $this->input->post('conc_id') == '' ? null : str_replace(array('-',' '),'',$this->input->post('conc_id')), // when saving a conc ID, remove dash and space
             'company_name' => $this->input->post('company_name') == '' ? null : $this->input->post('company_name'),
             'package_id' => $this->input->post('package_id') == '' ? null : $this->input->post('package_id'),
             'taxable' => 1, // Taxable removed from add customer form - forcing all customers to be tax
