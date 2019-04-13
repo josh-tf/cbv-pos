@@ -372,6 +372,8 @@ class Items extends Secure_Controller
             'stock_type' => $this->input->post('stock_type') == null ? HAS_STOCK : $this->input->post('stock_type'),
             'supplier_id' => $this->input->post('supplier_id') == '' ? null : $this->input->post('supplier_id'),
             'item_number' => $this->input->post('item_number') == '' ? null : $this->input->post('item_number'),
+            'on_hold' => $this->input->post('on_hold'),
+            'hold_for' => $this->input->post('hold_for'),
             'unit_price' => parse_decimals($this->input->post('unit_price')),
             'allow_alt_description' => $this->input->post('allow_alt_description') != null,
             'is_serialized' => $this->input->post('is_serialized') != null,
