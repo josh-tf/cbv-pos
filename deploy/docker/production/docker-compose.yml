@@ -119,18 +119,18 @@ services:
 
     backup:
         image: databack/mysql-backup
-        restart: always
         volumes:
                 - /backup:/db
                 - /scripts/pre:/scripts.d/pre-backup
                 - /scripts/post:/scripts.d/post-backup
-        env:
+        environment:
                 - DB_DUMP_TARGET=/db
                 - DB_USER=${backup_db_user}
                 - DB_PASS=${backup_db_pass}
                 - DB_DUMP_FREQ=${backup_db_frq}
                 - DB_DUMP_BEGIN=${backup_db_start}
                 - DB_SERVER=cbv-prod-db
+        restart: always
 
 # Build containers
 #   - build composer installs codeigniter
