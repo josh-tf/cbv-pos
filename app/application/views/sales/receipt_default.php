@@ -136,7 +136,7 @@ if ($item['discount'] > 0) {
         ?>
 				<tr>
 				<td colspan="3" class="blank"> </td>
-					<td colspan="1" class="blank disc">$<?php echo number_format($item['discount'], 2) ?> Discount</td>
+					<td colspan="1" class="blank disc">$<?php echo number_format($item['discount'], 2) . ' ' . $this->lang->line('sales_discount');?></td>
 					<td class="total-line"><?php echo to_currency($item['discounted_total']); ?></td>
 				</tr>
 			<?php
