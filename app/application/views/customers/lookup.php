@@ -2,7 +2,9 @@
 
 <?php
 
-$concID = $this->input->post('conc_id_check');
+$concID = str_replace(array('-',' '),'',$this->input->post('conc_id_check'));
+
+
 
 if ($concID == "") {
     die('Invalid concession ID provided');
@@ -15,6 +17,20 @@ if ($concID == "") {
     <span class="glyphicon glyphicon-user">&nbsp</span>Back to Customers
 </button>
 </div>
+
+<?php
+// die if no matches
+if (count($cus_info) == 0) {
+    ?>
+
+<div class="alert alert-danger" role="alert">
+  <b>Error occurred:</b> No matching Concession ID was found in the database (<?php echo $concID ?>).
+</div>
+
+<?php
+die();
+}
+?>
 
 <h4>Lookup for Concession ID [<b><?php echo $concID ?></b>]</h4>
 <p>There is <?php echo count($cus_info); ?> match for this concession ID in the customer database.</p>

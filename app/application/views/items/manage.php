@@ -53,13 +53,22 @@ $(document).ready(function()
 				distanceFromCursor: { top:10, left:-210 }
 			})
         }
+
     });
+
+
+    $('#cbvid_check_form').submit(function() {
+    if ($.trim($("#cbvid_check").val()) === "" || $.trim($("#cbvid_check").val()) === "<?php echo $this->lang->line('lookup_cbvid_default') ?>") {
+		$("#cbvid_check").focus();
+        return false; // ignore if nothing entered
+    }
+    });
+
 });
 
 </script>
 
 <div id="title_bar" class="btn-toolbar print_hide">
-
 
     <button class='btn btn-info btn-sm pull-right modal-dlg' data-btn-submit='<?php echo $this->lang->line('common_submit') ?>' data-href='<?php echo site_url($controller_name . "/excel_import"); ?>'
             title='<?php echo $this->lang->line('items_import_items_excel'); ?>'>
@@ -72,17 +81,23 @@ $(document).ready(function()
     </button>
 
     <button class='btn btn-info btn-sm pull-right' onclick="window.location.href='/items/stocklist'">
-        <span class="glyphicon glyphicon-th-list">&nbsp</span>View Stocklist
+        <span class="glyphicon glyphicon-th-list">&nbsp</span><?php echo $this->lang->line('generate_stocklist') ?>
     </button>
 
-<?php echo form_open(base_url('items/sales_ticket'), array('id' => 'login', 'class' => 'login')); ?>
+<!-- Look up CBV ID -->
+<div>
 
-    <button class='btn btn-info btn-sm pull-right' id="cbvid-btn" onclick="return checkInput()">
-        <span class="glyphicon glyphicon-file">&nbsp</span>Generate Ticket
-    </button>
+<?php echo form_open(base_url('items/sales_ticket/'), array('id' => 'cbvid_check_form', 'class' => 'cbvid_check_form'));
 
-	<input type="text" id="cbv_id" name="cbv_id" onfocus="this.value=''" value="CBV ID:" class="form-control input-sm" id="" style="width: 85px;float: right;margin-right: 5px;">
-    <?php echo form_close(); ?>
+$btnContent = '<span class="glyphicon glyphicon-file">&nbsp</span>' . $this->lang->line('lookup_cbvid');
+
+echo form_button(['type' => 'submit', 'id' => 'cbvid_check_btn', 'content' => $btnContent, 'class' => 'btn btn-info btn-sm pull-right']);
+echo form_input(['type' => 'text', 'id' => 'cbvid_check', 'name' => 'cbvid_check', 'value' => $this->lang->line('lookup_cbvid_default'), 'class' => 'form-control input-sm cbvid-check', 'onFocus' => 'this.value=\'\'']);
+
+echo form_close();
+?>
+</div>
+
 </div>
 
 <div id="toolbar">
@@ -94,9 +109,6 @@ $(document).ready(function()
 				title='<?php echo $this->lang->line('items_edit_multiple_items'); ?>'>
             <span class="glyphicon glyphicon-edit">&nbsp</span><?php echo $this->lang->line("items_bulk_edit"); ?>
         </button>
-        <!-- <button id="generate_barcodes" class="btn btn-default btn-sm print_hide" data-href='<?php echo site_url($controller_name . "/generate_barcodes"); ?>' title='<?php echo $this->lang->line('items_generate_barcodes'); ?>'>
-            <span class="glyphicon glyphicon-barcode">&nbsp</span><?php echo $this->lang->line("items_generate_barcodes"); ?>
-        </button> -->
         <?php echo form_input(array('name' => 'daterangepicker', 'class' => 'form-control input-sm', 'id' => 'daterangepicker')); ?>
         <?php echo form_multiselect('filters[]', $filters, '', array('id' => 'filters', 'class' => 'selectpicker show-menu-arrow', 'data-none-selected-text' => $this->lang->line('common_none_selected_text'), 'data-selected-text-format' => 'count > 1', 'data-style' => 'btn-default btn-sm', 'data-width' => 'fit')); ?>
         <?php
@@ -106,20 +118,6 @@ if (count($stock_locations) > 1) {
 ?>
     </div>
 </div>
-
-<script type="text/javascript">
-
-function checkInput() { // check that a value is selected before submitting form
-    var x;
-    x = document.getElementById("cbv_id").value;
-    if (x == "" || x == "CBV ID:") {
-        document.getElementById("cbv_id").focus(); // if blank then set focus
-        return false; // and cancel submit
-    };
-}
-
-</script>
-
 
 <div id="table_holder">
     <table id="table"></table>
