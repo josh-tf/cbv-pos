@@ -2,7 +2,9 @@
 
 <?php
 
-$concID = $this->input->post('conc_id_check');
+$concID = str_replace(array('-',' '),'',$this->input->post('conc_id_check'));
+
+
 
 if ($concID == "") {
     die('Invalid concession ID provided');
@@ -22,7 +24,7 @@ if (count($cus_info) == 0) {
     ?>
 
 <div class="alert alert-danger" role="alert">
-  <b>Error occurred:</b> No matching computer ID was found in the database (<?php echo $concID ?>).
+  <b>Error occurred:</b> No matching Concession ID was found in the database (<?php echo $concID ?>).
 </div>
 
 <?php
