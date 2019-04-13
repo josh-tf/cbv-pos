@@ -38,7 +38,18 @@ if (!empty($stats)) {
 					</div>
 
 						<div class="lookup">
-						<label for="submit-conc" class="lookupConc">Lookup</label>
+
+<!-- Look up Customer ID -->
+<?php
+$submitLabel = array(
+    'class' => 'lookupConc',
+    'onClick' => 'conc_check_form.submit()',
+);
+
+echo form_label('Lookup', 'conc_id', $submitLabel);
+echo form_close();
+?>
+
                         </div>
 					</div>
 
@@ -231,6 +242,9 @@ $(document).ready(function()
 	$("#conc_id").on('change keydown paste input', function(){
 		document.getElementById("conc_id_check").value = document.getElementById("conc_id").value // helper val used for post/form request
 	});
+	$('.modal').on('hidden.bs.modal', function (e) {
+		document.getElementById("conc_id_check").value = "Concession ID:";
+	});
 	$('#customer_form').validate($.extend({
 		submitHandler: function(form)
 		{
@@ -243,8 +257,6 @@ $(document).ready(function()
 					if(response.success){
 						dialog_support.hide();
 					}
-
-
 				},
 				dataType: 'json'
 			});
