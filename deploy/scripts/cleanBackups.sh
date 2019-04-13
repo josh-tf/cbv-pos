@@ -12,7 +12,7 @@ cd /db
 # Everything below will go to the file 'log.out'
 exec 3>&1 4>&2
 trap 'exec 2>&4 1>&3' 0 1 2 3
-exec 1>.log.out 2>&1
+exec 1>>.log.out 2>&1
 
 # Post start message to the log
 script_start=$(date +'%m/%d/%Y %r')
