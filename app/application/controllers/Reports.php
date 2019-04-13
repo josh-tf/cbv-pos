@@ -971,9 +971,11 @@ class Reports extends Secure_Controller
         $data['specific_input_name'] = $this->lang->line('reports_discount');
 
         $discounts = array();
-        for ($i = 0; $i <= 100; $i += 10) {
-            $discounts[$i] = $i . '%';
-        }
+
+        $discounts[0] = 'All Discounts';
+        $discounts[1] = 'Under $100.00';
+        $discounts[2] = 'Over $100.00';
+
         $data['specific_input_data'] = $discounts;
         $data['sale_type_options'] = $this->get_sale_type_options();
 
@@ -1047,8 +1049,20 @@ class Reports extends Secure_Controller
             }
         }
 
+        // if under/over $100.00 filter selected, then filter
+        switch ($discount) {
+            case 1:
+            $repTitle = "Under $100.00";
+                break;
+            case 2:
+            $repTitle = "Under $100.00";
+                break;
+            default:
+            $repTitle = "All";
+        }
+
         $data = array(
-            'title' => $discount . '% ' . $this->lang->line('reports_discount') . ' ' . $this->lang->line('reports_report'),
+            'title' => $repTitle . ' - ' . $this->lang->line('reports_discount') . ' ' . $this->lang->line('reports_report'),
             'subtitle' => $this->_get_subtitle_report(array('start_date' => $start_date, 'end_date' => $end_date)),
             'headers' => $headers,
             'summary_data' => $summary_data,
