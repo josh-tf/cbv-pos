@@ -539,6 +539,9 @@ class Item extends CI_Model
             $this->db->where('quantity >', 0);
         }
 
+        // hide items which are on_hold
+        $this->db->where('on_hold', false);
+
         $this->db->where('deleted', $filters['is_deleted']);
         $this->db->where_in('item_type', $non_kit); // standard, exclude kit items since kits will be picked up later
         $this->db->like('name', $search);
