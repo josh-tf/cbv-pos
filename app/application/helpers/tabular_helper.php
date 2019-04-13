@@ -362,9 +362,19 @@ function get_item_data_row($item)
         }
     }
 
+    if (!($item->on_hold == false)) {
+        if (!($item->hold_for == null)) {
+            $onHold = '<b>Yes</b> (' . $item->hold_for . ')';
+        } else {
+            $onHold = '<b>Yes</b>';
+        }
+    } else {
+            $onHold = '-';
+    }
+
     return array(
         'items.item_id' => $item->item_id,
-        'on_hold' => ($item->on_hold == 1 ? 'Yes (' . $item->hold_for . ')' : '-'),
+        'on_hold' => $onHold,
         //'item_number' => $item->item_number,
         'name' => $item->name,
         'category' => $item->category,
