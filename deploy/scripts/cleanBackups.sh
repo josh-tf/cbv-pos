@@ -16,10 +16,10 @@ exec 1>.log.out 2>&1
 
 # Post start message to the log
 script_start=$(date +'%m/%d/%Y %r')
-echo "Started backup pruning at ${script_start}"
+echo "[SQL Backup] Started backup pruning at ${script_start}"
 
 # List files to be removed
-echo "Files older than 30 days will be pruned:"
+echo "[SQL Backup] Files older than 30 days will be pruned:"
 find /db* -mtime +30
 
 #Files older than 30 days are deleted here
@@ -27,5 +27,5 @@ find /db* -mtime +30 -exec rm {} \;
 
 ## Post end message to the log
 script_finish=$(date +'%m/%d/%Y %r')
-echo "Finished backup pruning at ${script_finish}"
+echo "[SQL Backup] Finished backup pruning at ${script_finish}"
 echo "-------------------------------------------"
