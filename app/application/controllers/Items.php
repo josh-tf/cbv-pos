@@ -24,6 +24,7 @@ class Items extends Secure_Controller
         $data['filters'] = array(
             'cat_avail_computer' => $this->lang->line('items_cat_avail_computer'),
             'cat_sold_computer' => $this->lang->line('items_cat_sold_computer'),
+            'cat_hold_computer' => $this->lang->line('items_cat_hold_computer'),
             'in_stock' => $this->lang->line('items_in_stock'),
             'in_stock_all' => $this->lang->line('items_in_stock_all'),
             'out_stock' => $this->lang->line('items_out_stock'),
@@ -74,6 +75,7 @@ class Items extends Secure_Controller
             'out_stock_all' => false,
             'cat_avail_computer' => false,
             'cat_sold_computer' => false,
+            'cat_hold_computer' => false,
             'is_deleted' => false);
 
         // check if any filter is set in the multiselect dropdown
