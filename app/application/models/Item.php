@@ -124,6 +124,8 @@ class Item extends CI_Model
             $this->db->select('MAX(items.category) as category');
             $this->db->select('MAX(items.supplier_id) as supplier_id');
             $this->db->select('MAX(items.item_number) as item_number');
+            $this->db->select('MAX(items.on_hold) as on_hold');
+            $this->db->select('MAX(items.hold_for) as hold_for');
             $this->db->select('MAX(items.description) as description');
             $this->db->select('MAX(items.cost_price) as cost_price');
             $this->db->select('MAX(items.unit_price) as unit_price');
@@ -196,6 +198,8 @@ class Item extends CI_Model
                 $this->db->like('name', $search);
                 $this->db->or_like('item_number', $search);
                 $this->db->or_like('items.item_id', $search);
+                $this->db->or_like('on_hold', $search);
+                $this->db->or_like('hold_for', $search);
                 $this->db->or_like('company_name', $search);
                 $this->db->or_like('category', $search);
                 $this->db->group_end();
