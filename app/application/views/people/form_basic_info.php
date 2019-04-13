@@ -149,6 +149,7 @@ $person_info->country = ($person_info->country == null ? 'Australia' : $person_i
 
 <script type="text/javascript">
 //validation and submit handling
+/* ! Uncomment to enable autofill/search for suburb/postcode (Trello: lMV3FYbx)
 $(document).ready(function()
 {
 	nominatim.init({
@@ -180,4 +181,5 @@ $(document).ready(function()
 		country_codes: '<?php echo $this->config->item('country_codes'); ?>'
 	});
 });
+*/
 </script>
