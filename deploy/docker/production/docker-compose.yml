@@ -107,7 +107,7 @@ services:
         restart: always
 
     cbv-prod-portainer: # portainer instance for docker management
-        container_name: node-portainer
+        container_name: cbv-prod-portainer
         image: portainer/portainer
         command: -H unix:///var/run/docker.sock
         ports:
@@ -118,6 +118,7 @@ services:
         restart: always
 
     cbv-prod-backup:
+        container_name: cbv-prod-backup
         image: databack/mysql-backup
         volumes:
                 - /backup:/db
