@@ -14,6 +14,8 @@ exec 3>&1 4>&2
 trap 'exec 2>&4 1>&3' 0 1 2 3
 exec 1>>.log.out 2>&1
 
+echo "-------------------------------------------"
+
 # Post start message to the log
 script_start=$(date +'%m/%d/%Y %r')
 echo "[SQL Backup] Started backup pruning at ${script_start}"
@@ -28,4 +30,3 @@ find /db* -mtime +30 -exec rm {} \;
 ## Post end message to the log
 script_finish=$(date +'%m/%d/%Y %r')
 echo "[SQL Backup] Finished backup pruning at ${script_finish}"
-echo "-------------------------------------------"
