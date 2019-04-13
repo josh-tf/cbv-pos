@@ -72,7 +72,16 @@ class Specific_discount extends Report
 			MAX(payment_type) AS payment_type,
 			MAX(comment) AS comment');
         $this->db->from('sales_items_temp');
-        $this->db->where('discount_amount >=', $inputs['discount']);
+
+        // if under/over $100.00 filter selected, then filter
+        switch ($inputs['discount']) {
+            case 1:
+            $this->db->where('discount_amount <= 100');
+                break;
+            case 2:
+            $this->db->where('discount_amount > 100');
+                break;
+        }
 
         if ($inputs['sale_type'] == 'complete') {
             $this->db->where('sale_status', COMPLETED);
@@ -126,7 +135,16 @@ class Specific_discount extends Report
     {
         $this->db->select('SUM(subtotal) AS subtotal, SUM(tax) AS tax, SUM(total) AS total, SUM(cost) AS cost, SUM(profit) AS profit');
         $this->db->from('sales_items_temp');
-        $this->db->where('discount_amount >=', $inputs['discount']);
+
+        // if under/over $100.00 filter selected, then filter
+        switch ($inputs['discount']) {
+            case 1:
+            $this->db->where('discount_amount <= 100');
+                break;
+            case 2:
+            $this->db->where('discount_amount > 100');
+                break;
+        }
 
         if ($inputs['sale_type'] == 'complete') {
             $this->db->where('sale_status', COMPLETED);
