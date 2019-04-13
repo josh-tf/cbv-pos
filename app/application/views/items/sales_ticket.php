@@ -131,12 +131,12 @@ foreach ($cbvid_check as $computer) {
 
     $itemCat = $computer->category;
 
-    if (!($itemCat === 'Desktop')) {
+    if (!($itemCat === 'Desktop' || $itemCat === 'Laptop')) {
 
         ?>
 
 <div class="alert alert-danger" role="alert">
-  <b>Error occurred:</b> Sales ticket is only available for the <i>Desktop</i> item type however the category for the selected item was <i><?php echo $itemCat ?></i>
+  <b>Error occurred:</b> Sales ticket is only available for the <i>Desktop/Laptop</i> item type however the category for the selected item was <i><?php echo $itemCat ?></i>
      </div>
 
 <?php
@@ -155,6 +155,7 @@ die();
     $specHDD = $computer->custom6 . ' GB';
     $specMonitor = $computer->custom8 . ' inches';
     $specEX = $computer->custom13;
+    $specBatt = $computer->custom11 . ' hrs';
 
 }
 ?>
@@ -171,26 +172,42 @@ die();
 
     <br />
 
-    <p class="summary">This computer includes a range of free software, a keyboard, mouse and monitor. All computers
+<?php
+
+switch ($itemCat) {
+
+    case 'Desktop':
+        $itemIncludes = 'user guide, a keyboard, mouse and monitor.';
+        break;
+    case 'Laptop':
+        $itemIncludes = 'user guide, power adaptor and laptop care guide.';
+}
+
+?>
+
+    <p class="summary">This computer includes a range of free software, <?php echo $itemIncludes; ?> All computers
       sold in store come with a 3 month back to base warranty.</p>
 
     <table class="table table-sm table-bordered table-striped">
       <thead>
         <tr>
           <th>Price</th>
-          <th>Concession</th>
-          <th>Full</th>
+          <th <?php if ($itemCat === 'Laptop') {echo 'colspan="2"';}?>>Concession</th>
+        <?php if ($itemCat === 'Desktop') {?> <th>Full</th> <?php }?>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><b class="pricing">Full System</b></td>
-          <td><b class="pricing">
+          <td <?php if ($itemCat === 'Laptop') {echo 'colspan="2"';}?>><b class="pricing">
               <?php echo $concPriceFull ?></b></td>
-          <td>
+              <?php if ($itemCat === 'Desktop') {?><td>
             <?php echo $nonConcPriceFull ?>
-          </td></b></td>
+          </td></b><?php }?>
         </tr>
+<?php
+if ($itemCat == 'Desktop') {
+    ?>
         <tr>
           <td><b class="pricing">Box Only</b></td>
           <td><b class="pricing">
@@ -198,11 +215,24 @@ die();
           <td>
             <?php echo $nonConcPriceBox ?></b></td>
         </tr>
+        <?php
+}
+?>
       </tbody>
     </table>
 
+    <?php
+if ($itemCat == 'Desktop') {
+    ?>
     <p class="discount-info">The Box Only price applies if you wish to purchase the desktop only, you will need to
       supply your own monitor, keyboard and mouse.</p>
+      <?php
+} else {
+    ?>
+        <p class="discount-info">Some models also include a carry bag, please ask us if this laptop includes one.</p>
+      <?php
+}
+?>
 
     <table class="table table-sm table-bordered table-striped ticket-specs">
       <thead>
@@ -242,11 +272,26 @@ die();
           <?php echo $specMonitor ?>
         </td>
         </tr>
+        <?php
+if ($itemCat == 'Laptop') {
+    ?>
+
+<tr>
+          <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Battery</b></td>
+          <td>
+            <?php echo $specBatt; ?>
+          </td>
+        </tr>
+
+<?php
+}
+?>
         <tr>
           <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Extras</b></td>
           <td>
-            <?php echo $specEX ? $specEX : "None"; ?>
+            <?php echo $specEX ? $specEX : 'None'; ?>
           </td>
+        </tr>
       </tbody>
     </table>
 
