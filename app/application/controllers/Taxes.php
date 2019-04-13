@@ -88,7 +88,7 @@ class Taxes extends Secure_Controller
 			$data['tax_code'] = '';
 			$data['tax_code_name'] = '';
 			$data['tax_code_type'] = '0';
-			$data['city'] = '';
+			$data['suburb'] = '';
 			$data['state'] = '';
 			$data['tax_rate'] = '0.0000';
 			$data['rate_tax_code'] = '';
@@ -102,7 +102,7 @@ class Taxes extends Secure_Controller
 			$data['tax_code'] = $tax_code;
 			$data['tax_code_name'] = $tax_code_info->tax_code_name;
 			$data['tax_code_type'] = $tax_code_info->tax_code_type;
-			$data['city'] = $tax_code_info->city;
+			$data['suburb'] = $tax_code_info->suburb;
 			$data['state'] = $tax_code_info->state;
 			$data['rate_tax_code'] = $tax_code_info->rate_tax_code;
 			$data['rate_tax_category_id'] = $tax_code_info->rate_tax_category_id;
@@ -143,7 +143,7 @@ class Taxes extends Secure_Controller
 			'tax_code' => strtoupper($this->input->post('tax_code')),
 			'tax_code_name' => $this->input->post('tax_code_name'),
 			'tax_code_type' => $this->input->post('tax_code_type'),
-			'city' => $this->input->post('city'),
+			'suburb' => $this->input->post('suburb'),
 			'state' => $this->input->post('state'));
 
 		$tax_rate_data = array(

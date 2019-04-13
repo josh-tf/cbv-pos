@@ -225,9 +225,9 @@ class Receivings extends Secure_Controller
 			$data['last_name'] = $supplier_info->last_name;
 			$data['supplier_email'] = $supplier_info->email;
 			$data['supplier_address'] = $supplier_info->address_1;
-			if(!empty($supplier_info->zip) or !empty($supplier_info->city))
+			if(!empty($supplier_info->postcode) or !empty($supplier_info->suburb))
 			{
-				$data['supplier_location'] = $supplier_info->zip . ' ' . $supplier_info->city;
+				$data['supplier_location'] = $supplier_info->postcode . ' ' . $supplier_info->suburb;
 			}
 			else
 			{
@@ -302,9 +302,9 @@ class Receivings extends Secure_Controller
 			$data['last_name'] = $supplier_info->last_name;
 			$data['supplier_email'] = $supplier_info->email;
 			$data['supplier_address'] = $supplier_info->address_1;
-			if(!empty($supplier_info->zip) or !empty($supplier_info->city))
+			if(!empty($supplier_info->postcode) or !empty($supplier_info->suburb))
 			{
-				$data['supplier_location'] = $supplier_info->zip . ' ' . $supplier_info->city;
+				$data['supplier_location'] = $supplier_info->postcode . ' ' . $supplier_info->suburb;
 			}
 			else
 			{
@@ -351,9 +351,9 @@ class Receivings extends Secure_Controller
 			$data['last_name'] = $supplier_info->last_name;
 			$data['supplier_email'] = $supplier_info->email;
 			$data['supplier_address'] = $supplier_info->address_1;
-			if(!empty($supplier_info->zip) or !empty($supplier_info->city))
+			if(!empty($supplier_info->postcode) or !empty($supplier_info->suburb))
 			{
-				$data['supplier_location'] = $supplier_info->zip . ' ' . $supplier_info->city;
+				$data['supplier_location'] = $supplier_info->postcode . ' ' . $supplier_info->suburb;
 			}
 			else
 			{

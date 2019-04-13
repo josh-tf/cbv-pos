@@ -1000,7 +1000,7 @@ class Sale_lib
 
                 if ($this->CI->config->item('customer_sales_tax_support') == '1') {
                     // Now calculate what the sales taxes should be (storing them in the $sales_taxes array
-                    $this->CI->tax_lib->apply_sales_tax($item, $customer->city, $customer->state, $customer->sales_tax_code, $register_mode, 0, $sales_taxes, $tax_category, $tax_rate, $rounding_code, $tax_group_sequence, $tax_code);
+                    $this->CI->tax_lib->apply_sales_tax($item, $customer->suburb, $customer->state, $customer->sales_tax_code, $register_mode, 0, $sales_taxes, $tax_category, $tax_rate, $rounding_code, $tax_group_sequence, $tax_code);
                 }
 
             }

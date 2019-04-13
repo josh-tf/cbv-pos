@@ -88,13 +88,13 @@ $person_info->country = ($person_info->country == null ? 'Australia' : $person_i
 </div>
 
 <div class="form-group form-group-sm">
-	<?php echo form_label($this->lang->line('common_city'), 'city', array('class' => 'control-label col-xs-3')); ?>
+	<?php echo form_label($this->lang->line('common_suburb'), 'suburb', array('class' => 'control-label col-xs-3')); ?>
 	<div class='col-xs-8'>
 		<?php echo form_input(array(
-    'name' => 'city',
-    'id' => 'city',
+    'name' => 'suburb',
+    'id' => 'suburb',
     'class' => 'form-control input-sm',
-    'value' => $person_info->city)
+    'value' => $person_info->suburb)
 ); ?>
 	</div>
 </div>
@@ -112,13 +112,13 @@ $person_info->country = ($person_info->country == null ? 'Australia' : $person_i
 </div>
 
 <div class="form-group form-group-sm">
-	<?php echo form_label($this->lang->line('common_zip'), 'zip', array('class' => 'control-label col-xs-3')); ?>
+	<?php echo form_label($this->lang->line('common_postcode'), 'postcode', array('class' => 'control-label col-xs-3')); ?>
 	<div class='col-xs-8'>
 		<?php echo form_input(array(
-    'name' => 'zip',
+    'name' => 'postcode',
     'id' => 'postcode',
     'class' => 'form-control input-sm',
-    'value' => $person_info->zip)
+    'value' => $person_info->postcode)
 ); ?>
 	</div>
 </div>
@@ -154,17 +154,17 @@ $(document).ready(function()
 	nominatim.init({
 		fields : {
 			postcode : {
-				dependencies :  ["postcode", "city", "state", "country"],
+				dependencies :  ["postcode", "suburb", "state", "country"],
 				response : {
 					field : 'postalcode',
-					format: ["postcode", "village|town|hamlet|city_district|city", "state", "country"]
+					format: ["postcode", "village|town|hamlet|suburb_district|suburb", "state", "country"]
 				}
 			},
 
-			city : {
-				dependencies :  ["postcode", "city", "state", "country"],
+			suburb : {
+				dependencies :  ["postcode", "suburb", "state", "country"],
 				response : {
-					format: ["postcode", "village|town|hamlet|city_district|city", "state", "country"]
+					format: ["postcode", "village|town|hamlet|suburb_district|suburb", "state", "country"]
 				}
 			},
 

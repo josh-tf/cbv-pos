@@ -62,13 +62,13 @@
         </div>
 
         <div class="form-group form-group-sm">
-			<?php echo form_label($this->lang->line('common_city'), 'city', array('class'=>'control-label col-xs-3')); ?>
+			<?php echo form_label($this->lang->line('common_suburb'), 'suburb', array('class'=>'control-label col-xs-3')); ?>
             <div class='col-xs-8'>
 				<?php echo form_input(array(
-						'name'=>'city',
-						'id'=>'city',
+						'name'=>'suburb',
+						'id'=>'suburb',
 						'class'=>'form-control input-sm',
-						'value'=>$city)
+						'value'=>$suburb)
 				);?>
             </div>
         </div>

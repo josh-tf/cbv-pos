@@ -155,9 +155,9 @@ class Tax_lib
      * Determine the applicable tax code and then determine the tax amount to be applied.
      * If a tax amount was identified then accumulate into the sales_taxes array
      */
-    public function apply_sales_tax(&$item, &$city, &$state, &$sales_tax_code, $register_mode, $sale_id, &$sales_taxes)
+    public function apply_sales_tax(&$item, &$suburb, &$state, &$sales_tax_code, $register_mode, $sale_id, &$sales_taxes)
     {
-        $tax_code = $this->get_applicable_tax_code($register_mode, $city, $state, $sales_tax_code);
+        $tax_code = $this->get_applicable_tax_code($register_mode, $suburb, $state, $sales_tax_code);
 
         // If tax code cannot be determined or the price is zero then skip this item
         if ($tax_code != '' && $item['price'] != 0) {
@@ -205,7 +205,7 @@ class Tax_lib
             }
 
             // input : register_mode
-            // input : city
+            // input : suburb
             // input : state
             // input : sales_tax_code
             // input : $item['price']
@@ -228,13 +228,13 @@ class Tax_lib
         }
     }
 
-    public function get_applicable_tax_code($register_mode, $city, $state, $sales_tax_code)
+    public function get_applicable_tax_code($register_mode, $suburb, $state, $sales_tax_code)
     {
         if ($register_mode == "sale") {
             $tax_code = $this->CI->config->config['default_origin_tax_code']; // overrides customer assigned code
         } else {
             if ($sales_tax_code == '') {
-                $tax_code = $this->CI->Tax->get_sales_tax_code($city, $state);
+                $tax_code = $this->CI->Tax->get_sales_tax_code($suburb, $state);
             } else {
                 // Use the customer assigned tax rate code
                 $tax_code = $sales_tax_code;

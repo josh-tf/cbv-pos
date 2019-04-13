@@ -2,7 +2,7 @@
 
 $lang["common_address_1"] = "Address";
 $lang["common_address_2"] = "Address 2";
-$lang["common_city"] = "City";
+$lang["common_suburb"] = "Suburb";
 $lang["common_close"] = "Close";
 $lang["common_comments"] = "Comments";
 $lang["common_common"] = "common";
@@ -66,4 +66,4 @@ $lang["common_website"] = "website";
 $lang["common_welcome"] = "Welcome";
 $lang["common_welcome_message"] = "Welcome to CBVPOS, click a module below to get started.";
 $lang["common_you_are_using_ospos"] = "You are using Open Source Point Of Sale version";
-$lang["common_zip"] = "Postal Code";
+$lang["common_postcode"] = "Postcode";

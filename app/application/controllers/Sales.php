@@ -715,8 +715,8 @@ class Sales extends Secure_Controller
             $data['last_name'] = $customer_info->last_name;
             $data['customer_email'] = $customer_info->email;
             $data['customer_address'] = $customer_info->address_1;
-            if (!empty($customer_info->zip) || !empty($customer_info->city)) {
-                $data['customer_location'] = $customer_info->city . ' ' . $customer_info->zip;
+            if (!empty($customer_info->postcode) || !empty($customer_info->suburb)) {
+                $data['customer_location'] = $customer_info->suburb . ' ' . $customer_info->postcode;
             } else {
                 $data['customer_location'] = '';
             }

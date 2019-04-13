@@ -744,7 +744,7 @@ class Sale extends CI_Model
         // if customer sales tax is enabled then update  sales_items_taxes with the
         if ($this->config->item('customer_sales_tax_support') == '1') {
             $register_mode = $this->config->item('default_register_mode');
-            $tax_details = $this->tax_lib->apply_sales_tax($item, $customer->city, $customer->state, $customer->sales_tax_code, $register_mode, $sale_id, $sales_taxes);
+            $tax_details = $this->tax_lib->apply_sales_tax($item, $customer->suburb, $customer->state, $customer->sales_tax_code, $register_mode, $sale_id, $sales_taxes);
 
             $sales_items_taxes = array(
                 'sale_id' => $sale_id,
