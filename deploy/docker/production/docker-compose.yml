@@ -12,16 +12,16 @@ services:
         container_name: cbv-prod-pos
         image: joshtf/cbv-php
         environment:
-            - FORCE_HTTPS=${opt_force_ssl}
-            - MYSQL_DB_NAME=${pos_db_name}
-            - MYSQL_USERNAME=${pos_db_user}
-            - MYSQL_PASSWORD=${pos_db_pass}
-            - MYSQL_HOST_NAME=cbv-prod-db
-            - PHP_TIMEZONE=${timezone}
-            - VIRTUAL_HOST=${pos_virt_host}
-            - LETSENCRYPT_HOST=${pos_le_host}
-            - LETSENCRYPT_EMAIL=${pos_le_email}
-            - STOCKLIST_UPDATE_URL=${stocklist_url}
+                - FORCE_HTTPS=${opt_force_ssl}
+                - MYSQL_DB_NAME=${pos_db_name}
+                - MYSQL_USERNAME=${pos_db_user}
+                - MYSQL_PASSWORD=${pos_db_pass}
+                - MYSQL_HOST_NAME=cbv-prod-db
+                - PHP_TIMEZONE=${timezone}
+                - VIRTUAL_HOST=${pos_virt_host}
+                - LETSENCRYPT_HOST=${pos_le_host}
+                - LETSENCRYPT_EMAIL=${pos_le_email}
+                - STOCKLIST_UPDATE_URL=${stocklist_url}
         links:
                 - cbv-prod-db
         expose:
@@ -38,18 +38,18 @@ services:
         container_name: cbv-prod-web
         image: joshtf/cbv-php
         environment:
-            - MYSQL_DB_NAME=${web_db_name}
-            - MYSQL_USERNAME=${web_db_user}
-            - MYSQL_PASSWORD=${web_db_pass}
-            - MYSQL_HOST_NAME=cbv-prod-db
-            - POS_MYSQL_DB_NAME=${pos_db_name}
-            - POS_MYSQL_USERNAME=${pos_db_user}
-            - POS_MYSQL_PASSWORD=${pos_db_pass}
-            - PHP_TIMEZONE=${timezone}
-            - VIRTUAL_HOST=${web_virt_host}
-            - LETSENCRYPT_HOST=${web_le_host}
-            - LETSENCRYPT_EMAIL=${web_le_email}
-            - WEBSITE_URL=${web_url}
+                - MYSQL_DB_NAME=${web_db_name}
+                - MYSQL_USERNAME=${web_db_user}
+                - MYSQL_PASSWORD=${web_db_pass}
+                - MYSQL_HOST_NAME=cbv-prod-db
+                - POS_MYSQL_DB_NAME=${pos_db_name}
+                - POS_MYSQL_USERNAME=${pos_db_user}
+                - POS_MYSQL_PASSWORD=${pos_db_pass}
+                - PHP_TIMEZONE=${timezone}
+                - VIRTUAL_HOST=${web_virt_host}
+                - LETSENCRYPT_HOST=${web_le_host}
+                - LETSENCRYPT_EMAIL=${web_le_email}
+                - WEBSITE_URL=${web_url}
         links:
                 - cbv-prod-db
         expose:
@@ -116,6 +116,21 @@ services:
                 - portainer_data:/data
                 - /var/run/docker.sock:/var/run/docker.sock
         restart: always
+
+    backup:
+        image: databack/mysql-backup
+        restart: always
+        volumes:
+                - /backup:/db
+                - /scripts/pre:/scripts.d/pre-backup
+                - /scripts/post:/scripts.d/post-backup
+        env:
+                - DB_DUMP_TARGET=/db
+                - DB_USER=${backup_db_user}
+                - DB_PASS=${backup_db_pass}
+                - DB_DUMP_FREQ=${backup_db_frq}
+                - DB_DUMP_BEGIN=${backup_db_start}
+                - DB_SERVER=cbv-prod-db
 
 # Build containers
 #   - build composer installs codeigniter
