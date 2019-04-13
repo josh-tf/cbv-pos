@@ -58,7 +58,7 @@ foreach ($cus_info as $customer) {
       <td><?php echo $customer->first_name; ?></td>
       <td><?php echo $customer->last_name; ?></td>
       <td><?php echo $customer->email; ?></td>
-      <td><?php echo $customer->address_1 . ' ' . $customer->address_2 . ' ' . $customer->city; ?></td>
+      <td><?php echo $customer->address_1 . ' ' . $customer->address_2 . ' ' . $customer->suburb; ?></td>
       <td style="font-weight:bold;color:#F33;font-size: 1.2em;"><?php echo $customer->comments; ?></td>
     </tr>
 

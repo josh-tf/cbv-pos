@@ -169,9 +169,9 @@ class Customers extends Persons
             'email' => $email,
             'phone_number' => $this->input->post('phone_number'),
             'address_1' => $this->input->post('address_1'),
-            'city' => $this->input->post('city'),
+            'suburb' => $this->input->post('suburb'),
             'state' => $this->input->post('state'),
-            'zip' => $this->input->post('zip'),
+            'postcode' => $this->input->post('postcode'),
             'country' => $this->input->post('country'),
             'comments' => $this->input->post('comments'),
         );
@@ -290,9 +290,9 @@ class Customers extends Persons
                             'phone_number' => $data[4],
                             'address_1' => $data[5],
                             'address_2' => $data[6],
-                            'city' => $data[7],
+                            'suburb' => $data[7],
                             'state' => $data[8],
-                            'zip' => $data[9],
+                            'postcode' => $data[9],
                             'country' => $data[10],
                             'comments' => $data[11],
                         );

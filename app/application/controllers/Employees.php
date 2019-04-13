@@ -97,9 +97,9 @@ class Employees extends Persons
             'email' => $email,
             'phone_number' => $this->input->post('phone_number'),
             'address_1' => $this->input->post('address_1'),
-            'city' => $this->input->post('city'),
+            'suburb' => $this->input->post('suburb'),
             'state' => $this->input->post('state'),
-            'zip' => $this->input->post('zip'),
+            'postcode' => $this->input->post('postcode'),
             'country' => $this->input->post('country'),
             'comments' => $this->input->post('comments'),
         );

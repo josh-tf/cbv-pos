@@ -128,12 +128,12 @@ class Tax extends CI_Model
 	/**
 	Gets the tax code to use for a given customer
 	*/
-	public function get_sales_tax_code($city = '', $state = '')
+	public function get_sales_tax_code($suburb = '', $state = '')
 	{
-		// if tax code using both city and state cannot be found then  try again using just the state
+		// if tax code using both suburb and state cannot be found then  try again using just the state
 		// if the state tax code cannot be found then try again using blanks for both
 		$this->db->from('tax_codes');
-		$this->db->where('city', $city);
+		$this->db->where('suburb', $suburb);
 		$this->db->where('state', $state);
 		$this->db->where('tax_code_type', '0'); // sales tax
 
@@ -146,7 +146,7 @@ class Tax extends CI_Model
 		else
 		{
 			$this->db->from('tax_codes');
-			$this->db->where('city', '');
+			$this->db->where('suburb', '');
 			$this->db->where('state', $state);
 			$this->db->where('tax_code_type', '0'); // sales tax
 

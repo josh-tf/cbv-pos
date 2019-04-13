@@ -102,9 +102,9 @@ class Suppliers extends Persons
 			'phone_number' => $this->input->post('phone_number'),
 			'address_1' => $this->input->post('address_1'),
 			'address_2' => $this->input->post('address_2'),
-			'city' => $this->input->post('city'),
+			'suburb' => $this->input->post('suburb'),
 			'state' => $this->input->post('state'),
-			'zip' => $this->input->post('zip'),
+			'postcode' => $this->input->post('postcode'),
 			'country' => $this->input->post('country'),
 			'comments' => $this->input->post('comments')
 		);

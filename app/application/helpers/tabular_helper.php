@@ -436,7 +436,7 @@ function get_taxes_manage_table_headers()
         array('tax_code_type_name' => $CI->lang->line('taxes_tax_code_type')),
         array('tax_rate' => $CI->lang->line('taxes_tax_rate')),
         array('rounding_code_name' => $CI->lang->line('taxes_rounding_code')),
-        array('city' => $CI->lang->line('common_city')),
+        array('suburb' => $CI->lang->line('common_suburb')),
         array('state' => $CI->lang->line('common_state')),
     );
 
@@ -459,7 +459,7 @@ function get_tax_data_row($tax_code_row)
         'rounding_code' => $tax_code_row->rounding_code,
         'tax_code_type_name' => $CI->Tax->get_tax_code_type_name($tax_code_row->tax_code_type),
         'rounding_code_name' => Rounding_mode::get_rounding_code_name($tax_code_row->rounding_code),
-        'city' => $tax_code_row->city,
+        'suburb' => $tax_code_row->suburb,
         'state' => $tax_code_row->state,
         'edit' => anchor($controller_name . "/view/$tax_code_row->tax_code", '<span class="glyphicon glyphicon-edit"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
