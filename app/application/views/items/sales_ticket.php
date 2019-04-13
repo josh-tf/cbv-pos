@@ -1,45 +1,4 @@
-<?php $this->load->view('partial/header');
-
-// generate our numbers for use
-
-function formatPrice($value, $ncp = false)
-{ // ncp is a bool for non concession price
-
-    if (!$ncp) {
-        return number_format((float) $value, 2, '.', ''); // round to two dec
-    } else {
-        return number_format((float) round(($value * 1.5) / 5) * 5, 2, '.', ''); // if ncp bool is set to true then multiply by 150% and round to nearest 5 i.e 23.50 becomes 25.00
-    }
-
-}
-
-foreach ($cbv_info as $computer) {
-
-  $itemCat = $computer->category;
-
-   if (!($itemCat === 'Desktop')) {
-
-      print('<span class="ticketCatErr"><b>An error has occurred..</b><br><br> Sales ticket is only available for the "Desktop" item type. <br>The category for the selected item was <i>"' . $itemCat .  '"</><br>');
-      print('<br><b><a href="../items">Back to Items</a></b></span>');
-      die();
-
-  }
-
-    // create an array to be used below
-    $concPriceFull = '$' . formatPrice($computer->unit_price);
-    $nonConcPriceFull = '$' . formatPrice($computer->unit_price, true); // item price x1.5 for non Concession
-    $concPriceBox = '$' . formatPrice($computer->custom12);
-    $nonConcPriceBox = '$' . formatPrice($computer->custom12, true); // box only x1.5 for non Concession
-    $specID = $computer->name;
-    $specModel = $computer->custom2;
-    $specCPU = $computer->custom3 . ' ' . $computer->custom4 . ' Ghz';
-    $specRAM = $computer->custom5 . ' GB';
-    $specHDD = $computer->custom6 . ' GB';
-    $specMonitor = $computer->custom8 . ' inches';
-    $specEX = $computer->custom13;
-
-}
-?>
+<?php $this->load->view('partial/header');?>
 
 <style>
   .wrapper {
@@ -128,16 +87,77 @@ foreach ($cbv_info as $computer) {
 </div>
 
 <div id="title_bar" class="btn-toolbar print_hide">
-
+<?php
+if (count($cbvid_check) > 0) {
+    ?>
   <button data-toggle="modal" data-target="#printWarning" class="btn btn-info btn-sm pull-right">
     <span class="glyphicon glyphicon-print">&nbsp</span>Print Ticket
   </button>
-
+  <?php
+}
+?>
   <button class='btn btn-info btn-sm pull-right' onclick="window.location.href='/items/'">
     <span class="glyphicon glyphicon-tag">&nbsp</span>Back to Items
   </button>
 </div>
 
+<?php
+
+// die if no matches
+if (count($cbvid_check) == 0) {
+    ?>
+
+<div class="alert alert-danger" role="alert">
+  <b>Error occurred:</b> No matching computer ID was found in the database.
+</div>
+
+<?php
+die();
+}
+
+// generate our numbers for use
+function formatPrice($value, $ncp = false)
+{ // ncp is a bool for non concession price
+
+    if (!$ncp) {
+        return number_format((float) $value, 2, '.', ''); // round to two dec
+    } else {
+        return number_format((float) round(($value * 1.5) / 5) * 5, 2, '.', ''); // if ncp bool is set to true then multiply by 150% and round to nearest 5 i.e 23.50 becomes 25.00
+    }
+
+}
+
+foreach ($cbvid_check as $computer) {
+
+    $itemCat = $computer->category;
+
+    if (!($itemCat === 'Desktop')) {
+
+        ?>
+
+<div class="alert alert-danger" role="alert">
+  <b>Error occurred:</b> Sales ticket is only available for the <i>Desktop</i> item type however the category for the selected item was <i><?php echo $itemCat ?></i>
+     </div>
+
+<?php
+die();
+    }
+
+    // create an array to be used below
+    $concPriceFull = '$' . formatPrice($computer->unit_price);
+    $nonConcPriceFull = '$' . formatPrice($computer->unit_price, true); // item price x1.5 for non Concession
+    $concPriceBox = '$' . formatPrice($computer->custom12);
+    $nonConcPriceBox = '$' . formatPrice($computer->custom12, true); // box only x1.5 for non Concession
+    $specID = $computer->name;
+    $specModel = $computer->custom2;
+    $specCPU = $computer->custom3 . ' ' . $computer->custom4 . ' Ghz';
+    $specRAM = $computer->custom5 . ' GB';
+    $specHDD = $computer->custom6 . ' GB';
+    $specMonitor = $computer->custom8 . ' inches';
+    $specEX = $computer->custom13;
+
+}
+?>
 
 <div class="row" id="content">
   <div class="col-sm-6">

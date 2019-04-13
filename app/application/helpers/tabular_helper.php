@@ -220,6 +220,7 @@ function get_customer_manage_table_headers()
         array('email' => $CI->lang->line('common_email')),
         array('phone_number' => $CI->lang->line('common_phone_number')),
         array('total' => $CI->lang->line('common_total_spent'), 'sortable' => false),
+        array('crn_lookup' => '', 'sortable' => false),
     );
 
     if ($CI->Employee->has_grant('messages', $CI->session->userdata('person_id'))) {
@@ -246,6 +247,9 @@ function get_customer_data_row($person, $stats)
         'email' => empty($person->email) ? '' : mailto($person->email, $person->email),
         'phone_number' => $person->phone_number,
         'total' => to_currency($stats->total),
+
+        'crn_lookup' => anchor("/customers/redir?id=" . $person->conc_id, '<span class="glyphicon glyphicon-search"></span>',
+            array('target' => '_blank', 'class' => '', 'id' => 'cbvid_check', 'name' => 'cbvid_check', 'title' => $CI->lang->line('lookup_conc_id'))),
         'messages' => empty($person->phone_number) ? '' : anchor("Messages/view/$person->person_id", '<span class="glyphicon glyphicon-phone"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line('messages_sms_send'))),
         'edit' => anchor($controller_name . "/view/$person->person_id", '<span class="glyphicon glyphicon-edit"></span>',
@@ -375,7 +379,7 @@ function get_item_data_row($item)
             array('class' => 'modal-dlg', 'title' => $CI->lang->line($controller_name . '_details_count'))
         ),
         'ticket' => anchor("/items/redir?id=" . $item->name, '<span class="glyphicon glyphicon-print"></span>',
-            array('target' => '_blank', 'class' => '', 'id' => 'cbv_id', 'name' => 'cbv_id', 'title' => 'Print Sales Ticket')
+            array('target' => '_blank', 'class' => '', 'id' => 'cbv_id', 'name' => 'cbv_id', 'title' => $CI->lang->line('print_ticket'))
         ),
         'edit' => anchor($controller_name . "/view/$item->item_id", '<span class="glyphicon glyphicon-edit"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
