@@ -31,6 +31,7 @@ $lang["items_edit_fields_you_want_to_update"] = "Edit the desired fields for sel
 $lang["items_edit_multiple_items"] = "Editing Multiple Items";
 $lang["items_empty_upc_items"] = "Empty Barcode Items";
 $lang["items_in_stock"] = "In Stock (Other)";
+$lang["items_in_stock_all"] = "In Stock (All)";
 $lang["items_out_stock"] = "Out of Stock (Other)";
 $lang["items_out_stock_all"] = "Out of Stock (All)";
 $lang["items_cat_avail_computer"] = "In-Stock Computers";

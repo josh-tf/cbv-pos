@@ -25,6 +25,7 @@ class Items extends Secure_Controller
             'cat_avail_computer' => $this->lang->line('items_cat_avail_computer'),
             'cat_sold_computer' => $this->lang->line('items_cat_sold_computer'),
             'in_stock' => $this->lang->line('items_in_stock'),
+            'in_stock_all' => $this->lang->line('items_in_stock_all'),
             'out_stock' => $this->lang->line('items_out_stock'),
             'out_stock_all' => $this->lang->line('items_out_stock_all'),
             'is_deleted' => $this->lang->line('items_is_deleted'));
@@ -68,6 +69,7 @@ class Items extends Secure_Controller
             'end_date' => $this->input->get('end_date'),
             'stock_location_id' => $this->item_lib->get_item_location(),
             'in_stock' => false,
+            'in_stock_all' => false,
             'out_stock' => false,
             'out_stock_all' => false,
             'cat_avail_computer' => false,
