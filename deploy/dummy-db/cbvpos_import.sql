@@ -628,9 +628,9 @@ CREATE TABLE `cbvpos_people` (
   `email` varchar(255) NOT NULL,
   `address_1` varchar(255) NOT NULL,
   `address_2` varchar(255) NOT NULL,
-  `city` varchar(255) NOT NULL,
+  `suburb` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
-  `zip` varchar(255) NOT NULL,
+  `postcode` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
   `comments` text NOT NULL,
   `person_id` int(10) NOT NULL
@@ -640,7 +640,7 @@ CREATE TABLE `cbvpos_people` (
 -- Dumping data for table `cbvpos_people`
 --
 
-INSERT INTO `cbvpos_people` (`first_name`, `last_name`, `gender`, `phone_number`, `email`, `address_1`, `address_2`, `city`, `state`, `zip`, `country`, `comments`, `person_id`) VALUES
+INSERT INTO `cbvpos_people` (`first_name`, `last_name`, `gender`, `phone_number`, `email`, `address_1`, `address_2`, `suburb`, `state`, `postcode`, `country`, `comments`, `person_id`) VALUES
 ('Front', 'Desk', NULL, '(03) 9600 9161', 'info@computerbank.org.au', '483 Victoria Street', '', 'West Melbourne', 'Victoria', '3003', 'Australia', '', 1),
 ('Jane', 'Doe', NULL, '0422111333', 'j.doe.cbv@josh.tf', '123 Database Lane', '', 'Melbourne', 'Victoria', '3000', 'Australia', '', 2),
 ('John', 'Smith', NULL, '0499222444', 'j.smith.cbv@josh.tf', '334 Dorcas Street', '', 'South Melbourne', 'Victoria', '3205', 'Australia', '', 3);
