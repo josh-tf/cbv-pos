@@ -166,7 +166,7 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('smtp_user', ''),
 ('statistics', '1'),
 ('suggestions_first_column', 'name'),
-('suggestions_second_column', ''),
+('suggestions_second_column', 'unit_price'),
 ('suggestions_third_column', ''),
 ('tax_decimals', '2'),
 ('tax_included', '1'),
