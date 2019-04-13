@@ -235,6 +235,9 @@ class Item extends CI_Model
         if ($filters['in_stock'] != false) {
             $this->db->where('quantity > 0 AND `category` NOT in("Laptop","Desktop")', null);
         }
+        if ($filters['in_stock_all'] != false) {
+            $this->db->where('quantity > 0', null);
+        }
         if ($filters['out_stock'] != false) {
             $this->db->where('quantity <= 0 AND `category` NOT in("Laptop","Desktop")', null);
         }
