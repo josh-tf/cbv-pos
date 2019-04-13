@@ -318,7 +318,7 @@ function get_items_manage_table_headers()
         array('name' => $CI->lang->line('items_name')),
         array('category' => $CI->lang->line('items_category')),
         //array('company_name' => $CI->lang->line('suppliers_company_name')),
-        array('cost_price' => $CI->lang->line('items_cost_price')),
+        //array('cost_price' => $CI->lang->line('items_cost_price')),
         array('unit_price' => $CI->lang->line('items_unit_price')),
         array('quantity' => $CI->lang->line('items_quantity')),
         array('tax_percents' => $CI->lang->line('items_tax_percents'), 'sortable' => false),
@@ -364,12 +364,12 @@ function get_item_data_row($item)
 
     return array(
         'items.item_id' => $item->item_id,
-        'on_hold' => ($item->on_hold == 1 ? 'Yes' : '-'),
+        'on_hold' => ($item->on_hold == 1 ? 'Yes (' . $item->hold_for . ')' : '-'),
         //'item_number' => $item->item_number,
         'name' => $item->name,
         'category' => $item->category,
         //'company_name' => $item->company_name,
-        'cost_price' => to_currency($item->cost_price),
+        //'cost_price' => to_currency($item->cost_price),
         'unit_price' => to_currency($item->unit_price),
         'quantity' => to_quantity_decimals($item->quantity),
         'tax_percents' => !$tax_percents ? '-' : $tax_percents,
