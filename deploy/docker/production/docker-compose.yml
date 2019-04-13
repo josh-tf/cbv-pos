@@ -90,10 +90,10 @@ services:
                 - "80:80"
                 - "443:443"
         volumes:
-                - ./certs:/etc/nginx/certs
                 - /etc/nginx/vhost.d
                 - /usr/share/nginx/html
                 - /var/run/docker.sock:/tmp/docker.sock:ro
+                - ./certs:/etc/nginx/certs
                 - ./conf/proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
         restart: always
 
@@ -121,9 +121,9 @@ services:
         container_name: cbv-prod-backup
         image: databack/mysql-backup
         volumes:
-                - /backup:/db
-                - /scripts/pre:/scripts.d/pre-backup
-                - /scripts/post:/scripts.d/post-backup
+                - ./backup:/db
+                - ./scripts/pre:/scripts.d/pre-backup
+                - ./scripts/post:/scripts.d/post-backup
         environment:
                 - DB_DUMP_TARGET=/db
                 - DB_USER=${backup_db_user}
