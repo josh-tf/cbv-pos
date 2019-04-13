@@ -121,6 +121,7 @@ services:
         container_name: cbv-prod-backup
         image: databack/mysql-backup
         volumes:
+                - ./:/app
                 - ./backup:/db
                 - ./scripts/pre:/scripts.d/pre-backup
                 - ./scripts/post:/scripts.d/post-backup
