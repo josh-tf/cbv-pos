@@ -24,6 +24,7 @@ class Items extends Secure_Controller
         $data['filters'] = array(
             'cat_avail_computer' => $this->lang->line('items_cat_avail_computer'),
             'cat_sold_computer' => $this->lang->line('items_cat_sold_computer'),
+            'cat_hold_computer' => $this->lang->line('items_cat_hold_computer'),
             'in_stock' => $this->lang->line('items_in_stock'),
             'in_stock_all' => $this->lang->line('items_in_stock_all'),
             'out_stock' => $this->lang->line('items_out_stock'),
@@ -74,6 +75,7 @@ class Items extends Secure_Controller
             'out_stock_all' => false,
             'cat_avail_computer' => false,
             'cat_sold_computer' => false,
+            'cat_hold_computer' => false,
             'is_deleted' => false);
 
         // check if any filter is set in the multiselect dropdown
@@ -372,6 +374,8 @@ class Items extends Secure_Controller
             'stock_type' => $this->input->post('stock_type') == null ? HAS_STOCK : $this->input->post('stock_type'),
             'supplier_id' => $this->input->post('supplier_id') == '' ? null : $this->input->post('supplier_id'),
             'item_number' => $this->input->post('item_number') == '' ? null : $this->input->post('item_number'),
+            'on_hold' => $this->input->post('on_hold') == false ? false : $this->input->post('on_hold'),
+            'hold_for' => $this->input->post('on_hold') == false ? null : $this->input->post('hold_for'), // if on_hold is not checked then save this as blank
             'unit_price' => parse_decimals($this->input->post('unit_price')),
             'allow_alt_description' => $this->input->post('allow_alt_description') != null,
             'is_serialized' => $this->input->post('is_serialized') != null,

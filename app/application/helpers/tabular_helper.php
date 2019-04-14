@@ -313,15 +313,16 @@ function get_items_manage_table_headers()
 
     $headers = array(
         array('items.item_id' => $CI->lang->line('common_id')),
-        array('item_number' => $CI->lang->line('items_item_number')),
+        array('on_hold' => $CI->lang->line('items_on_hold')),
+        //array('item_number' => $CI->lang->line('items_item_number')),
         array('name' => $CI->lang->line('items_name')),
         array('category' => $CI->lang->line('items_category')),
-        array('company_name' => $CI->lang->line('suppliers_company_name')),
-        array('cost_price' => $CI->lang->line('items_cost_price')),
+        //array('company_name' => $CI->lang->line('suppliers_company_name')),
+        //array('cost_price' => $CI->lang->line('items_cost_price')),
         array('unit_price' => $CI->lang->line('items_unit_price')),
         array('quantity' => $CI->lang->line('items_quantity')),
         array('tax_percents' => $CI->lang->line('items_tax_percents'), 'sortable' => false),
-        array('item_pic' => $CI->lang->line('items_image'), 'sortable' => false),
+        //array('item_pic' => $CI->lang->line('items_image'), 'sortable' => false),
         array('inventory' => ''),
         array('stock' => ''),
         array('ticket' => ''),
@@ -361,17 +362,28 @@ function get_item_data_row($item)
         }
     }
 
+    if (!($item->on_hold == false)) {
+        if (!($item->hold_for == null)) {
+            $onHold = '<b>Yes</b> (' . $item->hold_for . ')';
+        } else {
+            $onHold = '<b>Yes</b>';
+        }
+    } else {
+            $onHold = '-';
+    }
+
     return array(
         'items.item_id' => $item->item_id,
-        'item_number' => $item->item_number,
+        'on_hold' => $onHold,
+        //'item_number' => $item->item_number,
         'name' => $item->name,
         'category' => $item->category,
-        'company_name' => $item->company_name,
-        'cost_price' => to_currency($item->cost_price),
+        //'company_name' => $item->company_name,
+        //'cost_price' => to_currency($item->cost_price),
         'unit_price' => to_currency($item->unit_price),
         'quantity' => to_quantity_decimals($item->quantity),
         'tax_percents' => !$tax_percents ? '-' : $tax_percents,
-        'item_pic' => $image,
+        //'item_pic' => $image,
         'inventory' => anchor($controller_name . "/inventory/$item->item_id", '<span class="glyphicon glyphicon-pushpin"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_count'))
         ),
