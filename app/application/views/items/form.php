@@ -164,7 +164,7 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 
 		<!-- item on hold related -->
 		<div class="form-group form-group-sm hold_for_grp">
-			<?php echo form_label($this->lang->line('items_hold_for'), 'hold_for', array('class' => 'control-label col-xs-3')); ?>
+			<?php echo form_label($this->lang->line('items_hold_for'), 'hold_for', array('class' => 'required control-label col-xs-3')); ?>
 			<div class='col-xs-4'>
 				<div class="input-group input-group-sm">
 					<?php echo form_input(array(
@@ -812,6 +812,12 @@ function createDescription() {
 			{
 				required: true,
 				remote: "<?php echo site_url($controller_name . '/check_numeric') ?>"
+			},
+			hold_for:
+			{
+				required: function () {
+                return $('.on_hold').is(':checked') == true; // if on_hold is checked then hold_for is required
+            }
 			},
 			<?php
 foreach ($stock_locations as $key => $location_detail) {
