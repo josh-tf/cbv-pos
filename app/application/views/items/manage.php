@@ -60,7 +60,7 @@ $(document).ready(function()
 
     $('#table').on('update', function(){
     // highlight the row light orannge if the item is on hold
-    $("tr:contains('Yes')").css("background-color", "#fff1ec");
+    $("tr:contains('Yes')").css("background-color", "#ffebe4");
     });
 
 
