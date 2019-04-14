@@ -3,6 +3,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
+
     $('#generate_barcodes').click(function()
     {
         window.open(
@@ -51,9 +52,15 @@ $(document).ready(function()
             $('a.rollover').imgPreview({
 				imgCSS: { width: 200 },
 				distanceFromCursor: { top:10, left:-210 }
-			})
+            })
+            $("#table").trigger('update');
         }
 
+    });
+
+    $('#table').on('update', function(){
+    // highlight the row light orannge if the item is on hold
+    $("tr:contains('Yes')").css("background-color", "#ffebe4");
     });
 
 

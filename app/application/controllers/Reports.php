@@ -972,7 +972,7 @@ class Reports extends Secure_Controller
 
         $discounts = array();
 
-        $discounts[0] = 'All Discounts';
+        $discounts[0] = 'All Deposits';
         $discounts[1] = 'Under $100.00';
         $discounts[2] = 'Over $100.00';
 

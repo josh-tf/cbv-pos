@@ -145,6 +145,38 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 			</div>
 		</div>
 
+		<!-- item on hold related -->
+		<div class="form-group form-group-sm on_hold">
+			<?php echo form_label($this->lang->line('items_on_hold'), 'on_hold', array('class' => 'control-label col-xs-3')); ?>
+			<div class='col-xs-4'>
+				<div class="input-group input-group-sm">
+					<?php echo form_checkbox(array(
+    'name' => 'on_hold',
+    'id' => 'on_hold',
+    'class' => 'on_hold',
+    'value' => true,
+    'checked' => $item_info->on_hold,
+    'style' => 'margin-top:8px',
+)); ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- item on hold related -->
+		<div class="form-group form-group-sm hold_for_grp">
+			<?php echo form_label($this->lang->line('items_hold_for'), 'hold_for', array('class' => 'required control-label col-xs-3')); ?>
+			<div class='col-xs-4'>
+				<div class="input-group input-group-sm">
+					<?php echo form_input(array(
+    'name' => 'hold_for',
+    'id' => 'hold_for',
+    'class' => 'form-control input-sm hold_for',
+    'value' => $item_info->hold_for)
+); ?>
+				</div>
+			</div>
+		</div>
+
 		<div class="form-group form-group-sm">
 			<?php echo form_label($this->lang->line('items_unit_price'), 'unit_price', array('class' => 'required control-label col-xs-3')); ?>
 			<div class='col-xs-4'>
@@ -549,12 +581,12 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
             'type' => $type,
             'step' => $step,
             'class' => 'form-control input-sm' . ' custom' . $i, // add the class for custom resizing of indv fields via css
-			'value' => $item_arr['custom' . $i],
-			'maxlength' => ($i == 13 ? '35' : '255' ), // max 35chars for the 'extras' field as this is displayed on the sales ticket
+            'value' => $item_arr['custom' . $i],
+            'maxlength' => ($i == 13 ? '35' : '255'), // max 35chars for the 'extras' field as this is displayed on the sales ticket
             'placeholder' => $this->lang->line('custom' . $i . '_helper')); //Add a placeholder example text from the lang file
 
         //Show a textarea instead of a input type for the "Other Notes" field
-		echo ($i == 14 ? form_textarea($inputContents) : form_input($inputContents));
+        echo ($i == 14 ? form_textarea($inputContents) : form_input($inputContents));
         ?>
 						</div>
 					</div>
@@ -584,6 +616,7 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
 //validation and submit handling
 $(document).ready(function()
 {
+
 	const TAXABLE_CATEGORIES = ['New Equipment', 'User Support'];
 	const NON_STOCKED_CATEGORIES = ['User Support','Recycling Fees','CBV Membership'];
 	const COMPUTER_CATEGORIES = ['Laptop', 'Desktop'];
@@ -595,9 +628,13 @@ $(document).ready(function()
 		let isStocked = NON_STOCKED_CATEGORIES.indexOf(category) === -1;
 
 		if (isComputer) {
+			$('.on_hold').removeClass('hidden');
+			$('.hold_for').removeClass('hidden');
 			$('#computer-fields').removeClass('hidden');
 			$('#tax').addClass('hidden');
 		} else {
+			$('.on_hold').addClass('hidden');
+			$('.hold_for').addClass('hidden');
 			$('#computer-fields').addClass('hidden');
 			$('#tax').removeClass('hidden');
 		}
@@ -617,6 +654,13 @@ $(document).ready(function()
 		$('input:radio[name=stock_type]')[1].checked = !isStocked;
 	};
 
+	const updateHoldField = () => { // show the hold_for text box if the on_hold checkbox is selected
+		if($('.on_hold').is(':checked')){
+		$('.hold_for_grp').removeClass('hidden');
+	} else {
+		$('.hold_for_grp').addClass('hidden');
+	}};
+
 	var itemCat = '<?php echo $item_arr['category']; ?>';
 	var itemOS = '<?php echo $item_arr['custom7']; ?>';
 
@@ -626,6 +670,7 @@ $(document).ready(function()
 	}
 
 	updateFieldsBasedOnCategory(); // Run as soon as document is ready
+	updateHoldField();
 
 	$("#new").click(function() {
 		stay_open = true;
@@ -653,6 +698,10 @@ $(document).ready(function()
 		$('#tax_percent_name_1').val(taxRate);
 
 		updateFieldsBasedOnCategory(); // Check whether we should hide the custom fields
+	});
+
+	$(document).on('change','.on_hold',function(){
+		updateHoldField();
 	});
 
 function createDescription() {
@@ -764,6 +813,12 @@ function createDescription() {
 				required: true,
 				remote: "<?php echo site_url($controller_name . '/check_numeric') ?>"
 			},
+			hold_for:
+			{
+				required: function () {
+                return $('.on_hold').is(':checked') == true; // if on_hold is checked then hold_for is required
+            }
+			},
 			<?php
 foreach ($stock_locations as $key => $location_detail) {
     ?>
@@ -835,5 +890,6 @@ foreach ($stock_locations as $key => $location_detail) {
 			}
 		}
 	}, form_support.error));
+
 });
 </script>

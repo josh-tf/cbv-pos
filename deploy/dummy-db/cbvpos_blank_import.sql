@@ -436,6 +436,8 @@ CREATE TABLE `cbvpos_items` (
   `item_type` tinyint(2) NOT NULL DEFAULT '0',
   `tax_category_id` int(10) NOT NULL DEFAULT '1',
   `deleted` int(1) NOT NULL DEFAULT '0',
+  `on_hold` tinyint(1) NOT NULL DEFAULT '0',
+  `hold_for` varchar(255) DEFAULT NULL,
   `custom1` varchar(255) DEFAULT NULL,
   `custom2` varchar(255) DEFAULT NULL,
   `custom3` varchar(255) DEFAULT NULL,

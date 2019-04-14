@@ -124,6 +124,8 @@ class Item extends CI_Model
             $this->db->select('MAX(items.category) as category');
             $this->db->select('MAX(items.supplier_id) as supplier_id');
             $this->db->select('MAX(items.item_number) as item_number');
+            $this->db->select('MAX(items.on_hold) as on_hold');
+            $this->db->select('MAX(items.hold_for) as hold_for');
             $this->db->select('MAX(items.description) as description');
             $this->db->select('MAX(items.cost_price) as cost_price');
             $this->db->select('MAX(items.unit_price) as unit_price');
@@ -196,6 +198,8 @@ class Item extends CI_Model
                 $this->db->like('name', $search);
                 $this->db->or_like('item_number', $search);
                 $this->db->or_like('items.item_id', $search);
+                $this->db->or_like('on_hold', $search);
+                $this->db->or_like('hold_for', $search);
                 $this->db->or_like('company_name', $search);
                 $this->db->or_like('category', $search);
                 $this->db->group_end();
@@ -231,6 +235,9 @@ class Item extends CI_Model
         }
         if ($filters['cat_sold_computer'] != false) {
             $this->db->where('`category` in("Laptop","Desktop") AND `quantity` <= 0', null);
+        }
+        if ($filters['cat_hold_computer'] != false) {
+            $this->db->where('`category` in("Laptop","Desktop") AND `on_hold` = TRUE', null);
         }
         if ($filters['in_stock'] != false) {
             $this->db->where('quantity > 0 AND `category` NOT in("Laptop","Desktop")', null);
@@ -531,6 +538,9 @@ class Item extends CI_Model
             $this->db->join('item_quantities', 'item_quantities.item_id = items.item_id'); //These 2 lines added to not list sold items -rjob
             $this->db->where('quantity >', 0);
         }
+
+        // hide items which are on_hold
+        $this->db->where('on_hold', false);
 
         $this->db->where('deleted', $filters['is_deleted']);
         $this->db->where_in('item_type', $non_kit); // standard, exclude kit items since kits will be picked up later
@@ -944,6 +954,7 @@ class Item extends CI_Model
         $this->db->from('cbvpos_item_quantities');
         $this->db->join('cbvpos_items', 'cbvpos_items.item_id = cbvpos_item_quantities.item_id');
         $this->db->where('quantity > 0');
+        $this->db->where('on_hold', false); // hide on_hold items from stocklist
         $this->db->order_by('unit_price asc');
 
         // pass as the function result
