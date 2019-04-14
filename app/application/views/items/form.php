@@ -630,6 +630,7 @@ $(document).ready(function()
 		if (isComputer) {
 			$('.on_hold').removeClass('hidden');
 			$('.hold_for').removeClass('hidden');
+			$('#computer-fields').removeClass('hidden');
 			$('#tax').addClass('hidden');
 		} else {
 			$('.on_hold').addClass('hidden');
