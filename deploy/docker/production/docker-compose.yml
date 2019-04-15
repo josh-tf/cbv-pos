@@ -22,6 +22,7 @@ services:
                 - LETSENCRYPT_HOST=${pos_le_host}
                 - LETSENCRYPT_EMAIL=${pos_le_email}
                 - STOCKLIST_UPDATE_URL=${stocklist_url}
+                - APACHE_LOG_DIR=${apache_log_dir}
         links:
                 - cbv-prod-db
         expose:
@@ -50,6 +51,7 @@ services:
                 - LETSENCRYPT_HOST=${web_le_host}
                 - LETSENCRYPT_EMAIL=${web_le_email}
                 - WEBSITE_URL=${web_url}
+                - APACHE_LOG_DIR=${apache_log_dir}
         links:
                 - cbv-prod-db
         expose:
@@ -58,6 +60,26 @@ services:
         volumes:
                 - ./web:/app/public
                 - ./conf/php.ini:/usr/local/etc/php/conf.d/uploads.ini
+        restart: always
+
+    cbv-prod-vtiger: # cbv old vtiger database
+        container_name: cbv-prod-vtiger
+        image: nimmis/apache-php5
+        environment:
+                - MYSQL_DB_NAME=${old_db_db_name}
+                - MYSQL_USERNAME=${old_db_db_user}
+                - MYSQL_PASSWORD=${old_db_db_pass}
+                - MYSQL_HOST_NAME=cbv-prod-db
+                - VIRTUAL_HOST=${old_db_virt_host}
+                - LETSENCRYPT_HOST=${old_db_le_host}
+                - LETSENCRYPT_EMAIL=${old_db_le_email}
+        links:
+                - cbv-prod-db
+        expose:
+                - "80"
+                - "443"
+        volumes:
+                - ./old_db:/var/www/html
         restart: always
 
     cbv-prod-db: # MariaDB for wordpress and cbvpos
