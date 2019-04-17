@@ -49,7 +49,8 @@ class Email_lib
         $mail->Debugoutput = 'html';
         $mail->SMTPAuth = true;
         $mail->Host = $this->CI->config->item('smtp_host');
-        $mail->Port = $this->CI->config->item('smtp_port');
+		$mail->Port = $this->CI->config->item('smtp_port');
+		$mail->SMTPSecure = $this->CI->config->item('smtp_crypto');
         $mail->addAddress($to);
         if (!empty($attachment)) {
             $mail->addStringAttachment($attachment);
