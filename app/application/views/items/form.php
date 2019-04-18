@@ -569,6 +569,10 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
         }
         ;
 
+		$itemTypeInt = array('4', '5', '6', '8', '12'); //default type is text, put here for number/integer
+		$itemDate = array('1'); // default type is text, put here for date
+		$itemPartStep = array('4', '5', '8'); // default is 1, place here for 0.1 stepping value
+
         $type = (in_array($i, $itemTypeInt) ? 'number' : //Check the itemTypeInt array for matching custom field ID
             (in_array($i, $itemDate) ? 'date' : 'text')); //Check the itemTypeDt array for matching custom field ID
 
