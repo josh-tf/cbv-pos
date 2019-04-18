@@ -656,7 +656,7 @@ class Sales extends Secure_Controller
             $html = $this->load->view('sales/' . $type . '_email', $sale_data, true);
             // load pdf helper
             $this->load->helper(array('dompdf', 'file'));
-            $filename = sys_get_temp_dir() . '/' . $this->lang->line('sales_$type') . '-' . str_replace('/', '-', $number) . '.pdf';
+            $filename = sys_get_temp_dir() . '/' . $this->lang->line('sales_' .$type) . '-' . str_replace('/', '-', $number) . '.pdf';
             if (file_put_contents($filename, pdf_create($html)) !== false) {
                 $result = $this->email_lib->sendEmail($to, $subject, $text, $filename);
             }
@@ -682,7 +682,7 @@ class Sales extends Secure_Controller
             $sale_data['barcode'] = $this->barcode_lib->generate_receipt_barcode($sale_data['sale_id']);
 
             $to = $sale_data['customer_email'];
-            $subject = $this->lang->line('sales_receipt');
+            $subject = $this->lang->line('sales_receipt_email_subject') . ' - ' . $this->config->item('company');
 
             $text = $this->load->view('sales/receipt_email', $sale_data, true);
 

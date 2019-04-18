@@ -1,4 +1,6 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
 
 /**
  * Email library
@@ -8,57 +10,56 @@
 
 class Email_lib
 {
-	private $CI;
+    private $CI;
 
-  	public function __construct()
-	{
-		$this->CI =& get_instance();
+    public function __construct()
+    {
+        $this->CI = &get_instance(); // hook in to CI
+        $this->CI->load->library('email'); // load the CI Email Library
+    }
 
-		$this->CI->load->library('email');
+    public function sendEmail($to, $subject, $message, $attachment = null)
+    {
 
-		$config = array(
-			'mailtype' => 'html',
-			'useragent' => 'OSPOS',
-			'validate' => FALSE,
-			'protocol' => $this->CI->config->item('protocol'),
-			'mailpath' => $this->CI->config->item('mailpath'),
-			'smtp_host' => $this->CI->config->item('smtp_host'),
-			'smtp_user' => $this->CI->config->item('smtp_user'),
-			'smtp_pass' => $this->CI->encryption->decrypt($this->CI->config->item('smtp_pass')),
-			'smtp_port' => $this->CI->config->item('smtp_port'),
-			'smtp_timeout' => $this->CI->config->item('smtp_timeout'),
-			'smtp_crypto' => $this->CI->config->item('smtp_crypto')
-		);
+        $proto = $this->CI->config->item('smtp_crypto');
+        $hoststr = ($proto == 'SSL' ? 'ssl://' : 'tls://'); // change connection str depending on crypto selection
 
-		$this->CI->email->initialize($config);
-	}
+        $config = array(
+            'protocol' => $this->CI->config->item('protocol'),
+            'smtp_host' => $hoststr . $this->CI->config->item('smtp_host'),
+            'smtp_port' => $this->CI->config->item('smtp_port'),
+            'smtp_user' => $this->CI->config->item('smtp_user'),
+            'smtp_pass' => $this->CI->encryption->decrypt($this->CI->config->item('smtp_pass')),
+            'smtp_timeout' => $this->CI->config->item('smtp_timeout'),
+            'mailpath' => $this->CI->config->item('mailpath'),
+            'mailtype' => 'html',
+            'useragent' => 'CBVPOS',
+            'charset' => 'utf-8',
+            'wordwrap' => true,
 
-	/**
-	 * Email sending function
-	 * Example of use: $response = sendEmail('john@doe.com', 'Hello', 'This is a message', $filename);
-	 */
-	public function sendEmail($to, $subject, $message, $attachment = NULL)
-	{
-		$email = $this->CI->email;
+        );
+        $email = $this->CI->email;
+        $email->set_newline("\r\n");
+        $email->initialize($config);
 
-		$email->from($this->CI->config->item('email'), $this->CI->config->item('company'));
-		$email->to($to);
-		$email->subject($subject);
+        // grab company name and email address from the general config
+        $email->from($this->CI->config->item('email'), $this->CI->config->item('company'));
+
+        // set our email options
+        $email->to($to);
+        $email->subject($subject);
 		$email->message($message);
-		if(!empty($attachment))
-		{
-			$email->attach($attachment);
-		}
 
-		$result = $email->send();
+		// attach file if applicable
+		if($attachment){$email->attach($attachment);}
 
-		if(!$result)
-		{
-			error_log($email->print_debugger());
-		}
+        // send the email
+        $result = $email->send();
 
-		return $result;
-	}
+        if (!$result) {
+            error_log($email->print_debugger()); // log on error
+        }
+
+        return $result;
+    }
 }
-
-?>
