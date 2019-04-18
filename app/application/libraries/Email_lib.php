@@ -48,10 +48,10 @@ class Email_lib
         // set our email options
         $email->to($to);
         $email->subject($subject);
-		$email->message($message);
+        $email->message($message);
 
-		// attach file if applicable
-		if($attachment){$email->attach($attachment);}
+        // attach file if applicable
+        if ($attachment) {$email->attach($attachment);}
 
         // send the email
         $result = $email->send();
