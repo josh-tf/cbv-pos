@@ -17,7 +17,7 @@
 #customer-title textarea
 {
 	background: #eee !important;
-	border: 1px solid #333 !important;
+	border: 1px solid #777 !important;
 	padding: 5px;
     width: 300px;
     text-align:right;
@@ -35,7 +35,7 @@
 }
 #items
 {
-	border: 1px solid black;
+	border: 1px solid #777;
 	clear: both;
 	margin: 10px 0 0 0;
 	width: 100%;
@@ -186,7 +186,7 @@
 #page-wrap table td,
 #page-wrap table th
 {
-	border: 1px solid black;
+	border: 1px solid #777;
 	padding: 5px;
 }
 #page-wrap textarea
@@ -204,7 +204,7 @@
 }
 #terms h5
 {
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #777;
 	font-size: 13px;
 	letter-spacing: 10px;
 	margin: 0 0 8px 0;
@@ -277,12 +277,12 @@ div#tax-invoice
 td.item-description
 {
 	background: #efefef;
-	border-bottom: 2px solid #333 !important;
-	border-top: 1px solid #aaa !important;
+	border-bottom: 2px solid #777 !important;
+	border-top: 1px solid #777 !important;
 	text-align: left;
 }
 tr.item-row
 {
-	border-bottom: 1px #333 solid;
+	border-bottom: 1px #777 solid;
 	text-align: center;
 }

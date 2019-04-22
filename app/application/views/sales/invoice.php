@@ -194,7 +194,7 @@ foreach ($cart as $line => $item) {
             <td><textarea rows="4" cols="4"><?php echo to_currency($item['price']); ?></textarea></td>
             <td style='text-align:center;'><textarea rows="5"
                     cols="6"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
-            <td style='border-right: solid 1px;'><textarea rows="4"
+            <td><textarea rows="4"
                     cols="6"><?php echo to_currency($item['total']); ?></textarea></td>
         </tr>
         <tr class="item-row"
