@@ -105,32 +105,12 @@ foreach ($cart as $line => $item) {
 			<td><textarea rows="4" cols="4"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
 			<td class="" style=''><textarea rows="4" cols="6"><?php echo to_currency($item[($this->config->item('receipt_show_total_discount') ? 'total' : 'discounted_total')]); ?></textarea></td>
 		</tr>
-
-		<?php
-if ($this->config->item('receipt_show_description') && !empty($item['description'])) {
-        ?>
-		<tr class="item-row">
-			<td class="item-description" colspan="5">
-				<div>
-
-					<?php
-
-        if ($item['item_category'] == "Laptop" || $item['item_category'] === "Desktop") {
-
-            echo '<b>Machine Specs:</b> ' . $item['description'];
-
-        } else {
-
-            echo $item['description'];
-        }
-        ?>
-
-				</div>
-			</td>
-		</tr>
-		<?php
-}
-    ?>
+		<tr class="item-row"
+                <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
+                <td class="item-description" colspan="5">
+                    <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
+                </td>
+            </tr>
 			<?php
 if ($item['discount'] > 0) {
         ?>
