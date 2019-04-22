@@ -9,96 +9,96 @@ if (isset($error_message)) {
 
 <!-- Modal -->
 <div class="modal" id="printWarning" tabindex="-1" role="dialog" aria-labelledby="printWarningLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="printWarningLabel">Printer Settings</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-<h3>Important</h3>
-<p>
-To ensure the invoice is printed correctly, please ensure
-the printer settings in the popup dialog are configured as follows:
-</p>
-<br>
-<table class="table table-bordered">
-	<thead>
-		<tr>
-			<th scope="col">Setting</th>
-			<th scope="col">Option</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<th scope="row">2-Sided</th>
-			<td>Yes - Long Edge</td>
-		</tr>
-		<tr>
-			<th scope="row">Orientation</th>
-			<td>Portrait</td>
-		</tr>
-		<tr>
-			<th scope="row">Scaling</th>
-			<td colspan="2">85%</td>
-		</tr>
-		<tr>
-			<th scope="row">Headers/Footers</th>
-			<td colspan="2">Off</td>
-		</tr>
-	</tbody>
-</table>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-					<button type="button" onclick="printdoc();" class="btn btn-primary">Print Invoice</button>
-			</div>
-		</div>
-	</div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="printWarningLabel">Printer Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Important</h3>
+                <p>
+                    To ensure the invoice is printed correctly, please ensure
+                    the printer settings in the popup dialog are configured as follows:
+                </p>
+                <br>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Setting</th>
+                            <th scope="col">Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">2-Sided</th>
+                            <td>Yes - Long Edge</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Orientation</th>
+                            <td>Portrait</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scaling</th>
+                            <td colspan="2">85%</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Headers/Footers</th>
+                            <td colspan="2">Off</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" onclick="printdoc();" class="btn btn-primary">Print Invoice</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php if (!empty($customer_email)): ?>
 <script type="text/javascript">
-	$(document).ready(function () {
-		var send_email = function () {
-			$.get('<?php echo site_url() . "/sales/send_pdf/" . $sale_id_num; ?>',
-				function (response) {
-					$.notify(response.message, {
-						type: response.success ? 'success' : 'danger'
-					});
-				}, 'json'
-			);
-		};
+$(document).ready(function() {
+    var send_email = function() {
+        $.get('<?php echo site_url() . "/sales/send_pdf/" . $sale_id_num; ?>',
+            function(response) {
+                $.notify(response.message, {
+                    type: response.success ? 'success' : 'danger'
+                });
+            }, 'json'
+        );
+    };
 
-		$("#show_email_button").click(send_email);
+    $("#show_email_button").click(send_email);
 
-		<?php if (!empty($email_receipt)): ?>
-		send_email();
-		<?php endif;?>
-	});
+    <?php if (!empty($email_receipt)): ?>
+    send_email();
+    <?php endif;?>
+});
 </script>
 <?php endif;?>
 
 <?php $this->load->view('partial/print_receipt', array('print_after_sale' => $print_after_sale, 'selected_printer' => 'invoice_printer'));?>
 
 <div class="print_hide" id="control_buttons" style="text-align:right">
-	<a data-toggle="modal" data-target="#printWarning">
-		<div class="btn btn-info btn-sm" , id="show_print_button">
-			<?php echo '<span class="glyphicon glyphicon-print">&nbsp</span>' . $this->lang->line('common_print'); ?>
-		</div>
-	</a>
-	<?php /* this line will allow to print and go back to sales automatically.... echo anchor("sales", '<span class="glyphicon glyphicon-print">&nbsp</span>' . $this->lang->line('common_print'), array('class'=>'btn btn-info btn-sm', 'id'=>'show_print_button', 'onclick'=>'window.print();')); */?>
-	<?php if (isset($customer_email) && !empty($customer_email)): ?>
-	<a href="javascript:void(0);">
-		<div class="btn btn-info btn-sm" , id="show_email_button">
-			<?php echo '<span class="glyphicon glyphicon-envelope">&nbsp</span>' . $this->lang->line('sales_send_invoice'); ?>
-		</div>
-	</a>
-	<?php endif;?>
-	<?php echo anchor("sales", '<span class="glyphicon glyphicon-shopping-cart">&nbsp</span>' . $this->lang->line('sales_register'), array('class' => 'btn btn-info btn-sm', 'id' => 'show_sales_button')); ?>
-	<?php echo anchor("sales/manage", '<span class="glyphicon glyphicon-list-alt">&nbsp</span>' . $this->lang->line('sales_takings'), array('class' => 'btn btn-info btn-sm', 'id' => 'show_takings_button')); ?>
+    <a data-toggle="modal" data-target="#printWarning">
+        <div class="btn btn-info btn-sm" , id="show_print_button">
+            <?php echo '<span class="glyphicon glyphicon-print">&nbsp</span>' . $this->lang->line('common_print'); ?>
+        </div>
+    </a>
+    <?php /* this line will allow to print and go back to sales automatically.... echo anchor("sales", '<span class="glyphicon glyphicon-print">&nbsp</span>' . $this->lang->line('common_print'), array('class'=>'btn btn-info btn-sm', 'id'=>'show_print_button', 'onclick'=>'window.print();')); */?>
+    <?php if (isset($customer_email) && !empty($customer_email)): ?>
+    <a href="javascript:void(0);">
+        <div class="btn btn-info btn-sm" , id="show_email_button">
+            <?php echo '<span class="glyphicon glyphicon-envelope">&nbsp</span>' . $this->lang->line('sales_send_invoice'); ?>
+        </div>
+    </a>
+    <?php endif;?>
+    <?php echo anchor("sales", '<span class="glyphicon glyphicon-shopping-cart">&nbsp</span>' . $this->lang->line('sales_register'), array('class' => 'btn btn-info btn-sm', 'id' => 'show_sales_button')); ?>
+    <?php echo anchor("sales/manage", '<span class="glyphicon glyphicon-list-alt">&nbsp</span>' . $this->lang->line('sales_takings'), array('class' => 'btn btn-info btn-sm', 'id' => 'show_takings_button')); ?>
 </div>
 
 <?php
@@ -108,78 +108,79 @@ load_language(true, array('sales', 'common'));
 
 <div id="page-wrap">
 
-	<div id="block1">
-		<div id="customer-title">
-			<?php
+    <div id="block1">
+        <div id="customer-title">
+            <?php
 if (isset($customer)) {
     ?>
-			<textarea id="customer" rows="4" cols="6"><?php echo $customer_info ?></textarea>
-			<?php
+            <textarea id="customer" rows="4" cols="6"><?php echo $customer_info ?></textarea>
+            <?php
 }
 ?>
-		</div>
+        </div>
 
-		<div id="logo">
-			<img id="image" class="cbv-invoice-logo" src="<?php echo base_url('images/cbv-logo-black.png'); ?>" alt="company_logo" />
-			<div>&nbsp</div>
-			<div id="tax-invoice">TAX INVOICE</div>
-		</div>
-	</div>
+        <div id="logo">
+            <img id="image" class="cbv-invoice-logo" src="<?php echo base_url('images/cbv-logo-black.png'); ?>"
+                alt="company_logo" />
+            <div>&nbsp</div>
+            <div id="tax-invoice">TAX INVOICE</div>
+        </div>
+    </div>
 
-	<div id="block2">
+    <div id="block2">
 
-			<?php
+        <?php
 if ($this->Appconfig->get('receipt_show_company_name')) {
     ?>
-			<div id="company_name">
-				<?php echo $this->config->item('company'); ?>
-			</div>
-			<?php
+        <div id="company_name">
+            <?php echo $this->config->item('company'); ?>
+        </div>
+        <?php
 }
 ?>
-		<textarea id="company-title" rows="5" cols="35"><?php echo $company_info ?></textarea>
-		<table id="meta">
-			<tr>
-				<td class="meta-head">
-					<?php echo $this->lang->line('sales_invoice_number'); ?>
-				</td>
-				<td><textarea rows="5" cols="6"><?php echo $invoice_number; ?></textarea></td>
-			</tr>
-			<tr>
-				<td class="meta-head">
-					<?php echo $this->lang->line('common_date'); ?>
-				</td>
-				<td><textarea rows="5" cols="6"><?php echo $transaction_date; ?></textarea></td>
-			</tr>
-			<tr>
-				<td class="meta-head">
-					<?php echo $this->lang->line('sales_amount_due'); ?>
-				</td>
-				<td><textarea rows="5" cols="6"><?php echo to_currency($total); ?></textarea></td>
-			</tr>
-		</table>
-	</div>
+        <textarea id="company-title" rows="5" cols="35"><?php echo $company_info ?></textarea>
+        <table id="meta">
+            <tr>
+                <td class="meta-head">
+                    <?php echo $this->lang->line('sales_invoice_number'); ?>
+                </td>
+                <td><textarea rows="5" cols="6"><?php echo $invoice_number; ?></textarea></td>
+            </tr>
+            <tr>
+                <td class="meta-head">
+                    <?php echo $this->lang->line('common_date'); ?>
+                </td>
+                <td><textarea rows="5" cols="6"><?php echo $transaction_date; ?></textarea></td>
+            </tr>
+            <tr>
+                <td class="meta-head">
+                    <?php echo $this->lang->line('sales_amount_due'); ?>
+                </td>
+                <td><textarea rows="5" cols="6"><?php echo to_currency($total); ?></textarea></td>
+            </tr>
+        </table>
+    </div>
 
-	<table id="items">
-		<tr>
-			<th>
-				<?php echo $this->lang->line('sales_item_name'); ?>
-			</th>
-			<th>
-				<?php echo $this->lang->line('sales_quantity'); ?>
-			</th>
-			<th>
-				<?php echo $this->lang->line('sales_price'); ?>
-			</th>
-			<th>
-				Discount
-			</th>
-			<th>
-				<?php echo $this->lang->line('sales_total'); ?>
-			</th>
-		</tr>
+    <table id="items">
+        <tr>
+            <th>
+                <?php echo $this->lang->line('sales_item_name'); ?>
+            </th>
+            <th>
+                <?php echo $this->lang->line('sales_quantity'); ?>
+            </th>
+            <th>
+                <?php echo $this->lang->line('sales_price'); ?>
+            </th>
+            <th>
+                Discount
+            </th>
+            <th>
+                <?php echo $this->lang->line('sales_total'); ?>
+            </th>
+        </tr>
 
-		<?php
+        <?php
 foreach ($cart as $line => $item) {
 
     if ($item['item_category'] == "Laptop" || $item['item_category'] === "Desktop") { // if the item is a desktop or laptop
@@ -191,70 +192,80 @@ foreach ($cart as $line => $item) {
     }
 
     ?>
-		<tr class="item-row">
-			<td class="item-name"><textarea rows="4" cols="6"><?php echo $itemName; ?></textarea></td>
-			<td style='text-align:center;'><textarea rows="5" cols="6"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
-			<td><textarea rows="4" cols="4"><?php echo to_currency($item['price']); ?></textarea></td>
-			<td style='text-align:center;'><textarea rows="4" cols="6">$<?php echo number_format($item['discount'], 2); ?></textarea></td>
-			<td style='border-right: solid 1px;'><textarea rows="4" cols="6"><?php echo to_currency($item['discounted_total']); ?></textarea></td>
-		</tr>
-		<tr class="item-row"
-                <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
-                <td class="item-description" colspan="5">
-                    <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
-                </td>
-            </tr>
-		<?php
+        <tr class="item-row">
+            <td class="item-name"><textarea rows="4" cols="6"><?php echo $itemName; ?></textarea></td>
+            <td style='text-align:center;'><textarea rows="5"
+                    cols="6"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
+            <td><textarea rows="4" cols="4"><?php echo to_currency($item['price']); ?></textarea></td>
+            <td style='text-align:center;'><textarea rows="4"
+                    cols="6">$<?php echo number_format($item['discount'], 2); ?></textarea></td>
+            <td style='border-right: solid 1px;'><textarea rows="4"
+                    cols="6"><?php echo to_currency($item['discounted_total']); ?></textarea></td>
+        </tr>
+        <tr class="item-row"
+            <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
+            <td class="item-description" colspan="5">
+                <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
+            </td>
+        </tr>
+        <?php
 }
 ?>
 
-		<tr>
-			<td class="blank" colspan="5" text-align="center">
-				<?php echo '&nbsp;'; ?>
-			</td>
-		</tr>
+        <tr>
+            <td class="blank" colspan="5" text-align="center">
+                <?php echo '&nbsp;'; ?>
+            </td>
+        </tr>
 
-		<tr>
-			<td colspan="3" class="blank-bottom"> </td>
-			<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_sub_total'); ?></textarea></td>
-			<td class="total-value"><textarea rows="5" cols="6" id="subtotal"><?php echo to_currency($subtotal); ?></textarea></td>
-		</tr>
+        <tr>
+            <td colspan="3" class="blank-bottom"> </td>
+            <td colspan="1" class="total-line"><textarea rows="5"
+                    cols="6"><?php echo $this->lang->line('sales_sub_total'); ?></textarea></td>
+            <td class="total-value"><textarea rows="5" cols="6"
+                    id="subtotal"><?php echo to_currency($subtotal); ?></textarea></td>
+        </tr>
 
-<?php
+        <?php
 if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request
     ?>
 
 
-		<tr>
-			<td colspan="3" class="blank"> </td>
-			<td colspan="1" class="total-line"><textarea rows="5" cols="6">GST 10%</textarea></td>
-			<td class="total-value"><textarea rows="5" cols="6" id="taxes"><?php echo to_currency_tax(0); ?></textarea></td>
-		</tr>
+        <tr>
+            <td colspan="3" class="blank"> </td>
+            <td colspan="1" class="total-line"><textarea rows="5" cols="6">GST 10%</textarea></td>
+            <td class="total-value"><textarea rows="5" cols="6" id="taxes"><?php echo to_currency_tax(0); ?></textarea>
+            </td>
+        </tr>
 
-<?php
+        <?php
 
 } else {
 
     foreach ($taxes as $tax_group_index => $sales_tax) {
         ?>
-				<tr>
-					<td colspan="3" class="blank"> </td>
-					<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $sales_tax['tax_group']; ?></textarea></td>
-					<td class="total-value"><textarea rows="5" cols="6" id="taxes"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></textarea></td>
-				</tr>
-<?php
+        <tr>
+            <td colspan="3" class="blank"> </td>
+            <td colspan="1" class="total-line"><textarea rows="5"
+                    cols="6"><?php echo $sales_tax['tax_group']; ?></textarea></td>
+            <td class="total-value"><textarea rows="5" cols="6"
+                    id="taxes"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></textarea></td>
+        </tr>
+        <?php
 }
 }
 
 ?>
 
-		<tr>
-			<td colspan="3" class="blank"> </td>
-			<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_total'); ?></textarea></td>
-			<td class="total-value"><textarea rows="5" cols="6" id="total"><?php echo to_currency($total); ?></textarea></td>
-		</tr>
+        <tr>
+            <td colspan="3" class="blank"> </td>
+            <td colspan="1" class="total-line"><textarea rows="5"
+                    cols="6"><?php echo $this->lang->line('sales_total'); ?></textarea></td>
+            <td class="total-value"><textarea rows="5" cols="6" id="total"><?php echo to_currency($total); ?></textarea>
+            </td>
+        </tr>
 
-		<?php
+        <?php
 $only_sale_check = false;
 $show_giftcard_remainder = false;
 foreach ($payments as $payment_id => $payment) {
@@ -262,73 +273,84 @@ foreach ($payments as $payment_id => $payment) {
     $splitpayment = explode(':', $payment['payment_type']);
     $show_giftcard_remainder |= $splitpayment[0] == $this->lang->line('sales_giftcard');
     ?>
-		<tr>
-			<td colspan="3" class="blank"> </td>
-			<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $splitpayment[0]; ?></textarea></td>
-			<td class="total-value"><textarea rows="5" cols="6" id="paid"><?php echo to_currency($payment['payment_amount'] * -1); ?></textarea></td>
-		</tr>
-		<?php
+        <tr>
+            <td colspan="3" class="blank"> </td>
+            <td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $splitpayment[0]; ?></textarea>
+            </td>
+            <td class="total-value"><textarea rows="5" cols="6"
+                    id="paid"><?php echo to_currency($payment['payment_amount'] * -1); ?></textarea></td>
+        </tr>
+        <?php
 }
 
 if (isset($cur_giftcard_value) && $show_giftcard_remainder) {
     ?>
-		<tr>
-			<td colspan="3" class="blank"> </td>
-			<td colspan="1" class="total-line"><textarea rows="5" cols="6"><?php echo $this->lang->line('sales_giftcard_balance'); ?></textarea></td>
-			<td class="total-value"><textarea rows="5" cols="6" id="giftcard"><?php echo to_currency($cur_giftcard_value); ?></textarea></td>
-		</tr>
-		<?php
+        <tr>
+            <td colspan="3" class="blank"> </td>
+            <td colspan="1" class="total-line"><textarea rows="5"
+                    cols="6"><?php echo $this->lang->line('sales_giftcard_balance'); ?></textarea></td>
+            <td class="total-value"><textarea rows="5" cols="6"
+                    id="giftcard"><?php echo to_currency($cur_giftcard_value); ?></textarea></td>
+        </tr>
+        <?php
 }
 
 if (!empty($payments)) {
     ?>
-		<tr>
-			<td colspan="3" class="blank"> </td>
-			<td colspan="1" class="total-line"> <textarea rows="5" cols="6"><?php echo $this->lang->line('sales_amount_due'); ?></textarea></td>
-			<td class="total-value"><textarea rows="5" cols="6" id="change"><?php echo to_currency($amount_change); ?></textarea></td>
-		</tr>
-		<?php
+        <tr>
+            <td colspan="3" class="blank"> </td>
+            <td colspan="1" class="total-line"> <textarea rows="5"
+                    cols="6"><?php echo $this->lang->line('sales_amount_due'); ?></textarea></td>
+            <td class="total-value"><textarea rows="5" cols="6"
+                    id="change"><?php echo to_currency($amount_change); ?></textarea></td>
+        </tr>
+        <?php
 }
 ?>
 
-	</table>
+    </table>
 
-	<div id="terms">
-		<div id="sale_return_policy">
-			<h5> <!-- To keep things clean and as we dont really use these fields, hiding if they are empty -->
-				<?php if (!empty($this->config->item('payment_message'))) {?><textarea rows="5" cols="6"><?php echo nl2br($this->config->item('payment_message')); ?></textarea> <?php }?>
-				<?php if (!empty($comments)) {?><textarea rows="5" cols="6"><?php echo empty($comments) ? '' : $this->lang->line('sales_comments') . ': ' . $comments; ?></textarea> <?php }?>
-				<?php if (!empty($this->config->item('invoice_default_comments'))) {?><textarea rows="5" cols="6"><?php echo $this->config->item('invoice_default_comments'); ?></textarea> <?php }?>
-			</h5>
-			<?php echo nl2br($this->config->item('return_policy')); ?>
-		</div>
-	</div>
+    <div id="terms">
+        <div id="sale_return_policy">
+            <h5>
+                <!-- To keep things clean and as we dont really use these fields, hiding if they are empty -->
+                <?php if (!empty($this->config->item('payment_message'))) {?><textarea rows="5"
+                    cols="6"><?php echo nl2br($this->config->item('payment_message')); ?></textarea> <?php }?>
+                <?php if (!empty($comments)) {?><textarea rows="5"
+                    cols="6"><?php echo empty($comments) ? '' : $this->lang->line('sales_comments') . ': ' . $comments; ?></textarea>
+                <?php }?>
+                <?php if (!empty($this->config->item('invoice_default_comments'))) {?><textarea rows="5"
+                    cols="6"><?php echo $this->config->item('invoice_default_comments'); ?></textarea> <?php }?>
+            </h5>
+            <?php echo nl2br($this->config->item('return_policy')); ?>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">
-	$(window).on("load", function () {
-		// install firefox addon in order to use this plugin
-		if (window.jsPrintSetup) {
-			<?php if (!$this->Appconfig->get('print_header')) {
+$(window).on("load", function() {
+    // install firefox addon in order to use this plugin
+    if (window.jsPrintSetup) {
+        <?php if (!$this->Appconfig->get('print_header')) {
     ?>
-			// set page header
-			jsPrintSetup.setOption('headerStrLeft', '');
-			jsPrintSetup.setOption('headerStrCenter', '');
-			jsPrintSetup.setOption('headerStrRight', '');
-			<?php
+        // set page header
+        jsPrintSetup.setOption('headerStrLeft', '');
+        jsPrintSetup.setOption('headerStrCenter', '');
+        jsPrintSetup.setOption('headerStrRight', '');
+        <?php
 }
 
 if (!$this->Appconfig->get('print_footer')) {
     ?>
-			// set empty page footer
-			jsPrintSetup.setOption('footerStrLeft', '');
-			jsPrintSetup.setOption('footerStrCenter', '');
-			jsPrintSetup.setOption('footerStrRight', '');
-			<?php
+        // set empty page footer
+        jsPrintSetup.setOption('footerStrLeft', '');
+        jsPrintSetup.setOption('footerStrCenter', '');
+        jsPrintSetup.setOption('footerStrRight', '');
+        <?php
 }
 ?>
-		}
-	});
+    }
+});
 </script>
 
 <?php $this->load->view("partial/footer");?>
