@@ -371,7 +371,7 @@ class Sales extends Secure_Controller
 
 public function test_pdf()
 {
-    $sale_id = 1;
+    $sale_id = 4;
     $data = $this->_load_sale_data($sale_id);
 
         // generate email attachment: invoice in pdf format
