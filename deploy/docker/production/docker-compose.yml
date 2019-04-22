@@ -34,8 +34,8 @@ services:
                 - ./conf/php.ini:/usr/local/etc/php/conf.d/misc.ini
         restart: always
         extra_hosts:
-                - "${pos_virt_host}:${server_ip}"
-                - "${web_virt_host}:${server_ip}"
+                - "${pos_virt_host}:${server_ip}" # req for nginx proxy
+                - "${web_main_host}:${server_ip}" # req for nginx proxy
 
     cbv-prod-web: # cbv main wordpress website
         container_name: cbv-prod-web
@@ -64,7 +64,7 @@ services:
                 - ./conf/php.ini:/usr/local/etc/php/conf.d/uploads.ini
         restart: always
         extra_hosts:
-                - "${web_virt_host}:${server_ip}"
+                - "${web_main_host}:${server_ip}" # req for nginx proxy
 
     cbv-prod-vtiger: # cbv old vtiger database
         container_name: cbv-prod-vtiger
