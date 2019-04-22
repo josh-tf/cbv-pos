@@ -2,6 +2,7 @@
 
 <script type="text/javascript">
 	dialog_support.init("a.modal-dlg");
+	$.trumbowyg.svgPath = '/bower_components/trumbowyg/dist/ui/icons.svg';
 </script>
 
 <ul class="nav nav-tabs" data-tabs="tabs">
