@@ -367,27 +367,6 @@ class Sales extends Secure_Controller
         $this->_reload($data);
     }
 
-// ! Development only
-
-public function test_pdf()
-{
-    $sale_id = 4;
-    $data = $this->_load_sale_data($sale_id);
-
-        // generate email attachment: invoice in pdf format
-//$html = $this->load->view('sales/invoice_email', $data, true);
-// load pdf helper
-//$this->load->helper(array('dompdf', 'file', 'download'));
-//$filename = sys_get_temp_dir() . '/' . $this->lang->line('sales_' . $type) . '-' . str_replace('/', '-', $number) . '.pdf';
-//file_put_contents($filename, pdf_create($html));
-
-    $this->load->view('sales/invoice_email', $data);
-    $this->sale_lib->clear_all();
-    //force_download($filename, NULL);
-
-}
-
-
     public function edit_item($item_id)
     {
         $data = array();
