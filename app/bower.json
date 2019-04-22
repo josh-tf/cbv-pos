@@ -55,7 +55,8 @@
     },
     "trumbowyg": {
       "main": [
-        "trumbowyg.js"
+        "dist/ui/trumbowyg.css",
+        "dist/trumbowyg.js"
       ]
     },
     "table-export": {
