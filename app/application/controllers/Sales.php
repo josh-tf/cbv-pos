@@ -648,12 +648,10 @@ class Sales extends Secure_Controller
 
             $text = $this->config->item($type . '_email_message');
 
-            if($type == 'invoice'){
             $tokens = array(new Token_invoice_sequence($sale_data['invoice_number']),
                 new Token_invoice_count('POS ' . $sale_data['sale_id']),
                 new Token_customer((object) $sale_data));
             $text = $this->token_lib->render($text, $tokens);
-            }
 
             // generate email attachment: invoice in pdf format
             $html = $this->load->view('sales/' . $type . '_email', $sale_data, true);
