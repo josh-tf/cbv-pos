@@ -140,9 +140,9 @@ if ($this->config->item('receipt_show_total_discount') && $discount > 0) {
     ?>
         <tr>
             <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line al-right" style='border-top:2px solid #000000;'>
+            <td colspan="1" class="total-line al-right">
                 <?php echo $this->lang->line('sales_sub_total'); ?></td>
-            <td class="total-value al-right" style=';border-top:2px solid #000000;'>
+            <td class="total-value al-right">
                 <?php echo to_currency($prediscount_subtotal); ?></td>
         </tr>
         <tr>
@@ -172,7 +172,7 @@ if ($this->config->item('receipt_show_taxes')) {
 
         <tr>
             <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line" style='text-align:right;'><?php echo $this->lang->line('sales_tax_default'); ?></td>
+            <td colspan="1" class="total-line al-right"><?php echo $this->lang->line('sales_tax_default'); ?></td>
             <td class="total-value"><?php echo to_currency(0); ?></td>
         </tr>
 
@@ -184,7 +184,7 @@ if ($this->config->item('receipt_show_taxes')) {
             ?>
         <tr>
             <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line" style='text-align:right;'><?php echo $sales_tax['tax_group']; ?></td>
+            <td colspan="1" class="total-line al-right"><?php echo $sales_tax['tax_group']; ?></td>
             <td class="total-value"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></td>
         </tr>
         <?php
@@ -201,11 +201,9 @@ if ($this->config->item('receipt_show_taxes')) {
         <?php $border = (!$this->config->item('receipt_show_taxes') && !($this->config->item('receipt_show_total_discount') && $discount > 0));?>
         <tr>
             <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line"
-                style="text-align:right;<?php echo $border ? 'border-top: 2px solid black;' : ''; ?>">
+            <td colspan="1" class="total-line al-right">
                 <?php echo $this->lang->line('sales_total'); ?></td>
-            <td class="total-value"
-                style="text-align:right;<?php echo $border ? 'border-top: 2px solid black;' : ''; ?>">
+            <td class="total-value al-right">
                 <?php echo to_currency($total); ?></td>
         </tr>
 
@@ -221,7 +219,7 @@ foreach ($payments as $payment_id => $payment) {
     ?>
         <tr>
             <td colspan="3" class="blank"> </td>
-            <td colspan="1" style="text-align:right;" class="total-line"><?php echo $splitpayment[0]; ?> </td>
+            <td colspan="1" class="total-line al-right"><?php echo $splitpayment[0]; ?> </td>
             <td class="total-value"><?php echo to_currency($payment['payment_amount'] * -1); ?></td>
         </tr>
         <?php
@@ -230,7 +228,7 @@ foreach ($payments as $payment_id => $payment) {
 
         <tr>
             <td colspan="3" class="blank"> </td>
-            <td colspan="1" style="text-align:right;" class="total-line">
+            <td colspan="1" class="total-line al-right">
                 <?php echo $this->lang->line('sales_amount_due'); ?></td>
             <td class="total-value"><?php echo to_currency($amount_change * -1); ?></td>
         </tr>
