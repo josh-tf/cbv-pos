@@ -260,8 +260,8 @@ if ($this->config->item('receipt_show_taxes')) {
 
         <tr>
             <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line" style='text-align:right;'>GST 10%</td>
-            <td class="total-value"><?php echo to_currency(0); ?></td>
+            <td colspan="1" class="total-line al-right">GST 10%</td>
+            <td class="total-value al-right"><?php echo to_currency(0); ?></td>
         </tr>
 
         <?php
@@ -272,8 +272,8 @@ if ($this->config->item('receipt_show_taxes')) {
             ?>
         <tr>
             <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line" style='text-align:right;'><?php echo $sales_tax['tax_group']; ?></td>
-            <td class="total-value"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></td>
+            <td colspan="1" class="total-line al-right"><?php echo $sales_tax['tax_group']; ?></td>
+            <td class="total-value al-right"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></td>
         </tr>
         <?php
 }
