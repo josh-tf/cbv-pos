@@ -76,8 +76,7 @@ foreach ($cart as $line => $item) {
                 <td><?php echo to_currency($item['price']); ?></td>
                 <td class="total-line"><?php echo to_currency($item['total']); ?></td>
             </tr>
-            <tr class="item-row"
-                <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
+            <tr class="item-row" <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
                 <td class="item-description" colspan="5">
                     <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
                 </td>

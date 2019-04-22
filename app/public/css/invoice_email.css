@@ -11,7 +11,7 @@
 	text-align: right;
 }
 .disc {
-    border: 1px solid black !important;
+    border: 1px solid #777 !important;
     text-align: center;
 }
 #header
@@ -39,7 +39,7 @@
 }
 #items
 {
-	border: 1px solid black;
+	border: 1px solid #777;
 	clear: both;
 	margin: 10px 0 0 0;
 	width: 100%;
@@ -182,7 +182,7 @@
 #page-wrap #meta table td,
 #page-wrap table th
 {
-	border: 1px solid black;
+	border: 1px solid #777;
 	padding: 5px;
 }
 #page-wrap table
@@ -192,7 +192,7 @@
 #page-wrap table td,
 #page-wrap table th
 {
-	border: 1px solid black;
+	border: 1px solid #777;
 	padding: 5px;
 }
 #page-wrap table#items td
@@ -212,7 +212,7 @@
 }
 #terms h5
 {
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #777;
 	font-size: 13px;
 	letter-spacing: 10px;
 	margin: 0 0 8px 0;
@@ -276,7 +276,7 @@
 }
 .inv-comments
 {
-	border-bottom: solid 1px #000;
+	border-bottom: solid 1px #777;
 	padding: 30px 0 50px 0;
 }
 body
@@ -310,12 +310,12 @@ table.invoice-meta
 td.item-description
 {
 	background: #efefef;
-	border-bottom: 2px solid #333 !important;
-	border-top: 1px solid #aaa !important;
+	border-bottom: 2px solid #777 !important;
+	border-top: 1px solid #777 !important;
 	text-align: left;
 }
 tr.item-row
 {
-	border-bottom: 1px #333 solid !important;
+	border-top: 1px solid #777 !important;
 	text-align: center;
 }
