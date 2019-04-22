@@ -105,7 +105,8 @@
 }
 #items tr.item-row td
 {
-	border: 0;
+	border-left: 0;
+	border-right: 0;
 	vertical-align: top;
 }
 #logo
@@ -283,6 +284,6 @@ td.item-description
 }
 tr.item-row
 {
-	border-bottom: 1px #777 solid;
+	border-bottom: 1px #777 solid !important;
 	text-align: center;
 }

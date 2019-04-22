@@ -113,7 +113,8 @@
 }
 #items tr.item-row td
 {
-	border: 0;
+	border-left: 0;
+	border-right: 0;
 	vertical-align: top;
 }
 #logo
