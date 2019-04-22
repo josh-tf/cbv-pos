@@ -19,6 +19,33 @@
 			</div>
 
 			<div class="form-group form-group-sm">
+			<?php echo form_label($this->lang->line('config_company_logo'), 'company_logo', array('class' => 'control-label col-xs-2')); ?>
+				<div class='col-xs-6'>
+					<div class="fileinput <?php echo $logo_exists ? 'fileinput-exists' : 'fileinput-new'; ?>" data-provides="fileinput">
+						<div class="fileinput-new thumbnail" style="width: 200px; height: 200px;"></div>
+						<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 200px;">
+							<img data-src="holder.js/100%x100%" alt="<?php echo $this->lang->line('config_company_logo'); ?>"
+								 src="<?php if ($logo_exists) {
+    echo base_url('uploads/' . $this->config->item('company_logo'));
+} else {
+    echo '';
+}
+?>"
+								 style="max-height: 100%; max-width: 100%;">
+						</div>
+						<div>
+							<span class="btn btn-default btn-sm btn-file">
+								<span class="fileinput-new"><?php echo $this->lang->line("config_company_select_image"); ?></span>
+								<span class="fileinput-exists"><?php echo $this->lang->line("config_company_change_image"); ?></span>
+								<input type="file" name="company_logo">
+							</span>
+							<a href="#" class="btn btn-default btn-sm fileinput-exists" data-dismiss="fileinput"><?php echo $this->lang->line("config_company_remove_image"); ?></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_address'), 'address', array('class' => 'control-label col-xs-2 required')); ?>
 				<div class='col-xs-4'>
 					<?php echo form_textarea(array(

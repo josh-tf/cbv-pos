@@ -161,7 +161,7 @@ foreach ($stocklist as $computer) {
 
     <div class="desktop-stocklist"<?php echo ($desktopCt == 0) ? ' style="display:none;"' : '' ?>>
 
-        <img src="images/cbv-logo-black.png" class="logo" />
+        <img src="<?php echo base_url('uploads/' . $this->config->item('company_logo')); ?>" class="logo" />
 
         <h3>Desktops <span class="printed print-show">- Printed on <?php echo date('D d/m/y'); ?></span></h3>
         <p class="print_hide">The listed concession price is only available to concession card holders. Please have a valid concession card ready when you make your purchase. You may purchase a desktop computer without a concession card, but you will be charged our market price, as shown below.</p>
@@ -222,7 +222,7 @@ foreach ($stocklist as $computer) {
 
 <div class="pagebreak laptop-stocklist"<?php echo ($laptopCt === 0) ? ' style="display:none;"' : '' ?>>
 
-    <img src="images/cbv-logo-black.png" class="logo" />
+    <img src="<?php echo base_url('uploads/' . $this->config->item('company_logo')); ?>" class="logo" />
 
     <h3>Laptops <span class="printed print-show">- Printed on <?php echo date('D d/m/y'); ?></span></h3>
     <p class="print_hide">Laptops are first come, first served. You must have a valid concession card to purchase a laptop. Strictly one laptop per customer.</p>

@@ -21,7 +21,7 @@ load_language(true, array('sales', 'common'));
         <table id="info">
             <tr>
                 <td id="logo">
-                    <img class="cbv-invoice-logo" src="<?php echo base_url('images/cbv-logo-black.png'); ?>"
+                    <img class="cbv-invoice-logo" src="<?php echo base_url('uploads/' . $this->config->item('company_logo')); ?>"
                         alt="company_logo" />
                     <div id="tax-invoice">TAX INVOICE</div>
                 </td>

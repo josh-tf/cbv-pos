@@ -20,7 +20,7 @@ if (isset($customer)) {
 
 
         <div id="logo">
-            <img id="image" class="cbv-invoice-logo" src="<?php echo base_url('images/cbv-logo-black.png'); ?>"
+            <img id="image" class="cbv-invoice-logo" src="<?php echo base_url('uploads/' . $this->config->item('company_logo')); ?>"
                 alt="company_logo" />
             <div>&nbsp</div>
             <div id="tax-invoice">TAX INVOICE</div>
