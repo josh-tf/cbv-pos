@@ -23,6 +23,15 @@ module.exports = function (grunt) {
 			options: {
 				report: false
 			},
+			targetdisttrumbowyg: {
+				options: {
+					srcPrefix: 'public/bower_components/trumbowyg',
+					destPrefix: 'public/dist'
+				},
+				files: {
+					'jquery-ui': 'dist/ui/trumbowyg.min.css'
+				}
+			},
 			targetdistjqueryui: {
 				options: {
 					srcPrefix: 'public/bower_components/jquery-ui',
