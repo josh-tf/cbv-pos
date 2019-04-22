@@ -1,300 +1,287 @@
-/*
-	 CSS-Tricks Example
-	 by Chris Coyier
-	 http://css-tricks.com
-*/
-
-* {
-    margin: 0;
-    padding: 0;
+#block2
+{
+	overflow: hidden;
+	padding-top: 35px;
+	width: 100%;
 }
-
-/*body { font: 14px/1.4 Georgia, serif; }*/
-#page-wrap {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 800px;
-    font-family: Helvetica !important;
+#company-title
+{
+	float: left;
 }
-
-#page-wrap textarea {
-    border: 0;
-    font-size: 14px;
-    overflow: hidden;
-    resize: none;
-    font-family: Helvetica;
+#customer-title
+{
+	float: right;
+	height: 100px;
+	margin-top: 40px;
 }
-
-#page-wrap table {
-    border-collapse: collapse;
+#customer-title textarea
+{
+	background: #eee;
+	border: 1px solid #333;
+	padding: 5px;
+	width: 300px;
 }
-
-#page-wrap table td,
-#page-wrap table th {
-    border: 1px solid black;
-    padding: 5px;
+#header
+{
+	background: #d1541a;
+	color: white;
+	font-size: 2.0em;
+	font-weight: bold;
+	letter-spacing: 4px;
+	margin: 20px 0;
+	padding: 10px 0;
+	text-align: center;
 }
-
-#page-wrap table td {
-    padding: 5px;
+#items
+{
+	border: 1px solid black;
+	clear: both;
+	margin: 10px 0 0 0;
+	width: 100%;
 }
-
-#header {
-    margin: 20px 0;
-    background: #d1541a;
-    text-align: center;
-    color: white;
-    font-size: 2.0em;
-    font-weight: bold;
-    letter-spacing: 4px;
-    padding: 10px 0;
+#items td.balance
+{
+	background: #eee;
 }
-
-/* first row */
-#logo {
-    text-align: right;
-    float: left;
-    position: relative;
-    border: 1px solid #fff;
-    max-height: 150px;
-    overflow: hidden;
+#items td.blank
+{
+	border: 0;
 }
-
-#logo img {
-    max-height: 150px;
-    max-width: 270px !important;
+#items td.blank-bottom
+{
+	border: 1px;
 }
-
-/*#logo:hover, #logo.edit { border: 1px solid #000; margin-top: 0px; max-height: 125px; }*/
-#logoctr {
-    display: none;
+#items td.description
+{
+	width: 300px;
 }
-
+#items td.description textarea,
+#items td.item-name textarea
+{
+	width: 100%;
+}
+#items td.item-description textarea
+{
+	height: auto;
+	width: 100%;
+}
+#items td.item-name
+{
+	width: 175px;
+}
+#items td.total-line
+{
+	border-right: 0;
+	font-weight: bold;
+	text-align: center;
+}
+#items td.total-line textarea
+{
+	background: none;
+	height: 20px;
+	width: 150px;
+}
+#items td.total-value
+{
+	border-left: 0;
+	padding: 10px;
+}
+#items td.total-value textarea
+{
+	background: none;
+	height: 20px;
+}
+#items textarea
+{
+	height: 20px;
+	text-align: center;
+	width: 80px;
+}
+#items th
+{
+	background: #eee;
+	text-align: center;
+}
+#items tr.item-row td
+{
+	border: 0;
+	vertical-align: top;
+}
+#logo
+{
+	border: 1px solid #fff;
+	float: left;
+	max-height: 150px;
+	overflow: hidden;
+	position: relative;
+	text-align: right;
+}
+#logo img
+{
+	max-height: 150px;
+	max-width: 270px !important;
+}
 #logo:hover #logoctr,
-#logo.edit #logoctr {
-    display: block;
-    text-align: right;
-    line-height: 25px;
-    background: #eee;
-    padding: 0 5px;
+#logo.edit #logoctr
+{
+	background: #eee;
+	display: block;
+	line-height: 25px;
+	padding: 0 5px;
+	text-align: right;
 }
-
-#logohelp {
-    text-align: left;
-    display: none;
-    font-style: italic;
-    padding: 10px 5px;
+#logoctr
+{
+	display: none;
 }
-
-#logohelp input {
-    margin-bottom: 5px;
+#logohelp
+{
+	display: none;
+	font-style: italic;
+	padding: 10px 5px;
+	text-align: left;
 }
-
-.edit #logohelp {
-    display: block;
+#logohelp input
+{
+	margin-bottom: 5px;
 }
-
-.edit #save-logo,
-.edit #cancel-logo {
-    display: inline;
+#meta
+{
+	float: right;
+	margin-top: -22px;
+	width: 300px;
 }
-
+#meta td
+{
+	text-align: right;
+}
+#meta td textarea
+{
+	height: 20px;
+	text-align: right;
+	width: 100%;
+}
+#meta td.meta-head
+{
+	background: #eee;
+	font-weight: bold;
+	text-align: left;
+}
+#page-wrap
+{
+	font-family: Helvetica !important;
+	margin: 0 auto;
+	max-width: 800px;
+	width: 100%;
+}
+#page-wrap table
+{
+	border-collapse: collapse;
+}
+#page-wrap table td
+{
+	padding: 5px;
+}
+#page-wrap table td,
+#page-wrap table th
+{
+	border: 1px solid black;
+	padding: 5px;
+}
+#page-wrap textarea
+{
+	border: 0;
+	font-family: Helvetica;
+	font-size: 14px;
+	overflow: hidden;
+	resize: none;
+}
+#terms
+{
+	margin: 20px 0 0 0;
+	text-align: center;
+}
+#terms h5
+{
+	border-bottom: 1px solid black;
+	font-size: 13px;
+	letter-spacing: 10px;
+	margin: 0 0 8px 0;
+	padding: 0 0 8px 0;
+	text-transform: uppercase;
+}
+#terms textarea
+{
+	text-align: center;
+	width: 100%;
+}
+*
+{
+	margin: 0;
+	padding: 0;
+}
+.delete
+{
+	background: #EEEEEE;
+	border: 1px solid;
+	color: #000;
+	display: block;
+	font-family: Helvetica;
+	font-size: 12px;
+	font-weight: bold;
+	left: -22px;
+	padding: 0px 3px;
+	position: absolute;
+	text-decoration: none;
+	top: -6px;
+}
+.delete-wpr
+{
+	position: relative;
+}
 .edit #image,
 #save-logo,
 #cancel-logo,
 .edit #change-logo,
-.edit #delete-logo {
-    display: none;
+.edit #delete-logo
+{
+	display: none;
 }
-
-#customer-title {
-    height: 100px;
-    float: right;
-    margin-top: 40px;
+.edit #logohelp
+{
+	display: block;
 }
-
-/* Little bit nicer formatting */
-
-#customer-title textarea {
-    width: 300px;
-    border: 1px solid #333;
-    background: #eee;
-    padding: 5px;
+.edit #save-logo,
+.edit #cancel-logo
+{
+	display: inline;
 }
-
-/* second row */
-#block2 {
-    overflow: hidden;
-    width: 100%;
-    padding-top: 35px;
+.tab-content
+{
+	border: 1px solid #ddd;
+	border-top: none;
+	padding-top: 15px;
 }
-
-#company-title {
-    float: left;
+div#company_name
+{
+	font-size: 150%;
+	text-align: left;
 }
-
-#meta {
-    margin-top: -22px;
-    width: 300px;
-    float: right;
+div#tax-invoice
+{
+	font-size: 1.5em;
+	margin-top: -15px;
+	text-align: left;
 }
-
-#meta td {
-    text-align: right;
+td.item-description
+{
+	background: #efefef;
+	border-bottom: 2px solid #333 !important;
+	border-top: 1px solid #aaa !important;
+	text-align: left;
 }
-
-#meta td.meta-head {
-    text-align: left;
-    background: #eee;
-    font-weight: bold;
-}
-
-#meta td textarea {
-    width: 100%;
-    height: 20px;
-    text-align: right;
-}
-
-#items {
-    clear: both;
-    width: 100%;
-    margin: 10px 0 0 0;
-    border: 1px solid black;
-}
-
-#items th {
-    background: #eee;
-    text-align: center;
-}
-
-#items textarea {
-    width: 80px;
-    height: 20px;
-    text-align: center;
-}
-
-#items tr.item-row td {
-    border: 0;
-    vertical-align: top;
-}
-
-#items td.description {
-    width: 300px;
-}
-
-#items td.item-name {
-    width: 175px;
-}
-
-#items td.item-description textarea {
-    height: auto;
-    width: 100%;
-}
-
-#items td.description textarea,
-#items td.item-name textarea {
-    width: 100%;
-}
-
-#items td.total-line {
-    border-right: 0;
-    text-align: center;
-    font-weight: bold;
-}
-
-#items td.total-value {
-    border-left: 0;
-    padding: 10px;
-}
-
-#items td.total-value textarea {
-    height: 20px;
-    background: none;
-}
-
-#items td.total-line textarea {
-    height: 20px;
-    width: 150px;
-    background: none;
-}
-
-#items td.balance {
-    background: #eee;
-}
-
-#items td.blank {
-    border: 0;
-}
-
-#items td.blank-bottom {
-    border: 1px;
-}
-
-#terms {
-    text-align: center;
-    margin: 20px 0 0 0;
-}
-
-#terms h5 {
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 10px;
-    border-bottom: 1px solid black;
-    padding: 0 0 8px 0;
-    margin: 0 0 8px 0;
-}
-
-#terms textarea {
-    width: 100%;
-    text-align: center;
-}
-
-.delete-wpr {
-    position: relative;
-}
-
-.delete {
-    display: block;
-    color: #000;
-    text-decoration: none;
-    position: absolute;
-    background: #EEEEEE;
-    font-weight: bold;
-    padding: 0px 3px;
-    border: 1px solid;
-    top: -6px;
-    left: -22px;
-    font-family: Helvetica;
-    font-size: 12px;
-}
-
-/* Receipt and Invoice */
-
-div#company_name {
-    font-size: 150%;
-    text-align: left;
-}
-
-div#tax-invoice {
-    font-size: 1.5em;
-    margin-top: -15px;
-    text-align: left;
-}
-
-td.item-description {
-    background: #efefef;
-    border-top: 1px solid #aaa !important;
-    border-bottom: 2px solid #333 !important;
-    text-align:left;
-}
-
-tr.item-row {
-    border-bottom: 1px #333 solid;
-    text-align: center;
-}
-
-.tab-content {
-    padding-top: 15px;
-    border: 1px solid #ddd;
-    border-top: none;
+tr.item-row
+{
+	border-bottom: 1px #333 solid;
+	text-align: center;
 }
