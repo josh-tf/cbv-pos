@@ -271,7 +271,7 @@ td.item-description {
 }
 
 tr.item-row {
-    border-top: 1px #333 solid;
+    border-bottom: 1px #333 solid;
     text-align: center;
 }
 

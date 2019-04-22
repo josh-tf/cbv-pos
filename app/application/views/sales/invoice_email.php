@@ -78,23 +78,9 @@
 				<?php endif; ?>
 				<td class="total-line"><?php echo to_currency($item['discounted_total']); ?></td>
 			</tr>
-			<tr class="item-row">
+			<tr class="item-row" <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
 			<td class="item-description" colspan="5">
-				<div>
-
-					<?php
-
-				if ($item['item_category'] == "Laptop" || $item['item_category'] === "Desktop") {
-
-					echo '<b>Machine Specs:</b> ' . $item['description'];
-
-				} else {
-
-					echo  $item['description'];
-				}
-				?>
-
-				</div>
+			<div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
 			</td>
 		</tr>
 		<?php
