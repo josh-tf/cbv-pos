@@ -106,7 +106,7 @@ foreach ($cart as $line => $item) {
                     cols="6"><?php echo to_currency($item['price']); ?></textarea></td>
             <td><textarea rows="4" cols="4"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
             <td class="" style=''><textarea rows="4"
-                    cols="6"><?php echo to_currency($item[($this->config->item('receipt_show_total_discount') ? 'total' : 'discounted_total')]); ?></textarea>
+                    cols="6"><?php echo to_currency($item['total']); ?></textarea>
             </td>
         </tr>
         <tr class="item-row"
@@ -197,9 +197,6 @@ if ($this->config->item('receipt_show_taxes')) {
         <?php
 }
 ?>
-
-        <tr>
-        </tr>
 
         <?php $border = (!$this->config->item('receipt_show_taxes') && !($this->config->item('receipt_show_total_discount') && $discount > 0));?>
         <tr>

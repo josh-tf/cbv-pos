@@ -389,14 +389,16 @@ public function test_pdf()
 
 public function test_pdf_dl()
 {
-    $sale_id = 1;
+    $sale_id = 4;
+    $type='invoice';
+    $number = '004';
     $data = $this->_load_sale_data($sale_id);
 
         // generate email attachment: invoice in pdf format
 $html = $this->load->view('sales/invoice_email', $data, true);
 // load pdf helper
 $this->load->helper(array('dompdf', 'file', 'download'));
-$filename = sys_get_temp_dir() . '/' . $this->lang->line('sales_' . $type) . '-' . str_replace('/', '-', $number) . '.pdf';
+$filename = sys_get_temp_dir() . '/CBV-' . $this->lang->line('sales_' . $type) . '-' . str_replace('/', '-', $number) . '.pdf';
 file_put_contents($filename, pdf_create($html));
 
     $this->load->view('sales/invoice_email', $data);
@@ -695,7 +697,7 @@ file_put_contents($filename, pdf_create($html));
             $html = $this->load->view('sales/' . $type . '_email', $sale_data, true);
             // load pdf helper
             $this->load->helper(array('dompdf', 'file'));
-            $filename = sys_get_temp_dir() . '/CBV-' . $this->lang->line('sales_' .$type) . '-' . str_replace('/', '-', $number) . '.pdf';
+            $filename = sys_get_temp_dir() . '/CBV-' . $this->lang->line('sales_' . $type) . '-' . str_replace('/', '-', $number) . '.pdf';
             if (file_put_contents($filename, pdf_create($html)) !== false) {
                 $result = $this->email_lib->sendEmail($to, $subject, $text, $filename);
             }

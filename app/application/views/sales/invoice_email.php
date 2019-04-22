@@ -165,24 +165,18 @@ if ($this->config->item('receipt_show_taxes')) {
 }
 ?>
 
-        <tr>
-        </tr>
-
         <?php $border = (!$this->config->item('receipt_show_taxes') && !($this->config->item('receipt_show_total_discount') && $discount > 0));?>
         <tr>
             <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line"
-                style="text-align:right;<?php echo $border ? 'border-top: 2px solid black;' : ''; ?>">
+            <td colspan="1" class="total-line al-right">
                 <?php echo $this->lang->line('sales_total'); ?></td>
-            <td class="total-value"
-                style="text-align:right;<?php echo $border ? 'border-top: 2px solid black;' : ''; ?>">
+            <td class="total-value al-right">
                 <?php echo to_currency($total); ?></td>
         </tr>
 
         <tr>
             <td colspan="3" class="blank"> </td>
             <td colspan="2">&nbsp;</td>
-
         </tr>
 
         <?php
