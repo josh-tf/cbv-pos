@@ -1,112 +1,115 @@
-#page-wrap {
-	font-family: Helvetica;
+#company_phone
+{
+	margin-bottom: 15px;
 }
-
-	#receipt_wrapper {
-	width: 100%;
-}
-
-#receipt_header {
-	text-align: center;
-}
-
-#conc_id {
+#conc_id
+{
 	font-size: 150%;
 	font-weight: bold;
 }
-
-#company_phone {
-	margin-bottom: 15px;
-
+#page-wrap
+{
+	font-family: Helvetica;
 }
-
-#sale_time {
-	margin-bottom: 5px;
-}
-
-#receipt_items {
-	position: relative;
-	border-collapse: collapse;
-	margin-top: 15px;
-	margin-bottom: 15px;
-	width: 100%;
-}
-
-#receipt_items td {
-	position: relative;
-	padding: 3px;
-	margin-bottom: 5px;
-
-}
-
-#receipt_items tr {
-	margin-bottom: 5px;
-}
-
-#sale_return_policy {
-	width: 80%;
-	margin: 0 auto;
+#receipt_header
+{
 	text-align: center;
 }
-
-#receipt_wrapper #barcode {
+#receipt_items
+{
+	border-collapse: collapse;
+	margin-bottom: 15px;
+	margin-top: 15px;
+	position: relative;
+	width: 100%;
+}
+#receipt_items td
+{
+	margin-bottom: 5px;
+	padding: 3px;
+	position: relative;
+}
+#receipt_items tr
+{
+	margin-bottom: 5px;
+}
+#receipt_wrapper
+{
+	width: 100%;
+}
+#receipt_wrapper #barcode
+{
 	margin-top: 10px;
 	text-align: center;
 }
-
-.total-value {
-	text-align: right;
+#sale_return_policy
+{
+	margin: 0 auto;
+	text-align: center;
+	width: 80%;
 }
-
-.discount {
+#sale_return_policy
+{
+	margin: 35px auto 35px auto;
+	text-align: center;
+	width: 80%;
+}
+#sale_time
+{
+	margin-bottom: 5px;
+}
+.al-right
+{
+	text-align: right !important;
+}
+.block2r
+{
+	padding-top: 0;
+}
+.computer-info
+{
+	font-size: 0.9em;
+	line-height: 14px;
+}
+.disc
+{
+	border: 1px solid black !important;
+	text-align: center;
+}
+.discount
+{
 	font-weight: bold;
 }
-
-@media all {
-	.page-break {
+.pagebreak
+{
+	page-break-before: always;
+}
+.Thankyou-Note
+{
+	font-weight: bold;
+	margin: 35px auto 35px auto;
+	text-align: center;
+}
+.total-value
+{
+	text-align: right;
+}
+@media all
+{
+	.page-break
+	{
 		display: none;
 	}
 }
-
-@media print {
-	.page-break {
+@media print
+{
+	.page-break
+	{
 		display: block;
 		page-break-before: always;
 	}
 }
-
-.computer-info {
-	font-size: 0.9em;
-	line-height: 14px;
-}
-
-hr {
+hr
+{
 	margin-bottom: 0px;
-}
-
-.Thankyou-Note {
-	text-align: center;
-	margin: 35px auto 35px auto;
-	font-weight: bold;
-}
-
-#sale_return_policy {
-	width: 80%;
-	margin: 35px auto 35px auto;
-	text-align: center;
-}
-
-.block2r {
-	padding-top: 0;
-	padding-bottom: 20px;
-}
-.pagebreak { page-break-before: always; }
-
-.disc {
-    border: 1px solid black !important;
-    text-align: center;
-}
-
-.al-right{
-	text-align: right !important;
 }
