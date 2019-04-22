@@ -63,7 +63,7 @@ if (isset($error_message)) {
 <script type="text/javascript">
 $(document).ready(function() {
     var send_email = function() {
-        $.get('<?php echo site_url() . "/sales/send_pdf/" . $sale_id_num; ?>',
+        $.get('<?php echo site_url() . "/sales/send_pdf/" . $sale_id_num . '/invoice'; ?>',
             function(response) {
                 $.notify(response.message, {
                     type: response.success ? 'success' : 'danger'
@@ -89,7 +89,7 @@ $(document).ready(function() {
             <?php echo '<span class="glyphicon glyphicon-print">&nbsp</span>' . $this->lang->line('common_print'); ?>
         </div>
     </a>
-    <?php echo anchor("sales/save_invoice/" . $sale_id_num, '<span class="glyphicon glyphicon-download">&nbsp</span>' . $this->lang->line('common_save_pdf'), array('class' => 'btn btn-info btn-sm', 'id' => 'show_save_button')); ?>
+    <?php echo anchor("sales/save_pdf/" . $sale_id_num . '/invoice', '<span class="glyphicon glyphicon-download">&nbsp</span>' . $this->lang->line('common_save_pdf'), array('class' => 'btn btn-info btn-sm', 'id' => 'show_save_button')); ?>
     <?php if (isset($customer_email) && !empty($customer_email)): ?>
     <a href="javascript:void(0);">
         <div class="btn btn-info btn-sm" , id="show_email_button">
@@ -182,15 +182,15 @@ foreach ($cart as $line => $item) {
 
     if ($item['item_category'] == "Laptop" || $item['item_category'] === "Desktop") { // if the item is a desktop or laptop
 
-        $itemName = "CBV " . $item['name'] . " (" . $item['item_category'] . ")"; // change the name to "CBV XXXX (Type)"
+        $item['name'] = "CBV " . $item['name'] . " (" . $item['item_category'] . ")"; // change the name to "CBV XXXX (Type)"
 
     } else {
-        $itemName = ucfirst($item['name']); // otherwise just use the name
+        $item['name'] = ucfirst($item['name']); // otherwise just use the name
     }
 
     ?>
         <tr class="item-row">
-            <td colspan="2" class="item-name"><textarea rows="4" cols="6"><?php echo $itemName; ?></textarea></td>
+            <td colspan="2" class="item-name"><textarea rows="4" cols="6"><?php echo $item['name']; ?></textarea></td>
             <td><textarea rows="4" cols="4"><?php echo to_currency($item['price']); ?></textarea></td>
             <td style='text-align:center;'><textarea rows="5"
                     cols="6"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>

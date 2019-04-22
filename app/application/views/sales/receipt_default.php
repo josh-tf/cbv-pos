@@ -92,16 +92,17 @@ foreach ($cart as $line => $item) {
 
     if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop
 
-        $itemName = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
+        $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
+        $isComputer = true;
 
     } else {
-        $itemName = ucfirst($item['name']); // otherwise just use the name
+        $item['name'] = ucfirst($item['name']); // otherwise just use the name
     }
 
     ?>
 
         <tr class="item-row">
-            <td colspan="2" class="item-name"><textarea rows="4" cols="6"><?php echo $itemName ?></textarea></td>
+            <td colspan="2" class="item-name"><textarea rows="4" cols="6"><?php echo $item['name'] ?></textarea></td>
             <td style='text-align:center;'><textarea rows="5"
                     cols="6"><?php echo to_currency($item['price']); ?></textarea></td>
             <td><textarea rows="4" cols="4"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
@@ -242,18 +243,7 @@ foreach ($payments as $payment_id => $payment) {
     <!-- routine for inserting extra info like passwords, for PC and Laptop sales -->
     <?php
 
-function isComputer($cats, $array) // input is list to search (arr) and the arr of items in cart
-
-{
-    foreach ($cats as &$value) {
-        if (in_array($value, array_column($array, 'item_category'))) {
-            return true;
-            break; // exit loop on first match
-        }
-    }
-}
-
-if (($total > 0) && isComputer(array("Laptop", "Desktop"), $cart)) { // search value in the array only if its a sale
+    if (($total > 0) && $isComputer) { // search value in the array only if its a sale
 
     echo '<div class="Thankyou-Note">' . $this->lang->line('sales_receipt_extra_page_note') . '</div>';
     echo '<div class="pagebreak"></div>';

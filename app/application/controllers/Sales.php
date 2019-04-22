@@ -634,29 +634,32 @@ class Sales extends Secure_Controller
         }
     }
 
-    public function send_pdf($sale_id, $type = 'invoice')
+    public function send_pdf($sale_id, $type)
     {
         $sale_data = $this->_load_sale_data($sale_id);
 
         $result = false;
-        $message = $this->lang->line('sales_invoice_no_email');
+        $message = $this->lang->line('sales_' . $type . '_no_email');
 
         if (!empty($sale_data['customer_email'])) {
             $to = $sale_data['customer_email'];
             $number = $sale_data[$type . '_number'];
             $subject = $this->config->item('company') . ' - ' . $this->lang->line('sales_' . $type) . ' ' . $number;
 
-            $text = $this->config->item('invoice_email_message');
+            $text = $this->config->item($type . '_email_message');
+
+            if($type == 'invoice'){
             $tokens = array(new Token_invoice_sequence($sale_data['invoice_number']),
                 new Token_invoice_count('POS ' . $sale_data['sale_id']),
                 new Token_customer((object) $sale_data));
             $text = $this->token_lib->render($text, $tokens);
+            }
 
             // generate email attachment: invoice in pdf format
             $html = $this->load->view('sales/' . $type . '_email', $sale_data, true);
             // load pdf helper
             $this->load->helper(array('dompdf', 'file'));
-            $filename = sys_get_temp_dir() . '/CBV-' . $this->lang->line('sales_' . $type) . '-' . str_replace('/', '-', $number) . '.pdf';
+            $filename = sys_get_temp_dir() . '/CBV-' . str_replace(' ', '-', $this->lang->line('sales_' . $type)) . '-' . str_replace('/', '-', $number) . '.pdf';
             if (file_put_contents($filename, pdf_create($html)) !== false) {
                 $result = $this->email_lib->sendEmail($to, $subject, $text, $filename);
             }
@@ -671,23 +674,22 @@ class Sales extends Secure_Controller
         return $result;
     }
 
-    public function save_invoice($sale_id)
+    public function save_pdf($sale_id, $type)
     {
-        $type='invoice';
         $number = sprintf("%03d", $sale_id); // two leading zeros if number is small
         $data = $this->_load_sale_data($sale_id);
 
-     // generate email attachment: invoice in pdf format
-    $html = $this->load->view('sales/invoice_email', $data, true);
+     // generate file in pdf format
+    $html = $this->load->view('sales/' . $type . '_email', $data, true);
 
     // load pdf helper
     $this->load->helper(array('dompdf', 'file', 'download'));
-    $filename = sys_get_temp_dir() . '/CBV-' . $this->lang->line('sales_' . $type) . '-' . str_replace('/', '-', $number) . '.pdf';
+    $filename = sys_get_temp_dir() . '/CBV-' . str_replace(' ', '-', $this->lang->line('sales_' . $type)) . '-' . str_replace('/', '-', $number) . '.pdf';
 
     // create the PDF
     file_put_contents($filename, pdf_create($html));
 
-    $this->load->view('sales/invoice_email', $data);
+    $this->load->view('sales/' . $type . '_email', $data);
     $this->sale_lib->clear_all();
 
     // download the PDF
@@ -695,31 +697,28 @@ class Sales extends Secure_Controller
 
     }
 
-    public function send_receipt($sale_id)
+    //!dev only
+    public function view_pdf($sale_id, $type)
     {
-        $sale_data = $this->_load_sale_data($sale_id);
+        $number = sprintf("%03d", $sale_id); // two leading zeros if number is small
+        $data = $this->_load_sale_data($sale_id);
 
-        $result = false;
-        $message = $this->lang->line('sales_receipt_no_email');
+     // generate file in pdf format
+    $html = $this->load->view('sales/' . $type . '_email', $data, true);
 
-        if (!empty($sale_data['customer_email'])) {
-            $sale_data['barcode'] = $this->barcode_lib->generate_receipt_barcode($sale_data['sale_id']);
+    // load pdf helper
+    $this->load->helper(array('dompdf', 'file', 'download'));
+    $filename = sys_get_temp_dir() . '/CBV-' . str_replace(' ', '-', $this->lang->line('sales_' . $type)) . '-' . str_replace('/', '-', $number) . '.pdf';
 
-            $to = $sale_data['customer_email'];
-            $subject = $this->lang->line('sales_receipt_email_subject') . ' - ' . $this->config->item('company');
+    // create the PDF
+    file_put_contents($filename, pdf_create($html));
 
-            $text = $this->load->view('sales/receipt_email', $sale_data, true);
+    $this->load->view('sales/' . $type . '_email', $data);
+    $this->sale_lib->clear_all();
 
-            $result = $this->email_lib->sendEmail($to, $subject, $text);
+    // download the PDF
+    //force_download($filename, NULL);
 
-            $message = $this->lang->line($result ? 'sales_receipt_sent' : 'sales_receipt_unsent') . ' ' . $to;
-        }
-
-        echo json_encode(array('success' => $result, 'message' => $message, 'id' => $sale_id));
-
-        $this->sale_lib->clear_all();
-
-        return $result;
     }
 
     private function _load_customer_data($customer_id, &$data, $stats = false)

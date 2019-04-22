@@ -69,6 +69,15 @@ load_language(true, array('sales', 'common'));
 
             <?php
 foreach ($cart as $line => $item) {
+
+    if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop
+
+        $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
+
+    } else {
+        $item['name'] = ucfirst($item['name']); // otherwise just use the name
+    }
+
     ?>
             <tr class="item-row">
                 <td colspan="2" class="item-name"><?php echo $item['name']; ?></td>
