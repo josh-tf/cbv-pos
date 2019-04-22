@@ -74,7 +74,7 @@ if (!empty($invoice_number)) {
 
         <tr>
             <th colspan="2">
-                <?php echo $this->lang->line('sales_description_abbrv'); ?>
+                <?php echo $this->lang->line('sales_item_name'); ?>
             </th>
             <th>
                 <?php echo $this->lang->line('sales_price'); ?>
