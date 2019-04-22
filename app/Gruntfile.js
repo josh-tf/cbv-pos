@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 					destPrefix: 'public/dist'
 				},
 				files: {
-					'trumbowyg': 'dist/ui/trumbowyg.min.css'
+					'trumbowyg': 'dist/ui/trumbowyg.css'
 				}
 			},
 			targetdistjqueryui: {
@@ -137,7 +137,7 @@ module.exports = function (grunt) {
 					closeTag: '<!-- end js template tags -->',
 					ignorePath: '../../../public/'
 				},
-				src: ['public/js/jquery*', 'public/js/*.js'],
+				src: ['public/js/jquery*', 'public/js/*.js', 'public/js/trumbowyg/*.js'],
 				dest: 'application/views/partial/header.php'
 			},
 			minjs: {
@@ -242,7 +242,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-apigen');
 	grunt.loadNpmTasks('grunt-contrib-compress');
 
-	grunt.registerTask('default', ['wiredep', 'bower_concat', 'bowercopy', 'concat', 'uglify', 'cssmin', 'cachebreaker']);
+	grunt.registerTask('default', ['wiredep', 'bower_concat', 'bowercopy', 'concat', 'uglify', 'cssmin', 'cachebreaker', 'tags']);
 	grunt.registerTask('update', ['composer:update', 'bower:update']);
 	grunt.registerTask('genlicense', ['clean:license', 'license', 'bower-licensechecker']);
 	grunt.registerTask('package', ['default', 'compress']);
