@@ -260,7 +260,7 @@ if ($this->config->item('receipt_show_taxes')) {
 
         <tr>
             <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line al-right">GST 10%</td>
+            <td colspan="1" class="total-line al-right"><?php echo $this->lang->line('sales_tax_default'); ?></td>
             <td class="total-value al-right"><?php echo to_currency(0); ?></td>
         </tr>
 

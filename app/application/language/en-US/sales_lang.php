@@ -148,6 +148,7 @@ $lang["sales_suspended_sales"] = "Suspended";
 $lang["sales_table"] = "Table";
 $lang["sales_takings"] = "Daily Sales";
 $lang["sales_tax"] = "Tax";
+$lang["sales_tax_default"] = "GST 10%";
 $lang["sales_tax_percent"] = "Tax %";
 $lang["sales_total"] = "Total";
 $lang["sales_total_tax_exclusive"] = "Tax excluded";
