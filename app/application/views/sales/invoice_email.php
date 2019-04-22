@@ -186,29 +186,13 @@ if ($this->config->item('receipt_show_taxes')) {
         </tr>
 
         <?php
-$only_sale_check = false;
-$show_giftcard_remainder = false;
 foreach ($payments as $payment_id => $payment) {
-    $only_sale_check |= $payment['payment_type'] == $this->lang->line('sales_check');
     $splitpayment = explode(':', $payment['payment_type']);
-    $show_giftcard_remainder |= $splitpayment[0] == $this->lang->line('sales_giftcard');
     ?>
         <tr>
             <td colspan="3" class="blank"> </td>
             <td colspan="1" class="total-line al-right"><?php echo $splitpayment[0]; ?> </td>
             <td class="total-value al-right"><?php echo to_currency($payment['payment_amount'] * -1); ?></td>
-        </tr>
-        <?php
-}
-?>
-
-        <?php
-if (isset($cur_giftcard_value) && $show_giftcard_remainder) {
-    ?>
-        <tr>
-            <td colspan="3" class="blank"> </td>
-            <td colspan="1" style="text-align:right;"><?php echo $this->lang->line('sales_giftcard_balance'); ?></td>
-            <td class="total-value al-right"><?php echo to_currency($cur_giftcard_value); ?></td>
         </tr>
         <?php
 }
