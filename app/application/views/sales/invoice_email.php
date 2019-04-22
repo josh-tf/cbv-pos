@@ -107,9 +107,9 @@ if ($this->config->item('receipt_show_total_discount') && $discount > 0) {
     ?>
         <tr>
             <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line al-right" style='border-top:2px solid #000000;'>
+            <td colspan="1" class="total-line al-right">
                 <?php echo $this->lang->line('sales_sub_total'); ?></td>
-            <td class="total-value al-right" style=';border-top:2px solid #000000;'>
+            <td class="total-value al-right">
                 <?php echo to_currency($prediscount_subtotal); ?></td>
         </tr>
         <tr>
