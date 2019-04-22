@@ -53,6 +53,11 @@
         "jquery-ui.js"
       ]
     },
+    "trumbowyg": {
+      "main": [
+        "trumbowyg.js"
+      ]
+    },
     "table-export": {
       "main": [
         "tableExport.js"

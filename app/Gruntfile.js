@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 					destPrefix: 'public/dist'
 				},
 				files: {
-					'jquery-ui': 'dist/ui/trumbowyg.min.css'
+					'trumbowyg': 'dist/ui/trumbowyg.min.css'
 				}
 			},
 			targetdistjqueryui: {
@@ -117,7 +117,7 @@ module.exports = function (grunt) {
 					ignorePath: '../../../public/'
 				},
 				// jquery-ui must be first or at least before opensourcepos.min.css
-				src: ['public/dist/jquery-ui/*.css', 'public/dist/*.css'],
+				src: ['public/dist/jquery-ui/*.css', 'public/dist/trumbowyg/*.css', 'public/dist/*.css'],
 				dest: 'application/views/partial/header.php',
 			},
 			css_login: {
