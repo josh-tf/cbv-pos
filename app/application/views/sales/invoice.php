@@ -89,7 +89,6 @@ $(document).ready(function() {
             <?php echo '<span class="glyphicon glyphicon-print">&nbsp</span>' . $this->lang->line('common_print'); ?>
         </div>
     </a>
-    <?php /* this line will allow to print and go back to sales automatically.... echo anchor("sales", '<span class="glyphicon glyphicon-print">&nbsp</span>' . $this->lang->line('common_print'), array('class'=>'btn btn-info btn-sm', 'id'=>'show_print_button', 'onclick'=>'window.print();')); */?>
     <?php if (isset($customer_email) && !empty($customer_email)): ?>
     <a href="javascript:void(0);">
         <div class="btn btn-info btn-sm" , id="show_email_button">
