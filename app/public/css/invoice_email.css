@@ -1,314 +1,320 @@
-#company-title
-{
-	padding-left: 20px;
-	width: 50%;
-}
-#customer-title
-{
-	text-align: right;
-}
-#header
-{
-	background-color: #222222;
-	color: white;
-	font-size: 26px;
-	font-weight: bold;
-	height: 30px;
-	letter-spacing: 4px;
-	margin: 20px 0 50px 0;
-	padding: 8px 0px;
-	text-align: center;
-	width: 100%;
-}
-#image
-{
-	height: 120px;
-	width: 163px;
-}
-#info
-{
-	margin: 10px 0 30px 0;
-	width: 100%;
-}
-#items
-{
-	border: 1px solid black;
-	clear: both;
-	margin: 10px 0 0 0;
-	width: 100%;
-}
-#items td.balance
-{
-	background: #eee;
-}
-#items td.blank
-{
-	border: 0;
-}
-#items td.blank
-{
-	border: 0;
-}
-#items td.blank-bottom
-{
-	border: 1px;
-}
-#items td.description
-{
-	width: 300px;
-}
-#items td.description textarea,
-#items td.item-name textarea
-{
-	width: 100%;
-}
-#items td.item-description textarea
-{
-	height: auto;
-	width: 100%;
-}
-#items td.item-name
-{
-	width: 175px;
-}
-#items td.total-line
-{
-	border-right: 0;
-	font-weight: bold;
-	text-align: center;
-}
-#items td.total-line textarea
-{
-	background: none;
-	height: 20px;
-	width: 150px;
-}
-#items td.total-value
-{
-	border-left: 0;
-	padding: 10px;
-}
-#items td.total-value textarea
-{
-	background: none;
-	height: 20px;
-}
-#items textarea
-{
-	height: 20px;
-	text-align: center;
-	width: 80px;
-}
-#items th
-{
-	background: #eee;
-	text-align: center;
-}
-#items tr.item-row td
-{
-	border: 0;
-	vertical-align: top;
-}
-#logo
-{
-	border: 1px solid #ffffff;
-	overflow: hidden;
-	text-align: left;
-	width: 50%;
-}
-#logo img
-{
-	max-height: 150px;
-	max-width: 270px !important;
-}
-#logo:hover #logoctr,
-#logo.edit #logoctr
-{
-	background: #eee;
-	display: block;
-	line-height: 25px;
-	padding: 0 5px;
-	text-align: right;
-}
-#logoctr
-{
-	display: none;
-}
-#logohelp
-{
-	display: none;
-	font-style: italic;
-	padding: 10px 5px;
-	text-align: left;
-}
-#logohelp input
-{
-	margin-bottom: 5px;
-}
+/*
+	 CSS-Tricks Example
+	 by Chris Coyier
+	 http://css-tricks.com
+*/
 #menubar,
-#footer
-{
+#footer {
 	display: none;
 }
-#meta td
-{
-	text-align: right;
-}
-#meta td.meta-head
-{
-	background: #eee;
-	text-align: left;
-}
-#page-wrap
-{
-	font-family: Helvetica;
-}
-#page-wrap
-{
-	margin: 0 auto;
-	width: 750px;
-}
-#page-wrap #info td, #page-wrap #info th
-{
-	border: none;
-}
-#page-wrap #meta table td,
-#page-wrap table th
-{
-	border: 1px solid black;
-	padding: 5px;
-}
-#page-wrap table
-{
-	border-collapse: collapse;
-}
-#page-wrap table td,
-#page-wrap table th
-{
-	border: 1px solid black;
-	padding: 5px;
-}
-#page-wrap table#items td
-{
-	padding: 10px;
-}
-#terms
-{
-	margin: 20px 0 0 0;
-	text-align: center;
-}
-#terms div
-{
-	margin-bottom: 10px;
-	text-align: center;
-	width: 100%;
-}
-#terms h5
-{
-	border-bottom: 1px solid black;
-	font-size: 13px;
-	letter-spacing: 10px;
-	margin: 0 0 8px 0;
-	padding: 0 0 8px 0;
-	text-transform: uppercase;
-}
-#terms textarea
-{
-	text-align: center;
-	width: 100%;
-}
-*
-{
+
+* {
 	margin: 0;
 	padding: 0;
 }
-.customer-info
-{
-	background: #eee;
-	border: 1px solid #333 !important;
-	float: right;
-	margin-top: 0px;
+
+body {
+	font-family: Helvetica;
+	font-size: 13px;
+}
+
+#page-wrap {
+	width: 750px;
+	margin: 0 auto;
+}
+
+pre {
+	font-family: Helvetica;
+	font-size: 13px;
+}
+
+#page-wrap {
+	font-family: Helvetica;
+}
+
+#page-wrap table {
+	border-collapse: collapse;
+}
+
+#page-wrap table#items td {
+	padding: 10px;
+}
+
+table.invoice-meta {
+    margin-top: -55px;
+}
+
+#page-wrap #meta table td,
+#page-wrap table th {
+	border: 1px solid black;
 	padding: 5px;
-	width: 200px;
 }
-.delete
-{
-	background: #eee;
-	border: 1px solid;
-	color: #000;
-	display: block;
-	font-family: Verdana;
-	font-size: 12px;
+
+#header {
+	height: 30px;
+	width: 100%;
+	margin: 20px 0 50px 0;
+	background-color: #222222;
+	text-align: center;
+	color: white;
 	font-weight: bold;
-	left: -22px;
-	padding: 0px 3px;
-	position: absolute;
-	text-decoration: none;
-	top: -6px;
+	font-size: 26px;
+	letter-spacing: 4px;
+	padding: 8px 0px;
 }
-.delete-wpr
-{
-	position: relative;
+
+div#tax-invoice {
+    font-size: 1.5em;
+	text-align: left;
+	margin-bottom: 20px;
 }
+
+/* first row */
+#info {
+	width: 100%;
+	margin: 10px 0 30px 0;
+}
+
+#logo {
+	width: 50%;
+	text-align: left;
+	border: 1px solid #ffffff;
+	overflow: hidden;
+}
+
+#image {
+	height: 120px;
+	width: 163px;
+}
+
+#logoctr {
+	display: none;
+}
+
+#logo:hover #logoctr,
+#logo.edit #logoctr {
+	display: block;
+	text-align: right;
+	line-height: 25px;
+	background: #eee;
+	padding: 0 5px;
+}
+
+#logohelp {
+	text-align: left;
+	display: none;
+	font-style: italic;
+	padding: 10px 5px;
+}
+
+#logohelp input {
+	margin-bottom: 5px;
+}
+
+.edit #logohelp {
+	display: block;
+}
+
+.edit #save-logo,
+.edit #cancel-logo {
+	display: inline;
+}
+
 .edit #image,
 #save-logo,
 #cancel-logo,
 .edit #change-logo,
-.edit #delete-logo
-{
+.edit #delete-logo {
 	display: none;
 }
-.edit #logohelp
-{
-	display: block;
+
+#customer-title {
+	text-align: right;
 }
-.edit #save-logo,
-.edit #cancel-logo
-{
-	display: inline;
-}
-.inv-comments
-{
-	border-bottom: solid 1px #000;
-	padding: 10px 0 50px 0;
-}
-body
-{
-	font-family: Helvetica;
-	font-size: 13px;
-}
-div#tax-invoice
-{
-	font-size: 1.5em;
-	margin-bottom: 20px;
-	text-align: left;
-}
-pre
-{
-	font-family: Helvetica;
-	font-size: 13px;
-}
-table#info
-{
-	margin-top: 50px;
-}
-table.invoice-meta
-{
-	margin-top: -55px;
-}
-table.invoice-meta
-{
-	margin-top: -50px;
-}
-td.item-description
-{
-	background: #efefef;
-	border-bottom: 2px solid #333 !important;
-	border-top: 1px solid #aaa !important;
-	text-align: left;
-}
-tr.item-row
-{
-	border-bottom: 1px #333 solid;
+
+#terms div {
+	width: 100%;
 	text-align: center;
+	margin-bottom: 10px;
 }
+
+/* second row */
+#company-title {
+	width: 50%;
+	padding-left: 20px;
+}
+
+#meta td {
+	text-align: right;
+}
+
+#meta td.meta-head {
+	text-align: left;
+	background: #eee;
+}
+
+#page-wrap table td,
+#page-wrap table th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#items td.blank {
+    border: 0;
+}
+
+.customer-info {
+    border: 1px solid #333 !important;
+    background: #eee;
+    padding: 5px;
+    width: 200px;
+	float: right;
+	margin-top: 0px;
+}
+table.invoice-meta {
+    margin-top: -50px;
+}
+
+table#info {
+    margin-top: 50px;
+}
+
+#logo img {
+    max-height: 150px;
+    max-width: 270px !important;
+}
+
+#page-wrap #info td, #page-wrap #info th {
+    border: none;
+}
+
+#items {
+    clear: both;
+    width: 100%;
+    margin: 10px 0 0 0;
+    border: 1px solid black;
+}
+
+#items th {
+    background: #eee;
+    text-align: center;
+}
+
+#items textarea {
+    width: 80px;
+    height: 20px;
+    text-align: center;
+}
+
+#items tr.item-row td {
+    border: 0;
+    vertical-align: top;
+}
+
+#items td.description {
+    width: 300px;
+}
+
+#items td.item-name {
+    width: 175px;
+}
+
+#items td.item-description textarea {
+    height: auto;
+    width: 100%;
+}
+
+#items td.description textarea,
+#items td.item-name textarea {
+    width: 100%;
+}
+
+#items td.total-line {
+    border-right: 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+#items td.total-value {
+    border-left: 0;
+    padding: 10px;
+}
+
+#items td.total-value textarea {
+    height: 20px;
+    background: none;
+}
+
+#items td.total-line textarea {
+    height: 20px;
+    width: 150px;
+    background: none;
+}
+
+#items td.balance {
+    background: #eee;
+}
+
+#items td.blank {
+    border: 0;
+}
+
+#items td.blank-bottom {
+    border: 1px;
+}
+
+td.item-description {
+    background: #efefef;
+    border-top: 1px solid #aaa !important;
+    border-bottom: 2px solid #333 !important;
+    text-align:left;
+}
+
+tr.item-row {
+    border-bottom: 1px #333 solid;
+    text-align: center;
+}
+
+.inv-comments {
+    padding: 10px 0 50px 0;
+    border-bottom: solid 1px #000;
+}
+
+#terms {
+    text-align: center;
+    margin: 20px 0 0 0;
+}
+
+#terms h5 {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 10px;
+    border-bottom: 1px solid black;
+    padding: 0 0 8px 0;
+    margin: 0 0 8px 0;
+}
+
+#terms textarea {
+    width: 100%;
+    text-align: center;
+}
+
+.delete-wpr {
+	position: relative;
+}
+
+.delete {
+	display: block;
+	color: #000;
+	text-decoration: none;
+	position: absolute;
+	background: #eee;
+	font-weight: bold;
+	padding: 0px 3px;
+	border: 1px solid;
+	top: -6px;
+	left: -22px;
+	font-family: Verdana;
+	font-size: 12px;
+}
+
