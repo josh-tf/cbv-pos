@@ -4,7 +4,7 @@
 			<div id="required_fields_message"><?php echo $this->lang->line('common_fields_required_message'); ?></div>
 			<ul id="invoice_error_message_box" class="error_message_box"></ul>
 
-			<div class="form-group form-group-sm">	
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_invoice_enable'), 'invoice_enable', array('class' => 'control-label col-xs-2')); ?>
 				<div class='col-xs-1'>
 					<?php echo form_checkbox(array(
@@ -33,20 +33,21 @@
 				</div>
 			</div>
 
-			<div class="form-group form-group-sm">	
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_invoice_default_comments'), 'invoice_default_comments', array('class' => 'control-label col-xs-2')); ?>
-				<div class='col-xs-5'>
+				<div class='col-xs-6'>
 					<?php echo form_textarea(array(
 						'name' => 'invoice_default_comments',
 						'id' => 'invoice_default_comments',
 						'class' => 'form-control input-sm',
+						'rows' => '3',
 						'value' => $this->config->item('invoice_default_comments')));?>
 				</div>
 			</div>
 
-			<div class="form-group form-group-sm">	
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_invoice_email_message'), 'invoice_email_message', array('class' => 'control-label col-xs-2')); ?>
-				<div class='col-xs-5'>
+				<div class='col-xs-6'>
 					<?php echo form_textarea(array(
 						'name' => 'invoice_email_message',
 						'id' => 'invoice_email_message',
@@ -110,11 +111,12 @@
 
 			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_quote_default_comments'), 'quote_default_comments', array('class' => 'control-label col-xs-2')); ?>
-				<div class='col-xs-5'>
+				<div class='col-xs-6'>
 					<?php echo form_textarea(array(
 						'name' => 'quote_default_comments',
 						'id' => 'quote_default_comments',
 						'class' => 'form-control input-sm',
+						'rows' => '3',
 						'value' => $this->config->item('quote_default_comments')));?>
 				</div>
 			</div>
@@ -166,6 +168,21 @@
 //validation and submit handling
 $(document).ready(function()
 {
+			// wysiwyg editor for email body
+	$('#invoice_email_message').trumbowyg({
+		btns: [
+			['viewHTML'],
+			['undo', 'redo'], // Only supported in Blink browsers
+			['formatting'],
+			['strong', 'em', 'underline'],
+			['link'],
+			['unorderedList', 'orderedList'],
+			['removeformat']
+		],
+		removeformatPasted: true,
+		autogrow: true
+	});
+
 	var enable_disable_invoice_enable = (function() {
 		var invoice_enabled = $("#invoice_enable").is(":checked");
 		var work_order_enabled = $("#work_order_enable").is(":checked");
