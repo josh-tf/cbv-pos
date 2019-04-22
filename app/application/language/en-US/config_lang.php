@@ -42,6 +42,7 @@ $lang["config_company_remove_image"] = "Remove Image";
 $lang["config_company_required"] = "Company name is a required field";
 $lang["config_company_select_image"] = "Select Image";
 $lang["config_company_website_url"] = "Company website is not a valid URL (http://...).";
+$lang["config_cbvconf_configuration"] = "Computerbank Configuration";
 $lang["config_country_codes"] = "Country Codes";
 $lang["config_country_codes_tooltip"] = "Comma separated list of country codes for nominatim address lookup.";
 $lang["config_currency_decimals"] = "Currency Decimals";
