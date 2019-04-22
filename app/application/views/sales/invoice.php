@@ -107,9 +107,6 @@ load_language(true, array('sales', 'common'));
 ?>
 
 <div id="page-wrap">
-	<!-- <div id="header"> // hiding this element as 'Tax Invoice' is present under the logo
-		<?php echo $this->lang->line('sales_invoice'); ?>
-	</div> -->
 
 	<div id="block1">
 		<div id="customer-title">

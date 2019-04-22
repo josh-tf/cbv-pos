@@ -14,6 +14,7 @@
     width: 100%;
     margin: 0 auto;
     max-width: 800px;
+    font-family: Helvetica !important;
 }
 
 #page-wrap textarea {
@@ -21,6 +22,7 @@
     font-size: 14px;
     overflow: hidden;
     resize: none;
+    font-family: Helvetica;
 }
 
 #page-wrap table {
@@ -262,7 +264,7 @@
     border: 1px solid;
     top: -6px;
     left: -22px;
-    font-family: Verdana;
+    font-family: Helvetica;
     font-size: 12px;
 }
 

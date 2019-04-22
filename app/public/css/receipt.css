@@ -1,4 +1,8 @@
-#receipt_wrapper {
+#page-wrap {
+	font-family: Helvetica;
+}
+
+	#receipt_wrapper {
 	width: 100%;
 }
 

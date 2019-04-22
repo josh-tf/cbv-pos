@@ -367,6 +367,45 @@ class Sales extends Secure_Controller
         $this->_reload($data);
     }
 
+// ! Development only
+
+public function test_pdf()
+{
+    $sale_id = 1;
+    $data = $this->_load_sale_data($sale_id);
+
+        // generate email attachment: invoice in pdf format
+//$html = $this->load->view('sales/invoice_email', $data, true);
+// load pdf helper
+//$this->load->helper(array('dompdf', 'file', 'download'));
+//$filename = sys_get_temp_dir() . '/' . $this->lang->line('sales_' . $type) . '-' . str_replace('/', '-', $number) . '.pdf';
+//file_put_contents($filename, pdf_create($html));
+
+    $this->load->view('sales/invoice_email', $data);
+    $this->sale_lib->clear_all();
+    //force_download($filename, NULL);
+
+}
+
+public function test_pdf_dl()
+{
+    $sale_id = 1;
+    $data = $this->_load_sale_data($sale_id);
+
+        // generate email attachment: invoice in pdf format
+$html = $this->load->view('sales/invoice_email', $data, true);
+// load pdf helper
+$this->load->helper(array('dompdf', 'file', 'download'));
+$filename = sys_get_temp_dir() . '/' . $this->lang->line('sales_' . $type) . '-' . str_replace('/', '-', $number) . '.pdf';
+file_put_contents($filename, pdf_create($html));
+
+    $this->load->view('sales/invoice_email', $data);
+    $this->sale_lib->clear_all();
+    force_download($filename, NULL);
+
+}
+
+
     public function edit_item($item_id)
     {
         $data = array();
@@ -644,7 +683,7 @@ class Sales extends Secure_Controller
         if (!empty($sale_data['customer_email'])) {
             $to = $sale_data['customer_email'];
             $number = $sale_data[$type . '_number'];
-            $subject = $this->lang->line('sales_$type') . ' ' . $number;
+            $subject = 'Computerbank Victoria Inc. - ' . $this->lang->line('sales_' . $type) . ' ' . $number;
 
             $text = $this->config->item('invoice_email_message');
             $tokens = array(new Token_invoice_sequence($sale_data['invoice_number']),
@@ -656,7 +695,7 @@ class Sales extends Secure_Controller
             $html = $this->load->view('sales/' . $type . '_email', $sale_data, true);
             // load pdf helper
             $this->load->helper(array('dompdf', 'file'));
-            $filename = sys_get_temp_dir() . '/' . $this->lang->line('sales_' .$type) . '-' . str_replace('/', '-', $number) . '.pdf';
+            $filename = sys_get_temp_dir() . '/CBV-' . $this->lang->line('sales_' .$type) . '-' . str_replace('/', '-', $number) . '.pdf';
             if (file_put_contents($filename, pdf_create($html)) !== false) {
                 $result = $this->email_lib->sendEmail($to, $subject, $text, $filename);
             }
