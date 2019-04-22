@@ -15,6 +15,11 @@ function pdf_create($html, $filename = '')
     }
 
     $dompdf = new Dompdf\Dompdf();
+
+    $options = $dompdf->getOptions();
+    $options->setIsRemoteEnabled(true); // for cbv logo
+
+    $dompdf->setOptions($options);
     $dompdf->loadHtml($html);
     $dompdf->render();
 

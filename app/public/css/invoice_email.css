@@ -40,6 +40,10 @@ pre {
 	padding: 10px;
 }
 
+table.invoice-meta {
+    margin-top: -55px;
+}
+
 #page-wrap #meta table td,
 #page-wrap table th {
 	border: 1px solid black;
@@ -49,7 +53,7 @@ pre {
 #header {
 	height: 30px;
 	width: 100%;
-	margin: 20px 0;
+	margin: 20px 0 50px 0;
 	background-color: #222222;
 	text-align: center;
 	color: white;
@@ -57,6 +61,12 @@ pre {
 	font-size: 26px;
 	letter-spacing: 4px;
 	padding: 8px 0px;
+}
+
+div#tax-invoice {
+    font-size: 1.5em;
+	text-align: left;
+	margin-bottom: 20px;
 }
 
 /* first row */
@@ -143,67 +153,150 @@ pre {
 	background: #eee;
 }
 
-#items {
-	width: 100%;
-	border: 1px solid black;
-}
-
-#items th {
-	background: #eee;
-}
-
-#items tr.item-row td {
-	border: 0;
-	vertical-align: top;
-}
-
-#items td {
-	font-family: DejaVu Sans;
-}
-
-#items td.description {
-	width: 300px;
-}
-
-#items td.item-name {
-	width: 175px;
-}
-
-#items td.total-line {
-	text-align: right;
-	border-width: 1px 0 1px 1px;
-	border-style: solid;
-}
-
-#items td.total-value {
-	text-align: right;
-	border-width: 1px 0px 1px 0;
-	border-style: solid;
-}
-
-#items td.centered-value {
-	text-align: center;
-}
-
-#items td.balance {
-	background: #eee;
+#page-wrap table td,
+#page-wrap table th {
+    border: 1px solid black;
+    padding: 5px;
 }
 
 #items td.blank {
-	border: 0;
+    border: 0;
+}
+
+.customer-info {
+    border: 1px solid #333 !important;
+    background: #eee;
+    padding: 5px;
+    width: 200px;
+	float: right;
+	margin-top: 0px;
+}
+table.invoice-meta {
+    margin-top: -50px;
+}
+
+table#info {
+    margin-top: 50px;
+}
+
+#logo img {
+    max-height: 150px;
+    max-width: 270px !important;
+}
+
+#page-wrap #info td, #page-wrap #info th {
+    border: none;
+}
+
+#items {
+    clear: both;
+    width: 100%;
+    margin: 10px 0 0 0;
+    border: 1px solid black;
+}
+
+#items th {
+    background: #eee;
+    text-align: center;
+}
+
+#items textarea {
+    width: 80px;
+    height: 20px;
+    text-align: center;
+}
+
+#items tr.item-row td {
+    border: 0;
+    vertical-align: top;
+}
+
+#items td.description {
+    width: 300px;
+}
+
+#items td.item-name {
+    width: 175px;
+}
+
+#items td.item-description textarea {
+    height: auto;
+    width: 100%;
+}
+
+#items td.description textarea,
+#items td.item-name textarea {
+    width: 100%;
+}
+
+#items td.total-line {
+    border-right: 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+#items td.total-value {
+    border-left: 0;
+    padding: 10px;
+}
+
+#items td.total-value textarea {
+    height: 20px;
+    background: none;
+}
+
+#items td.total-line textarea {
+    height: 20px;
+    width: 150px;
+    background: none;
+}
+
+#items td.balance {
+    background: #eee;
+}
+
+#items td.blank {
+    border: 0;
+}
+
+#items td.blank-bottom {
+    border: 1px;
+}
+
+td.item-description {
+    background: #efefef;
+    border-top: 1px solid #aaa !important;
+    border-bottom: 2px solid #333 !important;
+    text-align:left;
+}
+
+tr.item-row {
+    border-top: 1px #333 solid;
+    text-align: center;
+}
+
+.inv-comments {
+    padding: 10px 0 50px 0;
+    border-bottom: solid 1px #000;
 }
 
 #terms {
-	text-align: center;
-	margin: 20px 0;
+    text-align: center;
+    margin: 20px 0 0 0;
 }
 
 #terms h5 {
-	border-bottom: 1px solid black;
-	font: 13px Helvetica, Sans-Serif;
-	padding: 8px 0;
-	margin: 8px 0;
-	line-height: 1.3em;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 10px;
+    border-bottom: 1px solid black;
+    padding: 0 0 8px 0;
+    margin: 0 0 8px 0;
+}
+
+#terms textarea {
+    width: 100%;
+    text-align: center;
 }
 
 .delete-wpr {
@@ -224,3 +317,4 @@ pre {
 	font-family: Verdana;
 	font-size: 12px;
 }
+
