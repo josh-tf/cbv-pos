@@ -38,7 +38,7 @@ CREATE TABLE `cbvpos_app_config` (
 --
 
 INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
-('address', '483 Victoria Street\r\nWest Melbourne\r\nVIC 3003'),
+('address', '1 Stawell St\r\nNorth Melbourne\r\nVIC 3051'),
 ('allow_duplicate_barcodes', '0'),
 ('barcode_content', 'id'),
 ('barcode_first_row', 'category'),
@@ -116,7 +116,7 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('gcaptcha_site_key', ''),
 ('giftcard_number', 'series'),
 ('invoice_default_comments', 'Thank you for supporting Computerbank Victoria'),
-('invoice_email_message', 'Dear {CU}, In attachment the receipt for sale $INV'),
+('invoice_email_message', 'Dear {CU}, Please find invoice attached. Thank you, Computerbank Victoria Inc.'),
 ('invoice_enable', '1'),
 ('language', 'english'),
 ('language_code', 'en-US'),
@@ -151,7 +151,7 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('receipt_show_description', '1'),
 ('receipt_show_serialnumber', '0'),
 ('receipt_show_taxes', '1'),
-('receipt_show_total_discount', '1'),
+('receipt_show_total_discount', '0'),
 ('receipt_template', 'receipt_default'),
 ('receiving_calculate_average_price', '0'),
 ('recv_invoice_format', '{ISEQ:3}'),
