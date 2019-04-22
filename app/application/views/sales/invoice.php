@@ -198,30 +198,13 @@ foreach ($cart as $line => $item) {
 			<td style='text-align:center;'><textarea rows="4" cols="6">$<?php echo number_format($item['discount'], 2); ?></textarea></td>
 			<td style='border-right: solid 1px;'><textarea rows="4" cols="6"><?php echo to_currency($item['discounted_total']); ?></textarea></td>
 		</tr>
+		<tr class="item-row"
+                <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
+                <td class="item-description" colspan="5">
+                    <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
+                </td>
+            </tr>
 		<?php
-if ($this->config->item('receipt_show_description') && !empty($item['description'])) {
-        ?>
-		<tr class="item-row">
-			<td class="item-description" colspan="5">
-				<div>
-
-					<?php
-
-				if ($item['item_category'] == "Laptop" || $item['item_category'] === "Desktop") {
-
-					echo '<b>Machine Specs:</b> ' . $item['description'];
-
-				} else {
-
-					echo  $item['description'];
-				}
-				?>
-
-				</div>
-			</td>
-		</tr>
-		<?php
-}
 }
 ?>
 
