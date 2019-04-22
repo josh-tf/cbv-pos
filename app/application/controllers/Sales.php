@@ -685,7 +685,7 @@ file_put_contents($filename, pdf_create($html));
         if (!empty($sale_data['customer_email'])) {
             $to = $sale_data['customer_email'];
             $number = $sale_data[$type . '_number'];
-            $subject = 'Computerbank Victoria Inc. - ' . $this->lang->line('sales_' . $type) . ' ' . $number;
+            $subject = $this->config->item('company') . ' - ' . $this->lang->line('sales_' . $type) . ' ' . $number;
 
             $text = $this->config->item('invoice_email_message');
             $tokens = array(new Token_invoice_sequence($sale_data['invoice_number']),
