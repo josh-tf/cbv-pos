@@ -17,6 +17,17 @@
 			</div>
 
 			<div class="form-group form-group-sm">
+				<?php echo form_label($this->lang->line('config_receipt_email_message'), 'receipt_email_message', array('class' => 'control-label col-xs-2')); ?>
+				<div class='col-xs-6'>
+					<?php echo form_textarea(array(
+						'name' => 'receipt_email_message',
+						'id' => 'receipt_email_message',
+						'class' => 'form-control input-sm',
+						'value' => $this->config->item('receipt_email_message')));?>
+				</div>
+			</div>
+
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_receipt_font_size'), 'receipt_font_size', array('class' => 'control-label col-xs-2 required')); ?>
 				<div class='col-xs-2'>
 					<div class="input-group">
@@ -277,6 +288,22 @@
 //validation and submit handling
 $(document).ready(function()
 {
+
+	// wysiwyg editor for email body
+	$('#receipt_email_message').trumbowyg({
+		btns: [
+			['viewHTML'],
+			['undo', 'redo'], // Only supported in Blink browsers
+			['formatting'],
+			['strong', 'em', 'underline'],
+			['link'],
+			['unorderedList', 'orderedList'],
+			['removeformat']
+		],
+		removeformatPasted: true,
+		autogrow: true
+	});
+
 	if (window.localStorage && window.jsPrintSetup)
 	{
 		var printers = (jsPrintSetup.getPrintersList() && jsPrintSetup.getPrintersList().split(',')) || [];

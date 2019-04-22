@@ -213,6 +213,7 @@ $lang["config_quantity_decimals"] = "Quantity Decimals";
 $lang["config_quote_default_comments"] = "Default Quote Comments";
 $lang["config_receipt"] = "Receipt";
 $lang["config_receipt_configuration"] = "Receipt Print Settings";
+$lang["config_receipt_email_message"] = "Receipt Email Template";
 $lang["config_receipt_default"] = "Default";
 $lang["config_receipt_font_size"] = "Font Size";
 $lang["config_receipt_font_size_number"] = "Font Size must be a number.";

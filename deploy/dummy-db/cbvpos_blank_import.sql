@@ -146,6 +146,7 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('protocol', 'smtp'),
 ('quantity_decimals', '0'),
 ('quote_default_comments', 'This is a default quote comment'),
+('receipt_email_message', 'Dear {CU}, Please find receipt attached. Thank you, Computerbank Victoria Inc.'),
 ('receipt_font_size', '12'),
 ('receipt_show_company_name', '1'),
 ('receipt_show_description', '1'),

@@ -705,6 +705,7 @@ class Config extends Secure_Controller
     {
         $batch_save_data = array(
             'receipt_template' => $this->input->post('receipt_template'),
+            'receipt_email_message' => $this->input->post('receipt_email_message'),
             'receipt_font_size' => $this->input->post('receipt_font_size'),
             'email_receipt_check_behaviour' => $this->input->post('email_receipt_check_behaviour'),
             'print_receipt_check_behaviour' => $this->input->post('print_receipt_check_behaviour'),
