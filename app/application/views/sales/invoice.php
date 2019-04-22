@@ -168,7 +168,7 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
             </th>
             <th>
                 <?php echo $this->lang->line('sales_price'); ?>
-			</th>
+            </th>
             <th>
                 <?php echo $this->lang->line('sales_quantity'); ?>
             </th>
@@ -191,8 +191,8 @@ foreach ($cart as $line => $item) {
     ?>
         <tr class="item-row">
             <td colspan="2" class="item-name"><textarea rows="4" cols="6"><?php echo $itemName; ?></textarea></td>
-<td><textarea rows="4" cols="4"><?php echo to_currency($item['price']); ?></textarea></td>
-<td style='text-align:center;'><textarea rows="5"
+            <td><textarea rows="4" cols="4"><?php echo to_currency($item['price']); ?></textarea></td>
+            <td style='text-align:center;'><textarea rows="5"
                     cols="6"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
             <td style='border-right: solid 1px;'><textarea rows="4"
                     cols="6"><?php echo to_currency($item['total']); ?></textarea></td>
@@ -202,7 +202,7 @@ foreach ($cart as $line => $item) {
             <td class="item-description" colspan="5">
                 <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
             </td>
-		</tr>
+        </tr>
         <?php
 if ($item['discount'] > 0) {
         ?>
@@ -217,7 +217,7 @@ if ($item['discount'] > 0) {
 }
 ?>
 
-<tr>
+        <tr>
             <td class="blank" colspan="5" text-align="center">
                 <?php echo '&nbsp;'; ?>
             </td>
@@ -307,29 +307,13 @@ if ($this->config->item('receipt_show_taxes')) {
         </tr>
 
         <?php
-$only_sale_check = false;
-$show_giftcard_remainder = false;
 foreach ($payments as $payment_id => $payment) {
-    $only_sale_check |= $payment['payment_type'] == $this->lang->line('sales_check');
-    $splitpayment = explode(':', $payment['payment_type']);
-    $show_giftcard_remainder |= $splitpayment[0] == $this->lang->line('sales_giftcard');
+	$splitpayment = explode(':', $payment['payment_type']);
     ?>
         <tr>
             <td colspan="3" class="blank"> </td>
             <td colspan="1" style="text-align:right;" class="total-line"><?php echo $splitpayment[0]; ?> </td>
             <td class="total-value"><?php echo to_currency($payment['payment_amount'] * -1); ?></td>
-        </tr>
-        <?php
-}
-?>
-
-        <?php
-if (isset($cur_giftcard_value) && $show_giftcard_remainder) {
-    ?>
-        <tr>
-            <td colspan="3" class="blank"> </td>
-            <td colspan="1" style="text-align:right;"><?php echo $this->lang->line('sales_giftcard_balance'); ?></td>
-            <td class="total-value"><?php echo to_currency($cur_giftcard_value); ?></td>
         </tr>
         <?php
 }
