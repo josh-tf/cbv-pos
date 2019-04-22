@@ -159,9 +159,9 @@ if ($this->config->item('receipt_show_taxes')) {
     ?>
         <tr>
             <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line al-right" style='border-top:2px solid #000000;'>
+            <td colspan="1" class="total-line al-right">
                 <?php echo $this->lang->line('sales_sub_total'); ?></td>
-            <td class="total-value al-right" style='border-top:2px solid #000000;'><?php echo to_currency($subtotal); ?>
+            <td class="total-value al-right"><?php echo to_currency($subtotal); ?>
             </td>
         </tr>
         <?php
