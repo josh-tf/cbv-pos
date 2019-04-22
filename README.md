@@ -7,7 +7,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/josh-tf/cbvpos.svg)](https://GitHub.com/josh-tf/cbvpos/issues/)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 [![GitHub commits](https://img.shields.io/github/commit-activity/y/josh-tf/cbvpos.svg)](https://github.com/josh-tf/cbvpos/commit/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/joshtf/cbvposdev-php.svg)](https://hub.docker.com/r/joshtf/cbv-php/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/joshtf/cbv-php.svg)](https://hub.docker.com/r/joshtf/cbv-php/)
 
 The Computerbank Point of Sale system is a fork of the [opensourcepos](https://github.com/opensourcepos/opensourcepos) software.
 
