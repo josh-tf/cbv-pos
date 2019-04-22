@@ -286,9 +286,6 @@ if ($this->config->item('receipt_show_taxes')) {
 }
 ?>
 
-        <tr>
-        </tr>
-
         <?php $border = (!$this->config->item('receipt_show_taxes') && !($this->config->item('receipt_show_total_discount') && $discount > 0));?>
         <tr>
             <td colspan="3" class="blank"> </td>

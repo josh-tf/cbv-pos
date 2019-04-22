@@ -316,6 +316,6 @@ td.item-description
 }
 tr.item-row
 {
-	border-bottom: 1px #333 solid;
+	border-bottom: 1px #333 solid !important;
 	text-align: center;
 }
