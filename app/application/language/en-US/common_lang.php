@@ -54,6 +54,7 @@ $lang["common_remove"] = "Remove";
 $lang["common_required"] = "Required";
 $lang["common_restore"] = "Restore";
 $lang["common_return_policy"] = "Return Policy";
+$lang["common_save_pdf"] = "Save PDF";
 $lang["common_search"] = "Search";
 $lang["common_search_options"] = "Search options";
 $lang["common_searched_for"] = "Searched for";

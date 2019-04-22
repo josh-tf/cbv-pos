@@ -89,6 +89,7 @@ $(document).ready(function() {
             <?php echo '<span class="glyphicon glyphicon-print">&nbsp</span>' . $this->lang->line('common_print'); ?>
         </div>
     </a>
+    <?php echo anchor("sales/save_invoice/" . $sale_id_num, '<span class="glyphicon glyphicon-download">&nbsp</span>' . $this->lang->line('common_save_pdf'), array('class' => 'btn btn-info btn-sm', 'id' => 'show_save_button')); ?>
     <?php if (isset($customer_email) && !empty($customer_email)): ?>
     <a href="javascript:void(0);">
         <div class="btn btn-info btn-sm" , id="show_email_button">
@@ -119,8 +120,8 @@ if (isset($customer)) {
         </div>
 
         <div id="logo">
-            <img id="image" class="cbv-invoice-logo" src="<?php echo base_url('uploads/' . $this->config->item('company_logo')); ?>"
-                alt="company_logo" />
+            <img id="image" class="cbv-invoice-logo"
+                src="<?php echo base_url('uploads/' . $this->config->item('company_logo')); ?>" alt="company_logo" />
             <div>&nbsp</div>
             <div id="tax-invoice">TAX INVOICE</div>
         </div>
@@ -193,8 +194,7 @@ foreach ($cart as $line => $item) {
             <td><textarea rows="4" cols="4"><?php echo to_currency($item['price']); ?></textarea></td>
             <td style='text-align:center;'><textarea rows="5"
                     cols="6"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
-            <td><textarea rows="4"
-                    cols="6"><?php echo to_currency($item['total']); ?></textarea></td>
+            <td><textarea rows="4" cols="6"><?php echo to_currency($item['total']); ?></textarea></td>
         </tr>
         <tr class="item-row"
             <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
@@ -302,7 +302,7 @@ if ($this->config->item('receipt_show_taxes')) {
 
         <?php
 foreach ($payments as $payment_id => $payment) {
-	$splitpayment = explode(':', $payment['payment_type']);
+    $splitpayment = explode(':', $payment['payment_type']);
     ?>
         <tr>
             <td colspan="3" class="blank"> </td>

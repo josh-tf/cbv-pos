@@ -387,26 +387,6 @@ public function test_pdf()
 
 }
 
-public function test_pdf_dl()
-{
-    $sale_id = 4;
-    $type='invoice';
-    $number = '004';
-    $data = $this->_load_sale_data($sale_id);
-
-        // generate email attachment: invoice in pdf format
-$html = $this->load->view('sales/invoice_email', $data, true);
-// load pdf helper
-$this->load->helper(array('dompdf', 'file', 'download'));
-$filename = sys_get_temp_dir() . '/CBV-' . $this->lang->line('sales_' . $type) . '-' . str_replace('/', '-', $number) . '.pdf';
-file_put_contents($filename, pdf_create($html));
-
-    $this->load->view('sales/invoice_email', $data);
-    $this->sale_lib->clear_all();
-    force_download($filename, NULL);
-
-}
-
 
     public function edit_item($item_id)
     {
@@ -710,6 +690,30 @@ file_put_contents($filename, pdf_create($html));
         $this->sale_lib->clear_all();
 
         return $result;
+    }
+
+    public function save_invoice($sale_id)
+    {
+        $type='invoice';
+        $number = sprintf("%03d", $sale_id); // two leading zeros if number is small
+        $data = $this->_load_sale_data($sale_id);
+
+     // generate email attachment: invoice in pdf format
+    $html = $this->load->view('sales/invoice_email', $data, true);
+
+    // load pdf helper
+    $this->load->helper(array('dompdf', 'file', 'download'));
+    $filename = sys_get_temp_dir() . '/CBV-' . $this->lang->line('sales_' . $type) . '-' . str_replace('/', '-', $number) . '.pdf';
+
+    // create the PDF
+    file_put_contents($filename, pdf_create($html));
+
+    $this->load->view('sales/invoice_email', $data);
+    $this->sale_lib->clear_all();
+
+    // download the PDF
+    force_download($filename, NULL);
+
     }
 
     public function send_receipt($sale_id)
