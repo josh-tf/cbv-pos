@@ -37,7 +37,7 @@ Our development environment runs within [Docker](https://www.docker.com/get-star
 
 ### Installing
 
-CBVPOS requires [Docker](https://www.docker.com/) with [Compose](https://docs.docker.com/compose/install/) along with [Git](https://git-scm.com/downloads) configured and installed.
+CBV-POS requires [Docker](https://www.docker.com/) with [Compose](https://docs.docker.com/compose/install/) along with [Git](https://git-scm.com/downloads) configured and installed.
 
 In a terminal of your choice, clone the GitHub repository
 
