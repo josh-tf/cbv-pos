@@ -2,11 +2,11 @@
 
 ![Computerbank](https://i.imgur.com/QyNlLow.png)
 
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/josh-tf/cbvpos/graphs/commit-activity)
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/josh-tf/cbvpos.svg)](https://github.com/josh-tf/cbvpos/pulls/)
-[![GitHub issues](https://img.shields.io/github/issues/josh-tf/cbvpos.svg)](https://GitHub.com/josh-tf/cbvpos/issues/)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/josh-tf/cbv-pos/graphs/commit-activity)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/josh-tf/cbv-pos.svg)](https://github.com/josh-tf/cbv-pos/pulls/)
+[![GitHub issues](https://img.shields.io/github/issues/josh-tf/cbv-pos.svg)](https://GitHub.com/josh-tf/cbv-pos/issues/)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
-[![GitHub commits](https://img.shields.io/github/commit-activity/y/josh-tf/cbvpos.svg)](https://github.com/josh-tf/cbvpos/commit/)
+[![GitHub commits](https://img.shields.io/github/commit-activity/y/josh-tf/cbv-pos.svg)](https://github.com/josh-tf/cbv-pos/commit/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/joshtf/cbv-php.svg)](https://hub.docker.com/r/joshtf/cbv-php/)
 
 The Computerbank Point of Sale system is a fork of the [opensourcepos](https://github.com/opensourcepos/opensourcepos) software.
@@ -37,12 +37,12 @@ Our development environment runs within [Docker](https://www.docker.com/get-star
 
 ### Installing
 
-CBVPOS requires [Docker](https://www.docker.com/) with [Compose](https://docs.docker.com/compose/install/) along with [Git](https://git-scm.com/downloads) configured and installed.
+CBV-POS requires [Docker](https://www.docker.com/) with [Compose](https://docs.docker.com/compose/install/) along with [Git](https://git-scm.com/downloads) configured and installed.
 
 In a terminal of your choice, clone the GitHub repository
 
 ```sh
-git clone https://github.com/josh-tf/cbvpos.git
+git clone https://github.com/josh-tf/cbv-pos.git
 ```
 
  &nbsp;
@@ -52,7 +52,7 @@ Next we will run the automated build process - note that as docker binds to Unix
 
 Enter the working directory, copy the `docker-compose` file and start the installation:
 ```sh
-cp ./cbvpos/deploy/docker/development/docker-compose.yml .
+cp ./cbv-pos/deploy/docker/development/docker-compose.yml .
 docker-compose up -d
 ```
 
@@ -62,7 +62,7 @@ The automatic build process will take a *few minutes* to complete and depends on
 
 The automatic build involves a number of steps including the creation of docker network and volumes, sourcing and deploying container images from [Docker Hub](https://hub.docker.com/r/joshtf/) and building the required dependencies (php, node) files.
 
-**Optional**: Enable ssl support via this guide on the wiki (not available for localhost): [Enabling HTTPS/SSL on your install](https://github.com/josh-tf/cbvpos/wiki/Using-HTTPS-SSL-on-your-install)
+**Optional**: Enable ssl support via this guide on the wiki (not available for localhost): [Enabling HTTPS/SSL on your install](https://github.com/josh-tf/cbv-pos/wiki/Using-HTTPS-SSL-on-your-install)
 
 ## Access the installation
 
@@ -70,19 +70,19 @@ After the build process is complete, you will be able to access the installation
 
 | Details | Description |
 |---|-----------------------------------------------|
-| [localhost](http://localhost) | cbvpos Installation |
+| [localhost](http://localhost) | cbv-pos Installation |
 | [localhost:8080](http://localhost:8080) | PHPMyAdmin (Database Management) |
 | admin | Default username |
 |  pointofsale | Default Password |
 
 ## The Wiki
 
-We have a Wiki available with some basic information and guides, for more information you can check it out [here](https://github.com/josh-tf/cbvpos/wiki). You can view some more details on our modified docker image at [docker-hub:cbv-php](https://cloud.docker.com/repository/docker/joshtf/cbv-php).
+We have a Wiki available with some basic information and guides, for more information you can check it out [here](https://github.com/josh-tf/cbv-pos/wiki). You can view some more details on our modified docker image at [docker-hub:cbv-php](https://cloud.docker.com/repository/docker/joshtf/cbv-php).
 
 ## Contributing
 
 - Request access to contribute to this repository (or the development branch)
-- Pull down the latest copy of the branch `git pull https://github.com/josh-tf/cbvpos.git`
+- Pull down the latest copy of the branch `git pull https://github.com/josh-tf/cbv-pos.git`
 - Make your changes locally and test on your Docker installation
 - Push changes back to the repository - *handle any conflicts from other users commits*
 - Join the Slack group for discussions, to-do and other collaboration tools
