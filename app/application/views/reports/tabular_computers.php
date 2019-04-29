@@ -67,9 +67,3 @@ if (isset($editable)) {
 </script>
 
 <?php $this->load->view("partial/footer");?>
-
-<script>
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();
-});
-</script>
