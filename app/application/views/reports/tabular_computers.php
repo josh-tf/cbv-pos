@@ -1,4 +1,4 @@
-<?php $this->load->view("partial/header"); ?>
+<?php $this->load->view("partial/header");?>
 
 <div id="page_title"><?php echo $title ?></div>
 
@@ -10,32 +10,30 @@
 
 <div id="report_summary">
 	<?php
-	foreach($overall_summary_data as $name=>$value)
-	{
-	?>
-		<div class="summary_row"><?php echo $this->lang->line('reports_'.$name). ': '.to_currency($value); ?></div>
+foreach ($overall_summary_data as $name => $value) {
+    ?>
+		<div class="summary_row"><?php echo $this->lang->line('reports_' . $name) . ': ' . to_currency($value); ?></div>
 	<?php
-	}
-	?>
+}
+?>
 </div>
 
 <script type="text/javascript">
 	$(document).ready(function()
 	{
-	 	<?php $this->load->view('partial/bootstrap_tables_locale'); ?>
+	 	<?php $this->load->view('partial/bootstrap_tables_locale');?>
 
 		var details_data = <?php echo json_encode($details_data); ?>;
 
 		var init_dialog = function() {
 			<?php
-			if(isset($editable))
-			{
-			?>
-				table_support.submit_handler('<?php echo site_url("reports/get_detailed_computers_row")?>');
+if (isset($editable)) {
+    ?>
+				table_support.submit_handler('<?php echo site_url("reports/get_detailed_computers_row") ?>');
 				dialog_support.init("a.modal-dlg");
 			<?php
-			}
-			?>
+}
+?>
 		};
 
 		$('#table').bootstrapTable({
@@ -66,4 +64,4 @@
 	});
 </script>
 
-<?php $this->load->view("partial/footer"); ?>
+<?php $this->load->view("partial/footer");?>
