@@ -25,12 +25,9 @@ class Detailed_computers extends Report
                 array('customer_phone' => $this->lang->line('common_phone_number'), 'sorter' => 'number_sorter'),
                 array('customer_email' => $this->lang->line('common_email')),
                 array('customer_address' => $this->lang->line('common_address_1')),
-                array('customer_suburb' => $this->lang->line('common_suburb')),
-                array('customer_postcode' => $this->lang->line('common_postcode'), 'sorter' => 'number_sorter')),
-                'details' => array(
-                    $this->lang->line('common_id'),
-),
-            );
+                //array('customer_suburb' => $this->lang->line('common_suburb')),
+                //array('customer_postcode' => $this->lang->line('common_postcode'), 'sorter' => 'number_sorter')
+            ));
 
         return $columns;
     }

@@ -1340,9 +1340,9 @@ class Reports extends Secure_Controller
                 'customer_name' => $row['customer_name_first'] . ' ' . $row['customer_name_last'],
                 'customer_phone' => $row['customer_phone'],
                 'customer_email' => $row['customer_email'],
-                'customer_address' => $row['customer_address'],
-                'customer_suburb' => $row['customer_suburb'],
-                'customer_postcode' => $row['customer_postcode'],
+                'customer_address' => $row['customer_address'] . ' ' . $row['customer_suburb'] . ' ' . $row['customer_postcode'],
+                //'customer_suburb' => $row['customer_suburb'],
+                //'customer_postcode' => $row['customer_postcode'],
             ));
         }
 
