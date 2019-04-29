@@ -2,6 +2,7 @@
 
 $lang["reports_all"] = "All";
 $lang["reports_canceled"] = "Canceled";
+$lang["reports_computers"] = "Computer Sales";
 $lang["reports_categories"] = "Categories";
 $lang["reports_categories_summary_report"] = "Categories Summary Report";
 $lang["reports_category"] = "Category";
@@ -14,6 +15,7 @@ $lang["reports_code_type"] = "Type";
 $lang["reports_code_work_order"] = "W/O";
 $lang["reports_comments"] = "Comments";
 $lang["reports_complete"] = "Completed Sales and Returns";
+$lang["reports_computers"] = "Computer Reports";
 $lang["reports_completed_sales"] = "Completed Sales";
 $lang["reports_confirm_delete"] = "Are you sure you want to delete selected entry(s)?";
 $lang["reports_confirm_restore"] = "Are you sure you want to restore selected entry(s)?";
@@ -27,6 +29,7 @@ $lang["reports_date"] = "Date";
 $lang["reports_date_range"] = "Date Range";
 $lang["reports_description"] = "Description";
 $lang["reports_detailed_receivings_report"] = "Detailed Receivings Report";
+$lang["reports_detailed_computers_report"] = "Computer Sales Report";
 $lang["reports_detailed_reports"] = "Detailed Reports";
 $lang["reports_detailed_requisition_report"] = "";
 $lang["reports_detailed_sales_report"] = "Detailed Transactions Report";
