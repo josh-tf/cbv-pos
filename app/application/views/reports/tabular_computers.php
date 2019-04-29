@@ -21,6 +21,7 @@ foreach ($overall_summary_data as $name => $value) {
 <script type="text/javascript">
 	$(document).ready(function()
 	{
+
 	 	<?php $this->load->view('partial/bootstrap_tables_locale');?>
 
 		var details_data = <?php echo json_encode($details_data); ?>;
@@ -57,6 +58,7 @@ if (isset($editable)) {
 			onPageChange: init_dialog,
 			onPostBody: function() {
 				dialog_support.init("a.modal-dlg");
+				$('[data-toggle="tooltip"]').tooltip();
 			},
 		});
 
@@ -65,3 +67,9 @@ if (isset($editable)) {
 </script>
 
 <?php $this->load->view("partial/footer");?>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>

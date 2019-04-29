@@ -1335,7 +1335,7 @@ class Reports extends Secure_Controller
                 'sale_time' => $prettyDate,
                 'item_name' => $row['item_name'],
                 'item_category' => $row['item_category'],
-                'item_description' => '<a title="' . $row['item_description'] . '">Specs (Hover)</a>',
+                'item_description' => '<a type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" title="' . $row['item_description'] . '">View Specs</a>',
                 'item_total' => to_currency($row['item_total']),
                 'customer_name' => $row['customer_name_first'] . ' ' . $row['customer_name_last'],
                 'customer_phone' => $row['customer_phone'],
