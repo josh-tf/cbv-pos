@@ -92,7 +92,7 @@ if(isset($error))
 		?>
 			<div class="panel panel-primary">
 				<div class="panel-heading">
-					<h3 class="panel-title"><span class="glyphicon glyphicon-book">&nbsp</span><?php echo $this->lang->line('reports_computers'); ?></h3>
+					<h3 class="panel-title"><span class="glyphicon glyphicon-book">&nbsp</span><?php echo $this->lang->line('reports_computers_heading'); ?></h3>
 				</div>
 				<div class="list-group">
 				<?php
