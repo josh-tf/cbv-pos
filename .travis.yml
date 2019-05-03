@@ -23,7 +23,7 @@ env:
 after_success:
   - docker image ls
   - '[ -n ${DOCKER_USERNAME} ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  && docker tag cbv-pos "joshtf/cbv-pos:$TAG" && docker push "joshtf/cbv-pos:$TAG"'
+  && docker tag build_cbv-pos "joshtf/cbv-pos:$TAG" && docker push "joshtf/cbv-pos:$TAG"'
 #deploy:
 #  file: deployment.json
 #  provider: bintray
