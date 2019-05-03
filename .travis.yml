@@ -17,11 +17,11 @@ script:
   - sed -i "s/'\(dev\)'/'$rev'/g" app/application/config/config.php
   - docker run --rm -it -v $(pwd)/app:/app -w /app digitallyseamless/nodejs-bower-grunt
     sh -c "npm install && bower install && grunt package"
-  - docker-compose build
+  - docker-compose build -f /deploy/docker/production/build/docker-compose.yml
 env:
   - TAG=$(echo ${TRAVIS_BRANCH} | sed s/feature\\///)
 after_success: '[ -n ${DOCKER_USERNAME} ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  && docker tag cbv-pos "joshtf/cbv-pos:$TAG" && docker push "joshtf/cbv-pos:$TAG"'
+  && docker tag cbv-pos_cbv-pos "joshtf/cbv-pos:$TAG" && docker push "joshtf/cbv-pos:$TAG"'
 #deploy:
 #  file: deployment.json
 #  provider: bintray
