@@ -3,6 +3,7 @@
 ![Computerbank](https://i.imgur.com/QyNlLow.png)
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/josh-tf/cbv-pos/graphs/commit-activity)
+[![Build Status](https://travis-ci.org/josh-tf/cbv-pos.svg?branch=master)](https://travis-ci.org/josh-tf/cbv-pos)
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/josh-tf/cbv-pos.svg)](https://github.com/josh-tf/cbv-pos/pulls/)
 [![GitHub issues](https://img.shields.io/github/issues/josh-tf/cbv-pos.svg)](https://GitHub.com/josh-tf/cbv-pos/issues/)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
