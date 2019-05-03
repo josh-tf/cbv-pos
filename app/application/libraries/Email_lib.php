@@ -43,7 +43,7 @@ class Email_lib
         $email->initialize($config);
 
         // grab company name and email address from the general config
-        $email->from($this->CI->config->item('smtp_from'), $this->CI->config->item('company'));
+        $email->from(($this->CI->config->item('smtp_from') == null ? $this->CI->config->item('smtp_user') : $this->CI->config->item('smtp_from')), $this->CI->config->item('company'));
 
         // set our email options
         $email->to($to);
