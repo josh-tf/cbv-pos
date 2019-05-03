@@ -42,7 +42,7 @@ RUN buildDeps=" \
 
 # mount our files in to the image
 WORKDIR /app
-COPY ./app /app
+COPY . /app
 
 # set up some details and link the public dir to the apachedir
 RUN echo "date.timezone = \"\${PHP_TIMEZONE}\"" > /usr/local/etc/php/conf.d/timezone.ini
