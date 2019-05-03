@@ -17,7 +17,7 @@ script:
   - sed -i "s/'\(dev\)'/'$rev'/g" app/application/config/config.php
   - docker run --rm -it -v $(pwd)/app:/app -w /app digitallyseamless/nodejs-bower-grunt
     sh -c "npm install && bower install && grunt package"
-  - docker-compose -f /deploy/docker/production/build/docker-compose.yml build
+  - docker-compose -f deploy/docker/production/build/docker-compose.yml build
 env:
   - TAG=$(echo ${TRAVIS_BRANCH} | sed s/feature\\///)
 after_success: '[ -n ${DOCKER_USERNAME} ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
