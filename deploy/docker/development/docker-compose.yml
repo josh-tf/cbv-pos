@@ -21,7 +21,6 @@ services:
                 - "80:80"
         restart: always
         volumes:
-                - ./cbv-pos/app/public/uploads:/app/public/uploads
                 - ./cbv-pos/app:/app
 
     cbv-dev-db:

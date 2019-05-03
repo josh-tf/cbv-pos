@@ -1,67 +1,12 @@
+# https://github.com/josh-tf/cbvpos  - Josh Bowden 2019-05-03
+# Docker-Compose file - using ver 2 for compatibility
+# build the production image (called via Travis CI)
+
 version: '2'
 
-volumes:
-    uploads:
-        driver: local
-
-networks:
-    ospos_net:
-
 services:
-#    sqlscript:
-#        build:
-#            context: database/
-#            dockerfile: Dockerfile
-
     cbv-pos:
         build:
             context: .
             dockerfile: Dockerfile
         container_name: cbv-pos
-        restart: always
-        depends_on:
-           - mysql
-        ports:
-            - "80:80"
-        networks:
-            - cbv-pos
-        volumes:
-            - uploads:/app/public/uploads
-        environment:
-            - FORCE_HTTPS=false
-            - PHP_TIMEZONE=UTC
-            - MYSQL_USERNAME=admin
-            - MYSQL_PASSWORD=pointofsale
-            - MYSQL_DB_NAME=cbvpos
-            - MYSQL_HOST_NAME=mysql
-
-    mysql:
-        image: mariadb:10.3.9
-        container_name: mysql
-        restart: always
-        ports:
-            - "3306:3306"
-        networks:
-            - cbv-pos
- #       volumes_from:
- #           - sqlscript
-        environment:
-            - MYSQL_ROOT_PASSWORD=pointofsale
-            - MYSQL_DATABASE=cbvpos
-            - MYSQL_USER=admin
-            - MYSQL_PASSWORD=pointofsale
-
-#    phpmyadmin:
-#        image: phpmyadmin/phpmyadmin
-#        container_name: phpmyadmin
-#        restart: always
-#        depends_on:
-#           - mysql
-#        ports:
-#           - "8000:80"
-#        networks:
-#            - ospos_net
-#        environment:
-#            - MYSQL_USERNAME=admin
-#            - MYSQL_ROOT_PASSWORD=pointofsale
-#            - PMA_HOST=mysql
