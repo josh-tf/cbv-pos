@@ -165,6 +165,7 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('smtp_port', ''),
 ('smtp_timeout', ''),
 ('smtp_user', ''),
+('smtp_from', ''),
 ('statistics', '1'),
 ('suggestions_first_column', 'name'),
 ('suggestions_second_column', 'unit_price'),

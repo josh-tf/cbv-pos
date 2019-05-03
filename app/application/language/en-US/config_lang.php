@@ -118,6 +118,7 @@ $lang["config_email_smtp_pass"] = "SMTP Password";
 $lang["config_email_smtp_port"] = "SMTP Port";
 $lang["config_email_smtp_timeout"] = "SMTP Timeout (s)";
 $lang["config_email_smtp_user"] = "SMTP Username";
+$lang["config_email_smtp_from"] = "SMTP From Address";
 $lang["config_fax"] = "Fax";
 $lang["config_financial_year"] = "Fiscal Year Start";
 $lang["config_financial_year_apr"] = "1st of April";

@@ -355,6 +355,7 @@ class Config extends Secure_Controller
             'mailpath' => $this->input->post('mailpath'),
             'smtp_host' => $this->input->post('smtp_host'),
             'smtp_user' => $this->input->post('smtp_user'),
+            'smtp_from' => $this->input->post('smtp_from'),
             'smtp_pass' => $password,
             'smtp_port' => $this->input->post('smtp_port'),
             'smtp_timeout' => $this->input->post('smtp_timeout'),

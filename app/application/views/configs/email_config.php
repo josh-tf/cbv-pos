@@ -89,6 +89,20 @@
 			</div>
 
 			<div class="form-group form-group-sm">
+				<?php echo form_label($this->lang->line('config_email_smtp_from'), 'smtp_from', array('class' => 'control-label col-xs-2')); ?>
+				<div class="col-xs-4">
+					<div class="input-group">
+						<span class="input-group-addon input-sm"><span class="glyphicon glyphicon-user"></span></span>
+						<?php echo form_input(array(
+							'name' => 'smtp_from',
+							'id' => 'smtp_from',
+							'class' => 'form-control input-sm',
+							'value' => $this->config->item('smtp_from'))); ?>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('config_email_smtp_pass'), 'smtp_pass', array('class' => 'control-label col-xs-2')); ?>
 				<div class="col-xs-4">
 					<div class="input-group">
@@ -119,16 +133,16 @@ $(document).ready(function()
 		if($("#protocol").val() == 'sendmail')
 		{
 			$("#mailpath").prop('disabled', false);
-			$("#smtp_host, #smtp_user, #smtp_pass, #smtp_port, #smtp_timeout, #smtp_crypto").prop('disabled', true);
+			$("#smtp_host, #smtp_user, #smtp_from, #smtp_pass, #smtp_port, #smtp_timeout, #smtp_crypto").prop('disabled', true);
 		}
 		else if($("#protocol").val() == 'smtp')
 		{
-			$("#smtp_host, #smtp_user, #smtp_pass, #smtp_port, #smtp_timeout, #smtp_crypto").prop('disabled', false);
+			$("#smtp_host, #smtp_user, #smtp_from, #smtp_pass, #smtp_port, #smtp_timeout, #smtp_crypto").prop('disabled', false);
 			$("#mailpath").prop('disabled', true);
 		}
 		else
 		{
-			$("#mailpath, #smtp_host, #smtp_user, #smtp_pass, #smtp_port, #smtp_timeout, #smtp_crypto").prop('disabled', true);
+			$("#mailpath, #smtp_host, #smtp_user, #smtp_from, #smtp_pass, #smtp_port, #smtp_timeout, #smtp_crypto").prop('disabled', true);
 		}
 	};
 
@@ -138,7 +152,7 @@ $(document).ready(function()
 		submitHandler: function(form) {
 			$(form).ajaxSubmit({
 				beforeSerialize: function(arr, $form, options) {
-					$("#mailpath, #smtp_host, #smtp_user, #smtp_pass, #smtp_port, #smtp_timeout, #smtp_crypto").prop("disabled", false);
+					$("#mailpath, #smtp_host, #smtp_user, #smtp_from, #smtp_pass, #smtp_port, #smtp_timeout, #smtp_crypto").prop("disabled", false);
 					return true;
 				},
 				success: function(response) {
