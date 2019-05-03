@@ -8,14 +8,14 @@ before_install:
     -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - date=`date +%Y%m%d%H%M%S` && branch=${TRAVIS_BRANCH} && rev=`git rev-parse --short=6
-    HEAD` && sed -i "s/\$1/\$1.$date.$branch.$rev/g" deployment.json
+#  - date=`date +%Y%m%d%H%M%S` && branch=${TRAVIS_BRANCH} && rev=`git rev-parse --short=6
+#    HEAD` && sed -i "s/\$1/\$1.$date.$branch.$rev/g" deployment.json
 script:
-  - docker run --rm -v $(pwd):/app composer/composer install
-  - docker run --rm -v $(pwd):/app -w /app lucor/php7-cli php bin/install.php translations
+  - docker run --rm -v $(pwd)/app:/app composer/composer install
+  - docker run --rm -v $(pwd)/app:/app -w /app lucor/php7-cli php bin/install.php translations
     develop
-  - sed -i "s/'\(dev\)'/'$rev'/g" application/config/config.php
-  - docker run --rm -it -v $(pwd):/app -w /app digitallyseamless/nodejs-bower-grunt
+  - sed -i "s/'\(dev\)'/'$rev'/g" app/application/config/config.php
+  - docker run --rm -it -v $(pwd)/app:/app -w /app digitallyseamless/nodejs-bower-grunt
     sh -c "npm install && bower install && grunt package"
   - docker-compose build
 env:
