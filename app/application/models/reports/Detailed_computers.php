@@ -55,12 +55,7 @@ class Detailed_computers extends Report
 
         $this->db->where('items.category in("Laptop", "Desktop")');
 
-        // error log for debugging
-        log_message('error','sale_time >= ' . $this->db->escape(rawurldecode($inputs['start_date'])) . ' AND ' . ' sale_time <= ' . $this->db->escape(rawurldecode($inputs['end_date'])));
-
-
-        //$this->_where($inputs);
-        $this->db->where('date(`sale_time`) >= ' . $this->db->escape(rawurldecode($inputs['start_date'])) . ' AND ' . ' date(`sale_time`) <= ' . $this->db->escape(rawurldecode($inputs['end_date'])));
+        $this->db->where('date(`sale_time`) BETWEEN ' . $this->db->escape(rawurldecode($inputs['start_date'])) . ' AND ' . $this->db->escape(rawurldecode($inputs['end_date'])));
 
         $data = array();
         $data['summary'] = $this->db->get()->result_array();
