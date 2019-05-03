@@ -20,8 +20,10 @@ script:
   - docker-compose -f $(pwd)/deploy/docker/production/build/docker-compose.yml build
 env:
   - TAG=$(echo ${TRAVIS_BRANCH} | sed s/feature\\///)
-after_success: '[ -n ${DOCKER_USERNAME} ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  && docker tag cbv-pos "joshtf/cbv-pos:$TAG" && docker push "joshtf/cbv-pos:$TAG" && docker image ls'
+after_success:
+  - docker image ls
+  - '[ -n ${DOCKER_USERNAME} ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  && docker tag cbv-pos "joshtf/cbv-pos:$TAG" && docker push "joshtf/cbv-pos:$TAG"'
 #deploy:
 #  file: deployment.json
 #  provider: bintray
