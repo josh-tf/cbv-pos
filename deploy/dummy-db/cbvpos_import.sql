@@ -69,7 +69,7 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('cbvopt_item_type', 'Tower,All-in-One,Small Form'),
 ('client_id', '8024ef54-5c31-4aa0-99ab-8d37e5f5561d'),
 ('company', 'Computerbank Victoria Inc.'),
-('company_logo', ''),
+('company_logo', 'company_logo.png'),
 ('country_codes', 'au'),
 ('currency_decimals', '2'),
 ('currency_symbol', '$'),

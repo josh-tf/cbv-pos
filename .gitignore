@@ -8,9 +8,12 @@ app/application/uploads/*
 app/public/license/.licenses
 app/public/license/bower.LICENSES
 app/public/dist
-app/app/public/uploads
+app/app/public/uploads/*
 app/dist/
 app/public/bower_components
+
+# allow company_logo to go to source
+!app/app/public/uploads/company_logo.png
 
 # other files
 *.bash
