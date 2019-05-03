@@ -10,7 +10,7 @@ services:
         container_name: cbv-dev-pos
         environment:
             - PHP_TIMEZONE=Australia/Melbourne
-            - MYSQL_DB_NAME=cbvpos
+            - MYSQL_DB_NAME=cbv-pos
             - MYSQL_USERNAME=admin
             - MYSQL_PASSWORD=pointofsale
             - MYSQL_HOST_NAME=cbv-dev-db
@@ -27,7 +27,7 @@ services:
         container_name: cbv-dev-db
         environment:
             - MYSQL_USER=admin
-            - MYSQL_DATABASE=cbvpos
+            - MYSQL_DATABASE=cbv-pos
             - MYSQL_PASSWORD=pointofsale
             - MYSQL_ROOT_PASSWORD=pointofsale
         image: mysql:5.7
