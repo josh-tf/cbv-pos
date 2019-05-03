@@ -7,6 +7,5 @@ version: '2'
 services:
     cbv-pos:
         build:
-            context: ./deploy/docker/production/build/
-            dockerfile: Dockerfile
+            context: .
         container_name: cbv-pos
