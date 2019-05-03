@@ -53,8 +53,13 @@ class Detailed_computers extends Report
         $this->db->join('items AS items', 'items.item_id = sales_items.item_id', 'inner');
         $this->db->join('people AS customers', 'customers.person_id = sales.customer_id', 'inner');
 
+        // laptop and desktop only
         $this->db->where('items.category in("Laptop", "Desktop")');
 
+        // filter out canceled sales (Trello: c2ZpnU05)
+        $this->db->where('sales.sale_status != 2');
+
+        // sale date (ignore time) between parameters
         $this->db->where('date(`sale_time`) BETWEEN ' . $this->db->escape(rawurldecode($inputs['start_date'])) . ' AND ' . $this->db->escape(rawurldecode($inputs['end_date'])));
 
         $data = array();
