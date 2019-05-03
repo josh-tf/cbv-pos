@@ -8,5 +8,5 @@ services:
     cbv-pos:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: deploy/docker/production/build/Dockerfile
         container_name: cbv-pos
