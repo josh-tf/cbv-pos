@@ -29,8 +29,8 @@ services:
                 - "80"
                 - "443"
         volumes:
-                - uploads:/app/public/uploads
-                - ./cbvpos/app:/app
+                - ./cbv-pos/app/public/uploads:/app/public/uploads
+                - ./cbv-pos/app:/app
                 - ./conf/php.ini:/usr/local/etc/php/conf.d/misc.ini
         restart: always
         extra_hosts:
