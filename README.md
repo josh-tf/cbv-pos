@@ -3,7 +3,7 @@
 ![Computerbank](https://i.imgur.com/QyNlLow.png)
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/josh-tf/cbv-pos/graphs/commit-activity)
-[![Codacy grade](https://img.shields.io/codacy/grade/7fe6cea5940b45409f169275d2fa1338.svg)](https://app.codacy.com/project/git_30/cbv-pos/dashboard)
+[![Codacy grade](https://img.shields.io/codacy/grade/83338aa3c0ce4a25b5789d418f02cf4e.svg)](https://app.codacy.com/project/git_30/cbv-pos/dashboard)
 [![Build Status](https://travis-ci.org/josh-tf/cbv-pos.svg?branch=master)](https://travis-ci.org/josh-tf/cbv-pos)
 [![GitHub issues](https://img.shields.io/github/issues/josh-tf/cbv-pos.svg)](https://GitHub.com/josh-tf/cbv-pos/issues/)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
