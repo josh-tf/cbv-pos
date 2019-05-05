@@ -164,7 +164,7 @@ label.required {
 	display: none;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 620px) {
 	.main-logo {
 		display: block;
 		width: 155px;
