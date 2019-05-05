@@ -2,7 +2,7 @@
     "package": {
         "name": "cbv-pos",
         "repo": "cbv-pos",
-        "subject": "Computerbank Point of Sale",
+        "subject": "computerbank",
         "website_url": "https://www.computerbank.org.au",
         "issue_tracker_url": "https://github.com/josh-tf/cbv-pos/issues",
         "vcs_url": "https://github.com/josh-tf/cbv-pos.git",
