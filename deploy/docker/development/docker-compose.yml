@@ -6,7 +6,7 @@
 version: "2"
 services:
   cbv-dev-pos-php:
-    container_name: cbv-pos-dev-php
+    container_name: cbv-dev-pos-php
     environment:
       - PHP_TIMEZONE=Australia/Melbourne
       - MYSQL_DB_NAME=cbv-pos
