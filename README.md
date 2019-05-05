@@ -10,7 +10,7 @@
 [![GitHub commits](https://img.shields.io/github/commit-activity/y/josh-tf/cbv-pos.svg)](https://github.com/josh-tf/cbv-pos/commit/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/joshtf/cbv-php.svg)](https://hub.docker.com/r/joshtf/cbv-php/)
 
-The Computerbank Point of Sale system is a fork of the [opensourcepos](https://github.com/opensourcepos/opensourcepos) software.
+The Computerbank Point of Sale system is a customised fork of the [opensourcepos](https://github.com/opensourcepos/opensourcepos) software.
 
 ## Getting Started
 
@@ -46,12 +46,11 @@ In a terminal of your choice, clone the GitHub repository
 git clone https://github.com/josh-tf/cbv-pos.git
 ```
 
-&nbsp;
 Next we will run the automated build process - note that as docker binds to Unix ports and as such, sudo will be required on \*nix variants unless you are added to the `docker` usergroup (recommended). Please refer to [this article](https://docs.docker.com/install/linux/linux-postinstall/) for more details.
 
-**Note:** For Windows these commands can be run through Powershell.
+**Note:** For Windows these commands should be run in Powershell as `cmd` uses different commands (copy).
 
-Enter the working directory, copy the `docker-compose` file and start the installation:
+Copy the `docker-compose` file from inside the cloned directory and create the stack:
 
 ```sh
 cp ./cbv-pos/deploy/docker/development/docker-compose.yml .
