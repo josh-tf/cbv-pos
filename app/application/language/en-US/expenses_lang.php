@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang["expenses_add_item"] = "Add Expense";
 $lang["expenses_amount"] = "Amount";
@@ -9,6 +9,7 @@ $lang["expenses_cannot_be_deleted"] = "Could not delete Category Expense(s)";
 $lang["expenses_cash"] = "Cash";
 $lang["expenses_cash_filter"] = "Cash";
 $lang["expenses_categories_name"] = "Category";
+$lang["expenses_categories_confirm_restore"] = "Are you sure you want to restore selected categories(s)?";
 $lang["expenses_category_required"] = "category is a required field";
 $lang["expenses_check"] = "Check";
 $lang["expenses_check_filter"] = "Check";
