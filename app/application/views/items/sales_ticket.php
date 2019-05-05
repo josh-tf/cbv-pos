@@ -145,9 +145,13 @@ die();
 
     // create an array to be used below
     $concPriceFull = '$' . formatPrice($computer->unit_price);
-    $nonConcPriceFull = '$' . formatPrice($computer->unit_price, true); // item price x1.5 for non Concession
-    $concPriceBox = '$' . formatPrice($computer->custom12);
-    $nonConcPriceBox = '$' . formatPrice($computer->custom12, true); // box only x1.5 for non Concession
+
+    if ($itemCat === 'Desktop') {
+        $nonConcPriceFull = '$' . formatPrice($computer->unit_price, true); // item price x1.5 for non Concession
+        $concPriceBox = '$' . formatPrice($computer->custom12);
+        $nonConcPriceBox = '$' . formatPrice($computer->custom12, true); // box only x1.5 for non Concession
+    }
+
     $specID = $computer->name;
     $specModel = $computer->custom2;
     $specCPU = $computer->custom3 . ' ' . $computer->custom4 . ' Ghz';
