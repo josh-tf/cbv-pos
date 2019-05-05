@@ -21,7 +21,7 @@ if(isset($error))
 				<?php
 				foreach($grants as $grant)
 				{
-					if (preg_match('/reports_/', $grant['permission_id']) && !preg_match('/(inventory|receivings)/', $grant['permission_id']))
+					if (preg_match('/reports_/', $grant['permission_id']) && !preg_match('/(inventory|receivings|computers)/', $grant['permission_id']))
 					{
 						show_report('graphical_summary', $grant['permission_id']);
 					}
@@ -40,7 +40,7 @@ if(isset($error))
 				<?php
 				foreach($grants as $grant)
 				{
-					if (preg_match('/reports_/', $grant['permission_id']) && !preg_match('/(inventory|receivings)/', $grant['permission_id']))
+					if (preg_match('/reports_/', $grant['permission_id']) && !preg_match('/(inventory|receivings|computers)/', $grant['permission_id']))
 					{
 						show_report('summary', $grant['permission_id']);
 					}
@@ -96,8 +96,7 @@ if(isset($error))
 				</div>
 				<div class="list-group">
 				<?php
-				$person_id = $this->session->userdata('person_id');
-				show_report_if_allowed('detailed', 'computers', $person_id);
+				show_report('', 'reports_detailed_computers');
 				?>
 			 </div>
 			</div>

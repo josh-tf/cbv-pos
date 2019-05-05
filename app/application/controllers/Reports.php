@@ -1347,7 +1347,7 @@ class Reports extends Secure_Controller
         }
 
         $data = array(
-            'title' => $this->lang->line('reports_detailed_computers_report'),
+            'title' => $this->lang->line('reports_detailed_computers'),
             'subtitle' => $this->_get_subtitle_report(array('start_date' => $start_date, 'end_date' => $end_date)),
             'headers' => $headers,
             'editable' => 'receivings',
