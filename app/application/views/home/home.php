@@ -5,7 +5,7 @@
 </script>
 
 <center><img src="./images/banner.png" style="text-align: center;width: 60%;"></center>
-<h3 class="text-center">Welcome to <b>CBVPOS</b>: click a module below to get started.</h3>
+<h3 class="text-center"><?php echo $this->lang->line('common_welcome_message_start') . ' <b>' . $this->lang->line('common_welcome_message_mid') . '</b> - ' , $this->lang->line('common_welcome_message_end') ?></h3>
 
 <div id="home_module_list">
 	<?php
