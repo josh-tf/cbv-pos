@@ -19,12 +19,12 @@ env:
 after_success:
   - docker image ls
   - '[ -n ${DOCKER_USERNAME} ] && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker tag build_cbv-pos "joshtf/cbv-pos:$TAG" && docker push "joshtf/cbv-pos:$TAG"'
-deploy:
-  file: ./deploy/deployment.json
-  user: "josh-tf"
-  provider: bintray
-  skip_cleanup: true
-  key: ${BINTRAY_API_KEY}
-  user:
-  on:
-    all_branches: true
+#deploy:
+#  file: ./deploy/deployment.json
+#  user: "josh-tf"
+#  provider: bintray
+#  skip_cleanup: true
+#  key: ${BINTRAY_API_KEY}
+#  user:
+#  on:
+#    all_branches: true
