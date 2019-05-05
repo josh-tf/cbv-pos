@@ -1,6 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'css/invoice_email.css'; ?>" />
@@ -30,13 +29,14 @@ load_language(true, array('sales', 'common'));
                     <pre class="customer-info"><?php if (isset($customer)) {echo $customer_info;}?></pre>
                 </td>
             </tr>
+
             <tr>
                 <td id="company-title">
                     <h3><?php echo $this->config->item('company'); ?></h3>
                     <pre><?php echo $company_info; ?></pre>
                 </td>
                 <td id="meta">
-                    <table align="right" class="invoice-meta">
+                    <table class="invoice-meta">
                         <tr>
                             <td class="meta-head"><?php echo $this->lang->line('sales_id'); ?> </td>
                             <td>

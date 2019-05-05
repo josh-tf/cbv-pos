@@ -341,3 +341,9 @@ tr.item-row
     text-align: center;
     width: 80%;
 }
+
+/* Fix alignment in new DomPDF */
+table.invoice-meta {
+    margin-right: 0;
+    margin-left: auto;
+}
