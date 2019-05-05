@@ -26,6 +26,7 @@ after_success:
   && docker tag build_cbv-pos "joshtf/cbv-pos:$TAG" && docker push "joshtf/cbv-pos:$TAG"'
 deploy:
   file: ./deploy/deployment.json
+  user: "josh-tf"
   provider: bintray
   skip_cleanup: true
   key: ${BINTRAY_API_KEY}
