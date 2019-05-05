@@ -5,190 +5,189 @@
 
 # .env file required, see source for example.
 
-version: '2'
+version: "2"
 services:
+  cbv-prod-pos: # cbv-pos production deployment
+    container_name: cbv-prod-pos
+    image: joshtf/cbv-php
+    environment:
+      - FORCE_HTTPS=${opt_force_ssl}
+      - MYSQL_DB_NAME=${pos_db_name}
+      - MYSQL_USERNAME=${pos_db_user}
+      - MYSQL_PASSWORD=${pos_db_pass}
+      - MYSQL_HOST_NAME=cbv-prod-db
+      - PHP_TIMEZONE=${timezone}
+      - VIRTUAL_HOST=${pos_virt_host}
+      - LETSENCRYPT_HOST=${pos_le_host}
+      - LETSENCRYPT_EMAIL=${pos_le_email}
+      - STOCKLIST_UPDATE_URL=${stocklist_url}
+      - APACHE_LOG_DIR=${apache_log_dir}
+    links:
+      - cbv-prod-db
+    expose:
+      - "80"
+      - "443"
+    volumes:
+      - ./cbv-pos/app/public/uploads:/app/public/uploads
+      - ./cbv-pos/app:/app
+      - ./conf/php.ini:/usr/local/etc/php/conf.d/misc.ini
+    restart: always
+    extra_hosts:
+      - "${pos_virt_host}:${server_ip}" # req for nginx proxy
+      - "${web_main_host}:${server_ip}" # req for nginx proxy
 
-    cbv-prod-pos: # cbvpos production deployment
-        container_name: cbv-prod-pos
-        image: joshtf/cbv-php
-        environment:
-                - FORCE_HTTPS=${opt_force_ssl}
-                - MYSQL_DB_NAME=${pos_db_name}
-                - MYSQL_USERNAME=${pos_db_user}
-                - MYSQL_PASSWORD=${pos_db_pass}
-                - MYSQL_HOST_NAME=cbv-prod-db
-                - PHP_TIMEZONE=${timezone}
-                - VIRTUAL_HOST=${pos_virt_host}
-                - LETSENCRYPT_HOST=${pos_le_host}
-                - LETSENCRYPT_EMAIL=${pos_le_email}
-                - STOCKLIST_UPDATE_URL=${stocklist_url}
-                - APACHE_LOG_DIR=${apache_log_dir}
-        links:
-                - cbv-prod-db
-        expose:
-                - "80"
-                - "443"
-        volumes:
-                - ./cbv-pos/app/public/uploads:/app/public/uploads
-                - ./cbv-pos/app:/app
-                - ./conf/php.ini:/usr/local/etc/php/conf.d/misc.ini
-        restart: always
-        extra_hosts:
-                - "${pos_virt_host}:${server_ip}" # req for nginx proxy
-                - "${web_main_host}:${server_ip}" # req for nginx proxy
+  cbv-prod-web: # cbv main wordpress website
+    container_name: cbv-prod-web
+    image: joshtf/cbv-php
+    environment:
+      - MYSQL_DB_NAME=${web_db_name}
+      - MYSQL_USERNAME=${web_db_user}
+      - MYSQL_PASSWORD=${web_db_pass}
+      - MYSQL_HOST_NAME=cbv-prod-db
+      - POS_MYSQL_DB_NAME=${pos_db_name}
+      - POS_MYSQL_USERNAME=${pos_db_user}
+      - POS_MYSQL_PASSWORD=${pos_db_pass}
+      - PHP_TIMEZONE=${timezone}
+      - VIRTUAL_HOST=${web_virt_host}
+      - LETSENCRYPT_HOST=${web_le_host}
+      - LETSENCRYPT_EMAIL=${web_le_email}
+      - WEBSITE_URL=${web_url}
+      - APACHE_LOG_DIR=${apache_log_dir}
+    links:
+      - cbv-prod-db
+    expose:
+      - "80"
+      - "443"
+    volumes:
+      - ./web:/app/public
+      - ./conf/php.ini:/usr/local/etc/php/conf.d/uploads.ini
+    restart: always
+    extra_hosts:
+      - "${web_main_host}:${server_ip}" # req for nginx proxy
 
-    cbv-prod-web: # cbv main wordpress website
-        container_name: cbv-prod-web
-        image: joshtf/cbv-php
-        environment:
-                - MYSQL_DB_NAME=${web_db_name}
-                - MYSQL_USERNAME=${web_db_user}
-                - MYSQL_PASSWORD=${web_db_pass}
-                - MYSQL_HOST_NAME=cbv-prod-db
-                - POS_MYSQL_DB_NAME=${pos_db_name}
-                - POS_MYSQL_USERNAME=${pos_db_user}
-                - POS_MYSQL_PASSWORD=${pos_db_pass}
-                - PHP_TIMEZONE=${timezone}
-                - VIRTUAL_HOST=${web_virt_host}
-                - LETSENCRYPT_HOST=${web_le_host}
-                - LETSENCRYPT_EMAIL=${web_le_email}
-                - WEBSITE_URL=${web_url}
-                - APACHE_LOG_DIR=${apache_log_dir}
-        links:
-                - cbv-prod-db
-        expose:
-                - "80"
-                - "443"
-        volumes:
-                - ./web:/app/public
-                - ./conf/php.ini:/usr/local/etc/php/conf.d/uploads.ini
-        restart: always
-        extra_hosts:
-                - "${web_main_host}:${server_ip}" # req for nginx proxy
+  cbv-prod-vtiger: # cbv old vtiger database
+    container_name: cbv-prod-vtiger
+    image: nimmis/apache-php5
+    environment:
+      - MYSQL_DB_NAME=${old_db_db_name}
+      - MYSQL_USERNAME=${old_db_db_user}
+      - MYSQL_PASSWORD=${old_db_db_pass}
+      - MYSQL_HOST_NAME=cbv-prod-db
+      - VIRTUAL_HOST=${old_db_virt_host}
+      - LETSENCRYPT_HOST=${old_db_le_host}
+      - LETSENCRYPT_EMAIL=${old_db_le_email}
+    links:
+      - cbv-prod-db
+    expose:
+      - "80"
+      - "443"
+    volumes:
+      - ./old_db:/var/www/html
+    restart: always
 
-    cbv-prod-vtiger: # cbv old vtiger database
-        container_name: cbv-prod-vtiger
-        image: nimmis/apache-php5
-        environment:
-                - MYSQL_DB_NAME=${old_db_db_name}
-                - MYSQL_USERNAME=${old_db_db_user}
-                - MYSQL_PASSWORD=${old_db_db_pass}
-                - MYSQL_HOST_NAME=cbv-prod-db
-                - VIRTUAL_HOST=${old_db_virt_host}
-                - LETSENCRYPT_HOST=${old_db_le_host}
-                - LETSENCRYPT_EMAIL=${old_db_le_email}
-        links:
-                - cbv-prod-db
-        expose:
-                - "80"
-                - "443"
-        volumes:
-                - ./old_db:/var/www/html
-        restart: always
+  cbv-prod-db: # MariaDB for wordpress and cbv-pos
+    container_name: cbv-prod-db
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=${sql_db_root}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - ./db_data:/var/lib/mysql
+    restart: always
 
-    cbv-prod-db: # MariaDB for wordpress and cbvpos
-        container_name: cbv-prod-db
-        image: mysql:5.7
-        environment:
-                - MYSQL_ROOT_PASSWORD=${sql_db_root}
-        ports:
-                - "3306:3306"
-        volumes:
-                - ./db:/docker-entrypoint-initdb.d
-                - ./db_data:/var/lib/mysql
-        restart: always
+  cbv-prod-pma: # PHPMyAdmin for database management
+    container_name: cbv-prod-pma
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=cbv-prod-db
+    links:
+      - cbv-prod-db
+    ports:
+      - "8080:80"
+    restart: always
 
-    cbv-prod-pma: # PHPMyAdmin for database management
-        container_name: cbv-prod-pma
-        image: phpmyadmin/phpmyadmin
-        environment:
-                - PMA_HOST=cbv-prod-db
-        links:
-                - cbv-prod-db
-        ports:
-                - "8080:80"
-        restart: always
+  cbv-prod-nginx-proxy: # nginx reverse proxy for mapping hostname to container
+    container_name: cbv-prod-nginx-proxy
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs:/etc/nginx/certs
+      - ./conf/proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
+    restart: always
 
-    cbv-prod-nginx-proxy: # nginx reverse proxy for mapping hostname to container
-        container_name: cbv-prod-nginx-proxy
-        image: jwilder/nginx-proxy
-        ports:
-                - "80:80"
-                - "443:443"
-        volumes:
-                - /etc/nginx/vhost.d
-                - /usr/share/nginx/html
-                - /var/run/docker.sock:/tmp/docker.sock:ro
-                - ./certs:/etc/nginx/certs
-                - ./conf/proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
-        restart: always
+  cbv-prod-ssl-certs: # letsencrypt SSL generator for containers
+    container_name: cbv-prod-ssl-certs
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    volumes_from:
+      - cbv-prod-nginx-proxy
+    restart: always
 
-    cbv-prod-ssl-certs: # letsencrypt SSL generator for containers
-        container_name: cbv-prod-ssl-certs
-        image: jrcs/letsencrypt-nginx-proxy-companion
-        volumes:
-                - /var/run/docker.sock:/var/run/docker.sock:ro
-        volumes_from:
-                - cbv-prod-nginx-proxy
-        restart: always
+  cbv-prod-portainer: # portainer instance for docker management
+    container_name: cbv-prod-portainer
+    image: portainer/portainer
+    command: -H unix:///var/run/docker.sock
+    ports:
+      - "9000:9000"
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
 
-    cbv-prod-portainer: # portainer instance for docker management
-        container_name: cbv-prod-portainer
-        image: portainer/portainer
-        command: -H unix:///var/run/docker.sock
-        ports:
-                - "9000:9000"
-        volumes:
-                - portainer_data:/data
-                - /var/run/docker.sock:/var/run/docker.sock
-        restart: always
+  cbv-prod-backup:
+    container_name: cbv-prod-backup
+    image: databack/mysql-backup
+    volumes:
+      - ./:/app
+      - ./backup:/db
+      - ./scripts/pre:/scripts.d/pre-backup
+      - ./scripts/post:/scripts.d/post-backup
+    environment:
+      - DB_DUMP_TARGET=/db
+      - DB_USER=${backup_db_user}
+      - DB_PASS=${backup_db_pass}
+      - DB_DUMP_FREQ=${backup_db_frq}
+      - DB_SERVER=cbv-prod-db
+    restart: always
 
-    cbv-prod-backup:
-        container_name: cbv-prod-backup
-        image: databack/mysql-backup
-        volumes:
-                - ./:/app
-                - ./backup:/db
-                - ./scripts/pre:/scripts.d/pre-backup
-                - ./scripts/post:/scripts.d/post-backup
-        environment:
-                - DB_DUMP_TARGET=/db
-                - DB_USER=${backup_db_user}
-                - DB_PASS=${backup_db_pass}
-                - DB_DUMP_FREQ=${backup_db_frq}
-                - DB_SERVER=cbv-prod-db
-        restart: always
+  # Build containers
+  #   - build composer installs codeigniter
+  #   - build-php installs php modules
+  #   - build-nodejs installs node and bower modules
 
-# Build containers
-#   - build composer installs codeigniter
-#   - build-php installs php modules
-#   - build-nodejs installs node and bower modules
+  cbv-prod-pos-build-composer:
+    container_name: cbv-prod-pos-build-composer
+    image: composer/composer
+    command: "install"
+    volumes:
+      - ./cbv-pos/app:/app
 
-    cbv-dev-build-composer:
-        container_name: cbv-prod-pos-build-composer
-        image: composer/composer
-        command: "install"
-        volumes:
-                - ./cbvpos/app:/app
+  cbv-prod-pos-build-php:
+    container_name: cbv-prod-pos-build-php
+    image: lucor/php7-cli
+    command: "php /app/deploy/scripts/install.php translations develop"
+    volumes:
+      - ./cbv-pos:/app
 
-    cbvposdev-build-php:
-        container_name: cbv-prod-pos-build-php
-        image: lucor/php7-cli
-        command: "php /app/deploy/scripts/install.php translations develop"
-        volumes:
-                - ./cbvpos:/app
-
-    cbvposdev-build-nodejs:
-        container_name: cbv-prod-pos-build-nodejs
-        image: digitallyseamless/nodejs-bower-grunt
-        command: bash -c "cd /app && npm install && bower install"
-        volumes:
-                - ./cbvpos/app:/app
+  cbv-prod-pos-build-nodejs:
+    container_name: cbv-prod-pos-build-nodejs
+    image: digitallyseamless/nodejs-bower-grunt
+    command: bash -c "cd /app && npm install && bower install"
+    volumes:
+      - ./cbv-pos/app:/app
 
 # Volumes
-#   - uploads for cbvpos use
+#   - uploads for cbv-pos use
 
 volumes:
-    uploads:
-        driver: local
-    portainer_data:
+  uploads:
+    driver: local
+  portainer_data:
