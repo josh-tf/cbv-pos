@@ -86,7 +86,7 @@
               {
                 title: $link.attr("title"),
                 closeByBackdrop: false,
-                closeByKeyboard: false,
+                //closeByKeyboard: false,
                 message: function() {
                   var node = $("<div></div>");
                   $.get($link.attr("href") || $link.data("href"), function(
