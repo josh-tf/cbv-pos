@@ -24,9 +24,7 @@ class Detailed_computers extends Report
                 array('customer_name' => $this->lang->line('customers_customer')),
                 array('customer_phone' => $this->lang->line('common_phone_number'), 'sorter' => 'number_sorter'),
                 array('customer_email' => $this->lang->line('common_email')),
-                array('customer_address' => $this->lang->line('common_address_1')),
-                //array('customer_suburb' => $this->lang->line('common_suburb')),
-                //array('customer_postcode' => $this->lang->line('common_postcode'), 'sorter' => 'number_sorter')
+                array('customer_address' => $this->lang->line('common_address_1'))
             ));
 
         return $columns;
@@ -44,9 +42,7 @@ class Detailed_computers extends Report
                             customers.last_name as customer_name_last,
                             customers.phone_number as customer_phone,
                             customers.email as customer_email,
-                            customers.address_1 as customer_address,
-                            customers.Suburb as customer_suburb,
-                            customers.Postcode as customer_postcode
+                            customers.address_1 as customer_address
                         ');
         $this->db->from('sales_items AS sales_items');
         $this->db->join('sales AS sales', 'sales.sale_id = sales_items.sale_id', 'inner');

@@ -8,6 +8,16 @@
 	<table id="table"></table>
 </div>
 
+<div id="report_summary">
+	<?php
+foreach ($overall_summary_data as $name => $value) {
+    ?>
+		<div class="summary_row"><b><?php echo $this->lang->line('reports_' . $name) . '</b>: ' . to_currency($value); ?></div>
+	<?php
+}
+?>
+</div>
+
 <script type="text/javascript">
 	$(document).ready(function()
 	{
@@ -17,14 +27,6 @@
 		var details_data = <?php echo json_encode($details_data); ?>;
 
 		var init_dialog = function() {
-			<?php
-if (isset($editable)) {
-    ?>
-				table_support.submit_handler('<?php echo site_url("reports/get_detailed_computers_row") ?>');
-				dialog_support.init("a.modal-dlg");
-			<?php
-}
-?>
 		};
 
 		$('#table').bootstrapTable({

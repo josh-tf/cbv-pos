@@ -72,10 +72,17 @@ $route['reports/(inventory_summary)/([^/]+)/([^/]+)/([^/]+)'] = 'reports/$1/$2';
 
 $route['reports/(detailed_sales)/([^/]+)/([^/]+)/([^/]+)'] = 'reports/$1/$2/$3$/$4';
 $route['reports/detailed_sales'] = 'reports/date_input_sales';
+
 $route['reports/(detailed_receivings)/([^/]+)/([^/]+)/([^/]+)'] = 'reports/$1/$2/$3/$4';
 $route['reports/detailed_receivings'] = 'reports/date_input_recv';
+
+// custom computers report
 $route['reports/(detailed_computers)/([^/]+)/([^/]+)/([^/]+)'] = 'reports/$1/$2/$3/$4';
-$route['reports/detailed_computers'] = 'reports/date_input_comp';
+$route['reports/detailed_computers'] = 'reports/date_input_only';
+
+// custom cashflow report
+$route['reports/(detailed_cashflow)/([^/]+)/([^/]+)/([^/]+)'] = 'reports/$1/$2/$3/$4';
+$route['reports/detailed_cashflow'] = 'reports/date_input_only';
 
 $route['reports/(specific_:any)/([^/]+)/([^/]+)/([^/]+)'] = 'reports/$1/$2/$3/$4';
 $route['reports/specific_customer'] = 'reports/specific_customer_input';

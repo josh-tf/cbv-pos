@@ -416,13 +416,6 @@ class Reports extends Secure_Controller
         $this->load->view('reports/date_input', $data);
     }
 
-    public function date_input_comp()
-    {
-        $data = array();
-
-        $this->load->view('reports/date_input', $data);
-    }
-
     //Graphical Expenses by Categories report
     public function graphical_summary_expenses_categories($start_date, $end_date, $sale_type)
     {
@@ -1341,8 +1334,6 @@ class Reports extends Secure_Controller
                 'customer_phone' => $row['customer_phone'],
                 'customer_email' => $row['customer_email'],
                 'customer_address' => $row['customer_address'] . ' ' . $row['customer_suburb'] . ' ' . $row['customer_postcode'],
-                //'customer_suburb' => $row['customer_suburb'],
-                //'customer_postcode' => $row['customer_postcode'],
             ));
         }
 
@@ -1350,13 +1341,47 @@ class Reports extends Secure_Controller
             'title' => $this->lang->line('reports_detailed_computers'),
             'subtitle' => $this->_get_subtitle_report(array('start_date' => $start_date, 'end_date' => $end_date)),
             'headers' => $headers,
-            'editable' => 'receivings',
-            'summary_data' => $summary_data,
-            'details_data' => $details_data,
-            'overall_summary_data' => $this->xss_clean($model->getSummaryData($inputs)),
+            'summary_data' => $summary_data
         );
 
-        $this->load->view('reports/tabular_computers', $data);
+        $this->load->view('reports/tabular_custom', $data);
+    }
+
+    public function detailed_cashflow($start_date, $end_date)
+    {
+        $inputs = array('start_date' => $start_date, 'end_date' => $end_date);
+
+        $this->load->model('reports/Detailed_cashflow');
+        $model = $this->Detailed_cashflow;
+
+        $model->create($inputs);
+
+        $headers = $this->xss_clean($model->getDataColumns());
+        $report_data = $model->getData($inputs);
+
+        $summary_data = array();
+
+        foreach ($report_data['summary'] as $key => $row) {
+
+            $prettyDate = date_create($row['sale_time']);
+            $prettyDate = date_format($prettyDate, 'Y-m-d');
+
+            $summary_data[] = $this->xss_clean(array(
+                'sale_time' => $prettyDate,
+                'cash_totals' => money_format('$%i', $row['cash_totals']),
+                'card_totals' => money_format('$%i', $row['card_totals']),
+            ));
+        }
+
+        $data = array(
+            'title' => $this->lang->line('reports_detailed_cashflow'),
+            'subtitle' => $this->_get_subtitle_report(array('start_date' => $start_date, 'end_date' => $end_date)),
+            'headers' => $headers,
+            'summary_data' => $summary_data,
+            'overall_summary_data' => $this->xss_clean($model->getSummaryData($inputs))
+        );
+
+        $this->load->view('reports/tabular_custom', $data);
     }
 
     public function inventory_low()
