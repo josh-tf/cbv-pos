@@ -1,12 +1,10 @@
-<?php $this->load->view("partial/header");?>
+<?php $this->load->view('partial/header');?>
 
 <?php
 
-$concID = str_replace(array('-',' '),'',$this->input->post('conc_id_check'));
+$conc_id = preg_replace('/[- ]/','',strtoupper($this->input->post('conc_id_check')));
 
-
-
-if ($concID == "") {
+if ($conc_id == '') {
     die('Invalid concession ID provided');
 }
 
@@ -24,7 +22,7 @@ if (count($cus_info) == 0) {
     ?>
 
 <div class="alert alert-danger" role="alert">
-  <b>Error occurred:</b> No matching Concession ID was found in the database (<?php echo $concID ?>).
+  <b>Error occurred:</b> No matching Concession ID was found in the database (<?php echo $conc_id ?>).
 </div>
 
 <?php
@@ -32,7 +30,7 @@ die();
 }
 ?>
 
-<h4>Lookup for Concession ID [<b><?php echo $concID ?></b>]</h4>
+<h4>Lookup for Concession ID [<b><?php echo $conc_id ?></b>]</h4>
 <p>There is <?php echo count($cus_info); ?> match for this concession ID in the customer database.</p>
 
     <table class="table table-sm table-bordered table-striped">
@@ -82,7 +80,7 @@ foreach ($cus_sales as $sale) {
 
 <br><br>
 
-<h4>Sales for Concession ID [<b><?php echo $concID ?></b>]</h4>
+<h4>Sales for Concession ID [<b><?php echo $conc_id ?></b>]</h4>
 <p>There are <?php echo count($cus_sales); ?> matches for this concession ID in the sales database.</p>
 
 <div style="width:300px">
@@ -144,4 +142,4 @@ foreach ($cus_sales as $sale) {
   </tbody>
 </table>
 
-<?php $this->load->view("partial/footer");?>
+<?php $this->load->view('partial/footer');?>
