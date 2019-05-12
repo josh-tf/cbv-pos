@@ -76,8 +76,8 @@ class Detailed_cashflow extends Report
         $this->db->from('sales_payments AS payments');
         $this->db->join('sales AS sales', 'sales.sale_id = payments.sale_id', 'inner');
 
-        // only show completed sales (exclude suspended and canceled)
-        $this->db->where('sales.sale_type = 0');
+        // only include completed sales - exclude canceled or suspended (Trello: cUKS2cR2)
+        $this->db->where('sales.sale_status = 0');
 
         // sale date (ignore time) between parameters
         $this->db->where('date(`sale_time`) BETWEEN ' . $this->db->escape(rawurldecode($inputs['start_date'])) . ' AND ' . $this->db->escape(rawurldecode($inputs['end_date'])));
