@@ -65,6 +65,7 @@ $lang["common_unknown"] = "Unknown";
 $lang["common_view_recent_sales"] = "View Recent Sales";
 $lang["common_website"] = "website";
 $lang["common_welcome"] = "Welcome";
+$lang["common_configuration"] = "CBV-POS Configuration Center";
 $lang["common_welcome_message_start"] = "Welcome to";
 $lang["common_welcome_message_mid"] = "CBV-POS";
 $lang["common_welcome_message_end"] = "click a module below to get started.";
