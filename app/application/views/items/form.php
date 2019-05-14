@@ -440,7 +440,7 @@ foreach ($var as $row) {
 <?php echo form_label($this->config->item('custom6_name'), 'custom6', array('class' => 'required control-label col-xs-3')); ?>
 <div class='col-xs-4'>
 <div class="input-group input-group-sm custom">
-<input value="<?php echo $$storageStr[0] ?>" placeholder="<?php echo $this->lang->line('custom6_helper') ?>" list="item_storage_size" class="form-control input-sm" id="item_storage_size" name="item_storage_size">
+<input value="<?php echo $storageStr[0] ?>" placeholder="<?php echo $this->lang->line('custom6_helper') ?>" list="item_storage_size" class="form-control input-sm" id="item_storage_size" name="item_storage_size">
 <datalist id="item_storage_size">
 
 <?php
@@ -466,7 +466,7 @@ $var = explode(',', $variable);
 
 foreach ($var as $row) {
 
-    if ($$storageStr[1] == trim($row)) { // select the correct item in the list
+    if ($storageStr[1] == trim($row)) { // select the correct item in the list
         echo '<option value="' . trim($row) . '" selected>' . trim($row) . '</option>';
     } else {
         echo '<option value="' . trim($row) . '">' . trim($row) . '</option>';
