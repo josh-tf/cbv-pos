@@ -21,7 +21,7 @@ if(isset($error))
 				<?php
 				foreach($grants as $grant)
 				{
-					if (preg_match('/reports_/', $grant['permission_id']) && !preg_match('/(inventory|receivings|computers)/', $grant['permission_id']))
+					if (preg_match('/reports_/', $grant['permission_id']) && !preg_match('/(inventory|receivings|computers|cashflow)/', $grant['permission_id']))
 					{
 						show_report('graphical_summary', $grant['permission_id']);
 					}
@@ -40,7 +40,7 @@ if(isset($error))
 				<?php
 				foreach($grants as $grant)
 				{
-					if (preg_match('/reports_/', $grant['permission_id']) && !preg_match('/(inventory|receivings|computers)/', $grant['permission_id']))
+					if (preg_match('/reports_/', $grant['permission_id']) && !preg_match('/(inventory|receivings|computers|cashflow)/', $grant['permission_id']))
 					{
 						show_report('summary', $grant['permission_id']);
 					}
