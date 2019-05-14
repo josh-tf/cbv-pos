@@ -434,16 +434,13 @@ foreach ($var as $row) {
 <input value="<?php echo $item_arr['custom6'] ?>" class="form-control input-sm hidden" id="custom6" name="custom6">
 </div>
 
-<?php
-$storageStr = $item_arr['custom6'];
-$storageStrArr = preg_split("((GB ))", $storageStr);
-?>
+<?php $storageStr = preg_split("((GB ))", $item_arr['custom6']); ?>
 
 <div class="form-group form-group-sm custom6">
 <?php echo form_label($this->config->item('custom6_name'), 'custom6', array('class' => 'required control-label col-xs-3')); ?>
 <div class='col-xs-4'>
 <div class="input-group input-group-sm custom">
-<input value="<?php echo $storageStrArr[0] ?>" placeholder="<?php echo $this->lang->line('custom6_helper') ?>" list="item_storage_size" class="form-control input-sm" id="item_storage_size" name="item_storage_size">
+<input value="<?php echo $$storageStr[0] ?>" placeholder="<?php echo $this->lang->line('custom6_helper') ?>" list="item_storage_size" class="form-control input-sm" id="item_storage_size" name="item_storage_size">
 <datalist id="item_storage_size">
 
 <?php
@@ -467,11 +464,9 @@ foreach ($var as $row) {
 $variable = $this->config->item('cbvopt_item_storage_type');
 $var = explode(',', $variable);
 
-$typeSel = $storageStrArr[1];
-
 foreach ($var as $row) {
 
-    if ($typeSel == trim($row)) {
+    if ($$storageStr[1] == trim($row)) { // select the correct item in the list
         echo '<option value="' . trim($row) . '" selected>' . trim($row) . '</option>';
     } else {
         echo '<option value="' . trim($row) . '">' . trim($row) . '</option>';
