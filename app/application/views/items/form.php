@@ -165,7 +165,7 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 		<!-- item on hold related -->
 		<div class="form-group form-group-sm hold_for_grp">
 			<?php echo form_label($this->lang->line('items_hold_for'), 'hold_for', array('class' => 'required control-label col-xs-3')); ?>
-			<div class='col-xs-4'>
+			<div class='col-xs-6'>
 				<div class="input-group input-group-sm">
 					<?php echo form_input(array(
     'name' => 'hold_for',
@@ -359,7 +359,7 @@ $item_arr = (array) $item_info; // if editing, get the item data
 ?>
 
 <div class="form-group form-group-sm custom1">
-<?php echo form_label($this->config->item('custom1_name'), 'custom1', array('class' => 'control-label col-xs-3')); ?>
+<?php echo form_label($this->config->item('custom1_name'), 'custom1', array('class' => 'required control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
 <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -369,7 +369,7 @@ $item_arr = (array) $item_info; // if editing, get the item data
 </div>
 
 <div class="form-group form-group-sm custom2">
-<?php echo form_label($this->config->item('custom2_name'), 'custom2', array('class' => 'control-label col-xs-3')); ?>
+<?php echo form_label($this->config->item('custom2_name'), 'custom2', array('class' => 'required control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
 <input value="<?php echo $item_arr['custom2'] ?>" placeholder="<?php echo $this->lang->line('custom2_helper') ?>" list="custom2" class="form-control input-sm" name="custom2" id="custom2">
@@ -378,8 +378,8 @@ $item_arr = (array) $item_info; // if editing, get the item data
 </div>
 
 <div class="form-group form-group-sm custom3">
-<?php echo form_label($this->config->item('custom3_name'), 'custom3', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-8'>
+<?php echo form_label($this->config->item('custom3_name'), 'custom3', array('class' => 'required control-label col-xs-3')); ?>
+<div class='col-xs-4'>
 <div class="input-group input-group-sm custom">
 <input value="<?php echo $item_arr['custom3'] ?>" placeholder="<?php echo $this->lang->line('custom3_helper') ?>" list="custom3" class="form-control input-sm" name="custom3">
 <datalist id="custom3">
@@ -399,8 +399,8 @@ foreach ($var as $row) {
 </div>
 
 <div class="form-group form-group-sm custom4">
-<?php echo form_label($this->config->item('custom4_name'), 'custom4', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-8'>
+<?php echo form_label($this->config->item('custom4_name'), 'custom4', array('class' => 'required control-label col-xs-3')); ?>
+<div class='col-xs-4'>
 <div class="input-group input-group-sm custom">
 <input value="<?php echo $item_arr['custom4'] ?>" placeholder="<?php echo $this->lang->line('custom4_helper') ?>" list="custom4" class="form-control input-sm" name="custom4" id="custom4" type="number" step="0.1">
 <span class="input-group-addon input-sm">Ghz</span>
@@ -409,8 +409,8 @@ foreach ($var as $row) {
 </div>
 
 <div class="form-group form-group-sm custom5">
-<?php echo form_label($this->config->item('custom5_name'), 'custom5', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-8'>
+<?php echo form_label($this->config->item('custom5_name'), 'custom5', array('class' => 'required control-label col-xs-3')); ?>
+<div class='col-xs-4'>
 <div class="input-group input-group-sm custom">
 <input value="<?php echo $item_arr['custom5'] ?>" placeholder="<?php echo $this->lang->line('custom5_helper') ?>" list="custom5" class="form-control input-sm" name="custom5">
 <datalist id="custom5">
@@ -431,14 +431,23 @@ foreach ($var as $row) {
 </div>
 
 <div class="form-group form-group-sm custom6">
-<?php echo form_label($this->config->item('custom6_name'), 'custom6', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-8'>
-<div class="input-group input-group-sm custom">
-<input value="<?php echo $item_arr['custom6'] ?>" placeholder="<?php echo $this->lang->line('custom6_helper') ?>" list="custom6" class="form-control input-sm" name="custom6">
-<datalist id="custom6">
+<input value="<?php echo $item_arr['custom6'] ?>" class="form-control input-sm hidden" id="custom6" name="custom6">
+</div>
 
 <?php
-$variable = $this->config->item('cbvopt_item_storage');
+$storageStr = $item_arr['custom6'];
+$storageStrArr = preg_split("((GB ))", $storageStr);
+?>
+
+<div class="form-group form-group-sm custom6">
+<?php echo form_label($this->config->item('custom6_name'), 'custom6', array('class' => 'required control-label col-xs-3')); ?>
+<div class='col-xs-4'>
+<div class="input-group input-group-sm custom">
+<input value="<?php echo $storageStrArr[0] ?>" placeholder="<?php echo $this->lang->line('custom6_helper') ?>" list="item_storage_size" class="form-control input-sm" id="item_storage_size" name="item_storage_size">
+<datalist id="item_storage_size">
+
+<?php
+$variable = $this->config->item('cbvopt_item_storage_size');
 $var = explode(',', $variable);
 
 foreach ($var as $row) {
@@ -449,10 +458,34 @@ foreach ($var as $row) {
 <span class="input-group-addon input-sm">GB</span>
 </div>
 </div>
+
+<div class='col-xs-4'>
+    <select class="form-control input-sm" id="item_storage_type" id="item_storage_type" name="item_storage_type">
+	<option selected="">Select..</option>
+
+	<?php
+$variable = $this->config->item('cbvopt_item_storage_type');
+$var = explode(',', $variable);
+
+$typeSel = $storageStrArr[1];
+
+foreach ($var as $row) {
+
+    if ($typeSel == trim($row)) {
+        echo '<option value="' . trim($row) . '" selected>' . trim($row) . '</option>';
+    } else {
+        echo '<option value="' . trim($row) . '">' . trim($row) . '</option>';
+    }
+}
+
+?>
+</select>
+</div>
+
 </div>
 
 <div class="form-group form-group-sm custom7">
-<?php echo form_label($this->config->item('custom7_name'), 'custom7', array('class' => 'control-label col-xs-3')); ?>
+<?php echo form_label($this->config->item('custom7_name'), 'custom7', array('class' => 'required control-label col-xs-3')); ?>
 <div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
 <select class="form-control input-sm" id="custom7" name="custom7">
@@ -472,8 +505,8 @@ foreach ($var as $row) {
 </div>
 
 <div class="form-group form-group-sm custom8">
-<?php echo form_label($this->config->item('custom8_name'), 'custom8', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-8'>
+<?php echo form_label($this->config->item('custom8_name'), 'custom8', array('class' => 'required control-label col-xs-3')); ?>
+<div class='col-xs-4'>
 <div class="input-group input-group-sm custom">
 <input value="<?php echo $item_arr['custom8'] ?>" placeholder="<?php echo $this->lang->line('custom8_helper') ?>" list="custom8" class="form-control input-sm" name="custom8">
 <datalist id="custom8">
@@ -487,14 +520,14 @@ foreach ($var as $row) {
 }
 ?>
 </datalist>
-<span class="input-group-addon input-sm">Inches</span>
+<span class="input-group-addon input-sm">Inch</span>
 </div>
 </div>
 </div>
 
 <div class="form-group form-group-sm custom9">
 <?php echo form_label($this->config->item('custom9_name'), 'custom9', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-8'>
+<div class='col-xs-4'>
 <div class="input-group input-group-sm custom">
 <input value="<?php echo $item_arr['custom9'] ?>" placeholder="<?php echo $this->lang->line('custom9_helper') ?>" list="custom9" class="form-control input-sm" name="custom9">
 <datalist id="custom9">
@@ -514,7 +547,7 @@ foreach ($var as $row) {
 
 <div class="form-group form-group-sm custom10">
 <?php echo form_label($this->config->item('custom10_name'), 'custom10', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-8'>
+<div class='col-xs-4'>
 <div class="input-group input-group-sm custom">
 <input value="<?php echo $item_arr['custom10'] ?>" placeholder="<?php echo $this->lang->line('custom10_helper') ?>" list="custom10" class="form-control input-sm" name="custom10">
 <datalist id="custom10">
@@ -534,8 +567,8 @@ foreach ($var as $row) {
 </div>
 
 <div class="form-group form-group-sm custom11">
-<?php echo form_label($this->config->item('custom11_name'), 'custom11', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-8'>
+<?php echo form_label($this->config->item('custom11_name'), 'custom11', array('class' => 'required control-label col-xs-3')); ?>
+<div class='col-xs-4'>
 <div class="input-group input-group-sm custom">
 <input value="<?php echo $item_arr['custom11'] ?>" placeholder="<?php echo $this->lang->line('custom11_helper') ?>" list="custom11" class="form-control input-sm" name="custom11" id="custom11">
 <span class="input-group-addon input-sm">Hours</span>
@@ -544,16 +577,24 @@ foreach ($var as $row) {
 </div>
 
 <div class="form-group form-group-sm custom12">
-<?php echo form_label($this->config->item('custom12_name'), 'custom12', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-8'>
+<?php echo form_label($this->config->item('custom12_name'), 'custom12', array('class' => 'required control-label col-xs-3')); ?>
+<div class='col-xs-4'>
 <div class="input-group input-group-sm custom">
+						<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
 <input value="<?php echo $item_arr['custom12'] ?>" placeholder="<?php echo $this->lang->line('custom12_helper') ?>" list="custom12" class="form-control input-sm" name="custom12" id="custom12" type="number" step="1">
 </div>
 </div>
 </div>
 
+<div class="form-group form-group-sm custom13">
+<?php echo form_label($this->config->item('custom13_name'), 'custom13', array('class' => 'control-label col-xs-3')); ?>
+<div class='col-xs-8'>
+<input value="<?php echo $item_arr['custom13'] ?>" placeholder="<?php echo $this->lang->line('custom13_helper') ?>" list="custom13" class="form-control input-sm" name="custom13" id="custom13" type="text" step="1">
+</div>
+</div>
+
 <?php
-for ($i = 13; $i <= 20; ++$i) { //Loop through all 20 custom items in the DB
+for ($i = 14; $i <= 20; ++$i) { //Loop through all 20 custom items in the DB
     if ($this->config->item('custom' . $i . '_name') != null) { // Only proceed if the item is notnull
         $item_arr = (array) $item_info;
         ?>
@@ -569,9 +610,9 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
         }
         ;
 
-		$itemTypeInt = array('4', '5', '6', '8', '12'); //default type is text, put here for number/integer
-		$itemDate = array('1'); // default type is text, put here for date
-		$itemPartStep = array('4', '5', '8'); // default is 1, place here for 0.1 stepping value
+        $itemTypeInt = array('4', '5', '6', '8', '12'); //default type is text, put here for number/integer
+        $itemDate = array('1'); // default type is text, put here for date
+        $itemPartStep = array('4', '5', '8'); // default is 1, place here for 0.1 stepping value
 
         $type = (in_array($i, $itemTypeInt) ? 'number' : //Check the itemTypeInt array for matching custom field ID
             (in_array($i, $itemDate) ? 'date' : 'text')); //Check the itemTypeDt array for matching custom field ID
@@ -727,7 +768,6 @@ function createDescription() {
 	if(c10){c10 = 'Type: ' + c10;}
 	if(c4){c4 += ' Ghz';} //Add in Ghz on the CPU Speed field
 	if(c5){c5 += ' GB RAM';} // Add in GB RAM to the RAM field
-	if(c6){c6 += ' GB HDD';} // Add in GB HDD to the Storage field
 	if(c8){c8 += ' Inch Screen';}  //  Add in Inches to the Screen field
 	if(c11){c11 += ' Hours';}  //  Add in Hours to Battery field
 
@@ -738,6 +778,21 @@ function createDescription() {
 	// Update description
 	$('#computer-fields').change(() => {
 		$('#description').val(createDescription); //createDescription();
+});
+
+function setStorageStr() {
+	let sSize = $('#item_storage_size').val();
+	let sType = $('#item_storage_type').val();
+
+	$('#custom6').val(sSize + 'GB ' + sType);
+};
+
+$('#item_storage_size').change(() => {
+	setStorageStr();
+});
+
+$('#item_storage_type').change(() => {
+	setStorageStr();
 });
 
 	<?php for ($i = 1; $i <= 20; ++$i) {
@@ -807,48 +862,67 @@ function createDescription() {
 		{
 			name: "required",
 			category: "required",
-			cost_price:
-			{
-				required: true,
-				remote: "<?php echo site_url($controller_name . '/check_numeric') ?>"
-			},
 			unit_price:
 			{
 				required: true,
 				remote: "<?php echo site_url($controller_name . '/check_numeric') ?>"
 			},
+			custom1:
+			{
+				required: true
+            },
+			custom2:
+			{
+				required: true
+            },
+			custom3:
+			{
+				required: true
+            },
+			custom4:
+			{
+				number: true,
+				required: true
+            },
+			custom5:
+			{
+				number: true,
+				required: true
+            },
+			item_storage_size:
+			{
+				number: true,
+				required: true
+            },
+			item_storage_type:
+			{
+				required: true
+            },
+			custom7:
+			{
+				required: true
+            },
+			custom8:
+			{
+				number: true,
+				required: true
+            },
+			custom11:
+			{
+				number: true,
+				required: true
+            },
+			custom12:
+			{
+				number: true,
+				required: true
+            },
 			hold_for:
 			{
 				required: function () {
                 return $('.on_hold').is(':checked') == true; // if on_hold is checked then hold_for is required
             }
 			},
-			<?php
-foreach ($stock_locations as $key => $location_detail) {
-    ?>
-				<?php echo 'quantity_' . $key ?>:
-				{
-					required: true,
-					remote: "<?php echo site_url($controller_name . '/check_numeric') ?>"
-				},
-			<?php
-}
-?>
-			receiving_quantity:
-			{
-				required: true,
-				remote: "<?php echo site_url($controller_name . '/check_numeric') ?>"
-			},
-			reorder_level:
-			{
-				required: true,
-				remote: "<?php echo site_url($controller_name . '/check_numeric') ?>"
-			},
-			tax_percent:
-			{
-				required: true,
-				remote: "<?php echo site_url($controller_name . '/check_numeric') ?>"
-			}
 		},
 
 		messages:
@@ -856,36 +930,11 @@ foreach ($stock_locations as $key => $location_detail) {
 			name: "<?php echo $this->lang->line('items_name_required'); ?>",
 			item_number: "<?php echo $this->lang->line('items_item_number_duplicate'); ?>",
 			category: "<?php echo $this->lang->line('items_category_required'); ?>",
-			cost_price:
-			{
-				required: "<?php echo $this->lang->line('items_cost_price_required'); ?>",
-				number: "<?php echo $this->lang->line('items_cost_price_number'); ?>"
-			},
+			item_storage_type: "<?php echo $this->lang->line('items_storage_type_required'); ?>",
 			unit_price:
 			{
 				required: "<?php echo $this->lang->line('items_unit_price_required'); ?>",
 				number: "<?php echo $this->lang->line('items_unit_price_number'); ?>"
-			},
-			<?php
-foreach ($stock_locations as $key => $location_detail) {
-    ?>
-				<?php echo 'quantity_' . $key ?>:
-				{
-					required: "<?php echo $this->lang->line('items_quantity_required'); ?>",
-					number: "<?php echo $this->lang->line('items_quantity_number'); ?>"
-				},
-			<?php
-}
-?>
-			receiving_quantity:
-			{
-				required: "<?php echo $this->lang->line('items_quantity_required'); ?>",
-				number: "<?php echo $this->lang->line('items_quantity_number'); ?>"
-			},
-			reorder_level:
-			{
-				required: "<?php echo $this->lang->line('items_reorder_level_required'); ?>",
-				number: "<?php echo $this->lang->line('items_reorder_level_number'); ?>"
 			},
 			tax_percent:
 			{

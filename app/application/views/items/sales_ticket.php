@@ -156,7 +156,7 @@ die();
     $specModel = $computer->custom2;
     $specCPU = $computer->custom3 . ' ' . $computer->custom4 . ' Ghz';
     $specRAM = $computer->custom5 . ' GB';
-    $specHDD = $computer->custom6 . ' GB';
+    $specHDD = $computer->custom6;
     $specMonitor = $computer->custom8 . ' inches';
     $specEX = $computer->custom13;
     $specBatt = $computer->custom11 . ' hrs';

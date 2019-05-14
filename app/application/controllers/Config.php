@@ -190,7 +190,8 @@ class Config extends Secure_Controller
             $data['cbvconf']['cbvopt_item_cpu'] = '';
             $data['cbvconf']['cbvopt_item_os'] = '';
             $data['cbvconf']['cbvopt_item_ram'] = '';
-            $data['cbvconf']['cbvopt_item_storage'] = '';
+            $data['cbvconf']['cbvopt_item_storage_size'] = '';
+            $data['cbvconf']['cbvopt_item_storage_type'] = '';
             $data['cbvconf']['cbvopt_item_screen'] = '';
             $data['cbvconf']['cbvopt_item_optical'] = '';
             $data['cbvconf']['cbvopt_item_type'] = '';
@@ -406,7 +407,8 @@ class Config extends Secure_Controller
             'cbvopt_item_cpu' => $this->input->post('cbvopt_item_cpu'),
             'cbvopt_item_os' => $this->input->post('cbvopt_item_os'),
             'cbvopt_item_ram' => $this->input->post('cbvopt_item_ram'),
-            'cbvopt_item_storage' => $this->input->post('cbvopt_item_storage'),
+            'cbvopt_item_storage_size' => $this->input->post('cbvopt_item_storage_size'),
+            'cbvopt_item_storage_type' => $this->input->post('cbvopt_item_storage_type'),
             'cbvopt_item_screen' => $this->input->post('cbvopt_item_screen'),
             'cbvopt_item_optical' => $this->input->post('cbvopt_item_optical'),
             'cbvopt_item_type' => $this->input->post('cbvopt_item_type'),
