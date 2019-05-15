@@ -434,7 +434,7 @@ foreach ($var as $row) {
 <input value="<?php echo $item_arr['custom6'] ?>" class="form-control input-sm hidden" id="custom6" name="custom6">
 </div>
 
-<?php $storageStr = preg_split("((GB ))", $item_arr['custom6']); ?>
+<?php $storageStr = preg_split("(( GB ))", $item_arr['custom6']); ?>
 
 <div class="form-group form-group-sm custom6">
 <?php echo form_label($this->config->item('custom6_name'), 'custom6', array('class' => 'required control-label col-xs-3')); ?>
@@ -779,7 +779,7 @@ function setStorageStr() {
 	let sSize = $('#item_storage_size').val();
 	let sType = $('#item_storage_type').val();
 
-	$('#custom6').val(sSize + 'GB ' + sType);
+	$('#custom6').val(sSize + ' GB ' + sType);
 };
 
 $('#item_storage_size').change(() => {
