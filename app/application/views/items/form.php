@@ -779,7 +779,7 @@ function setStorageStr() {
 	let sSize = $('#item_storage_size').val();
 	let sType = $('#item_storage_type').val();
 
-	$('#custom6').val(sSize + ' GB ' + sType);
+	$('#custom6').val(sSize + 'GB ' + sType);
 };
 
 $('#item_storage_size').change(() => {
