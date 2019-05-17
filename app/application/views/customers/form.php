@@ -266,6 +266,7 @@ $(document).ready(function()
 			last_name: "required",
     		email:
 			{
+				email: true,
 				remote:
 				{
 					depends: function(){
