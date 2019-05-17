@@ -72,3 +72,8 @@
 		filter: grayscale(100%);
 	}
 }
+
+@media print {
+#customer-title textarea {
+	background: none !important;
+}

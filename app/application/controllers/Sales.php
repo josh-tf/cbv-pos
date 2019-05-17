@@ -728,7 +728,8 @@ class Sales extends Secure_Controller
             $data['customer_id'] = $customer_id;
 
             if (!empty($customer_info->company_name)) {
-                $data['customer'] = ($customer_info->first_name . ' ' . $customer_info->last_name . ' (' . $customer_info->company_name . ')');
+                $data['customer'] = ($customer_info->first_name . ' ' . $customer_info->last_name);
+                $data['customer_agency'] = ('c/- ' . $customer_info->company_name);
             } else {
                 $data['customer'] = $customer_info->first_name . ' ' . $customer_info->last_name;
             }
@@ -741,7 +742,7 @@ class Sales extends Secure_Controller
             } else {
                 $data['customer_location'] = '';
             }
-            //$data['customer_conc_id'] = $customer_info->conc_id;
+
             $package_id = $this->Customer->get_info($customer_id)->package_id;
             if ($package_id != null) {
                 $package_name = $this->Customer_rewards->get_name($package_id);
@@ -756,15 +757,18 @@ class Sales extends Secure_Controller
                 $data['customer_total'] = empty($cust_stats) ? 0 : $cust_stats->total;
             }
 
-            $data['customer_info'] = implode(PHP_EOL, array(
-                $data['customer'],
-                $data['customer_address'],
-                $data['customer_location'],
-                $data['customer_conc_id'],
-            ));
+            // array_filter used to strip agency if blank
+            $data['customer_info'] = implode(PHP_EOL, array_filter(array(
+                trim($data['customer']),
+                trim($data['customer_agency']),
+                trim(($data['customer_address'])),
+                trim(($data['customer_location'])),
+                '&#8203;', // issue with dompdf rendering newline for last line
+            )));
+
         }
 
-        return $customer_info;
+        return  $customer_info;
     }
 
     private function _load_sale_data($sale_id)

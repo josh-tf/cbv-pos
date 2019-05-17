@@ -1,8 +1,8 @@
 #block2
 {
 	overflow: hidden;
-	padding-top: 35px;
 	width: 100%;
+	padding-bottom:20px;
 }
 #company-title
 {
@@ -19,7 +19,7 @@
 	background: #eee !important;
 	border: 1px solid #777 !important;
 	padding: 5px;
-    width: 300px;
+	width: 315px;
     text-align:right;
 }
 #header
@@ -150,8 +150,8 @@
 #meta
 {
 	float: right;
-	margin-top: -22px;
-	width: 300px;
+	margin-top: -20px;
+	width: 315px;
 }
 #meta td
 {
