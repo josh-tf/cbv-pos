@@ -169,7 +169,7 @@ class Customer extends Person
             $this->db->where('customers.person_id !=', $customer_id);
         }
 
-        return ($this->db->get()->num_rows() == 1);
+        return ($this->db->get()->num_rows() >= 1);
     }
 
     /*
