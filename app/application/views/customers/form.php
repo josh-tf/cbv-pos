@@ -268,13 +268,18 @@ $(document).ready(function()
 			{
 				remote:
 				{
-					url: "<?php echo site_url($controller_name . '/ajax_check_email') ?>",
-					type: "post",
-					data: $.extend(csrf_form_base(),
-					{
-						"person_id" : "<?php echo $person_info->person_id; ?>",
-						// email is posted by default
-					})
+					depends: function(){
+							return ($('#company_name').val() == ''); // only do remote check if Agency is blank
+						},
+					param: {
+						url: "<?php echo site_url($controller_name . '/ajax_check_email') ?>",
+						type: "post",
+						data: $.extend(csrf_form_base(),
+							{
+								"person_id" : "<?php echo $person_info->person_id; ?>",
+								// email is posted by default
+							})
+				},
 				}
 			},
     		conc_id:
