@@ -26,8 +26,15 @@ load_language(true, array('sales', 'common'));
                     <div id="tax-invoice">TAX INVOICE</div>
                 </td>
                 <td id="customer-title">
-                    <pre class="customer-info"><?php if (isset($customer)) {echo $customer_info;}?></pre>
-                </td>
+                <pre class="customer-info" style="width:<?php echo (strlen($customer_info['customer_agency']) > 25 ? 300 : 150) ?>px"><?php
+
+if (isset($customer)) {
+    echo $customer_info['customer'] . "\n";
+    echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
+    echo $customer_info['customer_address'] . "\n";
+    echo $customer_info['customer_location'];
+}
+?></pre>                </td>
             </tr>
 
             <tr>

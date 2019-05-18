@@ -743,28 +743,17 @@ class Sales extends Secure_Controller
                 $data['customer_location'] = '';
             }
 
-            $package_id = $this->Customer->get_info($customer_id)->package_id;
-            if ($package_id != null) {
-                $package_name = $this->Customer_rewards->get_name($package_id);
-                $points = $this->Customer->get_info($customer_id)->points;
-                $data['customer_rewards']['package_id'] = $package_id;
-                $data['customer_rewards']['points'] = empty($points) ? 0 : $points;
-                $data['customer_rewards']['package_name'] = $package_name;
-            }
-
             if ($stats) {
                 $cust_stats = $this->Customer->get_stats($customer_id);
                 $data['customer_total'] = empty($cust_stats) ? 0 : $cust_stats->total;
             }
 
-            // array_filter used to strip agency if blank
-            $data['customer_info'] = implode(PHP_EOL, array_filter(array(
-                trim($data['customer']),
-                trim($data['customer_agency']),
-                trim(($data['customer_address'])),
-                trim(($data['customer_location'])),
-                '&#8203;', // issue with dompdf rendering newline for last line
-            )));
+            $data['customer_info'] = array(
+                'customer' => trim($data['customer']),
+                'customer_agency' => trim($data['customer_agency']),
+                'customer_address' => trim(($data['customer_address'])),
+                'customer_location' => trim(($data['customer_location'])),
+            );
 
         }
 

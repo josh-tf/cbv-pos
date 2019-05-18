@@ -35,7 +35,8 @@ $person_info->country = ($person_info->country == null ? 'Australia' : $person_i
 					<div class='col-xs-8'>
 						<?php echo form_input(array(
     'name' => 'company_name',
-    'id' => 'company_name',
+		'id' => 'company_name',
+		'maxlength' => 30,
     'class' => 'form-control input-sm',
     'value' => $person_info->company_name)
 ); ?>
