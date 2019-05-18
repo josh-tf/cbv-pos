@@ -43,7 +43,7 @@ class Detailed_cashflow extends Report
         $this->db->join('sales AS sales', 'sales.sale_id = payments.sale_id', 'inner');
 
         // only show completed sales (exclude suspended and canceled)
-        $this->db->where('sales.sale_type = 0');
+        $this->db->where('sales.sale_type = 0 AND sales.sale_status = 0');
 
         // group by the sale date
         $this->db->group_by('date(sales.sale_time)');
@@ -77,7 +77,7 @@ class Detailed_cashflow extends Report
         $this->db->join('sales AS sales', 'sales.sale_id = payments.sale_id', 'inner');
 
         // only show completed sales (exclude suspended and canceled)
-        $this->db->where('sales.sale_type = 0');
+        $this->db->where('sales.sale_type = 0 AND sales.sale_status = 0');
 
         // sale date (ignore time) between parameters
         $this->db->where('date(`sale_time`) BETWEEN ' . $this->db->escape(rawurldecode($inputs['start_date'])) . ' AND ' . $this->db->escape(rawurldecode($inputs['end_date'])));
