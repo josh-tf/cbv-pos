@@ -27,13 +27,13 @@ load_language(true, array('sales', 'common'));
                 </td>
                 <td id="customer-title">
 
-                    <pre class="customer-info" style="width:<?php echo (strlen($customer_info['customer_agency']) > 25 ? 300 : 150) ?>px"><?php
+                    <pre class="customer-info" style="width:<?php echo (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) ?>px"><?php
 
 if (isset($customer)) {
     echo $customer_info['customer'] . "\n";
     echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
     echo $customer_info['customer_address'] . "\n";
-    echo $customer_info['customer_location'];
+    echo $customer_info['customer_location'] . "\n";
 }
 ?></pre>
                 </td>
