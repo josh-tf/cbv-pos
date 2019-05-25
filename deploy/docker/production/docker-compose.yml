@@ -156,6 +156,7 @@ services:
       - DB_PASS=${backup_db_pass}
       - DB_DUMP_FREQ=${backup_db_frq}
       - DB_SERVER=cbv-prod-db
+      - DB_DUMP_BY_SCHEMA=true
     restart: always
 
   # Build containers
