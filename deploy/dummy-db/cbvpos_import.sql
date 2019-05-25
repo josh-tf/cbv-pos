@@ -1004,7 +1004,7 @@ ALTER TABLE `cbvpos_cash_up`
 --
 ALTER TABLE `cbvpos_customers`
   ADD UNIQUE KEY `conc_id` (`conc_id`),
-  ADD KEY `person_id` (`person_id`),
+  ADD PRIMARY KEY `person_id` (`person_id`),
   ADD KEY `package_id` (`package_id`);
 
 --
