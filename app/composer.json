@@ -1,6 +1,6 @@
 {
-	"name": "opensourcepos/opensourcepos",
-	"description" : "Open Source Point of Sale is a web based POS system written in the PHP language. It uses MySQL as backend and has a simple user interface",
+	"name": "josh-tf/cbv-pos",
+	"description" : "The Computerbank Point of Sale system is a customised fork of the opensourcepos software modified for Computerbank Victoria Inc.",
 	"license": "MIT",
 	"authors": [
 		{
@@ -8,6 +8,12 @@
 		},
 		{
 		    "name": "FrancescoUK"
+		},
+		{
+		    "name": "josh-tf"
+		},
+		{
+		    "name": "rjobeirne"
 		}
 	],
 	"type": "project",
@@ -15,7 +21,7 @@
 		"point-of-sale",
 		"POS"
 	],
-	"homepage": "https://github.com/opensourcepos/opensourcepos",
+	"homepage": "https://github.com/josh-tf/cbv-pos",
 	"require": {
 		"php": "^5.5 || ^7.0",
 		"codeigniter/framework": "^3.1",

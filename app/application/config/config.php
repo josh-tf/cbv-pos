@@ -4,11 +4,11 @@
 | Code Version
 |--------------------------------------------------------------------------
 |
-| This is the version of Open Source Point of Sale you're running
+| This is the version of CBV-POS that we are on
 |
 |
  */
-$config['application_version'] = '3.2.0';
+$config['application_version'] = '1.2.0';
 
 /*
 |--------------------------------------------------------------------------

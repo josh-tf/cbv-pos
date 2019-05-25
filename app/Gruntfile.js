@@ -14,8 +14,8 @@ module.exports = function (grunt) {
 					'bootstrap-table': ["src/bootstrap-table.js", "src/bootstrap-table.css", "dist/extensions/export/bootstrap-table-export.js", "dist/extensions/mobile/bootstrap-table-mobile.js", "dist/extensions/sticky-header/bootstrap-table-sticky-header.js", "dist/extensions/sticky-header/bootstrap-table-sticky-header.css"]
 				},
 				dest: {
-					'js': 'tmp/opensourcepos_bower.js',
-					'css': 'tmp/opensourcepos_bower.css'
+					'js': 'tmp/cbv-pos_bower.js',
+					'css': 'tmp/cbv-pos_bower.css'
 				}
 			}
 		},
@@ -62,7 +62,7 @@ module.exports = function (grunt) {
 		cssmin: {
 			target: {
 				files: {
-					'public/dist/<%= pkg.name %>.min.css': ['tmp/opensourcepos_bower.css', 'public/css/*.css', '!public/css/login.css', '!public/css/invoice_email.css', '!public/css/barcode_font.css']
+					'public/dist/<%= pkg.name %>.min.css': ['tmp/cbv-pos_bower.css', 'public/css/*.css', '!public/css/login.css', '!public/css/invoice_email.css', '!public/css/barcode_font.css']
 				}
 			}
 		},
@@ -72,7 +72,7 @@ module.exports = function (grunt) {
 					separator: ';'
 				},
 				files: {
-					'tmp/<%= pkg.name %>.js': ['tmp/opensourcepos_bower.js', 'public/js/jquery*', 'public/js/*.js']
+					'tmp/<%= pkg.name %>.js': ['tmp/cbv-pos_bower.js', 'public/js/jquery*', 'public/js/*.js']
 				}
 			}
 		},
@@ -116,7 +116,7 @@ module.exports = function (grunt) {
 					closeTag: '<!-- end mincss template tags -->',
 					ignorePath: '../../../public/'
 				},
-				// jquery-ui must be first or at least before opensourcepos.min.css
+				// jquery-ui must be first or at least before cbv-pos.min.css
 				src: ['public/dist/jquery-ui/*.css', 'public/dist/trumbowyg/*.css', 'public/dist/*.css'],
 				dest: 'application/views/partial/header.php',
 			},
@@ -171,8 +171,8 @@ module.exports = function (grunt) {
 			dev: {
 				options: {
 					match: [{
-						'opensourcepos.min.js': 'public/dist/opensourcepos.min.js',
-						'opensourcepos.min.css': 'public/dist/opensourcepos.min.css'
+						'cbv-pos.min.js': 'public/dist/cbv-pos.min.js',
+						'cbv-pos.min.css': 'public/dist/cbv-pos.min.css'
 					}],
 					replacement: 'md5'
 				},
@@ -227,7 +227,7 @@ module.exports = function (grunt) {
 			main: {
 				options: {
 					mode: 'zip',
-					archive: 'dist/opensourcepos.zip'
+					archive: 'dist/cbv-pos-dist.zip'
 				},
 				files: [{
 					src: ['public/**', 'vendor/**', 'application/**', '!/public/images/menubar/png/', '!/public/dist/bootswatch/', '/public/dist/bootswatch/*/*.css', 'database/**', '*.txt', '*.md', 'LICENSE', 'docker*', 'Dockerfile', '**/.htaccess', '*.csv']
