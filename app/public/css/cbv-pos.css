@@ -379,6 +379,21 @@ input#cbvid_check {
 	}
 }
 
+
+/* Added CBV logo, this will hide it on a small screen */
+
+.main-logo {
+	display: none;
+}
+
+@media only screen and (min-width: 620px) {
+	.main-logo {
+		display: block;
+		width: 155px;
+		margin: 10px 0 0 15px;
+	}
+}
+
 @media (max-width: 1000px) {
 
 	/* Center the nav bar button */
@@ -409,17 +424,17 @@ input#cbvid_check {
 	}
 
 	.navbar-nav li {
-		width: 300px !important;
+		width: 160px !important;
 		background: none;
-		margin: 0 auto;
-		border-bottom: 1px solid #8c2e02;
-		border-right: 1px solid #8c2e02;
-		border-left: 1px solid #8c2e02;
+		border: 1px solid #8c2e02 !important;
+		margin: 2px 0 1px 0;
+		display: inline-block;
+		vertical-align: top;
+		width: 50%;
 	}
 
-	.navbar-nav li:last-child {
-		border-right: 1px solid #8c2e02;
-		border-left: 1px solid #8c2e02;
+	ul.nav.navbar-nav.navbar-right {
+		text-align: center;
 	}
 
 	.navbar-nav {
@@ -428,6 +443,7 @@ input#cbvid_check {
 
 	.navbar .menu-icon img {
 		float: left;
+		margin-top: -3px;
 	}
 
 	.navbar-nav li {
@@ -437,7 +453,7 @@ input#cbvid_check {
 	span.nav-text {
 		float: right;
 		line-height: 0px;
-		margin-top: -7px;
+		margin-top: -9px;
 	}
 
 	.navbar-nav>li {
@@ -453,18 +469,8 @@ input#cbvid_check {
 		display: block !important;
 	}
 
-}
-
-/* Added CBV logo, this will hide it on a small screen */
-
-.main-logo {
-	display: none;
-}
-
-@media only screen and (min-width: 620px) {
 	.main-logo {
-		display: block;
-		width: 155px;
-		margin: 10px 0 10px 0;
+		margin: 10px 0 10px 15px;
 	}
+
 }
