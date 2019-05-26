@@ -1168,8 +1168,6 @@ class Reports extends Secure_Controller
                 'subtotal' => to_currency($row['subtotal']),
                 'tax' => to_currency_tax($row['tax']),
                 'total' => to_currency($row['total']),
-                'cost' => to_currency($row['cost']),
-                'profit' => to_currency($row['profit']),
                 'payment_type' => $row['payment_type'],
                 'comment' => $row['comment'],
                 'edit' => anchor('sales/edit/' . $row['sale_id'], '<span class="glyphicon glyphicon-edit"></span>',
@@ -1184,15 +1182,12 @@ class Reports extends Secure_Controller
                 $details_data[$row['sale_id']][] = $this->xss_clean(array(
                     $drow['name'],
                     $drow['category'],
-                    $drow['serialnumber'],
                     $drow['description'],
                     $quantity_purchased,
                     to_currency($drow['subtotal']),
                     to_currency_tax($drow['tax']),
                     to_currency($drow['total']),
-                    to_currency($drow['cost']),
-                    to_currency($drow['profit']),
-                    $drow['discount_amount']));
+                    to_currency($drow['discount_amount'])));
             }
 
             if (isset($report_data['rewards'][$key])) {
