@@ -617,8 +617,8 @@ class Sale extends CI_Model
                 // Update stock quantity if item type is a standard stock item and the sale is a standard sale
                 $item_quantity = $this->Item_quantity->get_item_quantity($item['item_id'], $item['item_location']);
 
-                // if an invoice is partially paid (for a deposit) OR item is a deposit item then don't deduct from the item qty
-                if ((($sale_type == SALE_TYPE_INVOICE) && ($total_amount < $item['price'])) || (substr($item['name'], 0, 7) == 'Deposit')) {
+                // if an invoice is partially paid (for a deposit) then don't deduct from the item qty
+                if ((($sale_type == SALE_TYPE_INVOICE) && ($total_amount < $item['price']))) {
                     $qtyToDeduct = 0;
                 } else {
                     $qtyToDeduct = $item['quantity'];
