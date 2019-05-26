@@ -1,11 +1,22 @@
 html,
 body {
 	height: 100%;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Open Sans", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: 'Open Sans', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	font-family: "Open Sans", sans-serif;
 }
 
 a.none {
@@ -26,8 +37,8 @@ a.none {
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
-	color: #2C3E50;
-	background-color: #FFFFFF;
+	color: #2c3e50;
+	background-color: #ffffff;
 }
 
 .jumbotron.push-spaces {
@@ -135,7 +146,7 @@ label.required {
 	color: #e20000;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 868px) {
 	.navbar-nav>li>a {
 		padding: 10px 10px 9px;
 	}
@@ -163,6 +174,54 @@ label.required {
 	visibility: hidden;
 }
 
+@media (max-width: 768px) {
+	.topbar {
+		text-align: center;
+	}
+}
+
+@media (max-width: 1000px) {
+	.navbar-header {
+		float: none;
+	}
+
+	.navbar-toggle {
+		display: block;
+	}
+
+	.navbar-collapse {
+		border-top: 1px solid transparent;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	}
+
+	.navbar-fixed-top {
+		top: 0;
+		border-width: 0 0 1px;
+	}
+
+	.navbar-collapse.collapse {
+		display: none !important;
+	}
+
+	.navbar-nav {
+		float: none !important;
+		margin-top: 7.5px;
+	}
+
+	.navbar-nav>li {
+		float: none;
+	}
+
+	.navbar-nav>li>a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.collapse.in {
+		display: block !important;
+	}
+}
+
 /* Added CBV logo, this will hide it on a small screen */
 
 .main-logo {
@@ -180,10 +239,9 @@ label.required {
 /* Custom CSS on top of the default Bootswatch theme 'United' for CBV theming */
 
 .navbar-default {
-	background-image: linear-gradient(#f1540b,#9c3a0c);
+	background-image: linear-gradient(#f1540b, #9c3a0c);
 	border-color: #af4819;
 }
-
 
 /* Make the input boxes on items>form a little smaller to make things cleaner */
 textarea#custom13,
@@ -239,7 +297,7 @@ textarea#description {
 }
 
 .bootstrap-dialog.type-primary .modal-header {
-    background-image: linear-gradient(#0f007d, #060035);
+	background-image: linear-gradient(#0f007d, #060035);
 }
 
 .btn-info:hover,
@@ -344,7 +402,7 @@ td.print_hide {
 /* Reports page cleanup / theme matching */
 
 .panel-primary>.panel-heading {
-	background-image: linear-gradient(#f1540b,#9c3a0c);
+	background-image: linear-gradient(#f1540b, #9c3a0c);
 	border-color: #d1541a;
 }
 
@@ -362,16 +420,18 @@ input#cbvid_check {
 }
 
 .navbar-nav li {
-    width: 85px;
-    border-left: 1px solid #a43c0b;
-    text-align: center;
+	width: 85px;
+	border-left: 1px solid #a43c0b;
+	text-align: center;
 }
 
 .navbar-nav li:last-child {
-    border-right: 1px solid #a43c0b;
+	border-right: 1px solid #a43c0b;
 }
 
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
-    color: #ffffff;
-    background-image: linear-gradient(#f1540b,#752e0d);
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+	color: #ffffff;
+	background-image: linear-gradient(#f1540b, #752e0d);
 }
