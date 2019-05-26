@@ -1118,6 +1118,7 @@ class Reports extends Secure_Controller
         $sale_type_options = array();
         $sale_type_options['complete'] = $this->lang->line('reports_complete');
         $sale_type_options['sales'] = $this->lang->line('reports_completed_sales');
+        $sale_type_options['invoices'] = $this->lang->line('reports_completed_invoices');
         if ($this->config->item('invoice_enable') == '1') {
             $sale_type_options['quotes'] = $this->lang->line('reports_quotes');
             if ($this->config->item('work_order_enable') == '1') {

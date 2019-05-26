@@ -86,14 +86,17 @@ abstract class Summary_report extends Report
             $this->db->where('sales.sale_status', COMPLETED);
             $this->db->group_start();
             $this->db->where('sales.sale_type', SALE_TYPE_POS);
-            $this->db->or_where('sales.sale_type', SALE_TYPE_INVOICE);
             $this->db->or_where('sales.sale_type', SALE_TYPE_RETURN);
             $this->db->group_end();
         } elseif ($inputs['sale_type'] == 'sales') {
             $this->db->where('sales.sale_status', COMPLETED);
             $this->db->group_start();
             $this->db->where('sales.sale_type', SALE_TYPE_POS);
-            $this->db->or_where('sales.sale_type', SALE_TYPE_INVOICE);
+            $this->db->group_end();
+        } elseif ($inputs['sale_type'] == 'invoices') {
+            $this->db->where('sales.sale_status', COMPLETED);
+            $this->db->group_start();
+            $this->db->where('sales.sale_type', SALE_TYPE_INVOICE);
             $this->db->group_end();
         } elseif ($inputs['sale_type'] == 'quotes') {
             $this->db->where('sales.sale_status', SUSPENDED);

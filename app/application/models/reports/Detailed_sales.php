@@ -102,14 +102,17 @@ class Detailed_sales extends Report
             $this->db->where('sale_status', COMPLETED);
             $this->db->group_start();
             $this->db->where('sale_type', SALE_TYPE_POS);
-            $this->db->or_where('sale_type', SALE_TYPE_INVOICE);
             $this->db->or_where('sale_type', SALE_TYPE_RETURN);
             $this->db->group_end();
         } elseif ($inputs['sale_type'] == 'sales') {
             $this->db->where('sale_status', COMPLETED);
             $this->db->group_start();
             $this->db->where('sale_type', SALE_TYPE_POS);
-            $this->db->or_where('sale_type', SALE_TYPE_INVOICE);
+            $this->db->group_end();
+        } elseif ($inputs['sale_type'] == 'invoices') {
+            $this->db->where('sale_status', COMPLETED);
+            $this->db->group_start();
+            $this->db->where('sale_type', SALE_TYPE_INVOICE);
             $this->db->group_end();
         } elseif ($inputs['sale_type'] == 'quotes') {
             $this->db->where('sale_status', SUSPENDED);
@@ -159,14 +162,17 @@ class Detailed_sales extends Report
             $this->db->where('sale_status', COMPLETED);
             $this->db->group_start();
             $this->db->where('sale_type', SALE_TYPE_POS);
-            $this->db->or_where('sale_type', SALE_TYPE_INVOICE);
             $this->db->or_where('sale_type', SALE_TYPE_RETURN);
             $this->db->group_end();
         } elseif ($inputs['sale_type'] == 'sales') {
             $this->db->where('sale_status', COMPLETED);
             $this->db->group_start();
             $this->db->where('sale_type', SALE_TYPE_POS);
-            $this->db->or_where('sale_type', SALE_TYPE_INVOICE);
+            $this->db->group_end();
+        } elseif ($inputs['sale_type'] == 'invoices') {
+            $this->db->where('sale_status', COMPLETED);
+            $this->db->group_start();
+            $this->db->where('sale_type', SALE_TYPE_INVOICE);
             $this->db->group_end();
         } elseif ($inputs['sale_type'] == 'quotes') {
             $this->db->where('sale_status', SUSPENDED);
