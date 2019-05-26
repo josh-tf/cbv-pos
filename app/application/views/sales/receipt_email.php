@@ -86,8 +86,12 @@ foreach ($cart as $line => $item) {
 
     if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop
 
-        $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
-        $isComputer = true;
+        if (!(substr($item['name'], 0, 7) == 'Deposit')) {
+
+            $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
+            $isComputer = true;
+
+        }
 
     } else {
         $item['name'] = ucfirst($item['name']); // otherwise just use the name
@@ -103,7 +107,11 @@ foreach ($cart as $line => $item) {
             <tr class="item-row"
                 <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
                 <td class="item-description" colspan="5">
-                    <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
+                    <div>
+                    <?php
+echo (($isComputer) ? '<b>Machine Specs:</b> ' : '<b>Description:</b> ') . $item['description'];
+    ?>
+                    </div>
                 </td>
             </tr>
             <?php
