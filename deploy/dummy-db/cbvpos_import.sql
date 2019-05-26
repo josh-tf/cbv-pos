@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: cbvposdev-db
--- Generation Time: Oct 18, 2018 at 07:00 AM
--- Server version: 10.1.21-MariaDB-1~jessie
--- PHP Version: 7.2.8
+-- Host: cbv-dev-db
+-- Generation Time: May 26, 2019 at 04:33 AM
+-- Server version: 5.7.26
+-- PHP Version: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cbvpos_blank`
+-- Database: `cbv-pos`
 --
 
 -- --------------------------------------------------------
@@ -161,12 +161,12 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 ('sales_invoice_format', '{ISEQ:3}'),
 ('sales_quote_format', 'Q%y{QSEQ:6}'),
 ('smtp_crypto', 'ssl'),
+('smtp_from', ''),
 ('smtp_host', ''),
 ('smtp_pass', ''),
 ('smtp_port', ''),
 ('smtp_timeout', ''),
 ('smtp_user', ''),
-('smtp_from', ''),
 ('statistics', '1'),
 ('suggestions_first_column', 'name'),
 ('suggestions_second_column', 'unit_price'),
@@ -390,8 +390,8 @@ INSERT INTO `cbvpos_grants` (`permission_id`, `person_id`, `menu_group`) VALUES
 ('messages', 1, 'office'),
 ('office', 1, 'home'),
 ('reports', 1, 'home'),
-('reports_categories', 1, '--'),
 ('reports_cashflows', 1, '--'),
+('reports_categories', 1, '--'),
 ('reports_computers', 1, '--'),
 ('reports_customers', 1, '--'),
 ('reports_discounts', 1, '--'),
@@ -435,7 +435,9 @@ INSERT INTO `cbvpos_inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_
 (3, 3, 1, '2018-10-13 22:19:22', 'Manual Edit of Quantity', 1, '100.000'),
 (4, 4, 1, '2018-10-13 22:19:40', 'Manual Edit of Quantity', 1, '5.000'),
 (5, 3, 1, '2018-10-13 22:19:56', 'POS 1', 1, '-1.000'),
-(6, 1, 1, '2018-10-13 22:19:56', 'POS 1', 1, '-1.000');
+(6, 1, 1, '2018-10-13 22:19:56', 'POS 1', 1, '-1.000'),
+(7, 5, 1, '2019-05-26 14:30:31', 'Manual Edit of Quantity', 1, '1.000'),
+(8, 6, 1, '2019-05-26 14:31:03', 'Manual Edit of Quantity', 1, '1.000');
 
 -- --------------------------------------------------------
 
@@ -489,11 +491,13 @@ CREATE TABLE `cbvpos_items` (
 -- Dumping data for table `cbvpos_items`
 --
 
-INSERT INTO `cbvpos_items` (`name`, `category`, `supplier_id`, `item_number`, `description`, `cost_price`, `unit_price`, `reorder_level`, `receiving_quantity`, `item_id`, `pic_filename`, `allow_alt_description`, `is_serialized`, `stock_type`, `item_type`, `tax_category_id`, `deleted`, `custom1`, `custom2`, `custom3`, `custom4`, `custom5`, `custom6`, `custom7`, `custom8`, `custom9`, `custom10`, `custom11`, `custom12`, `custom13`, `custom14`, `custom15`, `custom16`, `custom17`, `custom18`, `custom19`, `custom20`) VALUES
-('8111', 'Laptop', NULL, NULL, 'Lenovo T440, i5, 2.4 Ghz, 8 GB RAM, 250 GB HDD, Ubuntu 16.04, 14 Inch Screen, 4.4 Hours, Has SSD, New Bag', '0.00', '250.00', '0.000', '1.000', 1, NULL, 0, 0, 0, 0, 0, 0, '2018-10-13', 'Lenovo T440', 'i5', '2.4', '8', '250', 'Ubuntu 16.04', '14', '', '', '4.4', '', 'Has SSD, New Bag', '', '', '', '', '', '', ''),
-('8222', 'Desktop', NULL, NULL, 'Type: Tower, Dell Optiplex 4000, C2D, 2.2 Ghz, 4 GB RAM, 160 GB HDD, Ubuntu 16.04, 20 Inch Screen, DVD-RW', '0.00', '75.00', '0.000', '1.000', 2, NULL, 0, 0, 0, 0, 0, 0, '2018-10-13', 'Dell Optiplex 4000', 'C2D', '2.2', '4', '160', 'Ubuntu 16.04', '20', 'DVD-RW', 'Tower', '', '55', '', '', '', '', '', '', '', ''),
-('Wifi USB', 'Misc (New)', NULL, NULL, 'New USB Wifi Stick', '0.00', '10.00', '0.000', '1.000', 3, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 'Ubuntu 16.04', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-('Used Case', 'Misc (Used)', NULL, NULL, 'Used PC Case without power supply', '0.00', '10.00', '0.000', '1.000', 4, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 'Ubuntu 16.04', '', '', '', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `cbvpos_items` (`name`, `category`, `supplier_id`, `item_number`, `description`, `cost_price`, `unit_price`, `reorder_level`, `receiving_quantity`, `item_id`, `pic_filename`, `allow_alt_description`, `is_serialized`, `stock_type`, `item_type`, `tax_category_id`, `deleted`, `on_hold`, `hold_for`, `custom1`, `custom2`, `custom3`, `custom4`, `custom5`, `custom6`, `custom7`, `custom8`, `custom9`, `custom10`, `custom11`, `custom12`, `custom13`, `custom14`, `custom15`, `custom16`, `custom17`, `custom18`, `custom19`, `custom20`) VALUES
+('8111', 'Laptop', NULL, NULL, 'Lenovo T440, i5, 2.4 Ghz, 8 GB RAM, 250 GB HDD, Ubuntu 16.04, 14 Inch Screen, 4.4 Hours, Has SSD, New Bag', '0.00', '250.00', '0.000', '1.000', 1, NULL, 0, 0, 0, 0, 0, 0, 0, NULL, '2018-10-13', 'Lenovo T440', 'i5', '2.4', '8', '250', 'Ubuntu 16.04', '14', '', '', '4.4', '', 'Has SSD, New Bag', '', '', '', '', '', '', ''),
+('8222', 'Desktop', NULL, NULL, 'Type: Tower, Dell Optiplex 4000, C2D, 2.2 Ghz, 4 GB RAM, 160 GB HDD, Ubuntu 16.04, 20 Inch Screen, DVD-RW', '0.00', '75.00', '0.000', '1.000', 2, NULL, 0, 0, 0, 0, 0, 0, 0, NULL, '2018-10-13', 'Dell Optiplex 4000', 'C2D', '2.2', '4', '160', 'Ubuntu 16.04', '20', 'DVD-RW', 'Tower', '', '55', '', '', '', '', '', '', '', ''),
+('Wifi USB', 'Misc (New)', NULL, NULL, 'New USB Wifi Stick', '0.00', '10.00', '0.000', '1.000', 3, NULL, 0, 0, 1, 0, 0, 0, 0, NULL, '', '', '', '', '', '', 'Ubuntu 16.04', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Used Case', 'Misc (Used)', NULL, NULL, 'Used PC Case without power supply', '0.00', '10.00', '0.000', '1.000', 4, NULL, 0, 0, 1, 0, 0, 0, 0, NULL, '', '', '', '', '', '', 'Ubuntu 16.04', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Deposit (Laptop)', 'Laptop', NULL, NULL, 'Deposit for CBV Laptop', '0.00', '0.00', '0.000', '1.000', 5, NULL, 0, 0, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Deposit (Desktop)', 'Desktop', NULL, NULL, 'Deposit for CBV Desktop', '0.00', '0.00', '0.000', '1.000', 6, NULL, 0, 0, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -515,7 +519,9 @@ INSERT INTO `cbvpos_items_taxes` (`item_id`, `name`, `percent`) VALUES
 (1, ' GST', '0.000'),
 (2, ' GST', '0.000'),
 (3, ' GST', '10.000'),
-(4, ' GST', '0.000');
+(4, ' GST', '0.000'),
+(5, ' GST', '0.000'),
+(6, ' GST', '0.000');
 
 -- --------------------------------------------------------
 
@@ -566,7 +572,9 @@ INSERT INTO `cbvpos_item_quantities` (`item_id`, `location_id`, `quantity`) VALU
 (1, 1, '0.000'),
 (2, 1, '1.000'),
 (3, 1, '99.000'),
-(4, 1, '5.000');
+(4, 1, '5.000'),
+(5, 1, '1.000'),
+(6, 1, '1.000');
 
 -- --------------------------------------------------------
 
@@ -685,8 +693,8 @@ INSERT INTO `cbvpos_permissions` (`permission_id`, `module_id`, `location_id`) V
 ('receivings', 'receivings', NULL),
 ('receivings_stock', 'receivings', 1),
 ('reports', 'reports', NULL),
-('reports_categories', 'reports', NULL),
 ('reports_cashflows', 'reports', NULL),
+('reports_categories', 'reports', NULL),
 ('reports_computers', 'reports', NULL),
 ('reports_customers', 'reports', NULL),
 ('reports_discounts', 'reports', NULL),
@@ -893,6 +901,13 @@ CREATE TABLE `cbvpos_sessions` (
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `cbvpos_sessions`
+--
+
+INSERT INTO `cbvpos_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
+('aa8e789b961acbd175fac431e9fd1ec1fc50e6b5', '172.18.0.1', 1558845127, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535383834353030373b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b);
+
 -- --------------------------------------------------------
 
 --
@@ -1003,8 +1018,8 @@ ALTER TABLE `cbvpos_cash_up`
 -- Indexes for table `cbvpos_customers`
 --
 ALTER TABLE `cbvpos_customers`
+  ADD PRIMARY KEY (`person_id`),
   ADD UNIQUE KEY `conc_id` (`conc_id`),
-  ADD PRIMARY KEY `person_id` (`person_id`),
   ADD KEY `package_id` (`package_id`);
 
 --
@@ -1284,13 +1299,13 @@ ALTER TABLE `cbvpos_giftcards`
 -- AUTO_INCREMENT for table `cbvpos_inventory`
 --
 ALTER TABLE `cbvpos_inventory`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_items`
 --
 ALTER TABLE `cbvpos_items`
-  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cbvpos_item_kits`
@@ -1315,6 +1330,7 @@ ALTER TABLE `cbvpos_receivings`
 --
 ALTER TABLE `cbvpos_sales`
   MODIFY `sale_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `cbvpos_sales_reward_points`
 --
