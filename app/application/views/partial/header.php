@@ -9,6 +9,7 @@
 	</title>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="<?php echo 'dist/bootswatch/' . (empty($this->config->item('theme')) ? 'flatly' : $this->config->item('theme')) . '/bootstrap.min.css' ?>" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
 	<?php if ($this->input->cookie('debug') == 'true' || $this->input->get('debug') == 'true'): ?>
 	<!-- bower:css -->

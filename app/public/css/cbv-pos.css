@@ -1,6 +1,11 @@
 html,
 body {
 	height: 100%;
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: 'Open Sans', sans-serif;
 }
 
 a.none {
@@ -127,7 +132,7 @@ button.btn.dropdown-toggle.btn-sm {
 }
 
 label.required {
-	color: red;
+	color: #e20000;
 }
 
 @media (min-width: 768px) {
@@ -175,7 +180,7 @@ label.required {
 /* Custom CSS on top of the default Bootswatch theme 'United' for CBV theming */
 
 .navbar-default {
-	background-color: #d1541a;
+	background-image: linear-gradient(#ff632d, #9c2800);
 	border-color: #af4819;
 }
 
@@ -219,8 +224,19 @@ textarea#description {
 .btn-info,
 .btn-primary {
 	color: #ffffff;
-	background-color: #0f007d;
+	background-image: linear-gradient(#0f007d, #060035);
 	border-color: #080042;
+}
+
+.btn-default:disabled, #show_suspended_sales_button, #suspend_sale_button {
+	background-image: linear-gradient(#aea79f, #717171);
+}
+
+.btn-default:disabled, #show_suspended_sales_button:hover, #suspend_sale_button:hover {
+	background-image: linear-gradient(#96918c, #505050);
+}
+.bootstrap-dialog.type-primary .modal-header {
+    background-image: linear-gradient(#0f007d, #060035);
 }
 
 .btn-info:hover,
@@ -238,10 +254,6 @@ textarea#description {
 	border-color: #0f007d;
 }
 
-.bootstrap-dialog.type-primary .modal-header {
-	background-color: #0f007d;
-}
-
 h3.text-center {
 	color: #0f007d;
 }
@@ -257,11 +269,11 @@ h3.text-center {
 }
 
 .topbar {
-	background: #0f007d;
+	background-image: linear-gradient(#0f007d, #060035);
 }
 
 .topbar a {
-	color: #ffc0a8;
+	color: #fff;
 }
 
 .close {
@@ -276,7 +288,7 @@ h3.text-center {
 }
 
 .lookup {
-	background: #0f007d;
+	background-image: linear-gradient(#0f007d, #060035);
 	color: #fff;
 	width: 64px;
 	height: 32px;
@@ -329,7 +341,7 @@ td.print_hide {
 /* Reports page cleanup / theme matching */
 
 .panel-primary>.panel-heading {
-	background-color: #d1541a;
+	background-image: linear-gradient(#ff632d, #9c2800);
 	border-color: #d1541a;
 }
 
