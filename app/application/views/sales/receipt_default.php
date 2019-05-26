@@ -13,11 +13,11 @@ if (isset($customer)) {
     ?>
             <textarea id="customer" rows="4" cols="6" style="width:<?php echo (strlen($customer_info['customer_agency']) > 25 ? 350 : 250) ?>px">
                 <?php
-                echo $customer_info['customer'] . "\n";
-                echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
-                echo $customer_info['customer_address'] . "\n";
-                echo $customer_info['customer_location'];
-                ?>
+echo $customer_info['customer'] . "\n";
+    echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
+    echo $customer_info['customer_address'] . "\n";
+    echo $customer_info['customer_location'];
+    ?>
 
             </textarea>
             <?php
@@ -99,8 +99,12 @@ foreach ($cart as $line => $item) {
 
     if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop
 
-        $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
-        $isComputer = true;
+        if (!(substr($item['name'], 0, 7) == 'Deposit')) {
+
+            $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
+            $isComputer = true;
+
+        }
 
     } else {
         $item['name'] = ucfirst($item['name']); // otherwise just use the name
@@ -120,7 +124,11 @@ foreach ($cart as $line => $item) {
         <tr class="item-row"
             <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
             <td class="item-description" colspan="5">
-                <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
+                <div>
+                    <?php
+echo (($isComputer) ? '<b>Machine Specs:</b> ' : '<b>Description:</b> ') . $item['description'];
+    ?>
+            </div>
             </td>
         </tr>
         <?php
@@ -250,7 +258,7 @@ foreach ($payments as $payment_id => $payment) {
     <!-- routine for inserting extra info like passwords, for PC and Laptop sales -->
     <?php
 
-    if (($total > 0) && $isComputer) { // search value in the array only if its a sale
+if (($total > 0) && $isComputer) { // search value in the array only if its a sale
 
     echo '<div class="Thankyou-Note">' . $this->lang->line('sales_receipt_extra_page_note') . '</div>';
     echo '<div class="pagebreak"></div>';
