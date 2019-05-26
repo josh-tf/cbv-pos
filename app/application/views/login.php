@@ -7,8 +7,10 @@
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="<?php echo 'dist/bootswatch/' . (empty($this->config->item('theme')) ? 'flatly' : $this->config->item('theme')) . '/bootstrap.min.css' ?>"/>
 	<!-- start css template tags -->
-	<link rel="stylesheet" type="text/css" href="css/login.css"/>
-	<!-- end css template tags -->
+
+	<link rel="stylesheet" type="text/css" href="css/login.css"/>
+
+	<!-- end css template tags -->
 </head>
 
 <body>
@@ -43,7 +45,7 @@
 			</div>
 		<?php echo form_close(); ?>
 
-		<h1>Open Source Point Of Sale <?php echo $this->config->item('application_version'); ?></h1>
+		<h1>Computerbank Point of Sale <?php echo $this->config->item('application_version'); ?></h1>
 
 	</div>
 </body>
