@@ -11,7 +11,7 @@ load_language(true, array('customers', 'sales', 'employees'));
 if (isset($customer)) {
 
     ?>
-            <textarea id="customer" rows="4" cols="6" style="width:<?php echo (strlen($customer_info['customer_agency']) > 25 ? 350 : 250) ?>px">
+            <textarea id="customer" rows="4" cols="6" style="<? echo ('width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) . 'px') ?>">
                 <?php
 echo $customer_info['customer'] . "\n";
     echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
