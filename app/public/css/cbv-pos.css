@@ -174,70 +174,7 @@ label.required {
 	visibility: hidden;
 }
 
-@media (max-width: 768px) {
-	.topbar {
-		text-align: center;
-	}
-}
-
-@media (max-width: 1000px) {
-	.navbar-header {
-		float: none;
-	}
-
-	.navbar-toggle {
-		display: block;
-	}
-
-	.navbar-collapse {
-		border-top: 1px solid transparent;
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-	}
-
-	.navbar-fixed-top {
-		top: 0;
-		border-width: 0 0 1px;
-	}
-
-	.navbar-collapse.collapse {
-		display: none !important;
-	}
-
-	.navbar-nav {
-		float: none !important;
-		margin-top: 7.5px;
-	}
-
-	.navbar-nav>li {
-		float: none;
-	}
-
-	.navbar-nav>li>a {
-		padding-top: 10px;
-		padding-bottom: 10px;
-	}
-
-	.collapse.in {
-		display: block !important;
-	}
-}
-
-/* Added CBV logo, this will hide it on a small screen */
-
-.main-logo {
-	display: none;
-}
-
-@media only screen and (min-width: 620px) {
-	.main-logo {
-		display: block;
-		width: 155px;
-		margin: 10px 0 10px 0;
-	}
-}
-
 /* Custom CSS on top of the default Bootswatch theme 'United' for CBV theming */
-
 .navbar-default {
 	background-image: linear-gradient(#f1540b, #9c3a0c);
 	border-color: #af4819;
@@ -434,4 +371,100 @@ input#cbvid_check {
 .navbar-default .navbar-nav>.active>a:focus {
 	color: #ffffff;
 	background-image: linear-gradient(#f1540b, #752e0d);
+}
+
+@media (max-width: 768px) {
+	.topbar {
+		text-align: center;
+	}
+}
+
+@media (max-width: 1000px) {
+
+	/* Center the nav bar button */
+	button.navbar-toggle.collapsed {
+		margin-top: 15px;
+	}
+
+	.navbar-header {
+		float: none;
+	}
+
+	.navbar-toggle {
+		display: block;
+	}
+
+	.navbar-collapse {
+		border-top: 1px solid transparent;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	}
+
+	.navbar-fixed-top {
+		top: 0;
+		border-width: 0 0 1px;
+	}
+
+	.navbar-collapse.collapse {
+		display: none !important;
+	}
+
+	.navbar-nav li {
+		width: 300px !important;
+		background: none;
+		margin: 0 auto;
+		border-bottom: 1px solid #8c2e02;
+		border-right: 1px solid #8c2e02;
+		border-left: 1px solid #8c2e02;
+	}
+
+	.navbar-nav li:last-child {
+		border-right: 1px solid #8c2e02;
+		border-left: 1px solid #8c2e02;
+	}
+
+	.navbar-nav {
+		float: right;
+	}
+
+	.navbar .menu-icon img {
+		float: left;
+	}
+
+	.navbar-nav li {
+		width: 140px;
+	}
+
+	span.nav-text {
+		float: right;
+		line-height: 0px;
+		margin-top: -7px;
+	}
+
+	.navbar-nav>li {
+		float: none !important;
+	}
+
+	.navbar-nav>li>a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.collapse.in {
+		display: block !important;
+	}
+
+}
+
+/* Added CBV logo, this will hide it on a small screen */
+
+.main-logo {
+	display: none;
+}
+
+@media only screen and (min-width: 620px) {
+	.main-logo {
+		display: block;
+		width: 155px;
+		margin: 10px 0 10px 0;
+	}
 }
