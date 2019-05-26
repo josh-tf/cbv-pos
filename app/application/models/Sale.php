@@ -618,12 +618,8 @@ class Sale extends CI_Model
                 $item_quantity = $this->Item_quantity->get_item_quantity($item['item_id'], $item['item_location']);
 
                 // if an invoice is partially paid (for a deposit) then don't deduct from the item qty - item should be placed on hold
-                if ($sale_type == SALE_TYPE_INVOICE) {
-                    if ($total_amount < $item['price']) {
-                        $qtyToDeduct = 0;
-                    } else {
-                        $qtyToDeduct = $item['quantity'];
-                    }
+                if ((($sale_type == SALE_TYPE_INVOICE) && ($total_amount < $item['price'])) || (substr($item['name'], 0, 7) == 'Deposit')) {
+                    $qtyToDeduct = 0;
                 } else {
                     $qtyToDeduct = $item['quantity'];
                 }
