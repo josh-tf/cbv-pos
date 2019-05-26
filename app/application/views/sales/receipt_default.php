@@ -9,14 +9,14 @@ load_language(true, array('customers', 'sales', 'employees'));
         <div id="customer-title">
             <?php
 if (isset($customer)) {
-
     ?>
-            <textarea id="customer" rows="4" cols="6" style="<? echo ('width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) . 'px') ?>">
-                <?php
-echo $customer_info['customer'] . "\n";
-    echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
-    echo $customer_info['customer_address'] . "\n";
-    echo $customer_info['customer_location'];
+            <textarea id="customer" rows="4" cols="6"
+                style="<?echo ('width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) . 'px') ?>">
+    <?php
+        echo $customer_info['customer'] . "\n";
+        echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
+        echo $customer_info['customer_address'] . "\n";
+        echo $customer_info['customer_location'];
     ?>
 
             </textarea>
@@ -27,8 +27,8 @@ echo $customer_info['customer'] . "\n";
 
 
         <div id="logo">
-            <img id="image" class="cbv-invoice-logo" src="<?php echo base_url('uploads/' . $this->config->item('company_logo')); ?>"
-                alt="company_logo" />
+            <img id="image" class="cbv-invoice-logo"
+                src="<?php echo base_url('uploads/' . $this->config->item('company_logo')); ?>" alt="company_logo" />
             <div>&nbsp</div>
             <div id="tax-invoice">TAX INVOICE</div>
         </div>
@@ -117,8 +117,7 @@ foreach ($cart as $line => $item) {
             <td style='text-align:center;'><textarea rows="5"
                     cols="6"><?php echo to_currency($item['price']); ?></textarea></td>
             <td><textarea rows="4" cols="4"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
-            <td class="" style=''><textarea rows="4"
-                    cols="6"><?php echo to_currency($item['total']); ?></textarea>
+            <td class="" style=''><textarea rows="4" cols="6"><?php echo to_currency($item['total']); ?></textarea>
             </td>
         </tr>
         <tr class="item-row"
@@ -128,7 +127,7 @@ foreach ($cart as $line => $item) {
                     <?php
 echo (($isComputer) ? '<b>Machine Specs:</b> ' : '<b>Description:</b> ') . $item['description'];
     ?>
-            </div>
+                </div>
             </td>
         </tr>
         <?php

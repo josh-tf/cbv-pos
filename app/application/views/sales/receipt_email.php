@@ -1,5 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'css/invoice_email.css'; ?>" />
@@ -26,15 +27,25 @@ load_language(true, array('sales', 'common'));
                     <div id="tax-invoice">TAX INVOICE</div>
                 </td>
                 <td id="customer-title">
-                <pre class="customer-info" style="<? echo (isset($customer) ? '' : 'display:none;') . ('width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) . 'px') ?>"><?php
 
+                    <?php
 if (isset($customer)) {
-    echo $customer_info['customer'] . "\n";
-    echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
-    echo $customer_info['customer_address'] . "\n";
-    echo $customer_info['customer_location'] . "\n";
+    ?>
+                    <pre class="customer-info"
+                        style="<?echo 'width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) . 'px' ?>"><?php
+
+    if (isset($customer)) {
+        echo $customer_info['customer'] . "\n";
+        echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
+        echo $customer_info['customer_address'] . "\n";
+        echo $customer_info['customer_location'] . "\n";
+    }
+    ?></pre>
+                    <?php
 }
-?></pre>                </td>
+?>
+
+                </td>
             </tr>
 
             <tr>
@@ -108,7 +119,7 @@ foreach ($cart as $line => $item) {
                 <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
                 <td class="item-description" colspan="5">
                     <div>
-                    <?php
+                        <?php
 echo (($isComputer) ? '<b>Machine Specs:</b> ' : '<b>Description:</b> ') . $item['description'];
     ?>
                     </div>
@@ -226,7 +237,7 @@ foreach ($payments as $payment_id => $payment) {
 ?>
             <tr>
 
-		        <td colspan="3" class="blank"> </td>
+                <td colspan="3" class="blank"> </td>
                 <td colspan="1" class="total-line al-right">
                     <?php echo $this->lang->line('sales_amount_due'); ?></td>
                 <td class="total-value al-right"><?php echo to_currency($amount_change * -1); ?></td>
