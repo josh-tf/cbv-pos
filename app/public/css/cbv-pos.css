@@ -115,7 +115,7 @@ a.rollover img {
 }
 
 button.btn.dropdown-toggle.btn-sm {
-	background-color: white;
+	background-color: #717171;
 	color: black;
 	border: 2px solid #dce4ec;
 }
@@ -228,14 +228,16 @@ textarea#description {
 	border-color: #080042;
 }
 
-.btn-default:disabled, #show_suspended_sales_button, #suspend_sale_button {
-	background-image: linear-gradient(#aea79f, #717171);
+.btn-default {
+	color: #525252 !important;
+	background-image: linear-gradient(#c3c3c3, #b3b3b3);
+	border: 1px solid #888;
 }
 
-.btn-default:disabled, #show_suspended_sales_button:hover, #suspend_sale_button:hover {
-	background-image: linear-gradient(#96918c, #505050);
-	border: 1px solid #2b2b2b;
+.btn-default:hover {
+	background-image: linear-gradient(#c1c1c1, #868686);
 }
+
 .bootstrap-dialog.type-primary .modal-header {
     background-image: linear-gradient(#0f007d, #060035);
 }
@@ -360,7 +362,7 @@ input#cbvid_check {
 }
 
 .navbar-nav li {
-    width: 80px;
+    width: 85px;
     border-left: 1px solid #a43c0b;
     text-align: center;
 }
@@ -372,5 +374,4 @@ input#cbvid_check {
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
     color: #ffffff;
     background-image: linear-gradient(#f1540b,#752e0d);
-    font-weight: bold;
 }

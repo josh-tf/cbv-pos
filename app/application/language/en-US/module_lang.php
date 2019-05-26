@@ -1,7 +1,7 @@
 <?php
 
 $lang["module_both"] = "Both";
-$lang["module_config"] = "Configuration";
+$lang["module_config"] = "Config";
 $lang["module_config_desc"] = "Change OSPOS's Configuration.";
 $lang["module_cashups"] = "Floats";
 $lang["module_cashups_desc"] = "Add, Update, Delete, and Search Daily Floats.";
@@ -10,7 +10,7 @@ $lang["module_customers_desc"] = "Add, Update, Delete, and Search Customers.";
 $lang["module_employees"] = "Employees";
 $lang["module_employees_desc"] = "Add, Update, Delete, and Search Employees.";
 $lang["module_expenses"] = "Expenses";
-$lang["module_expenses_categories"] = "Exp. Settings";
+$lang["module_expenses_categories"] = "Expenses";
 $lang["module_expenses_categories_desc"] = "Add, Update, and Delete Exp. Settings";
 $lang["module_expenses_desc"] = "Add, Update, Delete, and Search Expenses.";
 $lang["module_giftcards"] = "Gift Cards";
