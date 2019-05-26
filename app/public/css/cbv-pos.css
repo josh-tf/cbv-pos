@@ -180,7 +180,7 @@ label.required {
 /* Custom CSS on top of the default Bootswatch theme 'United' for CBV theming */
 
 .navbar-default {
-	background-image: linear-gradient(#ff632d, #9c2800);
+	background-image: linear-gradient(#f1540b,#9c3a0c);
 	border-color: #af4819;
 }
 
@@ -342,7 +342,7 @@ td.print_hide {
 /* Reports page cleanup / theme matching */
 
 .panel-primary>.panel-heading {
-	background-image: linear-gradient(#ff632d, #9c2800);
+	background-image: linear-gradient(#f1540b,#9c3a0c);
 	border-color: #d1541a;
 }
 
@@ -357,4 +357,20 @@ input#cbvid_check {
 	width: 85px;
 	float: right;
 	margin-right: 5px;
+}
+
+.navbar-nav li {
+    width: 80px;
+    border-left: 1px solid #a43c0b;
+    text-align: center;
+}
+
+.navbar-nav li:last-child {
+    border-right: 1px solid #a43c0b;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: #ffffff;
+    background-image: linear-gradient(#f1540b,#752e0d);
+    font-weight: bold;
 }
