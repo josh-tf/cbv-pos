@@ -1,6 +1,7 @@
 <?php
 
 $lang["customers_available_points"] = "Available Points";
+$lang["deposit_terms"] = "availability of this computer cannot be guaranteed beyond 4 weeks of the date of this receipt.";
 $lang["rewards_package"] = "Rewards";
 $lang["rewards_remaining_balance"] = "Reward Points remaining value is ";
 $lang["sales_add_payment"] = "Add Payment";
@@ -16,6 +17,7 @@ $lang["sales_check_balance"] = "Check remainder";
 $lang["sales_check_filter"] = "Cheque";
 $lang["sales_comment"] = "Comment";
 $lang["sales_comments"] = "Comments";
+$lang["sales_receipt_comments"] = "Sale Comments:";
 $lang["sales_complete_sale"] = "Complete";
 $lang["sales_confirm_cancel_sale"] = "Are you sure you want to clear this sale? All items will cleared.";
 $lang["sales_confirm_delete"] = "Are you sure you want to delete the selected Sale(s)?";

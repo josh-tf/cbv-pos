@@ -13,10 +13,10 @@ if (isset($customer)) {
             <textarea id="customer" rows="4" cols="6"
                 style="<?echo ('width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) . 'px') ?>">
     <?php
-        echo $customer_info['customer'] . "\n";
-        echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
-        echo $customer_info['customer_address'] . "\n";
-        echo $customer_info['customer_location'];
+echo $customer_info['customer'] . "\n";
+    echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
+    echo $customer_info['customer_address'] . "\n";
+    echo $customer_info['customer_location'];
     ?>
 
             </textarea>
@@ -97,11 +97,17 @@ if (!empty($invoice_number)) {
         <?php
 foreach ($cart as $line => $item) {
 
-    if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop
+    if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop category
 
-        if (!(substr($item['name'], 0, 7) == 'Deposit')) {
+        if ((substr($item['name'], 0, 7) == 'Deposit')) { // if item name starts with Deposit*
 
-            $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
+            $item['description'] = '<b>Description:</b> ' . $item['description'] . ' - ' . $this->lang->line('deposit_terms');
+
+        }
+        else { // if the item is a desktop or laptop computer
+
+            $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')';
+            $item['description'] = '<b>Machine Specs:</b> ' . $item['description'];
             $isComputer = true;
 
         }
@@ -124,9 +130,7 @@ foreach ($cart as $line => $item) {
             <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
             <td class="item-description" colspan="5">
                 <div>
-                    <?php
-echo (($isComputer) ? '<b>Machine Specs:</b> ' : '<b>Description:</b> ') . $item['description'];
-    ?>
+                    <?php echo $item['description']; ?>
                 </div>
             </td>
         </tr>
@@ -141,6 +145,18 @@ if ($item['discount'] > 0) {
         </tr>
         <?php
 }
+}
+?>
+
+<?php if(!$comments == null) { ?>
+
+<tr class="sale_comments">
+            <td colspan="5" id="sale_comments">
+            <?php echo '<b>' . $this->lang->line('sales_receipt_comments') . '</b> ' . $comments ?>
+            </td>
+        </tr>
+
+<?php
 }
 ?>
 
@@ -184,7 +200,6 @@ if ($this->config->item('receipt_show_taxes')) {
     if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request
         ?>
 
-
         <tr>
             <td colspan="3" class="blank"> </td>
             <td colspan="1" class="total-line al-right"><?php echo $this->lang->line('sales_tax_default'); ?></td>
@@ -207,7 +222,6 @@ if ($this->config->item('receipt_show_taxes')) {
     }
 
     ?>
-
 
         <?php
 }
@@ -252,7 +266,6 @@ foreach ($payments as $payment_id => $payment) {
     <div id="sale_return_policy" style="">
         <?php echo nl2br($this->config->item('return_policy')); ?>
     </div>
-
 
     <!-- routine for inserting extra info like passwords, for PC and Laptop sales -->
     <?php
