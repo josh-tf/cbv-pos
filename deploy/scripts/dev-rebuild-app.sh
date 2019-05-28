@@ -29,6 +29,7 @@ removeCSS()
 {
     echo "deleting compiled css/js folder"
     rm -rf ./public/dist
+    rm -rf ./public/bower_components/moment # bit of a hack but deleting one component will trigger a grunt postinstall
 
 }
 
