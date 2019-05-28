@@ -36,9 +36,9 @@ removeCSS()
 checkDir
 
 # delete depending on option
-if ["$1" =- '-f']; then
+if ["$1" == '-f']; then
   removeApp
-elif ["$1" -= '-c']; then
+elif ["$1" == '-c']; then
   removeCSS
 else
     echo "An invalid option was specified.."
