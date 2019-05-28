@@ -49,5 +49,5 @@ fi
 # copy fresh compose and run
 cd ../
 echo "copying fresh compose file and running docker-compose"
-cp ./deploy/docker/development/docker-compose.yml .
+cp ./cbv-pos/deploy/docker/development/docker-compose.yml .
 docker-compose up -d
