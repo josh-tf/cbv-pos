@@ -1,7 +1,7 @@
 #!/bin/bash
 VERSION=0.1.0
 SUBJECT=rebuild-app
-USAGE="Usage: rebuild-app.sh [Flag: (-f for full wipe, -c for css/js only)]"
+USAGE="Usage: dev-rebuild-app.sh [Flag: (-f for full wipe, -c for css/js only)]"
 
 # if no options are specified
 if [ $# == 0 ] ; then
