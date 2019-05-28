@@ -41,8 +41,9 @@ if [ "$1" = "-f"]; then
 elif [ "$1" = "-c" ]; then
   removeCSS
 else
-        echo "Unable to locate cbv-pos folder"
-        exit 1;
+    echo "An invalid option was specified.."
+    echo $USAGE
+    exit 1;
 fi
 
 # copy fresh compose and run
