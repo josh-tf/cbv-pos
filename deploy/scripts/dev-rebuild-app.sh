@@ -12,7 +12,7 @@ fi
 checkDir()
 {
     if [ -d "./cbv-pos" ]; then
-        cd "./cbv-pos"
+        cd "./cbv-pos/app"
     else
         echo "Unable to locate cbv-pos folder"
         exit 1;
@@ -49,7 +49,7 @@ else
 fi
 
 # copy fresh compose and run
-cd ../
+cd ../../
 echo "copying fresh compose file and running docker-compose"
 cp ./cbv-pos/deploy/docker/development/docker-compose.yml .
 docker-compose up -d
