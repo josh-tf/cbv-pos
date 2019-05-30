@@ -25,7 +25,8 @@ class Sale extends CI_Model
     {
         // NOTE: temporary tables are created to speed up searches due to the fact that they are ortogonal to the main query
         // create a temporary table to contain all the payments per sale
-        $this->db->query('CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_payments_temp') .
+        $this->db->query(
+            'CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_payments_temp') .
             '(
 				SELECT payments.sale_id AS sale_id,
 					IFNULL(SUM(payments.payment_amount), 0) AS sale_payment_amount,
@@ -52,7 +53,8 @@ class Sale extends CI_Model
         }
 
         // create a temporary table to contain all the sum of taxes per sale item
-        $this->db->query('CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_items_taxes_temp') .
+        $this->db->query(
+            'CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_items_taxes_temp') .
             '(
 				SELECT sales_items_taxes.sale_id AS sale_id,
 					sales_items_taxes.item_id AS item_id,
@@ -96,9 +98,11 @@ class Sale extends CI_Model
         $this->db->join('people AS customer_p', 'sales.customer_id = customer_p.person_id', 'LEFT');
         $this->db->join('customers AS customer', 'sales.customer_id = customer.person_id', 'LEFT');
         $this->db->join('sales_payments_temp AS payments', 'sales.sale_id = payments.sale_id', 'LEFT OUTER');
-        $this->db->join('sales_items_taxes_temp AS sales_items_taxes',
+        $this->db->join(
+            'sales_items_taxes_temp AS sales_items_taxes',
             'sales_items.sale_id = sales_items_taxes.sale_id AND sales_items.item_id = sales_items_taxes.item_id AND sales_items.line = sales_items_taxes.line',
-            'LEFT OUTER');
+            'LEFT OUTER'
+        );
 
         $this->db->where('sales.sale_id', $sale_id);
 
@@ -132,7 +136,8 @@ class Sale extends CI_Model
 
         // NOTE: temporary tables are created to speed up searches due to the fact that they are ortogonal to the main query
         // create a temporary table to contain all the payments per sale item
-        $this->db->query('CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_payments_temp') .
+        $this->db->query(
+            'CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_payments_temp') .
             ' (PRIMARY KEY(sale_id), INDEX(sale_id))
 			(
 				SELECT payments.sale_id AS sale_id,
@@ -161,7 +166,8 @@ class Sale extends CI_Model
         }
 
         // create a temporary table to contain all the sum of taxes per sale item
-        $this->db->query('CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_items_taxes_temp') .
+        $this->db->query(
+            'CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_items_taxes_temp') .
             ' (INDEX(sale_id), INDEX(item_id))
 			(
 				SELECT sales_items_taxes.sale_id AS sale_id,
@@ -210,9 +216,11 @@ class Sale extends CI_Model
         $this->db->join('people AS customer_p', 'sales.customer_id = customer_p.person_id', 'LEFT');
         $this->db->join('customers AS customer', 'sales.customer_id = customer.person_id', 'LEFT');
         $this->db->join('sales_payments_temp AS payments', 'sales.sale_id = payments.sale_id', 'LEFT OUTER');
-        $this->db->join('sales_items_taxes_temp AS sales_items_taxes',
+        $this->db->join(
+            'sales_items_taxes_temp AS sales_items_taxes',
             'sales_items.sale_id = sales_items_taxes.sale_id AND sales_items.item_id = sales_items_taxes.item_id AND sales_items.line = sales_items_taxes.line',
-            'LEFT OUTER');
+            'LEFT OUTER'
+        );
 
         $this->db->where($where);
 
@@ -562,7 +570,6 @@ class Sale extends CI_Model
             }
 
             if (substr($payment['payment_type'], 0, strlen($this->lang->line('sales_rewards'))) == $this->lang->line('sales_rewards')) {
-
                 $cur_rewards_value = $this->Customer->get_info($customer_id)->points;
                 $this->Customer->update_reward_points_value($customer_id, $cur_rewards_value - $payment['payment_amount']);
                 $total_amount_used = floatval($total_amount_used) + floatval($payment['payment_amount']);
@@ -612,8 +619,7 @@ class Sale extends CI_Model
 
             $this->db->insert('sales_items', $sales_items_data);
 
-            if ($cur_item_info->stock_type == HAS_STOCK && $sale_status == COMPLETED && $sale_type != SALE_TYPE_RETURN) // Dont add +1 to the qty if returning item
-            {
+            if ($cur_item_info->stock_type == HAS_STOCK && $sale_status == COMPLETED && $sale_type != SALE_TYPE_RETURN) { // Dont add +1 to the qty if returning item
                 // Update stock quantity if item type is a standard stock item and the sale is a standard sale
                 $item_quantity = $this->Item_quantity->get_item_quantity($item['item_id'], $item['item_location']);
 
@@ -662,7 +668,6 @@ class Sale extends CI_Model
                 $item_tax_amount = 0;
 
                 foreach ($this->Item_taxes->get_info($item['item_id']) as $row) {
-
                     $sales_items_taxes = array(
                         'sale_id' => $sale_id,
                         'item_id' => $item['item_id'],
@@ -696,7 +701,6 @@ class Sale extends CI_Model
                         $this->tax_lib->update_sales_taxes($sales_taxes, $tax_type, $tax_group, $row['percent'], $tax_basis, $item_tax_amount, $tax_group_sequence, $rounding_code, $sale_id, $row['name'], '');
                         $tax_group_sequence += 1;
                     }
-
                 }
 
                 if ($this->config->item('customer_sales_tax_support') == '1') {
@@ -725,7 +729,6 @@ class Sale extends CI_Model
 
         // update the stocklist if the url (env) is set AND category is a laptop or desktop
         if (getenv('STOCKLIST_UPDATE_URL') && $soldComputer) {
-
             $request_opts = array(
                 'http' => array(
                     'method' => 'GET',
@@ -734,7 +737,6 @@ class Sale extends CI_Model
 
             $context = stream_context_create($request_opts);
             $stocklist_update = file_get_contents(getenv('STOCKLIST_UPDATE_URL'), null, $context);
-
         }
 
         return $sale_id;
@@ -938,9 +940,8 @@ class Sale extends CI_Model
         } elseif ($this->config->item('payment_options_order') == 'debitcashcredit') {
             $payments[$this->lang->line('sales_debit')] = $this->lang->line('sales_debit');
             $payments[$this->lang->line('sales_cash')] = $this->lang->line('sales_cash');
-            //$payments[$this->lang->line('sales_credit')] = $this->lang->line('sales_credit');
-        } else // default: if($this->config->item('payment_options_order') == 'cashdebitcredit')
-        {
+        //$payments[$this->lang->line('sales_credit')] = $this->lang->line('sales_credit');
+        } else { // default: if($this->config->item('payment_options_order') == 'cashdebitcredit')
             $payments[$this->lang->line('sales_cash')] = $this->lang->line('sales_cash');
             $payments[$this->lang->line('sales_debit')] = $this->lang->line('sales_debit');
             //$payments[$this->lang->line('sales_credit')] = $this->lang->line('sales_credit');
@@ -1078,7 +1079,8 @@ class Sale extends CI_Model
         }
 
         // create a temporary table to contain all the sum of taxes per sale item
-        $this->db->query('CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_items_taxes_temp') .
+        $this->db->query(
+            'CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_items_taxes_temp') .
             ' (INDEX(sale_id), INDEX(item_id))
 			(
 				SELECT sales_items_taxes.sale_id AS sale_id,
@@ -1096,7 +1098,8 @@ class Sale extends CI_Model
         );
 
         // create a temporary table to contain all the payment types and amount
-        $this->db->query('CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_payments_temp') .
+        $this->db->query(
+            'CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_payments_temp') .
             ' (PRIMARY KEY(sale_id), INDEX(sale_id))
 			(
 				SELECT payments.sale_id AS sale_id,
@@ -1110,7 +1113,8 @@ class Sale extends CI_Model
 			)'
         );
 
-        $this->db->query('CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_items_temp') .
+        $this->db->query(
+            'CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_items_temp') .
             ' (INDEX(sale_date), INDEX(sale_time), INDEX(sale_id))
 			(
 				SELECT
@@ -1194,7 +1198,6 @@ class Sale extends CI_Model
         }
 
         return $query->result_array();
-
     }
 
     /**
@@ -1396,8 +1399,7 @@ class Sale extends CI_Model
      */
     private function determine_sale_status(&$sale_status, $dinner_table)
     {
-        if ($sale_status == SUSPENDED && $dinner_table > 2) //not delivery or take away
-        {
+        if ($sale_status == SUSPENDED && $dinner_table > 2) { //not delivery or take away
             return SUSPENDED;
         }
         return COMPLETED;

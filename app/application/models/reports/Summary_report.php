@@ -35,7 +35,8 @@ abstract class Summary_report extends Report
         }
 
         // create a temporary table to contain all the sum of taxes per sale item
-        $this->db->query('CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_items_taxes_temp') .
+        $this->db->query(
+            'CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_items_taxes_temp') .
             ' (INDEX(sale_id), INDEX(item_id))
 			(
 				SELECT sales_items_taxes.sale_id AS sale_id,
@@ -65,9 +66,11 @@ abstract class Summary_report extends Report
     {
         $this->db->from('sales_items AS sales_items');
         $this->db->join('sales AS sales', 'sales_items.sale_id = sales.sale_id', 'inner');
-        $this->db->join('sales_items_taxes_temp AS sales_items_taxes',
+        $this->db->join(
+            'sales_items_taxes_temp AS sales_items_taxes',
             'sales_items.sale_id = sales_items_taxes.sale_id AND sales_items.item_id = sales_items_taxes.item_id AND sales_items.line = sales_items_taxes.line',
-            'left outer');
+            'left outer'
+        );
     }
 
     private function _common_where(array $inputs)
@@ -119,13 +122,20 @@ abstract class Summary_report extends Report
     abstract protected function _get_data_columns();
 
     protected function _select(array $inputs)
-    {$this->_common_select($inputs);}
+    {
+        $this->_common_select($inputs);
+    }
     protected function _from()
-    {$this->_common_from();}
+    {
+        $this->_common_from();
+    }
     protected function _where(array $inputs)
-    {$this->_common_where($inputs);}
+    {
+        $this->_common_where($inputs);
+    }
     protected function _group_order()
-    {}
+    {
+    }
 
     /**
      * Public interface implementing the base abstract class, in general it should not be extended unless there is a valid reason like a non sale report (e.g. expenses)

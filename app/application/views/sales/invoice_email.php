@@ -80,16 +80,12 @@ if (isset($customer)) {
 
             <?php
 foreach ($cart as $line => $item) {
-
     if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop
 
         $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
-
     } else {
         $item['name'] = ucfirst($item['name']); // otherwise just use the name
-    }
-
-    ?>
+    } ?>
             <tr class="item-row">
                 <td colspan="2" class="item-name"><?php echo $item['name']; ?></td>
                 <td><?php echo to_quantity_decimals($item['quantity']); ?></td>
@@ -112,7 +108,7 @@ if ($item['discount'] > 0) {
                 <td class="total-line"><?php echo to_currency($item['discounted_total']); ?></td>
             </tr>
             <?php
-}
+    }
 }
 ?>
 
@@ -154,8 +150,7 @@ if ($this->config->item('receipt_show_taxes')) {
             </tr>
             <?php
 
-    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request
-        ?>
+    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request ?>
 
 
             <tr>
@@ -165,9 +160,7 @@ if ($this->config->item('receipt_show_taxes')) {
             </tr>
 
             <?php
-
     } else {
-
         foreach ($taxes as $tax_group_index => $sales_tax) {
             ?>
             <tr>
@@ -176,10 +169,8 @@ if ($this->config->item('receipt_show_taxes')) {
                 <td class="total-value al-right"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></td>
             </tr>
             <?php
-}
-    }
-
-    ?>
+        }
+    } ?>
 
 
             <?php
@@ -202,8 +193,7 @@ if ($this->config->item('receipt_show_taxes')) {
 
             <?php
 foreach ($payments as $payment_id => $payment) {
-    $splitpayment = explode(':', $payment['payment_type']);
-    ?>
+    $splitpayment = explode(':', $payment['payment_type']); ?>
             <tr>
                 <td colspan="3" class="blank"> </td>
                 <td colspan="1" class="total-line al-right"><?php echo $splitpayment[0]; ?> </td>
@@ -225,7 +215,7 @@ foreach ($payments as $payment_id => $payment) {
 
                 <div class="inv-comments">
 
-                    <?php echo (empty($comments) ? $this->config->item('invoice_default_comments') : $comments); ?>
+                    <?php echo(empty($comments) ? $this->config->item('invoice_default_comments') : $comments); ?>
                 </div>
 
                 <?php echo nl2br($this->config->item('return_policy')); ?>
