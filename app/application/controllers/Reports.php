@@ -824,8 +824,11 @@ class Reports extends Secure_Controller
                 'profit' => to_currency($row['profit']),
                 'payment_type' => $row['payment_type'],
                 'comment' => $row['comment'],
-                'edit' => anchor('sales/edit/' . $row['sale_id'], '<span class="glyphicon glyphicon-edit"></span>',
-                    array('class' => 'modal-dlg print_hide', $button_key => $button_label, 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('sales_update'))),
+                'edit' => anchor(
+                    'sales/edit/' . $row['sale_id'],
+                    '<span class="glyphicon glyphicon-edit"></span>',
+                    array('class' => 'modal-dlg print_hide', $button_key => $button_label, 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('sales_update'))
+                ),
             ));
 
             foreach ($report_data['details'][$key] as $drow) {
@@ -924,8 +927,11 @@ class Reports extends Secure_Controller
                 'profit' => to_currency($row['profit']),
                 'payment_type' => $row['payment_type'],
                 'comment' => $row['comment'],
-                'edit' => anchor('sales/edit/' . $row['sale_id'], '<span class="glyphicon glyphicon-edit"></span>',
-                    array('class' => 'modal-dlg print_hide', $button_key => $button_label, 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('sales_update'))),
+                'edit' => anchor(
+                    'sales/edit/' . $row['sale_id'],
+                    '<span class="glyphicon glyphicon-edit"></span>',
+                    array('class' => 'modal-dlg print_hide', $button_key => $button_label, 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('sales_update'))
+                ),
             ));
 
             foreach ($report_data['details'][$key] as $drow) {
@@ -1023,8 +1029,11 @@ class Reports extends Secure_Controller
                 'profit' => to_currency($row['profit']),
                 'payment_type' => $row['payment_type'],
                 'comment' => $row['comment'],
-                'edit' => anchor('sales/edit/' . $row['sale_id'], '<span class="glyphicon glyphicon-edit"></span>',
-                    array('class' => 'modal-dlg print_hide', $button_key => $button_label, 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('sales_update'))),
+                'edit' => anchor(
+                    'sales/edit/' . $row['sale_id'],
+                    '<span class="glyphicon glyphicon-edit"></span>',
+                    array('class' => 'modal-dlg print_hide', $button_key => $button_label, 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('sales_update'))
+                ),
             ));
 
             foreach ($report_data['details'][$key] as $drow) {
@@ -1106,8 +1115,11 @@ class Reports extends Secure_Controller
             'profit' => to_currency($report_data['profit']),
             'payment_type' => $report_data['payment_type'],
             'comment' => $report_data['comment'],
-            'edit' => anchor('sales/edit/' . $report_data['sale_id'], '<span class="glyphicon glyphicon-edit"></span>',
-                array('class' => 'modal-dlg print_hide', $button_key => $button_label, 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('sales_update'))),
+            'edit' => anchor(
+                'sales/edit/' . $report_data['sale_id'],
+                '<span class="glyphicon glyphicon-edit"></span>',
+                array('class' => 'modal-dlg print_hide', $button_key => $button_label, 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('sales_update'))
+            ),
         ));
 
         echo json_encode(array($sale_id => $summary_data));
@@ -1170,8 +1182,11 @@ class Reports extends Secure_Controller
                 'total' => to_currency($row['total']),
                 'payment_type' => $row['payment_type'],
                 'comment' => $row['comment'],
-                'edit' => anchor('sales/edit/' . $row['sale_id'], '<span class="glyphicon glyphicon-edit"></span>',
-                    array('class' => 'modal-dlg print_hide', $button_key => $button_label, 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('sales_update'))),
+                'edit' => anchor(
+                    'sales/edit/' . $row['sale_id'],
+                    '<span class="glyphicon glyphicon-edit"></span>',
+                    array('class' => 'modal-dlg print_hide', $button_key => $button_label, 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('sales_update'))
+                ),
             ));
 
             foreach ($report_data['details'][$key] as $drow) {
@@ -1231,7 +1246,9 @@ class Reports extends Secure_Controller
             'payment_type' => $report_data['payment_type'],
             'reference' => $report_data['reference'],
             'comment' => $report_data['comment'],
-            'edit' => anchor('receivings/edit/' . $report_data['receiving_id'], '<span class="glyphicon glyphicon-edit"></span>',
+            'edit' => anchor(
+                'receivings/edit/' . $report_data['receiving_id'],
+                '<span class="glyphicon glyphicon-edit"></span>',
                 array('class' => 'modal-dlg print_hide', 'data-btn-submit' => $this->lang->line('common_submit'), 'data-btn-delete' => $this->lang->line('common_delete'), 'title' => $this->lang->line('receivings_update'))
             ),
         ));
@@ -1268,7 +1285,9 @@ class Reports extends Secure_Controller
                 'payment_type' => $row['payment_type'],
                 'reference' => $row['reference'],
                 'comment' => $row['comment'],
-                'edit' => anchor('receivings/edit/' . $row['receiving_id'], '<span class="glyphicon glyphicon-edit"></span>',
+                'edit' => anchor(
+                    'receivings/edit/' . $row['receiving_id'],
+                    '<span class="glyphicon glyphicon-edit"></span>',
                     array('class' => 'modal-dlg print_hide', 'data-btn-delete' => $this->lang->line('common_delete'), 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('receivings_update'))
                 ),
             ));
@@ -1316,7 +1335,6 @@ class Reports extends Secure_Controller
         $summary_data = array();
 
         foreach ($report_data['summary'] as $key => $row) {
-
             $prettyDate = date_create($row['sale_time']);
             $prettyDate = date_format($prettyDate, 'Y-m-d');
 
@@ -1358,7 +1376,6 @@ class Reports extends Secure_Controller
         $summary_data = array();
 
         foreach ($report_data['summary'] as $key => $row) {
-
             $prettyDate = date_create($row['sale_time']);
             $prettyDate = date_format($prettyDate, 'Y-m-d');
 
