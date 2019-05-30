@@ -29,7 +29,7 @@ load_language(true, array('sales', 'common'));
                 <td id="customer-title">
 
                     <pre class="customer-info"
-                        style="<?echo 'width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) . 'px' ?>"><?php
+                        style="<?echo 'width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 175) . 'px' ?>"><?php
 
 if (isset($customer)) {
     echo $customer_info['customer'] . "\n";
