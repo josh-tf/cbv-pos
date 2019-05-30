@@ -36,7 +36,7 @@ if (isset($customer)) {
 
     if (isset($customer)) {
         echo $customer_info['customer'] . "\n";
-        echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
+        echo($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
         echo $customer_info['customer_address'] . "\n";
         echo $customer_info['customer_location'] . "\n";
     } ?></pre>
@@ -186,7 +186,7 @@ if ($this->config->item('receipt_show_taxes')) {
             </tr>
             <?php
 
-    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request ?>
+    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request?>
 
 
             <tr>
