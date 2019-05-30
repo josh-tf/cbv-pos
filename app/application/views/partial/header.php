@@ -5,10 +5,11 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<base href="<?php echo base_url(); ?>" />
 	<title>
-		<?php echo $this->config->item('company') . ' | ' . $this->lang->line('common_powered_by') . ' OSPOS ' . $this->config->item('application_version') ?>
+		<?php echo $this->config->item('company') . ' | ' . $this->lang->line('common_powered_by') . ' CBV-POS ' . $this->config->item('application_version') ?>
 	</title>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="<?php echo 'dist/bootswatch/' . (empty($this->config->item('theme')) ? 'flatly' : $this->config->item('theme')) . '/bootstrap.min.css' ?>" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
 	<?php if ($this->input->cookie('debug') == 'true' || $this->input->get('debug') == 'true'): ?>
 	<!-- bower:css -->
@@ -26,15 +27,24 @@
 	<link rel="stylesheet" href="bower_components/trumbowyg/dist/ui/trumbowyg.css" />
 	<!-- endbower -->
 	<!-- start css template tags -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.autocomplete.css"/>
-	<link rel="stylesheet" type="text/css" href="css/cbv-pos-print.css"/>
-	<link rel="stylesheet" type="text/css" href="css/cbv-pos.css"/>
-	<link rel="stylesheet" type="text/css" href="css/invoice.css"/>
-	<link rel="stylesheet" type="text/css" href="css/popupbox.css"/>
-	<link rel="stylesheet" type="text/css" href="css/receipt.css"/>
-	<link rel="stylesheet" type="text/css" href="css/register.css"/>
-	<link rel="stylesheet" type="text/css" href="css/reports.css"/>
-	<!-- end css template tags -->
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.autocomplete.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/cbv-pos-print.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/cbv-pos.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/invoice.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/popupbox.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/receipt.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/register.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/reports.css"/>
+
+	<!-- end css template tags -->
 	<!-- bower:js -->
 	<script src="bower_components/jquery/dist/jquery.js"></script>
 	<script src="bower_components/jquery-form/src/jquery.form.js"></script>
@@ -66,22 +76,32 @@
 	<script src="bower_components/trumbowyg/dist/trumbowyg.js"></script>
 	<!-- endbower -->
 	<!-- start js template tags -->
-	<script type="text/javascript" src="js/imgpreview.full.jquery.js"></script>
-	<script type="text/javascript" src="js/manage_tables.js"></script>
-	<script type="text/javascript" src="js/nominatim.autocomplete.js"></script>
-	<!-- end js template tags -->
+
+	<script type="text/javascript" src="js/imgpreview.full.jquery.js"></script>
+
+	<script type="text/javascript" src="js/manage_tables.js"></script>
+
+	<script type="text/javascript" src="js/nominatim.autocomplete.js"></script>
+
+	<!-- end js template tags -->
 	<?php else: ?>
 	<!--[if lte IE 8]>
 		<link rel="stylesheet" media="print" href="dist/print.css" type="text/css" />
 		<![endif]-->
 	<!-- start mincss template tags -->
-	<link rel="stylesheet" type="text/css" href="dist/jquery-ui/jquery-ui.min.css"/>
-	<link rel="stylesheet" type="text/css" href="dist/trumbowyg/trumbowyg.css"/>
-	<link rel="stylesheet" type="text/css" href="dist/cbv-pos.min.css"/>
-	<!-- end mincss template tags -->
+
+	<link rel="stylesheet" type="text/css" href="dist/jquery-ui/jquery-ui.min.css"/>
+
+	<link rel="stylesheet" type="text/css" href="dist/trumbowyg/trumbowyg.css"/>
+
+	<link rel="stylesheet" type="text/css" href="dist/cbv-pos.min.css"/>
+
+	<!-- end mincss template tags -->
 	<!-- start minjs template tags -->
-	<script type="text/javascript" src="dist/cbv-pos.min.js"></script>
-	<!-- end minjs template tags -->
+
+	<script type="text/javascript" src="dist/cbv-pos.min.js"></script>
+
+	<!-- end minjs template tags -->
 	<?php endif;?>
 
 	<?php $this->load->view('partial/header_js');?>
@@ -126,7 +146,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="<?php echo site_url(); ?>"><img src="<?php echo base_url(); ?>images/cbv-logo.png" class="main-logo"></a>
+					<a href="<?php echo site_url(); ?>"><img alt="company logo" src="<?php echo base_url(); ?>images/cbv-logo.png" class="main-logo"></a>
 				</div>
 
 				<div class="navbar-collapse collapse">
@@ -134,8 +154,8 @@
 						<?php foreach ($allowed_modules as $module): ?>
 						<li class="<?php echo $module->module_id == $this->uri->segment(1) ? 'active' : ''; ?>">
 							<a href="<?php echo base_url() . $module->module_id; ?>" title="<?php echo $this->lang->line("module_".$module->module_id.'_desc') ?>" class="menu-icon">
-								<img src="<?php echo base_url() . 'images/menubar/' . $module->module_id . '.png'; ?>" border="0" alt="Module Icon" /><br />
-								<?php echo $this->lang->line("module_" . $module->module_id) ?>
+								<img src="<?php echo base_url() . 'images/menubar/white/' . $module->module_id . '.png'; ?>" border="0" alt="Module Icon" /><br />
+								<span class="nav-text"><?php echo $this->lang->line("module_" . $module->module_id) ?></span>
 							</a>
 						</li>
 						<?php endforeach;?>

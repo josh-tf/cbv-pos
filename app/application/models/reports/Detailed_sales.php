@@ -25,21 +25,16 @@ class Detailed_sales extends Report
                 array('subtotal' => $this->lang->line('reports_subtotal'), 'sorter' => 'number_sorter'),
                 array('tax' => $this->lang->line('reports_tax'), 'sorter' => 'number_sorter'),
                 array('total' => $this->lang->line('reports_total'), 'sorter' => 'number_sorter'),
-                array('cost' => $this->lang->line('reports_cost'), 'sorter' => 'number_sorter'),
-                array('profit' => $this->lang->line('reports_profit'), 'sorter' => 'number_sorter'),
                 array('payment_type' => $this->lang->line('reports_payment_type'), 'sortable' => false),
                 array('comment' => $this->lang->line('reports_comments'))),
             'details' => array(
                 $this->lang->line('reports_name'),
                 $this->lang->line('reports_category'),
-                $this->lang->line('reports_serial_number'),
                 $this->lang->line('reports_description'),
                 $this->lang->line('reports_quantity'),
                 $this->lang->line('reports_subtotal'),
                 $this->lang->line('reports_tax'),
                 $this->lang->line('reports_total'),
-                $this->lang->line('reports_cost'),
-                $this->lang->line('reports_profit'),
                 $this->lang->line('reports_discount')),
             'details_rewards' => array(
                 $this->lang->line('reports_used'),
@@ -102,14 +97,17 @@ class Detailed_sales extends Report
             $this->db->where('sale_status', COMPLETED);
             $this->db->group_start();
             $this->db->where('sale_type', SALE_TYPE_POS);
-            $this->db->or_where('sale_type', SALE_TYPE_INVOICE);
             $this->db->or_where('sale_type', SALE_TYPE_RETURN);
             $this->db->group_end();
         } elseif ($inputs['sale_type'] == 'sales') {
             $this->db->where('sale_status', COMPLETED);
             $this->db->group_start();
             $this->db->where('sale_type', SALE_TYPE_POS);
-            $this->db->or_where('sale_type', SALE_TYPE_INVOICE);
+            $this->db->group_end();
+        } elseif ($inputs['sale_type'] == 'invoices') {
+            $this->db->where('sale_status', COMPLETED);
+            $this->db->group_start();
+            $this->db->where('sale_type', SALE_TYPE_INVOICE);
             $this->db->group_end();
         } elseif ($inputs['sale_type'] == 'quotes') {
             $this->db->where('sale_status', SUSPENDED);
@@ -159,14 +157,17 @@ class Detailed_sales extends Report
             $this->db->where('sale_status', COMPLETED);
             $this->db->group_start();
             $this->db->where('sale_type', SALE_TYPE_POS);
-            $this->db->or_where('sale_type', SALE_TYPE_INVOICE);
             $this->db->or_where('sale_type', SALE_TYPE_RETURN);
             $this->db->group_end();
         } elseif ($inputs['sale_type'] == 'sales') {
             $this->db->where('sale_status', COMPLETED);
             $this->db->group_start();
             $this->db->where('sale_type', SALE_TYPE_POS);
-            $this->db->or_where('sale_type', SALE_TYPE_INVOICE);
+            $this->db->group_end();
+        } elseif ($inputs['sale_type'] == 'invoices') {
+            $this->db->where('sale_status', COMPLETED);
+            $this->db->group_start();
+            $this->db->where('sale_type', SALE_TYPE_INVOICE);
             $this->db->group_end();
         } elseif ($inputs['sale_type'] == 'quotes') {
             $this->db->where('sale_status', SUSPENDED);

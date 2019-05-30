@@ -1,7 +1,7 @@
 {
   "name": "cbv-pos",
   "description": "The Computerbank Point of Sale system is a customised fork of the opensourcepos software modified for Computerbank Victoria Inc.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "authors": [
     "jekkos <jeroen.peelaerts - at - gmail.com>",

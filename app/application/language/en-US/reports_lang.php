@@ -21,6 +21,7 @@ $lang["reports_complete"] = "Completed Sales and Returns";
 $lang["reports_cashflows"] = "Cashflow Totals";
 $lang["reports_computers_heading"] = "Computer Reports";
 $lang["reports_completed_sales"] = "Completed Sales";
+$lang["reports_completed_invoices"] = "Completed Invoices";
 $lang["reports_confirm_delete"] = "Are you sure you want to delete selected entry(s)?";
 $lang["reports_confirm_restore"] = "Are you sure you want to restore selected entry(s)?";
 $lang["reports_cost"] = "Wholesale";
