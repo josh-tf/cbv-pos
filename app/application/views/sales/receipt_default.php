@@ -10,7 +10,7 @@ load_language(true, array('customers', 'sales', 'employees'));
             <?php
 if (isset($customer)) {
     ?>
-            <textarea id="customer" rows="4" cols="6"
+            <textarea aria-label="customer info" id="customer" rows="4" cols="6"
                 style="<? echo ('width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) . 'px') ?>">
     <?php
 echo $customer_info['customer'] . "\n";
@@ -133,7 +133,7 @@ if ($item['discount'] > 0) {
             <td colspan="3" class="blank"> </td>
             <td colspan="1" class="blank disc">
                 $<?php echo number_format($item['discount'], 2) . ' ' . $this->lang->line('sales_discount'); ?></td>
-            <td class="total-line"><?php echo to_currency($item['discounted_total']); ?></td>
+            <td aria-label="discounted total" class="total-line"><?php echo to_currency($item['discounted_total']); ?></td>
         </tr>
         <?php
     }

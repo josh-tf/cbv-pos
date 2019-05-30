@@ -146,7 +146,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="<?php echo site_url(); ?>"><img src="<?php echo base_url(); ?>images/cbv-logo.png" class="main-logo"></a>
+					<a href="<?php echo site_url(); ?>"><img alt="company logo" src="<?php echo base_url(); ?>images/cbv-logo.png" class="main-logo"></a>
 				</div>
 
 				<div class="navbar-collapse collapse">
