@@ -74,15 +74,13 @@ if ($this->config->item('receipt_show_description')) {
         ?>
 			<td colspan="2"><?php echo $item['description']; ?></td>
 			<?php
-}
-    ?>
+    } ?>
 			<?php
 if ($this->config->item('receipt_show_serialnumber')) {
         ?>
 			<td><?php echo $item['serialnumber']; ?></td>
 			<?php
-}
-    ?>
+    } ?>
 		</tr>
 		<?php
 if ($item['discount'] > 0) {
@@ -94,8 +92,7 @@ if ($item['discount'] > 0) {
 			<td class="total-value"><?php echo to_currency($item['discounted_total']); ?></td>
 		</tr>
 		<?php
-}
-    ?>
+    } ?>
 		<?php
 }
 ?>
@@ -132,8 +129,7 @@ foreach ($taxes as $tax_group_index => $sales_tax) {
 			<td class="total-value"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></td>
 		</tr>
 		<?php
-}
-    ?>
+    } ?>
 		<?php
 }
 ?>
@@ -156,8 +152,7 @@ $show_giftcard_remainder = false;
 foreach ($payments as $payment_id => $payment) {
     $only_sale_check |= $payment['payment_type'] == $this->lang->line('sales_check');
     $splitpayment = explode(':', $payment['payment_type']);
-    $show_giftcard_remainder |= $splitpayment[0] == $this->lang->line('sales_giftcard');
-    ?>
+    $show_giftcard_remainder |= $splitpayment[0] == $this->lang->line('sales_giftcard'); ?>
 		<tr>
 			<td colspan="2" style="text-align:right;"><?php echo $splitpayment[0]; ?> </td>
 			<td class="total-value"><?php echo to_currency($payment['payment_amount'] * -1); ?></td>

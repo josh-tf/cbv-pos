@@ -33,12 +33,11 @@
 					</div>
 
 					<?php
-					if($this->config->item('gcaptcha_enable'))
-					{
-						echo '<script src="https://www.google.com/recaptcha/api.js"></script>';
-						echo '<div class="g-recaptcha" align="center" data-sitekey="' . $this->config->item('gcaptcha_site_key') . '"></div>';
-					}
-					?>
+                    if ($this->config->item('gcaptcha_enable')) {
+                        echo '<script src="https://www.google.com/recaptcha/api.js"></script>';
+                        echo '<div class="g-recaptcha" align="center" data-sitekey="' . $this->config->item('gcaptcha_site_key') . '"></div>';
+                    }
+                    ?>
 
 					<input class="btn btn-primary btn-block" type="submit" name="loginButton" value="Go"/>
 				</div>
