@@ -11,10 +11,10 @@ load_language(true, array('customers', 'sales', 'employees'));
 if (isset($customer)) {
     ?>
             <textarea aria-label="customer info" id="customer" rows="4" cols="6"
-                style="<? echo ('width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) . 'px') ?>">
+                style="<?php echo('width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) . 'px') ?>">
     <?php
 echo $customer_info['customer'] . "\n";
-    echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
+    echo($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
     echo $customer_info['customer_address'] . "\n";
     echo $customer_info['customer_location']; ?>
 
@@ -190,7 +190,7 @@ if ($this->config->item('receipt_show_taxes')) {
         </tr>
         <?php
 
-    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request ?>
+    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request?>
 
         <tr>
             <td colspan="3" class="blank"> </td>
