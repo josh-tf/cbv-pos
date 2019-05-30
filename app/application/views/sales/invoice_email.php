@@ -33,7 +33,7 @@ load_language(true, array('sales', 'common'));
 
 if (isset($customer)) {
     echo $customer_info['customer'] . "\n";
-    echo($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
+    echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
     echo $customer_info['customer_address'] . "\n";
     echo $customer_info['customer_location'] . "\n";
 }
