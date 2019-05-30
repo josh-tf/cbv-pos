@@ -21,17 +21,19 @@ load_language(true, array('sales', 'common'));
         <table id="info">
             <tr>
                 <td id="logo">
-                    <img class="cbv-invoice-logo" src="<?php echo base_url('uploads/' . $this->config->item('company_logo')); ?>"
+                    <img class="cbv-invoice-logo"
+                        src="<?php echo base_url('uploads/' . $this->config->item('company_logo')); ?>"
                         alt="company_logo" />
                     <div id="tax-invoice">TAX INVOICE</div>
                 </td>
                 <td id="customer-title">
 
-                    <pre class="customer-info" style="width:<?php echo (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) ?>px"><?php
+                    <pre class="customer-info"
+                        style="<?echo 'width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) . 'px' ?>"><?php
 
 if (isset($customer)) {
     echo $customer_info['customer'] . "\n";
-    echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
+    echo($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
     echo $customer_info['customer_address'] . "\n";
     echo $customer_info['customer_location'] . "\n";
 }
@@ -78,150 +80,142 @@ if (isset($customer)) {
 
             <?php
 foreach ($cart as $line => $item) {
-
     if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop
 
         $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
-
     } else {
         $item['name'] = ucfirst($item['name']); // otherwise just use the name
-    }
-
-    ?>
+    } ?>
             <tr class="item-row">
                 <td colspan="2" class="item-name"><?php echo $item['name']; ?></td>
                 <td><?php echo to_quantity_decimals($item['quantity']); ?></td>
                 <td><?php echo to_currency($item['price']); ?></td>
                 <td class="total-line"><?php echo to_currency($item['total']); ?></td>
             </tr>
-            <tr class="item-row" <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
+            <tr class="item-row"
+                <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
                 <td class="item-description" colspan="5">
                     <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
                 </td>
             </tr>
-			<?php
+            <?php
 if ($item['discount'] > 0) {
         ?>
-        <tr>
-            <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="blank disc">
-                $<?php echo number_format($item['discount'], 2) . ' ' . $this->lang->line('sales_discount'); ?></td>
-            <td class="total-line"><?php echo to_currency($item['discounted_total']); ?></td>
-        </tr>
-        <?php
-}
+            <tr>
+                <td colspan="3" class="blank"> </td>
+                <td colspan="1" class="blank disc">
+                    $<?php echo number_format($item['discount'], 2) . ' ' . $this->lang->line('sales_discount'); ?></td>
+                <td class="total-line"><?php echo to_currency($item['discounted_total']); ?></td>
+            </tr>
+            <?php
+    }
 }
 ?>
 
-<tr>
-            <td class="blank" colspan="5" text-align="center">
-                <?php echo '&nbsp;'; ?>
-            </td>
-        </tr>
+            <tr>
+                <td class="blank" colspan="5" text-align="center">
+                    <?php echo '&nbsp;'; ?>
+                </td>
+            </tr>
 
-        <?php
+            <?php
 if ($this->config->item('receipt_show_total_discount') && $discount > 0) {
     ?>
-        <tr>
-            <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line al-right">
-                <?php echo $this->lang->line('sales_sub_total'); ?></td>
-            <td class="total-value al-right">
-                <?php echo to_currency($prediscount_subtotal); ?></td>
-        </tr>
-        <tr>
-            <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line al-right"><?php echo $this->lang->line('sales_customer_discount'); ?></td>
-            <td class="total-value al-right"><?php echo to_currency($discount * -1); ?></td>
-        </tr>
-        <?php
+            <tr>
+                <td colspan="3" class="blank"> </td>
+                <td colspan="1" class="total-line al-right">
+                    <?php echo $this->lang->line('sales_sub_total'); ?></td>
+                <td class="total-value al-right">
+                    <?php echo to_currency($prediscount_subtotal); ?></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="blank"> </td>
+                <td colspan="1" class="total-line al-right"><?php echo $this->lang->line('sales_customer_discount'); ?>
+                </td>
+                <td class="total-value al-right"><?php echo to_currency($discount * -1); ?></td>
+            </tr>
+            <?php
 }
 ?>
 
-        <?php
+            <?php
 if ($this->config->item('receipt_show_taxes')) {
     ?>
-        <tr>
-            <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line al-right">
-                <?php echo $this->lang->line('sales_sub_total'); ?></td>
-            <td class="total-value al-right"><?php echo to_currency($subtotal); ?>
-            </td>
-        </tr>
-        <?php
+            <tr>
+                <td colspan="3" class="blank"> </td>
+                <td colspan="1" class="total-line al-right">
+                    <?php echo $this->lang->line('sales_sub_total'); ?></td>
+                <td class="total-value al-right"><?php echo to_currency($subtotal); ?>
+                </td>
+            </tr>
+            <?php
 
-    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request
-        ?>
+    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request?>
 
 
-        <tr>
-            <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line al-right"><?php echo $this->lang->line('sales_tax_default'); ?></td>
-            <td class="total-value al-right"><?php echo to_currency(0); ?></td>
-        </tr>
+            <tr>
+                <td colspan="3" class="blank"> </td>
+                <td colspan="1" class="total-line al-right"><?php echo $this->lang->line('sales_tax_default'); ?></td>
+                <td class="total-value al-right"><?php echo to_currency(0); ?></td>
+            </tr>
 
-        <?php
-
+            <?php
     } else {
-
         foreach ($taxes as $tax_group_index => $sales_tax) {
             ?>
-        <tr>
-            <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line al-right"><?php echo $sales_tax['tax_group']; ?></td>
-            <td class="total-value al-right"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></td>
-        </tr>
-        <?php
-}
-    }
-
-    ?>
+            <tr>
+                <td colspan="3" class="blank"> </td>
+                <td colspan="1" class="total-line al-right"><?php echo $sales_tax['tax_group']; ?></td>
+                <td class="total-value al-right"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></td>
+            </tr>
+            <?php
+        }
+    } ?>
 
 
-        <?php
+            <?php
 }
 ?>
 
-        <?php $border = (!$this->config->item('receipt_show_taxes') && !($this->config->item('receipt_show_total_discount') && $discount > 0));?>
-        <tr>
-            <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line al-right">
-                <?php echo $this->lang->line('sales_total'); ?></td>
-            <td class="total-value al-right">
-                <?php echo to_currency($total); ?></td>
-        </tr>
+            <?php $border = (!$this->config->item('receipt_show_taxes') && !($this->config->item('receipt_show_total_discount') && $discount > 0));?>
+            <tr>
+                <td colspan="3" class="blank"> </td>
+                <td colspan="1" class="total-line al-right">
+                    <?php echo $this->lang->line('sales_total'); ?></td>
+                <td class="total-value al-right">
+                    <?php echo to_currency($total); ?></td>
+            </tr>
 
-        <tr>
-            <td colspan="3" class="blank"> </td>
-            <td colspan="2">&nbsp;</td>
-        </tr>
+            <tr>
+                <td colspan="3" class="blank"> </td>
+                <td colspan="2">&nbsp;</td>
+            </tr>
 
-        <?php
+            <?php
 foreach ($payments as $payment_id => $payment) {
-    $splitpayment = explode(':', $payment['payment_type']);
-    ?>
-        <tr>
-            <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line al-right"><?php echo $splitpayment[0]; ?> </td>
-            <td class="total-value al-right"><?php echo to_currency($payment['payment_amount'] * -1); ?></td>
-        </tr>
-        <?php
+    $splitpayment = explode(':', $payment['payment_type']); ?>
+            <tr>
+                <td colspan="3" class="blank"> </td>
+                <td colspan="1" class="total-line al-right"><?php echo $splitpayment[0]; ?> </td>
+                <td class="total-value al-right"><?php echo to_currency($payment['payment_amount'] * -1); ?></td>
+            </tr>
+            <?php
 }
 ?>
-        <tr>
-            <td colspan="3" class="blank"> </td>
-            <td colspan="1" class="total-line al-right">
-                <?php echo $this->lang->line('sales_amount_due'); ?></td>
-            <td class="total-value al-right"><?php echo to_currency($amount_change * -1); ?></td>
-        </tr>
-    </table>
+            <tr>
+                <td colspan="3" class="blank"> </td>
+                <td colspan="1" class="total-line al-right">
+                    <?php echo $this->lang->line('sales_amount_due'); ?></td>
+                <td class="total-value al-right"><?php echo to_currency($amount_change * -1); ?></td>
+            </tr>
+        </table>
 
         <div id="terms">
             <div id="sale_return_policy">
 
                 <div class="inv-comments">
 
-                    <?php echo (empty($comments) ? $this->config->item('invoice_default_comments') : $comments); ?>
+                    <?php echo(empty($comments) ? $this->config->item('invoice_default_comments') : $comments); ?>
                 </div>
 
                 <?php echo nl2br($this->config->item('return_policy')); ?>

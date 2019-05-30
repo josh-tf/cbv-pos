@@ -1,6 +1,22 @@
 html,
 body {
 	height: 100%;
+	font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	font-family: "Open Sans", sans-serif;
 }
 
 a.none {
@@ -21,8 +37,8 @@ a.none {
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
-	color: #2C3E50;
-	background-color: #FFFFFF;
+	color: #2c3e50;
+	background-color: #ffffff;
 }
 
 .jumbotron.push-spaces {
@@ -110,7 +126,7 @@ a.rollover img {
 }
 
 button.btn.dropdown-toggle.btn-sm {
-	background-color: white;
+	background-color: #717171;
 	color: black;
 	border: 2px solid #dce4ec;
 }
@@ -127,10 +143,10 @@ button.btn.dropdown-toggle.btn-sm {
 }
 
 label.required {
-	color: red;
+	color: #e20000;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 868px) {
 	.navbar-nav>li>a {
 		padding: 10px 10px 9px;
 	}
@@ -158,27 +174,11 @@ label.required {
 	visibility: hidden;
 }
 
-/* Added CBV logo, this will hide it on a small screen */
-
-.main-logo {
-	display: none;
-}
-
-@media only screen and (min-width: 620px) {
-	.main-logo {
-		display: block;
-		width: 155px;
-		margin: 9px 0 1px 0;
-	}
-}
-
 /* Custom CSS on top of the default Bootswatch theme 'United' for CBV theming */
-
 .navbar-default {
-	background-color: #d1541a;
+	background-image: linear-gradient(#f1540b, #9c3a0c);
 	border-color: #af4819;
 }
-
 
 /* Make the input boxes on items>form a little smaller to make things cleaner */
 textarea#custom13,
@@ -219,8 +219,22 @@ textarea#description {
 .btn-info,
 .btn-primary {
 	color: #ffffff;
-	background-color: #0f007d;
+	background-image: linear-gradient(#0f007d, #060035);
 	border-color: #080042;
+}
+
+.btn-default {
+	color: #525252 !important;
+	background-image: linear-gradient(#c3c3c3, #b3b3b3);
+	border: 1px solid #888;
+}
+
+.btn-default:hover {
+	background-image: linear-gradient(#c1c1c1, #868686);
+}
+
+.bootstrap-dialog.type-primary .modal-header {
+	background-image: linear-gradient(#0f007d, #060035);
 }
 
 .btn-info:hover,
@@ -238,10 +252,6 @@ textarea#description {
 	border-color: #0f007d;
 }
 
-.bootstrap-dialog.type-primary .modal-header {
-	background-color: #0f007d;
-}
-
 h3.text-center {
 	color: #0f007d;
 }
@@ -257,11 +267,11 @@ h3.text-center {
 }
 
 .topbar {
-	background: #0f007d;
+	background-image: linear-gradient(#0f007d, #060035);
 }
 
 .topbar a {
-	color: #ffc0a8;
+	color: #fff;
 }
 
 .close {
@@ -276,7 +286,7 @@ h3.text-center {
 }
 
 .lookup {
-	background: #0f007d;
+	background-image: linear-gradient(#0f007d, #060035);
 	color: #fff;
 	width: 64px;
 	height: 32px;
@@ -329,7 +339,7 @@ td.print_hide {
 /* Reports page cleanup / theme matching */
 
 .panel-primary>.panel-heading {
-	background-color: #d1541a;
+	background-image: linear-gradient(#f1540b, #9c3a0c);
 	border-color: #d1541a;
 }
 
@@ -344,4 +354,124 @@ input#cbvid_check {
 	width: 85px;
 	float: right;
 	margin-right: 5px;
+}
+
+.navbar-nav li {
+	width: 85px;
+	border-left: 1px solid #a43c0b;
+	text-align: center;
+}
+
+.navbar-nav li:last-child {
+	border-right: 1px solid #a43c0b;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+	color: #ffffff;
+	background-image: linear-gradient(#f1540b, #752e0d);
+}
+
+@media (max-width: 768px) {
+	.topbar {
+		text-align: center;
+	}
+}
+
+
+/* Added CBV logo, this will hide it on a small screen */
+
+.main-logo {
+	display: none;
+}
+
+@media only screen and (min-width: 620px) {
+	.main-logo {
+		display: block;
+		width: 155px;
+		margin: 10px 0 0 15px;
+	}
+}
+
+@media (max-width: 1000px) {
+
+	/* Center the nav bar button */
+	button.navbar-toggle.collapsed {
+		margin-top: 15px;
+	}
+
+	.navbar-header {
+		float: none;
+	}
+
+	.navbar-toggle {
+		display: block;
+	}
+
+	.navbar-collapse {
+		border-top: 1px solid transparent;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	}
+
+	.navbar-fixed-top {
+		top: 0;
+		border-width: 0 0 1px;
+	}
+
+	.navbar-collapse.collapse {
+		display: none !important;
+	}
+
+	.navbar-nav li {
+		width: 160px !important;
+		background: none;
+		border: 1px solid #8c2e02 !important;
+		margin: 2px 0 1px 0;
+		display: inline-block;
+		vertical-align: top;
+		width: 50%;
+	}
+
+	ul.nav.navbar-nav.navbar-right {
+		text-align: center;
+		margin: 10px 0 10px 0;
+	}
+
+	.navbar-nav {
+		float: right;
+	}
+
+	.navbar .menu-icon img {
+		float: left;
+		margin-top: -3px;
+	}
+
+	.navbar-nav li {
+		width: 140px;
+	}
+
+	span.nav-text {
+		float: right;
+		line-height: 0px;
+		margin-top: -9px;
+	}
+
+	.navbar-nav>li {
+		float: none !important;
+	}
+
+	.navbar-nav>li>a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.collapse.in {
+		display: block !important;
+	}
+
+	.main-logo {
+		margin: 10px 0 10px 15px;
+	}
+
 }

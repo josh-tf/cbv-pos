@@ -18,7 +18,7 @@
 }
 
 #login h1 {
-	background: #d1541a;
+	background-image: linear-gradient(#f1540b, #9c3a0c);
 	padding: 20px 0;
 	font-size: 140%;
 	font-weight: 300;
@@ -27,8 +27,9 @@
 }
 
 form {
-	background: #f0f0f0;
-	padding: 6% 4%;
+    background-image: linear-gradient(#eee, #bbb);
+    padding: 6% 4%;
+    border-radius: 5px;
 }
 
 input[type="username"],
@@ -55,4 +56,14 @@ input[type="submit"]:hover {
 .login-logo {
 	width: 285px;
 	margin-bottom: -20px;
+}
+
+input.btn.btn-primary.btn-block {
+    background-image: linear-gradient(#f1540b, #9c3a0c);
+}
+
+.error {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }

@@ -116,3 +116,7 @@ hr
 .computer-info h4 {
     font-family: Helvetica;
 }
+
+#sale_comments {
+    padding: 10px !important;
+}

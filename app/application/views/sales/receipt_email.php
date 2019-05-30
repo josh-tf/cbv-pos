@@ -1,5 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'css/invoice_email.css'; ?>" />
@@ -26,15 +27,24 @@ load_language(true, array('sales', 'common'));
                     <div id="tax-invoice">TAX INVOICE</div>
                 </td>
                 <td id="customer-title">
-                <pre class="customer-info" style="width:<?php echo (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) ?>px"><?php
 
+                    <?php
 if (isset($customer)) {
-    echo $customer_info['customer'] . "\n";
-    echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
-    echo $customer_info['customer_address'] . "\n";
-    echo $customer_info['customer_location'] . "\n";
+    ?>
+                    <pre class="customer-info"
+                        style="<?echo 'width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 150) . 'px' ?>"><?php
+
+    if (isset($customer)) {
+        echo $customer_info['customer'] . "\n";
+        echo($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
+        echo $customer_info['customer_address'] . "\n";
+        echo $customer_info['customer_location'] . "\n";
+    } ?></pre>
+                    <?php
 }
-?></pre>                </td>
+?>
+
+                </td>
             </tr>
 
             <tr>
@@ -83,17 +93,20 @@ if (!empty($invoice_number)) {
 
             <?php
 foreach ($cart as $line => $item) {
+    if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop category
 
-    if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop
+        if ((substr($item['name'], 0, 7) == 'Deposit')) { // if item name starts with Deposit*
 
-        $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
-        $isComputer = true;
+            $item['description'] = '<b>Description:</b> ' . $item['description'] . ' - ' . $this->lang->line('deposit_terms');
+        } else { // if the item is a desktop or laptop computer
 
+            $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')';
+            $item['description'] = '<b>Machine Specs:</b> ' . $item['description'];
+            $isComputer = true;
+        }
     } else {
         $item['name'] = ucfirst($item['name']); // otherwise just use the name
-    }
-
-    ?>
+    } ?>
             <tr class="item-row">
                 <td colspan="2" class="item-name"><?php echo $item['name']; ?></td>
                 <td><?php echo to_quantity_decimals($item['quantity']); ?></td>
@@ -103,7 +116,9 @@ foreach ($cart as $line => $item) {
             <tr class="item-row"
                 <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
                 <td class="item-description" colspan="5">
-                    <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
+                    <div>
+                    <?php echo $item['description']; ?>
+                    </div>
                 </td>
             </tr>
             <?php
@@ -116,7 +131,20 @@ if ($item['discount'] > 0) {
                 <td class="total-line"><?php echo to_currency($item['discounted_total']); ?></td>
             </tr>
             <?php
+    }
 }
+?>
+
+<?php if (!$comments == null) {
+    ?>
+
+<tr class="sale_comments">
+            <td colspan="5" id="sale_comments">
+            <?php echo '<b>' . $this->lang->line('sales_receipt_comments') . '</b> ' . $comments ?>
+            </td>
+        </tr>
+
+<?php
 }
 ?>
 
@@ -158,8 +186,7 @@ if ($this->config->item('receipt_show_taxes')) {
             </tr>
             <?php
 
-    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request
-        ?>
+    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request?>
 
 
             <tr>
@@ -169,9 +196,7 @@ if ($this->config->item('receipt_show_taxes')) {
             </tr>
 
             <?php
-
     } else {
-
         foreach ($taxes as $tax_group_index => $sales_tax) {
             ?>
             <tr>
@@ -180,10 +205,8 @@ if ($this->config->item('receipt_show_taxes')) {
                 <td class="total-value al-right"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></td>
             </tr>
             <?php
-}
-    }
-
-    ?>
+        }
+    } ?>
 
 
             <?php
@@ -206,8 +229,7 @@ if ($this->config->item('receipt_show_taxes')) {
 
             <?php
 foreach ($payments as $payment_id => $payment) {
-    $splitpayment = explode(':', $payment['payment_type']);
-    ?>
+    $splitpayment = explode(':', $payment['payment_type']); ?>
             <tr>
                 <td colspan="3" class="blank"> </td>
                 <td colspan="1" class="total-line al-right"><?php echo $splitpayment[0]; ?> </td>
@@ -218,7 +240,7 @@ foreach ($payments as $payment_id => $payment) {
 ?>
             <tr>
 
-		        <td colspan="3" class="blank"> </td>
+                <td colspan="3" class="blank"> </td>
                 <td colspan="1" class="total-line al-right">
                     <?php echo $this->lang->line('sales_amount_due'); ?></td>
                 <td class="total-value al-right"><?php echo to_currency($amount_change * -1); ?></td>
@@ -240,11 +262,8 @@ if ($total > 0 && $isComputer) { // search value in the array only if its a sale
 
     define('incKey', true);
     include 'user-info.php'; // in ./public/
-
 } else {
-
     echo '<div class="Thankyou-Note">' . $this->lang->line('sales_receipt_thank_you') . '</div>';
-
 }
 
 ?>

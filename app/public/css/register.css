@@ -16,7 +16,7 @@
 }
 
 #mode_form {
-	background-color: #DDD;
+	background-image: linear-gradient(#eee, #ddd);
 	margin-bottom: 5px;
 }
 
@@ -42,7 +42,7 @@
 }
 
 #add_item_form {
-	background-color: #BBB;
+	background-image: linear-gradient(#eee, #ddd);
 	margin-bottom: 5px;
 }
 
@@ -52,10 +52,11 @@
 }
 
 #register th {
-	background-color: #999;
 	padding: 5px;
 	text-align: center;
-	color: #FFF;
+	color: #333;
+	background-image: linear-gradient(#eee, #ddd);
+	border-bottom: 1px solid #d6d6d6;
 }
 
 #register td {
@@ -70,9 +71,10 @@
 	margin-left: 5px;
 	padding-bottom: 1em;
 	padding-top: 1em;
-	background-color: #BBB;
 	font-size: 13px;
 	text-align: center;
+    background-image: linear-gradient(#eee, #ddd);
+    border: 1px solid #bbb;
 }
 
 #overall_sale .panel-body {
@@ -101,7 +103,7 @@
 
 #sale_totals,
 #payment_totals {
-	border-top: 1px solid #000;
+	border-top: 1px solid #b9b9b9;
 }
 
 input#amount_tendered:disabled {
@@ -110,8 +112,7 @@ input#amount_tendered:disabled {
 
 #payment_details {
 	float: left;
-	border-top: 1px solid #000;
-	background-color: #DDD;
+	border-top: 1px solid #b9b9b9;
 	margin-top: 0.2em;
 	padding: 0.5em;
 	text-align: left;
@@ -126,17 +127,17 @@ input#amount_tendered:disabled {
 */
 
 .non-sale#mode_form {
-	background-color: #6f0000;
+	background-image: linear-gradient(#f75a4e, #8a1e16);
 }
 
 .non-sale#add_item_form,
 .non-sale#overall_sale {
-	background-color: #ff7676;
-	color: #fff;
+	background-image: linear-gradient(#fdd, #e4abab);
+	color: #860000;
 }
 
 .non-sale {
-	color: #7d0000;
+	color: #860000;
 }
 
 .non-sale.panel-body {
@@ -148,18 +149,18 @@ input#amount_tendered:disabled {
 }
 
 .non-sale#register th {
-	background-color: #6f0000;
+    background-image: linear-gradient(#ff9f9f, #ea5252);
+    color: #860000;
 }
 
 .non-sale#register td {
 	background-color: #ffc6c6;
 }
 
-.non-sale.btn-info,
-.non-sale.btn-primary {
-	background-color: #7d0000;
-	border-color: #230000;
-	color: #fff;
+.non-sale.btn-info, .non-sale.btn-primary {
+    background-image: linear-gradient(#d6362a, #801d15);
+    border-color: #8a1e16;
+    color: #fff;
 }
 
 .non-sale.btn-info:hover,
@@ -184,7 +185,6 @@ input#amount_tendered:disabled {
 
 .non-sale#payment_details {
 	border-top: 1px solid #6f0000;
-	background-color: #ffc6c6;
 }
 
 .non-sale a.modal-dlg {
@@ -194,8 +194,8 @@ input#amount_tendered:disabled {
 /* Register improvements */
 
 .sale-list {
-	background: #e2e2e2 !important;
-	border-bottom: 2px solid #828282;
+    background-image: linear-gradient(#eee, #ddd);
+    border-top: 1px solid #d6d6d6;
 }
 
 .non-sale.sale-list {
@@ -204,26 +204,49 @@ input#amount_tendered:disabled {
 }
 
 #register tr:first-child th:first-child {
-	border-top-left-radius: 6px;
+	border-top-left-radius: 4px;
 }
 
 #register tr:first-child th:last-child {
-	border-top-right-radius: 6px;
+	border-top-right-radius: 4px;
 }
 
 #register tr:last-child td:first-child {
-	border-bottom-left-radius: 6px;
+	border-bottom-left-radius: 4px;
 	border-bottom: none;
 }
 
 #register tr:last-child td:last-child {
-	border-bottom-right-radius: 6px;
+	border-bottom-right-radius: 4px;
 }
 
 .panel {
-	border-radius: 6px;
+	border-radius: 4px;
 }
 
 .form-horizontal .control-label {
 	padding-top: 6px;
+}
+
+.btn-success {
+    background-image: linear-gradient(#38b44a, #286d32);
+    border-color: #2d7337;
+}
+
+.btn-success:hover {
+    color: #ffffff;
+    background-image: linear-gradient(#319840, #205828);
+    border-color: #2d7337;
+}
+
+.btn-danger {
+    color: #ffffff;
+    background-image: linear-gradient(#df382c, #771a13);
+    border-color: #8a1e16;
+}
+
+.btn-danger:hover {
+    color: #ffffff;
+    background-image: linear-gradient(#c13127, #611610);
+    border-color: #8a1e16;
 }
