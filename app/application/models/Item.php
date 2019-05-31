@@ -955,6 +955,7 @@ class Item extends CI_Model
         $this->db->join('cbvpos_items', 'cbvpos_items.item_id = cbvpos_item_quantities.item_id');
         $this->db->where('quantity > 0');
         $this->db->where('on_hold', false); // hide on_hold items from stocklist
+        $this->db->where('stock_type != 1'); // hide non quantity items (deposit items)
         $this->db->order_by('unit_price asc');
 
         // pass as the function result
