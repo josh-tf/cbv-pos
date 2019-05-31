@@ -37,7 +37,7 @@ $sql .= 'i.custom9 AS DVD, ';
 $sql .= 'i.custom11 AS Battery ';
 
 $sql .= 'FROM cbvpos_items AS i INNER JOIN cbvpos_item_quantities q ON i.item_id = q.item_id ';
-$sql .= 'WHERE (i.category = "Desktop" OR i.category = "Laptop") AND q.quantity > 0 AND on_hold = FALSE ';
+$sql .= 'WHERE (i.category = "Desktop" OR i.category = "Laptop") AND (q.quantity > 0) AND (on_hold = FALSE) AND (stock_type != 1)';
 $sql .= 'ORDER BY ConcPrice ASC;';
 
 $stocklist = $conn->query($sql);
