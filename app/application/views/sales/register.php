@@ -35,7 +35,7 @@ if ($saleMode == "return") {
 					<label class="control-label"><?php echo $this->lang->line('sales_mode'); ?></label>
 				</li>
 				<li class="pull-left">
-					<?php echo form_dropdown('mode', $modes, $mode, array('onchange' => "$('#mode_form').submit();", 'class' => 'selectpicker show-menu-arrow', 'data-style' => 'btn-default btn-sm', 'data-width' => 'fit')); ?>
+					<?php echo form_dropdown('mode', $modes, $mode, array('onchange' => "$('#mode_form').submit();", 'class' => 'selectpicker show-menu-arrow', 'data-style' => ($saleMode == 'sale' ? 'btn-default btn-sm' : 'btn-default btn-sm non-sale'), 'data-width' => 'fit')); ?>
 				</li>
 				<?php
 if ($this->config->item('dinner_table_enable') == true) {
@@ -61,7 +61,7 @@ if (count($stock_locations) > 1) {
 ?>
 
 				<li class="pull-right">
-					<button class='btn btn-default btn-sm modal-dlg' id='show_suspended_sales_button' data-href='<?php echo site_url($controller_name . "/suspended"); ?>'
+					<button class='btn btn-default btn-sm modal-dlg <?php echo (!($saleMode == "sale") ? "non-sale" : ""); ?>' id='show_suspended_sales_button' data-href='<?php echo site_url($controller_name . "/suspended"); ?>'
 							title='<?php echo $this->lang->line('sales_suspended_sales'); ?>'>
 						<span class="glyphicon glyphicon-align-justify">&nbsp</span><?php echo $this->lang->line('sales_suspended_sales'); ?>
 					</button>
@@ -183,7 +183,7 @@ if ($item['item_type'] == ITEM_AMOUNT_ENTRY) {
 							<?php
 if ($item['allow_alt_description'] == 1) {
             ?>
-								<td style="color: #2F4F4F;"><?php echo $this->lang->line('sales_description_abbrv'); ?></td>
+								<td class="sale-list <?php echo (!($saleMode == "sale") ? "non-sale" : ""); ?>" style="color: #2F4F4F;"><?php echo $this->lang->line('sales_description_abbrv'); ?></td>
 							<?php
 }
         ?>
@@ -191,7 +191,7 @@ if ($item['allow_alt_description'] == 1) {
 							<td colspan='8' style="text-align: left;padding-left:10px;" class="sale-list<?php echo (!($saleMode == 'sale') ? ' non-sale' : '') ?>">
 								<?php
 if ($item['allow_alt_description'] == 1) {
-            echo form_input(array('name' => 'description', 'class' => 'form-control input-sm', 'value' => $item['description'], 'onClick' => 'this.select();'));
+            echo form_input(array('name' => 'description', 'class' => 'form-control input-sm', 'value' => $item['description'], 'placeholder' => $this->lang->line('sales_description_abbrv_helper'), 'onClick' => 'this.select();'));
         } else {
             if ($item['description'] != '') {
                 echo '<b>Description: </b>';
@@ -351,7 +351,7 @@ if (count($cart) > 0) {
 							<tr>
 								<td><?php echo $this->lang->line('sales_payment'); ?></td>
 								<td>
-									<?php echo form_dropdown('payment_type', $payment_options, $selected_payment_type, array('id' => 'payment_types', 'class' => 'selectpicker show-menu-arrow', 'data-style' => 'btn-default btn-sm', 'data-width' => 'auto', 'disabled' => 'disabled')); ?>
+									<?php echo form_dropdown('payment_type', $payment_options, $selected_payment_type, array('id' => 'payment_types', 'class' => 'selectpicker show-menu-arrow', 'data-style' => ($saleMode == 'sale' ? 'btn-default btn-sm' : 'btn-default btn-sm non-sale'), 'data-width' => 'auto', 'disabled' => 'disabled')); ?>
 								</td>
 							</tr>
 							<tr>
@@ -378,7 +378,7 @@ if (count($cart) > 0) {
 							<tr>
 								<td><?php echo $this->lang->line('sales_payment'); ?></td>
 								<td>
-									<?php echo form_dropdown('payment_type', $payment_options, $selected_payment_type, array('id' => 'payment_types', 'class' => 'selectpicker show-menu-arrow', 'data-style' => 'btn-default btn-sm', 'data-width' => 'fit')); ?>
+									<?php echo form_dropdown('payment_type', $payment_options, $selected_payment_type, array('id' => 'payment_types', 'class' => 'selectpicker show-menu-arrow', 'data-style' => ($saleMode == 'sale' ? 'btn-default btn-sm' : 'btn-default btn-sm non-sale'), 'data-width' => 'fit')); ?>
 								</td>
 							</tr>
 							<tr>
@@ -430,7 +430,7 @@ foreach ($payments as $payment_id => $payment) {
 
 			<?php echo form_open($controller_name . "/cancel", array('id' => 'buttons_form')); ?>
 				<div class="form-group" id="buttons_sale">
-					<div class='btn btn-sm btn-default pull-left' id='suspend_sale_button'><span class="glyphicon glyphicon-align-justify">&nbsp</span><?php echo $this->lang->line('sales_suspend_sale'); ?></div>
+					<div class='btn btn-sm btn-default pull-left <?php echo (!($saleMode == "sale") ? "non-sale" : ""); ?>' id='suspend_sale_button'><span class="glyphicon glyphicon-align-justify">&nbsp</span><?php echo $this->lang->line('sales_suspend_sale'); ?></div>
 					<?php
 // Only show this part if the payment covers the total
     if (!$pos_mode && isset($customer)) {
