@@ -45,6 +45,7 @@ $lang["sales_delete_entire_sale"] = "Delete Entire Sale";
 $lang["sales_delete_successful"] = "Sale delete successful.";
 $lang["sales_delete_unsuccessful"] = "Sale delete failed.";
 $lang["sales_description_abbrv"] = "Desc.";
+$lang["sales_description_abbrv_helper"] = "Item details (eg 'Wireless Keyboard' or 'Ebay Sale 223479420020 for Macbook Pro)";
 $lang["sales_discard"] = "Discard";
 $lang["sales_discard_quote"] = "";
 $lang["sales_discount"] = "Deposit Paid";
