@@ -349,8 +349,8 @@ class Customer extends Person
 
         // select our data from the database
         $this->db->select("*");
-        $this->db->from('cbvpos_customers');
-        $this->db->join('cbvpos_people', 'cbvpos_customers.person_id = cbvpos_people.person_id');
+        $this->db->from('customers');
+        $this->db->join('people', 'customers.person_id = people.person_id');
         $this->db->where('conc_id =', $conc_id);
 
         // pass as the function result
@@ -364,11 +364,11 @@ class Customer extends Person
 
         // select our data from the database
         $this->db->select("*");
-        $this->db->from('cbvpos_sales');
-        $this->db->join('cbvpos_customers', 'cbvpos_sales.customer_id = cbvpos_customers.person_id');
-        $this->db->join('cbvpos_sales_items', 'cbvpos_sales.sale_id = cbvpos_sales_items.sale_id');
-        $this->db->join('cbvpos_items', 'cbvpos_sales_items.item_id = cbvpos_items.item_id');
-        $this->db->join('cbvpos_people', 'cbvpos_customers.person_id = cbvpos_people.person_id');
+        $this->db->from('sales');
+        $this->db->join('customers', 'sales.customer_id = customers.person_id');
+        $this->db->join('sales_items', 'sales.sale_id = sales_items.sale_id');
+        $this->db->join('items', 'sales_items.item_id = items.item_id');
+        $this->db->join('people', 'customers.person_id = people.person_id');
         $this->db->where('conc_id =', $conc_id);
 
         // pass as the function result

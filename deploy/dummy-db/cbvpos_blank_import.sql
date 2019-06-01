@@ -25,19 +25,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_app_config`
+-- Table structure for table `app_config`
 --
 
-CREATE TABLE `cbvpos_app_config` (
+CREATE TABLE `app_config` (
   `key` varchar(50) NOT NULL,
   `value` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_app_config`
+-- Dumping data for table `app_config`
 --
 
-INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
+INSERT INTO `app_config` (`key`, `value`) VALUES
 ('address', '1 Stawell St\r\nNorth Melbourne\r\nVIC 3051'),
 ('allow_duplicate_barcodes', '0'),
 ('barcode_content', 'id'),
@@ -184,10 +184,10 @@ INSERT INTO `cbvpos_app_config` (`key`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_cash_up`
+-- Table structure for table `cash_up`
 --
 
-CREATE TABLE `cbvpos_cash_up` (
+CREATE TABLE `cash_up` (
   `cashup_id` int(10) NOT NULL,
   `open_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `close_date` timestamp NULL DEFAULT NULL,
@@ -207,10 +207,10 @@ CREATE TABLE `cbvpos_cash_up` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_customers`
+-- Table structure for table `customers`
 --
 
-CREATE TABLE `cbvpos_customers` (
+CREATE TABLE `customers` (
   `person_id` int(10) NOT NULL,
   `company_name` varchar(255) DEFAULT NULL,
   `conc_id` varchar(255) DEFAULT NULL,
@@ -225,10 +225,10 @@ CREATE TABLE `cbvpos_customers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_customers_packages`
+-- Table structure for table `customers_packages`
 --
 
-CREATE TABLE `cbvpos_customers_packages` (
+CREATE TABLE `customers_packages` (
   `package_id` int(11) NOT NULL,
   `package_name` varchar(255) DEFAULT NULL,
   `points_percent` float NOT NULL DEFAULT '0',
@@ -236,10 +236,10 @@ CREATE TABLE `cbvpos_customers_packages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_customers_packages`
+-- Dumping data for table `customers_packages`
 --
 
-INSERT INTO `cbvpos_customers_packages` (`package_id`, `package_name`, `points_percent`, `deleted`) VALUES
+INSERT INTO `customers_packages` (`package_id`, `package_name`, `points_percent`, `deleted`) VALUES
 (1, 'Default', 0, 0),
 (2, 'Bronze', 10, 0),
 (3, 'Silver', 20, 0),
@@ -249,10 +249,10 @@ INSERT INTO `cbvpos_customers_packages` (`package_id`, `package_name`, `points_p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_customers_points`
+-- Table structure for table `customers_points`
 --
 
-CREATE TABLE `cbvpos_customers_points` (
+CREATE TABLE `customers_points` (
   `id` int(11) NOT NULL,
   `person_id` int(11) NOT NULL,
   `package_id` int(11) NOT NULL,
@@ -263,10 +263,10 @@ CREATE TABLE `cbvpos_customers_points` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_dinner_tables`
+-- Table structure for table `dinner_tables`
 --
 
-CREATE TABLE `cbvpos_dinner_tables` (
+CREATE TABLE `dinner_tables` (
   `dinner_table_id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
@@ -274,20 +274,20 @@ CREATE TABLE `cbvpos_dinner_tables` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_dinner_tables`
+-- Dumping data for table `dinner_tables`
 --
 
-INSERT INTO `cbvpos_dinner_tables` (`dinner_table_id`, `name`, `status`, `deleted`) VALUES
+INSERT INTO `dinner_tables` (`dinner_table_id`, `name`, `status`, `deleted`) VALUES
 (1, 'Delivery', 0, 0),
 (2, 'Take Away', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_employees`
+-- Table structure for table `employees`
 --
 
-CREATE TABLE `cbvpos_employees` (
+CREATE TABLE `employees` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `person_id` int(10) NOT NULL,
@@ -298,19 +298,19 @@ CREATE TABLE `cbvpos_employees` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_employees`
+-- Dumping data for table `employees`
 --
 
-INSERT INTO `cbvpos_employees` (`username`, `password`, `person_id`, `deleted`, `hash_version`, `language`, `language_code`) VALUES
+INSERT INTO `employees` (`username`, `password`, `person_id`, `deleted`, `hash_version`, `language`, `language_code`) VALUES
 ('admin', '$2y$10$vJBSMlD02EC7ENSrKfVQXuvq9tNRHMtcOA8MSK2NYS748HHWm.gcG', 1, 0, 2, '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_expenses`
+-- Table structure for table `expenses`
 --
 
-CREATE TABLE `cbvpos_expenses` (
+CREATE TABLE `expenses` (
   `expense_id` int(10) NOT NULL,
   `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `amount` decimal(15,2) NOT NULL,
@@ -327,10 +327,10 @@ CREATE TABLE `cbvpos_expenses` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_expense_categories`
+-- Table structure for table `expense_categories`
 --
 
-CREATE TABLE `cbvpos_expense_categories` (
+CREATE TABLE `expense_categories` (
   `expense_category_id` int(10) NOT NULL,
   `category_name` varchar(255) DEFAULT NULL,
   `category_description` varchar(255) NOT NULL,
@@ -340,10 +340,10 @@ CREATE TABLE `cbvpos_expense_categories` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_giftcards`
+-- Table structure for table `giftcards`
 --
 
-CREATE TABLE `cbvpos_giftcards` (
+CREATE TABLE `giftcards` (
   `record_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `giftcard_id` int(11) NOT NULL,
   `giftcard_number` varchar(255) DEFAULT NULL,
@@ -355,20 +355,20 @@ CREATE TABLE `cbvpos_giftcards` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_grants`
+-- Table structure for table `grants`
 --
 
-CREATE TABLE `cbvpos_grants` (
+CREATE TABLE `grants` (
   `permission_id` varchar(255) NOT NULL,
   `person_id` int(10) NOT NULL,
   `menu_group` varchar(32) DEFAULT 'home'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_grants`
+-- Dumping data for table `grants`
 --
 
-INSERT INTO `cbvpos_grants` (`permission_id`, `person_id`, `menu_group`) VALUES
+INSERT INTO `grants` (`permission_id`, `person_id`, `menu_group`) VALUES
 ('cashups', 1, 'home'),
 ('config', 1, 'office'),
 ('customers', 1, 'home'),
@@ -404,10 +404,10 @@ INSERT INTO `cbvpos_grants` (`permission_id`, `person_id`, `menu_group`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_inventory`
+-- Table structure for table `inventory`
 --
 
-CREATE TABLE `cbvpos_inventory` (
+CREATE TABLE `inventory` (
   `trans_id` int(11) NOT NULL,
   `trans_items` int(11) NOT NULL DEFAULT '0',
   `trans_user` int(11) NOT NULL DEFAULT '0',
@@ -418,20 +418,20 @@ CREATE TABLE `cbvpos_inventory` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_inventory`
+-- Dumping data for table `inventory`
 --
 
-INSERT INTO `cbvpos_inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_date`, `trans_comment`, `trans_location`, `trans_inventory`) VALUES
+INSERT INTO `inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_date`, `trans_comment`, `trans_location`, `trans_inventory`) VALUES
 (1, 1, 1, '2019-05-26 14:34:42', 'Manual Edit of Quantity', 1, '1.000'),
 (2, 2, 1, '2019-05-26 14:34:56', 'Manual Edit of Quantity', 1, '1.000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_items`
+-- Table structure for table `items`
 --
 
-CREATE TABLE `cbvpos_items` (
+CREATE TABLE `items` (
   `name` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
   `supplier_id` int(11) DEFAULT NULL,
@@ -474,40 +474,40 @@ CREATE TABLE `cbvpos_items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_items`
+-- Dumping data for table `items`
 --
 
-INSERT INTO `cbvpos_items` (`name`, `category`, `supplier_id`, `item_number`, `description`, `cost_price`, `unit_price`, `reorder_level`, `receiving_quantity`, `item_id`, `pic_filename`, `allow_alt_description`, `is_serialized`, `stock_type`, `item_type`, `tax_category_id`, `deleted`, `on_hold`, `hold_for`, `custom1`, `custom2`, `custom3`, `custom4`, `custom5`, `custom6`, `custom7`, `custom8`, `custom9`, `custom10`, `custom11`, `custom12`, `custom13`, `custom14`, `custom15`, `custom16`, `custom17`, `custom18`, `custom19`, `custom20`) VALUES
+INSERT INTO `items` (`name`, `category`, `supplier_id`, `item_number`, `description`, `cost_price`, `unit_price`, `reorder_level`, `receiving_quantity`, `item_id`, `pic_filename`, `allow_alt_description`, `is_serialized`, `stock_type`, `item_type`, `tax_category_id`, `deleted`, `on_hold`, `hold_for`, `custom1`, `custom2`, `custom3`, `custom4`, `custom5`, `custom6`, `custom7`, `custom8`, `custom9`, `custom10`, `custom11`, `custom12`, `custom13`, `custom14`, `custom15`, `custom16`, `custom17`, `custom18`, `custom19`, `custom20`) VALUES
 ('Deposit (Laptop)', 'Laptop', NULL, NULL, 'Deposit for CBV Laptop', '0.00', '0.00', '0.000', '1.000', 1, NULL, 0, 0, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 ('Deposit (Desktop)', 'Desktop', NULL, NULL, 'Deposit for CBV Desktop', '0.00', '0.00', '0.000', '1.000', 2, NULL, 0, 0, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_items_taxes`
+-- Table structure for table `items_taxes`
 --
 
-CREATE TABLE `cbvpos_items_taxes` (
+CREATE TABLE `items_taxes` (
   `item_id` int(10) NOT NULL,
   `name` varchar(255) NOT NULL,
   `percent` decimal(15,3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_items_taxes`
+-- Dumping data for table `items_taxes`
 --
 
-INSERT INTO `cbvpos_items_taxes` (`item_id`, `name`, `percent`) VALUES
+INSERT INTO `items_taxes` (`item_id`, `name`, `percent`) VALUES
 (1, ' GST', '0.000'),
 (2, ' GST', '0.000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_item_kits`
+-- Table structure for table `item_kits`
 --
 
-CREATE TABLE `cbvpos_item_kits` (
+CREATE TABLE `item_kits` (
   `item_kit_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `item_id` int(10) NOT NULL DEFAULT '0',
@@ -520,10 +520,10 @@ CREATE TABLE `cbvpos_item_kits` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_item_kit_items`
+-- Table structure for table `item_kit_items`
 --
 
-CREATE TABLE `cbvpos_item_kit_items` (
+CREATE TABLE `item_kit_items` (
   `item_kit_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `quantity` decimal(15,3) NOT NULL,
@@ -533,47 +533,47 @@ CREATE TABLE `cbvpos_item_kit_items` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_item_quantities`
+-- Table structure for table `item_quantities`
 --
 
-CREATE TABLE `cbvpos_item_quantities` (
+CREATE TABLE `item_quantities` (
   `item_id` int(11) NOT NULL,
   `location_id` int(11) NOT NULL,
   `quantity` decimal(15,3) NOT NULL DEFAULT '0.000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_item_quantities`
+-- Dumping data for table `item_quantities`
 --
 
-INSERT INTO `cbvpos_item_quantities` (`item_id`, `location_id`, `quantity`) VALUES
+INSERT INTO `item_quantities` (`item_id`, `location_id`, `quantity`) VALUES
 (1, 1, '1.000'),
 (2, 1, '1.000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_migrations`
+-- Table structure for table `migrations`
 --
 
-CREATE TABLE `cbvpos_migrations` (
+CREATE TABLE `migrations` (
   `version` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_migrations`
+-- Dumping data for table `migrations`
 --
 
-INSERT INTO `cbvpos_migrations` (`version`) VALUES
+INSERT INTO `migrations` (`version`) VALUES
 (20180225100000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_modules`
+-- Table structure for table `modules`
 --
 
-CREATE TABLE `cbvpos_modules` (
+CREATE TABLE `modules` (
   `name_lang_key` varchar(255) NOT NULL,
   `desc_lang_key` varchar(255) NOT NULL,
   `sort` int(10) NOT NULL,
@@ -581,10 +581,10 @@ CREATE TABLE `cbvpos_modules` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_modules`
+-- Dumping data for table `modules`
 --
 
-INSERT INTO `cbvpos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`) VALUES
+INSERT INTO `modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`) VALUES
 ('module_cashups', 'module_cashups_desc', 50, 'cashups'),
 ('module_config', 'module_config_desc', 900, 'config'),
 ('module_customers', 'module_customers_desc', 30, 'customers'),
@@ -606,10 +606,10 @@ INSERT INTO `cbvpos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_people`
+-- Table structure for table `people`
 --
 
-CREATE TABLE `cbvpos_people` (
+CREATE TABLE `people` (
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `gender` int(1) DEFAULT NULL,
@@ -626,29 +626,29 @@ CREATE TABLE `cbvpos_people` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_people`
+-- Dumping data for table `people`
 --
 
-INSERT INTO `cbvpos_people` (`first_name`, `last_name`, `gender`, `phone_number`, `email`, `address_1`, `address_2`, `suburb`, `state`, `postcode`, `country`, `comments`, `person_id`) VALUES
+INSERT INTO `people` (`first_name`, `last_name`, `gender`, `phone_number`, `email`, `address_1`, `address_2`, `suburb`, `state`, `postcode`, `country`, `comments`, `person_id`) VALUES
 ('Front', 'Desk', NULL, '(03) 9600 9161', 'info@computerbank.org.au', '483 Victoria Street', '', 'West Melbourne', 'Victoria', '3003', 'Australia', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_permissions`
+-- Table structure for table `permissions`
 --
 
-CREATE TABLE `cbvpos_permissions` (
+CREATE TABLE `permissions` (
   `permission_id` varchar(255) NOT NULL,
   `module_id` varchar(255) NOT NULL,
   `location_id` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_permissions`
+-- Dumping data for table `permissions`
 --
 
-INSERT INTO `cbvpos_permissions` (`permission_id`, `module_id`, `location_id`) VALUES
+INSERT INTO `permissions` (`permission_id`, `module_id`, `location_id`) VALUES
 ('cashups', 'cashups', NULL),
 ('config', 'config', NULL),
 ('customers', 'customers', NULL),
@@ -688,10 +688,10 @@ INSERT INTO `cbvpos_permissions` (`permission_id`, `module_id`, `location_id`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_receivings`
+-- Table structure for table `receivings`
 --
 
-CREATE TABLE `cbvpos_receivings` (
+CREATE TABLE `receivings` (
   `receiving_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `supplier_id` int(10) DEFAULT NULL,
   `employee_id` int(10) NOT NULL DEFAULT '0',
@@ -704,10 +704,10 @@ CREATE TABLE `cbvpos_receivings` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_receivings_items`
+-- Table structure for table `receivings_items`
 --
 
-CREATE TABLE `cbvpos_receivings_items` (
+CREATE TABLE `receivings_items` (
   `receiving_id` int(10) NOT NULL DEFAULT '0',
   `item_id` int(10) NOT NULL DEFAULT '0',
   `description` varchar(30) DEFAULT NULL,
@@ -724,10 +724,10 @@ CREATE TABLE `cbvpos_receivings_items` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_sales`
+-- Table structure for table `sales`
 --
 
-CREATE TABLE `cbvpos_sales` (
+CREATE TABLE `sales` (
   `sale_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `customer_id` int(10) DEFAULT NULL,
   `employee_id` int(10) NOT NULL DEFAULT '0',
@@ -744,10 +744,10 @@ CREATE TABLE `cbvpos_sales` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_sales_items`
+-- Table structure for table `sales_items`
 --
 
-CREATE TABLE `cbvpos_sales_items` (
+CREATE TABLE `sales_items` (
   `sale_id` int(10) NOT NULL DEFAULT '0',
   `item_id` int(10) NOT NULL DEFAULT '0',
   `description` varchar(255) DEFAULT NULL,
@@ -764,10 +764,10 @@ CREATE TABLE `cbvpos_sales_items` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_sales_items_taxes`
+-- Table structure for table `sales_items_taxes`
 --
 
-CREATE TABLE `cbvpos_sales_items_taxes` (
+CREATE TABLE `sales_items_taxes` (
   `sale_id` int(10) NOT NULL,
   `item_id` int(10) NOT NULL,
   `line` int(3) NOT NULL DEFAULT '0',
@@ -783,10 +783,10 @@ CREATE TABLE `cbvpos_sales_items_taxes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_sales_payments`
+-- Table structure for table `sales_payments`
 --
 
-CREATE TABLE `cbvpos_sales_payments` (
+CREATE TABLE `sales_payments` (
   `sale_id` int(10) NOT NULL,
   `payment_type` varchar(40) NOT NULL,
   `payment_amount` decimal(15,2) NOT NULL
@@ -795,10 +795,10 @@ CREATE TABLE `cbvpos_sales_payments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_sales_reward_points`
+-- Table structure for table `sales_reward_points`
 --
 
-CREATE TABLE `cbvpos_sales_reward_points` (
+CREATE TABLE `sales_reward_points` (
   `id` int(11) NOT NULL,
   `sale_id` int(11) NOT NULL,
   `earned` float NOT NULL,
@@ -808,10 +808,10 @@ CREATE TABLE `cbvpos_sales_reward_points` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_sales_taxes`
+-- Table structure for table `sales_taxes`
 --
 
-CREATE TABLE `cbvpos_sales_taxes` (
+CREATE TABLE `sales_taxes` (
   `sale_id` int(10) NOT NULL,
   `tax_type` smallint(2) NOT NULL,
   `tax_group` varchar(32) NOT NULL,
@@ -827,10 +827,10 @@ CREATE TABLE `cbvpos_sales_taxes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_sessions`
+-- Table structure for table `sessions`
 --
 
-CREATE TABLE `cbvpos_sessions` (
+CREATE TABLE `sessions` (
   `id` varchar(40) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
   `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
@@ -838,38 +838,38 @@ CREATE TABLE `cbvpos_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_sessions`
+-- Dumping data for table `sessions`
 --
 
-INSERT INTO `cbvpos_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
+INSERT INTO `sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('aa8e789b961acbd175fac431e9fd1ec1fc50e6b5', '172.18.0.1', 1558845296, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535383834353235343b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_stock_locations`
+-- Table structure for table `stock_locations`
 --
 
-CREATE TABLE `cbvpos_stock_locations` (
+CREATE TABLE `stock_locations` (
   `location_id` int(11) NOT NULL,
   `location_name` varchar(255) DEFAULT NULL,
   `deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_stock_locations`
+-- Dumping data for table `stock_locations`
 --
 
-INSERT INTO `cbvpos_stock_locations` (`location_id`, `location_name`, `deleted`) VALUES
+INSERT INTO `stock_locations` (`location_id`, `location_name`, `deleted`) VALUES
 (1, 'Warehouse', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_suppliers`
+-- Table structure for table `suppliers`
 --
 
-CREATE TABLE `cbvpos_suppliers` (
+CREATE TABLE `suppliers` (
   `person_id` int(10) NOT NULL,
   `company_name` varchar(255) NOT NULL,
   `agency_name` varchar(255) NOT NULL,
@@ -880,20 +880,20 @@ CREATE TABLE `cbvpos_suppliers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_tax_categories`
+-- Table structure for table `tax_categories`
 --
 
-CREATE TABLE `cbvpos_tax_categories` (
+CREATE TABLE `tax_categories` (
   `tax_category_id` int(10) NOT NULL,
   `tax_category` varchar(32) NOT NULL,
   `tax_group_sequence` tinyint(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_tax_categories`
+-- Dumping data for table `tax_categories`
 --
 
-INSERT INTO `cbvpos_tax_categories` (`tax_category_id`, `tax_category`, `tax_group_sequence`) VALUES
+INSERT INTO `tax_categories` (`tax_category_id`, `tax_category`, `tax_group_sequence`) VALUES
 (1, 'Old Goods', 0),
 (2, 'Services', 10),
 (3, 'New Goods', 10);
@@ -901,10 +901,10 @@ INSERT INTO `cbvpos_tax_categories` (`tax_category_id`, `tax_category`, `tax_gro
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_tax_codes`
+-- Table structure for table `tax_codes`
 --
 
-CREATE TABLE `cbvpos_tax_codes` (
+CREATE TABLE `tax_codes` (
   `tax_code` varchar(32) NOT NULL,
   `tax_code_name` varchar(255) NOT NULL DEFAULT '',
   `tax_code_type` tinyint(2) NOT NULL DEFAULT '0',
@@ -915,10 +915,10 @@ CREATE TABLE `cbvpos_tax_codes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cbvpos_tax_code_rates`
+-- Table structure for table `tax_code_rates`
 --
 
-CREATE TABLE `cbvpos_tax_code_rates` (
+CREATE TABLE `tax_code_rates` (
   `rate_tax_code` varchar(32) NOT NULL,
   `rate_tax_category_id` int(10) NOT NULL,
   `tax_rate` decimal(15,4) NOT NULL DEFAULT '0.0000',
@@ -926,10 +926,10 @@ CREATE TABLE `cbvpos_tax_code_rates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cbvpos_tax_code_rates`
+-- Dumping data for table `tax_code_rates`
 --
 
-INSERT INTO `cbvpos_tax_code_rates` (`rate_tax_code`, `rate_tax_category_id`, `tax_rate`, `rounding_code`) VALUES
+INSERT INTO `tax_code_rates` (`rate_tax_code`, `rate_tax_category_id`, `tax_rate`, `rounding_code`) VALUES
 ('GST', 1, '10.0000', 1);
 
 --
@@ -937,172 +937,172 @@ INSERT INTO `cbvpos_tax_code_rates` (`rate_tax_code`, `rate_tax_category_id`, `t
 --
 
 --
--- Indexes for table `cbvpos_app_config`
+-- Indexes for table `app_config`
 --
-ALTER TABLE `cbvpos_app_config`
+ALTER TABLE `app_config`
   ADD PRIMARY KEY (`key`);
 
 --
--- Indexes for table `cbvpos_cash_up`
+-- Indexes for table `cash_up`
 --
-ALTER TABLE `cbvpos_cash_up`
+ALTER TABLE `cash_up`
   ADD PRIMARY KEY (`cashup_id`),
   ADD KEY `open_employee_id` (`open_employee_id`),
   ADD KEY `close_employee_id` (`close_employee_id`);
 
 --
--- Indexes for table `cbvpos_customers`
+-- Indexes for table `customers`
 --
-ALTER TABLE `cbvpos_customers`
+ALTER TABLE `customers`
   ADD PRIMARY KEY (`person_id`),
   ADD UNIQUE KEY `conc_id` (`conc_id`),
   ADD KEY `package_id` (`package_id`);
 
 --
--- Indexes for table `cbvpos_customers_packages`
+-- Indexes for table `customers_packages`
 --
-ALTER TABLE `cbvpos_customers_packages`
+ALTER TABLE `customers_packages`
   ADD PRIMARY KEY (`package_id`);
 
 --
--- Indexes for table `cbvpos_customers_points`
+-- Indexes for table `customers_points`
 --
-ALTER TABLE `cbvpos_customers_points`
+ALTER TABLE `customers_points`
   ADD PRIMARY KEY (`id`),
   ADD KEY `person_id` (`person_id`),
   ADD KEY `package_id` (`package_id`),
   ADD KEY `sale_id` (`sale_id`);
 
 --
--- Indexes for table `cbvpos_dinner_tables`
+-- Indexes for table `dinner_tables`
 --
-ALTER TABLE `cbvpos_dinner_tables`
+ALTER TABLE `dinner_tables`
   ADD PRIMARY KEY (`dinner_table_id`);
 
 --
--- Indexes for table `cbvpos_employees`
+-- Indexes for table `employees`
 --
-ALTER TABLE `cbvpos_employees`
+ALTER TABLE `employees`
   ADD UNIQUE KEY `username` (`username`),
   ADD KEY `person_id` (`person_id`);
 
 --
--- Indexes for table `cbvpos_expenses`
+-- Indexes for table `expenses`
 --
-ALTER TABLE `cbvpos_expenses`
+ALTER TABLE `expenses`
   ADD PRIMARY KEY (`expense_id`),
   ADD KEY `expense_category_id` (`expense_category_id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
--- Indexes for table `cbvpos_expense_categories`
+-- Indexes for table `expense_categories`
 --
-ALTER TABLE `cbvpos_expense_categories`
+ALTER TABLE `expense_categories`
   ADD PRIMARY KEY (`expense_category_id`),
   ADD UNIQUE KEY `category_name` (`category_name`);
 
 --
--- Indexes for table `cbvpos_giftcards`
+-- Indexes for table `giftcards`
 --
-ALTER TABLE `cbvpos_giftcards`
+ALTER TABLE `giftcards`
   ADD PRIMARY KEY (`giftcard_id`),
   ADD UNIQUE KEY `giftcard_number` (`giftcard_number`),
   ADD KEY `person_id` (`person_id`);
 
 --
--- Indexes for table `cbvpos_grants`
+-- Indexes for table `grants`
 --
-ALTER TABLE `cbvpos_grants`
+ALTER TABLE `grants`
   ADD PRIMARY KEY (`permission_id`,`person_id`),
   ADD KEY `ospos_grants_ibfk_2` (`person_id`);
 
 --
--- Indexes for table `cbvpos_inventory`
+-- Indexes for table `inventory`
 --
-ALTER TABLE `cbvpos_inventory`
+ALTER TABLE `inventory`
   ADD PRIMARY KEY (`trans_id`),
   ADD KEY `trans_items` (`trans_items`),
   ADD KEY `trans_user` (`trans_user`),
   ADD KEY `trans_location` (`trans_location`);
 
 --
--- Indexes for table `cbvpos_items`
+-- Indexes for table `items`
 --
-ALTER TABLE `cbvpos_items`
+ALTER TABLE `items`
   ADD PRIMARY KEY (`item_id`),
   ADD KEY `supplier_id` (`supplier_id`),
   ADD KEY `item_number` (`item_number`);
 
 --
--- Indexes for table `cbvpos_items_taxes`
+-- Indexes for table `items_taxes`
 --
-ALTER TABLE `cbvpos_items_taxes`
+ALTER TABLE `items_taxes`
   ADD PRIMARY KEY (`item_id`,`name`,`percent`);
 
 --
--- Indexes for table `cbvpos_item_kits`
+-- Indexes for table `item_kits`
 --
-ALTER TABLE `cbvpos_item_kits`
+ALTER TABLE `item_kits`
   ADD PRIMARY KEY (`item_kit_id`);
 
 --
--- Indexes for table `cbvpos_item_kit_items`
+-- Indexes for table `item_kit_items`
 --
-ALTER TABLE `cbvpos_item_kit_items`
+ALTER TABLE `item_kit_items`
   ADD PRIMARY KEY (`item_kit_id`,`item_id`,`quantity`),
   ADD KEY `ospos_item_kit_items_ibfk_2` (`item_id`);
 
 --
--- Indexes for table `cbvpos_item_quantities`
+-- Indexes for table `item_quantities`
 --
-ALTER TABLE `cbvpos_item_quantities`
+ALTER TABLE `item_quantities`
   ADD PRIMARY KEY (`item_id`,`location_id`),
   ADD KEY `item_id` (`item_id`),
   ADD KEY `location_id` (`location_id`);
 
 --
--- Indexes for table `cbvpos_modules`
+-- Indexes for table `modules`
 --
-ALTER TABLE `cbvpos_modules`
+ALTER TABLE `modules`
   ADD PRIMARY KEY (`module_id`),
   ADD UNIQUE KEY `desc_lang_key` (`desc_lang_key`),
   ADD UNIQUE KEY `name_lang_key` (`name_lang_key`);
 
 --
--- Indexes for table `cbvpos_people`
+-- Indexes for table `people`
 --
-ALTER TABLE `cbvpos_people`
+ALTER TABLE `people`
   ADD PRIMARY KEY (`person_id`),
   ADD KEY `email` (`email`);
 
 --
--- Indexes for table `cbvpos_permissions`
+-- Indexes for table `permissions`
 --
-ALTER TABLE `cbvpos_permissions`
+ALTER TABLE `permissions`
   ADD PRIMARY KEY (`permission_id`),
   ADD KEY `module_id` (`module_id`),
   ADD KEY `ospos_permissions_ibfk_2` (`location_id`);
 
 --
--- Indexes for table `cbvpos_receivings`
+-- Indexes for table `receivings`
 --
-ALTER TABLE `cbvpos_receivings`
+ALTER TABLE `receivings`
   ADD PRIMARY KEY (`receiving_id`),
   ADD KEY `supplier_id` (`supplier_id`),
   ADD KEY `employee_id` (`employee_id`),
   ADD KEY `reference` (`reference`);
 
 --
--- Indexes for table `cbvpos_receivings_items`
+-- Indexes for table `receivings_items`
 --
-ALTER TABLE `cbvpos_receivings_items`
+ALTER TABLE `receivings_items`
   ADD PRIMARY KEY (`receiving_id`,`item_id`,`line`),
   ADD KEY `item_id` (`item_id`);
 
 --
--- Indexes for table `cbvpos_sales`
+-- Indexes for table `sales`
 --
-ALTER TABLE `cbvpos_sales`
+ALTER TABLE `sales`
   ADD PRIMARY KEY (`sale_id`),
   ADD UNIQUE KEY `invoice_number` (`invoice_number`),
   ADD KEY `customer_id` (`customer_id`),
@@ -1111,78 +1111,78 @@ ALTER TABLE `cbvpos_sales`
   ADD KEY `dinner_table_id` (`dinner_table_id`);
 
 --
--- Indexes for table `cbvpos_sales_items`
+-- Indexes for table `sales_items`
 --
-ALTER TABLE `cbvpos_sales_items`
+ALTER TABLE `sales_items`
   ADD PRIMARY KEY (`sale_id`,`item_id`,`line`),
   ADD KEY `sale_id` (`sale_id`),
   ADD KEY `item_id` (`item_id`),
   ADD KEY `item_location` (`item_location`);
 
 --
--- Indexes for table `cbvpos_sales_items_taxes`
+-- Indexes for table `sales_items_taxes`
 --
-ALTER TABLE `cbvpos_sales_items_taxes`
+ALTER TABLE `sales_items_taxes`
   ADD PRIMARY KEY (`sale_id`,`item_id`,`line`,`name`,`percent`),
   ADD KEY `sale_id` (`sale_id`),
   ADD KEY `item_id` (`item_id`);
 
 --
--- Indexes for table `cbvpos_sales_payments`
+-- Indexes for table `sales_payments`
 --
-ALTER TABLE `cbvpos_sales_payments`
+ALTER TABLE `sales_payments`
   ADD PRIMARY KEY (`sale_id`,`payment_type`),
   ADD KEY `sale_id` (`sale_id`);
 
 --
--- Indexes for table `cbvpos_sales_reward_points`
+-- Indexes for table `sales_reward_points`
 --
-ALTER TABLE `cbvpos_sales_reward_points`
+ALTER TABLE `sales_reward_points`
   ADD PRIMARY KEY (`id`),
   ADD KEY `sale_id` (`sale_id`);
 
 --
--- Indexes for table `cbvpos_sales_taxes`
+-- Indexes for table `sales_taxes`
 --
-ALTER TABLE `cbvpos_sales_taxes`
+ALTER TABLE `sales_taxes`
   ADD PRIMARY KEY (`sale_id`,`tax_type`,`tax_group`),
   ADD KEY `print_sequence` (`sale_id`,`print_sequence`,`tax_type`,`tax_group`);
 
 --
--- Indexes for table `cbvpos_sessions`
+-- Indexes for table `sessions`
 --
-ALTER TABLE `cbvpos_sessions`
+ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
 --
--- Indexes for table `cbvpos_stock_locations`
+-- Indexes for table `stock_locations`
 --
-ALTER TABLE `cbvpos_stock_locations`
+ALTER TABLE `stock_locations`
   ADD PRIMARY KEY (`location_id`);
 
 --
--- Indexes for table `cbvpos_suppliers`
+-- Indexes for table `suppliers`
 --
-ALTER TABLE `cbvpos_suppliers`
+ALTER TABLE `suppliers`
   ADD KEY `person_id` (`person_id`);
 
 --
--- Indexes for table `cbvpos_tax_categories`
+-- Indexes for table `tax_categories`
 --
-ALTER TABLE `cbvpos_tax_categories`
+ALTER TABLE `tax_categories`
   ADD PRIMARY KEY (`tax_category_id`);
 
 --
--- Indexes for table `cbvpos_tax_codes`
+-- Indexes for table `tax_codes`
 --
-ALTER TABLE `cbvpos_tax_codes`
+ALTER TABLE `tax_codes`
   ADD PRIMARY KEY (`tax_code`);
 
 --
--- Indexes for table `cbvpos_tax_code_rates`
+-- Indexes for table `tax_code_rates`
 --
-ALTER TABLE `cbvpos_tax_code_rates`
+ALTER TABLE `tax_code_rates`
   ADD PRIMARY KEY (`rate_tax_code`,`rate_tax_category_id`);
 
 --
@@ -1190,99 +1190,99 @@ ALTER TABLE `cbvpos_tax_code_rates`
 --
 
 --
--- AUTO_INCREMENT for table `cbvpos_cash_up`
+-- AUTO_INCREMENT for table `cash_up`
 --
-ALTER TABLE `cbvpos_cash_up`
+ALTER TABLE `cash_up`
   MODIFY `cashup_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `cbvpos_customers_packages`
+-- AUTO_INCREMENT for table `customers_packages`
 --
-ALTER TABLE `cbvpos_customers_packages`
+ALTER TABLE `customers_packages`
   MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `cbvpos_customers_points`
+-- AUTO_INCREMENT for table `customers_points`
 --
-ALTER TABLE `cbvpos_customers_points`
+ALTER TABLE `customers_points`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `cbvpos_dinner_tables`
+-- AUTO_INCREMENT for table `dinner_tables`
 --
-ALTER TABLE `cbvpos_dinner_tables`
+ALTER TABLE `dinner_tables`
   MODIFY `dinner_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `cbvpos_expenses`
+-- AUTO_INCREMENT for table `expenses`
 --
-ALTER TABLE `cbvpos_expenses`
+ALTER TABLE `expenses`
   MODIFY `expense_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `cbvpos_expense_categories`
+-- AUTO_INCREMENT for table `expense_categories`
 --
-ALTER TABLE `cbvpos_expense_categories`
+ALTER TABLE `expense_categories`
   MODIFY `expense_category_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `cbvpos_giftcards`
+-- AUTO_INCREMENT for table `giftcards`
 --
-ALTER TABLE `cbvpos_giftcards`
+ALTER TABLE `giftcards`
   MODIFY `giftcard_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `cbvpos_inventory`
+-- AUTO_INCREMENT for table `inventory`
 --
-ALTER TABLE `cbvpos_inventory`
+ALTER TABLE `inventory`
   MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `cbvpos_items`
+-- AUTO_INCREMENT for table `items`
 --
-ALTER TABLE `cbvpos_items`
+ALTER TABLE `items`
   MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `cbvpos_item_kits`
+-- AUTO_INCREMENT for table `item_kits`
 --
-ALTER TABLE `cbvpos_item_kits`
+ALTER TABLE `item_kits`
   MODIFY `item_kit_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `cbvpos_people`
+-- AUTO_INCREMENT for table `people`
 --
-ALTER TABLE `cbvpos_people`
+ALTER TABLE `people`
   MODIFY `person_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `cbvpos_receivings`
+-- AUTO_INCREMENT for table `receivings`
 --
-ALTER TABLE `cbvpos_receivings`
+ALTER TABLE `receivings`
   MODIFY `receiving_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `cbvpos_sales`
+-- AUTO_INCREMENT for table `sales`
 --
-ALTER TABLE `cbvpos_sales`
+ALTER TABLE `sales`
   MODIFY `sale_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `cbvpos_sales_reward_points`
+-- AUTO_INCREMENT for table `sales_reward_points`
 --
-ALTER TABLE `cbvpos_sales_reward_points`
+ALTER TABLE `sales_reward_points`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `cbvpos_stock_locations`
+-- AUTO_INCREMENT for table `stock_locations`
 --
-ALTER TABLE `cbvpos_stock_locations`
+ALTER TABLE `stock_locations`
   MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `cbvpos_tax_categories`
+-- AUTO_INCREMENT for table `tax_categories`
 --
-ALTER TABLE `cbvpos_tax_categories`
+ALTER TABLE `tax_categories`
   MODIFY `tax_category_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -1290,148 +1290,148 @@ ALTER TABLE `cbvpos_tax_categories`
 --
 
 --
--- Constraints for table `cbvpos_cash_up`
+-- Constraints for table `cash_up`
 --
-ALTER TABLE `cbvpos_cash_up`
-  ADD CONSTRAINT `cbvpos_cash_up_ibfk_1` FOREIGN KEY (`open_employee_id`) REFERENCES `cbvpos_employees` (`person_id`),
-  ADD CONSTRAINT `cbvpos_cash_up_ibfk_2` FOREIGN KEY (`close_employee_id`) REFERENCES `cbvpos_employees` (`person_id`);
+ALTER TABLE `cash_up`
+  ADD CONSTRAINT `cash_up_ibfk_1` FOREIGN KEY (`open_employee_id`) REFERENCES `employees` (`person_id`),
+  ADD CONSTRAINT `cash_up_ibfk_2` FOREIGN KEY (`close_employee_id`) REFERENCES `employees` (`person_id`);
 
 --
--- Constraints for table `cbvpos_customers`
+-- Constraints for table `customers`
 --
-ALTER TABLE `cbvpos_customers`
-  ADD CONSTRAINT `cbvpos_customers_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `cbvpos_people` (`person_id`),
-  ADD CONSTRAINT `cbvpos_customers_ibfk_2` FOREIGN KEY (`package_id`) REFERENCES `cbvpos_customers_packages` (`package_id`);
+ALTER TABLE `customers`
+  ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `people` (`person_id`),
+  ADD CONSTRAINT `customers_ibfk_2` FOREIGN KEY (`package_id`) REFERENCES `customers_packages` (`package_id`);
 
 --
--- Constraints for table `cbvpos_customers_points`
+-- Constraints for table `customers_points`
 --
-ALTER TABLE `cbvpos_customers_points`
-  ADD CONSTRAINT `cbvpos_customers_points_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `cbvpos_customers` (`person_id`),
-  ADD CONSTRAINT `cbvpos_customers_points_ibfk_2` FOREIGN KEY (`package_id`) REFERENCES `cbvpos_customers_packages` (`package_id`),
-  ADD CONSTRAINT `cbvpos_customers_points_ibfk_3` FOREIGN KEY (`sale_id`) REFERENCES `cbvpos_sales` (`sale_id`);
+ALTER TABLE `customers_points`
+  ADD CONSTRAINT `customers_points_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `customers` (`person_id`),
+  ADD CONSTRAINT `customers_points_ibfk_2` FOREIGN KEY (`package_id`) REFERENCES `customers_packages` (`package_id`),
+  ADD CONSTRAINT `customers_points_ibfk_3` FOREIGN KEY (`sale_id`) REFERENCES `sales` (`sale_id`);
 
 --
--- Constraints for table `cbvpos_employees`
+-- Constraints for table `employees`
 --
-ALTER TABLE `cbvpos_employees`
-  ADD CONSTRAINT `cbvpos_employees_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `cbvpos_people` (`person_id`);
+ALTER TABLE `employees`
+  ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `people` (`person_id`);
 
 --
--- Constraints for table `cbvpos_expenses`
+-- Constraints for table `expenses`
 --
-ALTER TABLE `cbvpos_expenses`
-  ADD CONSTRAINT `cbvpos_expenses_ibfk_1` FOREIGN KEY (`expense_category_id`) REFERENCES `cbvpos_expense_categories` (`expense_category_id`),
-  ADD CONSTRAINT `cbvpos_expenses_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `cbvpos_employees` (`person_id`);
+ALTER TABLE `expenses`
+  ADD CONSTRAINT `expenses_ibfk_1` FOREIGN KEY (`expense_category_id`) REFERENCES `expense_categories` (`expense_category_id`),
+  ADD CONSTRAINT `expenses_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`person_id`);
 
 --
--- Constraints for table `cbvpos_giftcards`
+-- Constraints for table `giftcards`
 --
-ALTER TABLE `cbvpos_giftcards`
-  ADD CONSTRAINT `cbvpos_giftcards_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `cbvpos_people` (`person_id`);
+ALTER TABLE `giftcards`
+  ADD CONSTRAINT `giftcards_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `people` (`person_id`);
 
 --
--- Constraints for table `cbvpos_grants`
+-- Constraints for table `grants`
 --
-ALTER TABLE `cbvpos_grants`
-  ADD CONSTRAINT `cbvpos_grants_ibfk_1` FOREIGN KEY (`permission_id`) REFERENCES `cbvpos_permissions` (`permission_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `cbvpos_grants_ibfk_2` FOREIGN KEY (`person_id`) REFERENCES `cbvpos_employees` (`person_id`) ON DELETE CASCADE;
+ALTER TABLE `grants`
+  ADD CONSTRAINT `grants_ibfk_1` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`permission_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `grants_ibfk_2` FOREIGN KEY (`person_id`) REFERENCES `employees` (`person_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `cbvpos_inventory`
+-- Constraints for table `inventory`
 --
-ALTER TABLE `cbvpos_inventory`
-  ADD CONSTRAINT `cbvpos_inventory_ibfk_1` FOREIGN KEY (`trans_items`) REFERENCES `cbvpos_items` (`item_id`),
-  ADD CONSTRAINT `cbvpos_inventory_ibfk_2` FOREIGN KEY (`trans_user`) REFERENCES `cbvpos_employees` (`person_id`),
-  ADD CONSTRAINT `cbvpos_inventory_ibfk_3` FOREIGN KEY (`trans_location`) REFERENCES `cbvpos_stock_locations` (`location_id`);
+ALTER TABLE `inventory`
+  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`trans_items`) REFERENCES `items` (`item_id`),
+  ADD CONSTRAINT `inventory_ibfk_2` FOREIGN KEY (`trans_user`) REFERENCES `employees` (`person_id`),
+  ADD CONSTRAINT `inventory_ibfk_3` FOREIGN KEY (`trans_location`) REFERENCES `stock_locations` (`location_id`);
 
 --
--- Constraints for table `cbvpos_items`
+-- Constraints for table `items`
 --
-ALTER TABLE `cbvpos_items`
-  ADD CONSTRAINT `cbvpos_items_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `cbvpos_suppliers` (`person_id`);
+ALTER TABLE `items`
+  ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`person_id`);
 
 --
--- Constraints for table `cbvpos_items_taxes`
+-- Constraints for table `items_taxes`
 --
-ALTER TABLE `cbvpos_items_taxes`
-  ADD CONSTRAINT `cbvpos_items_taxes_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `cbvpos_items` (`item_id`) ON DELETE CASCADE;
+ALTER TABLE `items_taxes`
+  ADD CONSTRAINT `items_taxes_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `cbvpos_item_kit_items`
+-- Constraints for table `item_kit_items`
 --
-ALTER TABLE `cbvpos_item_kit_items`
-  ADD CONSTRAINT `cbvpos_item_kit_items_ibfk_1` FOREIGN KEY (`item_kit_id`) REFERENCES `cbvpos_item_kits` (`item_kit_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `cbvpos_item_kit_items_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `cbvpos_items` (`item_id`) ON DELETE CASCADE;
+ALTER TABLE `item_kit_items`
+  ADD CONSTRAINT `item_kit_items_ibfk_1` FOREIGN KEY (`item_kit_id`) REFERENCES `item_kits` (`item_kit_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `item_kit_items_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `cbvpos_item_quantities`
+-- Constraints for table `item_quantities`
 --
-ALTER TABLE `cbvpos_item_quantities`
-  ADD CONSTRAINT `cbvpos_item_quantities_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `cbvpos_items` (`item_id`),
-  ADD CONSTRAINT `cbvpos_item_quantities_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `cbvpos_stock_locations` (`location_id`);
+ALTER TABLE `item_quantities`
+  ADD CONSTRAINT `item_quantities_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`),
+  ADD CONSTRAINT `item_quantities_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `stock_locations` (`location_id`);
 
 --
--- Constraints for table `cbvpos_permissions`
+-- Constraints for table `permissions`
 --
-ALTER TABLE `cbvpos_permissions`
-  ADD CONSTRAINT `cbvpos_permissions_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `cbvpos_modules` (`module_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `cbvpos_permissions_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `cbvpos_stock_locations` (`location_id`) ON DELETE CASCADE;
+ALTER TABLE `permissions`
+  ADD CONSTRAINT `permissions_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `modules` (`module_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `permissions_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `stock_locations` (`location_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `cbvpos_receivings`
+-- Constraints for table `receivings`
 --
-ALTER TABLE `cbvpos_receivings`
-  ADD CONSTRAINT `cbvpos_receivings_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `cbvpos_employees` (`person_id`),
-  ADD CONSTRAINT `cbvpos_receivings_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `cbvpos_suppliers` (`person_id`);
+ALTER TABLE `receivings`
+  ADD CONSTRAINT `receivings_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`person_id`),
+  ADD CONSTRAINT `receivings_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`person_id`);
 
 --
--- Constraints for table `cbvpos_receivings_items`
+-- Constraints for table `receivings_items`
 --
-ALTER TABLE `cbvpos_receivings_items`
-  ADD CONSTRAINT `cbvpos_receivings_items_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `cbvpos_items` (`item_id`),
-  ADD CONSTRAINT `cbvpos_receivings_items_ibfk_2` FOREIGN KEY (`receiving_id`) REFERENCES `cbvpos_receivings` (`receiving_id`);
+ALTER TABLE `receivings_items`
+  ADD CONSTRAINT `receivings_items_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`),
+  ADD CONSTRAINT `receivings_items_ibfk_2` FOREIGN KEY (`receiving_id`) REFERENCES `receivings` (`receiving_id`);
 
 --
--- Constraints for table `cbvpos_sales`
+-- Constraints for table `sales`
 --
-ALTER TABLE `cbvpos_sales`
-  ADD CONSTRAINT `cbvpos_sales_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `cbvpos_employees` (`person_id`),
-  ADD CONSTRAINT `cbvpos_sales_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `cbvpos_customers` (`person_id`),
-  ADD CONSTRAINT `cbvpos_sales_ibfk_3` FOREIGN KEY (`dinner_table_id`) REFERENCES `cbvpos_dinner_tables` (`dinner_table_id`);
+ALTER TABLE `sales`
+  ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`person_id`),
+  ADD CONSTRAINT `sales_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`person_id`),
+  ADD CONSTRAINT `sales_ibfk_3` FOREIGN KEY (`dinner_table_id`) REFERENCES `dinner_tables` (`dinner_table_id`);
 
 --
--- Constraints for table `cbvpos_sales_items`
+-- Constraints for table `sales_items`
 --
-ALTER TABLE `cbvpos_sales_items`
-  ADD CONSTRAINT `cbvpos_sales_items_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `cbvpos_items` (`item_id`),
-  ADD CONSTRAINT `cbvpos_sales_items_ibfk_2` FOREIGN KEY (`sale_id`) REFERENCES `cbvpos_sales` (`sale_id`),
-  ADD CONSTRAINT `cbvpos_sales_items_ibfk_3` FOREIGN KEY (`item_location`) REFERENCES `cbvpos_stock_locations` (`location_id`);
+ALTER TABLE `sales_items`
+  ADD CONSTRAINT `sales_items_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`),
+  ADD CONSTRAINT `sales_items_ibfk_2` FOREIGN KEY (`sale_id`) REFERENCES `sales` (`sale_id`),
+  ADD CONSTRAINT `sales_items_ibfk_3` FOREIGN KEY (`item_location`) REFERENCES `stock_locations` (`location_id`);
 
 --
--- Constraints for table `cbvpos_sales_items_taxes`
+-- Constraints for table `sales_items_taxes`
 --
-ALTER TABLE `cbvpos_sales_items_taxes`
-  ADD CONSTRAINT `cbvpos_sales_items_taxes_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `cbvpos_sales_items` (`sale_id`),
-  ADD CONSTRAINT `cbvpos_sales_items_taxes_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `cbvpos_items` (`item_id`);
+ALTER TABLE `sales_items_taxes`
+  ADD CONSTRAINT `sales_items_taxes_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `sales_items` (`sale_id`),
+  ADD CONSTRAINT `sales_items_taxes_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`);
 
 --
--- Constraints for table `cbvpos_sales_payments`
+-- Constraints for table `sales_payments`
 --
-ALTER TABLE `cbvpos_sales_payments`
-  ADD CONSTRAINT `cbvpos_sales_payments_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `cbvpos_sales` (`sale_id`);
+ALTER TABLE `sales_payments`
+  ADD CONSTRAINT `sales_payments_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `sales` (`sale_id`);
 
 --
--- Constraints for table `cbvpos_sales_reward_points`
+-- Constraints for table `sales_reward_points`
 --
-ALTER TABLE `cbvpos_sales_reward_points`
-  ADD CONSTRAINT `cbvpos_sales_reward_points_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `cbvpos_sales` (`sale_id`);
+ALTER TABLE `sales_reward_points`
+  ADD CONSTRAINT `sales_reward_points_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `sales` (`sale_id`);
 
 --
--- Constraints for table `cbvpos_suppliers`
+-- Constraints for table `suppliers`
 --
-ALTER TABLE `cbvpos_suppliers`
-  ADD CONSTRAINT `cbvpos_suppliers_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `cbvpos_people` (`person_id`);
+ALTER TABLE `suppliers`
+  ADD CONSTRAINT `suppliers_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `people` (`person_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
