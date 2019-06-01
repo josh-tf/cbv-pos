@@ -95,7 +95,7 @@ if (!empty($invoice_number)) {
 
         <?php
 foreach ($cart as $line => $item) {
-    if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop category
+    if ( $item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop category
 
         if ((substr($item['name'], 0, 7) == 'Deposit')) { // if item name starts with Deposit*
 
@@ -108,6 +108,7 @@ foreach ($cart as $line => $item) {
         }
     } else {
         $item['name'] = ucfirst($item['name']); // otherwise just use the name
+        $item['description'] = '<b>Item Details:</b> ' . $item['description'];
     } ?>
 
         <tr class="item-row">
@@ -118,8 +119,7 @@ foreach ($cart as $line => $item) {
             <td class="" style=''><textarea aria-label="total" rows="4" cols="6"><?php echo to_currency($item['total']); ?></textarea>
             </td>
         </tr>
-        <tr class="item-row"
-            <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
+        <tr class="item-row">
             <td class="item-description" colspan="5">
                 <div>
                     <?php echo $item['description']; ?>

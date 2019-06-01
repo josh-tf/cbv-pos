@@ -187,16 +187,22 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
 
         <?php
 foreach ($cart as $line => $item) {
+    if ( $item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop category
 
-    if ($item['item_category'] == "Laptop" || $item['item_category'] === "Desktop") { // if the item is a desktop or laptop
+        if ((substr($item['name'], 0, 7) == 'Deposit')) { // if item name starts with Deposit*
 
-        $item['name'] = "CBV " . $item['name'] . " (" . $item['item_category'] . ")"; // change the name to "CBV XXXX (Type)"
+            $item['description'] = '<b>Description:</b> ' . $item['description'] . ' - ' . $this->lang->line('deposit_terms');
+        } else { // if the item is a desktop or laptop computer
 
+            $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')';
+            $item['description'] = '<b>Machine Specs:</b> ' . $item['description'];
+            $isComputer = true;
+        }
     } else {
         $item['name'] = ucfirst($item['name']); // otherwise just use the name
-    }
+        $item['description'] = '<b>Item Details:</b> ' . $item['description'];
+    } ?>
 
-    ?>
         <tr class="item-row">
             <td colspan="2" class="item-name"><textarea rows="4" cols="6"><?php echo $item['name']; ?></textarea></td>
             <td><textarea rows="4" cols="4"><?php echo to_currency($item['price']); ?></textarea></td>
@@ -204,10 +210,9 @@ foreach ($cart as $line => $item) {
                     cols="6"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
             <td><textarea rows="4" cols="6"><?php echo to_currency($item['total']); ?></textarea></td>
         </tr>
-        <tr class="item-row"
-            <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
+        <tr class="item-row">
             <td class="item-description" colspan="5">
-                <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
+                <div><?php echo $item['description']; ?></div>
             </td>
         </tr>
         <?php
