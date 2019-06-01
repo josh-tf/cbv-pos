@@ -52,72 +52,6 @@ foreach ($var as $row) {
 			</div>
 		</div>
 
-		<?php if ($item_kits_enabled == '1'): ?>
-		<div class="form-group form-group-sm hidden">
-			<?php echo form_label($this->lang->line('items_stock_type'), 'stock_type', !empty($basic_version) ? array('class' => 'required control-label col-xs-3') : array('class' => 'control-label col-xs-3')); ?>
-			<div class="col-xs-8">
-				<label class="radio-inline">
-					<?php echo form_radio(array(
-    'name' => 'stock_type',
-    'type' => 'radio',
-    'id' => 'stock_type',
-    'value' => 0,
-    'checked' => $item_info->stock_type == HAS_STOCK)
-); ?> <?php echo $this->lang->line('items_stock'); ?>
-				</label>
-				<label class="radio-inline">
-					<?php echo form_radio(array(
-    'name' => 'stock_type',
-    'type' => 'radio',
-    'id' => 'stock_type',
-    'value' => 1,
-    'checked' => $item_info->stock_type == HAS_NO_STOCK)
-); ?> <?php echo $this->lang->line('items_nonstock'); ?>
-				</label>
-			</div>
-		</div>
-
-		<div class="form-group form-group-sm hidden">
-			<?php echo form_label($this->lang->line('items_type'), 'item_type', !empty($basic_version) ? array('class' => 'required control-label col-xs-3') : array('class' => 'control-label col-xs-3')); ?>
-			<div class="col-xs-8">
-				<label class="radio-inline">
-					<?php echo form_radio(array(
-    'name' => 'item_type',
-    'type' => 'radio',
-    'id' => 'item_type',
-    'value' => 0,
-    'checked' => $item_info->item_type == ITEM)
-); ?> <?php echo $this->lang->line('items_standard'); ?>
-				</label>
-				<label class="radio-inline">
-					<?php echo form_radio(array(
-    'name' => 'item_type',
-    'type' => 'radio',
-    'id' => 'item_type',
-    'value' => 1,
-    'checked' => $item_info->item_type == ITEM_KIT)
-); ?> <?php echo $this->lang->line('items_kit'); ?>
-				</label>
-				<?php
-if ($this->config->item('derive_sale_quantity') == '1') {
-    ?>
-					<label class="radio-inline">
-						<?php echo form_radio(array(
-        'name' => 'item_type',
-        'type' => 'radio',
-        'id' => 'item_type',
-        'value' => 2,
-        'checked' => $item_info->item_type == ITEM_AMOUNT_ENTRY)
-    ); ?><?php echo $this->lang->line('items_amount_entry'); ?>
-					</label>
-				<?php
-}
-?>
-
-			</div>
-		</div>
-		<?php endif;?>
-
 		<div class="form-group form-group-sm hidden">
 			<?php echo form_label($this->lang->line('items_supplier'), 'supplier', array('class' => 'control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
@@ -312,30 +246,6 @@ foreach ($stock_locations as $key => $location_detail) {
 						<a href="#" class="btn btn-default btn-sm fileinput-exists" data-dismiss="fileinput"><?php echo $this->lang->line("items_remove_image"); ?></a>
 					</div>
 				</div>
-			</div>
-		</div>
-
-		<div class="form-group form-group-sm hidden">
-			<?php echo form_label($this->lang->line('items_allow_alt_description'), 'allow_alt_description', array('class' => 'control-label col-xs-3')); ?>
-			<div class='col-xs-1'>
-				<?php echo form_checkbox(array(
-    'name' => 'allow_alt_description',
-    'id' => 'allow_alt_description',
-    'value' => 1,
-    'checked' => ($item_info->allow_alt_description) ? 1 : 0)
-); ?>
-			</div>
-		</div>
-
-		<div class="form-group form-group-sm hidden">
-			<?php echo form_label($this->lang->line('items_is_serialized'), 'is_serialized', array('class' => 'control-label col-xs-3')); ?>
-			<div class='col-xs-1'>
-				<?php echo form_checkbox(array(
-    'name' => 'is_serialized',
-    'id' => 'is_serialized',
-    'value' => 1,
-    'checked' => ($item_info->is_serialized) ? 1 : 0)
-); ?>
 			</div>
 		</div>
 
@@ -637,7 +547,7 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
 ?>
 	</div>
 
-		<div class="form-group form-group-sm">
+	<div class="form-group form-group-sm">
 			<?php echo form_label($this->lang->line('items_description'), 'description', array('class' => 'control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
 				<?php echo form_textarea(array(
@@ -648,6 +558,63 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
 ); ?>
 			</div>
 		</div>
+
+		<div id="adt_opts">
+
+		<div class="alert alert-warning" role="alert">
+  	Special options for stock and sale handling
+	</div>
+
+	<div class="form-group form-group-sm">
+
+			<?php echo form_label($this->lang->line('items_stock_type'), 'stock_type', !empty($basic_version) ? array('class' => 'required control-label col-xs-3') : array('class' => 'control-label col-xs-3')); ?>
+			<div class="col-xs-8">
+				<label class="radio-inline">
+					<?php echo form_radio(array(
+    'name' => 'stock_type',
+    'type' => 'radio',
+    'id' => 'stock_type',
+    'value' => 0,
+    'checked' => $item_info->stock_type == HAS_STOCK)
+); ?> <?php echo $this->lang->line('items_stock'); ?>
+				</label>
+				<label class="radio-inline">
+					<?php echo form_radio(array(
+    'name' => 'stock_type',
+    'type' => 'radio',
+    'id' => 'stock_type',
+    'value' => 1,
+    'checked' => $item_info->stock_type == HAS_NO_STOCK)
+); ?> <?php echo $this->lang->line('items_nonstock'); ?>
+				</label>
+			</div>
+		</div>
+
+		<div class="form-group form-group-sm">
+			<?php echo form_label($this->lang->line('items_allow_alt_description'), 'allow_alt_description', array('class' => 'control-label col-xs-3')); ?>
+			<div class='col-xs-1'>
+				<?php echo form_checkbox(array(
+    'name' => 'allow_alt_description',
+    'id' => 'allow_alt_description',
+    'value' => 1,
+    'checked' => ($item_info->allow_alt_description) ? 1 : 0)
+); ?>
+			</div>
+		</div>
+
+		<div class="form-group form-group-sm">
+			<?php echo form_label($this->lang->line('items_is_serialized'), 'is_serialized', array('class' => 'control-label col-xs-3')); ?>
+			<div class='col-xs-1'>
+				<?php echo form_checkbox(array(
+    'name' => 'is_serialized',
+    'id' => 'is_serialized',
+    'value' => 1,
+    'checked' => ($item_info->is_serialized) ? 1 : 0)
+); ?>
+			</div>
+		</div>
+</div>
+
 	</fieldset>
 
 <?php echo form_close(); ?>
@@ -672,11 +639,13 @@ $(document).ready(function()
 			$('.hold_for').removeClass('hidden');
 			$('#computer-fields').removeClass('hidden');
 			$('#tax').addClass('hidden');
+			$('#adt_opts').addClass('hidden');
 		} else {
 			$('.on_hold').addClass('hidden');
 			$('.hold_for').addClass('hidden');
 			$('#computer-fields').addClass('hidden');
 			$('#tax').removeClass('hidden');
+			$('#adt_opts').removeClass('hidden');
 		}
 
 		if (category == 'Desktop') { // isComputer and is a Desktop (Specific items: 10,12)
