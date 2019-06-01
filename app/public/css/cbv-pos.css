@@ -115,6 +115,7 @@ a.none {
 	font-size: 11px;
 	color: #777777;
 	clear: both;
+	z-index: 100;
 }
 
 a.rollover img {
