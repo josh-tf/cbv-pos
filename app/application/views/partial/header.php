@@ -27,15 +27,24 @@
 	<link rel="stylesheet" href="bower_components/trumbowyg/dist/ui/trumbowyg.css" />
 	<!-- endbower -->
 	<!-- start css template tags -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.autocomplete.css"/>
-	<link rel="stylesheet" type="text/css" href="css/cbv-pos-print.css"/>
-	<link rel="stylesheet" type="text/css" href="css/cbv-pos.css"/>
-	<link rel="stylesheet" type="text/css" href="css/invoice.css"/>
-	<link rel="stylesheet" type="text/css" href="css/popupbox.css"/>
-	<link rel="stylesheet" type="text/css" href="css/receipt.css"/>
-	<link rel="stylesheet" type="text/css" href="css/register.css"/>
-	<link rel="stylesheet" type="text/css" href="css/reports.css"/>
-	<!-- end css template tags -->
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.autocomplete.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/cbv-pos-print.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/cbv-pos.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/invoice.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/popupbox.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/receipt.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/register.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/reports.css"/>
+
+	<!-- end css template tags -->
 	<!-- bower:js -->
 	<script src="bower_components/jquery/dist/jquery.js"></script>
 	<script src="bower_components/jquery-form/src/jquery.form.js"></script>
@@ -67,22 +76,32 @@
 	<script src="bower_components/trumbowyg/dist/trumbowyg.js"></script>
 	<!-- endbower -->
 	<!-- start js template tags -->
-	<script type="text/javascript" src="js/imgpreview.full.jquery.js"></script>
-	<script type="text/javascript" src="js/manage_tables.js"></script>
-	<script type="text/javascript" src="js/nominatim.autocomplete.js"></script>
-	<!-- end js template tags -->
+
+	<script type="text/javascript" src="js/imgpreview.full.jquery.js"></script>
+
+	<script type="text/javascript" src="js/manage_tables.js"></script>
+
+	<script type="text/javascript" src="js/nominatim.autocomplete.js"></script>
+
+	<!-- end js template tags -->
 	<?php else: ?>
 	<!--[if lte IE 8]>
 		<link rel="stylesheet" media="print" href="dist/print.css" type="text/css" />
 		<![endif]-->
 	<!-- start mincss template tags -->
-	<link rel="stylesheet" type="text/css" href="dist/jquery-ui/jquery-ui.min.css"/>
-	<link rel="stylesheet" type="text/css" href="dist/trumbowyg/trumbowyg.css"/>
-	<link rel="stylesheet" type="text/css" href="dist/cbv-pos.min.css"/>
-	<!-- end mincss template tags -->
+
+	<link rel="stylesheet" type="text/css" href="dist/jquery-ui/jquery-ui.min.css"/>
+
+	<link rel="stylesheet" type="text/css" href="dist/trumbowyg/trumbowyg.css"/>
+
+	<link rel="stylesheet" type="text/css" href="dist/cbv-pos.min.css"/>
+
+	<!-- end mincss template tags -->
 	<!-- start minjs template tags -->
-	<script type="text/javascript" src="dist/cbv-pos.min.js"></script>
-	<!-- end minjs template tags -->
+
+	<script type="text/javascript" src="dist/cbv-pos.min.js"></script>
+
+	<!-- end minjs template tags -->
 	<?php endif;?>
 
 	<?php $this->load->view('partial/header_js');?>
@@ -134,7 +153,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<?php foreach ($allowed_modules as $module): ?>
 						<li class="<?php echo $module->module_id == $this->uri->segment(1) ? 'active' : ''; ?>">
-							<a href="<?php echo base_url() . $module->module_id; ?>" title="<?php echo $this->lang->line("module_".$module->module_id.'_desc') ?>" class="menu-icon">
+							<a href="<?php echo base_url() . $module->module_id; ?>" data-toggle="tooltip" title="<?php echo $this->lang->line("module_".$module->module_id.'_desc') ?>" class="menu-icon">
 								<img src="<?php echo base_url() . 'images/menubar/white/' . $module->module_id . '.png'; ?>" border="0" alt="Module Icon" /><br />
 								<span class="nav-text"><?php echo $this->lang->line("module_" . $module->module_id) ?></span>
 							</a>

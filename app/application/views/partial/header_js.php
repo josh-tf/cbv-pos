@@ -51,4 +51,8 @@
 		submit.apply(this, arguments);
 	};
 
+	$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+	});
+
 </script>
