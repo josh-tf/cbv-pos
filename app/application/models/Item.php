@@ -517,11 +517,19 @@ class Item extends CI_Model
         $label = $result_row->$label1;
 
         if ($label2 !== '') {
-            $label .= ' | ' . $result_row->$label2;
+            if($label2 == 'category') {
+                $label .= ' (' . $result_row->$label2 . ')';
+            } else {
+                $label .= ' | ' . $result_row->$label2;
+            }
         }
 
         if ($label3 !== '') {
-            $label .= ' | ' . $result_row->$label3;
+            if($label3 == 'unit_price') {
+                $label .= ' - $' . $result_row->$label3;
+            } else {
+                $label .= ' | ' . $result_row->$label3;
+            }
         }
 
         return $label;
