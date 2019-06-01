@@ -271,3 +271,7 @@ input#amount_tendered:disabled {
 .open>.non-sale.dropdown-toggle.btn-default {
 	background-image: linear-gradient(#ffaaaa, #bf3f3f);
 }
+
+input.form-control.input-sm.center {
+    text-align: center;
+}

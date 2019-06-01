@@ -132,19 +132,28 @@ if (count($cart) == 0) {
 } else {
     foreach (array_reverse($cart, true) as $line => $item) {
         ?>
+
+<?php
+if ((substr($item['name'], 0, 7) == 'Deposit') || ($item['item_category'] == 'User Support') || ($item['item_category'] == 'Ebay Sales')) { // if the item is a desktop or laptop category
+            $item['name'] = $item['name'];
+        } else {
+            $item['name'] = $item['name'] . " (" . $item['item_category'] . ")";
+        }
+        ?>
+
 					<?php echo form_open($controller_name . "/edit_item/$line", array('class' => 'form-horizontal', 'id' => 'cart_' . $line)); ?>
 						<tr>
 							<td><?php echo anchor($controller_name . "/delete_item/$line", '<span class="glyphicon glyphicon-trash"></span>'); ?></td>
 							<td colspan="2" style="align: center;">
-								<?php echo $item['name'] . " (" . $item['item_category'] . ")"; ?>
-								<br /> <?php if ($item['stock_type'] == '0'): echo '[' . to_quantity_decimals($item['in_stock']) . ' in ' . $item['stock_name'] . ']';endif;?>
+								<?php echo $item['name']; ?>
+								<br /> <?php if ($item['stock_type'] == '0' && ($item['item_category'] != ('Laptop' || 'Desktop'))): echo '[' . to_quantity_decimals($item['in_stock']) . ' in ' . $item['stock_name'] . ']';endif;?>
 								<?php echo form_hidden('location', $item['item_location']); ?>
 							</td>
 
 							<?php
 if ($items_module_allowed) {
             ?>
-								<td><?php echo form_input(array('name' => 'price', 'class' => 'form-control input-sm', 'value' => to_currency_no_money($item['price']), 'tabindex' => ++$tabindex, 'onClick' => 'this.select();')); ?></td>
+								<td><?php echo form_input(array('name' => 'price', 'class' => 'form-control input-sm center', 'value' => to_currency_no_money($item['price']), 'tabindex' => ++$tabindex, 'onClick' => 'this.select();')); ?></td>
 							<?php
 } else {
             ?>
@@ -162,12 +171,12 @@ if ($item['is_serialized'] == 1) {
             echo to_quantity_decimals($item['quantity']);
             echo form_hidden('quantity', $item['quantity']);
         } else {
-            echo form_input(array('name' => 'quantity', 'class' => 'form-control input-sm', 'value' => to_quantity_decimals($item['quantity']), 'tabindex' => ++$tabindex, 'onClick' => 'this.select();'));
+            echo form_input(array('name' => 'quantity', 'class' => 'form-control input-sm center', 'value' => to_quantity_decimals($item['quantity']), 'tabindex' => ++$tabindex, 'onClick' => 'this.select();'));
         }
         ?>
 							</td>
 
-							<td><?php echo form_input(array('name' => 'discount', 'class' => 'form-control input-sm', 'value' => to_decimals($item['discount'], 0), 'tabindex' => ++$tabindex, 'onClick' => 'this.select();')); ?></td>
+							<td><?php echo form_input(array('name' => 'discount', 'class' => 'form-control input-sm center', 'value' => to_decimals($item['discount'], 0), 'tabindex' => ++$tabindex, 'onClick' => 'this.select();')); ?></td>
 							<td>
 								<?php
 if ($item['item_type'] == ITEM_AMOUNT_ENTRY) {
