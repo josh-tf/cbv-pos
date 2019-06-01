@@ -168,17 +168,17 @@ class Customers extends Persons
             'gender' => $this->input->post('gender'),
             'email' => $email,
             'phone_number' => $this->input->post('phone_number'),
-            'address_1' => $this->input->post('address_1'),
-            'suburb' => $this->input->post('suburb'),
-            'state' => $this->input->post('state'),
+            'address_1' => ucwords($this->input->post('address_1')),
+            'suburb' => ucwords($this->input->post('suburb')),
+            'state' => ucwords($this->input->post('state')),
             'postcode' => $this->input->post('postcode'),
-            'country' => $this->input->post('country'),
+            'country' => ucwords($this->input->post('country')),
             'comments' => $this->input->post('comments'),
         );
 
         $customer_data = array(
             'conc_id' => $this->input->post('conc_id') == '' ? null : $conc_id = preg_replace('/[- ]/','',strtoupper($this->input->post('conc_id'))), // when saving a conc ID, remove dash and space
-            'company_name' => $this->input->post('company_name') == '' ? null : $this->input->post('company_name'),
+            'company_name' => $this->input->post('company_name') == '' ? null : ucwords($this->input->post('company_name')),
             'package_id' => $this->input->post('package_id') == '' ? null : $this->input->post('package_id'),
             'taxable' => 1, // Taxable removed from add customer form - forcing all customers to be tax
             //'taxable' => $this->input->post('taxable') != NULL                           //applicable
