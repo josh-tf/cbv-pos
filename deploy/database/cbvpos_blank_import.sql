@@ -420,16 +420,6 @@ CREATE TABLE `inventory` (
   `trans_inventory` decimal(15,3) NOT NULL DEFAULT '0.000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `inventory`
---
-
-INSERT INTO `inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_date`, `trans_comment`, `trans_location`, `trans_inventory`) VALUES
-(1, 1, 1, '2019-05-26 14:34:42', 'Manual Edit of Quantity', 1, '1.000'),
-(2, 2, 1, '2019-05-26 14:34:56', 'Manual Edit of Quantity', 1, '1.000'),
-(3, 3, 1, '2019-06-02 15:57:59', 'Manual Edit of Quantity', 1, '1.000'),
-(4, 4, 1, '2019-06-02 15:58:11', 'Manual Edit of Quantity', 1, '1.000');
-
 -- --------------------------------------------------------
 
 --
@@ -847,14 +837,6 @@ CREATE TABLE `sessions` (
   `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `sessions`
---
-
-INSERT INTO `sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('aa8e789b961acbd175fac431e9fd1ec1fc50e6b5', '172.18.0.1', 1558845296, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535383834353235343b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b),
-('c9dbcd0093886b82efb0411da829e2729b2822f7', '172.18.0.1', 1559455091, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535393435353033313b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b);
 
 -- --------------------------------------------------------
 
