@@ -368,7 +368,7 @@ foreach ($var as $row) {
 
 <div class='col-xs-4'>
     <select class="form-control input-sm" id="item_storage_type" id="item_storage_type" name="item_storage_type">
-	<option selected="">Select..</option>
+	<option value="" disabled selected>Select..</option>
 
 	<?php
 $variable = $this->config->item('cbvopt_item_storage_type');
