@@ -34,7 +34,7 @@ services:
       - "3306:3306"
     restart: always
     volumes:
-      - ./cbv-pos/deploy/dummy-db/cbvpos_import.sql:/docker-entrypoint-initdb.d/dump.sql
+      - ./cbv-pos/deploy/database/cbvpos_import.sql:/docker-entrypoint-initdb.d/dump.sql
 
   cbv-dev-pma:
     container_name: cbv-dev-pma
