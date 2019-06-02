@@ -3,10 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: cbv-dev-db
--- Generation Time: May 26, 2019 at 04:33 AM
+-- Generation Time: Jun 02, 2019 at 05:56 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.14
 
+--
+-- Release 1.2.2 Dummy Database
+--
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -26,6 +29,8 @@ SET time_zone = "+00:00";
 
 --
 -- Table structure for table `app_config`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `app_config` (
@@ -186,6 +191,8 @@ INSERT INTO `app_config` (`key`, `value`) VALUES
 --
 -- Table structure for table `cash_up`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `cash_up` (
   `cashup_id` int(10) NOT NULL,
@@ -208,6 +215,9 @@ CREATE TABLE `cash_up` (
 
 --
 -- Table structure for table `customers`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `customers` (
@@ -235,6 +245,9 @@ INSERT INTO `customers` (`person_id`, `company_name`, `conc_id`, `taxable`, `sal
 --
 -- Table structure for table `customers_packages`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `customers_packages` (
   `package_id` int(11) NOT NULL,
@@ -259,6 +272,8 @@ INSERT INTO `customers_packages` (`package_id`, `package_name`, `points_percent`
 --
 -- Table structure for table `customers_points`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `customers_points` (
   `id` int(11) NOT NULL,
@@ -272,6 +287,9 @@ CREATE TABLE `customers_points` (
 
 --
 -- Table structure for table `dinner_tables`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `dinner_tables` (
@@ -293,6 +311,9 @@ INSERT INTO `dinner_tables` (`dinner_table_id`, `name`, `status`, `deleted`) VAL
 
 --
 -- Table structure for table `employees`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `employees` (
@@ -317,6 +338,8 @@ INSERT INTO `employees` (`username`, `password`, `person_id`, `deleted`, `hash_v
 --
 -- Table structure for table `expenses`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `expenses` (
   `expense_id` int(10) NOT NULL,
@@ -337,6 +360,8 @@ CREATE TABLE `expenses` (
 --
 -- Table structure for table `expense_categories`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `expense_categories` (
   `expense_category_id` int(10) NOT NULL,
@@ -349,6 +374,8 @@ CREATE TABLE `expense_categories` (
 
 --
 -- Table structure for table `giftcards`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `giftcards` (
@@ -364,6 +391,9 @@ CREATE TABLE `giftcards` (
 
 --
 -- Table structure for table `grants`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `grants` (
@@ -414,6 +444,9 @@ INSERT INTO `grants` (`permission_id`, `person_id`, `menu_group`) VALUES
 --
 -- Table structure for table `inventory`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:53 AM
+--
 
 CREATE TABLE `inventory` (
   `trans_id` int(11) NOT NULL,
@@ -437,12 +470,18 @@ INSERT INTO `inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_date`, 
 (5, 3, 1, '2018-10-13 22:19:56', 'POS 1', 1, '-1.000'),
 (6, 1, 1, '2018-10-13 22:19:56', 'POS 1', 1, '-1.000'),
 (7, 5, 1, '2019-05-26 14:30:31', 'Manual Edit of Quantity', 1, '1.000'),
-(8, 6, 1, '2019-05-26 14:31:03', 'Manual Edit of Quantity', 1, '1.000');
+(8, 6, 1, '2019-05-26 14:31:03', 'Manual Edit of Quantity', 1, '1.000'),
+(9, 4, 1, '2019-06-02 15:52:49', 'Manual Edit of Quantity', 1, '-4.000'),
+(10, 7, 1, '2019-06-02 15:53:32', 'Manual Edit of Quantity', 1, '1.000'),
+(11, 1, 1, '2019-06-02 15:53:44', 'Manual Edit of Quantity', 1, '1.000');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `items`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:55 AM
 --
 
 CREATE TABLE `items` (
@@ -492,17 +531,21 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`name`, `category`, `supplier_id`, `item_number`, `description`, `cost_price`, `unit_price`, `reorder_level`, `receiving_quantity`, `item_id`, `pic_filename`, `allow_alt_description`, `is_serialized`, `stock_type`, `item_type`, `tax_category_id`, `deleted`, `on_hold`, `hold_for`, `custom1`, `custom2`, `custom3`, `custom4`, `custom5`, `custom6`, `custom7`, `custom8`, `custom9`, `custom10`, `custom11`, `custom12`, `custom13`, `custom14`, `custom15`, `custom16`, `custom17`, `custom18`, `custom19`, `custom20`) VALUES
-('8111', 'Laptop', NULL, NULL, 'Lenovo T440, i5, 2.4 Ghz, 8 GB RAM, 250 GB HDD, Ubuntu 16.04, 14 Inch Screen, 4.4 Hours, Has SSD, New Bag', '0.00', '250.00', '0.000', '1.000', 1, NULL, 0, 0, 0, 0, 0, 0, 0, NULL, '2018-10-13', 'Lenovo T440', 'i5', '2.4', '8', '250', 'Ubuntu 16.04', '14', '', '', '4.4', '', 'Has SSD, New Bag', '', '', '', '', '', '', ''),
-('8222', 'Desktop', NULL, NULL, 'Type: Tower, Dell Optiplex 4000, C2D, 2.2 Ghz, 4 GB RAM, 160 GB HDD, Ubuntu 16.04, 20 Inch Screen, DVD-RW', '0.00', '75.00', '0.000', '1.000', 2, NULL, 0, 0, 0, 0, 0, 0, 0, NULL, '2018-10-13', 'Dell Optiplex 4000', 'C2D', '2.2', '4', '160', 'Ubuntu 16.04', '20', 'DVD-RW', 'Tower', '', '55', '', '', '', '', '', '', '', ''),
-('Wifi USB', 'Misc (New)', NULL, NULL, 'New USB Wifi Stick', '0.00', '10.00', '0.000', '1.000', 3, NULL, 0, 0, 1, 0, 0, 0, 0, NULL, '', '', '', '', '', '', 'Ubuntu 16.04', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-('Used Case', 'Misc (Used)', NULL, NULL, 'Used PC Case without power supply', '0.00', '10.00', '0.000', '1.000', 4, NULL, 0, 0, 1, 0, 0, 0, 0, NULL, '', '', '', '', '', '', 'Ubuntu 16.04', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-('Deposit (Laptop)', 'Laptop', NULL, NULL, 'Deposit for CBV Laptop', '0.00', '0.00', '0.000', '1.000', 5, NULL, 0, 0, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-('Deposit (Desktop)', 'Desktop', NULL, NULL, 'Deposit for CBV Desktop', '0.00', '0.00', '0.000', '1.000', 6, NULL, 0, 0, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+('8111', 'Laptop', NULL, NULL, 'Lenovo T440, i5, 2.4 Ghz, 8 GB RAM, 250 GB SSD, Ubuntu 16.04, 14 Inch Screen, 4.4 Hours, Has SSD, New Bag', '0.00', '250.00', '0.000', '1.000', 1, NULL, 0, 0, 0, 0, 0, 0, 0, '', '2018-10-13', 'Lenovo T440', 'i5', '2.4', '8', '250 GB SSD', 'Ubuntu 16.04', '14', '', '', '4.4', '', 'Has SSD, New Bag', '', '', '', '', '', '', ''),
+('8222', 'Desktop', NULL, NULL, 'Type: Tower, Dell Optiplex 4000, C2D, 2.2 Ghz, 4 GB RAM, 160 GB HDD, Ubuntu 16.04, 20 Inch Screen, DVD-RW', '0.00', '75.00', '0.000', '1.000', 2, NULL, 0, 0, 0, 0, 0, 0, 0, '', '2018-10-13', 'Dell Optiplex 4000', 'C2D', '2.2', '4', '160 GB HDD', 'Ubuntu 16.04', '20', 'DVD-RW', 'Tower', '', '55', '', '', '', '', '', '', '', ''),
+('Wifi USB', 'New Equipment', NULL, NULL, 'New USB Wifi Stick', '0.00', '10.00', '0.000', '1.000', 3, NULL, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', 'Ubuntu 16.04', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Shop Sales', 'Used Equipment', NULL, NULL, '', '0.00', '0.00', '0.000', '1.000', 4, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', 'Ubuntu 16.04', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Deposit (Laptop)', 'Laptop', NULL, NULL, 'Deposit for Laptop ID XXXX', '0.00', '0.00', '0.000', '1.000', 5, NULL, 1, 1, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Deposit (Desktop)', 'Desktop', NULL, NULL, 'Deposit for Desktop ID XXXX', '0.00', '0.00', '0.000', '1.000', 6, NULL, 1, 1, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Ebay Sales', 'Ebay Sales', NULL, NULL, 'Ebay Sale for XXXX', '0.00', '0.00', '0.000', '1.000', 7, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `items_taxes`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:55 AM
 --
 
 CREATE TABLE `items_taxes` (
@@ -521,12 +564,15 @@ INSERT INTO `items_taxes` (`item_id`, `name`, `percent`) VALUES
 (3, ' GST', '10.000'),
 (4, ' GST', '0.000'),
 (5, ' GST', '0.000'),
-(6, ' GST', '0.000');
+(6, ' GST', '0.000'),
+(7, ' GST', '0.000');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `item_kits`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `item_kits` (
@@ -544,6 +590,8 @@ CREATE TABLE `item_kits` (
 --
 -- Table structure for table `item_kit_items`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `item_kit_items` (
   `item_kit_id` int(11) NOT NULL,
@@ -557,6 +605,9 @@ CREATE TABLE `item_kit_items` (
 --
 -- Table structure for table `item_quantities`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:53 AM
+--
 
 CREATE TABLE `item_quantities` (
   `item_id` int(11) NOT NULL,
@@ -569,17 +620,21 @@ CREATE TABLE `item_quantities` (
 --
 
 INSERT INTO `item_quantities` (`item_id`, `location_id`, `quantity`) VALUES
-(1, 1, '0.000'),
+(1, 1, '1.000'),
 (2, 1, '1.000'),
 (3, 1, '99.000'),
-(4, 1, '5.000'),
+(4, 1, '1.000'),
 (5, 1, '1.000'),
-(6, 1, '1.000');
+(6, 1, '1.000'),
+(7, 1, '1.000');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `migrations`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `migrations` (
@@ -597,6 +652,8 @@ INSERT INTO `migrations` (`version`) VALUES
 
 --
 -- Table structure for table `modules`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `modules` (
@@ -634,6 +691,9 @@ INSERT INTO `modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`) VA
 --
 -- Table structure for table `people`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `people` (
   `first_name` varchar(255) NOT NULL,
@@ -664,6 +724,9 @@ INSERT INTO `people` (`first_name`, `last_name`, `gender`, `phone_number`, `emai
 
 --
 -- Table structure for table `permissions`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `permissions` (
@@ -718,6 +781,8 @@ INSERT INTO `permissions` (`permission_id`, `module_id`, `location_id`) VALUES
 --
 -- Table structure for table `receivings`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `receivings` (
   `receiving_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -733,6 +798,8 @@ CREATE TABLE `receivings` (
 
 --
 -- Table structure for table `receivings_items`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `receivings_items` (
@@ -753,6 +820,9 @@ CREATE TABLE `receivings_items` (
 
 --
 -- Table structure for table `sales`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `sales` (
@@ -780,6 +850,9 @@ INSERT INTO `sales` (`sale_time`, `customer_id`, `employee_id`, `comment`, `invo
 
 --
 -- Table structure for table `sales_items`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `sales_items` (
@@ -809,6 +882,9 @@ INSERT INTO `sales_items` (`sale_id`, `item_id`, `description`, `serialnumber`, 
 --
 -- Table structure for table `sales_items_taxes`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `sales_items_taxes` (
   `sale_id` int(10) NOT NULL,
@@ -835,6 +911,9 @@ INSERT INTO `sales_items_taxes` (`sale_id`, `item_id`, `line`, `name`, `percent`
 --
 -- Table structure for table `sales_payments`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `sales_payments` (
   `sale_id` int(10) NOT NULL,
@@ -854,6 +933,8 @@ INSERT INTO `sales_payments` (`sale_id`, `payment_type`, `payment_amount`) VALUE
 --
 -- Table structure for table `sales_reward_points`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `sales_reward_points` (
   `id` int(11) NOT NULL,
@@ -866,6 +947,8 @@ CREATE TABLE `sales_reward_points` (
 
 --
 -- Table structure for table `sales_taxes`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `sales_taxes` (
@@ -893,6 +976,9 @@ INSERT INTO `sales_taxes` (`sale_id`, `tax_type`, `tax_group`, `sale_tax_basis`,
 --
 -- Table structure for table `sessions`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:55 AM
+--
 
 CREATE TABLE `sessions` (
   `id` varchar(40) NOT NULL,
@@ -906,12 +992,16 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('aa8e789b961acbd175fac431e9fd1ec1fc50e6b5', '172.18.0.1', 1558845127, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535383834353030373b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b);
+('aa8e789b961acbd175fac431e9fd1ec1fc50e6b5', '172.18.0.1', 1558845127, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535383834353030373b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b),
+('c9dbcd0093886b82efb0411da829e2729b2822f7', '172.18.0.1', 1559454939, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535393435343730313b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b73616c655f69647c693a2d313b73616c65735f636172747c613a303a7b7d73616c65735f637573746f6d65727c693a2d313b73616c65735f6d6f64657c733a343a2273616c65223b73616c65735f6c6f636174696f6e7c733a313a2231223b73616c65735f7061796d656e74737c613a303a7b7d636173685f6d6f64657c693a303b636173685f726f756e64696e677c693a303b73616c65735f696e766f6963655f6e756d6265727c4e3b);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `stock_locations`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `stock_locations` (
@@ -932,6 +1022,8 @@ INSERT INTO `stock_locations` (`location_id`, `location_name`, `deleted`) VALUES
 --
 -- Table structure for table `suppliers`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `suppliers` (
   `person_id` int(10) NOT NULL,
@@ -945,6 +1037,9 @@ CREATE TABLE `suppliers` (
 
 --
 -- Table structure for table `tax_categories`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
+-- Last update: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `tax_categories` (
@@ -967,6 +1062,8 @@ INSERT INTO `tax_categories` (`tax_category_id`, `tax_category`, `tax_group_sequ
 --
 -- Table structure for table `tax_codes`
 --
+-- Creation: Jun 02, 2019 at 05:51 AM
+--
 
 CREATE TABLE `tax_codes` (
   `tax_code` varchar(32) NOT NULL,
@@ -980,6 +1077,8 @@ CREATE TABLE `tax_codes` (
 
 --
 -- Table structure for table `tax_code_rates`
+--
+-- Creation: Jun 02, 2019 at 05:51 AM
 --
 
 CREATE TABLE `tax_code_rates` (
@@ -1299,13 +1398,13 @@ ALTER TABLE `giftcards`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `item_kits`

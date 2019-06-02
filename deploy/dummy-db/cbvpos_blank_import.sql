@@ -3,10 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: cbv-dev-db
--- Generation Time: May 26, 2019 at 04:35 AM
+-- Generation Time: Jun 02, 2019 at 05:58 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.14
 
+--
+-- Release 1.2.2 Blank Database
+--
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -423,7 +426,9 @@ CREATE TABLE `inventory` (
 
 INSERT INTO `inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_date`, `trans_comment`, `trans_location`, `trans_inventory`) VALUES
 (1, 1, 1, '2019-05-26 14:34:42', 'Manual Edit of Quantity', 1, '1.000'),
-(2, 2, 1, '2019-05-26 14:34:56', 'Manual Edit of Quantity', 1, '1.000');
+(2, 2, 1, '2019-05-26 14:34:56', 'Manual Edit of Quantity', 1, '1.000'),
+(3, 3, 1, '2019-06-02 15:57:59', 'Manual Edit of Quantity', 1, '1.000'),
+(4, 4, 1, '2019-06-02 15:58:11', 'Manual Edit of Quantity', 1, '1.000');
 
 -- --------------------------------------------------------
 
@@ -478,8 +483,10 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`name`, `category`, `supplier_id`, `item_number`, `description`, `cost_price`, `unit_price`, `reorder_level`, `receiving_quantity`, `item_id`, `pic_filename`, `allow_alt_description`, `is_serialized`, `stock_type`, `item_type`, `tax_category_id`, `deleted`, `on_hold`, `hold_for`, `custom1`, `custom2`, `custom3`, `custom4`, `custom5`, `custom6`, `custom7`, `custom8`, `custom9`, `custom10`, `custom11`, `custom12`, `custom13`, `custom14`, `custom15`, `custom16`, `custom17`, `custom18`, `custom19`, `custom20`) VALUES
-('Deposit (Laptop)', 'Laptop', NULL, NULL, 'Deposit for CBV Laptop', '0.00', '0.00', '0.000', '1.000', 1, NULL, 0, 0, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-('Deposit (Desktop)', 'Desktop', NULL, NULL, 'Deposit for CBV Desktop', '0.00', '0.00', '0.000', '1.000', 2, NULL, 0, 0, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+('Deposit (Laptop)', 'Laptop', NULL, NULL, 'Deposit for Laptop ID XXXX', '0.00', '0.00', '0.000', '1.000', 1, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Deposit (Desktop)', 'Desktop', NULL, NULL, 'Deposit for Desktop ID XXXX', '0.00', '0.00', '0.000', '1.000', 2, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Shop Sales', 'Used Equipment', NULL, NULL, '', '0.00', '0.00', '0.000', '1.000', 3, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Ebay Sale', 'Ebay Sales', NULL, NULL, 'Ebay Sale for XXXX', '0.00', '0.00', '0.000', '1.000', 4, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -499,7 +506,9 @@ CREATE TABLE `items_taxes` (
 
 INSERT INTO `items_taxes` (`item_id`, `name`, `percent`) VALUES
 (1, ' GST', '0.000'),
-(2, ' GST', '0.000');
+(2, ' GST', '0.000'),
+(3, ' GST', '0.000'),
+(4, ' GST', '0.000');
 
 -- --------------------------------------------------------
 
@@ -548,7 +557,9 @@ CREATE TABLE `item_quantities` (
 
 INSERT INTO `item_quantities` (`item_id`, `location_id`, `quantity`) VALUES
 (1, 1, '1.000'),
-(2, 1, '1.000');
+(2, 1, '1.000'),
+(3, 1, '1.000'),
+(4, 1, '1.000');
 
 -- --------------------------------------------------------
 
@@ -842,7 +853,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('aa8e789b961acbd175fac431e9fd1ec1fc50e6b5', '172.18.0.1', 1558845296, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535383834353235343b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b);
+('aa8e789b961acbd175fac431e9fd1ec1fc50e6b5', '172.18.0.1', 1558845296, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535383834353235343b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b),
+('c9dbcd0093886b82efb0411da829e2729b2822f7', '172.18.0.1', 1559455091, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535393435353033313b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b);
 
 -- --------------------------------------------------------
 
@@ -1235,13 +1247,13 @@ ALTER TABLE `giftcards`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `item_kits`
