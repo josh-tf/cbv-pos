@@ -458,6 +458,23 @@ CREATE TABLE `inventory` (
   `trans_inventory` decimal(15,3) NOT NULL DEFAULT '0.000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `inventory`
+--
+
+INSERT INTO `inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_date`, `trans_comment`, `trans_location`, `trans_inventory`) VALUES
+(1, 1, 1, '2018-10-13 22:16:53', 'Manual Edit of Quantity', 1, '1.000'),
+(2, 2, 1, '2018-10-13 22:17:49', 'Manual Edit of Quantity', 1, '1.000'),
+(3, 3, 1, '2018-10-13 22:19:22', 'Manual Edit of Quantity', 1, '100.000'),
+(4, 4, 1, '2018-10-13 22:19:40', 'Manual Edit of Quantity', 1, '5.000'),
+(5, 3, 1, '2018-10-13 22:19:56', 'POS 1', 1, '-1.000'),
+(6, 1, 1, '2018-10-13 22:19:56', 'POS 1', 1, '-1.000'),
+(7, 5, 1, '2019-05-26 14:30:31', 'Manual Edit of Quantity', 1, '1.000'),
+(8, 6, 1, '2019-05-26 14:31:03', 'Manual Edit of Quantity', 1, '1.000'),
+(9, 4, 1, '2019-06-02 15:52:49', 'Manual Edit of Quantity', 1, '-4.000'),
+(10, 7, 1, '2019-06-02 15:53:32', 'Manual Edit of Quantity', 1, '1.000'),
+(11, 1, 1, '2019-06-02 15:53:44', 'Manual Edit of Quantity', 1, '1.000');
+
 -- --------------------------------------------------------
 
 --
