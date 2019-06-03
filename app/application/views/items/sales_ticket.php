@@ -29,17 +29,17 @@
 
 <script type="text/javascript">
   function printdoc() {
-    $('#printWarning').modal('hide');
+    $('#printWarning').modal('hide');   
     window.print();
   }
 </script>
 
 <!-- Modal -->
-<div class="modal" id="printWarning" tabindex="-1" role="dialog" aria-labelledby="printWarningLabel" aria-hidden="true">
+<div class="modal bootstrap-dialog modal-dlg type-primary fade size-normal in"  id="printWarning" tabindex="-1" role="dialog" aria-labelledby="printWarningLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="printWarningLabel">Printer Settings</h5>
+        <h5 class="bootstrap-dialog-title" id="printWarningLabel">Printer Settings</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
