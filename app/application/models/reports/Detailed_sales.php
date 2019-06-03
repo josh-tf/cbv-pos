@@ -144,7 +144,7 @@ class Detailed_sales extends Report
     public function getSummaryData(array $inputs)
     {
         $this->db->select(
-                        'sum(
+            'sum(
                             CASE sales_payments.payment_type
                                 WHEN "Cash" THEN sales_payments.payment_amount
                                 WHEN "Cheque" THEN sales_payments.payment_amount
