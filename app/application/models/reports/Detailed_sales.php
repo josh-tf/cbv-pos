@@ -162,11 +162,7 @@ class Detailed_sales extends Report
         );
 
         $this->db->from('sales_items_temp');
-
         $this->db->join('sales_payments', 'sales_items_temp.sale_id = sales_payments.sale_id', 'left outer');
-
-        #LEFT OUTER JOIN ' . $this->db->dbprefix('sales_payments_temp') . ' AS payments
-        #ON sales_items_temp.sale_id = payments.sale_id
 
         if ($inputs['location_id'] != 'all') {
             $this->db->where('item_location', $inputs['location_id']);
