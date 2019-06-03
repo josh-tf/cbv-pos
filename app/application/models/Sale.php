@@ -940,7 +940,7 @@ class Sale extends CI_Model
         } elseif ($this->config->item('payment_options_order') == 'debitcashcredit') {
             $payments[$this->lang->line('sales_debit')] = $this->lang->line('sales_debit');
             $payments[$this->lang->line('sales_cash')] = $this->lang->line('sales_cash');
-            //$payments[$this->lang->line('sales_credit')] = $this->lang->line('sales_credit');
+        //$payments[$this->lang->line('sales_credit')] = $this->lang->line('sales_credit');
         } else { // default: if($this->config->item('payment_options_order') == 'cashdebitcredit')
             $payments[$this->lang->line('sales_cash')] = $this->lang->line('sales_cash');
             $payments[$this->lang->line('sales_debit')] = $this->lang->line('sales_debit');
