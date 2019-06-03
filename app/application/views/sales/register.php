@@ -200,7 +200,7 @@ if ($item['allow_alt_description'] == 1) {
 							<td colspan='8' style="text-align: left;padding-left:10px;" class="sale-list<?php echo (!($saleMode == 'sale') ? ' non-sale' : '') ?>">
 								<?php
 if ($item['allow_alt_description'] == 1) {
-            echo form_input(array('name' => 'description', 'class' => 'form-control input-sm', 'value' => $item['description'], 'placeholder' => $this->lang->line('sales_description_abbrv_helper'), 'onClick' => 'this.select();'));
+            echo form_input(array('name' => 'description', 'class' => 'form-control input-sm', 'value' => $item['description'], 'placeholder' => $this->lang->line('sales_description_abbrv_helper')));
         } else {
             if ($item['description'] != '') {
                 echo '<b>Description: </b>';
