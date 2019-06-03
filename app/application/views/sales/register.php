@@ -23,6 +23,65 @@ if ($saleMode == "return") {
 
 ?>
 
+<!-- Modal -->
+<div class="modal bootstrap-dialog modal-dlg type-primary fade size-normal in" id="salesHelp" tabindex="-1" role="dialog" aria-labelledby="salesHelpModal" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="width:700px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="bootstrap-dialog-title" id="salesHelpModal">Sales Register Help</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<div class="alert alert-danger">
+  <strong>New Equipment:</strong> This is only applicable for items which Computerbank have purchased and not new donated equipment.
+  <br><br>
+  <b>Example:</b> If a customer donates a <i>new</i> HDMI cable then this should be sold as 'Used Equipment'. Individual items are already created
+for new equipment, for example 'USB Wifi Stick'
+</div>
+<br>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Type</th>
+              <th scope="col">Item to Use</th>
+              <th scope="col">Desciption</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Desktop or Laptop</th>
+              <td>Individual Computer (eg <i>9510</i>)</td>
+			  <td>Description is automatic</td>
+            </tr>
+            <tr>
+			<th scope="row">Ebay Sales</th>
+              <td>Ebay Sales</td>
+			  <td>Enter the item name and ebay item number <br><span class="label label-primary">Macbook Pro 1234567890000</span></td>
+            </tr>
+            <tr>
+			<th scope="row">Used Equipment</th>
+              <td>Shop Sales</td>
+			  <td>Enter the item description <br> <span class="label label-primary">Wireless Keyboard</span> or <span class="label label-primary">HDMI Cable</span></td>
+            </tr>
+            <tr>
+			<th scope="row">New Equipment</th>
+              <td>See Above Notice</td>
+			  <td>Description is automatic</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div id="register_wrapper">
 
@@ -93,12 +152,11 @@ if ($this->Employee->has_grant('reports_sales', $this->session->userdata('person
 					<?php echo form_input(array('name' => 'item', 'id' => 'item', 'class' => 'form-control input-sm', 'size' => '50', 'tabindex' => ++$tabindex)); ?>
 					<span class="ui-helper-hidden-accessible" role="status"></span>
 				</li>
-				<!-- <li class="pull-right">
-					<button id='new_item_button' class='btn btn-info btn-sm pull-right modal-dlg <?php echo (!($saleMode == "sale") ? "non-sale" : ""); ?>' data-btn-new='<?php echo $this->lang->line('common_new') ?>' data-btn-submit='<?php echo $this->lang->line('common_submit') ?>' data-href='<?php echo site_url("items/view"); ?>'
-							title='<?php echo $this->lang->line($controller_name . '_new_item'); ?>'>
-						<span class="glyphicon glyphicon-tag">&nbsp</span><?php echo $this->lang->line($controller_name . '_new_item'); ?>
-					</button>
-				</li> -->
+				<li class="pull-right">
+				<button data-toggle="modal" data-target="#salesHelp" type="button" class="btn btn-info btn-sm pull-right <?php echo (!($saleMode == "sale") ? "non-sale" : ""); ?>">
+				<span class="glyphicon glyphicon-question-sign">&nbsp</span>Item Help
+				</button>
+				</li> 
 			</ul>
 		</div>
 	<?php echo form_close(); ?>
