@@ -93,12 +93,12 @@ if ($this->Employee->has_grant('reports_sales', $this->session->userdata('person
 					<?php echo form_input(array('name' => 'item', 'id' => 'item', 'class' => 'form-control input-sm', 'size' => '50', 'tabindex' => ++$tabindex)); ?>
 					<span class="ui-helper-hidden-accessible" role="status"></span>
 				</li>
-				<li class="pull-right">
+				<!-- <li class="pull-right">
 					<button id='new_item_button' class='btn btn-info btn-sm pull-right modal-dlg <?php echo (!($saleMode == "sale") ? "non-sale" : ""); ?>' data-btn-new='<?php echo $this->lang->line('common_new') ?>' data-btn-submit='<?php echo $this->lang->line('common_submit') ?>' data-href='<?php echo site_url("items/view"); ?>'
 							title='<?php echo $this->lang->line($controller_name . '_new_item'); ?>'>
 						<span class="glyphicon glyphicon-tag">&nbsp</span><?php echo $this->lang->line($controller_name . '_new_item'); ?>
 					</button>
-				</li>
+				</li> -->
 			</ul>
 		</div>
 	<?php echo form_close(); ?>
