@@ -54,32 +54,32 @@ for new equipment, for example 'USB Wifi Stick'
             <tr>
               <th scope="row">Desktop or Laptop</th>
               <td>Individual Computer <br>(eg <i>9510</i>)</td>
-			  <td>Description is automatic and contains the computer specifications</td>
-            </tr>
+			  <td>Description is automatic and contains the computer specs</td>
+						</tr>
             <tr>
-			<th scope="row">Ebay Sales</th>
-              <td>Ebay Sales</td>
-			  <td>Enter the item name and ebay item number <br><span class="label label-darkblue">Ebay Sale for Macbook Pro 1234567890000</span></td>
-            </tr>
-            <tr>
-			<th scope="row">Used Equipment</th>
-              <td>Shop Sales</td>
-			  <td>Enter a short item description for example:<br> <span class="label label-darkblue">Wireless Keyboard</span> or <span class="label label-darkblue">HDMI Cable</span></td>
-            </tr>
+			<th scope="row">Computer Deposits</th>
+              <td>Deposit (Laptop/Desktop)</td>
+							<td>Enter computer ID in to the template provided: <br><span class="label label-darkblue">eg: Deposit for Laptop XXXX</span></td>
+						</tr>
             <tr>
 			<th scope="row">New Equipment</th>
               <td>See Above Notice</td>
 			  <td>Description is automatic and is preset for the specific item</td>
 						</tr>
             <tr>
-			<th scope="row">User Support</th>
-              <td>User Support</td>
-			  <td>Enter computer ID in to the description template <br><span class="label label-darkblue">eg: User Support for Computer XXXX</span></td>
+			<th scope="row">Used Equipment</th>
+              <td>Shop Sales</td>
+			  <td>Enter a short item description in space provided:<br> <span class="label label-darkblue">Wireless Keyboard</span> or <span class="label label-darkblue">HDMI Cable</span></td>
+            </tr>
+            <tr>
+			<th scope="row">Ebay Sales</th>
+              <td>Ebay Sales</td>
+			  <td>Enter the item name and number in the template provided: <br><span class="label label-darkblue">Ebay Sale for Macbook Pro 1234567890000</span></td>
 						</tr>
             <tr>
-			<th scope="row">Computer Deposits</th>
-              <td>Deposit (Laptop/Desktop)</td>
-							<td>Enter computer ID in to the description template <br><span class="label label-darkblue">eg: Deposit for Laptop XXXX</span></td>
+			<th scope="row">User Support</th>
+              <td>User Support</td>
+			  <td>Enter computer ID in to the template provided: <br><span class="label label-darkblue">eg: User Support for Computer XXXX</span></td>
 						</tr>
           </tbody>
         </table>
