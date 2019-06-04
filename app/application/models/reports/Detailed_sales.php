@@ -79,8 +79,8 @@ class Detailed_sales extends Report
 			SUM(subtotal) AS subtotal,
 			SUM(tax) AS tax,
             SUM(total) AS total,
-            SUM(cash_cheque) AS cash_cheque,
-            SUM(debit_credit) AS debit_credit,
+            MAX(cash_cheque) AS cash_cheque,
+            MAX(debit_credit) AS debit_credit,
 			SUM(profit) AS profit,
 			MAX(payment_type) AS payment_type,
 			MAX(comment) AS comment');
