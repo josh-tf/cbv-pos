@@ -25,7 +25,7 @@ if ($saleMode == "return") {
 
 <!-- Modal -->
 <div class="modal bootstrap-dialog modal-dlg type-primary fade size-normal in" id="salesHelp" tabindex="-1" role="dialog" aria-labelledby="salesHelpModal" aria-hidden="true">
-  <div class="modal-dialog" role="document" style="width:700px">
+  <div class="modal-dialog" role="document" style="width:800px">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="bootstrap-dialog-title" id="salesHelpModal">Sales Register Help</h5>
@@ -34,7 +34,7 @@ if ($saleMode == "return") {
         </button>
       </div>
       <div class="modal-body">
-		<div class="alert alert-danger">
+		<div class="alert alert-info">
   <strong>New Equipment:</strong> This is only applicable for items which Computerbank have purchased and not new donated equipment.
   <br><br>
   <b>Example:</b> If a customer donates a <i>new</i> HDMI cable then this should be sold as 'Used Equipment'. Individual items are already created
@@ -53,24 +53,34 @@ for new equipment, for example 'USB Wifi Stick'
           <tbody>
             <tr>
               <th scope="row">Desktop or Laptop</th>
-              <td>Individual Computer (eg <i>9510</i>)</td>
-			  <td>Description is automatic</td>
+              <td>Individual Computer <br>(eg <i>9510</i>)</td>
+			  <td>Description is automatic and contains the computer specifications</td>
             </tr>
             <tr>
 			<th scope="row">Ebay Sales</th>
               <td>Ebay Sales</td>
-			  <td>Enter the item name and ebay item number <br><span class="label label-primary">Macbook Pro 1234567890000</span></td>
+			  <td>Enter the item name and ebay item number <br><span style="background-color:#0d006f;" class="label label-primary">Ebay Sale for Macbook Pro 1234567890000</span></td>
             </tr>
             <tr>
 			<th scope="row">Used Equipment</th>
               <td>Shop Sales</td>
-			  <td>Enter the item description <br> <span class="label label-primary">Wireless Keyboard</span> or <span class="label label-primary">HDMI Cable</span></td>
+			  <td>Enter a short item description for example:<br> <span style="background-color:#0d006f;" class="label label-primary">Wireless Keyboard</span> or <span style="background-color:#0d006f;" class="label label-primary">HDMI Cable</span></td>
             </tr>
             <tr>
 			<th scope="row">New Equipment</th>
               <td>See Above Notice</td>
-			  <td>Description is automatic</td>
-            </tr>
+			  <td>Description is automatic and is preset for the specific item</td>
+						</tr>
+            <tr>
+			<th scope="row">User Support</th>
+              <td>User Support</td>
+			  <td>Enter computer ID in to the description template <br><span style="background-color:#0d006f;" class="label label-primary">eg: User Support for Computer XXXX</span></td>
+						</tr>
+            <tr>
+			<th scope="row">Computer Deposits</th>
+              <td>Deposit (Laptop/Desktop)</td>
+							<td>Enter computer ID in to the description template <br><span style="background-color:#0d006f;" class="label label-primary">eg: Deposit for Laptop XXXX</span></td>
+						</tr>
           </tbody>
         </table>
 
@@ -156,7 +166,7 @@ if ($this->Employee->has_grant('reports_sales', $this->session->userdata('person
 				<button data-toggle="modal" data-target="#salesHelp" type="button" class="btn btn-info btn-sm pull-right <?php echo (!($saleMode == "sale") ? "non-sale" : ""); ?>">
 				<span class="glyphicon glyphicon-question-sign">&nbsp</span>Item Help
 				</button>
-				</li> 
+				</li>
 			</ul>
 		</div>
 	<?php echo form_close(); ?>
