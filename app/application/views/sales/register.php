@@ -59,7 +59,7 @@ for new equipment, for example 'USB Wifi Stick'
             <tr>
 			<th scope="row">Computer Deposits</th>
               <td>Deposit (Laptop/Desktop)</td>
-							<td>Enter computer ID in to the template provided: <br><span class="label label-darkblue">eg: Deposit for Laptop XXXX</span></td>
+							<td>Enter computer ID in to the template provided: <br><span class="label label-darkblue">Deposit for Laptop XXXX</span></td>
 						</tr>
             <tr>
 			<th scope="row">New Equipment</th>
@@ -69,7 +69,7 @@ for new equipment, for example 'USB Wifi Stick'
             <tr>
 			<th scope="row">Used Equipment</th>
               <td>Shop Sales</td>
-			  <td>Enter a short item description in space provided:<br> <span class="label label-darkblue">Wireless Keyboard</span> or <span class="label label-darkblue">HDMI Cable</span></td>
+			  <td>Enter a short item description in space provided:<br><span class="label label-darkblue">Wireless Keyboard</span> or <span class="label label-darkblue">HDMI Cable</span></td>
             </tr>
             <tr>
 			<th scope="row">Ebay Sales</th>
@@ -79,7 +79,7 @@ for new equipment, for example 'USB Wifi Stick'
             <tr>
 			<th scope="row">User Support</th>
               <td>User Support</td>
-			  <td>Enter computer ID in to the template provided: <br><span class="label label-darkblue">eg: User Support for Computer XXXX</span></td>
+			  <td>Enter computer ID in to the template provided: <br><span class="label label-darkblue">User Support for Computer XXXX</span></td>
 						</tr>
           </tbody>
         </table>
