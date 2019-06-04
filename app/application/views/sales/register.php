@@ -59,12 +59,12 @@ for new equipment, for example 'USB Wifi Stick'
             <tr>
 			<th scope="row">Ebay Sales</th>
               <td>Ebay Sales</td>
-			  <td>Enter the item name and ebay item number <br><span style="background-color:#0d006f;" class="label label-primary">Ebay Sale for Macbook Pro 1234567890000</span></td>
+			  <td>Enter the item name and ebay item number <br><span class="label label-darkblue">Ebay Sale for Macbook Pro 1234567890000</span></td>
             </tr>
             <tr>
 			<th scope="row">Used Equipment</th>
               <td>Shop Sales</td>
-			  <td>Enter a short item description for example:<br> <span style="background-color:#0d006f;" class="label label-primary">Wireless Keyboard</span> or <span style="background-color:#0d006f;" class="label label-primary">HDMI Cable</span></td>
+			  <td>Enter a short item description for example:<br> <span class="label label-darkblue">Wireless Keyboard</span> or <span class="label label-darkblue">HDMI Cable</span></td>
             </tr>
             <tr>
 			<th scope="row">New Equipment</th>
@@ -74,12 +74,12 @@ for new equipment, for example 'USB Wifi Stick'
             <tr>
 			<th scope="row">User Support</th>
               <td>User Support</td>
-			  <td>Enter computer ID in to the description template <br><span style="background-color:#0d006f;" class="label label-primary">eg: User Support for Computer XXXX</span></td>
+			  <td>Enter computer ID in to the description template <br><span class="label label-darkblue">eg: User Support for Computer XXXX</span></td>
 						</tr>
             <tr>
 			<th scope="row">Computer Deposits</th>
               <td>Deposit (Laptop/Desktop)</td>
-							<td>Enter computer ID in to the description template <br><span style="background-color:#0d006f;" class="label label-primary">eg: Deposit for Laptop XXXX</span></td>
+							<td>Enter computer ID in to the description template <br><span class="label label-darkblue">eg: Deposit for Laptop XXXX</span></td>
 						</tr>
           </tbody>
         </table>

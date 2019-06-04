@@ -275,3 +275,7 @@ input#amount_tendered:disabled {
 input.form-control.input-sm.center {
     text-align: center;
 }
+
+.label-darkblue {
+    background-color: #0d006f;
+}
