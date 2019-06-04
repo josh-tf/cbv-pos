@@ -3,12 +3,12 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: cbv-dev-db
--- Generation Time: Jun 02, 2019 at 05:58 AM
+-- Generation Time: Jun 04, 2019 at 06:54 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.14
 
 --
--- Release 1.2.2 Blank Database
+-- CBV-POS Blank Database import file
 --
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -428,7 +428,9 @@ INSERT INTO `inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_date`, 
 (1, 1, 1, '2019-05-26 14:34:42', 'Manual Edit of Quantity', 1, '1.000'),
 (2, 2, 1, '2019-05-26 14:34:56', 'Manual Edit of Quantity', 1, '1.000'),
 (3, 3, 1, '2019-06-02 15:57:59', 'Manual Edit of Quantity', 1, '1.000'),
-(4, 4, 1, '2019-06-02 15:58:11', 'Manual Edit of Quantity', 1, '1.000');
+(4, 4, 1, '2019-06-02 15:58:11', 'Manual Edit of Quantity', 1, '1.000'),
+(5, 5, 1, '2019-06-04 16:54:01', 'Manual Edit of Quantity', 1, '1.000');
+
 -- --------------------------------------------------------
 
 --
@@ -485,7 +487,8 @@ INSERT INTO `items` (`name`, `category`, `supplier_id`, `item_number`, `descript
 ('Deposit (Laptop)', 'Laptop', NULL, NULL, 'Deposit for Laptop ID XXXX', '0.00', '0.00', '0.000', '1.000', 1, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 ('Deposit (Desktop)', 'Desktop', NULL, NULL, 'Deposit for Desktop ID XXXX', '0.00', '0.00', '0.000', '1.000', 2, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 ('Shop Sales', 'Used Equipment', NULL, NULL, '', '0.00', '0.00', '0.000', '1.000', 3, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-('Ebay Sale', 'Ebay Sales', NULL, NULL, 'Ebay Sale for XXXX', '0.00', '0.00', '0.000', '1.000', 4, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+('Ebay Sale', 'Ebay Sales', NULL, NULL, 'Ebay Sale for XXXX', '0.00', '0.00', '0.000', '1.000', 4, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('User Support', 'User Support', NULL, NULL, 'User Support for Computer XXXX', '0.00', '0.00', '0.000', '1.000', 5, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -507,7 +510,8 @@ INSERT INTO `items_taxes` (`item_id`, `name`, `percent`) VALUES
 (1, ' GST', '0.000'),
 (2, ' GST', '0.000'),
 (3, ' GST', '0.000'),
-(4, ' GST', '0.000');
+(4, ' GST', '0.000'),
+(5, ' GST', '10.000');
 
 -- --------------------------------------------------------
 
@@ -558,7 +562,8 @@ INSERT INTO `item_quantities` (`item_id`, `location_id`, `quantity`) VALUES
 (1, 1, '1.000'),
 (2, 1, '1.000'),
 (3, 1, '1.000'),
-(4, 1, '1.000');
+(4, 1, '1.000'),
+(5, 1, '1.000');
 
 -- --------------------------------------------------------
 
@@ -846,6 +851,13 @@ CREATE TABLE `sessions` (
   `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
+('b1bd4dd3cfe93c960212778f66814fdaa45fbb1a', '172.18.0.1', 1559631261, 0x5f5f63695f6c6173745f726567656e65726174657c693a313535393633313232303b706572736f6e5f69647c733a313a2231223b6d656e755f67726f75707c733a343a22686f6d65223b6974656d5f6c6f636174696f6e7c733a313a2231223b);
 
 -- --------------------------------------------------------
 
@@ -1238,13 +1250,13 @@ ALTER TABLE `giftcards`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `item_kits`
