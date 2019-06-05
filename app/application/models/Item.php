@@ -336,7 +336,6 @@ class Item extends CI_Model
         if ($query->num_rows() == 1) {
             return $query->row()->category;
         }
-
     }
 
     /*
@@ -517,7 +516,7 @@ class Item extends CI_Model
         $label = $result_row->$label1;
 
         if ($label2 !== '') {
-            if($label2 == 'category') {
+            if ($label2 == 'category') {
                 $label .= ' (' . $result_row->$label2 . ')';
             } else {
                 $label .= ' | ' . $result_row->$label2;
@@ -525,7 +524,7 @@ class Item extends CI_Model
         }
 
         if ($label3 !== '') {
-            if($label3 == 'unit_price') {
+            if ($label3 == 'unit_price') {
                 $label .= ' - $' . $result_row->$label3;
             } else {
                 $label .= ' | ' . $result_row->$label3;
@@ -603,7 +602,9 @@ class Item extends CI_Model
             $this->db->order_by('description', 'asc');
             foreach ($this->db->get()->result() as $row) {
                 $entry = array('value' => $row->item_id, 'label' => $this->get_search_suggestion_label($row));
-                if (!array_walk($suggestions, function ($value, $label) use ($entry) {return $entry['label'] != $label;})) {
+                if (!array_walk($suggestions, function ($value, $label) use ($entry) {
+                    return $entry['label'] != $label;
+                })) {
                     $suggestions[] = $entry;
                 }
             }
@@ -712,7 +713,9 @@ class Item extends CI_Model
             $this->db->order_by('description', 'asc');
             foreach ($this->db->get()->result() as $row) {
                 $entry = array('value' => $row->item_id, 'label' => $this->get_search_suggestion_label($row));
-                if (!array_walk($suggestions, function ($value, $label) use ($entry) {return $entry['label'] != $label;})) {
+                if (!array_walk($suggestions, function ($value, $label) use ($entry) {
+                    return $entry['label'] != $label;
+                })) {
                     $suggestions[] = $entry;
                 }
             }
@@ -815,7 +818,9 @@ class Item extends CI_Model
             $this->db->order_by('description', 'asc');
             foreach ($this->db->get()->result() as $row) {
                 $entry = array('value' => $row->item_id, 'label' => $row->name);
-                if (!array_walk($suggestions, function ($value, $label) use ($entry) {return $entry['label'] != $label;})) {
+                if (!array_walk($suggestions, function ($value, $label) use ($entry) {
+                    return $entry['label'] != $label;
+                })) {
                     $suggestions[] = $entry;
                 }
             }
@@ -969,7 +974,6 @@ class Item extends CI_Model
         // pass as the function result
         $query = $this->db->get();
         return $query->result();
-
     }
 
     public function get_sales_ticket($cbv_id)
@@ -983,7 +987,5 @@ class Item extends CI_Model
         // pass as the function result
         $query = $this->db->get();
         return $query->result();
-
     }
-
 }

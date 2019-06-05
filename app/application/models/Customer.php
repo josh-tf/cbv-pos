@@ -95,7 +95,8 @@ class Customer extends Person
     public function get_stats($customer_id)
     {
         // create a temporary table to contain all the sum and average of items
-        $this->db->query('CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_items_temp') .
+        $this->db->query(
+            'CREATE TEMPORARY TABLE IF NOT EXISTS ' . $this->db->dbprefix('sales_items_temp') .
             ' (INDEX(sale_id))
 			(
 				SELECT
@@ -177,7 +178,6 @@ class Customer extends Person
      */
     public function save_customer(&$person_data, &$customer_data, $customer_id = false)
     {
-
         $success = false;
 
         //Run these queries as a transaction, we want to make sure we do all or nothing
@@ -356,7 +356,6 @@ class Customer extends Person
         // pass as the function result
         $query = $this->db->get();
         return $query->result();
-
     }
 
     public function lookup_cus_sales($conc_id)
@@ -374,7 +373,5 @@ class Customer extends Person
         // pass as the function result
         $query = $this->db->get();
         return $query->result();
-
     }
-
 }
