@@ -113,7 +113,7 @@ load_language(true, array('sales', 'common'));
             <?php
 if (isset($customer)) {
     ?>
-            <textarea id="customer" rows="4" cols="6" style="width:<?php echo (strlen($customer_info['customer_agency']) > 25 ? 350 : 250) ?>px">
+            <textarea aria-label="Customer Details" id="customer" rows="4" cols="6" style="width:<?php echo (strlen($customer_info['customer_agency']) > 25 ? 350 : 250) ?>px">
                 <?php
                 echo $customer_info['customer'] . "\n";
                 echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
@@ -337,12 +337,12 @@ foreach ($payments as $payment_id => $payment) {
         <div id="sale_return_policy">
             <h5>
                 <!-- To keep things clean and as we dont really use these fields, hiding if they are empty -->
-                <?php if (!empty($this->config->item('payment_message'))) {?><textarea rows="5"
+                <?php if (!empty($this->config->item('payment_message'))) {?><textarea aria-label="Payment Comments" rows="5"
                     cols="6"><?php echo nl2br($this->config->item('payment_message')); ?></textarea> <?php }?>
                 <?php if (!empty($comments)) {?><textarea rows="5"
                     cols="6"><?php echo empty($comments) ? '' : $this->lang->line('sales_comments') . ': ' . $comments; ?></textarea>
                 <?php }?>
-                <?php if (!empty($this->config->item('invoice_default_comments'))) {?><textarea rows="5"
+                <?php if (!empty($this->config->item('invoice_default_comments'))) {?><textarea  aria-label="Invoice Additional Comments" rows="5"
                     cols="6"><?php echo $this->config->item('invoice_default_comments'); ?></textarea> <?php }?>
             </h5>
             <?php echo nl2br($this->config->item('return_policy')); ?>
