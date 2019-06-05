@@ -58,13 +58,13 @@ if ($stocklist->num_rows > 0) {
 mysqli_data_seek($stocklist, 0); // back to the start of the recordset
 
 if ($desktopCount > 0) {
-
     echo "[su_tabs vertical='yes']";
 
     // output data of each row
     while ($row = $stocklist->fetch_assoc()) {
-        if (!($row['Category'] === 'Desktop')) {continue;}
-        ?>
+        if (!($row['Category'] === 'Desktop')) {
+            continue;
+        } ?>
 
 
 [su_tab title="<b class='cbvID'>ID: <?php echo $row['CBVID'] ?></b> <b class='cbvIDPrice'>$<?php echo number_format((float) ($row['ConcPrice']), 2, '.', ''); ?></b> <?php echo $row['Model'] ?>" disabled="no" anchor="" url="" target="blank" class="']
@@ -103,10 +103,8 @@ if ($desktopCount > 0) {
 [/su_tab]
 
 <?php
-
     }
     echo "[/su_tabs]";
-
 } else {
     echo "<b><i>No desktops are currently in stock</i></b>";
 }
@@ -121,15 +119,15 @@ Laptops are first come, first served. You must have a valid concession card to p
 <?php
 
 if ($laptopCount > 0) {
-
     echo "[su_tabs vertical='yes']";
 
     mysqli_data_seek($stocklist, 0); // back to the start of the recordset
 
     // output data of each row
     while ($row = $stocklist->fetch_assoc()) {
-        if (!($row['Category'] === "Laptop")) {continue;}
-        ?>
+        if (!($row['Category'] === "Laptop")) {
+            continue;
+        } ?>
 
 [su_tab title="<b class='cbvID'>ID: <?php echo $row['CBVID'] ?></b> <b class='cbvIDPrice'>$<?php echo number_format((float) ($row['ConcPrice']), 2, '.', ''); ?></b> <?php echo $row['Model'] ?>" disabled="no" anchor="" url="" target="blank" class="']
 <table style="max-width: 353px; height: 100px;" width="273">
@@ -166,10 +164,8 @@ if ($laptopCount > 0) {
 [/su_tab]
 
 <?php
-
     }
     echo "[/su_tabs]";
-
 } else {
     echo "<b><i>No laptops are currently in stock</i></b>";
 }

@@ -124,15 +124,12 @@ function formatPrice($value, $ncp = false)
     } else {
         return number_format((float) round(($value * 1.5) / 5) * 5, 2, '.', ''); // if ncp bool is set to true then multiply by 150% and round to nearest 5 i.e 23.50 becomes 25.00
     }
-
 }
 
 foreach ($cbvid_check as $computer) {
-
     $itemCat = $computer->category;
 
     if (!($itemCat === 'Desktop' || $itemCat === 'Laptop')) {
-
         ?>
 
 <div class="alert alert-danger" role="alert">
@@ -160,7 +157,6 @@ die();
     $specMonitor = $computer->custom8 . ' inches';
     $specEX = $computer->custom13;
     $specBatt = $computer->custom11 . ' hrs';
-
 }
 ?>
 
@@ -196,22 +192,30 @@ switch ($itemCat) {
       <thead>
         <tr>
           <th>Price</th>
-          <th <?php if ($itemCat === 'Laptop') {echo 'colspan="2"';}?>>Concession</th>
-        <?php if ($itemCat === 'Desktop') {?> <th>Full</th> <?php }?>
+          <th <?php if ($itemCat === 'Laptop') {
+    echo 'colspan="2"';
+}?>>Concession</th>
+        <?php if ($itemCat === 'Desktop') {
+    ?> <th>Full</th> <?php
+}?>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><b class="pricing">Full System</b></td>
-          <td <?php if ($itemCat === 'Laptop') {echo 'colspan="2"';}?>><b class="pricing">
+          <td <?php if ($itemCat === 'Laptop') {
+        echo 'colspan="2"';
+    }?>><b class="pricing">
               <?php echo $concPriceFull ?></b></td>
-              <?php if ($itemCat === 'Desktop') {?><td>
+              <?php if ($itemCat === 'Desktop') {
+        ?><td>
             <?php echo $nonConcPriceFull ?>
-          </td></b><?php }?>
+          </td></b><?php
+    }?>
         </tr>
 <?php
 if ($itemCat == 'Desktop') {
-    ?>
+        ?>
         <tr>
           <td><b class="pricing">Box Only</b></td>
           <td><b class="pricing">
@@ -220,7 +224,7 @@ if ($itemCat == 'Desktop') {
             <?php echo $nonConcPriceBox ?></b></td>
         </tr>
         <?php
-}
+    }
 ?>
       </tbody>
     </table>
@@ -232,10 +236,10 @@ if ($itemCat == 'Desktop') {
       supply your own monitor, keyboard and mouse.</p>
       <?php
 } else {
-    ?>
+        ?>
         <p class="discount-info">Some models also include a carry bag, please ask us if this laptop includes one.</p>
       <?php
-}
+    }
 ?>
 
     <table class="table table-sm table-bordered table-striped ticket-specs">

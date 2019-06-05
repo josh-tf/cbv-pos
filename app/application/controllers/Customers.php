@@ -23,7 +23,7 @@ class Customers extends Persons
 
     public function lookup()
     {
-        $conc_id = preg_replace('/[- ]/','',strtoupper($this->input->post('conc_id_check')));
+        $conc_id = preg_replace('/[- ]/', '', strtoupper($this->input->post('conc_id_check')));
         $this->data['cus_info'] = $this->Customer->lookup_cus_info($conc_id); // get our customer info
         $this->data['cus_sales'] = $this->Customer->lookup_cus_sales($conc_id); // get our sales list
         $this->load->view('customers/lookup', $this->data); // load the view file , we are passing $data array to view file
@@ -177,7 +177,7 @@ class Customers extends Persons
         );
 
         $customer_data = array(
-            'conc_id' => $this->input->post('conc_id') == '' ? null : $conc_id = preg_replace('/[- ]/','',strtoupper($this->input->post('conc_id'))), // when saving a conc ID, remove dash and space
+            'conc_id' => $this->input->post('conc_id') == '' ? null : $conc_id = preg_replace('/[- ]/', '', strtoupper($this->input->post('conc_id'))), // when saving a conc ID, remove dash and space
             'company_name' => $this->input->post('company_name') == '' ? null : ucwords($this->input->post('company_name')),
             'package_id' => $this->input->post('package_id') == '' ? null : $this->input->post('package_id'),
             'taxable' => 1, // Taxable removed from add customer form - forcing all customers to be tax
@@ -198,14 +198,12 @@ class Customers extends Persons
                 echo json_encode(array('success' => true,
                     'message' => $this->lang->line('customers_successful_adding') . ' ' . $first_name . ' ' . $last_name,
                     'id' => $this->xss_clean($customer_data['person_id'])));
-            } else // Existing customer
-            {
+            } else { // Existing customer
                 echo json_encode(array('success' => true,
                     'message' => $this->lang->line('customers_successful_updating') . ' ' . $first_name . ' ' . $last_name,
                     'id' => $customer_id));
             }
-        } else // Failure
-        {
+        } else { // Failure
             echo json_encode(array('success' => false,
                 'message' => $this->lang->line('customers_error_adding_updating') . ' ' . $first_name . ' ' . $last_name . ' (' . $customer_data['company_name'] . ')',
                 'id' => -1));
@@ -227,7 +225,7 @@ class Customers extends Persons
      */
     public function ajax_check_conc_id()
     {
-        $conc_id = preg_replace('/[- ]/','',strtoupper($this->input->post('conc_id')));
+        $conc_id = preg_replace('/[- ]/', '', strtoupper($this->input->post('conc_id')));
         $exists = $this->Customer->check_conc_id_exists($conc_id, $this->input->post('person_id'));
 
         echo !$exists ? 'true' : 'false';
@@ -242,7 +240,6 @@ class Customers extends Persons
         $customers_info = $this->Customer->get_multiple_info($customers_to_delete);
 
         if ($this->Customer->delete_list($customers_to_delete)) {
-
             echo json_encode(array('success' => true,
                 'message' => $this->lang->line('customers_successful_deleted') . ' ' . count($customers_to_delete) . ' ' . $this->lang->line('customers_one_or_multiple')));
         } else {

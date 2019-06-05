@@ -93,7 +93,7 @@ if (!empty($invoice_number)) {
 
             <?php
 foreach ($cart as $line => $item) {
-    if ( $item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop category
+    if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop category
 
         if ((substr($item['name'], 0, 7) == 'Deposit')) { // if item name starts with Deposit*
 
