@@ -1103,8 +1103,22 @@ class Sale extends CI_Model
             ' (PRIMARY KEY(sale_id), INDEX(sale_id))
 			(
 				SELECT payments.sale_id AS sale_id,
-					IFNULL(SUM(payments.payment_amount), 0) AS sale_payment_amount,
-					GROUP_CONCAT(CONCAT(payments.payment_type, " ", payments.payment_amount) SEPARATOR ", ") AS payment_type
+                    IFNULL(SUM(payments.payment_amount), 0) AS sale_payment_amount,
+
+                    sum(
+                        CASE payments.payment_type
+                            WHEN "Cash" THEN payments.payment_amount
+                            WHEN "Cheque" THEN payments.payment_amount
+                            ELSE 0
+                        END) as cash_cheque,
+
+                    sum(
+                        CASE payments.payment_type
+                            WHEN "Debit/Credit Card" THEN payments.payment_amount
+                            ELSE 0
+                        END) as debit_credit,
+
+                    GROUP_CONCAT(CONCAT(payments.payment_type, " ", payments.payment_amount) SEPARATOR ", ") AS payment_type
 				FROM ' . $this->db->dbprefix('sales_payments') . ' AS payments
 				INNER JOIN ' . $this->db->dbprefix('sales') . ' AS sales
 					ON sales.sale_id = payments.sale_id
@@ -1149,7 +1163,10 @@ class Sale extends CI_Model
 					MAX(sales_items.item_location) AS item_location,
 					MAX(sales_items.description) AS description,
 					MAX(payments.payment_type) AS payment_type,
-					MAX(payments.sale_payment_amount) AS sale_payment_amount,
+                    MAX(payments.sale_payment_amount) AS sale_payment_amount,
+                    MAX(payments.cash_cheque) AS cash_cheque,
+                    MAX(payments.debit_credit) AS debit_credit,
+
 					' . "
 					IFNULL($sale_subtotal, $sale_total) AS subtotal,
 					$tax AS tax,

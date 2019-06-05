@@ -9,7 +9,8 @@
 			<div class='col-xs-8'>
 				<div class="input-group">
 					<span class="input-group-addon input-sm"><span class="glyphicon glyphicon-barcode"></span></span>
-					<?php echo form_input(array(
+					<?php echo form_input(
+    array(
     'name' => 'item_number',
     'id' => 'item_number',
     'class' => 'form-control input-sm',
@@ -22,7 +23,8 @@
 		<div class="form-group form-group-sm">
 			<?php echo form_label($this->lang->line('items_name'), 'name', array('class' => 'required control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
-				<?php echo form_input(array(
+				<?php echo form_input(
+    array(
     'name' => 'name',
     'id' => 'name',
     'class' => 'form-control input-sm',
@@ -52,72 +54,6 @@ foreach ($var as $row) {
 			</div>
 		</div>
 
-		<?php if ($item_kits_enabled == '1'): ?>
-		<div class="form-group form-group-sm hidden">
-			<?php echo form_label($this->lang->line('items_stock_type'), 'stock_type', !empty($basic_version) ? array('class' => 'required control-label col-xs-3') : array('class' => 'control-label col-xs-3')); ?>
-			<div class="col-xs-8">
-				<label class="radio-inline">
-					<?php echo form_radio(array(
-    'name' => 'stock_type',
-    'type' => 'radio',
-    'id' => 'stock_type',
-    'value' => 0,
-    'checked' => $item_info->stock_type == HAS_STOCK)
-); ?> <?php echo $this->lang->line('items_stock'); ?>
-				</label>
-				<label class="radio-inline">
-					<?php echo form_radio(array(
-    'name' => 'stock_type',
-    'type' => 'radio',
-    'id' => 'stock_type',
-    'value' => 1,
-    'checked' => $item_info->stock_type == HAS_NO_STOCK)
-); ?> <?php echo $this->lang->line('items_nonstock'); ?>
-				</label>
-			</div>
-		</div>
-
-		<div class="form-group form-group-sm hidden">
-			<?php echo form_label($this->lang->line('items_type'), 'item_type', !empty($basic_version) ? array('class' => 'required control-label col-xs-3') : array('class' => 'control-label col-xs-3')); ?>
-			<div class="col-xs-8">
-				<label class="radio-inline">
-					<?php echo form_radio(array(
-    'name' => 'item_type',
-    'type' => 'radio',
-    'id' => 'item_type',
-    'value' => 0,
-    'checked' => $item_info->item_type == ITEM)
-); ?> <?php echo $this->lang->line('items_standard'); ?>
-				</label>
-				<label class="radio-inline">
-					<?php echo form_radio(array(
-    'name' => 'item_type',
-    'type' => 'radio',
-    'id' => 'item_type',
-    'value' => 1,
-    'checked' => $item_info->item_type == ITEM_KIT)
-); ?> <?php echo $this->lang->line('items_kit'); ?>
-				</label>
-				<?php
-if ($this->config->item('derive_sale_quantity') == '1') {
-    ?>
-					<label class="radio-inline">
-						<?php echo form_radio(array(
-        'name' => 'item_type',
-        'type' => 'radio',
-        'id' => 'item_type',
-        'value' => 2,
-        'checked' => $item_info->item_type == ITEM_AMOUNT_ENTRY)
-    ); ?><?php echo $this->lang->line('items_amount_entry'); ?>
-					</label>
-				<?php
-}
-?>
-
-			</div>
-		</div>
-		<?php endif;?>
-
 		<div class="form-group form-group-sm hidden">
 			<?php echo form_label($this->lang->line('items_supplier'), 'supplier', array('class' => 'control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
@@ -132,7 +68,8 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 					<?php if (!currency_side()): ?>
 						<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
 					<?php endif;?>
-					<?php echo form_input(array(
+					<?php echo form_input(
+    array(
     'name' => 'cost_price',
     'id' => 'cost_price',
     'class' => 'form-control input-sm',
@@ -167,7 +104,8 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 			<?php echo form_label($this->lang->line('items_hold_for'), 'hold_for', array('class' => 'required control-label col-xs-3')); ?>
 			<div class='col-xs-6'>
 				<div class="input-group input-group-sm">
-					<?php echo form_input(array(
+					<?php echo form_input(
+    array(
     'name' => 'hold_for',
     'id' => 'hold_for',
     'class' => 'form-control input-sm hold_for',
@@ -184,7 +122,8 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 					<?php if (!currency_side()): ?>
 						<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
 					<?php endif;?>
-					<?php echo form_input(array(
+					<?php echo form_input(
+    array(
     'name' => 'unit_price',
     'id' => 'unit_price',
     'class' => 'form-control input-sm',
@@ -200,7 +139,8 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 		<div class="form-group form-group-sm" id="tax">
 			<?php echo form_label($this->lang->line('items_tax_1'), 'tax_percent_1', array('class' => 'control-label col-xs-3')); ?>
 			<div class='col-xs-4'>
-				<?php echo form_input(array(
+				<?php echo form_input(
+    array(
     'name' => 'tax_names[]',
     'id' => 'tax_name_1',
     'class' => 'form-control input-sm',
@@ -209,7 +149,8 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 			</div>
 			<div class="col-xs-4">
 				<div class="input-group input-group-sm">
-					<?php echo form_input(array(
+					<?php echo form_input(
+    array(
     'name' => 'tax_percents[]',
     'id' => 'tax_percent_name_1',
     'class' => 'form-control input-sm',
@@ -223,7 +164,8 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 		<div class="form-group form-group-sm hidden">
 			<?php echo form_label($this->lang->line('items_tax_2'), 'tax_percent_2', array('class' => 'control-label col-xs-3')); ?>
 			<div class='col-xs-4'>
-				<?php echo form_input(array(
+				<?php echo form_input(
+    array(
     'name' => 'tax_names[]',
     'id' => 'tax_name_2',
     'class' => 'form-control input-sm',
@@ -232,7 +174,8 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 			</div>
 			<div class="col-xs-4">
 				<div class="input-group input-group-sm">
-					<?php echo form_input(array(
+					<?php echo form_input(
+    array(
     'name' => 'tax_percents[]',
     'class' => 'form-control input-sm',
     'id' => 'tax_percent_name_2',
@@ -243,14 +186,16 @@ if ($this->config->item('derive_sale_quantity') == '1') {
 			</div>
 		</div>
 
-		<?php if ($customer_sales_tax_enabled) {?>
+		<?php if ($customer_sales_tax_enabled) {
+    ?>
 			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('taxes_tax_category'), 'tax_category', array('class' => 'control-label col-xs-3')); ?>
 				<div class='col-xs-8'>
 					<?php echo form_dropdown('tax_category_id', $tax_categories, $selected_tax_category, array('class' => 'form-control')); ?>
 				</div>
 			</div>
-		<?php }?>
+		<?php
+}?>
 
 		<?php
 define("DEFAULT_STOCK_LEVEL", 1);
@@ -259,7 +204,8 @@ foreach ($stock_locations as $key => $location_detail) {
 			<div class="form-group form-group-sm">
 				<?php echo form_label($this->lang->line('items_quantity') . ' ' . $location_detail['location_name'], 'quantity_' . $key, array('class' => 'required control-label col-xs-3')); ?>
 				<div class='col-xs-4'>
-					<?php echo form_input(array(
+					<?php echo form_input(
+        array(
         'name' => 'quantity_' . $key,
         'id' => 'quantity_' . $key,
         'class' => 'required quantity form-control',
@@ -274,7 +220,8 @@ foreach ($stock_locations as $key => $location_detail) {
 		<div class="form-group form-group-sm hidden">
 			<?php echo form_label($this->lang->line('items_receiving_quantity'), 'receiving_quantity', array('class' => 'required control-label col-xs-3')); ?>
 			<div class='col-xs-4'>
-				<?php echo form_input(array(
+				<?php echo form_input(
+    array(
     'name' => 'receiving_quantity',
     'id' => 'receiving_quantity',
     'class' => 'required form-control input-sm',
@@ -286,7 +233,8 @@ foreach ($stock_locations as $key => $location_detail) {
 		<div class="form-group form-group-sm hidden">
 			<?php echo form_label($this->lang->line('items_reorder_level'), 'reorder_level', array('class' => 'required control-label col-xs-3')); ?>
 			<div class='col-xs-4'>
-				<?php echo form_input(array(
+				<?php echo form_input(
+    array(
     'name' => 'reorder_level',
     'id' => 'reorder_level',
     'class' => 'form-control input-sm',
@@ -316,33 +264,10 @@ foreach ($stock_locations as $key => $location_detail) {
 		</div>
 
 		<div class="form-group form-group-sm hidden">
-			<?php echo form_label($this->lang->line('items_allow_alt_description'), 'allow_alt_description', array('class' => 'control-label col-xs-3')); ?>
-			<div class='col-xs-1'>
-				<?php echo form_checkbox(array(
-    'name' => 'allow_alt_description',
-    'id' => 'allow_alt_description',
-    'value' => 1,
-    'checked' => ($item_info->allow_alt_description) ? 1 : 0)
-); ?>
-			</div>
-		</div>
-
-		<div class="form-group form-group-sm hidden">
-			<?php echo form_label($this->lang->line('items_is_serialized'), 'is_serialized', array('class' => 'control-label col-xs-3')); ?>
-			<div class='col-xs-1'>
-				<?php echo form_checkbox(array(
-    'name' => 'is_serialized',
-    'id' => 'is_serialized',
-    'value' => 1,
-    'checked' => ($item_info->is_serialized) ? 1 : 0)
-); ?>
-			</div>
-		</div>
-
-		<div class="form-group form-group-sm hidden">
 			<?php echo form_label($this->lang->line('items_is_deleted'), 'is_deleted', array('class' => 'control-label col-xs-3')); ?>
 			<div class='col-xs-1'>
-				<?php echo form_checkbox(array(
+				<?php echo form_checkbox(
+    array(
     'name' => 'is_deleted',
     'id' => 'is_deleted',
     'value' => 1,
@@ -458,14 +383,13 @@ foreach ($var as $row) {
 
 <div class='col-xs-4'>
     <select class="form-control input-sm" id="item_storage_type" id="item_storage_type" name="item_storage_type">
-	<option selected="">Select..</option>
+	<option value="" disabled selected>Select..</option>
 
 	<?php
 $variable = $this->config->item('cbvopt_item_storage_type');
 $var = explode(',', $variable);
 
 foreach ($var as $row) {
-
     if ($storageStr[1] == trim($row)) { // select the correct item in the list
         echo '<option value="' . trim($row) . '" selected>' . trim($row) . '</option>';
     } else {
@@ -591,8 +515,7 @@ foreach ($var as $row) {
 <?php
 for ($i = 14; $i <= 20; ++$i) { //Loop through all 20 custom items in the DB
     if ($this->config->item('custom' . $i . '_name') != null) { // Only proceed if the item is notnull
-        $item_arr = (array) $item_info;
-        ?>
+        $item_arr = (array) $item_info; ?>
 				<div class="form-group form-group-sm custom<?php echo $i; ?>">
 					<?php echo form_label($this->config->item('custom' . $i . '_name'), 'custom' . $i, array('class' => 'control-label col-xs-3')); ?>
 					<div class='col-xs-8'>
@@ -626,21 +549,21 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
             'placeholder' => $this->lang->line('custom' . $i . '_helper')); //Add a placeholder example text from the lang file
 
         //Show a textarea instead of a input type for the "Other Notes" field
-        echo ($i == 14 ? form_textarea($inputContents) : form_input($inputContents));
-        ?>
+        echo($i == 14 ? form_textarea($inputContents) : form_input($inputContents)); ?>
 						</div>
 					</div>
 				</div>
 <?php
-}
+    }
 }
 ?>
 	</div>
 
-		<div class="form-group form-group-sm">
+	<div class="form-group form-group-sm">
 			<?php echo form_label($this->lang->line('items_description'), 'description', array('class' => 'control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
-				<?php echo form_textarea(array(
+				<?php echo form_textarea(
+    array(
     'name' => 'description',
     'id' => 'description',
     'class' => 'form-control input-sm',
@@ -648,6 +571,67 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
 ); ?>
 			</div>
 		</div>
+
+		<div id="adt_opts">
+
+		<div class="alert alert-warning" role="alert">
+  	Special options for stock and sale handling
+	</div>
+
+	<div class="form-group form-group-sm">
+
+			<?php echo form_label($this->lang->line('items_stock_type'), 'stock_type', !empty($basic_version) ? array('class' => 'required control-label col-xs-3') : array('class' => 'control-label col-xs-3')); ?>
+			<div class="col-xs-8">
+				<label class="radio-inline">
+					<?php echo form_radio(
+    array(
+    'name' => 'stock_type',
+    'type' => 'radio',
+    'id' => 'stock_type',
+    'value' => 0,
+    'checked' => $item_info->stock_type == HAS_STOCK)
+); ?> <?php echo $this->lang->line('items_stock'); ?>
+				</label>
+				<label class="radio-inline">
+					<?php echo form_radio(
+    array(
+    'name' => 'stock_type',
+    'type' => 'radio',
+    'id' => 'stock_type',
+    'value' => 1,
+    'checked' => $item_info->stock_type == HAS_NO_STOCK)
+); ?> <?php echo $this->lang->line('items_nonstock'); ?>
+				</label>
+			</div>
+		</div>
+
+		<div class="form-group form-group-sm">
+			<?php echo form_label($this->lang->line('items_allow_alt_description'), 'allow_alt_description', array('class' => 'control-label col-xs-3')); ?>
+			<div class='col-xs-1'>
+				<?php echo form_checkbox(
+    array(
+    'name' => 'allow_alt_description',
+    'id' => 'allow_alt_description',
+    'value' => 1,
+    'checked' => ($item_info->allow_alt_description) ? 1 : 0)
+); ?>
+			</div>
+		</div>
+
+		<div class="form-group form-group-sm">
+			<?php echo form_label($this->lang->line('items_is_serialized'), 'is_serialized', array('class' => 'control-label col-xs-3')); ?>
+			<div class='col-xs-1'>
+				<?php echo form_checkbox(
+    array(
+    'name' => 'is_serialized',
+    'id' => 'is_serialized',
+    'value' => 1,
+    'checked' => ($item_info->is_serialized) ? 1 : 0)
+); ?>
+			</div>
+		</div>
+</div>
+
 	</fieldset>
 
 <?php echo form_close(); ?>
@@ -658,7 +642,7 @@ $(document).ready(function()
 {
 
 	const TAXABLE_CATEGORIES = ['New Equipment', 'User Support'];
-	const NON_STOCKED_CATEGORIES = ['User Support','Recycling Fees','CBV Membership'];
+	const NON_STOCKED_CATEGORIES = ['User Support','Recycling Fees','CBV Membership', 'Used Equipment', 'New Equipment', 'Ebay Sales'];
 	const COMPUTER_CATEGORIES = ['Laptop', 'Desktop'];
 	const DEFAULT_TAX_RATE = '<?php echo to_tax_decimals($default_tax_1_rate); ?>';
 	const updateFieldsBasedOnCategory = () => {
@@ -672,11 +656,13 @@ $(document).ready(function()
 			$('.hold_for').removeClass('hidden');
 			$('#computer-fields').removeClass('hidden');
 			$('#tax').addClass('hidden');
+			$('#adt_opts').addClass('hidden');
 		} else {
 			$('.on_hold').addClass('hidden');
 			$('.hold_for').addClass('hidden');
 			$('#computer-fields').addClass('hidden');
 			$('#tax').removeClass('hidden');
+			$('#adt_opts').removeClass('hidden');
 		}
 
 		if (category == 'Desktop') { // isComputer and is a Desktop (Specific items: 10,12)

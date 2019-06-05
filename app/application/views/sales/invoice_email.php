@@ -80,11 +80,20 @@ if (isset($customer)) {
 
             <?php
 foreach ($cart as $line => $item) {
-    if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop
+    if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop category
 
-        $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')'; // change the name to "CBV XXXX (Type)"
+        if ((substr($item['name'], 0, 7) == 'Deposit')) { // if item name starts with Deposit*
+
+            $item['description'] = '<b>Description:</b> ' . $item['description'] . ' - ' . $this->lang->line('deposit_terms');
+        } else { // if the item is a desktop or laptop computer
+
+            $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')';
+            $item['description'] = '<b>Machine Specs:</b> ' . $item['description'];
+            $isComputer = true;
+        }
     } else {
         $item['name'] = ucfirst($item['name']); // otherwise just use the name
+        $item['description'] = '<b>Item Details:</b> ' . $item['description'];
     } ?>
             <tr class="item-row">
                 <td colspan="2" class="item-name"><?php echo $item['name']; ?></td>
@@ -92,10 +101,9 @@ foreach ($cart as $line => $item) {
                 <td><?php echo to_currency($item['price']); ?></td>
                 <td class="total-line"><?php echo to_currency($item['total']); ?></td>
             </tr>
-            <tr class="item-row"
-                <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
+            <tr class="item-row">
                 <td class="item-description" colspan="5">
-                    <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
+                    <div><?php echo $item['description']; ?></div>
                 </td>
             </tr>
             <?php

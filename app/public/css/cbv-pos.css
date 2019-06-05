@@ -115,6 +115,7 @@ a.none {
 	font-size: 11px;
 	color: #777777;
 	clear: both;
+	z-index: 100;
 }
 
 a.rollover img {
@@ -128,7 +129,6 @@ a.rollover img {
 button.btn.dropdown-toggle.btn-sm {
 	background-color: #717171;
 	color: black;
-	border: 2px solid #dce4ec;
 }
 
 .dropdown-menu {
@@ -224,7 +224,7 @@ textarea#description {
 }
 
 .btn-default {
-	color: #525252 !important;
+	color: #333 !important;
 	background-image: linear-gradient(#c3c3c3, #b3b3b3);
 	border: 1px solid #888;
 }
@@ -474,4 +474,13 @@ input#cbvid_check {
 		margin: 10px 0 10px 15px;
 	}
 
+}
+
+div.ui-tooltip {
+    background: #000 !important;
+    color: #fff !important;
+    font-size: 12px !important;
+    padding: 7px !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px !important;
 }

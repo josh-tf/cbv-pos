@@ -336,7 +336,6 @@ class Item extends CI_Model
         if ($query->num_rows() == 1) {
             return $query->row()->category;
         }
-
     }
 
     /*
@@ -517,11 +516,19 @@ class Item extends CI_Model
         $label = $result_row->$label1;
 
         if ($label2 !== '') {
-            $label .= ' | ' . $result_row->$label2;
+            if ($label2 == 'category') {
+                $label .= ' (' . $result_row->$label2 . ')';
+            } else {
+                $label .= ' | ' . $result_row->$label2;
+            }
         }
 
         if ($label3 !== '') {
-            $label .= ' | ' . $result_row->$label3;
+            if ($label3 == 'unit_price') {
+                $label .= ' - $' . $result_row->$label3;
+            } else {
+                $label .= ' | ' . $result_row->$label3;
+            }
         }
 
         return $label;
@@ -595,7 +602,9 @@ class Item extends CI_Model
             $this->db->order_by('description', 'asc');
             foreach ($this->db->get()->result() as $row) {
                 $entry = array('value' => $row->item_id, 'label' => $this->get_search_suggestion_label($row));
-                if (!array_walk($suggestions, function ($value, $label) use ($entry) {return $entry['label'] != $label;})) {
+                if (!array_walk($suggestions, function ($value, $label) use ($entry) {
+                    return $entry['label'] != $label;
+                })) {
                     $suggestions[] = $entry;
                 }
             }
@@ -704,7 +713,9 @@ class Item extends CI_Model
             $this->db->order_by('description', 'asc');
             foreach ($this->db->get()->result() as $row) {
                 $entry = array('value' => $row->item_id, 'label' => $this->get_search_suggestion_label($row));
-                if (!array_walk($suggestions, function ($value, $label) use ($entry) {return $entry['label'] != $label;})) {
+                if (!array_walk($suggestions, function ($value, $label) use ($entry) {
+                    return $entry['label'] != $label;
+                })) {
                     $suggestions[] = $entry;
                 }
             }
@@ -807,7 +818,9 @@ class Item extends CI_Model
             $this->db->order_by('description', 'asc');
             foreach ($this->db->get()->result() as $row) {
                 $entry = array('value' => $row->item_id, 'label' => $row->name);
-                if (!array_walk($suggestions, function ($value, $label) use ($entry) {return $entry['label'] != $label;})) {
+                if (!array_walk($suggestions, function ($value, $label) use ($entry) {
+                    return $entry['label'] != $label;
+                })) {
                     $suggestions[] = $entry;
                 }
             }
@@ -951,8 +964,8 @@ class Item extends CI_Model
 
         // select our data from the database
         $this->db->select('*');
-        $this->db->from('cbvpos_item_quantities');
-        $this->db->join('cbvpos_items', 'cbvpos_items.item_id = cbvpos_item_quantities.item_id');
+        $this->db->from('item_quantities');
+        $this->db->join('items', 'items.item_id = item_quantities.item_id');
         $this->db->where('quantity > 0');
         $this->db->where('on_hold', false); // hide on_hold items from stocklist
         $this->db->where('stock_type != 1'); // hide non quantity items (deposit items)
@@ -961,7 +974,6 @@ class Item extends CI_Model
         // pass as the function result
         $query = $this->db->get();
         return $query->result();
-
     }
 
     public function get_sales_ticket($cbv_id)
@@ -969,13 +981,11 @@ class Item extends CI_Model
 
         // select our data from the database
         $this->db->select('*');
-        $this->db->from('cbvpos_items');
+        $this->db->from('items');
         $this->db->where('name', $cbv_id);
 
         // pass as the function result
         $query = $this->db->get();
         return $query->result();
-
     }
-
 }

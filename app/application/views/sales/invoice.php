@@ -113,13 +113,12 @@ load_language(true, array('sales', 'common'));
             <?php
 if (isset($customer)) {
     ?>
-            <textarea id="customer" rows="4" cols="6" style="width:<?php echo (strlen($customer_info['customer_agency']) > 25 ? 350 : 250) ?>px">
+            <textarea aria-label="Customer Details" id="customer" rows="4" cols="6" style="width:<?php echo(strlen($customer_info['customer_agency']) > 25 ? 350 : 250) ?>px">
                 <?php
                 echo $customer_info['customer'] . "\n";
-                echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
-                echo $customer_info['customer_address'] . "\n";
-                echo $customer_info['customer_location'];
-                ?>
+    echo($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
+    echo $customer_info['customer_address'] . "\n";
+    echo $customer_info['customer_location']; ?>
 
             </textarea>
             <?php
@@ -187,16 +186,22 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
 
         <?php
 foreach ($cart as $line => $item) {
+    if ($item['item_category'] == 'Laptop' || $item['item_category'] == 'Desktop') { // if the item is a desktop or laptop category
 
-    if ($item['item_category'] == "Laptop" || $item['item_category'] === "Desktop") { // if the item is a desktop or laptop
+        if ((substr($item['name'], 0, 7) == 'Deposit')) { // if item name starts with Deposit*
 
-        $item['name'] = "CBV " . $item['name'] . " (" . $item['item_category'] . ")"; // change the name to "CBV XXXX (Type)"
+            $item['description'] = '<b>Description:</b> ' . $item['description'] . ' - ' . $this->lang->line('deposit_terms');
+        } else { // if the item is a desktop or laptop computer
 
+            $item['name'] = 'CBV ' . $item['name'] . ' (' . $item['item_category'] . ')';
+            $item['description'] = '<b>Machine Specs:</b> ' . $item['description'];
+            $isComputer = true;
+        }
     } else {
         $item['name'] = ucfirst($item['name']); // otherwise just use the name
-    }
+        $item['description'] = '<b>Item Details:</b> ' . $item['description'];
+    } ?>
 
-    ?>
         <tr class="item-row">
             <td colspan="2" class="item-name"><textarea rows="4" cols="6"><?php echo $item['name']; ?></textarea></td>
             <td><textarea rows="4" cols="4"><?php echo to_currency($item['price']); ?></textarea></td>
@@ -204,10 +209,9 @@ foreach ($cart as $line => $item) {
                     cols="6"><?php echo to_quantity_decimals($item['quantity']); ?></textarea></td>
             <td><textarea rows="4" cols="6"><?php echo to_currency($item['total']); ?></textarea></td>
         </tr>
-        <tr class="item-row"
-            <?php echo !($item['item_category'] == "Laptop" || $item['item_category'] == "Desktop") ? 'style="display:none"' : '' ?>>
+        <tr class="item-row">
             <td class="item-description" colspan="5">
-                <div><b>Machine Specs:</b> <?php echo $item['description']; ?></div>
+                <div><?php echo $item['description']; ?></div>
             </td>
         </tr>
         <?php
@@ -220,7 +224,7 @@ if ($item['discount'] > 0) {
             <td class="total-line"><?php echo to_currency($item['discounted_total']); ?></td>
         </tr>
         <?php
-}
+    }
 }
 ?>
 
@@ -261,8 +265,7 @@ if ($this->config->item('receipt_show_taxes')) {
         </tr>
         <?php
 
-    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request
-        ?>
+    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request ?>
 
 
         <tr>
@@ -272,9 +275,7 @@ if ($this->config->item('receipt_show_taxes')) {
         </tr>
 
         <?php
-
     } else {
-
         foreach ($taxes as $tax_group_index => $sales_tax) {
             ?>
         <tr>
@@ -283,10 +284,8 @@ if ($this->config->item('receipt_show_taxes')) {
             <td class="total-value al-right"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></td>
         </tr>
         <?php
-}
-    }
-
-    ?>
+        }
+    } ?>
 
 
         <?php
@@ -310,8 +309,7 @@ if ($this->config->item('receipt_show_taxes')) {
 
         <?php
 foreach ($payments as $payment_id => $payment) {
-    $splitpayment = explode(':', $payment['payment_type']);
-    ?>
+    $splitpayment = explode(':', $payment['payment_type']); ?>
         <tr>
             <td colspan="3" class="blank"> </td>
             <td colspan="1" class="total-line al-right"><?php echo $splitpayment[0]; ?> </td>
@@ -332,13 +330,19 @@ foreach ($payments as $payment_id => $payment) {
         <div id="sale_return_policy">
             <h5>
                 <!-- To keep things clean and as we dont really use these fields, hiding if they are empty -->
-                <?php if (!empty($this->config->item('payment_message'))) {?><textarea rows="5"
-                    cols="6"><?php echo nl2br($this->config->item('payment_message')); ?></textarea> <?php }?>
-                <?php if (!empty($comments)) {?><textarea rows="5"
+                <?php if (!empty($this->config->item('payment_message'))) {
+    ?><textarea aria-label="Payment Comments" rows="5"
+                    cols="6"><?php echo nl2br($this->config->item('payment_message')); ?></textarea> <?php
+}?>
+                <?php if (!empty($comments)) {
+        ?><textarea rows="5"
                     cols="6"><?php echo empty($comments) ? '' : $this->lang->line('sales_comments') . ': ' . $comments; ?></textarea>
-                <?php }?>
-                <?php if (!empty($this->config->item('invoice_default_comments'))) {?><textarea rows="5"
-                    cols="6"><?php echo $this->config->item('invoice_default_comments'); ?></textarea> <?php }?>
+                <?php
+    }?>
+                <?php if (!empty($this->config->item('invoice_default_comments'))) {
+        ?><textarea  aria-label="Invoice Additional Comments" rows="5"
+                    cols="6"><?php echo $this->config->item('invoice_default_comments'); ?></textarea> <?php
+    }?>
             </h5>
             <?php echo nl2br($this->config->item('return_policy')); ?>
         </div>
@@ -350,13 +354,13 @@ $(window).on("load", function() {
     // install firefox addon in order to use this plugin
     if (window.jsPrintSetup) {
         <?php if (!$this->Appconfig->get('print_header')) {
-    ?>
+        ?>
         // set page header
         jsPrintSetup.setOption('headerStrLeft', '');
         jsPrintSetup.setOption('headerStrCenter', '');
         jsPrintSetup.setOption('headerStrRight', '');
         <?php
-}
+    }
 
 if (!$this->Appconfig->get('print_footer')) {
     ?>

@@ -199,8 +199,8 @@ input#amount_tendered:disabled {
 }
 
 .non-sale.sale-list {
-	background: #faa !important;
-	border-bottom: 2px solid #d84e4e;
+    background-image: linear-gradient(#faa, #ff8080);
+    color: #8f2119 !important;
 }
 
 #register tr:first-child th:first-child {
@@ -249,4 +249,33 @@ input#amount_tendered:disabled {
     color: #ffffff;
     background-image: linear-gradient(#c13127, #611610);
     border-color: #8a1e16;
+}
+
+/* Non Sale */
+.non-sale.button.btn.dropdown-toggle.btn-default.btn-sm {
+    background: #ff9595;
+    border: 2px solid #6f0000;
+    color: #97251d;
+}
+.non-sale.btn-default {
+    color: #8f2118 !important;
+    background-image: linear-gradient(#fedbdb, #e6afaf);
+    border: 1px solid #9e2920 !important;
+}
+.non-sale.sale-list {
+    border-top: 1px solid #e4abab;
+}
+.non-sale.button.btn.dropdown-toggle.btn-sm {
+    background-color: #ef554a !important;
+}
+.open>.non-sale.dropdown-toggle.btn-default {
+	background-image: linear-gradient(#ffaaaa, #bf3f3f);
+}
+
+input.form-control.input-sm.center {
+    text-align: center;
+}
+
+.label-darkblue {
+    background-color: #0d006f;
 }

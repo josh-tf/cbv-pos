@@ -19,13 +19,11 @@ class Detailed_sales extends Report
                 array('id' => $this->lang->line('reports_sale_id')),
                 array('type_code' => $this->lang->line('reports_code_type')),
                 array('sale_date' => $this->lang->line('reports_date'), 'sortable' => false),
-                array('quantity' => $this->lang->line('reports_quantity')),
-                array('employee_name' => $this->lang->line('reports_sold_by')),
                 array('customer_name' => $this->lang->line('reports_sold_to')),
-                array('subtotal' => $this->lang->line('reports_subtotal'), 'sorter' => 'number_sorter'),
-                array('tax' => $this->lang->line('reports_tax'), 'sorter' => 'number_sorter'),
                 array('total' => $this->lang->line('reports_total'), 'sorter' => 'number_sorter'),
-                array('payment_type' => $this->lang->line('reports_payment_type'), 'sortable' => false),
+                array('tax' => $this->lang->line('reports_tax'), 'sorter' => 'number_sorter'),
+                array('cash_cheque' => $this->lang->line('reports_cash_totals'), 'sorter' => 'number_sorter'),
+                array('debit_credit' => $this->lang->line('reports_card_totals'), 'sorter' => 'number_sorter'),
                 array('comment' => $this->lang->line('reports_comments'))),
             'details' => array(
                 $this->lang->line('reports_name'),
@@ -77,13 +75,12 @@ class Detailed_sales extends Report
 			END) AS type_code,
 			MAX(sale_status) as sale_status,
 			MAX(sale_date) AS sale_date,
-			SUM(quantity_purchased) AS items_purchased,
-			MAX(employee_name) AS employee_name,
 			MAX(customer_name) AS customer_name,
 			SUM(subtotal) AS subtotal,
 			SUM(tax) AS tax,
-			SUM(total) AS total,
-			SUM(cost) AS cost,
+            SUM(total) AS total,
+            MAX(cash_cheque) AS cash_cheque,
+            MAX(debit_credit) AS debit_credit,
 			SUM(profit) AS profit,
 			MAX(payment_type) AS payment_type,
 			MAX(comment) AS comment');
@@ -146,8 +143,26 @@ class Detailed_sales extends Report
 
     public function getSummaryData(array $inputs)
     {
-        $this->db->select('SUM(subtotal) AS subtotal, SUM(tax) AS tax, SUM(total) AS total, SUM(cost) AS cost, SUM(profit) AS profit');
+        $this->db->select(
+            'sum(
+                            CASE sales_payments.payment_type
+                                WHEN "Cash" THEN sales_payments.payment_amount
+                                WHEN "Cheque" THEN sales_payments.payment_amount
+                                ELSE 0
+                            END) as cash_totals,
+                        sum(
+                            CASE sales_payments.payment_type
+                                WHEN "Debit/Credit Card" THEN sales_payments.payment_amount
+                                ELSE 0
+                            END) as card_totals,
+                            SUM(subtotal) AS subtotal,
+                            SUM(tax) AS tax,
+                            SUM(total) AS total,
+                            SUM(profit) AS profit'
+        );
+
         $this->db->from('sales_items_temp');
+        $this->db->join('sales_payments', 'sales_items_temp.sale_id = sales_payments.sale_id', 'left outer');
 
         if ($inputs['location_id'] != 'all') {
             $this->db->where('item_location', $inputs['location_id']);

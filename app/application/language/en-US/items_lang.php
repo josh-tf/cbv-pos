@@ -2,7 +2,7 @@
 
 $lang["items_add_minus"] = "Inventory to add or subtract.";
 $lang["items_allow_alt_desciption"] = "";
-$lang["items_allow_alt_description"] = "Allow Alternate Description";
+$lang["items_allow_alt_description"] = "Individual Description";
 $lang["items_amount_entry"] = "Amount Entry";
 $lang["items_bulk_edit"] = "Bulk Edit";
 $lang["items_buy_price_required"] = "Purchase Price is a required field.";
@@ -56,7 +56,7 @@ $lang["items_inventory_employee"] = "Employee";
 $lang["items_inventory_in_out_quantity"] = "In/Out Quantity";
 $lang["items_inventory_remarks"] = "Remarks";
 $lang["items_is_deleted"] = "Deleted Items";
-$lang["items_is_serialized"] = "Item has Serial Number";
+$lang["items_is_serialized"] = "Unique Items";
 $lang["items_item"] = "Item";
 $lang["items_item_number"] = "Barcode";
 $lang["items_item_number_duplicate"] = "Item Number is already present in the database.";
