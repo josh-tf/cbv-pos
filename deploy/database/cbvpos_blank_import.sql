@@ -604,7 +604,7 @@ INSERT INTO `modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`) VA
 ('module_config', 'module_config_desc', 900, 'config'),
 ('module_customers', 'module_customers_desc', 30, 'customers'),
 ('module_employees', 'module_employees_desc', 70, 'employees'),
-('module_expenses', 'module_expenses_desc', 40, 'expenses'),
+('module_expenses', 'module_expenses_desc', 45, 'expenses'),
 ('module_expenses_categories', 'module_expenses_categories_desc', 90, 'expenses_categories'),
 ('module_giftcards', 'module_giftcards_desc', 100, 'giftcards'),
 ('module_home', 'module_home_desc', 1, 'home'),
