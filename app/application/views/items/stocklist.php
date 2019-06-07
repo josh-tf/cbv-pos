@@ -109,7 +109,7 @@ foreach ($stocklist as $computer) {
             <div class="modal-body">
                 <div class="alert alert-danger" role="alert">
                     <h4 class="alert-heading"><b>Important Notice</b></h4>
-                    <p>To ensure the sales ticket is printed correctly, please ensure the printer settings in the popup dialog are configured as follows:</p>
+                    <p>To ensure the stock list is printed correctly, please ensure the printer settings in the popup dialog are configured as follows:</p>
                 </div>
                 <br>
                 <table class="table table-bordered">
