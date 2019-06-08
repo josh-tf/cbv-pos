@@ -41,7 +41,8 @@ if ($saleMode == "return") {
 for new equipment, for example 'USB Wifi Stick'
 </div>
 <br>
-
+<h4>Which item do I choose on the register?</h4>
+<br>
         <table class="table table-bordered">
           <thead>
             <tr>
