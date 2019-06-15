@@ -174,7 +174,6 @@ if ($this->Employee->has_grant('reports_sales', $this->session->userdata('person
 		</div>
 	<?php echo form_close(); ?>
 
-
 <!-- Sale Items List -->
 
 	<table class="sales_table_100<?php echo(!($saleMode == 'sale') ? ' non-sale' : '') ?>" id="register">
@@ -202,6 +201,11 @@ if (count($cart) == 0) {
 			<?php
 } else {
         foreach (array_reverse($cart, true) as $line => $item) {
+
+			if($item['name'] == "Shop Sales"){
+				$hasShopSale = true;
+			}
+
             ?>
 
 <?php
@@ -287,6 +291,21 @@ if ($item['allow_alt_description'] == 1) {
 ?>
 		</tbody>
 	</table>
+
+	<?php echo form_close();
+
+	if($hasShopSale == 1){
+	?>
+	<div class="alert alert-danger" role="alert" style="margin-top:10px;">
+		<b>Important Reminder</b><br>
+		The <i>Shop Sales</i> item should only be selected for used or donated equipment, new items such as a USB Wifi
+		Stick <b>MUST</b> be loaded under their respective items to ensure correct tax amount is reported.
+	</div>
+
+<?php
+}
+?>
+
 </div>
 
 <!-- Overall Sale -->
