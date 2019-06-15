@@ -215,6 +215,13 @@ if (!empty($stats)) {
 //validation and submit handling
 $(document).ready(function()
 {
+
+	$("form").on('change keydown paste input', function(){
+		$('input[type="text"]').change(function(){
+        this.value = $.trim(this.value);
+   		 });
+	});
+
 	$("#conc_id").on('change keydown paste input', function(){
 		document.getElementById("conc_id_check").value = document.getElementById("conc_id").value // helper val used for post/form request
 	});
