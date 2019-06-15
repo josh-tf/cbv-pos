@@ -156,7 +156,7 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
             </tr>
             <tr>
                 <td class="meta-head">
-                    <?php echo $this->lang->line('common_date'); ?>
+                    Invoice <?php echo $this->lang->line('common_date'); ?>
                 </td>
                 <td><textarea rows="5" cols="6"><?php echo $transaction_date; ?></textarea></td>
             </tr>

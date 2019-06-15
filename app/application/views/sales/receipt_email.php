@@ -73,9 +73,9 @@ if (!empty($invoice_number)) {
 }
 ?>
                         <tr>
-                            <td class="meta-head"><?php echo $this->lang->line('sales_receipt'); ?></td>
+                            <td class="meta-head">Sale <?php echo $this->lang->line('common_date'); ?></td>
                             <td>
-                                <div><?php echo $transaction_time; ?></div>
+                                <div><?php echo $transaction_date; ?></div>
                             </td>
                         </tr>
                     </table>

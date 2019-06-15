@@ -8,6 +8,7 @@ app/application/uploads/*
 app/public/license/.licenses
 app/public/license/bower.LICENSES
 app/public/dist
+app/public/tmp
 app/app/public/uploads/*
 app/dist/
 app/public/bower_components

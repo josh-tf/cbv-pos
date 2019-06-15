@@ -54,7 +54,7 @@ if (isset($customer)) {
                             </td>
                         </tr>
                         <tr>
-                            <td class="meta-head"><?php echo $this->lang->line('common_date'); ?></td>
+                            <td class="meta-head">Invoice <?php echo $this->lang->line('common_date'); ?></td>
                             <td>
                                 <div><?php echo $transaction_date; ?></div>
                             </td>

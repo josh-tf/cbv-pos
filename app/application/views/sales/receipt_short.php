@@ -27,7 +27,7 @@ if ($this->config->item('receipt_show_company_name')) {
 		<div id="company_address"><?php echo nl2br($this->config->item('address')); ?></div>
 		<div id="company_phone"><?php echo $this->config->item('phone'); ?></div>
 		<div id="sale_receipt"><?php echo $this->lang->line('sales_receipt'); ?></div>
-		<div id="sale_time"><?php echo $transaction_time ?></div>
+		<div id="sale_time"><?php echo $transaction_date ?></div>
 	</div>
 
 	<div id="receipt_general_info">
