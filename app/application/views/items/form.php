@@ -641,6 +641,12 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
 $(document).ready(function()
 {
 
+	$("form").on('change keydown paste input', function(){
+		$('input').change(function(){
+        this.value = $.trim(this.value);
+   		 });
+	});
+
 	const TAXABLE_CATEGORIES = ['New Equipment', 'User Support'];
 	const NON_STOCKED_CATEGORIES = ['User Support','Recycling Fees','CBV Membership', 'Used Equipment', 'New Equipment', 'Ebay Sales'];
 	const COMPUTER_CATEGORIES = ['Laptop', 'Desktop'];
