@@ -764,11 +764,6 @@ function createDescription() {
 };
 	// Update description
 	$('#computer-fields').change(() => {
-
-		if($('[name*=custom9]').val().toLowerCase() == 'none'){
-			$('[name*=custom9]').val('');
-		}
-
 		$('#description').val(createDescription); //createDescription();
 });
 
