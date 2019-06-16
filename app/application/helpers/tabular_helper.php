@@ -212,7 +212,7 @@ function get_customer_manage_table_headers()
     $CI = &get_instance();
 
     $headers = array(
-        //array('people.person_id' => $CI->lang->line('common_id')),
+        array('people.person_id' => $CI->lang->line('common_id')),
         array('last_name' => $CI->lang->line('common_last_name')),
         array('first_name' => $CI->lang->line('common_first_name')),
         array('conc_id' => $CI->lang->line('customers_conc_id')),
@@ -239,7 +239,7 @@ function get_customer_data_row($person, $stats)
     $controller_name = strtolower(get_class($CI));
 
     return array(
-        //'people.person_id' => $person->person_id,
+        'people.person_id' => $person->person_id,
         'last_name' => $person->last_name,
         'first_name' => $person->first_name,
         'conc_id' => $person->conc_id,
