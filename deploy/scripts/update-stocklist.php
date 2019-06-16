@@ -79,7 +79,7 @@ if ($desktopCount > 0) {
 <tr>
 <td style="width: 60px;"><img src="/wp-content/stocklist-icons/cpu.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['CPUType'] ?> <?php echo $row['CPUSpeed'] ?></td>
 <td style="width: 85px;"><img src="/wp-content/stocklist-icons/hdd.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['HDD'] ?></td>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/dvd.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['DVD'] ? $row['DVD'] : 'None'; ?></td>
+<td style="width: 60px;"><img src="/wp-content/stocklist-icons/dvd.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['DVD'] ?></td>
 </tr>
 <tr>
 <td style="width: 60px;"><img src="/wp-content/stocklist-icons/ram.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['RAM'] ?> GB</td>
