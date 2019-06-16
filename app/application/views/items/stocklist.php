@@ -201,7 +201,7 @@ foreach ($stocklist as $computer) {
         <td><?php echo $computer->custom5; // ram   ?> GB</td>
         <td><?php echo $computer->custom6; // hdd   ?></td>
         <td><?php echo $computer->custom8; // screen   ?>in</td>
-        <td><?php echo ($computer->custom9) ? $computer->custom9 : 'None'; // optical drive   ?></td>
+        <td><?php echo $computer->custom9; // optical drive   ?></td>
         <td><?php echo $computer->custom7; // operating system   ?></td>
     </tr>
 
@@ -258,7 +258,7 @@ foreach ($stocklist as $computer) {
         <td><?php echo $computer->custom5; // ram   ?> GB</td>
         <td><?php echo $computer->custom6; // hdd   ?></td>
         <td><?php echo $computer->custom8; // screen   ?>in</td>
-        <td><?php echo ($computer->custom9) ? $computer->custom9 : 'None'; // optical drive   ?></td>
+        <td><?php echo $computer->custom9 // optical drive   ?></td>
         <td><?php echo $computer->custom11; // battery life   ?> hrs</td>
         <td><?php echo $computer->custom7; // operating system   ?></td>
     </tr>

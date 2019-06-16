@@ -445,21 +445,23 @@ foreach ($var as $row) {
 </div>
 
 <div class="form-group form-group-sm custom9">
-<?php echo form_label($this->config->item('custom9_name'), 'custom9', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-4'>
+<?php echo form_label($this->config->item('custom9_name'), 'custom9', array('class' => 'required control-label col-xs-3')); ?>
+<div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php echo $item_arr['custom9'] ?>" placeholder="<?php echo $this->lang->line('custom9_helper') ?>" list="custom9" class="form-control input-sm" name="custom9">
-<datalist id="custom9">
-
-<?php
+<select class="form-control input-sm" id="custom9" name="custom9">
+	<option selected disabled>Please Select..</option>
+	<?php
 $variable = $this->config->item('cbvopt_item_optical');
 $var = explode(',', $variable);
 
+	echo '<option>No Drive</option>'; // default option
+
 foreach ($var as $row) {
-    echo '<option value="' . trim($row) . '">';
+    echo '<option>' . trim($row) . '</option>';
 }
 ?>
-</datalist>
+    </select>
+
 </div>
 </div>
 </div>
@@ -695,10 +697,12 @@ $(document).ready(function()
 
 	var itemCat = '<?php echo $item_arr['category']; ?>';
 	var itemOS = '<?php echo $item_arr['custom7']; ?>';
+	var itemDrive = '<?php echo $item_arr['custom9']; ?>';
 
 	if (!(itemCat === '')) { // if a cat is defined then its an existing item being edited, so set our select boxes
 		$('#category').val(itemCat);
 		$('#custom7').val(itemOS);
+		$('#custom9').val(itemDrive);
 	}
 
 	updateFieldsBasedOnCategory(); // Run as soon as document is ready
@@ -746,7 +750,7 @@ function createDescription() {
 	var c6 = $('[name="custom6"]').val();
 	var c7 = $('[name="custom7"]').val();
 	var c8 = $('[name="custom8"]').val();
-	var c9 = $('[name="custom9"]').val();
+	var c9 = ($('[name="custom9"]').val() != 'No Drive' ? $('[name="custom9"]').val() : ''); // if no drive is selected, don't show on desc
 	var c10 = $('[name="custom10"]').val();
 	var c11 = $('[name="custom11"]').val();
 	var c13 = $('[name="custom13"]').val();
@@ -892,6 +896,10 @@ $('#item_storage_type').change(() => {
 			custom8:
 			{
 				number: true,
+				required: true
+			},
+			custom9:
+			{
 				required: true
             },
 			custom11:

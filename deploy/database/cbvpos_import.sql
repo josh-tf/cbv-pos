@@ -64,7 +64,7 @@ INSERT INTO `app_config` (`key`, `value`) VALUES
 ('cbvopt_distver', 'Ubuntu 16.04'),
 ('cbvopt_item_cat', 'Desktop,Laptop,Used Equipment,New Equipment,User Support,Ebay Sales,Recycling Fees,CBV Membership'),
 ('cbvopt_item_cpu', 'C2D,i3,i5,i7'),
-('cbvopt_item_optical', 'DVD-RW,Blueray'),
+('cbvopt_item_optical', 'DVD-ROM,DVD-RW,Blueray,Combo'),
 ('cbvopt_item_os', 'Ubuntu 16.04, Ubuntu 18.04'),
 ('cbvopt_item_ram', '2,4,6,8,10,12'),
 ('cbvopt_item_screen', '12,14,15.4,17,19,20,22'),
