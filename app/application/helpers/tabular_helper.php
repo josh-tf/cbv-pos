@@ -219,7 +219,8 @@ function get_customer_manage_table_headers()
         array('company_name' => $CI->lang->line('customers_company_name')),
         array('email' => $CI->lang->line('common_email')),
         array('phone_number' => $CI->lang->line('common_phone_number')),
-        array('total' => $CI->lang->line('common_total_spent'), 'sortable' => false),
+        array('total' => $CI->lang->line('common_total_spent')
+    ),
         array('crn_lookup' => '', 'sortable' => false),
     );
 
