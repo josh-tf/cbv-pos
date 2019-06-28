@@ -252,32 +252,32 @@ if ($itemCat == 'Desktop') {
       </thead>
       <tbody>
         <tr>
-          <td><img src="images/ticket-icons/cbvid.png" class="ticket-icon" /> <b>Model</b></td>
-          <td>
+          <td width="30%"><img src="images/ticket-icons/cbvid.png" class="ticket-icon" /> <b>Model</b></td>
+          <td width="70%">
             <?php echo $specModel; ?>
           </td>
         </tr>
         <tr>
-          <td><img src="images/ticket-icons/processor.png" class="ticket-icon" /> <b>Processor</b></td>
-          <td>
+          <td width="30%"><img src="images/ticket-icons/processor.png" class="ticket-icon" /> <b>Processor</b></td>
+          <td width="70%">
             <?php echo $specCPU; ?>
           </td>
         </tr>
         <tr>
-          <td><img src="images/ticket-icons/memory.png" class="ticket-icon" /> <b>Memory</b></td>
-          <td>
+          <td width="30%"><img src="images/ticket-icons/memory.png" class="ticket-icon" /> <b>Memory</b></td>
+          <td width="70%">
             <?php echo $specRAM; ?>
           </td>
         </tr>
         <tr>
-          <td><img src="images/ticket-icons/storage.png" class="ticket-icon" /> <b>Storage</b></td>
-          <td>
+          <td width="30%"><img src="images/ticket-icons/storage.png" class="ticket-icon" /> <b>Storage</b></td>
+          <td width="70%">
             <?php echo $specHDD; ?>
           </td>
         </tr>
         </tr>
-        <td><img src="images/ticket-icons/monitor.png" class="ticket-icon" /> <b>Monitor</b></td>
-        <td>
+        <td width="30%"><img src="images/ticket-icons/monitor.png" class="ticket-icon" /> <b>Monitor</b></td>
+        <td width="70%">
           <?php echo $specMonitor ?>
         </td>
         </tr>
@@ -286,8 +286,8 @@ if ($itemCat == 'Laptop') {
     ?>
 
 <tr>
-          <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Battery</b></td>
-          <td>
+          <td width="30%"><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Battery</b></td>
+          <td width="70%">
             <?php echo $specBatt; ?>
           </td>
         </tr>
@@ -297,7 +297,7 @@ if ($itemCat == 'Laptop') {
 ?>
         <tr>
           <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Extras</b></td>
-          <td>
+          <td width="70%">
             <?php echo $specEX ? $specEX : 'None'; ?>
           </td>
         </tr>
