@@ -703,7 +703,6 @@ class Items extends Secure_Controller
                             'unit_price' => $line['Unit Price'],
                             'reorder_level' => 0,
                             'receiving_quantity' => 1,
-                            //'item_id' => $line['Item ID'],
                             'pic_filename' => null,
                             'allow_alt_description' => 0,
                             'is_serialized' => 0,
@@ -785,14 +784,7 @@ class Items extends Secure_Controller
 	private function save_tax_data($line, $item_data)
 	{
 		$items_taxes_data = array();
-		if(is_numeric($line['Tax 1 Percent']) && $line['Tax 1 Name'] != '')
-		{
-			$items_taxes_data[] = array('name' => $line['Tax 1 Name'], 'percent' => $line['Tax 1 Percent'] );
-		}
-		if(is_numeric($line['Tax 2 Percent']) && $line['Tax 2 Name'] != '')
-		{
-			$items_taxes_data[] = array('name' => $line['Tax 2 Name'], 'percent' => $line['Tax 2 Percent'] );
-		}
+		$items_taxes_data[] = array('name' => 'GST', 'percent' => 0 ); // default 0% tax on imported computers
 		if(count($items_taxes_data) > 0)
 		{
 			$this->Item_taxes->save($items_taxes_data, $item_data['item_id']);
