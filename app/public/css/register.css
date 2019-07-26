@@ -283,5 +283,6 @@ input.form-control.input-sm.center {
 .alert.alert-danger.customer-comments {
     margin: 10px 0 10px 0;
     font-weight: normal;
-    font-size: 13px;
+	font-size: 13px;
+	padding: 8px;
 }
