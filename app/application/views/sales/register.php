@@ -209,7 +209,7 @@ if (count($cart) == 0) {
             ?>
 
 <?php
-if ((substr($item['name'], 0, 7) == 'Deposit') || ($item['item_category'] == 'User Support') || ($item['item_category'] == 'Ebay Sales')) { // if the item is a desktop or laptop category
+if ((substr($item['name'], 0, 7) == 'Deposit') || ($item['item_category'] == ('User Support' || 'Ebay Sales' || 'Cost of Sharing Services'))) { // if the item is a desktop or laptop category
                 $item['name'] = $item['name'];
             } else {
                 $item['name'] = $item['name'] . " (" . $item['item_category'] . ")";
