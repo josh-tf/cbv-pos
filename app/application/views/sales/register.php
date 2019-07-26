@@ -367,6 +367,21 @@ if (!empty($customer_rewards)) {
 						<th style='width: 55%;'><?php echo $this->lang->line("sales_customer_total"); ?></th>
 						<th style="width: 45%; text-align: right;"><?php echo to_currency($customer_total); ?></th>
 					</tr>
+
+					<?php
+if (!empty($customer_comments)) {
+        ?>
+						<tr>
+							<th style='width: 100%;' colspan="2">
+							<div class="alert alert-danger customer-comments" role="alert">
+								<b>Customer Comments:</b><br>
+								<?php echo $customer_comments; ?>
+							</div>
+						</th>
+						</tr>
+					<?php
+    } ?>
+
 				</table>
 
 				<?php echo anchor(

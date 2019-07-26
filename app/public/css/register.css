@@ -279,3 +279,9 @@ input.form-control.input-sm.center {
 .label-darkblue {
     background-color: #0d006f;
 }
+
+.alert.alert-danger.customer-comments {
+    margin: 10px 0 10px 0;
+    font-weight: normal;
+    font-size: 13px;
+}

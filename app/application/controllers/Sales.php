@@ -735,6 +735,7 @@ class Sales extends Secure_Controller
             }
             $data['first_name'] = $customer_info->first_name;
             $data['last_name'] = $customer_info->last_name;
+            $data['customer_comments'] = $customer_info->comments;
             $data['customer_email'] = $customer_info->email;
             $data['customer_address'] = $customer_info->address_1;
             if (!empty($customer_info->postcode) || !empty($customer_info->suburb)) {
