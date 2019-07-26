@@ -467,22 +467,21 @@ foreach ($var as $row) {
 </div>
 
 <div class="form-group form-group-sm custom10">
-<?php echo form_label($this->config->item('custom10_name'), 'custom10', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-4'>
+<?php echo form_label($this->config->item('custom10_name'), 'custom10', array('class' => 'required control-label col-xs-3')); ?>
+<div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php echo $item_arr['custom10'] ?>" placeholder="<?php echo $this->lang->line('custom10_helper') ?>" list="custom10" class="form-control input-sm" name="custom10">
-<datalist id="custom10">
-
-<?php
+<select class="form-control input-sm" id="custom10" name="custom10">
+	<option selected disabled>Please Select..</option>
+	<?php
 $variable = $this->config->item('cbvopt_item_type');
 $var = explode(',', $variable);
 
 foreach ($var as $row) {
-    echo '<option value="' . trim($row) . '">';
+    echo '<option>' . trim($row) . '</option>';
 }
 ?>
+    </select>
 
-</datalist>
 </div>
 </div>
 </div>
@@ -899,6 +898,10 @@ $('#item_storage_type').change(() => {
 				required: true
 			},
 			custom9:
+			{
+				required: true
+            },
+			custom10:
 			{
 				required: true
             },
