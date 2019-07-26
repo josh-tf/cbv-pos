@@ -660,6 +660,9 @@ class Items extends Secure_Controller
      */
     public function do_excel_import()
     {
+
+        log_message('error', 'Some variable did not contain a value.');
+
         if ($_FILES['file_path']['error'] != UPLOAD_ERR_OK) {
             echo json_encode(array('success' => false, 'message' => $this->lang->line('items_excel_import_failed')));
         } else {
@@ -693,7 +696,23 @@ class Items extends Secure_Controller
 
                             'name' => $line['Item Name'],
                             'category' => $line['Item Category'],
+                            'supplier_id' => null,
+                            'item_number' => null,
+                            'description' => $line['Item Description'],
+                            'cost_price' => 0,
                             'unit_price' => $line['Unit Price'],
+                            'reorder_level' => 0,
+                            'receiving_quantity' => 1,
+                            //'item_id' => $line['Item ID'],
+                            'pic_filename' => null,
+                            'allow_alt_description' => 0,
+                            'is_serialized' => 0,
+                            'stock_type' => 0,
+                            'item_type' => 0,
+                            'tax_category_id' => 0,
+                            'deleted' => 0,
+                            'on_hold' => 0,
+                            'hold_for' => null,
                             'custom1' => $line['Build Date'],
                             'custom2' => $line['Brand/Model'],
                             'custom3' => $line['CPU Type'],
@@ -708,10 +727,16 @@ class Items extends Secure_Controller
                             'custom12' => $line['Box Only Price'],
                             'custom13' => $line['Extras'],
                             'custom14' => $line['Other Notes'],
-                            'description' => $line['Item Description'],
+                            'custom15' => null,
+                            'custom16' => null,
+                            'custom17' => null,
+                            'custom18' => null,
+                            'custom19' => null,
+                            'custom20' => null,
                         );
 
-                        $item_number                 = 11;
+
+                       // $item_number                 = 11;
 
                         if ($item_number != '') {
                             $item_data['item_number'] = $item_number;
@@ -751,6 +776,70 @@ class Items extends Secure_Controller
             }
         }
     }
+
+    	/**
+	 * Saves the tax data found in the line of the CSV items import file
+	 *
+	 * @param	array	line
+	 */
+	private function save_tax_data($line, $item_data)
+	{
+		$items_taxes_data = array();
+		if(is_numeric($line['Tax 1 Percent']) && $line['Tax 1 Name'] != '')
+		{
+			$items_taxes_data[] = array('name' => $line['Tax 1 Name'], 'percent' => $line['Tax 1 Percent'] );
+		}
+		if(is_numeric($line['Tax 2 Percent']) && $line['Tax 2 Name'] != '')
+		{
+			$items_taxes_data[] = array('name' => $line['Tax 2 Name'], 'percent' => $line['Tax 2 Percent'] );
+		}
+		if(count($items_taxes_data) > 0)
+		{
+			$this->Item_taxes->save($items_taxes_data, $item_data['item_id']);
+		}
+	}
+
+    	/**
+	 * Saves inventory quantities for the row in the appropriate stock locations.
+	 *
+	 * @param	array	line
+	 * @param			item_data
+	 */
+	private function save_inventory_quantities($line, $item_data)
+	{
+		//Quantities & Inventory Section
+		$employee_id		= $this->Employee->get_logged_in_employee_info()->person_id;
+		$emp_info			= $this->Employee->get_info($employee_id);
+		$comment			= $this->lang->line('items_inventory_CSV_import_quantity');
+		$allowed_locations	= $this->Stock_location->get_allowed_locations();
+		foreach($allowed_locations as $location_id => $location_name)
+		{
+			$item_quantity_data = array(
+				'item_id' => $item_data['item_id'],
+				'location_id' => $location_id
+			);
+			$excel_data = array(
+				'trans_items' => $item_data['item_id'],
+				'trans_user' => $employee_id,
+				'trans_comment' => $comment,
+				'trans_location' => $location_id,
+			);
+			if(!empty($line['location_' . $location_name]))
+			{
+				$item_quantity_data['quantity'] = $line['location_' . $location_name];
+				$this->Item_quantity->save($item_quantity_data, $item_data['item_id'], $location_id);
+				$excel_data['trans_inventory'] = $line['location_' . $location_name];
+				$this->Inventory->insert($excel_data);
+			}
+			else
+			{
+				$item_quantity_data['quantity'] = 1;
+				$this->Item_quantity->save($item_quantity_data, $item_data['item_id'], $line[$col]);
+				$excel_data['trans_inventory'] = 1;
+				$this->Inventory->insert($excel_data);
+			}
+		}
+	}
 
 	/**
 	 * Checks the entire line of data for errors
