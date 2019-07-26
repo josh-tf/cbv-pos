@@ -650,7 +650,7 @@ $(document).ready(function()
 	});
 
 	const TAXABLE_CATEGORIES = ['New Equipment', 'User Support','Cost of Sharing Services'];
-	const NON_STOCKED_CATEGORIES = ['User Support','Recycling Fees','CBV Membership', 'Used Equipment', 'New Equipment', 'Ebay Sales','Cost of Sharing Services', 'Donation';
+	const NON_STOCKED_CATEGORIES = ['User Support','Recycling Fees','CBV Membership', 'Used Equipment', 'New Equipment', 'Ebay Sales','Cost of Sharing Services', 'Donation'];
 	const COMPUTER_CATEGORIES = ['Laptop', 'Desktop'];
 	const DEFAULT_TAX_RATE = '<?php echo to_tax_decimals($default_tax_1_rate); ?>';
 	const updateFieldsBasedOnCategory = () => {
