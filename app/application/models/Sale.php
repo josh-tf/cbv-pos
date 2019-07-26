@@ -619,13 +619,14 @@ class Sale extends CI_Model
 
             $this->db->insert('sales_items', $sales_items_data);
 
-            if ($cur_item_info->stock_type == HAS_STOCK && $sale_status == COMPLETED && $sale_type != SALE_TYPE_RETURN) { // Dont add +1 to the qty if returning item
+            if ($cur_item_info->stock_type == HAS_STOCK && $sale_status == COMPLETED) {
                 // Update stock quantity if item type is a standard stock item and the sale is a standard sale
                 $item_quantity = $this->Item_quantity->get_item_quantity($item['item_id'], $item['item_location']);
 
-                // if an invoice is partially paid (for a deposit) then don't deduct from the item qty
-                if ((($sale_type == SALE_TYPE_INVOICE) && ($total_amount < $item['price']))) {
+                if (($sale_type == SALE_TYPE_RETURN) || (($sale_type == SALE_TYPE_INVOICE) && ($total_amount < $item['price']))) { // dont deduct if the sale is a return or its a partial paid invoice
+
                     $qtyToDeduct = 0;
+
                 } else {
                     $qtyToDeduct = $item['quantity'];
                 }
@@ -940,7 +941,7 @@ class Sale extends CI_Model
         } elseif ($this->config->item('payment_options_order') == 'debitcashcredit') {
             $payments[$this->lang->line('sales_debit')] = $this->lang->line('sales_debit');
             $payments[$this->lang->line('sales_cash')] = $this->lang->line('sales_cash');
-        //$payments[$this->lang->line('sales_credit')] = $this->lang->line('sales_credit');
+            //$payments[$this->lang->line('sales_credit')] = $this->lang->line('sales_credit');
         } else { // default: if($this->config->item('payment_options_order') == 'cashdebitcredit')
             $payments[$this->lang->line('sales_cash')] = $this->lang->line('sales_cash');
             $payments[$this->lang->line('sales_debit')] = $this->lang->line('sales_debit');
