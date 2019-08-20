@@ -206,7 +206,7 @@ if (!empty($stats)) {
 			<div class='col-xs-8'>
 				<div class="input-group input-group-sm">
 					<?php echo form_input(
-    array(
+        array(
     'name' => 'sales_tax_code_name',
     'id' => 'sales_tax_code_name',
     'class' => 'form-control input-sm',
