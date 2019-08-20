@@ -626,7 +626,6 @@ class Sale extends CI_Model
                 if (($sale_type == SALE_TYPE_RETURN) || (($sale_type == SALE_TYPE_INVOICE) && ($total_amount < $item['price']))) { // dont deduct if the sale is a return or its a partial paid invoice
 
                     $qtyToDeduct = 0;
-
                 } else {
                     $qtyToDeduct = $item['quantity'];
                 }
@@ -941,7 +940,7 @@ class Sale extends CI_Model
         } elseif ($this->config->item('payment_options_order') == 'debitcashcredit') {
             $payments[$this->lang->line('sales_debit')] = $this->lang->line('sales_debit');
             $payments[$this->lang->line('sales_cash')] = $this->lang->line('sales_cash');
-            //$payments[$this->lang->line('sales_credit')] = $this->lang->line('sales_credit');
+        //$payments[$this->lang->line('sales_credit')] = $this->lang->line('sales_credit');
         } else { // default: if($this->config->item('payment_options_order') == 'cashdebitcredit')
             $payments[$this->lang->line('sales_cash')] = $this->lang->line('sales_cash');
             $payments[$this->lang->line('sales_debit')] = $this->lang->line('sales_debit');

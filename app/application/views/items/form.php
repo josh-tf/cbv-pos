@@ -454,7 +454,7 @@ foreach ($var as $row) {
 $variable = $this->config->item('cbvopt_item_optical');
 $var = explode(',', $variable);
 
-	echo '<option>No Drive</option>'; // default option
+    echo '<option>No Drive</option>'; // default option
 
 foreach ($var as $row) {
     echo '<option>' . trim($row) . '</option>';

@@ -96,15 +96,21 @@ function get_sale_data_row($sale)
 
     if ($CI->config->item('invoice_enable')) {
         $row['invoice_number'] = $sale->invoice_number;
-        $row['invoice'] = empty($sale->invoice_number) ? '' : anchor($controller_name . "/invoice/$sale->sale_id", '<span class="glyphicon glyphicon-list-alt"></span>',
+        $row['invoice'] = empty($sale->invoice_number) ? '' : anchor(
+            $controller_name . "/invoice/$sale->sale_id",
+            '<span class="glyphicon glyphicon-list-alt"></span>',
             array('title' => $CI->lang->line('sales_show_invoice'))
         );
     }
 
-    $row['receipt'] = anchor($controller_name . "/receipt/$sale->sale_id", '<span class="glyphicon glyphicon-usd"></span>',
+    $row['receipt'] = anchor(
+        $controller_name . "/receipt/$sale->sale_id",
+        '<span class="glyphicon glyphicon-usd"></span>',
         array('title' => $CI->lang->line('sales_show_receipt'))
     );
-    $row['edit'] = anchor($controller_name . "/edit/$sale->sale_id", '<span class="glyphicon glyphicon-edit"></span>',
+    $row['edit'] = anchor(
+        $controller_name . "/edit/$sale->sale_id",
+        '<span class="glyphicon glyphicon-edit"></span>',
         array('class' => 'modal-dlg print_hide', 'data-btn-delete' => $CI->lang->line('common_delete'), 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
     );
 
@@ -197,9 +203,14 @@ function get_person_data_row($person)
         'first_name' => $person->first_name,
         'email' => empty($person->email) ? '' : mailto($person->email, $person->email),
         'phone_number' => $person->phone_number,
-        'messages' => empty($person->phone_number) ? '' : anchor("Messages/view/$person->person_id", '<span class="glyphicon glyphicon-phone"></span>',
-            array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line('messages_sms_send'))),
-        'edit' => anchor($controller_name . "/view/$person->person_id", '<span class="glyphicon glyphicon-edit"></span>',
+        'messages' => empty($person->phone_number) ? '' : anchor(
+            "Messages/view/$person->person_id",
+            '<span class="glyphicon glyphicon-phone"></span>',
+            array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line('messages_sms_send'))
+        ),
+        'edit' => anchor(
+            $controller_name . "/view/$person->person_id",
+            '<span class="glyphicon glyphicon-edit"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
         ));
 }
@@ -248,11 +259,19 @@ function get_customer_data_row($person, $stats)
         'phone_number' => $person->phone_number,
         'total' => to_currency($stats->total),
 
-        'crn_lookup' => anchor("/customers/redir?id=" . $person->conc_id, '<span class="glyphicon glyphicon-search"></span>',
-            array('target' => '_blank', 'class' => '', 'id' => 'cbvid_check', 'name' => 'cbvid_check', 'title' => $CI->lang->line('lookup_conc_id'))),
-        'messages' => empty($person->phone_number) ? '' : anchor("Messages/view/$person->person_id", '<span class="glyphicon glyphicon-phone"></span>',
-            array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line('messages_sms_send'))),
-        'edit' => anchor($controller_name . "/view/$person->person_id", '<span class="glyphicon glyphicon-edit"></span>',
+        'crn_lookup' => anchor(
+            "/customers/redir?id=" . $person->conc_id,
+            '<span class="glyphicon glyphicon-search"></span>',
+            array('target' => '_blank', 'class' => '', 'id' => 'cbvid_check', 'name' => 'cbvid_check', 'title' => $CI->lang->line('lookup_conc_id'))
+        ),
+        'messages' => empty($person->phone_number) ? '' : anchor(
+            "Messages/view/$person->person_id",
+            '<span class="glyphicon glyphicon-phone"></span>',
+            array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line('messages_sms_send'))
+        ),
+        'edit' => anchor(
+            $controller_name . "/view/$person->person_id",
+            '<span class="glyphicon glyphicon-edit"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
         ));
 }
@@ -297,10 +316,16 @@ function get_supplier_data_row($supplier)
         'first_name' => $supplier->first_name,
         'email' => empty($supplier->email) ? '' : mailto($supplier->email, $supplier->email),
         'phone_number' => $supplier->phone_number,
-        'messages' => empty($supplier->phone_number) ? '' : anchor("Messages/view/$supplier->person_id", '<span class="glyphicon glyphicon-phone"></span>',
-            array('class' => "modal-dlg", 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line('messages_sms_send'))),
-        'edit' => anchor($controller_name . "/view/$supplier->person_id", '<span class="glyphicon glyphicon-edit"></span>',
-            array('class' => "modal-dlg", 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))),
+        'messages' => empty($supplier->phone_number) ? '' : anchor(
+            "Messages/view/$supplier->person_id",
+            '<span class="glyphicon glyphicon-phone"></span>',
+            array('class' => "modal-dlg", 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line('messages_sms_send'))
+        ),
+        'edit' => anchor(
+            $controller_name . "/view/$supplier->person_id",
+            '<span class="glyphicon glyphicon-edit"></span>',
+            array('class' => "modal-dlg", 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
+        ),
     );
 }
 
@@ -369,7 +394,7 @@ function get_item_data_row($item)
             $onHold = '<b>Yes</b>';
         }
     } else {
-            $onHold = '-';
+        $onHold = '-';
     }
 
     return array(
@@ -384,16 +409,24 @@ function get_item_data_row($item)
         'quantity' => to_quantity_decimals($item->quantity),
         'tax_percents' => !$tax_percents ? '-' : $tax_percents,
         //'item_pic' => $image,
-        'inventory' => anchor($controller_name . "/inventory/$item->item_id", '<span class="glyphicon glyphicon-pushpin"></span>',
+        'inventory' => anchor(
+            $controller_name . "/inventory/$item->item_id",
+            '<span class="glyphicon glyphicon-pushpin"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_count'))
         ),
-        'stock' => anchor($controller_name . "/count_details/$item->item_id", '<span class="glyphicon glyphicon-list-alt"></span>',
+        'stock' => anchor(
+            $controller_name . "/count_details/$item->item_id",
+            '<span class="glyphicon glyphicon-list-alt"></span>',
             array('class' => 'modal-dlg', 'title' => $CI->lang->line($controller_name . '_details_count'))
         ),
-        'ticket' => anchor("/items/redir?id=" . $item->name, '<span class="glyphicon glyphicon-print"></span>',
+        'ticket' => anchor(
+            "/items/redir?id=" . $item->name,
+            '<span class="glyphicon glyphicon-print"></span>',
             array('target' => '_blank', 'class' => '', 'id' => 'cbv_id', 'name' => 'cbv_id', 'title' => $CI->lang->line('print_ticket'))
         ),
-        'edit' => anchor($controller_name . "/view/$item->item_id", '<span class="glyphicon glyphicon-edit"></span>',
+        'edit' => anchor(
+            $controller_name . "/view/$item->item_id",
+            '<span class="glyphicon glyphicon-edit"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
         ));
 }
@@ -430,7 +463,9 @@ function get_giftcard_data_row($giftcard)
         'first_name' => $giftcard->first_name,
         'giftcard_number' => $giftcard->giftcard_number,
         'value' => to_currency($giftcard->value),
-        'edit' => anchor($controller_name . "/view/$giftcard->giftcard_id", '<span class="glyphicon glyphicon-edit"></span>',
+        'edit' => anchor(
+            $controller_name . "/view/$giftcard->giftcard_id",
+            '<span class="glyphicon glyphicon-edit"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
         ));
 }
@@ -473,7 +508,9 @@ function get_tax_data_row($tax_code_row)
         'rounding_code_name' => Rounding_mode::get_rounding_code_name($tax_code_row->rounding_code),
         'suburb' => $tax_code_row->suburb,
         'state' => $tax_code_row->state,
-        'edit' => anchor($controller_name . "/view/$tax_code_row->tax_code", '<span class="glyphicon glyphicon-edit"></span>',
+        'edit' => anchor(
+            $controller_name . "/view/$tax_code_row->tax_code",
+            '<span class="glyphicon glyphicon-edit"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
         ));
 }
@@ -510,7 +547,9 @@ function get_item_kit_data_row($item_kit)
         'description' => $item_kit->description,
         'cost_price' => to_currency($item_kit->total_cost_price),
         'unit_price' => to_currency($item_kit->total_unit_price),
-        'edit' => anchor($controller_name . "/view/$item_kit->item_kit_id", '<span class="glyphicon glyphicon-edit"></span>',
+        'edit' => anchor(
+            $controller_name . "/view/$item_kit->item_kit_id",
+            '<span class="glyphicon glyphicon-edit"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
         ));
 }
@@ -543,7 +582,9 @@ function get_expense_category_data_row($expense_category)
         'expense_category_id' => $expense_category->expense_category_id,
         'category_name' => $expense_category->category_name,
         'category_description' => $expense_category->category_description,
-        'edit' => anchor($controller_name . "/view/$expense_category->expense_category_id", '<span class="glyphicon glyphicon-edit"></span>',
+        'edit' => anchor(
+            $controller_name . "/view/$expense_category->expense_category_id",
+            '<span class="glyphicon glyphicon-edit"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
         ));
 }
@@ -588,7 +629,9 @@ function get_expenses_data_row($expense)
         'category_name' => $expense->category_name,
         'description' => $expense->description,
         'createdBy' => $expense->first_name . ' ' . $expense->last_name,
-        'edit' => anchor($controller_name . "/view/$expense->expense_id", '<span class="glyphicon glyphicon-edit"></span>',
+        'edit' => anchor(
+            $controller_name . "/view/$expense->expense_id",
+            '<span class="glyphicon glyphicon-edit"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
         ));
 }
@@ -677,7 +720,9 @@ function get_cash_up_data_row($cash_up)
         'closed_amount_card' => to_currency($cash_up->closed_amount_card),
         'closed_amount_check' => to_currency($cash_up->closed_amount_check),
         'closed_amount_total' => to_currency($cash_up->closed_amount_total),
-        'edit' => anchor($controller_name . "/view/$cash_up->cashup_id", '<span class="glyphicon glyphicon-edit"></span>',
+        'edit' => anchor(
+            $controller_name . "/view/$cash_up->cashup_id",
+            '<span class="glyphicon glyphicon-edit"></span>',
             array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name . '_update'))
         ));
 }

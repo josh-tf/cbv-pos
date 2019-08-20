@@ -28,7 +28,8 @@ if (!empty($stats)) {
 					<div class='col-xs-6'>
 						<div class="input-group input-group-sm">
 							<span class="input-group-addon input-sm"><b>CRN</b></span>
-							<?php echo form_input(array(
+							<?php echo form_input(
+    array(
     'name' => 'conc_id',
     'id' => 'conc_id',
     'class' => 'form-control input-sm',
@@ -70,8 +71,9 @@ if (!empty($stats)) {
 							<div class="input-group input-group-sm">
 								<?php if (!currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif;?>
-								<?php echo form_input(array(
+								<?php endif; ?>
+								<?php echo form_input(
+        array(
         'name' => 'total',
         'id' => 'total',
         'class' => 'form-control input-sm',
@@ -80,7 +82,7 @@ if (!empty($stats)) {
     ); ?>
 								<?php if (currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif;?>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>
@@ -92,8 +94,9 @@ if (!empty($stats)) {
 							<div class="input-group input-group-sm">
 								<?php if (!currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif;?>
-								<?php echo form_input(array(
+								<?php endif; ?>
+								<?php echo form_input(
+        array(
         'name' => 'max',
         'id' => 'max',
         'class' => 'form-control input-sm',
@@ -102,7 +105,7 @@ if (!empty($stats)) {
     ); ?>
 								<?php if (currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif;?>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>
@@ -113,8 +116,9 @@ if (!empty($stats)) {
 							<div class="input-group input-group-sm">
 								<?php if (!currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif;?>
-								<?php echo form_input(array(
+								<?php endif; ?>
+								<?php echo form_input(
+        array(
         'name' => 'min',
         'id' => 'min',
         'class' => 'form-control input-sm',
@@ -123,7 +127,7 @@ if (!empty($stats)) {
     ); ?>
 								<?php if (currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif;?>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>
@@ -134,8 +138,9 @@ if (!empty($stats)) {
 							<div class="input-group input-group-sm">
 								<?php if (!currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif;?>
-								<?php echo form_input(array(
+								<?php endif; ?>
+								<?php echo form_input(
+        array(
         'name' => 'average',
         'id' => 'average',
         'class' => 'form-control input-sm',
@@ -144,7 +149,7 @@ if (!empty($stats)) {
     ); ?>
 								<?php if (currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif;?>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>
@@ -153,7 +158,8 @@ if (!empty($stats)) {
 						<?php echo form_label($this->lang->line('customers_quantity'), 'quantity', array('class' => 'control-label col-xs-3')); ?>
 						<div class="col-xs-4">
 							<div class="input-group input-group-sm">
-								<?php echo form_input(array(
+								<?php echo form_input(
+        array(
         'name' => 'quantity',
         'id' => 'quantity',
         'class' => 'form-control input-sm',
@@ -170,8 +176,9 @@ if (!empty($stats)) {
 							<div class="input-group input-group-sm">
 							<?php if (!currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif;?>
-								<?php echo form_input(array(
+								<?php endif; ?>
+								<?php echo form_input(
+        array(
         'name' => 'total_discount',
         'id' => 'total_discount',
         'class' => 'form-control input-sm',
@@ -180,7 +187,7 @@ if (!empty($stats)) {
     ); ?>
 								<?php if (currency_side()): ?>
 									<span class="input-group-addon input-sm"><b><?php echo $this->config->item('currency_symbol'); ?></b></span>
-								<?php endif;?>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>
@@ -192,12 +199,14 @@ if (!empty($stats)) {
 	</div>
 
 
-	<?php if ($customer_sales_tax_enabled) {?>
+	<?php if ($customer_sales_tax_enabled) {
+    ?>
 		<div class="form-group  form-group-sm">
 			<?php echo form_label($this->lang->line('customers_tax_code'), 'sales_tax_code_name', array('class' => 'control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
 				<div class="input-group input-group-sm">
-					<?php echo form_input(array(
+					<?php echo form_input(
+    array(
     'name' => 'sales_tax_code_name',
     'id' => 'sales_tax_code_name',
     'class' => 'form-control input-sm',
@@ -208,7 +217,8 @@ if (!empty($stats)) {
 				</div>
 			</div>
 		</div>
-	<?php }?>
+	<?php
+}?>
 <?php echo form_close(); ?>
 
 <script type="text/javascript">

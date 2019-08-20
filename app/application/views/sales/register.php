@@ -201,12 +201,9 @@ if (count($cart) == 0) {
 			<?php
 } else {
         foreach (array_reverse($cart, true) as $line => $item) {
-
-			if($item['name'] == "Shop Sales"){
-				$hasShopSale = true;
-			}
-
-            ?>
+            if ($item['name'] == "Shop Sales") {
+                $hasShopSale = true;
+            } ?>
 
 <?php
 if ((substr($item['name'], 0, 7) == 'Deposit') || ($item['item_category'] == ('User Support' || 'Ebay Sales' || 'Cost of Sharing Services' || 'Donation'))) { // if the item is a desktop or laptop category
@@ -294,8 +291,8 @@ if ($item['allow_alt_description'] == 1) {
 
 	<?php echo form_close();
 
-	if($hasShopSale == 1){
-	?>
+    if ($hasShopSale == 1) {
+        ?>
 	<div class="alert alert-danger" role="alert" style="margin-top:10px;">
 		<b>Important Reminder</b><br>
 		The <i>Shop Sales</i> item should only be selected for used or donated equipment, new items such as a USB Wifi
@@ -303,7 +300,7 @@ if ($item['allow_alt_description'] == 1) {
 	</div>
 
 <?php
-}
+    }
 ?>
 
 </div>
@@ -385,9 +382,9 @@ if (!empty($customer_comments)) {
 				</table>
 
 				<?php echo anchor(
-        $controller_name . "/remove_customer",
-        '<span class="glyphicon glyphicon-remove">&nbsp</span>' . $this->lang->line('common_remove') . ' ' . $this->lang->line('customers_customer'),
-        array('class' => 'btn btn-danger btn-sm', 'id' => 'remove_customer_button', 'title' => $this->lang->line('common_remove') . ' ' . $this->lang->line('customers_customer'))
+            $controller_name . "/remove_customer",
+            '<span class="glyphicon glyphicon-remove">&nbsp</span>' . $this->lang->line('common_remove') . ' ' . $this->lang->line('customers_customer'),
+            array('class' => 'btn btn-danger btn-sm', 'id' => 'remove_customer_button', 'title' => $this->lang->line('common_remove') . ' ' . $this->lang->line('customers_customer'))
     ); ?>
 			<?php
 } else {
