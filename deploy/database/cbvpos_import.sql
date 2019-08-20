@@ -67,7 +67,7 @@ INSERT INTO `app_config` (`key`, `value`) VALUES
 ('cbvopt_item_screen', '12,14,15.4,17,19,20,22'),
 ('cbvopt_item_storage_size', '160,200,250,360,500,1000'),
 ('cbvopt_item_storage_type', 'HDD,SSD,mSATA,M2 SSD,HHD'),
-('cbvopt_item_type', 'Tower,All-in-One,Small Form'),
+('cbvopt_item_type', 'Tower,Low Profile,Micro'),
 ('client_id', '8024ef54-5c31-4aa0-99ab-8d37e5f5561d'),
 ('company', 'Computerbank Victoria Inc.'),
 ('company_logo', 'company_logo.png'),
