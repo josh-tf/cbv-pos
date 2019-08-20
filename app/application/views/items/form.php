@@ -445,42 +445,43 @@ foreach ($var as $row) {
 </div>
 
 <div class="form-group form-group-sm custom9">
-<?php echo form_label($this->config->item('custom9_name'), 'custom9', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-4'>
+<?php echo form_label($this->config->item('custom9_name'), 'custom9', array('class' => 'required control-label col-xs-3')); ?>
+<div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php echo $item_arr['custom9'] ?>" placeholder="<?php echo $this->lang->line('custom9_helper') ?>" list="custom9" class="form-control input-sm" name="custom9">
-<datalist id="custom9">
-
-<?php
+<select class="form-control input-sm" id="custom9" name="custom9">
+	<option selected disabled>Please Select..</option>
+	<?php
 $variable = $this->config->item('cbvopt_item_optical');
 $var = explode(',', $variable);
 
+    echo '<option>No Drive</option>'; // default option
+
 foreach ($var as $row) {
-    echo '<option value="' . trim($row) . '">';
+    echo '<option>' . trim($row) . '</option>';
 }
 ?>
-</datalist>
+    </select>
+
 </div>
 </div>
 </div>
 
 <div class="form-group form-group-sm custom10">
-<?php echo form_label($this->config->item('custom10_name'), 'custom10', array('class' => 'control-label col-xs-3')); ?>
-<div class='col-xs-4'>
+<?php echo form_label($this->config->item('custom10_name'), 'custom10', array('class' => 'required control-label col-xs-3')); ?>
+<div class='col-xs-8'>
 <div class="input-group input-group-sm custom">
-<input value="<?php echo $item_arr['custom10'] ?>" placeholder="<?php echo $this->lang->line('custom10_helper') ?>" list="custom10" class="form-control input-sm" name="custom10">
-<datalist id="custom10">
-
-<?php
+<select class="form-control input-sm" id="custom10" name="custom10">
+	<option selected disabled>Please Select..</option>
+	<?php
 $variable = $this->config->item('cbvopt_item_type');
 $var = explode(',', $variable);
 
 foreach ($var as $row) {
-    echo '<option value="' . trim($row) . '">';
+    echo '<option>' . trim($row) . '</option>';
 }
 ?>
+    </select>
 
-</datalist>
 </div>
 </div>
 </div>
@@ -641,8 +642,14 @@ if ($i == 1) { //If its the Build Date field, show a calendar icon
 $(document).ready(function()
 {
 
-	const TAXABLE_CATEGORIES = ['New Equipment', 'User Support'];
-	const NON_STOCKED_CATEGORIES = ['User Support','Recycling Fees','CBV Membership', 'Used Equipment', 'New Equipment', 'Ebay Sales'];
+	$("form").on('change keydown paste input', function(){
+		$('input').change(function(){
+        this.value = $.trim(this.value);
+   		 });
+	});
+
+	const TAXABLE_CATEGORIES = ['New Equipment', 'User Support','Cost of Sharing Services'];
+	const NON_STOCKED_CATEGORIES = ['User Support','Recycling Fees','CBV Membership', 'Used Equipment', 'New Equipment', 'Ebay Sales','Cost of Sharing Services', 'Donation'];
 	const COMPUTER_CATEGORIES = ['Laptop', 'Desktop'];
 	const DEFAULT_TAX_RATE = '<?php echo to_tax_decimals($default_tax_1_rate); ?>';
 	const updateFieldsBasedOnCategory = () => {
@@ -689,10 +696,12 @@ $(document).ready(function()
 
 	var itemCat = '<?php echo $item_arr['category']; ?>';
 	var itemOS = '<?php echo $item_arr['custom7']; ?>';
+	var itemDrive = '<?php echo $item_arr['custom9']; ?>';
 
 	if (!(itemCat === '')) { // if a cat is defined then its an existing item being edited, so set our select boxes
 		$('#category').val(itemCat);
 		$('#custom7').val(itemOS);
+		$('#custom9').val(itemDrive);
 	}
 
 	updateFieldsBasedOnCategory(); // Run as soon as document is ready
@@ -740,7 +749,7 @@ function createDescription() {
 	var c6 = $('[name="custom6"]').val();
 	var c7 = $('[name="custom7"]').val();
 	var c8 = $('[name="custom8"]').val();
-	var c9 = $('[name="custom9"]').val();
+	var c9 = ($('[name="custom9"]').val() != 'No Drive' ? $('[name="custom9"]').val() : ''); // if no drive is selected, don't show on desc
 	var c10 = $('[name="custom10"]').val();
 	var c11 = $('[name="custom11"]').val();
 	var c13 = $('[name="custom13"]').val();
@@ -886,6 +895,14 @@ $('#item_storage_type').change(() => {
 			custom8:
 			{
 				number: true,
+				required: true
+			},
+			custom9:
+			{
+				required: true
+            },
+			custom10:
+			{
 				required: true
             },
 			custom11:

@@ -175,7 +175,6 @@ if ($this->Employee->has_grant('reports_sales', $this->session->userdata('person
 		</div>
 	<?php echo form_close(); ?>
 
-
 <!-- Sale Items List -->
 
 	<table class="sales_table_100<?php echo(!($saleMode == 'sale') ? ' non-sale' : '') ?>" id="register">
@@ -203,10 +202,12 @@ if (count($cart) == 0) {
 			<?php
 } else {
         foreach (array_reverse($cart, true) as $line => $item) {
-            ?>
+            if ($item['name'] == "Shop Sales") {
+                $hasShopSale = true;
+            } ?>
 
 <?php
-if ((substr($item['name'], 0, 7) == 'Deposit') || ($item['item_category'] == 'User Support') || ($item['item_category'] == 'Ebay Sales')) { // if the item is a desktop or laptop category
+if ((substr($item['name'], 0, 7) == 'Deposit') || ($item['item_category'] == ('User Support' || 'Ebay Sales' || 'Cost of Sharing Services' || 'Donation'))) { // if the item is a desktop or laptop category
                 $item['name'] = $item['name'];
             } else {
                 $item['name'] = $item['name'] . " (" . $item['item_category'] . ")";
@@ -288,6 +289,21 @@ if ($item['allow_alt_description'] == 1) {
 ?>
 		</tbody>
 	</table>
+
+	<?php echo form_close();
+
+    if ($hasShopSale == 1) {
+        ?>
+	<div class="alert alert-danger" role="alert" style="margin-top:10px;">
+		<b>Important Reminder</b><br>
+		The <i>Shop Sales</i> item should only be selected for used or donated equipment, new items such as a USB Wifi
+		Stick <b>MUST</b> be loaded under their respective items to ensure correct tax amount is reported.
+	</div>
+
+<?php
+    }
+?>
+
 </div>
 
 <!-- Overall Sale -->
@@ -349,12 +365,27 @@ if (!empty($customer_rewards)) {
 						<th style='width: 55%;'><?php echo $this->lang->line("sales_customer_total"); ?></th>
 						<th style="width: 45%; text-align: right;"><?php echo to_currency($customer_total); ?></th>
 					</tr>
+
+					<?php
+if (!empty($customer_comments)) {
+        ?>
+						<tr>
+							<th style='width: 100%;' colspan="2">
+							<div class="alert alert-danger customer-comments" role="alert">
+								<b>Customer Comments:</b><br>
+								<?php echo $customer_comments; ?>
+							</div>
+						</th>
+						</tr>
+					<?php
+    } ?>
+
 				</table>
 
 				<?php echo anchor(
-        $controller_name . "/remove_customer",
-        '<span class="glyphicon glyphicon-remove">&nbsp</span>' . $this->lang->line('common_remove') . ' ' . $this->lang->line('customers_customer'),
-        array('class' => 'btn btn-danger btn-sm', 'id' => 'remove_customer_button', 'title' => $this->lang->line('common_remove') . ' ' . $this->lang->line('customers_customer'))
+            $controller_name . "/remove_customer",
+            '<span class="glyphicon glyphicon-remove">&nbsp</span>' . $this->lang->line('common_remove') . ' ' . $this->lang->line('customers_customer'),
+            array('class' => 'btn btn-danger btn-sm', 'id' => 'remove_customer_button', 'title' => $this->lang->line('common_remove') . ' ' . $this->lang->line('customers_customer'))
     ); ?>
 			<?php
 } else {

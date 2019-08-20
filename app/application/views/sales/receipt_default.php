@@ -11,14 +11,11 @@ load_language(true, array('customers', 'sales', 'employees'));
 if (isset($customer)) {
     ?>
             <textarea aria-label="customer info" id="customer" rows="4" cols="6"
-                style="<?php echo('width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 175) . 'px') ?>">
-    <?php
+                style="<?php echo('width:' . (strlen($customer_info['customer_agency']) > 18 ? 300 : 175) . 'px') ?>"><?php
 echo $customer_info['customer'] . "\n";
     echo($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
     echo $customer_info['customer_address'] . "\n";
-    echo $customer_info['customer_location']; ?>
-
-            </textarea>
+    echo $customer_info['customer_location']; ?></textarea>
             <?php
 }
 ?>
@@ -68,9 +65,10 @@ if (!empty($invoice_number)) {
 ?>
             <tr>
                 <td class="meta-head">
-                    <?php echo $this->lang->line('sales_receipt'); ?>
+
+                Sale <?php echo $this->lang->line('common_date'); ?>
                 </td>
-                <td><textarea rows="5" cols="6"><?php echo $transaction_time ?></textarea></td>
+                <td><textarea rows="5" cols="6"><?php echo $transaction_date ?></textarea></td>
             </tr>
         </table>
     </div>

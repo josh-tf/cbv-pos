@@ -8,52 +8,53 @@ if (isset($error_message)) {
 ?>
 
 <!-- Modal -->
-<div class="modal" id="printWarning" tabindex="-1" role="dialog" aria-labelledby="printWarningLabel" aria-hidden="true">
+<div class="modal bootstrap-dialog modal-dlg type-primary fade size-normal in" id="printWarning" tabindex="-1" role="dialog" aria-labelledby="printWarningLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="printWarningLabel">Printer Settings</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <div class="bootstrap-dialog-header">
+                    <div class="bootstrap-dialog-close-button" style="display: block;">
+                        <button class="close" aria-label="close">×</button>
+                    </div>
+                    <div class="bootstrap-dialog-title">Printer Settings</div>
+                </div>
             </div>
             <div class="modal-body">
-                <h3>Important</h3>
-                <p>
-                    To ensure the invoice is printed correctly, please ensure
-                    the printer settings in the popup dialog are configured as follows:
-                </p>
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading"><b>Important Notice</b></h4>
+                    <p style="font-size: 13px;">To ensure the invoice is printed correctly, please ensure the printer settings in the popup dialog are configured as follows:</p>
+                </div>
                 <br>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">Setting</th>
-                            <th scope="col">Option</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">2-Sided</th>
-                            <td>Yes - Long Edge</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Orientation</th>
-                            <td>Portrait</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Scaling</th>
-                            <td colspan="2">85%</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Headers/Footers</th>
-                            <td colspan="2">Off</td>
-                        </tr>
-                    </tbody>
-                </table>
+			<table class="table table-bordered">
+			<thead>
+				<tr>
+				<th scope="col">Setting</th>
+				<th scope="col">Option</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+				<th scope="row">2-Sided</th>
+				<td>Yes - Long Edge</td>
+				</tr>
+				<tr>
+				<th scope="row">Orientation</th>
+				<td>Portrait</td>
+				</tr>
+				<tr>
+				<th scope="row">Scaling</th>
+				<td colspan="2">85%</td>
+				</tr>
+					<tr>
+						<th scope="row">Headers/Footers</th>
+						<td colspan="2">Off</td>
+					</tr>
+			</tbody>
+			</table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" onclick="printdoc();" class="btn btn-primary">Print Invoice</button>
+                <button type="button" onclick="printdoc();" class="btn btn-primary">Print Stocklist Ticket</button>
             </div>
         </div>
     </div>
@@ -113,14 +114,11 @@ load_language(true, array('sales', 'common'));
             <?php
 if (isset($customer)) {
     ?>
-            <textarea aria-label="Customer Details" id="customer" rows="4" cols="6" style="width:<?php echo(strlen($customer_info['customer_agency']) > 25 ? 350 : 250) ?>px">
-                <?php
-                echo $customer_info['customer'] . "\n";
+            <textarea aria-label="Customer Details" id="customer" rows="4" cols="6" style="width:<?php echo(strlen($customer_info['customer_agency']) > 25 ? 350 : 250) ?>px"><?php
+echo $customer_info['customer'] . "\n";
     echo($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
     echo $customer_info['customer_address'] . "\n";
-    echo $customer_info['customer_location']; ?>
-
-            </textarea>
+    echo $customer_info['customer_location']; ?></textarea>
             <?php
 }
 ?>
@@ -155,7 +153,7 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
             </tr>
             <tr>
                 <td class="meta-head">
-                    <?php echo $this->lang->line('common_date'); ?>
+                    Invoice <?php echo $this->lang->line('common_date'); ?>
                 </td>
                 <td><textarea rows="5" cols="6"><?php echo $transaction_date; ?></textarea></td>
             </tr>
@@ -265,7 +263,7 @@ if ($this->config->item('receipt_show_taxes')) {
         </tr>
         <?php
 
-    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request ?>
+    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request?>
 
 
         <tr>

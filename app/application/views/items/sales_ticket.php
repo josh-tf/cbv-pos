@@ -29,61 +29,62 @@
 
 <script type="text/javascript">
   function printdoc() {
-    $('#printWarning').modal('hide');   
+    $('#printWarning').modal('hide');
     window.print();
   }
 </script>
 
 <!-- Modal -->
-<div class="modal bootstrap-dialog modal-dlg type-primary fade size-normal in"  id="printWarning" tabindex="-1" role="dialog" aria-labelledby="printWarningLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="bootstrap-dialog-title" id="printWarningLabel">Printer Settings</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h3>Important</h3>
-        <p>
-          To ensure the sales ticket is printed correctly, please ensure
-          the printer settings in the popup dialog are configured as follows:
-        </p>
-        <br>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Setting</th>
-              <th scope="col">Option</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">2-Sided</th>
-              <td>Any</td>
-            </tr>
-            <tr>
-              <th scope="row">Orientation</th>
-              <td>Landscape</td>
-            </tr>
-            <tr>
-              <th scope="row">Scaling</th>
-              <td colspan="2">100%</td>
-            </tr>
-            <tr>
-              <th scope="row">Headers/Footers</th>
-              <td colspan="2">Off</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" onclick="printdoc();" class="btn btn-primary">Print Sales Ticket</button>
-      </div>
+<div class="modal bootstrap-dialog modal-dlg type-primary fade size-normal in" id="printWarning" tabindex="-1" role="dialog" aria-labelledby="printWarningLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="bootstrap-dialog-header">
+                    <div class="bootstrap-dialog-close-button" style="display: block;">
+                        <button class="close" aria-label="close">×</button>
+                    </div>
+                    <div class="bootstrap-dialog-title">Printer Settings</div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading"><b>Important Notice</b></h4>
+                    <p style="font-size: 13px;">To ensure the sales ticket is printed correctly, please ensure the printer settings in the popup dialog are configured as follows:</p>
+                </div>
+                <br>
+                <table style="font-size: 13px;" class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Setting</th>
+                    <th scope="col">Option</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">2-Sided</th>
+                    <td>Any</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Orientation</th>
+                    <td>Landscape</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Scaling</th>
+                    <td colspan="2">100%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Headers/Footers</th>
+                    <td colspan="2">Off</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" onclick="printdoc();" class="btn btn-primary">Print Stocklist Ticket</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <div id="title_bar" class="btn-toolbar print_hide">
@@ -251,32 +252,32 @@ if ($itemCat == 'Desktop') {
       </thead>
       <tbody>
         <tr>
-          <td><img src="images/ticket-icons/cbvid.png" class="ticket-icon" /> <b>Model</b></td>
-          <td>
+          <td width="30%"><img src="images/ticket-icons/cbvid.png" class="ticket-icon" /> <b>Model</b></td>
+          <td width="70%">
             <?php echo $specModel; ?>
           </td>
         </tr>
         <tr>
-          <td><img src="images/ticket-icons/processor.png" class="ticket-icon" /> <b>Processor</b></td>
-          <td>
+          <td width="30%"><img src="images/ticket-icons/processor.png" class="ticket-icon" /> <b>Processor</b></td>
+          <td width="70%">
             <?php echo $specCPU; ?>
           </td>
         </tr>
         <tr>
-          <td><img src="images/ticket-icons/memory.png" class="ticket-icon" /> <b>Memory</b></td>
-          <td>
+          <td width="30%"><img src="images/ticket-icons/memory.png" class="ticket-icon" /> <b>Memory</b></td>
+          <td width="70%">
             <?php echo $specRAM; ?>
           </td>
         </tr>
         <tr>
-          <td><img src="images/ticket-icons/storage.png" class="ticket-icon" /> <b>Storage</b></td>
-          <td>
+          <td width="30%"><img src="images/ticket-icons/storage.png" class="ticket-icon" /> <b>Storage</b></td>
+          <td width="70%">
             <?php echo $specHDD; ?>
           </td>
         </tr>
         </tr>
-        <td><img src="images/ticket-icons/monitor.png" class="ticket-icon" /> <b>Monitor</b></td>
-        <td>
+        <td width="30%"><img src="images/ticket-icons/monitor.png" class="ticket-icon" /> <b>Monitor</b></td>
+        <td width="70%">
           <?php echo $specMonitor ?>
         </td>
         </tr>
@@ -285,8 +286,8 @@ if ($itemCat == 'Laptop') {
     ?>
 
 <tr>
-          <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Battery</b></td>
-          <td>
+          <td width="30%"><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Battery</b></td>
+          <td width="70%">
             <?php echo $specBatt; ?>
           </td>
         </tr>
@@ -296,7 +297,7 @@ if ($itemCat == 'Laptop') {
 ?>
         <tr>
           <td><img src="images/ticket-icons/extras.png" class="ticket-icon" /> <b>Extras</b></td>
-          <td>
+          <td width="70%">
             <?php echo $specEX ? $specEX : 'None'; ?>
           </td>
         </tr>

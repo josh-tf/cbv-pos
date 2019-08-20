@@ -34,6 +34,7 @@ $sql .= 'i.custom5 AS RAM, ';
 $sql .= 'i.custom6 AS HDD, ';
 $sql .= 'i.custom8 AS Screen, ';
 $sql .= 'i.custom9 AS DVD, ';
+$sql .= 'i.custom10 AS FormFactor, ';
 $sql .= 'i.custom11 AS Battery ';
 
 $sql .= 'FROM items AS i INNER JOIN item_quantities q ON i.item_id = q.item_id ';
@@ -77,14 +78,14 @@ if ($desktopCount > 0) {
 <td class="stocklist-model-banner" colspan="3"><strong><?php echo $row['Model'] ?></strong> (ID: <?php echo $row['CBVID'] ?>)</td>
 </tr>
 <tr>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/cpu.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['CPUType'] ?> <?php echo $row['CPUSpeed'] ?></td>
-<td style="width: 85px;"><img src="/wp-content/stocklist-icons/hdd.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['HDD'] ?></td>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/dvd.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['DVD'] ? $row['DVD'] : 'None'; ?></td>
+<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-cpu.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['CPUType'] ?> <?php echo $row['CPUSpeed'] ?></td>
+<td style="width: 85px;"><img src="/wp-content/stocklist-icons/icon-hdd.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['HDD'] ?></td>
+<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-dvd.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['DVD'] ?></td>
 </tr>
 <tr>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/ram.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['RAM'] ?> GB</td>
-<td style="width: 85px;"><img src="/wp-content/stocklist-icons/os.png" style="width:16px;height:16px;margin-bottom:-3px;" /> Ubuntu</td>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/screen.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['Screen'] ?> in</td>
+<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-ram.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['RAM'] ?> GB</td>
+<td style="width: 85px;"><img src="/wp-content/stocklist-icons/icon-form.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['FormFactor'] == "" ? "Desktop" : $row['FormFactor'] ?></td>
+<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-screen.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['Screen'] ?> in</td>
 </tr>
 <tr>
 <td style="width: 60px; text-align: center;" colspan="3"><strong>Concession:</strong> $<?php echo number_format((float) ($row['ConcPrice']), 2, '.', ''); ?> | <strong>Full Price:</strong> $<?php echo number_format((float) ($row['ConcPrice']) * 1.5, 2, '.', ''); ?></td>
@@ -139,14 +140,14 @@ if ($laptopCount > 0) {
 <td class="stocklist-model-banner" colspan="3"><strong><?php echo $row['Model'] ?></strong> (ID: <?php echo $row['CBVID'] ?>)</td>
 </tr>
 <tr>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/cpu.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['CPUType'] ?> <?php echo $row['CPUSpeed'] ?></td>
-<td style="width: 85px;"><img src="/wp-content/stocklist-icons/hdd.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['HDD'] ?></td>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/battery.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['Battery'] ?> Hrs</td>
+<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-cpu.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['CPUType'] ?> <?php echo $row['CPUSpeed'] ?></td>
+<td style="width: 85px;"><img src="/wp-content/stocklist-icons/icon-hdd.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['HDD'] ?></td>
+<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-battery.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['Battery'] ?> Hrs</td>
 </tr>
 <tr>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/ram.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['RAM'] ?> GB</td>
-<td style="width: 85px;"><img src="/wp-content/stocklist-icons/os.png" style="width:16px;height:16px;margin-bottom:-3px;" /> Ubuntu</td>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/screen.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['Screen'] ?> in</td>
+<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-ram.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['RAM'] ?> GB</td>
+<td style="width: 85px;"><img src="/wp-content/stocklist-icons/icon-os.png" style="width:16px;height:16px;margin-bottom:-3px;" /> Ubuntu</td>
+<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-screen.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['Screen'] ?> in</td>
 </tr>
 <tr>
 <td style="width: 60px; text-align: center;" colspan="3"><strong>Concession Only:</strong> $<?php echo number_format((float) ($row['ConcPrice']), 2, '.', ''); ?></td>
