@@ -192,7 +192,7 @@ foreach ($stocklist as $computer) {
         ?>
     <tr>
         <td><?php echo $computer->name; ?></td>
-        <td><?php echo ($computer->custom10) ? $computer->custom10 : 'Tower'; // type?></td>
+        <td><?php echo ($computer->custom10) ? $computer->custom10 : 'Tower'; // type ?></td>
         <td>$<?php echo number_format((float) ($computer->unit_price), 2, '.', ''); ?></td>
         <td>$<?php echo number_format((float) ($computer->unit_price) * 1.5, 2, '.', ''); ?></td>
         <td><?php echo $computer->custom2; //brand/model?></td>
@@ -206,7 +206,7 @@ foreach ($stocklist as $computer) {
     </tr>
 
 <?php
-    }
+}
 }
 ?>
     </tbody>
@@ -264,7 +264,7 @@ foreach ($stocklist as $computer) {
     </tr>
 
     <?php
-    }
+}
 }
 ?>
 

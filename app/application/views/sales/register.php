@@ -41,13 +41,14 @@ if ($saleMode == "return") {
 for new equipment, for example 'USB Wifi Stick'
 </div>
 <br>
-
+<h4>Which item do I choose on the register?</h4>
+<br>
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th scope="col">Type</th>
-              <th scope="col">Item to Use</th>
-              <th scope="col">Desciption</th>
+              <th scope="col">I am selling..</th>
+              <th scope="col">POS Item to Select</th>
+              <th scope="col">Description to Use</th>
             </tr>
           </thead>
           <tbody>
