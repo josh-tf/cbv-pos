@@ -114,9 +114,9 @@ load_language(true, array('sales', 'common'));
             <?php
 if (isset($customer)) {
     ?>
-            <textarea aria-label="Customer Details" id="customer" rows="4" cols="6" style="width:<?php echo (strlen($customer_info['customer_agency']) > 25 ? 350 : 250) ?>px"><?php
+            <textarea aria-label="Customer Details" id="customer" rows="4" cols="6" style="width:<?php echo(strlen($customer_info['customer_agency']) > 25 ? 350 : 250) ?>px"><?php
 echo $customer_info['customer'] . "\n";
-    echo ($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
+    echo($customer_info['customer_agency'] != '' ? $customer_info['customer_agency'] . "\n" : '');
     echo $customer_info['customer_address'] . "\n";
     echo $customer_info['customer_location']; ?></textarea>
             <?php
@@ -198,7 +198,7 @@ foreach ($cart as $line => $item) {
     } else {
         $item['name'] = ucfirst($item['name']); // otherwise just use the name
         $item['description'] = '<b>Item Details:</b> ' . $item['description'];
-    }?>
+    } ?>
 
         <tr class="item-row">
             <td colspan="2" class="item-name"><textarea rows="4" cols="6"><?php echo $item['name']; ?></textarea></td>
@@ -222,7 +222,7 @@ if ($item['discount'] > 0) {
             <td class="total-line"><?php echo to_currency($item['discounted_total']); ?></td>
         </tr>
         <?php
-}
+    }
 }
 ?>
 
@@ -263,7 +263,7 @@ if ($this->config->item('receipt_show_taxes')) {
         </tr>
         <?php
 
-    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request ?>
+    if (empty($taxes)) { //if the taxes array is empty then show an empty "GST 10%    $0.00" line per request?>
 
 
         <tr>
@@ -273,7 +273,7 @@ if ($this->config->item('receipt_show_taxes')) {
         </tr>
 
         <?php
-} else {
+    } else {
         foreach ($taxes as $tax_group_index => $sales_tax) {
             ?>
         <tr>
@@ -282,8 +282,8 @@ if ($this->config->item('receipt_show_taxes')) {
             <td class="total-value al-right"><?php echo to_currency_tax($sales_tax['sale_tax_amount']); ?></td>
         </tr>
         <?php
-}
-    }?>
+        }
+    } ?>
 
 
         <?php
@@ -307,7 +307,7 @@ if ($this->config->item('receipt_show_taxes')) {
 
         <?php
 foreach ($payments as $payment_id => $payment) {
-    $splitpayment = explode(':', $payment['payment_type']);?>
+    $splitpayment = explode(':', $payment['payment_type']); ?>
         <tr>
             <td colspan="3" class="blank"> </td>
             <td colspan="1" class="total-line al-right"><?php echo $splitpayment[0]; ?> </td>
@@ -333,14 +333,14 @@ foreach ($payments as $payment_id => $payment) {
                     cols="6"><?php echo nl2br($this->config->item('payment_message')); ?></textarea> <?php
 }?>
                 <?php if (!empty($comments)) {
-    ?><textarea rows="5"
+        ?><textarea rows="5"
                     cols="6"><?php echo empty($comments) ? '' : $this->lang->line('sales_comments') . ': ' . $comments; ?></textarea>
                 <?php
-}?>
+    }?>
                 <?php if (!empty($this->config->item('invoice_default_comments'))) {
-    ?><textarea  aria-label="Invoice Additional Comments" rows="5"
+        ?><textarea  aria-label="Invoice Additional Comments" rows="5"
                     cols="6"><?php echo $this->config->item('invoice_default_comments'); ?></textarea> <?php
-}?>
+    }?>
             </h5>
             <?php echo nl2br($this->config->item('return_policy')); ?>
         </div>
@@ -352,13 +352,13 @@ $(window).on("load", function() {
     // install firefox addon in order to use this plugin
     if (window.jsPrintSetup) {
         <?php if (!$this->Appconfig->get('print_header')) {
-    ?>
+        ?>
         // set page header
         jsPrintSetup.setOption('headerStrLeft', '');
         jsPrintSetup.setOption('headerStrCenter', '');
         jsPrintSetup.setOption('headerStrRight', '');
         <?php
-}
+    }
 
 if (!$this->Appconfig->get('print_footer')) {
     ?>

@@ -132,24 +132,35 @@ class Items extends Secure_Controller
      */
     public function suggest_search()
     {
-        $suggestions = $this->xss_clean($this->Item->get_search_suggestions($this->input->post_get('term'),
-            array('search_custom' => $this->input->post('search_custom'), 'is_deleted' => $this->input->post('is_deleted') != null), false, 25, true));
+        $suggestions = $this->xss_clean($this->Item->get_search_suggestions(
+            $this->input->post_get('term'),
+            array('search_custom' => $this->input->post('search_custom'), 'is_deleted' => $this->input->post('is_deleted') != null),
+            false,
+            25,
+            true
+        ));
 
         echo json_encode($suggestions);
     }
 
     public function suggest()
     {
-        $suggestions = $this->xss_clean($this->Item->get_search_suggestions($this->input->post_get('term'),
-            array('search_custom' => false, 'is_deleted' => false), true));
+        $suggestions = $this->xss_clean($this->Item->get_search_suggestions(
+            $this->input->post_get('term'),
+            array('search_custom' => false, 'is_deleted' => false),
+            true
+        ));
 
         echo json_encode($suggestions);
     }
 
     public function suggest_kits()
     {
-        $suggestions = $this->xss_clean($this->Item->get_kit_search_suggestions($this->input->post_get('term'),
-            array('search_custom' => false, 'is_deleted' => false), true));
+        $suggestions = $this->xss_clean($this->Item->get_kit_search_suggestions(
+            $this->input->post_get('term'),
+            array('search_custom' => false, 'is_deleted' => false),
+            true
+        ));
 
         echo json_encode($suggestions);
     }
@@ -209,7 +220,6 @@ class Items extends Secure_Controller
         }
 
         if ($item_id == -1) {
-
             $item_info->receiving_quantity = 1;
             $item_info->reorder_level = 0;
             $item_info->item_type = ITEM; // standard
@@ -362,7 +372,6 @@ class Items extends Secure_Controller
 
     public function save($item_id = -1)
     {
-
         $upload_success = $this->_handle_image_upload();
         $upload_data = $this->upload->data();
 
@@ -482,8 +491,7 @@ class Items extends Secure_Controller
 
                 echo json_encode(array('success' => false, 'message' => $message, 'id' => $item_id));
             }
-        } else // failure
-        {
+        } else { // failure
             $message = $this->xss_clean($this->lang->line('items_error_adding_updating') . ' ' . $item_data['name']);
 
             echo json_encode(array('success' => false, 'message' => $message, 'id' => -1));
@@ -491,9 +499,7 @@ class Items extends Secure_Controller
 
         // update the stocklist if the url (env) is set AND category is a laptop or desktop
         if (getenv('STOCKLIST_UPDATE_URL')) {
-
             if (($this->input->post('category') == 'Laptop') || ($this->input->post('category') == 'Desktop')) {
-
                 $request_opts = array(
                     'http' => array(
                         'method' => 'GET',
@@ -502,11 +508,8 @@ class Items extends Secure_Controller
 
                 $context = stream_context_create($request_opts);
                 $stocklist_update = file_get_contents(getenv('STOCKLIST_UPDATE_URL'), null, $context);
-
             }
-
         }
-
     }
 
     public function check_item_number()
@@ -581,8 +584,7 @@ class Items extends Secure_Controller
             $message = $this->xss_clean($this->lang->line('items_successful_updating') . ' ' . $cur_item_info->name);
 
             echo json_encode(array('success' => true, 'message' => $message, 'id' => $item_id));
-        } else //failure
-        {
+        } else { //failure
             $message = $this->xss_clean($this->lang->line('items_error_adding_updating') . ' ' . $cur_item_info->name);
 
             echo json_encode(array('success' => false, 'message' => $message, 'id' => -1));
@@ -660,14 +662,12 @@ class Items extends Secure_Controller
      */
     public function do_excel_import()
     {
-
         log_message('error', 'Some variable did not contain a value.');
 
         if ($_FILES['file_path']['error'] != UPLOAD_ERR_OK) {
             echo json_encode(array('success' => false, 'message' => $this->lang->line('items_excel_import_failed')));
         } else {
             if (file_exists($_FILES['file_path']['tmp_name'])) {
-
                 $file_name = $_FILES['file_path']['tmp_name'];
 
                 ini_set("auto_detect_line_endings", true);
@@ -735,7 +735,7 @@ class Items extends Secure_Controller
                         );
 
 
-                       // $item_number                 = 11;
+                        // $item_number                 = 11;
 
                         if ($item_number != '') {
                             $item_data['item_number'] = $item_number;
@@ -754,8 +754,7 @@ class Items extends Secure_Controller
                     if (!$invalidated && $this->Item->save($item_data)) {
                         $this->save_tax_data($line, $item_data);
                         $this->save_inventory_quantities($line, $item_data);
-                    } else //insert or update item failure
-                    {
+                    } else { //insert or update item failure
                         $failed_row = $i + 1;
                         $failCodes[] = $failed_row;
                         log_message("ERROR", "CSV Item import failed on line " . $failed_row . ". This item was not imported.");
@@ -776,111 +775,102 @@ class Items extends Secure_Controller
         }
     }
 
-    	/**
-	 * Saves the tax data found in the line of the CSV items import file
-	 *
-	 * @param	array	line
-	 */
-	private function save_tax_data($line, $item_data)
-	{
-		$items_taxes_data = array();
-		$items_taxes_data[] = array('name' => 'GST', 'percent' => 0 ); // default 0% tax on imported computers
-		if(count($items_taxes_data) > 0)
-		{
-			$this->Item_taxes->save($items_taxes_data, $item_data['item_id']);
-		}
-	}
+    /**
+     * Saves the tax data found in the line of the CSV items import file
+     *
+     * @param	array	line
+     */
+    private function save_tax_data($line, $item_data)
+    {
+        $items_taxes_data = array();
+        $items_taxes_data[] = array('name' => 'GST', 'percent' => 0 ); // default 0% tax on imported computers
+        if (count($items_taxes_data) > 0) {
+            $this->Item_taxes->save($items_taxes_data, $item_data['item_id']);
+        }
+    }
 
-    	/**
-	 * Saves inventory quantities for the row in the appropriate stock locations.
-	 *
-	 * @param	array	line
-	 * @param			item_data
-	 */
-	private function save_inventory_quantities($line, $item_data)
-	{
-		//Quantities & Inventory Section
-		$employee_id		= $this->Employee->get_logged_in_employee_info()->person_id;
-		$emp_info			= $this->Employee->get_info($employee_id);
-		$comment			= $this->lang->line('items_inventory_CSV_import_quantity');
-		$allowed_locations	= $this->Stock_location->get_allowed_locations();
-		foreach($allowed_locations as $location_id => $location_name)
-		{
-			$item_quantity_data = array(
-				'item_id' => $item_data['item_id'],
-				'location_id' => $location_id
-			);
-			$excel_data = array(
-				'trans_items' => $item_data['item_id'],
-				'trans_user' => $employee_id,
-				'trans_comment' => $comment,
-				'trans_location' => $location_id,
-			);
-			if(!empty($line['location_' . $location_name]))
-			{
-				$item_quantity_data['quantity'] = $line['location_' . $location_name];
-				$this->Item_quantity->save($item_quantity_data, $item_data['item_id'], $location_id);
-				$excel_data['trans_inventory'] = $line['location_' . $location_name];
-				$this->Inventory->insert($excel_data);
-			}
-			else
-			{
-				$item_quantity_data['quantity'] = 1;
-				$this->Item_quantity->save($item_quantity_data, $item_data['item_id'], $line[$col]);
-				$excel_data['trans_inventory'] = 1;
-				$this->Inventory->insert($excel_data);
-			}
-		}
-	}
+    /**
+     * Saves inventory quantities for the row in the appropriate stock locations.
+     *
+     * @param	array	line
+     * @param			item_data
+     */
+    private function save_inventory_quantities($line, $item_data)
+    {
+        //Quantities & Inventory Section
+        $employee_id		= $this->Employee->get_logged_in_employee_info()->person_id;
+        $emp_info			= $this->Employee->get_info($employee_id);
+        $comment			= $this->lang->line('items_inventory_CSV_import_quantity');
+        $allowed_locations	= $this->Stock_location->get_allowed_locations();
+        foreach ($allowed_locations as $location_id => $location_name) {
+            $item_quantity_data = array(
+                'item_id' => $item_data['item_id'],
+                'location_id' => $location_id
+            );
+            $excel_data = array(
+                'trans_items' => $item_data['item_id'],
+                'trans_user' => $employee_id,
+                'trans_comment' => $comment,
+                'trans_location' => $location_id,
+            );
+            if (!empty($line['location_' . $location_name])) {
+                $item_quantity_data['quantity'] = $line['location_' . $location_name];
+                $this->Item_quantity->save($item_quantity_data, $item_data['item_id'], $location_id);
+                $excel_data['trans_inventory'] = $line['location_' . $location_name];
+                $this->Inventory->insert($excel_data);
+            } else {
+                $item_quantity_data['quantity'] = 1;
+                $this->Item_quantity->save($item_quantity_data, $item_data['item_id'], $line[$col]);
+                $excel_data['trans_inventory'] = 1;
+                $this->Inventory->insert($excel_data);
+            }
+        }
+    }
 
-	/**
-	 * Checks the entire line of data for errors
-	 *
-	 * @param	array	$line
-	 * @param 	array	$item_data
-	 *
-	 * @return	bool	Returns FALSE if all data checks out and TRUE when there is an error in the data
-	 */
-	private function data_error_check($line, $item_data)
-	{
-		//Check for empty required fields
-		$check_for_empty = array(
-			$item_data['name'],
-			$item_data['category'],
-			$item_data['cost_price'],
-			$item_data['unit_price']
-		);
-		if(in_array('',$check_for_empty,true))
-		{
-			log_message("ERROR","Empty required value");
-			return TRUE;	//Return fail on empty required fields
-		}
-		//Build array of fields to check for numerics
-		$check_for_numeric_values = array(
-			$item_data['cost_price'],
-			$item_data['unit_price'],
-			$item_data['reorder_level'],
-			$item_data['supplier_id'],
-			$line['Tax 1 Percent'],
-			$line['Tax 2 Percent']
-		);
-		//Add in Stock Location values to check for numeric
-		$allowed_locations	= $this->Stock_location->get_allowed_locations();
-		foreach($allowed_locations as $location_id => $location_name)
-		{
-			$check_for_numeric_values[] = $line['location_'. $location_name];
-		}
-		//Check for non-numeric values which require numeric
-		foreach($check_for_numeric_values as $value)
-		{
-			if(!is_numeric($value) && $value != '')
-			{
-				log_message("ERROR","non-numeric: '$value' when numeric is required");
-				return TRUE;
-			}
-		}
-		//Check Attribute Data
-		return FALSE;
+    /**
+     * Checks the entire line of data for errors
+     *
+     * @param	array	$line
+     * @param 	array	$item_data
+     *
+     * @return	bool	Returns FALSE if all data checks out and TRUE when there is an error in the data
+     */
+    private function data_error_check($line, $item_data)
+    {
+        //Check for empty required fields
+        $check_for_empty = array(
+            $item_data['name'],
+            $item_data['category'],
+            $item_data['cost_price'],
+            $item_data['unit_price']
+        );
+        if (in_array('', $check_for_empty, true)) {
+            log_message("ERROR", "Empty required value");
+            return true;	//Return fail on empty required fields
+        }
+        //Build array of fields to check for numerics
+        $check_for_numeric_values = array(
+            $item_data['cost_price'],
+            $item_data['unit_price'],
+            $item_data['reorder_level'],
+            $item_data['supplier_id'],
+            $line['Tax 1 Percent'],
+            $line['Tax 2 Percent']
+        );
+        //Add in Stock Location values to check for numeric
+        $allowed_locations	= $this->Stock_location->get_allowed_locations();
+        foreach ($allowed_locations as $location_id => $location_name) {
+            $check_for_numeric_values[] = $line['location_'. $location_name];
+        }
+        //Check for non-numeric values which require numeric
+        foreach ($check_for_numeric_values as $value) {
+            if (!is_numeric($value) && $value != '') {
+                log_message("ERROR", "non-numeric: '$value' when numeric is required");
+                return true;
+            }
+        }
+        //Check Attribute Data
+        return false;
     }
 
     /**

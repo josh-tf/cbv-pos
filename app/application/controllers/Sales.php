@@ -145,11 +145,11 @@ class Sales extends Secure_Controller
 
         if ($mode == 'sale') {
             $this->sale_lib->set_sale_type(SALE_TYPE_POS);
-        } else if ($mode == 'sale_quote') {
+        } elseif ($mode == 'sale_quote') {
             $this->sale_lib->set_sale_type(SALE_TYPE_QUOTE);
-        } else if ($mode == 'sale_work_order') {
+        } elseif ($mode == 'sale_work_order') {
             $this->sale_lib->set_sale_type(SALE_TYPE_WORK_ORDER);
-        } else if ($mode == 'sale_invoice') {
+        } elseif ($mode == 'sale_invoice') {
             $this->sale_lib->set_sale_type(SALE_TYPE_INVOICE);
         } else {
             $this->sale_lib->set_sale_type(SALE_TYPE_RETURN);
@@ -159,7 +159,6 @@ class Sales extends Secure_Controller
         if (!$stock_location || $stock_location == $this->sale_lib->get_sale_location()) {
             $dinner_table = $this->input->post('dinner_table');
             $this->sale_lib->set_dinner_table($dinner_table);
-
         } elseif ($this->Stock_location->is_allowed_location($stock_location, 'sales')) {
             $this->sale_lib->set_sale_location($stock_location);
         }
@@ -538,7 +537,6 @@ class Sales extends Secure_Controller
                 }
             }
         } elseif ($this->sale_lib->is_work_order_mode()) {
-
             if (!($data['price_work_orders'] == 1)) {
                 $data['print_price_info'] = false;
             }
@@ -677,22 +675,21 @@ class Sales extends Secure_Controller
         $number = sprintf("%03d", $sale_id); // two leading zeros if number is small
         $data = $this->_load_sale_data($sale_id);
 
-     // generate file in pdf format
-    $html = $this->load->view('sales/' . $type . '_email', $data, true);
+        // generate file in pdf format
+        $html = $this->load->view('sales/' . $type . '_email', $data, true);
 
-    // load pdf helper
-    $this->load->helper(array('dompdf', 'file', 'download'));
-    $filename = sys_get_temp_dir() . '/CBV-' . str_replace(' ', '-', $this->lang->line('sales_' . $type)) . '-' . str_replace('/', '-', $number) . '.pdf';
+        // load pdf helper
+        $this->load->helper(array('dompdf', 'file', 'download'));
+        $filename = sys_get_temp_dir() . '/CBV-' . str_replace(' ', '-', $this->lang->line('sales_' . $type)) . '-' . str_replace('/', '-', $number) . '.pdf';
 
-    // create the PDF
-    file_put_contents($filename, pdf_create($html));
+        // create the PDF
+        file_put_contents($filename, pdf_create($html));
 
-    $this->load->view('sales/' . $type . '_email', $data);
-    $this->sale_lib->clear_all();
+        $this->load->view('sales/' . $type . '_email', $data);
+        $this->sale_lib->clear_all();
 
-    // download the PDF
-    force_download($filename, NULL);
-
+        // download the PDF
+        force_download($filename, null);
     }
 
     //!dev only
@@ -701,22 +698,21 @@ class Sales extends Secure_Controller
         $number = sprintf("%03d", $sale_id); // two leading zeros if number is small
         $data = $this->_load_sale_data($sale_id);
 
-     // generate file in pdf format
-    $html = $this->load->view('sales/' . $type . '_email', $data, true);
+        // generate file in pdf format
+        $html = $this->load->view('sales/' . $type . '_email', $data, true);
 
-    // load pdf helper
-    $this->load->helper(array('dompdf', 'file', 'download'));
-    $filename = sys_get_temp_dir() . '/CBV-' . str_replace(' ', '-', $this->lang->line('sales_' . $type)) . '-' . str_replace('/', '-', $number) . '.pdf';
+        // load pdf helper
+        $this->load->helper(array('dompdf', 'file', 'download'));
+        $filename = sys_get_temp_dir() . '/CBV-' . str_replace(' ', '-', $this->lang->line('sales_' . $type)) . '-' . str_replace('/', '-', $number) . '.pdf';
 
-    // create the PDF
-    file_put_contents($filename, pdf_create($html));
+        // create the PDF
+        file_put_contents($filename, pdf_create($html));
 
-    $this->load->view('sales/' . $type . '_email', $data);
-    $this->sale_lib->clear_all();
+        $this->load->view('sales/' . $type . '_email', $data);
+        $this->sale_lib->clear_all();
 
-    // download the PDF
+        // download the PDF
     //force_download($filename, NULL);
-
     }
 
     private function _load_customer_data($customer_id, &$data, $stats = false)
@@ -755,7 +751,6 @@ class Sales extends Secure_Controller
                 'customer_address' => trim(($data['customer_address'])),
                 'customer_location' => trim(($data['customer_location'])),
             );
-
         }
 
         return  $customer_info;
@@ -1182,11 +1177,9 @@ class Sales extends Secure_Controller
     {
         $filtered_cart = array();
         foreach ($cart as $id => $item) {
-            if ($item['print_option'] == PRINT_ALL) // always include
-            {
+            if ($item['print_option'] == PRINT_ALL) { // always include
                 $filtered_cart[$id] = $item;
-            } elseif ($item['print_option'] == PRINT_PRICED && $item['price'] != 0) // include only if the price is not zero
-            {
+            } elseif ($item['print_option'] == PRINT_PRICED && $item['price'] != 0) { // include only if the price is not zero
                 $filtered_cart[$id] = $item;
             }
             // print_option 2 is never included
