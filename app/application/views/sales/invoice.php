@@ -54,7 +54,7 @@ if (isset($error_message)) {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" onclick="printdoc();" class="btn btn-primary">Print Stocklist Ticket</button>
+                <button type="button" onclick="printdoc();" class="btn btn-primary">Print Invoice</button>
             </div>
         </div>
     </div>

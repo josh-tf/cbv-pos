@@ -81,7 +81,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" onclick="printdoc();" class="btn btn-primary">Print Stocklist Ticket</button>
+                <button type="button" onclick="printdoc();" class="btn btn-primary">Print Sales Ticket</button>
             </div>
         </div>
     </div>
