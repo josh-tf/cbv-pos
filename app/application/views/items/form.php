@@ -697,11 +697,13 @@ $(document).ready(function()
 	var itemCat = '<?php echo $item_arr['category']; ?>';
 	var itemOS = '<?php echo $item_arr['custom7']; ?>';
 	var itemDrive = '<?php echo $item_arr['custom9']; ?>';
+	var itemType = '<?php echo $item_arr['custom10']; ?>';
 
 	if (!(itemCat === '')) { // if a cat is defined then its an existing item being edited, so set our select boxes
 		$('#category').val(itemCat);
 		$('#custom7').val(itemOS);
 		$('#custom9').val(itemDrive);
+		$('#custom10').val(itemType); // Desktop type
 	}
 
 	updateFieldsBasedOnCategory(); // Run as soon as document is ready
