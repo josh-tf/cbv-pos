@@ -6,6 +6,16 @@ if (isset($error_message)) {
     exit;
 }
 ?>
+
+<script type="text/javascript">
+    function printdoc() {
+        $('#printWarning').modal('hide');
+		$('#printWarning').on('hidden.bs.modal', function (e) {
+			window.print(); // print once the modal has been hidden
+})
+    }
+</script>
+
 <!-- Modal -->
 <div class="modal bootstrap-dialog modal-dlg type-primary fade size-normal in" id="printWarning" tabindex="-1" role="dialog" aria-labelledby="printWarningLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

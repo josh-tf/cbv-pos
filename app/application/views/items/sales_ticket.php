@@ -28,10 +28,12 @@
 </style>
 
 <script type="text/javascript">
-  function printdoc() {
-    $('#printWarning').modal('hide');
-    window.print();
-  }
+    function printdoc() {
+        $('#printWarning').modal('hide');
+		$('#printWarning').on('hidden.bs.modal', function (e) {
+			window.print(); // print once the modal has been hidden
+})
+    }
 </script>
 
 <!-- Modal -->

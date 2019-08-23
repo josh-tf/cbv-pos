@@ -90,7 +90,9 @@ foreach ($stocklist as $computer) {
 <script type="text/javascript">
     function printdoc() {
         $('#printWarning').modal('hide');
-        window.print();
+		$('#printWarning').on('hidden.bs.modal', function (e) {
+			window.print(); // print once the modal has been hidden
+})
     }
 </script>
 
