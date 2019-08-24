@@ -7,7 +7,7 @@ $(document).ready(function()
 	$('#filters').on('hidden.bs.select', function(e) {
 		table_support.refresh();
 	});
-	
+
 	// load the preset datarange picker
 	<?php $this->load->view('partial/daterangepicker'); ?>
 
@@ -42,12 +42,16 @@ $(document).ready(function()
 		}
 	});
 });
+
+function printDoc(){
+    window.print();
+}
 </script>
 
 <?php $this->load->view('partial/print_receipt', array('print_after_sale'=>false, 'selected_printer'=>'takings_printer')); ?>
 
 <div id="title_bar" class="print_hide btn-toolbar">
-	<button onclick="javascript:printdoc()" class='btn btn-info btn-sm pull-right'>
+	<button onclick="printDoc()" class='btn btn-info btn-sm pull-right'>
 		<span class="glyphicon glyphicon-print">&nbsp</span><?php echo $this->lang->line('common_print'); ?>
 	</button>
 	<?php echo anchor("sales", '<span class="glyphicon glyphicon-shopping-cart">&nbsp</span>' . $this->lang->line('sales_register'), array('class'=>'btn btn-info btn-sm pull-right', 'id'=>'show_sales_button')); ?>
