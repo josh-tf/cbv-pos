@@ -72,7 +72,7 @@
                   </tr>
                   <tr>
                     <th scope="row">Scaling</th>
-                    <td colspan="2">100%</td>
+                    <td colspan="2">85%</td>
                   </tr>
                   <tr>
                     <th scope="row">Headers/Footers</th>
