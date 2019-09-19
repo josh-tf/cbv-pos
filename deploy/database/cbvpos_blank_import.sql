@@ -62,7 +62,7 @@ INSERT INTO `app_config` (`key`, `value`) VALUES
 ('cbvopt_distpass', 'cbvuser'),
 ('cbvopt_distuser', 'user'),
 ('cbvopt_distver', 'Ubuntu 16.04'),
-('cbvopt_item_cat', 'Desktop,Laptop,Used Equipment,New Equipment,User Support,Ebay Sales,Recycling Fees,CBV Membership,Donation,Cost of Sharing Services'),
+('cbvopt_item_cat', 'Desktop,Laptop,Used Equipment,New Equipment,User Support,Ebay Sales,Recycling Fees,CBV Membership,Donation,Cost of Sharing Services,Membership'),
 ('cbvopt_item_cpu', 'C2D,i3,i5,i7'),
 ('cbvopt_item_optical', 'DVD-ROM,DVD-RW,Blueray,Combo'),
 ('cbvopt_item_os', 'Ubuntu 16.04, Ubuntu 18.04'),

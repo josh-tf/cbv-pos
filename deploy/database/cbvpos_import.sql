@@ -59,7 +59,7 @@ INSERT INTO `app_config` (`key`, `value`) VALUES
 ('cbvopt_distpass', 'cbvuser'),
 ('cbvopt_distuser', 'user'),
 ('cbvopt_distver', 'Ubuntu 16.04'),
-('cbvopt_item_cat', 'Desktop,Laptop,Used Equipment,New Equipment,User Support,Ebay Sales,Recycling Fees,CBV Membership,Donation,Cost of Sharing Services'),
+('cbvopt_item_cat', 'Desktop,Laptop,Used Equipment,New Equipment,User Support,Ebay Sales,Recycling Fees,CBV Membership,Donation,Cost of Sharing Services,Membership'),
 ('cbvopt_item_cpu', 'C2D,i3,i5,i7'),
 ('cbvopt_item_optical', 'DVD-ROM,DVD-RW,Blueray,Combo'),
 ('cbvopt_item_os', 'Ubuntu 16.04, Ubuntu 18.04'),
@@ -507,7 +507,8 @@ INSERT INTO `items` (`name`, `category`, `supplier_id`, `item_number`, `descript
 ('Ebay Sales', 'Ebay Sales', NULL, NULL, 'Ebay Sale for XXXX', '0.00', '0.00', '0.000', '1.000', 7, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 ('User Support', 'User Support', NULL, NULL, 'User Support for Computer XXXX', '0.00', '0.00', '0.000', '1.000', 8, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 ('Electrical Supply', 'Cost of Sharing Services', NULL, NULL, '', '0.00', '0.00', '0.000', '1.000', 9, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-('Donation', 'Donation', NULL, NULL, '', '0.00', '0.00', '0.000', '1.000', 10, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+('Donation', 'Donation', NULL, NULL, '', '0.00', '0.00', '0.000', '1.000', 10, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+('Donation', 'Donation', NULL, NULL, '', '0.00', '0.00', '0.000', '1.000', 11, NULL, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -535,7 +536,8 @@ INSERT INTO `items_taxes` (`item_id`, `name`, `percent`) VALUES
 (7, ' GST', '0.000'),
 (8, ' GST', '10.000'),
 (9, ' GST', '10.000'),
-(10, ' GST', '0.000');
+(10, ' GST', '0.000'),
+(11, ' GST', '0.000');
 
 -- --------------------------------------------------------
 
@@ -592,8 +594,8 @@ INSERT INTO `item_quantities` (`item_id`, `location_id`, `quantity`) VALUES
 (7, 1, '1.000'),
 (8, 1, '1.000'),
 (9, 1, '1.000'),
-(10, 1, '1.000');
-
+(10, 1, '1.000'),
+(11, 1, '1.000');
 -- --------------------------------------------------------
 
 --
