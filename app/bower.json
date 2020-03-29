@@ -1,7 +1,7 @@
 {
   "name": "cbv-pos",
   "description": "The Computerbank Point of Sale system is a customised fork of the opensourcepos software modified for Computerbank Victoria Inc.",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "license": "MIT",
   "authors": [
     "jekkos <jeroen.peelaerts - at - gmail.com>",
@@ -9,22 +9,11 @@
     "josh-tf <git - at - josh.tf>",
     "rjobeirne <rjob.obeirne - at - gmail.com>"
   ],
-  "keywords": [
-    "point-of-sale",
-    "POS"
-  ],
+  "keywords": ["point-of-sale", "POS"],
   "homepage": "https://github.com/josh-tf/cbv-pos",
   "private": true,
-  "moduleType": [
-    "globals"
-  ],
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+  "moduleType": ["globals"],
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
   "dependencies": {
     "jquery-form": "~4.2.2",
     "jquery-validate": "~1.14.0",
@@ -50,21 +39,13 @@
   },
   "overrides": {
     "jquery-ui": {
-      "main": [
-        "themes/base/jquery-ui.css",
-        "jquery-ui.js"
-      ]
+      "main": ["themes/base/jquery-ui.css", "jquery-ui.js"]
     },
     "trumbowyg": {
-      "main": [
-        "dist/ui/trumbowyg.css",
-        "dist/trumbowyg.js"
-      ]
+      "main": ["dist/ui/trumbowyg.css", "dist/trumbowyg.js"]
     },
     "table-export": {
-      "main": [
-        "tableExport.js"
-      ]
+      "main": ["tableExport.js"]
     },
     "bootstrap-table": {
       "main": [
