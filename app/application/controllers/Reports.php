@@ -1357,6 +1357,48 @@ class Reports extends Secure_Controller
         $this->load->view('reports/tabular_custom', $data);
     }
 
+    public function detailed_memberships($start_date, $end_date)
+    {
+        $inputs = array('start_date' => $start_date, 'end_date' => $end_date);
+
+        $this->load->model('reports/Detailed_memberships');
+        $model = $this->Detailed_memberships;
+
+        $model->create($inputs);
+
+        $headers = $this->xss_clean($model->getDataColumns());
+        $report_data = $model->getData($inputs);
+
+        $summary_data = array();
+
+        foreach ($report_data['summary'] as $key => $row) {
+            $prettyDate = date_create($row['sale_time']);
+            $prettyDate = date_format($prettyDate, 'Y-m-d');
+
+            $summary_data[] = $this->xss_clean(array(
+                'sale_time' => $prettyDate,
+                'item_name' => $row['item_name'],
+                'item_category' => $row['item_category'],
+                'item_description' => '<a type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" title="' . $row['item_description'] . '">View Specs</a>',
+                'item_total' => to_currency($row['item_total']),
+                'customer_name' => $row['customer_name_first'] . ' ' . $row['customer_name_last'],
+                'customer_phone' => $row['customer_phone'],
+                'customer_email' => $row['customer_email'],
+                'customer_address' => $row['customer_address'] . ' ' . $row['customer_suburb'] . ' ' . $row['customer_postcode'],
+            ));
+        }
+
+        $data = array(
+            'title' => $this->lang->line('reports_detailed_memberships'),
+            'subtitle' => $this->_get_subtitle_report(array('start_date' => $start_date, 'end_date' => $end_date)),
+            'headers' => $headers,
+            'summary_data' => $summary_data
+        );
+
+        $this->load->view('reports/tabular_custom', $data);
+    }
+
+
     public function detailed_cashflow($start_date, $end_date)
     {
         $inputs = array('start_date' => $start_date, 'end_date' => $end_date);

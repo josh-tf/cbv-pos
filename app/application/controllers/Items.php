@@ -16,9 +16,8 @@ class Items extends Secure_Controller
     public function index()
     {
         $data['table_headers'] = $this->xss_clean(get_items_manage_table_headers());
-
-        $data['stock_location'] = $this->xss_clean($this->item_lib->get_item_location());
-        $data['stock_locations'] = $this->xss_clean($this->Stock_location->get_allowed_locations());
+        $data['stock_location'] = $this->xss_clean($this->m_location());
+        $data['stock_locations'] = $this->xss_clean($this->Stock_location->get_item_lib->get_iteallowed_locations());
 
         // filters that will be loaded in the multiselect dropdown
         $data['filters'] = array(
