@@ -16,15 +16,10 @@ class Detailed_memberships extends Report
     {
         $columns = array(
             'summary' => array(
-                array('sale_time' => $this->lang->line('sales_date')),
-                array('item_name' => $this->lang->line('common_id'), 'sorter' => 'number_sorter'),
-                array('item_category' => $this->lang->line('items_category')),
-                array('item_description' => $this->lang->line('items_description')),
-                array('item_total' => $this->lang->line('sales_total'), 'sorter' => 'number_sorter'),
-                array('customer_name' => $this->lang->line('customers_customer')),
-                array('customer_phone' => $this->lang->line('common_phone_number'), 'sorter' => 'number_sorter'),
-                array('customer_email' => $this->lang->line('common_email')),
-                array('customer_address' => $this->lang->line('common_address_1'))
+                array('date_paid' => $this->lang->line('sales_date')),
+                array('vol_full_name' => $this->lang->line('common_full_name')),
+                array('email_adr' => $this->lang->line('common_email')),
+                array('amount_paid' => $this->lang->line('sales_total'))
             ));
 
         return $columns;
@@ -32,28 +27,20 @@ class Detailed_memberships extends Report
 
     public function getData(array $inputs)
     {
+
         $this->db->select('
-                            DATE(sales.sale_time) as sale_time,
-                            items.name as item_name,
-                            items.category as item_category,
-                            items.Description as item_description,
-                            sales_items.item_unit_price as item_total,
-                            customers.first_name as customer_name_first,
-                            customers.last_name as customer_name_last,
-                            customers.phone_number as customer_phone,
-                            customers.email as customer_email,
-                            customers.address_1 as customer_address
+                        sales.sale_time as date_paid,
+                        concat(people.first_name," ",people.last_name) as vol_full_name,
+                        people.email as email_adr,
+                        sales_items.item_unit_price as amount_paid
                         ');
         $this->db->from('sales_items AS sales_items');
         $this->db->join('sales AS sales', 'sales.sale_id = sales_items.sale_id', 'inner');
-        $this->db->join('items AS items', 'items.item_id = sales_items.item_id', 'inner');
-        $this->db->join('people AS customers', 'customers.person_id = sales.customer_id', 'inner');
+        $this->db->join('people AS people', 'people.person_id = sales.customer_id', 'inner');
+        $this->db->join('customers AS customers', 'customers.person_id = people.person_id', 'inner');
 
-        // laptop and desktop only
-        $this->db->where('items.category in("Laptop", "Desktop")');
-
-        // only include completed sales - exclude canceled or suspended (Trello: cUKS2cR2)
-        $this->db->where('sales.sale_status = 0');
+        // Only include Membership item, add
+        $this->db->where('sales_items.item_id = 9');
 
         // sale date (ignore time) between parameters
         $this->db->where('date(`sale_time`) BETWEEN ' . $this->db->escape(rawurldecode($inputs['start_date'])) . ' AND ' . $this->db->escape(rawurldecode($inputs['end_date'])));

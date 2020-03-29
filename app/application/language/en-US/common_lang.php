@@ -19,6 +19,7 @@ $lang["common_export_excel"] = "Excel Export";
 $lang["common_export_excel_no"] = "No";
 $lang["common_export_excel_yes"] = "Yes";
 $lang["common_fields_required_message"] = "Fields in red are required";
+$lang["common_full_name"] = "Full Name";
 $lang["common_first_name"] = "First Name";
 $lang["common_first_name_required"] = "First Name is a required field.";
 $lang["common_first_page"] = "First";
