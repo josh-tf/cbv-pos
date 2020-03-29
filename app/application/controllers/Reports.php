@@ -1372,19 +1372,14 @@ class Reports extends Secure_Controller
         $summary_data = array();
 
         foreach ($report_data['summary'] as $key => $row) {
-            $prettyDate = date_create($row['sale_time']);
+            $prettyDate = date_create($row['date_paid']);
             $prettyDate = date_format($prettyDate, 'Y-m-d');
 
             $summary_data[] = $this->xss_clean(array(
-                'sale_time' => $prettyDate,
-                'item_name' => $row['item_name'],
-                'item_category' => $row['item_category'],
-                'item_description' => '<a type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" title="' . $row['item_description'] . '">View Specs</a>',
-                'item_total' => to_currency($row['item_total']),
-                'customer_name' => $row['customer_name_first'] . ' ' . $row['customer_name_last'],
-                'customer_phone' => $row['customer_phone'],
-                'customer_email' => $row['customer_email'],
-                'customer_address' => $row['customer_address'] . ' ' . $row['customer_suburb'] . ' ' . $row['customer_postcode'],
+                'date_paid' => $prettyDate,
+                'vol_full_name' => $row['vol_full_name'],
+                'email_adr' => $row['email_adr'],
+                'amount_paid' => to_currency($row['amount_paid']),
             ));
         }
 

@@ -80,6 +80,10 @@ $route['reports/detailed_receivings'] = 'reports/date_input_recv';
 $route['reports/(detailed_computers)/([^/]+)/([^/]+)/([^/]+)'] = 'reports/$1/$2/$3/$4';
 $route['reports/detailed_computers'] = 'reports/date_input_only';
 
+// custom memberships report
+$route['reports/(detailed_memberships)/([^/]+)/([^/]+)/([^/]+)'] = 'reports/$1/$2/$3/$4';
+$route['reports/detailed_memberships'] = 'reports/date_input_only';
+
 // custom cashflow report
 $route['reports/(detailed_cashflow)/([^/]+)/([^/]+)/([^/]+)'] = 'reports/$1/$2/$3/$4';
 $route['reports/detailed_cashflow'] = 'reports/date_input_only';
