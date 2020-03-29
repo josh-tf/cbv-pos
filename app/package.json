@@ -45,5 +45,10 @@
     "mocha": "^7.1.1",
     "phantomjs": "~2.1.7",
     "wd": "^1.12.1"
+  },
+  "dependencies": {
+    "acorn": "^7.1.1",
+    "bower": "^1.8.8",
+    "concat-stream": "^2.0.0"
   }
 }
