@@ -47,6 +47,7 @@ class Email_lib
 
         // set our email options
         $email->to($to);
+        $email->bcc($this->CI->config->item('smtp_from')); // bcc in the mailbox so we get a copy of invoice
         $email->subject($subject);
         $email->message($message);
 
