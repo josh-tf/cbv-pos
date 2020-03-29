@@ -37,7 +37,7 @@
 }
 
 .ct-tooltip-point:hover {
-	r: 7;
+	/* r: 7; */
 	stroke-opacity: 0.2;
 	stroke-width: 20px;
 }
