@@ -110,7 +110,7 @@ to put “ubuntu linux” in the search box.</p>
     <td><b>Default password:</b></td>
     <td>cbvuser</td>
     <td><b>Operating System:</b></td>
-    <td>Ubuntu (Linux)</td>
+    <td>Ubuntu Mate (Computerbank Customised)</td>
   </tr>
 
 </table>
