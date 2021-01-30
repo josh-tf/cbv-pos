@@ -6,7 +6,9 @@ ob_start();
 ?>
 
 <h3>Desktops</h3>
-The listed concession price is only available to concession card holders. Please have a valid concession card ready when you make your purchase, you may purchase a desktop computer without a concession card however you will be charged our market price, as shown in brackets.
+The listed concession price is only available to concession card holders. Please have a valid concession card ready when
+you make your purchase, you may purchase a desktop computer without a concession card however you will be charged our
+market price, as shown in brackets.
 
 <?php
 $dt = new DateTime('now', new DateTimezone('Australia/Melbourne'));
@@ -68,38 +70,52 @@ if ($desktopCount > 0) {
         } ?>
 
 
-[su_tab title="<b class='cbvID'>ID: <?php echo $row['CBVID'] ?></b> <b class='cbvIDPrice'>$<?php echo number_format((float) ($row['ConcPrice']), 2, '.', ''); ?></b> <?php echo $row['Model'] ?>" disabled="no" anchor="" url="" target="blank" class="']
+[su_tab title="<b class='cbvID'>ID: <?php echo $row['CBVID'] ?></b> <b
+  class='cbvIDPrice'>$<?php echo number_format((float) ($row['ConcPrice']), 2, '.', ''); ?></b>
+<?php echo $row['Model'] ?>" disabled="no" anchor="" url="" target="blank" class="']
 <table style="max-width: 353px; height: 100px;" width="273">
-<tbody>
-<tr>
-<td style="width: 58px;" colspan="3"><img class="aligncenter wp-image-5674" src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/computerbank.png" alt="" width="180" /></td>
-</tr>
-<tr>
-<td class="stocklist-model-banner" colspan="3"><strong><?php echo $row['Model'] ?></strong> (ID: <?php echo $row['CBVID'] ?>)</td>
-</tr>
-<tr>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-cpu.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['CPUType'] ?> <?php echo $row['CPUSpeed'] ?></td>
-<td style="width: 85px;"><img src="/wp-content/stocklist-icons/icon-hdd.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['HDD'] ?></td>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-dvd.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['DVD'] ?></td>
-</tr>
-<tr>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-ram.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['RAM'] ?> GB</td>
-<td style="width: 85px;"><img src="/wp-content/stocklist-icons/icon-form.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['FormFactor'] == "" ? "Desktop" : $row['FormFactor'] ?></td>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-screen.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['Screen'] ?> in</td>
-</tr>
-<tr>
-<td style="width: 60px; text-align: center;" colspan="3"><strong>Concession:</strong> $<?php echo number_format((float) ($row['ConcPrice']), 2, '.', ''); ?> | <strong>Full Price:</strong> $<?php echo number_format((float) ($row['ConcPrice']) * 1.5, 2, '.', ''); ?></td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td style="width: 58px;" colspan="3"><img class="aligncenter wp-image-5674"
+          src="<?php echo $siteurl; ?>/wp-content/stocklist-icons/computerbank.png" alt="" width="180" /></td>
+    </tr>
+    <tr>
+      <td class="stocklist-model-banner" colspan="3"><strong><?php echo $row['Model'] ?></strong> (ID:
+        <?php echo $row['CBVID'] ?>)</td>
+    </tr>
+    <tr>
+      <td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-cpu.png"
+          style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['CPUType'] ?>
+        <?php echo $row['CPUSpeed'] ?></td>
+      <td style="width: 85px;"><img src="/wp-content/stocklist-icons/icon-hdd.png"
+          style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['HDD'] ?></td>
+      <td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-dvd.png"
+          style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['DVD'] ?></td>
+    </tr>
+    <tr>
+      <td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-ram.png"
+          style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['RAM'] ?> GB</td>
+      <td style="width: 85px;"><img src="/wp-content/stocklist-icons/icon-form.png"
+          style="width:16px;height:16px;margin-bottom:-3px;" />
+        <?php echo $row['FormFactor'] == "" ? "Desktop" : $row['FormFactor'] ?></td>
+      <td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-screen.png"
+          style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['Screen'] ?> in</td>
+    </tr>
+    <tr>
+      <td style="width: 60px; text-align: center;" colspan="3"><strong>Concession:</strong>
+        $<?php echo number_format((float) ($row['ConcPrice']), 2, '.', ''); ?> | <strong>Full Price:</strong>
+        $<?php echo number_format((float) ($row['ConcPrice']) * 1.5, 2, '.', ''); ?></td>
+    </tr>
+  </tbody>
 </table>
 <b>Included with this machine:</b>
 <ul>
- 	<li>Ubuntu Linux 16.04 (Computerbank Edition)</li>
- 	<li>USB Keyboard and Mouse set</li>
- 	<li>LCD Monitor (Size listed above)</li>
- 	<li>All required cables</li>
- 	<li><a href="/about-us/our-computers/">3 Month warranty</a></li>
- 	<li><a href="/about-us/our-computers/">User Guide</a></li>
+  <li>Ubuntu Linux (Computerbank Edition)</li>
+  <li>USB Keyboard and Mouse set</li>
+  <li>LCD Monitor (Size listed above)</li>
+  <li>All required cables</li>
+  <li><a href="/about-us/our-computers/">3 Month warranty</a></li>
+  <li><a href="/about-us/our-computers/">User Guide</a></li>
 </ul>
 [/su_tab]
 
@@ -114,7 +130,8 @@ if ($desktopCount > 0) {
 
 
 <h3>Laptops</h3>
-Laptops are first come, first served. You must have a valid concession card to purchase a laptop and there is a one per person limit.
+Laptops are first come, first served. You must have a valid concession card to purchase a laptop and there is a one per
+person limit.
 
 
 <?php
@@ -130,37 +147,49 @@ if ($laptopCount > 0) {
             continue;
         } ?>
 
-[su_tab title="<b class='cbvID'>ID: <?php echo $row['CBVID'] ?></b> <b class='cbvIDPrice'>$<?php echo number_format((float) ($row['ConcPrice']), 2, '.', ''); ?></b> <?php echo $row['Model'] ?>" disabled="no" anchor="" url="" target="blank" class="']
+[su_tab title="<b class='cbvID'>ID: <?php echo $row['CBVID'] ?></b> <b
+  class='cbvIDPrice'>$<?php echo number_format((float) ($row['ConcPrice']), 2, '.', ''); ?></b>
+<?php echo $row['Model'] ?>" disabled="no" anchor="" url="" target="blank" class="']
 <table style="max-width: 353px; height: 100px;" width="273">
-<tbody>
-<tr>
-<td style="width: 58px;" colspan="3"><img class="aligncenter wp-image-5674" src="/wp-content/stocklist-icons/computerbank.png" alt="" width="180" /></td>
-</tr>
-<tr>
-<td class="stocklist-model-banner" colspan="3"><strong><?php echo $row['Model'] ?></strong> (ID: <?php echo $row['CBVID'] ?>)</td>
-</tr>
-<tr>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-cpu.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['CPUType'] ?> <?php echo $row['CPUSpeed'] ?></td>
-<td style="width: 85px;"><img src="/wp-content/stocklist-icons/icon-hdd.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['HDD'] ?></td>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-battery.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['Battery'] ?> Hrs</td>
-</tr>
-<tr>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-ram.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['RAM'] ?> GB</td>
-<td style="width: 85px;"><img src="/wp-content/stocklist-icons/icon-os.png" style="width:16px;height:16px;margin-bottom:-3px;" /> Ubuntu</td>
-<td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-screen.png" style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['Screen'] ?> in</td>
-</tr>
-<tr>
-<td style="width: 60px; text-align: center;" colspan="3"><strong>Concession Only:</strong> $<?php echo number_format((float) ($row['ConcPrice']), 2, '.', ''); ?></td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td style="width: 58px;" colspan="3"><img class="aligncenter wp-image-5674"
+          src="/wp-content/stocklist-icons/computerbank.png" alt="" width="180" /></td>
+    </tr>
+    <tr>
+      <td class="stocklist-model-banner" colspan="3"><strong><?php echo $row['Model'] ?></strong> (ID:
+        <?php echo $row['CBVID'] ?>)</td>
+    </tr>
+    <tr>
+      <td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-cpu.png"
+          style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['CPUType'] ?>
+        <?php echo $row['CPUSpeed'] ?></td>
+      <td style="width: 85px;"><img src="/wp-content/stocklist-icons/icon-hdd.png"
+          style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['HDD'] ?></td>
+      <td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-battery.png"
+          style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['Battery'] ?> Hrs</td>
+    </tr>
+    <tr>
+      <td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-ram.png"
+          style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['RAM'] ?> GB</td>
+      <td style="width: 85px;"><img src="/wp-content/stocklist-icons/icon-os.png"
+          style="width:16px;height:16px;margin-bottom:-3px;" /> Ubuntu</td>
+      <td style="width: 60px;"><img src="/wp-content/stocklist-icons/icon-screen.png"
+          style="width:16px;height:16px;margin-bottom:-3px;" /> <?php echo $row['Screen'] ?> in</td>
+    </tr>
+    <tr>
+      <td style="width: 60px; text-align: center;" colspan="3"><strong>Concession Only:</strong>
+        $<?php echo number_format((float) ($row['ConcPrice']), 2, '.', ''); ?></td>
+    </tr>
+  </tbody>
 </table>
 <b>Included with this machine:</b>
 <ul>
- 	<li>Ubuntu Linux 16.04 (Computerbank Edition)</li>
- 	<li>Laptop Care Guide</li>
- 	<li>Tested Power Adapter</li>
- 	<li><a href="/about-us/our-computers/">3 Month warranty</a></li>
- 	<li><a href="/about-us/our-computers/">User Guide</a></li>
+  <li>Ubuntu Linux (Computerbank Edition)</li>
+  <li>Laptop Care Guide</li>
+  <li>Tested Power Adapter</li>
+  <li><a href="/about-us/our-computers/">3 Month warranty</a></li>
+  <li><a href="/about-us/our-computers/">User Guide</a></li>
 </ul>
 [/su_tab]
 
@@ -174,7 +203,8 @@ $conn->close();
 ?>
 
 
-<span style="color: #808080;">Last modified on <?php echo $dt->format('d-M-y') . ' at ' . $dt->format('h:i a'); ?></span>
+<span style="color: #808080;">Last modified on
+  <?php echo $dt->format('d-M-y') . ' at ' . $dt->format('h:i a'); ?></span>
 
 <?php
 $sldata = ob_get_clean();
