@@ -55,7 +55,7 @@ services:
   cbv-dev-pos-build-composer:
     container_name: cbv-dev-pos-build-composer
     image: composer:latest
-    command: "install"
+    command: "composer install"
     volumes:
       - ./cbv-pos/app:/app
 

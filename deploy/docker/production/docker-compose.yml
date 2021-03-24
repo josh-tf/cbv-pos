@@ -166,8 +166,8 @@ services:
 
   cbv-prod-pos-build-composer:
     container_name: cbv-prod-pos-build-composer
-    image: composer/composer
-    command: "install"
+    image: composer:latest
+    command: "composer install"
     volumes:
       - ./cbv-pos/app:/app
 
