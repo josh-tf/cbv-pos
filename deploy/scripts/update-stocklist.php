@@ -34,6 +34,7 @@ $sql .= 'i.custom3 AS CPUType, ';
 $sql .= 'i.custom4 AS CPUSpeed, ';
 $sql .= 'i.custom5 AS RAM, ';
 $sql .= 'i.custom6 AS HDD, ';
+$sql .= 'i.custom7 AS OS, ';
 $sql .= 'i.custom8 AS Screen, ';
 $sql .= 'i.custom9 AS DVD, ';
 $sql .= 'i.custom10 AS FormFactor, ';
@@ -110,7 +111,7 @@ if ($desktopCount > 0) {
 </table>
 <b>Included with this machine:</b>
 <ul>
-  <li>Ubuntu Linux (Computerbank Edition)</li>
+  <li><?php echo $row['OS'] ?> (Computerbank Edition)</li>
   <li>USB Keyboard and Mouse set</li>
   <li>LCD Monitor (Size listed above)</li>
   <li>All required cables</li>
@@ -185,7 +186,7 @@ if ($laptopCount > 0) {
 </table>
 <b>Included with this machine:</b>
 <ul>
-  <li>Ubuntu Linux (Computerbank Edition)</li>
+  <li><?php echo $row['OS'] ?> (Computerbank Edition)</li>
   <li>Laptop Care Guide</li>
   <li>Tested Power Adapter</li>
   <li><a href="/about-us/our-computers/">3 Month warranty</a></li>
