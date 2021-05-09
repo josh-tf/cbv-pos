@@ -535,8 +535,8 @@ foreach ($payments as $payment_id => $payment) {
 					<div class='btn btn-sm btn-default pull-left <?php echo(!($saleMode == "sale") ? "non-sale" : ""); ?>' id='suspend_sale_button'><span class="glyphicon glyphicon-align-justify">&nbsp</span><?php echo $this->lang->line('sales_suspend_sale'); ?></div>
 					<?php
 // Only show this part if the payment covers the total
-    if (!$pos_mode && isset($customer)) {
-        ?>
+    if (!$pos_mode && isset($customer) && $payments_cover_total) {
+		?>
 						<div class='btn btn-sm btn-success' id='finish_invoice_quote_button'><span class="glyphicon glyphicon-ok">&nbsp</span><?php echo $mode_label; ?></div>
 					<?php
     } ?>
