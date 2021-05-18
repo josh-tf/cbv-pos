@@ -30,7 +30,12 @@
 		"paragonie/random_compat": "^2.0"
 	},
 	"require-dev": {
-		"mikey179/vfsStream": "1.1.*",
+		"mikey179/vfsstream": "1.1.*",
 		"vlucas/phpdotenv": "^2.4"
+	},
+	"config": {
+		"platform": {
+			"php": "7.2"
+		}
 	}
 }
