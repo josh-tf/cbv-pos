@@ -619,23 +619,17 @@ class Sale extends CI_Model
 
             $this->db->insert('sales_items', $sales_items_data);
 
-            if ($cur_item_info->stock_type == HAS_STOCK && $sale_status == COMPLETED) {
+            if ($cur_item_info->stock_type == HAS_STOCK && $sale_status == COMPLETED)
+            {
                 // Update stock quantity if item type is a standard stock item and the sale is a standard sale
                 $item_quantity = $this->Item_quantity->get_item_quantity($item['item_id'], $item['item_location']);
-
-                if (($sale_type == SALE_TYPE_RETURN) || (($sale_type == SALE_TYPE_INVOICE) && ($total_amount < $item['price']))) { // dont deduct if the sale is a return or its a partial paid invoice
-
-                    $qtyToDeduct = 0;
-                } else {
-                    $qtyToDeduct = $item['quantity'];
-                }
-
                 $this->Item_quantity->save(array(
-                    'quantity' => $item_quantity->quantity - $qtyToDeduct,
+                    'quantity' => $item_quantity->quantity - $item['quantity'],
                     'item_id' => $item['item_id'],
                     'location_id' => $item['item_location']), $item['item_id'], $item['item_location']);
 
                 // if an items was deleted but later returned it's restored with this rule
+
                 if ($item['quantity'] < 0) {
                     $this->Item->undelete($item['item_id']);
                 }

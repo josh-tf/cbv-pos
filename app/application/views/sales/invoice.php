@@ -159,7 +159,7 @@ if ($this->Appconfig->get('receipt_show_company_name')) {
             </tr>
             <tr>
                 <td class="meta-head">
-                    <?php echo $this->lang->line('sales_amount_due'); ?>
+                    <?php echo $this->lang->line('sales_customer_total'); ?>
                 </td>
                 <td><textarea rows="5" cols="6"><?php echo to_currency($total); ?></textarea></td>
             </tr>
@@ -306,21 +306,29 @@ if ($this->config->item('receipt_show_taxes')) {
         </tr>
 
         <?php
+        $invoicedAmount=0;
 foreach ($payments as $payment_id => $payment) {
-    $splitpayment = explode(':', $payment['payment_type']); ?>
+    # Don't print out invoiced amounts
+    if ($payment['payment_type'] != $this->lang->line('sales_due')) {
+        $splitpayment = explode(':', $payment['payment_type']); ?>
         <tr>
             <td colspan="3" class="blank"> </td>
             <td colspan="1" class="total-line al-right"><?php echo $splitpayment[0]; ?> </td>
             <td class="total-value"><?php echo to_currency($payment['payment_amount'] * -1); ?></td>
         </tr>
         <?php
+    } else {
+        # Accumulate invoiced amounts
+        $invoicedAmount+=$payment['payment_amount'];
+    }
 }
 ?>
         <tr>
             <td colspan="3" class="blank"> </td>
             <td colspan="1" class="total-line al-right">
                 <?php echo $this->lang->line('sales_amount_due'); ?></td>
-            <td class="total-value"><?php echo to_currency($amount_change * -1); ?></td>
+            <!-- Add invoiced amounts to Amount Due --> 
+            <td class="total-value"><?php echo to_currency($amount_change * -1 + $invoicedAmount); ?></td>
         </tr>
     </table>
 
